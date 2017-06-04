@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering interors Tabs 1`] = `
+<div>
+  <ul
+    className="nav nav-tabs"
+  >
+    <li
+      className="nav-item"
+    >
+      <a
+        className="nav-link"
+        onClick={[Function]}
+      >
+        2nd
+      </a>
+    </li>
+    <li
+      className="nav-item"
+    >
+      <a
+        className="active nav-link"
+        onClick={[Function]}
+      >
+        1st
+      </a>
+    </li>
+  </ul>
+  <div
+    className="tab-content"
+  >
+    <div
+      className="tab-pane"
+    >
+       The second content 
+    </div>
+    <div
+      className="tab-pane active"
+    >
+       The first content 
+    </div>
+  </div>
+</div>
+`;
