@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HEADER_SET_CONCEPT 1`] = `
+Immutable.Map {
+  name: "Bob",
+  concept: "Sir Robert",
+  stuff: "Data",
+}
+`;
+
+exports[`HEADER_SET_NAME 1`] = `
+Immutable.Map {
+  name: "Robert",
+  concept: "The Bobbest",
+  stuff: "Data",
+}
+`;

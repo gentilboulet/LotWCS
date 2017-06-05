@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Tabs, Tab } from '../components/Tabs/Tabs';
-import PlaceHolder from '../components/PlaceHolder/PlaceHolder';
+import { Tabs, Tab } from '../../components/Tabs';
+import PlaceHolder from '../../components/PlaceHolder';
 
 export interface Props {}
 

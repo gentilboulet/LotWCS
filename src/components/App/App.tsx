@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Container, Row, } from 'reactstrap';
 import CharacterHeader from '../../containers/CharacterHeader';
-import CharacterBody from '../../containers/CharacterBody';
+import CharacterBody from '../../components/CharacterBody';
 
 import './App.css';
 
@@ -15,7 +15,12 @@ class App extends React.Component<Props, object> {
           <h1>Legends of the Wulin Character Sheet</h1>
         </Row>
         <Row>
-          <CharacterHeader />
+          <CharacterHeader
+            name=""
+            concept=""
+            onSetName={(s: string) => { return; }}
+            onSetConcept={(s: string) => { return; }}
+          />
         </Row>
         <Row>
           <CharacterBody />

@@ -1,0 +1,5 @@
+export const HEADER_SET_NAME = 'HEADER_SET_NAME';
+export type HEADER_SET_NAME = typeof HEADER_SET_NAME;
+
+export const HEADER_SET_CONCEPT = 'HEADER_SET_CONCEPT';
+export type HEADER_SET_CONCEPT = typeof HEADER_SET_CONCEPT;
