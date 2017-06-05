@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Card, CardText, CardBlock, CardTitle, CardSubtitle } from 'reactstrap';
 
-export interface Props {}
+export interface IPlaceHolderProps {}
 
-class PlaceHolder extends React.Component<Props, object> {
+class PlaceHolder extends React.Component<IPlaceHolderProps, object> {
   render() {
     return (
       <Card block={true} >

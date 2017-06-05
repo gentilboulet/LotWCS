@@ -1,25 +1,37 @@
 import * as React from 'react';
-import { Button, Input, InputGroup, InputGroupAddon, FormGroup } from 'reactstrap';
+import { Button, Input, InputGroup, InputGroupAddon,
+ Col, Row, Container } from 'reactstrap';
 import Icon from 'react-fa';
 
-export interface Props {
+export interface IEditTextProps {
   header: string;
   default?: string;
+  height: number;
+  locked?: boolean;
   validate: (v: string) => boolean ;
   onSubmit: (v: string) => void;
 }
 
-export interface State {
+interface IEditTextState {
   value: string;
   edit: boolean;
 }
 
-export interface Event {
+export interface IEditTextEvent {
   target: { value: string };
 }
 
-class EditText extends React.Component<Props, State> {
-  constructor(props: Props) {
+const renderHeader = (s: string) => { return (
+  <Col>
+  <h4><span
+    className="align-text-middle"
+  >
+    {s} :
+  </span></h4>
+  </Col>); };
+
+class EditText extends React.Component<IEditTextProps, IEditTextState> {
+  constructor(props: IEditTextProps) {
     super(props);
 
     this.state = {
@@ -32,12 +44,14 @@ class EditText extends React.Component<Props, State> {
     this.textChange = this.textChange.bind(this);
   }
 
-  textChange(event: Event) {
-    this.setState({ value: event.target.value });
+  textChange(IEditTextEvent: IEditTextEvent) {
+    this.setState({ value: IEditTextEvent.target.value });
   }
 
   startEdit() {
-    this.setState({edit: true});
+    if (this.props.locked ? false : true) {
+      this.setState({edit: true});
+    }
   }
 
   endEdit() {
@@ -45,20 +59,43 @@ class EditText extends React.Component<Props, State> {
       this.setState({
         edit: false,
       });
-      this.props.onSubmit(this.state.value);
+      if (this.state.value !== this.props.default) {
+        this.props.onSubmit(this.state.value);
+      }
     }
   }
 
   render() {
+    // First, the easy mode with nothing to do if locked
+    if (this.props.locked) {
+      return(
+      <Container >
+        <Row style={{height: this.props.height}} >
+          {renderHeader(this.props.header)}
+          <Col>{this.state.value}</Col>
+          </Row>
+      </Container>
+      );
+    }
+
     if (!this.state.edit) {
       return (
-        <div onClick={this.startEdit} role="button">
-          <span className="lead">{this.props.header} : </span>
-          <span>{this.state.value}</span>
-        </div>
+        <Container >
+        <Row
+          onClick={this.startEdit}
+          role="button"
+          disabled={true}
+          style={{height: this.props.height}}
+        >
+          {renderHeader(this.props.header)}
+          <Col>
+            <span>{this.state.value}</span>
+          </Col>
+        </Row>
+        </Container>
       );
     } else {
-      const validationState = (this.props.validate(this.state.value) ? 'success' : 'error');
+      const validationInputState = (this.props.validate(this.state.value) ? 'success' : 'error');
       const btn = (this.props.validate(this.state.value) ?
         (
           <Button onClick={this.endEdit} color="success">
@@ -71,13 +108,13 @@ class EditText extends React.Component<Props, State> {
           </Button>)
         );
       return (
-        <div>
-          <span className="lead">{this.props.header} : </span>
-          <span>
-            <FormGroup color={validationState}>
+        <Container>
+          <Row style={{height: this.props.height}} >
+            {renderHeader(this.props.header)}
+            <Col>
               <InputGroup>
                 <Input
-                  state={validationState}
+                  state={validationInputState}
                   onChange={this.textChange}
                   value={this.state.value}
                 />
@@ -85,9 +122,9 @@ class EditText extends React.Component<Props, State> {
                     {btn}
                 </InputGroupAddon>
               </InputGroup>
-            </FormGroup>
-          </span>
-        </div>
+            </Col>
+          </Row>
+        </Container>
       );
     }
   }

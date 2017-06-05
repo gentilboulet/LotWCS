@@ -2,23 +2,23 @@ import * as React from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import * as classnames from 'classnames';
 
-export interface TabsProps {
+export interface ITabsProps {
   defaultTab?: string;
 }
 
-export interface TabsState {
+interface ITabsState {
   activeTab?: string;
 }
 
-export interface TabProps {
+export interface ITabProps {
     tabId: string;
     title: string;
 }
 
-class Tab extends React.Component<TabProps, object> {}
+class Tab extends React.Component<ITabProps, object> {}
 
-class Tabs extends React.Component<TabsProps, TabsState> {
-  constructor(props: TabsProps) {
+class Tabs extends React.Component<ITabsProps, ITabsState> {
+  constructor(props: ITabsProps) {
     super(props);
 
     this.toggle = this.toggle.bind(this);

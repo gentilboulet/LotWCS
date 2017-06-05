@@ -1,17 +1,12 @@
 /* Redux and state management */
-import * as Immutable from 'immutable';
 import { createStore } from 'redux';
+import { initialState } from './reducers/initial';
 import { headerReducer } from './reducers/header';
-import { StoreState } from './types/index';
+import { IStoreState } from './types/index';
 import { Provider } from 'react-redux';
 import { devToolsEnhancer  } from 'redux-devtools-extension';
 
-const initialState = Immutable.fromJS({
-  name: 'No Name',
-  concept: 'No Concept'
-});
-
-const store = createStore<StoreState>(
+const store = createStore<IStoreState>(
   headerReducer,
   initialState,
   devToolsEnhancer({})

@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`initialState 1`] = `
+Object {
+  "archetype": "",
+  "archetypeModified": false,
+  "concept": "No Concept",
+  "name": "No Name",
+  "rank": "",
+  "rankModified": false,
+  "skills": Array [
+    Object {
+      "name": "Awareness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Confidence",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Crafting",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Finesse",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Hardiness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Inspire",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Learning",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Medicine",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Might",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Perform",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Politics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Ride",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Stealth",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Survival",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Tactics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Wu Wei",
+      "specialities": Array [],
+      "value": 0,
+    },
+  ],
+}
+`;

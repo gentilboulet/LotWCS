@@ -1,8 +1,10 @@
 import * as Immutable from 'immutable';
+import { IStoreState } from '../types';
+
 import * as actions from '../actions/header';
 import { headerReducer } from './header';
 
-const initialState = Immutable.fromJS({
+const initialState: IStoreState  = Immutable.fromJS({
   name: 'Bob',
   concept: 'The Bobbest',
   stuff: 'Data',

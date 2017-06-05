@@ -1,8 +1,19 @@
-import {TypedRecord} from 'typed-immutable-record';
+import { TypedRecord } from 'typed-immutable-record';
 
-export interface StoreData {
+export interface IStoreStateSkillJS {
   name: string;
-  concept: string;
+  value: number;
+  specialities: string[];
 }
 
-export interface StoreState extends TypedRecord<StoreState>, StoreData {}
+export interface IStoreStateJS {
+  name: string;
+  concept: string;
+  archetype: string;
+  archetypeModified: boolean;
+  rank: string;
+  rankModified: boolean;
+  skills: IStoreStateSkillJS[];
+}
+
+export interface IStoreState extends TypedRecord<IStoreState>, IStoreStateJS {}

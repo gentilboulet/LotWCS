@@ -5,9 +5,9 @@ import CharacterBody from '../../components/CharacterBody';
 
 import './App.css';
 
-export interface Props {}
+export interface IAppProps {}
 
-class App extends React.Component<Props, object> {
+class App extends React.Component<IAppProps, object> {
   render() {
     return (
       <Container className="App">
@@ -15,12 +15,7 @@ class App extends React.Component<Props, object> {
           <h1>Legends of the Wulin Character Sheet</h1>
         </Row>
         <Row>
-          <CharacterHeader
-            name=""
-            concept=""
-            onSetName={(s: string) => { return; }}
-            onSetConcept={(s: string) => { return; }}
-          />
+          <CharacterHeader />
         </Row>
         <Row>
           <CharacterBody />
