@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, Input, InputGroup, InputGroupAddon,
- Col, Row, Container } from 'reactstrap';
+import { Button, Input, InputGroup, InputGroupAddon, Col, Row, Container } from 'reactstrap';
 import Icon from 'react-fa';
 
 export interface IEditTextProps {
@@ -21,14 +20,15 @@ export interface IEditTextEvent {
   target: { value: string };
 }
 
-const renderHeader = (s: string) => { return (
-  <Col>
-  <h4><span
-    className="align-text-middle"
-  >
-    {s} :
-  </span></h4>
-  </Col>); };
+const renderHeader = (s: string): JSX.Element => {
+  return (
+    <Col>
+      <h4>
+        <span className="align-text-middle">{s} :</span>
+      </h4>
+    </Col>
+  );
+};
 
 class EditText extends React.Component<IEditTextProps, IEditTextState> {
   constructor(props: IEditTextProps) {
@@ -42,6 +42,9 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
     this.textChange = this.textChange.bind(this);
+    this.renderButton = this.renderButton.bind(this);
+    this.renderValue = this.renderValue.bind(this);
+    this.renderInput = this.renderInput.bind(this);
   }
 
   textChange(IEditTextEvent: IEditTextEvent) {
@@ -65,22 +68,39 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     }
   }
 
-  render() {
-    // First, the easy mode with nothing to do if locked
-    if (this.props.locked) {
-      return(
-      <Container >
+  renderButton(isValueValid: boolean): JSX.Element {
+    const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
+    const btnKo = (<Button color="danger"><Icon name="times" /></Button>);
+    return (isValueValid) ? btnOk : btnKo;
+  }
+
+  renderInput(): JSX.Element {
+    const isValueValid = this.props.validate(this.state.value);
+    const validationInputState = (isValueValid ? 'success' : 'error');
+    return (
+      <Container>
         <Row style={{height: this.props.height}} >
           {renderHeader(this.props.header)}
-          <Col>{this.state.value}</Col>
-          </Row>
+          <Col>
+            <InputGroup>
+              <Input
+                state={validationInputState}
+                onChange={this.textChange}
+                value={this.state.value}
+              />
+              <InputGroupAddon>
+                  {this.renderButton(isValueValid)}
+              </InputGroupAddon>
+            </InputGroup>
+          </Col>
+        </Row>
       </Container>
-      );
-    }
+    );
+  }
 
-    if (!this.state.edit) {
-      return (
-        <Container >
+  renderValue(): JSX.Element {
+    return (
+      <Container >
         <Row
           onClick={this.startEdit}
           role="button"
@@ -88,45 +108,14 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
           style={{height: this.props.height}}
         >
           {renderHeader(this.props.header)}
-          <Col>
-            <span>{this.state.value}</span>
-          </Col>
+          <Col>{this.state.value}</Col>
         </Row>
-        </Container>
-      );
-    } else {
-      const validationInputState = (this.props.validate(this.state.value) ? 'success' : 'error');
-      const btn = (this.props.validate(this.state.value) ?
-        (
-          <Button onClick={this.endEdit} color="success">
-            <Icon name="check" />
-          </Button>)
-      :
-        (
-          <Button color="danger">
-            <Icon name="times" />
-          </Button>)
-        );
-      return (
-        <Container>
-          <Row style={{height: this.props.height}} >
-            {renderHeader(this.props.header)}
-            <Col>
-              <InputGroup>
-                <Input
-                  state={validationInputState}
-                  onChange={this.textChange}
-                  value={this.state.value}
-                />
-                <InputGroupAddon>
-                    {btn}
-                </InputGroupAddon>
-              </InputGroup>
-            </Col>
-          </Row>
-        </Container>
-      );
-    }
+      </Container>
+    );
+  }
+
+  render(): JSX.Element {
+    return (this.state.edit) ? this.renderInput() : this.renderValue();
   }
 }
 
