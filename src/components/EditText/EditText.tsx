@@ -20,16 +20,6 @@ export interface IEditTextEvent {
   target: { value: string };
 }
 
-const renderHeader = (s: string): JSX.Element => {
-  return (
-    <Col>
-      <h4>
-        <span className="align-text-middle">{s} :</span>
-      </h4>
-    </Col>
-  );
-};
-
 class EditText extends React.Component<IEditTextProps, IEditTextState> {
   constructor(props: IEditTextProps) {
     super(props);
@@ -45,6 +35,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     this.renderButton = this.renderButton.bind(this);
     this.renderValue = this.renderValue.bind(this);
     this.renderInput = this.renderInput.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
   }
 
   textChange(IEditTextEvent: IEditTextEvent) {
@@ -68,6 +59,16 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     }
   }
 
+  renderHeader(): JSX.Element {
+    return (
+      <Col>
+        <h4>
+          <span className="align-text-middle">{this.props.header} :</span>
+        </h4>
+      </Col>
+    );
+  }
+
   renderButton(isValueValid: boolean): JSX.Element {
     const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
     const btnKo = (<Button color="danger"><Icon name="times" /></Button>);
@@ -80,7 +81,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     return (
       <Container>
         <Row style={{height: this.props.height}} >
-          {renderHeader(this.props.header)}
+          {this.renderHeader()}
           <Col>
             <InputGroup>
               <Input
@@ -107,7 +108,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
           disabled={true}
           style={{height: this.props.height}}
         >
-          {renderHeader(this.props.header)}
+          {this.renderHeader()}
           <Col>{this.state.value}</Col>
         </Row>
       </Container>

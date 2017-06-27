@@ -27,14 +27,6 @@ export interface IDDLTextEvent {
   target: { value: string };
 }
 
-const renderHeader = (s: string): JSX.Element => {
-  return (
-    <Col>
-      <h4>{s} :</h4>
-    </Col>
-  );
-};
-
 class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   constructor(props: IDDLTextProps) {
     super(props);
@@ -53,6 +45,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
     this.renderButton = this.renderButton.bind(this);
     this.renderDropdownList = this.renderDropdownList.bind(this);
     this.renderDropdownItems = this.renderDropdownItems.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
   }
 
   startEdit() {
@@ -84,6 +77,10 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
     ).join(', ');
   }
 
+  renderHeader(): JSX.Element {
+    return (<Col><h4>{this.props.header} :</h4></Col>);
+  }
+
   renderButton(labelForSelectedKey: string): JSX.Element {
     const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
     const btnKo = (<Button color="danger"><Icon name="times" /></Button>);
@@ -104,7 +101,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
       <Row style={{height: this.props.height}} >
-        {renderHeader(this.props.header)}
+        {this.renderHeader()}
         <Col>
           <InputGroup>
             <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDDL}>
@@ -128,7 +125,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
       <Row onClick={this.startEdit} role="button" style={{height: this.props.height}}>
-        {renderHeader(this.props.header)}
+        {this.renderHeader()}
         <Col>
           {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
         </Col>
