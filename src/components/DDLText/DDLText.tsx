@@ -27,11 +27,6 @@ export interface IDDLTextEvent {
   target: { value: string };
 }
 
-const renderHeader = (s: string) => { return (
-  <Col>
-  <h4>{s} : </h4>
-  </Col>); };
-
 class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   constructor(props: IDDLTextProps) {
     super(props);
@@ -46,6 +41,11 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
     this.endEdit = this.endEdit.bind(this);
     this.toggleDDL = this.toggleDDL.bind(this);
     this.select = this.select.bind(this);
+    this.getLabelForSelectedKey = this.getLabelForSelectedKey.bind(this);
+    this.renderButton = this.renderButton.bind(this);
+    this.renderDropdownList = this.renderDropdownList.bind(this);
+    this.renderDropdownItems = this.renderDropdownItems.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
   }
 
   startEdit() {
@@ -55,77 +55,53 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   }
 
   endEdit() {
-    this.setState({
-      edit: false,
-      dropdownOpen: false,
-    });
+    this.setState({edit: false, dropdownOpen: false});
     if (this.state.value !== this.props.default) {
       this.props.onSubmit(this.state.value);
     }
   }
 
   toggleDDL() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
+    this.setState({dropdownOpen: !this.state.dropdownOpen});
   }
 
   select(key: string) {
-    this.setState(
-      {value: key}
-    );
+    this.setState({value: key});
   }
 
-  render() {
-    const labelForSelectedKey = this.props.values.map(({key, label}: IDDLItem) => {
-          return ( key === this.state.value ? label : '');
-        });
+  getLabelForSelectedKey(): string {
+    return this.props.values.map(
+      ({key, label}: IDDLItem) => { return ( key === this.state.value ? label : ''); }
+    ).filter(
+      (e: string) => { return e !== ''; }
+    ).join(', ');
+  }
 
-    // First, the easy mode with nothing to do if locked
-    if (this.props.locked) {
-      return (
-        <Row style={{height: this.props.height}}>
-          {renderHeader(this.props.header)}
-          <Col>
-            {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
-          </Col>
-        </Row>
-      );
-    }
+  renderHeader(): JSX.Element {
+    return (<Col><h4>{this.props.header} :</h4></Col>);
+  }
 
-    if (!this.state.edit) {
-      return (
-        <Row onClick={this.startEdit} role="button" style={{height: this.props.height}}>
-          {renderHeader(this.props.header)}
-          <Col>
-            {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
-          </Col>
-        </Row>
-      );
-    } else {
+  renderButton(labelForSelectedKey: string): JSX.Element {
+    const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
+    const btnKo = (<Button color="danger"><Icon name="times" /></Button>);
+    return (labelForSelectedKey.length > 0) ? btnOk : btnKo;
+  }
 
-    const ddl = this.props.values.map( ({key, label}: IDDLItem) => {
+  renderDropdownItems(): JSX.Element[] {
+    return this.props.values.map( ({key, label}: IDDLItem) => {
       return (
         <DropdownItem key={key} onClick={() => {this.select(key); }}>
           {label}
         </DropdownItem>
       );
     });
+  }
 
-    const btnOk = (
-        <Button onClick={this.endEdit} color="success">
-          <Icon name="check" />
-        </Button>);
-    const btnKo = (
-        <Button color="danger">
-          <Icon name="times" />
-        </Button>);
-
-    const btn = ( labelForSelectedKey.length > 0 ) ? btnOk : btnKo;
-
+  renderDropdownList(): JSX.Element {
+    const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
       <Row style={{height: this.props.height}} >
-        {renderHeader(this.props.header)}
+        {this.renderHeader()}
         <Col>
           <InputGroup>
             <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDDL}>
@@ -133,17 +109,32 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
                 {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
               </DropdownToggle>
               <DropdownMenu>
-                {ddl}
+                {this.renderDropdownItems()}
               </DropdownMenu>
             </ButtonDropdown>
             <InputGroupAddon>
-                {btn}
+                {this.renderButton(labelForSelectedKey)}
             </InputGroupAddon>
           </InputGroup>
         </Col>
       </Row>
     );
-    }
+  }
+
+  renderValue(): JSX.Element {
+    const labelForSelectedKey = this.getLabelForSelectedKey();
+    return (
+      <Row onClick={this.startEdit} role="button" style={{height: this.props.height}}>
+        {this.renderHeader()}
+        <Col>
+          {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
+        </Col>
+      </Row>
+    );
+  }
+
+  render(): JSX.Element {
+    return (this.state.edit) ? this.renderDropdownList() : this.renderValue();
   }
 }
 
