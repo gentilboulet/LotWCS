@@ -1,6 +1,6 @@
-import CharacterSkills from '../../components/CharacterSkills';
-import * as actions from '../../actions/skills';
-import { IStoreState } from '../../types/index';
+import CharacterSkills from '../components/CharacterSkills';
+import * as actions from '../actions/skills';
+import { IStoreState } from '../types/index';
 import { connect, Dispatch } from 'react-redux';
 
 interface ISpecialityToProps {

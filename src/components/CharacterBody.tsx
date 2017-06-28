@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Tabs, Tab } from '../../components/Tabs';
-import PlaceHolder from '../../components/PlaceHolder';
-import CharacterSkills from '../../containers/CharacterSkills';
+import { Tabs, Tab } from '../components/Tabs';
+import PlaceHolder from '../components/PlaceHolder';
+import CharacterSkills from '../containers/CharacterSkills';
 
 export interface ICharacterBodyProps {}
 
