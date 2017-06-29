@@ -1,6 +1,6 @@
 /* tslint:disable:no-console */
 import * as React from 'react';
-import EditSkill from '../../components/EditSkill';
+import EditSkill from '../components/EditSkill';
 import { Container, Row, Col } from 'reactstrap';
 
 interface ISpecialityProps {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import EditText from '../../components/EditText';
-import DDLText from '../../components/DDLText';
-import { archetypes } from '../../data/archetypes';
-import { ranks } from '../../data/ranks';
+import EditText from '../components/EditText';
+import DDLText from '../components/DDLText';
+import { archetypes } from '../data/archetypes';
+import { ranks } from '../data/ranks';
 
 export interface ICharacterHeader {
   name: string;

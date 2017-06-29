@@ -1,6 +1,6 @@
-import CharacterHeader from '../../components/CharacterHeader';
-import * as actions from '../../actions/header';
-import { IStoreState } from '../../types/index';
+import CharacterHeader from '../components/CharacterHeader';
+import * as actions from '../actions/header';
+import { IStoreState } from '../types/index';
 import { connect, Dispatch } from 'react-redux';
 
 interface ImapStateToProps {
