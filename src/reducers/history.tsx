@@ -3,9 +3,7 @@ import { IStoreState } from '../types/state';
 import { globalReducer } from './global';
 
 export function pushToHistory(state: IStoreState, action: IAction): IStoreState {
-  const history = Array.from(state.get('history'));
-  history.push(action);
-  return state.set('history', history);
+  return state.updateIn(['history'], (list) => { return list.push(action); });
 }
 
 export function replayHistory(state: IStoreState, actions: IAction[]): IStoreState {

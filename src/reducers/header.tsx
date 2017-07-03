@@ -3,17 +3,31 @@ import { IStoreState } from '../types/state';
 import * as constants from '../constants/header';
 import { pushToHistory } from './history';
 
-export function headerReducer(state: IStoreState, action: IHeaderAction): IStoreState {
+export function headerReducer(oldState: IStoreState, action: IHeaderAction): IStoreState {
   switch (action.type) {
     case constants.HEADER_SET_NAME:
-      return pushToHistory(state.set('name', action.name ), action);
+      return oldState.withMutations(state => {
+        state.set('name', action.name);
+        pushToHistory(state, action);
+      });
     case constants.HEADER_SET_CONCEPT:
-      return pushToHistory(state.set('concept', action.concept ), action);
+      return oldState.withMutations(state => {
+        state.set('concept', action.concept);
+        pushToHistory(state, action);
+      });
     case constants.HEADER_SET_RANK:
-      return pushToHistory(state.set('rank', action.rank ).set('rankModified', true), action);
+      return oldState.withMutations(state => {
+        state.set('rank', action.rank );
+        state.set('rankModified', true);
+        pushToHistory(state, action);
+      });
     case constants.HEADER_SET_ARCHETYPE:
-      return pushToHistory(state.set('archetype', action.archetype ).set('archetypeModified', true), action);
+      return oldState.withMutations(state => {
+        state.set('archetype', action.archetype );
+        state.set('archetypeModified', true);
+        pushToHistory(state, action);
+      });
     default:
   }
-  return state;
+  return oldState;
 }

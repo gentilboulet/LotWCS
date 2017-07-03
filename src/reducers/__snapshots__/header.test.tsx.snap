@@ -20,82 +20,98 @@ Object {
   "skills": Array [
     Object {
       "name": "Awareness",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Confidence",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Crafting",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Finesse",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Hardiness",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Inspire",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Learning",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Medicine",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Might",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Perform",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Politics",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Ride",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Stealth",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Survival",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Tactics",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Wu Wei",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
   ],
@@ -122,82 +138,98 @@ Object {
   "skills": Array [
     Object {
       "name": "Awareness",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Confidence",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Crafting",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Finesse",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Hardiness",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Inspire",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Learning",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Medicine",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Might",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Perform",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Politics",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Ride",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Stealth",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Survival",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Tactics",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Wu Wei",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
   ],
@@ -224,82 +256,98 @@ Object {
   "skills": Array [
     Object {
       "name": "Awareness",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Confidence",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Crafting",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Finesse",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Hardiness",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Inspire",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Learning",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Medicine",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Might",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Perform",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Politics",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Ride",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Stealth",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Survival",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Tactics",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
     Object {
       "name": "Wu Wei",
-      "specialities": Array [],
+      "specialities": Immutable.List [
+],
       "value": 0,
     },
   ],

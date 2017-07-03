@@ -1,4 +1,5 @@
 import { makeTypedFactory } from 'typed-immutable-record';
+import * as Immutable from 'immutable';
 import { IStoreStateJS, IStoreState } from '../types/state';
 
 import { resetToInitialState } from '../actions/initial';
@@ -12,14 +13,14 @@ const defaultState: IStoreStateJS = {
   archetypeModified: false,
   rank: '',
   rankModified: false,
-  skills: skills.map((s: IDataSkill) => {
+  skills: Immutable.List(skills.map((s: IDataSkill) => {
     return {
       name: s.name,
       value: 0,
-      specialities: []
+      specialities: Immutable.List<string>(),
     };
-  }),
-  history: [resetToInitialState()],
+  })),
+  history: Immutable.List([resetToInitialState()]),
 };
 
 export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultState);

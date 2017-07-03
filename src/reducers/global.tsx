@@ -6,7 +6,9 @@ import * as initial from '../constants/initial';
 import { headerReducer } from '../reducers/header';
 import { initialStateFactory } from '../reducers/initial';
 
-export function globalReducer(state: IStoreState, action: IAction): IStoreState {
+/* tslint:disable:no-console */
+
+function doReducer(state: IStoreState, action: IAction): IStoreState {
   switch (action.type) {
     case header.HEADER_SET_ARCHETYPE:
     case header.HEADER_SET_CONCEPT:
@@ -18,4 +20,10 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
     default:
       return state;
   }
+}
+
+export function globalReducer(state: IStoreState, action: IAction): IStoreState {
+  const out = doReducer(state, action);
+  console.log(out);
+  return out;
 }

@@ -16,13 +16,13 @@ it('pushToHistory', () => {
   expect( pushToHistory(initialState, headerSetName('Dummy name'))).toMatchSnapshot();
 });
 
-/* tslint:disable:no-action */
 it('replayHistory', () => {
   const actions: IAction[] = [
     resetToInitialState(),
     headerSetName('Name'),
     headerSetConcept('Concept'),
     resetToInitialState(),
-    headerSetName('Name2')];
+    headerSetName('Name2')
+  ];
   expect( replayHistory(initialState, actions)).toMatchSnapshot();
 });
