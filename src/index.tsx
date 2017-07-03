@@ -1,14 +1,15 @@
 /* Redux and state management */
 import { createStore } from 'redux';
-import { initialState } from './reducers/initial';
-import { headerReducer } from './reducers/header';
-import { IStoreState } from './types/index';
 import { Provider } from 'react-redux';
 import { devToolsEnhancer  } from 'redux-devtools-extension';
 
+import { initialStateFactory } from './reducers/initial';
+import { globalReducer } from './reducers/global';
+import { IStoreState } from './types/state';
+
 const store = createStore<IStoreState>(
-  headerReducer,
-  initialState,
+  globalReducer,
+  initialStateFactory(),
   devToolsEnhancer({})
 );
 

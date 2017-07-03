@@ -1,4 +1,3 @@
-/* tslint:disable:no-console */
 import * as React from 'react';
 import EditSkill from '../components/EditSkill';
 import { Container, Row, Col } from 'reactstrap';
@@ -22,8 +21,6 @@ export interface ICharacterSkillsProps {
 
 class CharacterSkills extends React.Component<ICharacterSkillsProps, object> {
   render() {
-    console.log('CharacterSkills');
-    console.log(this.props);
     return(
       <Container className="CharacterSkills">
         <Col>

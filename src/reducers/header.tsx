@@ -1,20 +1,18 @@
 import { IHeaderAction } from '../actions/header';
-import { IStoreState } from '../types';
+import { IStoreState } from '../types/state';
 import * as constants from '../constants/header';
-
-/* tslint:disable:no-console */
+import { pushToHistory } from './history';
 
 export function headerReducer(state: IStoreState, action: IHeaderAction): IStoreState {
-  console.log('headerReducer for ' + action.type);
   switch (action.type) {
     case constants.HEADER_SET_NAME:
-      return state.set('name', action.name );
+      return pushToHistory(state.set('name', action.name ), action);
     case constants.HEADER_SET_CONCEPT:
-      return state.set('concept', action.concept );
+      return pushToHistory(state.set('concept', action.concept ), action);
     case constants.HEADER_SET_RANK:
-      return state.set('rank', action.rank ).set('rankModified', true);
+      return pushToHistory(state.set('rank', action.rank ).set('rankModified', true), action);
     case constants.HEADER_SET_ARCHETYPE:
-      return state.set('archetype', action.archetype ).set('archetypeModified', true);
+      return pushToHistory(state.set('archetype', action.archetype ).set('archetypeModified', true), action);
     default:
   }
   return state;

@@ -1,4 +1,5 @@
 import { TypedRecord } from 'typed-immutable-record';
+import { IAction } from './actions';
 
 export interface IStoreStateSkillJS {
   name: string;
@@ -14,6 +15,7 @@ export interface IStoreStateJS {
   rank: string;
   rankModified: boolean;
   skills: IStoreStateSkillJS[];
+  history: IAction[];
 }
 
 export interface IStoreState extends TypedRecord<IStoreState>, IStoreStateJS {}

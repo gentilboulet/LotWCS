@@ -1,6 +1,6 @@
 import CharacterSkills from '../components/CharacterSkills';
 import * as actions from '../actions/skills';
-import { IStoreState } from '../types/index';
+import { IStoreState } from '../types/state';
 import { connect, Dispatch } from 'react-redux';
 
 interface ISpecialityToProps {
@@ -23,16 +23,13 @@ interface ImapDispatchToProps {
   onSpecialityBuy: (sk: string, sp: string) => void;
 }
 
-/* tslint:disable:no-console */
 function mapStateToProps(state: IStoreState): ImapStateToProps {
-  const skills = state.get('skills');
-  const ret = skills.map(
+  return { skills: state.get('skills').map(
     (skill: ISkillToProps) => { return {
       name: skill.name,
       value: skill.value,
       specialities: skill.specialities,
-    }; });
-  return { skills: ret };
+    }; })};
 }
 
 function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): ImapDispatchToProps {

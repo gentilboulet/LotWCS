@@ -22,7 +22,6 @@ export interface ICharacterHeader {
 
 const editHeight = 56;
 
-/* tslint:disable:no-console */
 class CharacterHeader extends React.Component<ICharacterHeader, object> {
   render() {
     return (

@@ -1,17 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HEADER_SET_ARCHETYPE 1`] = `
+exports[`initialState 1`] = `
 Object {
-  "archetype": "warrior",
-  "archetypeModified": true,
+  "archetype": "",
+  "archetypeModified": false,
   "concept": "No Concept",
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
-    },
-    Object {
-      "archetype": "warrior",
-      "type": "HEADER_SET_ARCHETYPE",
     },
   ],
   "name": "No Name",
@@ -102,109 +98,7 @@ Object {
 }
 `;
 
-exports[`HEADER_SET_CONCEPT 1`] = `
-Object {
-  "archetype": "",
-  "archetypeModified": false,
-  "concept": "Sir Robert",
-  "history": Array [
-    Object {
-      "type": "INITIAL_STATE",
-    },
-    Object {
-      "concept": "Sir Robert",
-      "type": "HEADER_SET_CONCEPT",
-    },
-  ],
-  "name": "No Name",
-  "rank": "",
-  "rankModified": false,
-  "skills": Array [
-    Object {
-      "name": "Awareness",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Confidence",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Crafting",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Finesse",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Hardiness",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Inspire",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Learning",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Medicine",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Might",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Perform",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Politics",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Ride",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Stealth",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Survival",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Tactics",
-      "specialities": Array [],
-      "value": 0,
-    },
-    Object {
-      "name": "Wu Wei",
-      "specialities": Array [],
-      "value": 0,
-    },
-  ],
-}
-`;
-
-exports[`HEADER_SET_NAME 1`] = `
+exports[`pushToHistory 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
@@ -214,11 +108,113 @@ Object {
       "type": "INITIAL_STATE",
     },
     Object {
-      "name": "Robert",
+      "name": "Dummy name",
       "type": "HEADER_SET_NAME",
     },
   ],
-  "name": "Robert",
+  "name": "No Name",
+  "rank": "",
+  "rankModified": false,
+  "skills": Array [
+    Object {
+      "name": "Awareness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Confidence",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Crafting",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Finesse",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Hardiness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Inspire",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Learning",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Medicine",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Might",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Perform",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Politics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Ride",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Stealth",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Survival",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Tactics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    Object {
+      "name": "Wu Wei",
+      "specialities": Array [],
+      "value": 0,
+    },
+  ],
+}
+`;
+
+exports[`replayHistory 1`] = `
+Object {
+  "archetype": "",
+  "archetypeModified": false,
+  "concept": "No Concept",
+  "history": Array [
+    Object {
+      "type": "INITIAL_STATE",
+    },
+    Object {
+      "name": "Name2",
+      "type": "HEADER_SET_NAME",
+    },
+  ],
+  "name": "Name2",
   "rank": "",
   "rankModified": false,
   "skills": Array [

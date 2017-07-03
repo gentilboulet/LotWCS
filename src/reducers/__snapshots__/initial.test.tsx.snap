@@ -1,10 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`initialState 1`] = `
+exports[`initialStateFactory 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
   "concept": "No Concept",
+  "history": Array [
+    Object {
+      "type": "INITIAL_STATE",
+    },
+  ],
   "name": "No Name",
   "rank": "",
   "rankModified": false,

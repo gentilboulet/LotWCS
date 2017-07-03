@@ -1,5 +1,5 @@
-import { initialState } from './initial';
+import { initialStateFactory } from './initial';
 
-it('initialState', () => {
-  expect( initialState ).toMatchSnapshot();
+it('initialStateFactory', () => {
+  expect( initialStateFactory() ).toMatchSnapshot();
 });

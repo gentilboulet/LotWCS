@@ -1,9 +1,9 @@
 import { makeTypedFactory } from 'typed-immutable-record';
-import { IStoreStateJS, IStoreState } from '../types';
+import { IStoreStateJS, IStoreState } from '../types/state';
+
+import { resetToInitialState } from '../actions/initial';
 import { IDataSkill } from '../types/skills';
 import { skills } from '../data/skills';
-
-/* tslint:disable:no-console */
 
 const defaultState: IStoreStateJS = {
   name: 'No Name',
@@ -19,8 +19,7 @@ const defaultState: IStoreStateJS = {
       specialities: []
     };
   }),
+  history: [resetToInitialState()],
 };
 
-const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultState);
-
-export const initialState: IStoreState = initialStateFactory();
+export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultState);
