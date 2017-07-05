@@ -5,11 +5,13 @@ Object {
   "archetype": "",
   "archetypeModified": false,
   "concept": "No Concept",
+  "costReductions": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
     },
   ],
+  "loresheets": Array [],
   "name": "No Name",
   "rank": "",
   "rankModified": false,
