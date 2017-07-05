@@ -2,12 +2,12 @@ import * as React from 'react';
 import EditSkill from '../components/EditSkill';
 import { Container, Row, Col } from 'reactstrap';
 
-interface ISpecialityProps {
+export interface ISpecialityProps {
   name: string;
   bought: boolean;
 }
 
-interface ISkillProps {
+export interface ISkillProps {
   name: string;
   value: number;
   specialities: [ISpecialityProps];

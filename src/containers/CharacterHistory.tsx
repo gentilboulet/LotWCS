@@ -1,28 +1,31 @@
 import { connect, Dispatch } from 'react-redux';
-import CharacterHistory from '../components/CharacterHistory';
+import CharacterHistory, { ICharacterHistoryProps } from '../components/CharacterHistory';
 import * as actions from '../actions/history';
 import { IStoreState } from '../types/state';
 import { IAction } from '../types/actions';
 
-interface ImapStateToProps {
+interface IMapStateToProps {
   history: IAction[];
 }
 
-interface ImapDispatchToProps {
+interface IMapDispatchToProps {
   onDelete: (id: number) => void;
 }
 
-function mapStateToProps(state: IStoreState): ImapStateToProps {
+function mapStateToProps(state: IStoreState): IMapStateToProps {
   return { history: state.get('history') };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.IHistoryAction>): ImapDispatchToProps {
-  /* tslint:disable:no-console */
-  return { onDelete: (id: number) => { console.log('onDelete :' + id); dispatch(actions.historyDelete(id)); }};
+function mapDispatchToProps(dispatch: Dispatch<actions.IHistoryAction>): IMapDispatchToProps {
+  return { onDelete: (id: number) => {
+    dispatch(actions.historyDelete(id));
+  }};
 }
 
-function mergeProps(mapStateToProps: ImapStateToProps,
-                    mapDispatchToProps: ImapDispatchToProps) {
+function mergeProps(
+  mapStateToProps: IMapStateToProps,
+  mapDispatchToProps: IMapDispatchToProps
+): ICharacterHistoryProps {
   return Object.assign(mapStateToProps, mapDispatchToProps);
 }
 

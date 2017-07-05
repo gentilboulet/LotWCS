@@ -5,7 +5,7 @@ import DDLText from '../components/DDLText';
 import { archetypes } from '../data/archetypes';
 import { ranks } from '../data/ranks';
 
-export interface ICharacterHeader {
+export interface ICharacterHeaderProps {
   name: string;
   concept: string;
   rank: string;
@@ -22,7 +22,7 @@ export interface ICharacterHeader {
 
 const editHeight = 56;
 
-class CharacterHeader extends React.Component<ICharacterHeader, object> {
+class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
   render() {
     return (
       <Container className="CharacterHeader">

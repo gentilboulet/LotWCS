@@ -17,7 +17,9 @@ const defaultState: IStoreStateJS = {
     return {
       name: s.name,
       value: 0,
-      specialities: Immutable.List<string>(),
+      specialities: Immutable.List<{name: string; bought: boolean; }>(s.specialities.map(
+        (spe: string) => { return {name: spe, bought: false}; }
+      )),
     };
   })),
   history: Immutable.List([resetToInitialState()]),

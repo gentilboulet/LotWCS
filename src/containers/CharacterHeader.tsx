@@ -1,9 +1,9 @@
-import CharacterHeader from '../components/CharacterHeader';
+import CharacterHeader, { ICharacterHeaderProps } from '../components/CharacterHeader';
 import * as actions from '../actions/header';
 import { IStoreState } from '../types/state';
 import { connect, Dispatch } from 'react-redux';
 
-interface ImapStateToProps {
+interface IMapStateToProps {
   name: string;
   concept: string;
   archetype: string;
@@ -13,14 +13,14 @@ interface ImapStateToProps {
   lockRank: boolean;
 }
 
-interface ImapDispatchToProps {
+interface IMapDispatchToProps {
   onSetName: (s: string) => void;
   onSetConcept: (s: string) => void;
   onSetArchetype: (s: string) => void;
   onSetRank: (s: string) => void;
 }
 
-function mapStateToProps(state: IStoreState): ImapStateToProps {
+function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     name: state.get('name'),
     concept: state.get('concept'),
@@ -32,7 +32,7 @@ function mapStateToProps(state: IStoreState): ImapStateToProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.IHeaderAction>): ImapDispatchToProps {
+function mapDispatchToProps(dispatch: Dispatch<actions.IHeaderAction>): IMapDispatchToProps {
   return {
     onSetName: (s: string) => dispatch(actions.headerSetName(s)),
     onSetConcept: (s: string) => dispatch(actions.headerSetConcept(s)),
@@ -41,7 +41,10 @@ function mapDispatchToProps(dispatch: Dispatch<actions.IHeaderAction>): ImapDisp
   };
 }
 
-function mergeProps(mapStateToProps: ImapStateToProps, mapDispatchToProps: ImapDispatchToProps) {
+function mergeProps(
+  mapStateToProps: IMapStateToProps,
+  mapDispatchToProps: IMapDispatchToProps
+): ICharacterHeaderProps {
   return Object.assign({}, mapStateToProps, mapDispatchToProps);
 }
 

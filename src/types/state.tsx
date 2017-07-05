@@ -5,7 +5,7 @@ import { IAction } from './actions';
 export interface IStoreStateSkillJS {
   name: string;
   value: number;
-  specialities: Immutable.List<string>;
+  specialities: Immutable.List<{name: string; bought: boolean}>;
 }
 
 export interface IStoreStateJS {

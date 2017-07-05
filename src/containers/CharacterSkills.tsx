@@ -1,46 +1,42 @@
-import CharacterSkills from '../components/CharacterSkills';
+import CharacterSkills, { ICharacterSkillsProps, ISkillProps, ISpecialityProps }
+  from '../components/CharacterSkills';
 import * as actions from '../actions/skills';
 import { IStoreState } from '../types/state';
 import { connect, Dispatch } from 'react-redux';
 
-interface ISpecialityToProps {
-  name: string;
-  bought: boolean;
+interface IMapStateToProps {
+  skills: ISkillProps[];
 }
 
-interface ISkillToProps {
-  name: string;
-  value: number;
-  specialities: ISpecialityToProps[];
-}
-
-interface ImapStateToProps {
-  skills: ISkillToProps[];
-}
-
-interface ImapDispatchToProps {
+interface IMapDispatchToProps {
   onSkillBuy: (s: string) => void;
   onSpecialityBuy: (sk: string, sp: string) => void;
 }
 
-function mapStateToProps(state: IStoreState): ImapStateToProps {
-  return { skills: state.get('skills').map(
-    (skill: ISkillToProps) => { return {
-      name: skill.name,
-      value: skill.value,
-      specialities: skill.specialities,
-    }; })};
+function mapStateToProps(state: IStoreState): IMapStateToProps {
+  return {
+    skills: state.get('skills').map( (s: ISkillProps) => {
+      return {
+        name: s.name,
+        value: s.value,
+        specialities: s.specialities.map( (spe: ISpecialityProps) => {
+          return { name: spe.name, bought: spe.bought };
+        }),
+      };
+    }),
+  };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): ImapDispatchToProps {
+function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): IMapDispatchToProps {
   return {
     onSkillBuy: (skill: string) => dispatch(actions.skillsDoStuff(skill)),
     onSpecialityBuy: (skill: string, speciality: string) => dispatch(actions.skillsDoStuff(skill + speciality)),
   };
 }
 
-function mergeProps(mapStateToProps: ImapStateToProps,
-                    mapDispatchToProps: ImapDispatchToProps) {
+function mergeProps(mapStateToProps: IMapStateToProps,
+                    mapDispatchToProps: IMapDispatchToProps
+                  ): ICharacterSkillsProps {
   return Object.assign(mapStateToProps, mapDispatchToProps);
 }
 
