@@ -5,6 +5,7 @@ Object {
   "archetype": "warrior",
   "archetypeModified": true,
   "concept": "No Concept",
+  "costReductions": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -14,6 +15,7 @@ Object {
       "type": "HEADER_SET_ARCHETYPE",
     },
   ],
+  "loresheets": Array [],
   "name": "No Name",
   "rank": "",
   "rankModified": false,
@@ -455,6 +457,7 @@ Object {
   "archetype": "",
   "archetypeModified": false,
   "concept": "Sir Robert",
+  "costReductions": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -464,6 +467,7 @@ Object {
       "type": "HEADER_SET_CONCEPT",
     },
   ],
+  "loresheets": Array [],
   "name": "No Name",
   "rank": "",
   "rankModified": false,
@@ -905,6 +909,7 @@ Object {
   "archetype": "",
   "archetypeModified": false,
   "concept": "No Concept",
+  "costReductions": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -914,6 +919,7 @@ Object {
       "type": "HEADER_SET_NAME",
     },
   ],
+  "loresheets": Array [],
   "name": "Robert",
   "rank": "",
   "rankModified": false,
