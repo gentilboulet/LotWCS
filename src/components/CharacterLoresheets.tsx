@@ -22,8 +22,8 @@ class CharacterLoresheets extends React.Component<ICharacterLoresheetsProps, obj
           this.props.categories.map(
             (category: string) => {
               return (
-              <Container>
-                <Row key={'rowLoresheetsCategory_' + idxCat++}>
+              <Container key={'rowLoresheetsCategory_' + idxCat++}>
+                <Row>
                   <Col>{category}</Col>
                 </Row>
                 {this.props.loresheets

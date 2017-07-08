@@ -1,0 +1,2 @@
+export const REDUCTION_SKILL = 'REDUCTION_SKILL';
+export type REDUCTION_SKILL = typeof REDUCTION_SKILL;

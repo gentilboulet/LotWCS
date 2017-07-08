@@ -4,8 +4,11 @@ exports[`initialState 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
+  "bonuses": Array [],
+  "chi": 0,
   "concept": "No Concept",
-  "costReductions": Array [],
+  "destiny": 0,
+  "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -15,6 +18,8 @@ Object {
   "name": "No Name",
   "rank": "",
   "rankModified": false,
+  "rankValue": -1,
+  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",
@@ -452,8 +457,11 @@ exports[`pushToHistory 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
+  "bonuses": Array [],
+  "chi": 0,
   "concept": "No Concept",
-  "costReductions": Array [],
+  "destiny": 0,
+  "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -467,6 +475,8 @@ Object {
   "name": "No Name",
   "rank": "",
   "rankModified": false,
+  "rankValue": -1,
+  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",
@@ -904,8 +914,11 @@ exports[`replayHistory 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
+  "bonuses": Array [],
+  "chi": 0,
   "concept": "No Concept",
-  "costReductions": Array [],
+  "destiny": 0,
+  "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -919,6 +932,8 @@ Object {
   "name": "Name2",
   "rank": "",
   "rankModified": false,
+  "rankValue": -1,
+  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",

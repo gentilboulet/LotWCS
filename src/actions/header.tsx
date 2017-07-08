@@ -1,4 +1,7 @@
 import * as constants from '../constants/header';
+import { IPerk } from '../types/perks';
+import { IDataRank } from '../types/ranks';
+import { ranks } from '../data/ranks';
 
 export interface IHeaderSetName {
   type: constants.HEADER_SET_NAME;
@@ -18,6 +21,8 @@ export interface IHeaderSetArchetype {
 export interface IHeaderSetRank {
   type: constants.HEADER_SET_RANK;
   rank: string;
+  value: number;
+  perks: IPerk[];
 }
 
 export type IHeaderAction = IHeaderSetName | IHeaderSetConcept | IHeaderSetArchetype | IHeaderSetRank;
@@ -42,10 +47,14 @@ export function headerSetArchetype(s: string): IHeaderSetArchetype {
     archetype: s
   };
 }
-
-export function headerSetRank(s: string): IHeaderSetRank {
+/* tslint:disable:no-console */
+export function headerSetRank(rank: string): IHeaderSetRank {
+  const foundRank = ranks.find((rk: IDataRank) => { return rk.key === rank; });
+  if (! foundRank ) { throw 'Unknown rank "' + rank + '"'; }
   return {
     type: constants.HEADER_SET_RANK,
-    rank: s
+    rank: rank,
+    value: foundRank.value,
+    perks: foundRank.perks as IPerk[],
   };
 }

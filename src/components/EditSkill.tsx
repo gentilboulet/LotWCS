@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button,
   Col, Row, Container } from 'reactstrap';
 import Icon from 'react-fa';
+import { ICost } from '../types/costs';
 
 export interface IEditSkillSpecialityProps {
   name: string;
@@ -11,11 +12,12 @@ export interface IEditSkillSpecialityProps {
 export interface IEditSkillProps {
   name: string;
   value: number;
+  cost: ICost;
   reductionId?: number;
   specialities: IEditSkillSpecialityProps[];
 
   height: number;
-  onSkillBuy: (skill: string) => void;
+  onSkillBuy: (skill: string, cost: ICost) => void;
   onSpecialityBuy: (skill: string, speciality: string) => void;
 }
 
@@ -56,7 +58,7 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
   }
 
   buySkill() {
-    this.props.onSkillBuy(this.props.name);
+    this.props.onSkillBuy(this.props.name, this.props.cost);
   }
 
   render() {

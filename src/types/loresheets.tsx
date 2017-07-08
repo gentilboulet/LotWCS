@@ -1,9 +1,11 @@
-export interface ILoresheetBonus {
+import { IPerk } from '../types/perks';
+
+export interface ILoresheetOption {
   uid: string;
   type: string;
   cost: string;
   description: string;
-  bonus: number[];
+  perks: IPerk[];
 }
 
 export interface ILoresheet {
@@ -13,5 +15,5 @@ export interface ILoresheet {
   cost: number;
   description: string;
   ruleset: string;
-  bonuses: ILoresheetBonus[];
+  options: ILoresheetOption[];
 }
