@@ -56,7 +56,8 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
 
   endEdit() {
     this.setState({edit: false, dropdownOpen: false});
-    if (this.state.value !== this.props.default) {
+    const labelForSelectedKey = this.getLabelForSelectedKey();
+    if (this.state.value !== this.props.default && labelForSelectedKey.length > 0 ) {
       this.props.onSubmit(this.state.value);
     }
   }
@@ -83,7 +84,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
 
   renderButton(labelForSelectedKey: string): JSX.Element {
     const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
-    const btnKo = (<Button color="danger"><Icon name="times" /></Button>);
+    const btnKo = (<Button onClick={this.endEdit} color="danger"><Icon name="times" /></Button>);
     return (labelForSelectedKey.length > 0) ? btnOk : btnKo;
   }
 

@@ -14,7 +14,11 @@ const defaultState: IStoreStateJS = {
   archetype: '',
   archetypeModified: false,
   rank: '',
+  rankValue: -1,
+  chi: 0,
   rankModified: false,
+  entanglement: 0,
+  destiny: 0,
   skills: Immutable.List<IStoreStateSkillJS>(skills.map((s: IDataSkill) => {
     return {
       name: s.name,
@@ -26,7 +30,8 @@ const defaultState: IStoreStateJS = {
   })),
 
   loresheets: Immutable.List<IStoreLoresheetsJS>(),
-  costReductions: Immutable.List(),
+  reductions: Immutable.List(),
+  bonuses: Immutable.List(),
 
   history: Immutable.List<IAction>([resetToInitialState()]),
 };

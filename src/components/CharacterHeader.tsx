@@ -10,6 +10,8 @@ export interface ICharacterHeaderProps {
   concept: string;
   rank: string;
   archetype: string;
+  entanglement: number;
+  destiny: number;
 
   onSetName: (s: string) => void;
   onSetConcept: (s: string) => void;
@@ -67,6 +69,28 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
               )}
               onSubmit={(s: string) => { this.props.onSetRank(s); }}
               locked={this.props.lockRank}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <EditText
+              header="Destiny"
+              default={(this.props.destiny).toString()}
+              height={editHeight}
+              validate={(s: string) => { return false; }}
+              onSubmit={(s: string) => { return ; }}
+              locked={true}
+            />
+          </Col>
+          <Col>
+            <EditText
+              header="Entanglement"
+              default={(this.props.entanglement).toString()}
+              height={editHeight}
+              validate={(s: string) => { return false; }}
+              onSubmit={(s: string) => { return ; }}
+              locked={true}
             />
           </Col>
         </Row>

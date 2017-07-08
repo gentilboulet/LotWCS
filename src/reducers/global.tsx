@@ -1,13 +1,17 @@
 import { IAction } from '../types/actions';
 import { IStoreState } from '../types/state';
 
+// Sub Reducers
 import * as header from '../constants/header';
-import * as initial from '../constants/initial';
 import { headerReducer } from '../reducers/header';
+
+import * as initial from '../constants/initial';
 import { initialStateFactory } from '../reducers/initial';
 
-/* tslint:disable:no-console */
+import * as skills from '../constants/skills';
+import { skillsReducer } from '../reducers/skills';
 
+/* tslint:disable:no-console */
 function doReducer(state: IStoreState, action: IAction): IStoreState {
   switch (action.type) {
     case header.HEADER_SET_ARCHETYPE:
@@ -17,6 +21,9 @@ function doReducer(state: IStoreState, action: IAction): IStoreState {
       return headerReducer(state, action);
     case initial.INITIAL_STATE:
       return initialStateFactory();
+    case skills.SKILLS_BUY:
+    case skills.SKILLS_DO_STUFF:
+     return skillsReducer(state, action);
     default:
       return state;
   }

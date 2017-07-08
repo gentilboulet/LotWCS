@@ -4,8 +4,11 @@ exports[`HEADER_SET_ARCHETYPE 1`] = `
 Object {
   "archetype": "warrior",
   "archetypeModified": true,
+  "bonuses": Array [],
+  "chi": 0,
   "concept": "No Concept",
-  "costReductions": Array [],
+  "destiny": 0,
+  "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -19,6 +22,8 @@ Object {
   "name": "No Name",
   "rank": "",
   "rankModified": false,
+  "rankValue": -1,
+  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",
@@ -456,8 +461,11 @@ exports[`HEADER_SET_CONCEPT 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
+  "bonuses": Array [],
+  "chi": 0,
   "concept": "Sir Robert",
-  "costReductions": Array [],
+  "destiny": 0,
+  "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -471,6 +479,8 @@ Object {
   "name": "No Name",
   "rank": "",
   "rankModified": false,
+  "rankValue": -1,
+  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",
@@ -908,8 +918,11 @@ exports[`HEADER_SET_NAME 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
+  "bonuses": Array [],
+  "chi": 0,
   "concept": "No Concept",
-  "costReductions": Array [],
+  "destiny": 0,
+  "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -923,6 +936,8 @@ Object {
   "name": "Robert",
   "rank": "",
   "rankModified": false,
+  "rankValue": -1,
+  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",
