@@ -1,21 +1,33 @@
 import { IHeaderAction } from '../actions/header';
-import { IStoreState } from '../types';
+import { IStoreState } from '../types/state';
 import * as constants from '../constants/header';
+import { pushToHistory } from './history';
 
-/* tslint:disable:no-console */
-
-export function headerReducer(state: IStoreState, action: IHeaderAction): IStoreState {
-  console.log('headerReducer for ' + action.type);
+export function headerReducer(oldState: IStoreState, action: IHeaderAction): IStoreState {
   switch (action.type) {
     case constants.HEADER_SET_NAME:
-      return state.set('name', action.name );
+      return oldState.withMutations(state => {
+        state.set('name', action.name);
+        pushToHistory(state, action);
+      });
     case constants.HEADER_SET_CONCEPT:
-      return state.set('concept', action.concept );
+      return oldState.withMutations(state => {
+        state.set('concept', action.concept);
+        pushToHistory(state, action);
+      });
     case constants.HEADER_SET_RANK:
-      return state.set('rank', action.rank ).set('rankModified', true);
+      return oldState.withMutations(state => {
+        state.set('rank', action.rank );
+        state.set('rankModified', true);
+        pushToHistory(state, action);
+      });
     case constants.HEADER_SET_ARCHETYPE:
-      return state.set('archetype', action.archetype ).set('archetypeModified', true);
+      return oldState.withMutations(state => {
+        state.set('archetype', action.archetype );
+        state.set('archetypeModified', true);
+        pushToHistory(state, action);
+      });
     default:
   }
-  return state;
+  return oldState;
 }

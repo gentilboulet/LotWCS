@@ -1,9 +1,10 @@
 import { makeTypedFactory } from 'typed-immutable-record';
-import { IStoreStateJS, IStoreState } from '../types';
+import * as Immutable from 'immutable';
+import { IStoreStateJS, IStoreState } from '../types/state';
+
+import { resetToInitialState } from '../actions/initial';
 import { IDataSkill } from '../types/skills';
 import { skills } from '../data/skills';
-
-/* tslint:disable:no-console */
 
 const defaultState: IStoreStateJS = {
   name: 'No Name',
@@ -12,15 +13,16 @@ const defaultState: IStoreStateJS = {
   archetypeModified: false,
   rank: '',
   rankModified: false,
-  skills: skills.map((s: IDataSkill) => {
+  skills: Immutable.List(skills.map((s: IDataSkill) => {
     return {
       name: s.name,
       value: 0,
-      specialities: []
+      specialities: Immutable.List<{name: string; bought: boolean; }>(s.specialities.map(
+        (spe: string) => { return {name: spe, bought: false}; }
+      )),
     };
-  }),
+  })),
+  history: Immutable.List([resetToInitialState()]),
 };
 
-const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultState);
-
-export const initialState: IStoreState = initialStateFactory();
+export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultState);

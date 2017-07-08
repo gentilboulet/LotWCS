@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Tabs, Tab } from '../components/Tabs';
 import PlaceHolder from '../components/PlaceHolder';
 import CharacterSkills from '../containers/CharacterSkills';
+import CharacterHistory from '../containers/CharacterHistory';
 
 export interface ICharacterBodyProps {}
 
@@ -22,8 +23,7 @@ class CharacterBody extends React.Component<ICharacterBodyProps, object> {
           </PlaceHolder>
         </Tab>
         <Tab title="History" tabId="history">
-          <PlaceHolder>History of purchases
-          </PlaceHolder>
+          <CharacterHistory />
         </Tab>
       </Tabs>
     );
