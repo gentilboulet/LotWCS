@@ -10,7 +10,8 @@ export function skillsReducer(oldState: IStoreState, action: ISkillAction): ISto
   switch (action.type) {
     case constants.SKILLS_BUY:
       return oldState.withMutations(state => {
-
+        applyCost(state, action.cost);
+        
         const idx = state.get('skills')
             .findIndex((s: IStoreStateSkillJS) => { return s.name === action.name; });
 
@@ -18,7 +19,6 @@ export function skillsReducer(oldState: IStoreState, action: ISkillAction): ISto
           s.value += 5; return s;
         });
 
-        applyCost(state, action.cost);
         pushToHistory(state, action);
       });
     default:

@@ -20,3 +20,15 @@ export type IBonus =
   | IBonusEntanglement
   | IBonusStartingChi
 ;
+
+/* tslint:disable:no-any */
+export function isBonus(bonus: any): boolean {
+  switch (bonus.type) {
+    case constants.BONUS_DESTINY:
+    case constants.BONUS_ENTANGLEMENT:
+    case constants.BONUS_STARTING_CHI:
+      return true;
+    default:
+      return false;
+  }
+}

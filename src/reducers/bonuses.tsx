@@ -1,12 +1,12 @@
-import { IBonus } from '../types/bonuses';
+import { IBonus, isBonus } from '../types/bonuses';
 import { IStoreState } from '../types/state';
 import * as constants from '../constants/bonuses';
 
-/* tslint:disable:no-console */
 export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreState {
-  console.log(bonuses);
   return oldState.withMutations(state => {
-    bonuses.forEach((bonus: IBonus) => {
+    bonuses
+      .filter((bonus: IBonus) => { return isBonus(bonus); })
+      .forEach((bonus: IBonus) => {
         switch (bonus.type) {
           case constants.BONUS_DESTINY:
             const d = state.get('destiny');

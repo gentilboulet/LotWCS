@@ -8,6 +8,8 @@ export function applyCost(oldState: IStoreState, cost: ICost): IStoreState {
     state.set('destiny', state.get('destiny') - cost.destiny);
     state.set('entanglement', state.get('entanglement') - cost.entanglement);
 
+    if (state.get('destiny') < 0) { throw 'Negative destiny reached'; }
+    if (state.get('entanglement') < 0) { throw 'Negative entanglement reached'; }
     updateReductions(state, cost);
   });
 }

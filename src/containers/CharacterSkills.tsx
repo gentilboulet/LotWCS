@@ -4,7 +4,7 @@ import * as actions from '../actions/skills';
 import { IStoreState } from '../types/state';
 import { ICost } from '../types/costs';
 import { connect, Dispatch } from 'react-redux';
-import { getCostSkill } from './costs';
+import { getCostSkill, canBuySkill } from './costs';
 
 interface IMapStateToProps {
   skills: ISkillProps[];
@@ -15,7 +15,6 @@ interface IMapDispatchToProps {
   onSpecialityBuy: (sk: string, sp: string) => void;
 }
 
-/* tslint:disable:no-console */
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     skills: state.get('skills').map( (s: ISkillProps) => {
@@ -23,8 +22,9 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
         name: s.name,
         value: s.value,
         specialities: s.specialities.map( (spe: ISpecialityProps) => {
-          return { name: spe.name, bought: spe.bought };
+          return { name: spe.name, bought: spe.bought, canBuySpeciality: false };
         }),
+        canBuySkill: canBuySkill(state, s.name),
         cost: getCostSkill(state, s.name),
       };
     }),
@@ -38,9 +38,11 @@ function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): IMapDispa
   };
 }
 
+/* tslint:disable:no-console */
 function mergeProps(mapStateToProps: IMapStateToProps,
                     mapDispatchToProps: IMapDispatchToProps
                   ): ICharacterSkillsProps {
+  console.log(mapStateToProps);
   return Object.assign(mapStateToProps, mapDispatchToProps);
 }
 
