@@ -1,0 +1,12 @@
+.header {
+  text-align: center;
+  background-color: #e4e4e4;
+  border: 1px solid lightgrey;
+}
+
+.link-list {
+  display: flex;
+  margin: auto;
+  width: 50%;
+  justify-content: space-around;
+}
