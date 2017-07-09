@@ -4,10 +4,15 @@ import { IAction } from '../types/actions';
 import { IReduction } from '../types/reductions';
 import { IBonus } from '../types/bonuses';
 
+export interface IStoreStateSkillSpecialityJS {
+  name: string;
+  bought: boolean;
+}
+
 export interface IStoreStateSkillJS {
   name: string;
   value: number;
-  specialities: Immutable.List<{name: string; bought: boolean}>;
+  specialities: Immutable.List<IStoreStateSkillSpecialityJS>;
 }
 
 export interface IStoreLoresheetsJS {

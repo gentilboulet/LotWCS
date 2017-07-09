@@ -13,13 +13,13 @@ export function lake(state: IStoreState): number {
 }
 
 export function river(state: IStoreState): number {
-  return Math.min(1, state.get('rankValue'));
+  return Math.max(1, state.get('rankValue'));
 }
 
 export function joss(state: IStoreState): number {
-  return Math.min(1, state.get('rankValue'));
+  return Math.max(1, state.get('rankValue'));
 }
 
 export function maxSkillBonus(state: IStoreState): number {
-  return Math.min(5, state.get('rankValue') * 5);
+  return Math.max(5, state.get('rankValue') * 5);
 }

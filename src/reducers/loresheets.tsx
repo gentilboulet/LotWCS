@@ -4,6 +4,7 @@ import * as constants from '../constants/loresheets';
 import { pushToHistory } from './history';
 
 export function headerReducer(oldState: IStoreState, action: ILoresheetAction): IStoreState {
+  // DOES NOT WORK YET
   switch (action.type) {
     case constants.LORESHEET_OPEN:
       return oldState.withMutations(state => {
