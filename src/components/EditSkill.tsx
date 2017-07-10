@@ -4,6 +4,8 @@ import { Button,
 import Icon from 'react-fa';
 import { ICost } from '../types/costs';
 
+import FieldHeader from './FieldHeader';
+
 export interface IEditSkillSpecialityProps {
   name: string;
   bought: boolean;
@@ -17,7 +19,6 @@ export interface IEditSkillProps {
   canBuySkill: boolean;
   specialities: IEditSkillSpecialityProps[];
 
-  height: number;
   onSkillBuy: (skill: string, cost: ICost) => void;
   onSpecialityBuy: (skill: string, speciality: string, cost: ICost) => void;
 }
@@ -57,12 +58,7 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
   }
 
   renderHeader(): JSX.Element {
-    return (
-      <h5>
-        <span className="align-text-middle" >{this.props.name}
-        </span>
-      </h5>
-    );
+    return <FieldHeader label={this.props.name} />;
   }
 
   specialitiesList(): JSX.Element {
@@ -86,7 +82,6 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
           <Row
             onClick={this.startEdit}
             role="button"
-            style={{height: this.props.height}}
           >
           <Col>{this.renderHeader()}</Col>
           <Col>{this.props.value}</Col>

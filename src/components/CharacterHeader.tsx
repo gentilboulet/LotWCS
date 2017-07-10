@@ -22,8 +22,6 @@ export interface ICharacterHeaderProps {
   lockRank: boolean;
 }
 
-const editHeight = 56;
-
 class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
   render() {
     return (
@@ -32,7 +30,6 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
           <EditText
             header="Character Name"
             default={this.props.name}
-            height={editHeight}
             validate={(s: string) => { return s.length > 0; }}
             onSubmit={(s: string) => { this.props.onSetName(s); }}
           />
@@ -41,7 +38,6 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
           <EditText
             header="Character Concept"
             default={this.props.concept}
-            height={editHeight}
             validate={(s: string) => { return s.length >= 0; }}
             onSubmit={(s: string) => { this.props.onSetConcept(s); }}
           />
@@ -51,7 +47,6 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
             <DDLText
               header="Character Archetype"
               default={this.props.archetype}
-              height={editHeight}
               values={archetypes.map(
                 ({name: n, key: k}) => { return {label: n, key: k}; }
               )}
@@ -63,7 +58,6 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
             <DDLText
               header="Character Rank"
               default={this.props.rank}
-              height={editHeight}
               values={ranks.map(
                 ({name: n, key: k}) => { return {label: n, key: k}; }
               )}
@@ -77,7 +71,6 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
             <EditText
               header="Destiny"
               default={(this.props.destiny).toString()}
-              height={editHeight}
               validate={(s: string) => { return false; }}
               onSubmit={(s: string) => { return ; }}
               locked={true}
@@ -87,7 +80,6 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
             <EditText
               header="Entanglement"
               default={(this.props.entanglement).toString()}
-              height={editHeight}
               validate={(s: string) => { return false; }}
               onSubmit={(s: string) => { return ; }}
               locked={true}

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, InputGroup, InputGroupAddon, Col, Row,
   ButtonDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import Icon from 'react-fa';
+import FieldHeader from './FieldHeader';
 
 export interface IDDLItem {
     key: string;
@@ -11,7 +12,6 @@ export interface IDDLItem {
 export interface IDDLTextProps {
   header: string;
   default?: string;
-  height: number;
   locked?: boolean;
   values: IDDLItem[];
   onSubmit: (v: string) => void;
@@ -79,7 +79,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   }
 
   renderHeader(): JSX.Element {
-    return (<Col><h4>{this.props.header} :</h4></Col>);
+    return <FieldHeader label={this.props.header} />;
   }
 
   renderButton(labelForSelectedKey: string): JSX.Element {
@@ -101,8 +101,8 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   renderDropdownList(): JSX.Element {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
-      <Row style={{height: this.props.height}} >
-        {this.renderHeader()}
+      <Row>
+        <Col>{this.renderHeader()}</Col>
         <Col>
           <InputGroup>
             <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDDL}>
@@ -125,7 +125,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   renderValue(): JSX.Element {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
-      <Row onClick={this.startEdit} role="button" style={{height: this.props.height}}>
+      <Row onClick={this.startEdit} role="button">
         {this.renderHeader()}
         <Col>
           {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}

@@ -1,4 +1,5 @@
 import { ILoresheet } from '../../../../types/loresheets';
+import * as bonuses from '../../../../actions/bonuses';
 
 /* tslint:disable:max-line-length */
 export const crouchingtigersandhiddendragons: ILoresheet = {
@@ -28,6 +29,11 @@ export const crouchingtigersandhiddendragons: ILoresheet = {
       cost: '3',
       description: 'Get the Wu Wei Specialty: Sense Chi or the Stealth Specialty: Hide Killer Intent for free',
       type: 'Bonus',
-      perks: [],  }
+      perks: [bonuses.oneAmongN(
+        [
+          bonuses.speciality('Wu Wei', 'Sense Chi'),
+          bonuses.speciality('Wu Wei', 'Hide Killer Intent')
+        ])
+      ],  }
   ],
 };

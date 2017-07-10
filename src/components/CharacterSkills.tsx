@@ -38,7 +38,6 @@ class CharacterSkills extends React.Component<ICharacterSkillsProps, object> {
                     cost={s.cost}
                     specialities={s.specialities}
                     canBuySkill={s.canBuySkill}
-                    height={56}
                     onSkillBuy={this.props.onSkillBuy}
                     onSpecialityBuy={this.props.onSpecialityBuy}
                   />

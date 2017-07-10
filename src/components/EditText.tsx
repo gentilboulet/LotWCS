@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Button, Input, InputGroup, InputGroupAddon, Col, Row, Container } from 'reactstrap';
 import Icon from 'react-fa';
+import FieldHeader from './FieldHeader';
 
 export interface IEditTextProps {
   header: string;
   default: string;
-  height: number;
   locked?: boolean;
   validate: (v: string) => boolean ;
   onSubmit: (v: string) => void;
@@ -69,13 +69,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
   }
 
   renderHeader(): JSX.Element {
-    return (
-      <Col>
-        <h4>
-          <span className="align-text-middle">{this.props.header} :</span>
-        </h4>
-      </Col>
-    );
+    return <FieldHeader label={this.props.header} />;
   }
 
   renderButton(isValueValid: boolean): JSX.Element {
@@ -91,7 +85,6 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
           onClick={this.startEdit}
           role="button"
           disabled={true}
-          style={{height: this.props.height}}
         >
           {this.renderHeader()}
           <Col>{this.state.value}</Col>
@@ -105,8 +98,8 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     const validationInputState = (isValueValid ? 'success' : 'error');
     return (
       <Container>
-        <Row style={{height: this.props.height}} >
-          {this.renderHeader()}
+        <Row>
+          <Col>{this.renderHeader()}</Col>
           <Col>
             <InputGroup>
               <Input

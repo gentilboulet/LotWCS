@@ -15,10 +15,29 @@ export interface IBonusStartingChi {
   value: number;
 }
 
+export interface IBonusOneAmongN {
+  type: constants.BONUS_ONE_AMONG_N;
+  bonuses: IBonus[];
+}
+
+export interface IBonusSkillRank {
+  type: constants.BONUS_SKILL_RANK;
+  skill: string;
+}
+
+export interface IBonusSpeciality {
+  type: constants.BONUS_SPECIALITY;
+  skill: string;
+  speciality: string;
+}
+
 export type IBonus =
   IBonusDestiny
   | IBonusEntanglement
   | IBonusStartingChi
+  | IBonusOneAmongN
+  | IBonusSkillRank
+  | IBonusSpeciality
 ;
 
 /* tslint:disable:no-any */
@@ -27,7 +46,11 @@ export function isBonus(bonus: any): boolean {
     case constants.BONUS_DESTINY:
     case constants.BONUS_ENTANGLEMENT:
     case constants.BONUS_STARTING_CHI:
+    case constants.BONUS_ONE_AMONG_N:
+    case constants.BONUS_SKILL_RANK:
+    case constants.BONUS_SPECIALITY:
       return true;
+    case constants.BONUS_REDUCTION:
     default:
       return false;
   }
