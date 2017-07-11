@@ -8,11 +8,13 @@ export function headerReducer(oldState: IStoreState, action: ILoresheetAction): 
   switch (action.type) {
     case constants.LORESHEET_OPEN:
       return oldState.withMutations(state => {
+        state.updateIn(['loresheets'], list => { return list.push(action.uid); });
         pushToHistory(state, action);
       });
     case constants.LORESHEET_BUY_BONUS:
       return oldState.withMutations(state => {
         pushToHistory(state, action);
+        throw 'action not handled yet.';
       });
     default:
   }

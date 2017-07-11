@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 export interface ISpecialityProps {
   name: string;
   bought: boolean;
+  cost: ICost;
   canBuySpeciality: boolean;
 }
 

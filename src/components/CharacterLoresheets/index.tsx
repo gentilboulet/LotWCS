@@ -1,38 +1,63 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
-import { ILoresheet } from '../../types/loresheets';
+import { ICost } from '../../types/costs';
 import LoresheetCategory from './LoresheetCategory';
+import { loresheetsCategories } from '../../data/loresheets';
 
-export interface IKnownLoresheetsProps {
-  name: string;
-  bonuses: number[];
+export interface ILoresheetsOptionsCostCharacterLoresheetsProps {
+  originalCost: number;
+  canBuy: boolean;
+  cost: ICost;
 }
 
+export interface ILoresheetsOptionsCharacterLoresheetsProps {
+  uid: string;
+  type: string;
+  description: string;
+
+  known: boolean;
+  costs: ILoresheetsOptionsCostCharacterLoresheetsProps[];
+}
+
+export interface ILoresheetsCharacterLoresheetsProps {
+  uid: string;
+  name: string;
+  category: string;
+  description: string;
+  ruleset: string;
+  options: ILoresheetsOptionsCharacterLoresheetsProps[];
+
+  known: boolean;
+  canOpen: boolean;
+  cost: ICost;
+}
 export interface ICharacterLoresheetsProps {
-  categories: string[];
-  knownLoresheets: IKnownLoresheetsProps[];
-  loresheets: ILoresheet[];
+  loresheets: ILoresheetsCharacterLoresheetsProps[];
+
+  onOpenLS: (uid: string, cost: ICost) => void;
+  onBuyOptionLS: (lsUid: string, uid: string, cost: ICost) => void;
 }
 
 /* tslint:disable:no-console */
-
 class CharacterLoresheets extends
   React.Component<ICharacterLoresheetsProps, object> {
+
   render() {
-    let idxCat: number = 0;
+    let idxCategory = 0;
     return(
       <Container className="CharacterHistory">
         {
-          this.props.categories.map(
-            (category: string) => {
-              console.log(category);
-              return (<LoresheetCategory
-                category={category}
-                knownLoresheets={this.props.knownLoresheets}
-                loresheets={this.props.loresheets}
-                key={'loresheetsCategory_' + idxCat++}
-              />);
-            })
+          loresheetsCategories.map((category: string) => {
+              return (
+                <LoresheetCategory
+                  category={category}
+                  loresheets={this.props.loresheets.filter(ls => { return ls.category === category; })}
+                  onOpenLS={this.props.onOpenLS}
+                  onBuyOptionLS={this.props.onBuyOptionLS}
+                  key={'LoresheetCategory_' + idxCategory++}
+                />
+              );
+          })
         }
       </Container>
     );

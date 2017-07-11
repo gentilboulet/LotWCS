@@ -15,9 +15,11 @@ export interface IStoreStateSkillJS {
   specialities: Immutable.List<IStoreStateSkillSpecialityJS>;
 }
 
+export interface IStoreLoresheetOptionJS { uid: string; }
+
 export interface IStoreLoresheetsJS {
-  name: string;
-  bonus: Immutable.List<string>;
+  uid: string;
+  options: Immutable.List<IStoreLoresheetOptionJS>;
 }
 
 export interface IStoreStateJS {

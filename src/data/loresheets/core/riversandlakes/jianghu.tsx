@@ -14,6 +14,8 @@ export const jianghu: ILoresheet = {
       cost: '2',
       type: 'Bonus',
       description: 'You know how to navigate the Rivers and Lakes outside the Wulin organizations, in other Jiang Hu communities like the criminal underground, the ferrymen guilds, or the pleasure trade. Pick one such group; you get a +5 bonus to social rolls where familiarity with that subculture matters.',
+      repeatable: true,
+      prerequisites: [],
       perks: [],
     },
     {
@@ -21,6 +23,8 @@ export const jianghu: ILoresheet = {
       cost: '2+',
       type: 'Fortune',
       description: 'Once per session, upon arriving in a new location, you may declare to have basic knowledge of the local Jiang Hu underground, including important organizations and who’s in charge. This includes Wulin factions.',
+      repeatable: true,
+      prerequisites: [],
       perks: [],
     },
     {
@@ -28,6 +32,10 @@ export const jianghu: ILoresheet = {
       cost: '1-5',
       description: 'You are already known within one or more of the aforementioned organizations, and have some Status with them.',
       type: 'Status',
+      repeatable: true,
+      prerequisites: [
+        {type: 'OR', prerequisites: ['familiarity', 'knunderground']}
+      ], // TODO OR & AND prerequisites
       perks: [],
     }
   ],

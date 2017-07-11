@@ -1,13 +1,15 @@
 import * as React from 'react';
 import Collapsible from '../Collapsible';
-import { ILoresheet } from '../../types/loresheets';
-import { IKnownLoresheetsProps } from './index';
+import { ILoresheetsCharacterLoresheetsProps } from '../CharacterLoresheets';
+import { ICost } from '../../types/costs';
 import SingleLoresheet from './SingleLoresheet';
 
 export interface ILoresheetCategoryProps {
   category: string;
-  knownLoresheets: IKnownLoresheetsProps[];
-  loresheets: ILoresheet[];
+  loresheets:  ILoresheetsCharacterLoresheetsProps[];
+
+  onOpenLS: (uid: string, cost: ICost) => void;
+  onBuyOptionLS: (lsUid: string, uid: string, cost: ICost) => void;
 }
 
 export default class LoresheetCategory extends
@@ -16,9 +18,8 @@ export default class LoresheetCategory extends
       return (
         <Collapsible title={this.props.category} color="info">
           {this.props.loresheets
-            .filter((ls: ILoresheet) => { return ls.category === this.props.category; })
-            .map((ls: ILoresheet) => {
-              return (<SingleLoresheet loresheet={ls} />);
+            .map((ls: ILoresheetsCharacterLoresheetsProps) => {
+              return (<SingleLoresheet loresheet={ls} key={'lsCategory_' + ls.uid}/>);
             })
           }
         </Collapsible>

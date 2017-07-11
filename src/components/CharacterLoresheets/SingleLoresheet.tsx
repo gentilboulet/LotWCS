@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ListGroupItem } from 'reactstrap';
 import Collapsible from '../Collapsible';
-import { ILoresheet } from '../../types/loresheets';
+import { ILoresheetsCharacterLoresheetsProps } from '../CharacterLoresheets';
 
 export interface ILoresheetCategoryProps {
-  loresheet: ILoresheet;
+  loresheet: ILoresheetsCharacterLoresheetsProps;
 }
 
 export default class SingleLoresheet extends
@@ -16,7 +16,7 @@ export default class SingleLoresheet extends
           description={this.props.loresheet.description}
         >
           {this.props.loresheet.options.map( o => {
-            return <ListGroupItem>{o.description}</ListGroupItem>;
+            return <ListGroupItem key={'lsOptions_' + o.uid}>{o.description}</ListGroupItem>;
           })}
         </Collapsible>
       );
