@@ -35,7 +35,7 @@ export const jianghu: ILoresheet = {
       repeatable: true,
       prerequisites: [
         {type: 'OR', prerequisites: ['familiarity', 'knunderground']}
-      ], // TODO OR & AND prerequisites
+      ],
       perks: [],
     }
   ],

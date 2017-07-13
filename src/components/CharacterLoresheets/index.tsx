@@ -43,6 +43,7 @@ class CharacterLoresheets extends
   React.Component<ICharacterLoresheetsProps, object> {
 
   render() {
+    console.log(this.props.loresheets);
     let idxCategory = 0;
     return(
       <Container className="CharacterHistory">

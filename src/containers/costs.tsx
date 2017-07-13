@@ -1,10 +1,34 @@
-import { IStoreState, IStoreStateSkillJS, IStoreStateSkillSpecialityJS } from '../types/state';
+import { IStoreState,
+  IStoreStateSkillJS, IStoreStateSkillSpecialityJS,
+  IStoreLoresheetsJS, } from '../types/state';
 import { IReduction } from '../types/reductions';
 import { ICost, defaultCost } from '../types/costs';
 import * as constants from '../constants/reductions';
 import * as derived from './derived';
 
 import { ILoresheetsOptionsCostCharacterLoresheetsProps } from '../components/CharacterLoresheets';
+
+function _canHandleCost(state: IStoreState, cost: ICost): boolean {
+  if ( (state.get('destiny') - cost.destiny) < 0 ) { return false; }
+  if ( (state.get('entanglement') - cost.entanglement) < 0 ) { return false; }
+  return true;
+}
+
+function _handleReduction(state: IStoreState, idx: number, cost: number): ICost {
+  if (idx === -1) {
+    return { destiny: cost, entanglement: 0, reductionIdx: idx, reductionNewValue: 0};
+  } else {
+    const reduction = state.getIn(['reductions', idx]).value;
+    const remainingCost = Math.max(0, cost - reduction);
+    const usedReductionValue = cost - remainingCost;
+    return {
+      destiny: remainingCost,
+      entanglement: 0,
+      reductionIdx: idx,
+      reductionNewValue: reduction - usedReductionValue
+    };
+  }
+}
 
 /*
   Export canBuy and getCost for some actions. Available :
@@ -18,19 +42,12 @@ import { ILoresheetsOptionsCostCharacterLoresheetsProps } from '../components/Ch
     getCostsArrayBuyOptionLoresheet
  */
 export function canBuySkill(state: IStoreState, skill: string): boolean {
-
   const skills: IStoreStateSkillJS[] = state.get('skills');
   const idx = skills.findIndex((s: IStoreStateSkillJS) => { return s.name === skill; });
   const stateSkill: IStoreStateSkillJS = state.getIn(['skills', idx]);
-
   if ( (stateSkill.value + 5) > derived.maxSkillBonus(state) ) { return false; }
-
   const cost = getCostSkill(state, skill);
-
-  if ( (state.get('destiny') - cost.destiny) < 0 ) { return false; }
-  if ( (state.get('entanglement') - cost.entanglement) < 0 ) { return false; }
-
-  return true;
+  return _canHandleCost(state, cost);
 }
 
 export function getCostSkill(state: IStoreState, skill: string): ICost {
@@ -42,19 +59,7 @@ export function getCostSkill(state: IStoreState, skill: string): ICost {
       && (r.skills.findIndex((s: string) => { return s === skill; }) >= 0);
     });
 
-  if (idx < 0) {
-    return { destiny: defCost, entanglement: 0, reductionIdx: idx, reductionNewValue: 0};
-  } else {
-    const reduction = state.getIn(['reductions', idx]).value;
-    const remainingCost = Math.max(0, defCost - reduction);
-    const usedReductionValue = defCost - remainingCost;
-    return {
-      destiny: remainingCost,
-      entanglement: 0,
-      reductionIdx: idx,
-      reductionNewValue: reduction - usedReductionValue
-    };
-  }
+  return _handleReduction(state, idx, defCost);
 }
 
 export function canBuySpeciality(state: IStoreState, skill: string, speciality: string): boolean {
@@ -70,11 +75,7 @@ export function canBuySpeciality(state: IStoreState, skill: string, speciality: 
   if ( specialityIdx < 0 || stateSpeciality.bought ) { return false; }
 
   const cost = getCostSpeciality(state, skill, speciality);
-
-  if ( (state.get('destiny') - cost.destiny) < 0 ) { return false; }
-  if ( (state.get('entanglement') - cost.entanglement) < 0 ) { return false; }
-
-  return true;
+  return _canHandleCost(state, cost);
 }
 
 export function getCostSpeciality(state: IStoreState, skill: string, speciality: string): ICost {
@@ -86,30 +87,31 @@ export function getCostSpeciality(state: IStoreState, skill: string, speciality:
       && (r.skills.findIndex((s: string) => { return s === skill; }) >= 0);
     });
 
-  if (idx < 0) {
-    return { destiny: defCost, entanglement: 0, reductionIdx: idx, reductionNewValue: 0};
-  } else {
-    const reduction = state.getIn(['reductions', idx]).value;
-    const remainingCost = Math.max(0, defCost - reduction);
-    const usedReductionValue = defCost - remainingCost;
-    return {
-      destiny: remainingCost,
-      entanglement: 0,
-      reductionIdx: idx,
-      reductionNewValue: reduction - usedReductionValue
-    };
-  }
+  return _handleReduction(state, idx, defCost);
 }
 
-export function canOpenLoresheet(state: IStoreState, uid: string, cost: number): boolean {
-  return false;
+export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
+  const knLS: IStoreLoresheetsJS[] = state.get('loresheets');
+  const idx = knLS.findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === uid; });
+  if (idx !== -1) { return false; } // Already opened
+  const cost: ICost = getCostOpenLoresheet(state, uid, openCost);
+  return _canHandleCost(state, cost);
 }
 
 export function getCostOpenLoresheet(state: IStoreState, uid: string, cost: number): ICost {
-  return defaultCost;
+  const idx = state.get('reductions')
+    .findIndex((r: IReduction) => {
+      return ( r.type === constants.REDUCTION_LORESHEET )
+      && (r.uids.findIndex((id: string) => { return id === uid; }) >= 0);
+    });
+  return _handleReduction(state, idx, cost);
 }
 
 function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, cost: string): boolean {
+  const knLS: IStoreLoresheetsJS[] = state.get('loresheets');
+  const idxLS = knLS.findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === lsUid; });
+  if (idxLS === -1) { return false; } // LS not open
+  // TODO handle options of LS !
   return false;
 }
 

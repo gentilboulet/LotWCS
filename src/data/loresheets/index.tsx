@@ -28,3 +28,7 @@ export const loresheetsCategories: string[] =
             .filter(
               (value: string, index: number, self: Array<string>) => { return self.indexOf(value) === index; }
             );
+
+export function lsOptionCostToValues(cost: string): number[] {
+  return [0, 1];
+}
