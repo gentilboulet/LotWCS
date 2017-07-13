@@ -19,7 +19,13 @@ export default class LoresheetCategory extends
         <Collapsible title={this.props.category} color="info">
           {this.props.loresheets
             .map((ls: ILoresheetsCharacterLoresheetsProps) => {
-              return (<SingleLoresheet loresheet={ls} key={'lsCategory_' + ls.uid}/>);
+              return (
+                <SingleLoresheet
+                  loresheet={ls}
+                  key={'lsCategory_' + ls.uid}
+                  onOpenLS={this.props.onOpenLS}
+                  onBuyOptionLS={this.props.onBuyOptionLS}
+                />);
             })
           }
         </Collapsible>

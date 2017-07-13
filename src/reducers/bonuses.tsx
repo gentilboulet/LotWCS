@@ -34,12 +34,12 @@ export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreSt
         case constants.BONUS_SPECIALITY:
           const skillIdx = state.get('skills')
             .findIndex((s: IStoreStateSkillJS) => { return s.name === bonus.skill; });
-          const specialities = state.getIn(['skills', skillIdx, 'specialities']);
+          const specialities = state.getIn(['skills', skillIdx]).specialities;
           const speIdx = specialities.findIn((spe: IStoreStateSkillSpecialityJS) => {
             return spe.name === bonus.speciality;
           });
 
-          if (state.getIn(['skills', skillIdx, 'specialities', speIdx]).bought) {
+          if (state.getIn(['skills', skillIdx]).specialities[speIdx].bought) {
             throw 'Something went wrong, speciality already bought';
           }
 

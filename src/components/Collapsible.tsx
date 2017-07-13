@@ -3,7 +3,7 @@ import { Collapse, ListGroupItem, Button } from 'reactstrap';
 
 export interface ICollapsibleProps {
   title: string;
-  description?: string;
+  description?: string | JSX.Element;
   color?: string;
 }
 

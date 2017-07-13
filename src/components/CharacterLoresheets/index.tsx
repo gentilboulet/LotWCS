@@ -17,6 +17,7 @@ export interface ILoresheetsOptionsCharacterLoresheetsProps {
 
   known: boolean;
   costs: ILoresheetsOptionsCostCharacterLoresheetsProps[];
+  costsStr: string;
 }
 
 export interface ILoresheetsCharacterLoresheetsProps {
@@ -30,7 +31,9 @@ export interface ILoresheetsCharacterLoresheetsProps {
   known: boolean;
   canOpen: boolean;
   cost: ICost;
+  costStr: string;
 }
+
 export interface ICharacterLoresheetsProps {
   loresheets: ILoresheetsCharacterLoresheetsProps[];
 
@@ -38,12 +41,9 @@ export interface ICharacterLoresheetsProps {
   onBuyOptionLS: (lsUid: string, uid: string, cost: ICost) => void;
 }
 
-/* tslint:disable:no-console */
 class CharacterLoresheets extends
   React.Component<ICharacterLoresheetsProps, object> {
-
   render() {
-    console.log(this.props.loresheets);
     let idxCategory = 0;
     return(
       <Container className="CharacterHistory">

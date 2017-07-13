@@ -4,6 +4,7 @@ import { IAction } from '../types/actions';
 import { IReduction } from '../types/reductions';
 import { IBonus } from '../types/bonuses';
 
+// TODO : enable Immutable getIn() for the whole state.
 export interface IStoreStateSkillSpecialityJS {
   name: string;
   bought: boolean;

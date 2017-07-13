@@ -1,13 +1,15 @@
 import { IStoreState,
   IStoreStateSkillJS, IStoreStateSkillSpecialityJS,
-  IStoreLoresheetsJS, } from '../types/state';
+  IStoreLoresheetsJS, IStoreLoresheetOptionJS } from '../types/state';
 import { IReduction } from '../types/reductions';
-import { ICost, defaultCost } from '../types/costs';
+import { ILoresheetOptionPrerequisite } from '../types/loresheets';
+import { ICost } from '../types/costs';
 import * as constants from '../constants/reductions';
 import * as derived from './derived';
 
-import { ILoresheetsOptionsCostCharacterLoresheetsProps } from '../components/CharacterLoresheets';
+import { optionLS } from '../data/loresheets';
 
+// helper functions
 function _canHandleCost(state: IStoreState, cost: ICost): boolean {
   if ( (state.get('destiny') - cost.destiny) < 0 ) { return false; }
   if ( (state.get('entanglement') - cost.entanglement) < 0 ) { return false; }
@@ -91,8 +93,7 @@ export function getCostSpeciality(state: IStoreState, skill: string, speciality:
 }
 
 export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
-  const knLS: IStoreLoresheetsJS[] = state.get('loresheets');
-  const idx = knLS.findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === uid; });
+  const idx = state.get('loresheets').findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === uid; });
   if (idx !== -1) { return false; } // Already opened
   const cost: ICost = getCostOpenLoresheet(state, uid, openCost);
   return _canHandleCost(state, cost);
@@ -107,15 +108,44 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string, cost: numb
   return _handleReduction(state, idx, cost);
 }
 
-function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, cost: string): boolean {
-  const knLS: IStoreLoresheetsJS[] = state.get('loresheets');
-  const idxLS = knLS.findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === lsUid; });
+export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, buyCost: number): boolean {
+  const idxLS = state.get('loresheets').findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === lsUid; });
   if (idxLS === -1) { return false; } // LS not open
-  // TODO handle options of LS !
-  return false;
+
+  const dataOpt = optionLS(lsUid, uid);
+  const stateOpts = state.getIn(['loresheets', idxLS]).options;
+
+  const idxOpt = stateOpts.findIndex((o: IStoreLoresheetOptionJS) => { return o.uid === uid; });
+
+  if (idxOpt === -1 && !dataOpt.repeatable) { return false; } // Already bought & not repeatable
+  if (dataOpt.prerequisites.filter( // filter checked prereqs
+      (p: ILoresheetOptionPrerequisite) => {
+        if (typeof p === 'string') {
+          return stateOpts.findIndex((o: IStoreLoresheetOptionJS) => { return o.uid === p; }) !== -1;
+        } else if ( p.type === 'OR' ) {
+          return p.prerequisites.filter((i: string) => {
+            return stateOpts.findIndex((o: IStoreLoresheetOptionJS) => { return o.uid === i; }) !== -1;
+          }).length > 0;
+        } else if ( p.type === 'AND') {
+          return p.prerequisites.filter((i: string) => {
+            return stateOpts.findIndex((o: IStoreLoresheetOptionJS) => { return o.uid === i; }) !== -1;
+          }).length === p.prerequisites.length;
+        }
+        return false;
+      }
+    ).length !== dataOpt.prerequisites.length ) { return false; } // prereqs not cleared
+
+  const cost: ICost = getCostBuyOptionLoresheet(state, lsUid, uid, buyCost);
+  return _canHandleCost(state, cost);
 }
 
-export function getCostsArrayBuyOptionLoresheet(
-  state: IStoreState, lsUid: string, uid: string, cost: string): ILoresheetsOptionsCostCharacterLoresheetsProps[] {
-  return [{originalCost: -1, cost: defaultCost, canBuy: canBuyOptionLoresheet(state, lsUid, uid, cost)}];
+export function getCostBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, cost: number): ICost {
+  const idx = state.get('reductions')
+    .findIndex((r: IReduction) => {
+      return ( r.type === constants.REDUCTION_LORESHEET_OPTION )
+      && (r.uids.findIndex(id => { return id.lsUid === lsUid &&
+        id.optUid.findIndex(optUid => { return optUid === uid; }) >= 0; })
+      >= 0);
+    });
+  return _handleReduction(state, idx, cost);
 }

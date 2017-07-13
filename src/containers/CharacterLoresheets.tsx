@@ -2,13 +2,15 @@ import { connect, Dispatch } from 'react-redux';
 import CharacterLoresheets from '../components/CharacterLoresheets';
 import * as actions from '../actions/loresheets';
 import { IStoreState, IStoreLoresheetsJS, IStoreLoresheetOptionJS } from '../types/state';
-import { canOpenLoresheet, getCostOpenLoresheet, getCostsArrayBuyOptionLoresheet } from './costs';
+import { canOpenLoresheet, getCostOpenLoresheet,
+  canBuyOptionLoresheet, getCostBuyOptionLoresheet } from './costs';
 import { ICharacterLoresheetsProps,
   ILoresheetsCharacterLoresheetsProps, ILoresheetsOptionsCharacterLoresheetsProps,
+  ILoresheetsOptionsCostCharacterLoresheetsProps
 } from '../components/CharacterLoresheets';
 import { ICost } from '../types/costs';
 import { ILoresheet, ILoresheetOption } from '../types/loresheets';
-import { loresheets as dataLS } from '../data/loresheets';
+import { loresheets as dataLS, lsOptionCostToValues } from '../data/loresheets';
 
 interface IMapStateToProps {
   loresheets: ILoresheetsCharacterLoresheetsProps[];
@@ -20,11 +22,10 @@ interface IMapDispatchToProps {
 }
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
-  const knownLoresheets: IStoreLoresheetsJS[] = state.get('loresheets');
-
   return {
     loresheets: dataLS.map((ls: ILoresheet): ILoresheetsCharacterLoresheetsProps => {
-      const knIdx = knownLoresheets.findIndex(stateLS => { return stateLS.uid === ls.uid; });
+      const knIdx = state.get('loresheets')
+        .findIndex((stateLS: IStoreLoresheetsJS) => { return stateLS.uid === ls.uid; });
       return {
         uid: ls.uid,
         name: ls.name,
@@ -38,15 +39,24 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
             type: op.type,
             description: op.description,
 
-            known: (knIdx >= 0 && knownLoresheets[knIdx].options.findIndex(
+            known: (knIdx >= 0 &&
+                    state.getIn(['loresheets', knIdx]).options.findIndex(
               (knOp: IStoreLoresheetOptionJS) => { return knOp.uid === op.uid; }) >= 0),
-            costs: getCostsArrayBuyOptionLoresheet(state, ls.uid, op.uid, op.cost)
+            costs: lsOptionCostToValues(op.cost).map((v: number): ILoresheetsOptionsCostCharacterLoresheetsProps => {
+              return {
+                originalCost: v,
+                canBuy: canBuyOptionLoresheet(state, ls.uid, op.uid, v),
+                cost: getCostBuyOptionLoresheet(state, ls.uid, op.uid, v)
+              };
+             }),
+            costsStr: op.cost
           };
         }),
 
-        known: knIdx >= 0,
+        known: (knIdx !== -1 ),
         canOpen: canOpenLoresheet(state, ls.uid, ls.cost),
         cost: getCostOpenLoresheet(state, ls.uid, ls.cost),
+        costStr: String(ls.cost)
       };
     })
   };

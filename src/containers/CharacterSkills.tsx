@@ -43,11 +43,9 @@ function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): IMapDispa
   };
 }
 
-/* tslint:disable:no-console */
 function mergeProps(mapStateToProps: IMapStateToProps,
                     mapDispatchToProps: IMapDispatchToProps
                   ): ICharacterSkillsProps {
-  console.log(mapStateToProps);
   return Object.assign(mapStateToProps, mapDispatchToProps);
 }
 
