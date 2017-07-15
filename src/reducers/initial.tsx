@@ -1,14 +1,16 @@
 import { makeTypedFactory } from 'typed-immutable-record';
 import * as Immutable from 'immutable';
 import { IStoreStateJS, IStoreState,
-  IStoreStateSkillJS, IStoreLoresheetsJS } from '../types/state';
+  IStoreSkill, skillFactory,
+  IStoreSkillSpecialityJS,
+  IStoreLoresheets } from '../types/state';
 
 import { resetToInitialState } from '../actions/initial';
 import { IAction } from '../types/actions';
 import { IDataSkill } from '../types/skills';
 import { skills } from '../data/skills';
 
-const defaultState: IStoreStateJS = {
+export const defaultStateJS: IStoreStateJS = {
   name: 'No Name',
   concept: 'No Concept',
   archetype: '',
@@ -19,21 +21,21 @@ const defaultState: IStoreStateJS = {
   rankModified: false,
   entanglement: 0,
   destiny: 0,
-  skills: Immutable.List<IStoreStateSkillJS>(skills.map((s: IDataSkill) => {
-    return {
+  skills: Immutable.List<IStoreSkill>(skills.map((s: IDataSkill) => {
+    return skillFactory({
       name: s.name,
       value: 0,
-      specialities: Immutable.List<{name: string; bought: boolean; }>(s.specialities.map(
+      specialities: Immutable.List<IStoreSkillSpecialityJS>(s.specialities.map(
         (spe: string) => { return {name: spe, bought: false}; }
       )),
-    };
+    });
   })),
 
-  loresheets: Immutable.List<IStoreLoresheetsJS>(),
-  reductions: Immutable.List(),
-  bonuses: Immutable.List(),
+  loresheets: Immutable.List<IStoreLoresheets>([]),
+  reductions: Immutable.List([]),
+  bonuses: Immutable.List([]),
 
   history: Immutable.List<IAction>([resetToInitialState()]),
 };
 
-export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultState);
+export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultStateJS);

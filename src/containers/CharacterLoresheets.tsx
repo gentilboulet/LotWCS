@@ -40,7 +40,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
             description: op.description,
 
             known: (knIdx >= 0 &&
-                    state.getIn(['loresheets', knIdx]).options.findIndex(
+                    state.getIn(['loresheets', knIdx, 'options']).findIndex(
               (knOp: IStoreLoresheetOptionJS) => { return knOp.uid === op.uid; }) >= 0),
             costs: lsOptionCostToValues(op.cost).map((v: number): ILoresheetsOptionsCostCharacterLoresheetsProps => {
               return {
@@ -71,7 +71,7 @@ function mapDispatchToProps(dispatch: Dispatch<actions.ILoresheetAction>): IMapD
 
 function mergeProps(mapStateToProps: IMapStateToProps,
                     mapDispatchToProps: IMapDispatchToProps): ICharacterLoresheetsProps {
-  return Object.assign(mapStateToProps, mapDispatchToProps);
+  return Object.assign({}, mapStateToProps, mapDispatchToProps);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterLoresheets);

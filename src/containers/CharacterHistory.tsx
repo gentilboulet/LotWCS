@@ -26,7 +26,7 @@ function mergeProps(
   mapStateToProps: IMapStateToProps,
   mapDispatchToProps: IMapDispatchToProps
 ): ICharacterHistoryProps {
-  return Object.assign(mapStateToProps, mapDispatchToProps);
+  return Object.assign({}, mapStateToProps, mapDispatchToProps);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterHistory);

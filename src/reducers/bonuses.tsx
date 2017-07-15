@@ -1,5 +1,5 @@
 import { IBonus, isBonus } from '../types/bonuses';
-import { IStoreState, IStoreStateSkillJS, IStoreStateSkillSpecialityJS } from '../types/state';
+import { IStoreState, IStoreSkillJS, IStoreSkillSpecialityJS } from '../types/state';
 import * as constants from '../constants/bonuses';
 import * as derived from '../containers/derived';
 
@@ -21,21 +21,21 @@ export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreSt
           break;
         case constants.BONUS_SKILL_RANK:
           const idx = state.get('skills')
-            .findIndex((s: IStoreStateSkillJS) => { return s.name === bonus.skill; });
+            .findIndex((s: IStoreSkillJS) => { return s.name === bonus.skill; });
 
           if (state.getIn(['skills', idx]).value + 5 >  derived.maxSkillBonus(state)) {
             throw 'Something went wrong, skill overflow';
           }
 
-          state.updateIn(['skills', idx], (s: IStoreStateSkillJS) => {
+          state.updateIn(['skills', idx], (s: IStoreSkillJS) => {
             s.value += 5; return s;
           });
           break;
         case constants.BONUS_SPECIALITY:
           const skillIdx = state.get('skills')
-            .findIndex((s: IStoreStateSkillJS) => { return s.name === bonus.skill; });
+            .findIndex((s: IStoreSkillJS) => { return s.name === bonus.skill; });
           const specialities = state.getIn(['skills', skillIdx]).specialities;
-          const speIdx = specialities.findIn((spe: IStoreStateSkillSpecialityJS) => {
+          const speIdx = specialities.findIn((spe: IStoreSkillSpecialityJS) => {
             return spe.name === bonus.speciality;
           });
 

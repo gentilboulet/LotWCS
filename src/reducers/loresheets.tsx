@@ -13,7 +13,7 @@ export function loresheetsReducer(oldState: IStoreState, action: ILoresheetActio
 
         state.updateIn(['loresheets'], (list: Immutable.List<IStoreLoresheetsJS>) => {
           return list.push({
-            uid: action.uid, options: Immutable.List<IStoreLoresheetOptionJS>(['toto'])
+            uid: action.uid, options: Immutable.List<IStoreLoresheetOptionJS>()
           }); }
         );
 

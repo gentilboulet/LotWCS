@@ -13,12 +13,9 @@ export function pushToReductions(oldState: IStoreState, reductions: IReduction[]
   });
 }
 
-/* tslint:disable:no-console */
 export function updateReductions(oldState: IStoreState, cost: ICost) {
   if (cost.reductionIdx < 0) { return oldState; }
   return oldState.withMutations((state: IStoreState) => {
-    const reduction: IReduction = state.getIn(['reductions', cost.reductionIdx]);
-    console.log(reduction);
     if (cost.reductionNewValue === 0) {
       // Remove the reduction
       state.updateIn(['reductions'], (list: Immutable.List<IReduction>) => {

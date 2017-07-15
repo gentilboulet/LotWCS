@@ -47,7 +47,7 @@ export function headerSetArchetype(s: string): IHeaderSetArchetype {
     archetype: s
   };
 }
-/* tslint:disable:no-console */
+
 export function headerSetRank(rank: string): IHeaderSetRank {
   const foundRank = ranks.find((rk: IDataRank) => { return rk.key === rank; });
   if (! foundRank ) { throw 'Unknown rank "' + rank + '"'; }

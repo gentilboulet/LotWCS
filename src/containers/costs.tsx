@@ -1,5 +1,5 @@
 import { IStoreState,
-  IStoreStateSkillJS, IStoreStateSkillSpecialityJS,
+  IStoreSkillJS, IStoreSkillSpecialityJS,
   IStoreLoresheetsJS, IStoreLoresheetOptionJS } from '../types/state';
 import { IReduction } from '../types/reductions';
 import { ILoresheetOptionPrerequisite } from '../types/loresheets';
@@ -43,11 +43,11 @@ function _handleReduction(state: IStoreState, idx: number, cost: number): ICost 
     canBuyOptionLoresheet
     getCostsArrayBuyOptionLoresheet
  */
+
 export function canBuySkill(state: IStoreState, skill: string): boolean {
-  const skills: IStoreStateSkillJS[] = state.get('skills');
-  const idx = skills.findIndex((s: IStoreStateSkillJS) => { return s.name === skill; });
-  const stateSkill: IStoreStateSkillJS = state.getIn(['skills', idx]);
-  if ( (stateSkill.value + 5) > derived.maxSkillBonus(state) ) { return false; }
+  const idx = state.get('skills').findIndex((s: IStoreSkillJS) => { return s.name === skill; });
+  const value = state.getIn(['skills', idx, 'value']);
+  if ( (value + 5) > derived.maxSkillBonus(state) ) { return false; }
   const cost = getCostSkill(state, skill);
   return _canHandleCost(state, cost);
 }
@@ -65,14 +65,14 @@ export function getCostSkill(state: IStoreState, skill: string): ICost {
 }
 
 export function canBuySpeciality(state: IStoreState, skill: string, speciality: string): boolean {
-  const skills: IStoreStateSkillJS[] = state.get('skills');
-  const skillIdx = skills.findIndex((s: IStoreStateSkillJS) => { return s.name === skill; });
-  const stateSkill: IStoreStateSkillJS = state.getIn(['skills', skillIdx]);
-  const specialityIdx = stateSkill.specialities
-    .findIndex((spe: IStoreStateSkillSpecialityJS) => { return spe.name === speciality; });
+  const skills: IStoreSkillJS[] = state.get('skills');
+  const skillIdx = skills.findIndex((s: IStoreSkillJS) => { return s.name === skill; });
 
-  const stateSpeciality: IStoreStateSkillSpecialityJS =
-    stateSkill.specialities.getIn([specialityIdx]);
+  const specialityIdx = state.getIn(['skills', skillIdx, 'specialities'])
+    .findIndex((spe: IStoreSkillSpecialityJS) => { return spe.name === speciality; });
+
+  const stateSpeciality: IStoreSkillSpecialityJS =
+    state.getIn(['skills', skillIdx, 'specialities', specialityIdx]);
 
   if ( specialityIdx < 0 || stateSpeciality.bought ) { return false; }
 

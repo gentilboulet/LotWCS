@@ -49,7 +49,7 @@ function mergeProps(
   mapStateToProps: IMapStateToProps,
   mapDispatchToProps: IMapDispatchToProps
 ): ICharacterHeaderProps {
-  return Object.assign(mapStateToProps, mapDispatchToProps);
+  return Object.assign({}, mapStateToProps, mapDispatchToProps);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterHeader);
