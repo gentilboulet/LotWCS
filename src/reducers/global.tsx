@@ -3,8 +3,10 @@ import { IStoreState } from '../types/state';
 
 import * as header from '../constants/header';
 import * as initial from '../constants/initial';
+import * as history from '../constants/history';
 import { headerReducer } from '../reducers/header';
 import { initialStateFactory } from '../reducers/initial';
+import { historyReducer } from '../reducers/history';
 
 /* tslint:disable:no-console */
 
@@ -17,6 +19,8 @@ function doReducer(state: IStoreState, action: IAction): IStoreState {
       return headerReducer(state, action);
     case initial.INITIAL_STATE:
       return initialStateFactory();
+    case history.HISTORY_DELETE:
+      return historyReducer(state, action);
     default:
       return state;
   }
