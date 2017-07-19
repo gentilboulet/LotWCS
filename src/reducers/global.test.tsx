@@ -7,6 +7,7 @@ import { globalReducer } from './global';
 const initialState: IStoreState  = initialStateFactory();
 
 it('JUNK', () => {
+  expect( initialState ).toMatchSnapshot();
   const junk = { type: 'JUNK_ACTION' };
-  expect( globalReducer(initialState, junk as IAction )).toMatchSnapshot();
+  expect( globalReducer(initialState, junk as IAction )).toMatchObject( initialState );
 });
