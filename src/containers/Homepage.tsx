@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 
 import Header from '../components/Header';
 import CharacterHeader from '../containers/CharacterHeader';
