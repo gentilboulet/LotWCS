@@ -29,15 +29,21 @@ React Components are subdivided by responsibility : container Components are the
 
 ## File hierarchy
 The src directory is divided by responsibility :
-### Actions
+
+### actions
 Here are the action creators, a lot of helper functions present to generate an input to a specific action understandable by the reducers.
-### Components
+
+### components
 __This directory regroups "renderer" components, handling only redering and catching user inputs.__
+
 Theirs props must provide everything they need to know to do their job.
-### Constants
+
+### constants
 Constants definitions, mainly used to specify available action.type value, on which the reducers rely to identify actions.
-### Containers
+
+### containers
 __This directory regroups "containers" components and other functions for reading elements from the state.__
+
 Those are obtained by connecting the store and the state to a "renderer" components.
 To do so, three steps are taken for each one :
 * mapStateToProps : map the state to the props, by transforming it, by adding information from static data ;
@@ -45,13 +51,16 @@ To do so, three steps are taken for each one :
 * mergeProps : merge both previous "sub props" to the one sent to the "renderer component".
 Each container component is connected to a renderer component of the same name.
 
-### Data
+### data
 Static data and some data extraction functions.
-### Reducers
+
+### reducers
 __This directory regroups reducers, performing modifying actions to the state.__
+
 Here are the global reducer, the one plugged to the Redux Store and a lot of sub reducers, handling a specific subset of actions.
 One important rule to note is that no action is applyed to the state by differents reducers.
-### Type
+
+### types
 Typescript types definitions.
 
 ## Data flow
