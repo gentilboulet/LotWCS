@@ -2,35 +2,30 @@ import * as React from 'react';
 import { Button,
   Col, Row, Container } from 'reactstrap';
 import Icon from 'react-fa';
+import { ICost } from '../types/costs';
+
+import FieldHeader from './FieldHeader';
 
 export interface IEditSkillSpecialityProps {
   name: string;
   bought: boolean;
+  canBuySpeciality: boolean;
 }
 
 export interface IEditSkillProps {
   name: string;
   value: number;
-  reductionId?: number;
+  cost: ICost;
+  canBuySkill: boolean;
   specialities: IEditSkillSpecialityProps[];
 
-  height: number;
-  onSkillBuy: (skill: string) => void;
-  onSpecialityBuy: (skill: string, speciality: string) => void;
+  onSkillBuy: (skill: string, cost: ICost) => void;
+  onSpecialityBuy: (skill: string, speciality: string, cost: ICost) => void;
 }
 
 interface IEditSkillState {
   edit: boolean;
 }
-
-const renderHeader = (s: string) => { return (
-  <Col>
-  <h5><span
-    className="align-text-middle"
-  >
-    {s} :
-  </span></h5>
-  </Col>); };
 
 class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
   constructor(props: IEditSkillProps) {
@@ -43,6 +38,9 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
     this.buySkill = this.buySkill.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
+    this.renderButton = this.renderButton.bind(this);
+    this.specialitiesList = this.specialitiesList.bind(this);
   }
 
   startEdit() {
@@ -56,25 +54,38 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
   }
 
   buySkill() {
-    this.props.onSkillBuy(this.props.name);
+    this.props.onSkillBuy(this.props.name, this.props.cost);
+  }
+
+  renderHeader(): JSX.Element {
+    return <FieldHeader label={this.props.name} />;
+  }
+
+  specialitiesList(): JSX.Element {
+    return(
+      <div>
+      {this.props.specialities.map(
+        (s: IEditSkillSpecialityProps) => { return (s.bought ? s.name : ''); }
+      )}
+      </div>
+    );
+  }
+
+  renderButton(icon: string, f: () => void) {
+    return <Button onClick={f}><Icon name={icon}/></Button>;
   }
 
   render() {
-    const specialitiesList = this.props.specialities.map(
-      (s: IEditSkillSpecialityProps) => { return (s.bought ? s.name : ''); }
-    );
-
     if (!this.state.edit) {
       return(
         <Container>
           <Row
             onClick={this.startEdit}
             role="button"
-            style={{height: this.props.height}}
           >
-          {renderHeader(this.props.name)}
+          <Col>{this.renderHeader()}</Col>
           <Col>{this.props.value}</Col>
-          {(specialitiesList.length > 0 ? <Col> '(' + specialitiesList + ')' </Col> : '' )}
+          <Col>{this.specialitiesList()}</Col>
           </Row>
         </Container>
       );
@@ -82,15 +93,11 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
       return(
         <Container>
           <Row>
-            {renderHeader(this.props.name)}
+            <Col>{this.renderHeader()}</Col>
             <Col>{this.props.value}</Col>
             <Col>
-              <Button onClick={this.buySkill} >
-                <Icon name="plus" />
-              </Button>
-              <Button onClick={this.endEdit} >
-                <Icon name="times" />
-              </Button>
+              {this.props.canBuySkill ? this.renderButton('plus', this.buySkill) : ''}
+              {this.renderButton('times', this.endEdit)}
             </Col>
           </Row>
         </Container>

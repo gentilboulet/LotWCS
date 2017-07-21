@@ -8,6 +8,8 @@ interface IMapStateToProps {
   concept: string;
   archetype: string;
   rank: string;
+  destiny: number;
+  entanglement: number;
 
   lockArchetype: boolean;
   lockRank: boolean;
@@ -26,8 +28,10 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
     concept: state.get('concept'),
     archetype: state.get('archetype'),
     rank: state.get('rank'),
+    entanglement: state.get('entanglement'),
+    destiny: state.get('destiny'),
 
-    lockArchetype: state.get('archetypeModified'),
+    lockArchetype: state.get('rankModified'),
     lockRank: state.get('rankModified')
   };
 }
@@ -42,10 +46,10 @@ function mapDispatchToProps(dispatch: Dispatch<actions.IHeaderAction>): IMapDisp
 }
 
 function mergeProps(
-  mapStateToProps: IMapStateToProps,
-  mapDispatchToProps: IMapDispatchToProps
+  propsFromState: IMapStateToProps,
+  propsForDispatch: IMapDispatchToProps
 ): ICharacterHeaderProps {
-  return Object.assign({}, mapStateToProps, mapDispatchToProps);
+  return Object.assign({}, propsFromState, propsForDispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterHeader);

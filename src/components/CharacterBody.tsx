@@ -4,6 +4,7 @@ import { Tabs, Tab } from '../components/Tabs';
 import PlaceHolder from '../components/PlaceHolder';
 import CharacterSkills from '../containers/CharacterSkills';
 import CharacterHistory from '../containers/CharacterHistory';
+import CharacterLoresheets from '../containers/CharacterLoresheets';
 
 export interface ICharacterBodyProps {}
 
@@ -21,6 +22,9 @@ class CharacterBody extends React.Component<ICharacterBodyProps, object> {
         <Tab title="Kung Fu" tabId="kungfu">
           <PlaceHolder>Kung fu learnt by the character.
           </PlaceHolder>
+        </Tab>
+        <Tab title="Loresheets" tabId="loresheets">
+          <CharacterLoresheets />
         </Tab>
         <Tab title="History" tabId="history">
           <CharacterHistory />

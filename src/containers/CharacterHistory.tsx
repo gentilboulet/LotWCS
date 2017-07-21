@@ -23,10 +23,10 @@ function mapDispatchToProps(dispatch: Dispatch<actions.IHistoryAction>): IMapDis
 }
 
 function mergeProps(
-  mapStateToProps: IMapStateToProps,
-  mapDispatchToProps: IMapDispatchToProps
+  propsFromState: IMapStateToProps,
+  propsForDispatch: IMapDispatchToProps
 ): ICharacterHistoryProps {
-  return Object.assign(mapStateToProps, mapDispatchToProps);
+  return Object.assign({}, propsFromState, propsForDispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterHistory);

@@ -1,14 +1,21 @@
 import { IAction } from '../types/actions';
 import { IStoreState } from '../types/state';
 
+// Sub Reducers
 import * as header from '../constants/header';
-import * as initial from '../constants/initial';
-import * as history from '../constants/history';
 import { headerReducer } from '../reducers/header';
+
+import * as initial from '../constants/initial';
 import { initialStateFactory } from '../reducers/initial';
+
+import * as history from '../constants/history';
 import { historyReducer } from '../reducers/history';
 
-/* tslint:disable:no-console */
+import * as skills from '../constants/skills';
+import { skillsReducer } from '../reducers/skills';
+
+import * as loresheets from '../constants/loresheets';
+import { loresheetsReducer } from '../reducers/loresheets';
 
 function doReducer(state: IStoreState, action: IAction): IStoreState {
   switch (action.type) {
@@ -19,6 +26,12 @@ function doReducer(state: IStoreState, action: IAction): IStoreState {
       return headerReducer(state, action);
     case initial.INITIAL_STATE:
       return initialStateFactory();
+    case skills.SKILLS_BUY:
+    case skills.SKILLS_DO_STUFF:
+      return skillsReducer(state, action);
+    case loresheets.LORESHEET_OPEN:
+    case loresheets.LORESHEET_BUY_BONUS:
+      return loresheetsReducer(state, action);
     case history.HISTORY_DELETE:
       return historyReducer(state, action);
     default:
@@ -27,6 +40,7 @@ function doReducer(state: IStoreState, action: IAction): IStoreState {
 }
 
 export function globalReducer(state: IStoreState, action: IAction): IStoreState {
+  /* tslint:disable:no-console */
   const out = doReducer(state, action);
   console.log(out);
   return out;
