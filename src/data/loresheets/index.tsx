@@ -2,10 +2,10 @@ import { ILoresheet, ILoresheetOption } from '../../types/loresheets';
 
 // Core rulebook //
 // Rivers and Lakes
-// import { jianghu } from './core/riversandlakes/jianghu';
+import { jianghu } from './core/riversandlakes/jianghu';
 import { crouchingtigersandhiddendragons } from './core/riversandlakes/crouchingtigersandhiddendragons';
-// import { wulin } from './core/riversandlakes/wulin';
-// import { wulinsage } from './core/riversandlakes/wulinsage';
+import { wulin } from './core/riversandlakes/wulin';
+import { wulinsage } from './core/riversandlakes/wulinsage';
 // Wulin Factions
 // Orthodox Factions
 // Unorthodox Factions
@@ -17,10 +17,10 @@ import { crouchingtigersandhiddendragons } from './core/riversandlakes/crouching
 // Secrets Arts
 
 export const loresheets: ILoresheet[] = Array(
-//  jianghu,
+  jianghu,
   crouchingtigersandhiddendragons,
-//  wulin,
-//  wulinsage
+  wulin,
+  wulinsage
 );
 
 export const loresheetsCategories: string[] =

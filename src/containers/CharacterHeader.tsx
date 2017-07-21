@@ -46,10 +46,10 @@ function mapDispatchToProps(dispatch: Dispatch<actions.IHeaderAction>): IMapDisp
 }
 
 function mergeProps(
-  mapStateToProps: IMapStateToProps,
-  mapDispatchToProps: IMapDispatchToProps
+  propsFromState: IMapStateToProps,
+  propsForDispatch: IMapDispatchToProps
 ): ICharacterHeaderProps {
-  return Object.assign({}, mapStateToProps, mapDispatchToProps);
+  return Object.assign({}, propsFromState, propsForDispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterHeader);

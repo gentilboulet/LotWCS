@@ -8,6 +8,9 @@ import { headerReducer } from '../reducers/header';
 import * as initial from '../constants/initial';
 import { initialStateFactory } from '../reducers/initial';
 
+import * as history from '../constants/history';
+import { historyReducer } from '../reducers/history';
+
 import * as skills from '../constants/skills';
 import { skillsReducer } from '../reducers/skills';
 
@@ -25,10 +28,12 @@ function doReducer(state: IStoreState, action: IAction): IStoreState {
       return initialStateFactory();
     case skills.SKILLS_BUY:
     case skills.SKILLS_DO_STUFF:
-     return skillsReducer(state, action);
+      return skillsReducer(state, action);
     case loresheets.LORESHEET_OPEN:
     case loresheets.LORESHEET_BUY_BONUS:
-     return loresheetsReducer(state, action);
+      return loresheetsReducer(state, action);
+    case history.HISTORY_DELETE:
+      return historyReducer(state, action);
     default:
       return state;
   }

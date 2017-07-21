@@ -4,7 +4,7 @@ import * as constants from '../constants/header';
 
 // Sub Reducers
 import { IBonus } from '../types/bonuses';
-import { IReduction} from '../types/reductions';
+import { IReduction } from '../types/reductions';
 import { applyBonuses } from './bonuses';
 import { pushToReductions } from './reductions';
 import { pushToHistory } from './history';

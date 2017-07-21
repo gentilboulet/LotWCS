@@ -24,6 +24,6 @@ export function skillRank(skill: string): IBonusSkillRank {
   return { type: constants.BONUS_SKILL_RANK, skill: skill };
 }
 
-export function speciality(skill: string, speciality: string): IBonusSpeciality {
-  return { type: constants.BONUS_SPECIALITY, skill: skill, speciality: speciality };
+export function speciality(skill: string, specialityName: string): IBonusSpeciality {
+  return { type: constants.BONUS_SPECIALITY, skill: skill, speciality: specialityName };
 }

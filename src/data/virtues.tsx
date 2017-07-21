@@ -1,5 +1,5 @@
 
-const virtues = [
+export const virtues = [
   {name: 'Honor', type: 'Chivalrous'},
   {name: 'Benevolence', type: 'Chivalrous'},
   {name: 'Righteousness', type: 'Chivalrous'},
@@ -11,5 +11,3 @@ const virtues = [
   {name: 'Ruthlessness', type: 'Selfish'},
   {name: 'Ferocity', type: 'Selfish'}
 ];
-
-export default virtues;

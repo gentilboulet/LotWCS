@@ -64,8 +64,8 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     });
   }
 
-  textChange(IEditTextEvent: IEditTextEvent) {
-    this.setState({ value: IEditTextEvent.target.value });
+  textChange(e: IEditTextEvent) {
+    this.setState({ value: e.target.value });
   }
 
   renderHeader(): JSX.Element {

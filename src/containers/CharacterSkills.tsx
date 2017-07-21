@@ -43,10 +43,10 @@ function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): IMapDispa
   };
 }
 
-function mergeProps(mapStateToProps: IMapStateToProps,
-                    mapDispatchToProps: IMapDispatchToProps
+function mergeProps(propsFromState: IMapStateToProps,
+                    propsForDispatch: IMapDispatchToProps
                   ): ICharacterSkillsProps {
-  return Object.assign({}, mapStateToProps, mapDispatchToProps);
+  return Object.assign({}, propsFromState, propsForDispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterSkills);
