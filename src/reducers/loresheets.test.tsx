@@ -1,4 +1,4 @@
-import { IStoreState, IStoreLoresheets } from '../types/state';
+import { IStoreState, IStoreLoresheet } from '../types/state';
 import { ILoresheet, ILoresheetOption } from '../types/loresheets';
 
 import { initialStateFactory } from './initial';
@@ -16,10 +16,10 @@ describe('Testing loresheetsReducer', () => {
     reductionIdx: -1, reductionNewValue: 0
   };
 
-  it('LORESHEET_OPEN', () => {
+  it('should receive a LORESHEET_OPEN action', () => {
     loresheets.forEach((dataLoresheet: ILoresheet) => {
       const indexLoresheet = initialState.get('loresheets')
-        .findIndex((loresheetInState: IStoreLoresheets) => {
+        .findIndex((loresheetInState: IStoreLoresheet) => {
           return loresheetInState.uid === dataLoresheet.uid; });
       expect( indexLoresheet ).toBe(-1); // Not found in the initial state
 
@@ -32,7 +32,7 @@ describe('Testing loresheetsReducer', () => {
     });
   });
 
-  it('LORESHEET_BUY_OPTION', () => {
+  it('should receive LORESHEET_BUY_OPTION action', () => {
     loresheets.forEach((dataLoresheet: ILoresheet) => {
       const openLoresheetAction = loresheetsActions.open(dataLoresheet.uid, noCost);
       const stateWithLoresheet = loresheetsReducer(initialState, openLoresheetAction);
@@ -48,7 +48,7 @@ describe('Testing loresheetsReducer', () => {
     });
   });
 
-  it('JUNK action', () => {
+  it('should do nothing with a junk action', () => {
     const junk = { type: 'JUNK_ACTION' };
     expect( loresheetsReducer(initialState, junk as loresheetsActions.ILoresheetAction)).toMatchObject(initialState);
   });

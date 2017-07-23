@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing initialState initialStateFactory 1`] = `
+exports[`Testing initialStateFactory should be constant 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,

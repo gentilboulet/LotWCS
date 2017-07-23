@@ -9,7 +9,7 @@ import { globalReducer } from './global';
 const initialState: IStoreState  = initialStateFactory();
 
 describe('Testing headerReducer', () => {
-  it('HEADER_SET_NAME', () => {
+  it('shoudl receive a HEADER_SET_NAME action', () => {
     expect( initialState.get('name') ).toBe('No Name');
     const action = actions.setName('Robert');
     const state = headerReducer(initialState, action);
@@ -17,7 +17,7 @@ describe('Testing headerReducer', () => {
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
-  it('HEADER_SET_CONCEPT', () => {
+  it('shoudl receive a HEADER_SET_CONCEPT action', () => {
     expect( initialState.get('concept') ).toBe('No Concept');
     const action = actions.setConcept('The Black Dog of Jianghu');
     const state = headerReducer(initialState, action);
@@ -25,7 +25,7 @@ describe('Testing headerReducer', () => {
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
-  it('HEADER_SET_ARCHETYPE', () => {
+  it('shoudl receive a HEADER_SET_ARCHETYPE action', () => {
     expect( initialState.get('archetype') ).toBe('');
     const action = actions.setArchetype('warrior');
     const state = headerReducer(initialState, action);
@@ -33,12 +33,12 @@ describe('Testing headerReducer', () => {
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
-  it('HEADER_SET_ARCHETYPE - invalid input', () => {
+  it('shoudl receive a HEADER_SET_ARCHETYPE action with an invalid input and do nothing', () => {
     expect(() => actions.setArchetype('not a valid archetype') )
       .toThrow('Unknown archetype "not a valid archetype"');
   });
 
-  it('HEADER_SET_RANK', () => {
+  it('should receive a HEADER_SET_RANK action', () => {
     expect( initialState.get('rank') ).toBe('');
     const action = actions.setRank('4th_rank');
     const state = headerReducer(initialState, action);
@@ -46,12 +46,12 @@ describe('Testing headerReducer', () => {
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
-  it('HEADER_SET_RANK - invalid input', () => {
+  it('should receive a HEADER_SET_RANK action with an invalid input and do nothing', () => {
     expect(() => actions.setRank('best rank'))
       .toThrow('Unknown rank "best rank"');
   });
 
-  it('JUNK action', () => {
+  it('should do nothing with a junk action', () => {
     const junk = { type: 'JUNK_ACTION' };
     expect( headerReducer(initialState, junk as IHeaderAction )).toMatchSnapshot();
   });

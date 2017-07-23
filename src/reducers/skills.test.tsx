@@ -17,7 +17,7 @@ describe('Testing skillsReducer', () => {
     reductionIdx: -1, reductionNewValue: 0
   };
 
-  it('SKILLS_BUY', () => {
+  it('should receive a SKILLS_BUY action', () => {
     skills.forEach( (skillInData: IDataSkill) => {
       const index = initialState.get('skills')
           .findIndex((skillInState: IStoreSkillJS) => { return skillInState.name === skillInData.name; });
@@ -29,11 +29,11 @@ describe('Testing skillsReducer', () => {
     });
   });
 
-  it('SKILLS_BUY - invalid skill', () => {
+  it('should do nothing with SKILLS_BUY action with an invalid skill', () => {
     expect(() => actions.skillsBuy('not a skill', noCost) ).toThrow('Unknown skill "not a skill"');
   });
 
-  it('JUNK action', () => {
+  it('should do nothing with a junk action', () => {
     const junk = { type: 'JUNK_ACTION' };
     expect( skillsReducer(initialState, junk as ISkillAction )).toMatchObject(initialState);
   });

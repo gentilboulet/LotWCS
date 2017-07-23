@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing historyReducer Junk value 1`] = `
+exports[`Testing historyReducer should do nothing with a junk action 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
@@ -453,7 +453,7 @@ Object {
 }
 `;
 
-exports[`Testing historyReducer deleteHistory 1`] = `
+exports[`Testing historyReducer should receive an HISTORY_DELETE action 1`] = `
 Object {
   "archetype": "warrior",
   "archetypeModified": true,
@@ -978,7 +978,7 @@ Object {
 }
 `;
 
-exports[`Testing historyReducer deleteHistory 2`] = `
+exports[`Testing historyReducer should receive an HISTORY_DELETE action 2`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
@@ -1435,7 +1435,7 @@ Object {
 }
 `;
 
-exports[`Testing replayHistory replayHistory 1`] = `
+exports[`Testing replayHistory should replay an history of actions 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,

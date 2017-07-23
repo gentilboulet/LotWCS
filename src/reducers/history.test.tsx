@@ -11,7 +11,7 @@ import { historyReducer } from './history';
 const initialState: IStoreState = initialStateFactory();
 
 describe('Testing pushToHistory', () => {
-  it('pushToHistory', () => {
+  it('should push actions to history', () => {
     const action = header.setName('Dummy Name');
     expect( initialState.getIn(['history', 0]) ).toMatchObject( resetToInitialState() );
 
@@ -22,7 +22,7 @@ describe('Testing pushToHistory', () => {
 });
 
 describe('Testing replayHistory', () => {
-  it('replayHistory', () => {
+  it('should replay an history of actions', () => {
     const actions: IAction[] = [
       resetToInitialState(),
       header.setName('Roberts'),
@@ -39,7 +39,7 @@ describe('Testing replayHistory', () => {
 });
 
 describe('Testing historyReducer', () => {
-  it('deleteHistory', () => {
+  it('should receive an HISTORY_DELETE action', () => {
     const actions: IAction[] = [
       resetToInitialState(),
       header.setName('Roberts'),
@@ -56,7 +56,7 @@ describe('Testing historyReducer', () => {
     expect( state.get('history').length === (1 + 1) );
   });
 
-  it('Junk value', () => {
+  it('should do nothing with a junk action', () => {
     const junk = { type: 'JUNK_ACTION' };
     expect( historyReducer(initialState, junk as IHistoryAction )).toMatchSnapshot();
   });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing headerReducer JUNK action 1`] = `
+exports[`Testing headerReducer should do nothing with a junk action 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
