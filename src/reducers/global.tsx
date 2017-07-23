@@ -29,7 +29,7 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
     case skills.SKILLS_BUY:
       return skillsReducer(state, action);
     case loresheets.LORESHEET_OPEN:
-    case loresheets.LORESHEET_BUY_BONUS:
+    case loresheets.LORESHEET_BUY_OPTION:
       return loresheetsReducer(state, action);
     case history.HISTORY_DELETE:
       return historyReducer(state, action);
