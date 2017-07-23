@@ -8,31 +8,51 @@ import { globalReducer } from './global';
 
 const initialState: IStoreState  = initialStateFactory();
 
-it('HEADER_SET_NAME', () => {
-  const refState = headerReducer(initialState, actions.headerSetName('Robert'));
-  expect( refState ).toMatchSnapshot();
-  expect( globalReducer(initialState, actions.headerSetName('Robert') ) ).toMatchObject(refState);
-});
+describe('Testing headerReducer', () => {
+  it('HEADER_SET_NAME', () => {
+    expect( initialState.get('name') ).toBe('No Name');
+    const action = actions.headerSetName('Robert');
+    const state = headerReducer(initialState, action);
+    expect ( state.get('name') ).toBe('Robert');
+    expect( globalReducer(initialState, action) ).toMatchObject(state);
+  });
 
-it('HEADER_SET_CONCEPT', () => {
-  const refState = headerReducer(initialState, actions.headerSetConcept('Sir Robert') );
-  expect( refState ).toMatchSnapshot();
-  expect( globalReducer(initialState, actions.headerSetConcept('Sir Robert') ) ).toMatchObject(refState);
-});
+  it('HEADER_SET_CONCEPT', () => {
+    expect( initialState.get('concept') ).toBe('No Concept');
+    const action = actions.headerSetConcept('The Black Dog of Jianghu');
+    const state = headerReducer(initialState, action);
+    expect ( state.get('concept') ).toBe('The Black Dog of Jianghu');
+    expect( globalReducer(initialState, action) ).toMatchObject(state);
+  });
 
-it('HEADER_SET_ARCHETYPE', () => {
-  const refState = headerReducer(initialState, actions.headerSetArchetype('warrior') );
-  expect( refState ).toMatchSnapshot();
-  expect( globalReducer(initialState, actions.headerSetArchetype('warrior') ) ).toMatchObject(refState);
-});
+  it('HEADER_SET_ARCHETYPE', () => {
+    expect( initialState.get('archetype') ).toBe('');
+    const action = actions.headerSetArchetype('warrior');
+    const state = headerReducer(initialState, action);
+    expect ( state.get('archetype') ).toBe('warrior');
+    expect( globalReducer(initialState, action) ).toMatchObject(state);
+  });
 
-it('HEADER_SET_RANK', () => {
-  const refState = headerReducer(initialState, actions.headerSetRank('4th_rank') );
-  expect( refState ).toMatchSnapshot();
-  expect( globalReducer(initialState, actions.headerSetRank('4th_rank') ) ).toMatchObject(refState);
-});
+  it('HEADER_SET_ARCHETYPE - invalid input', () => {
+    expect(() => actions.headerSetArchetype('not a valid archetype') )
+      .toThrow('Unknown archetype "not a valid archetype"');
+  });
 
-it('JUNK', () => {
-  const junk = { type: 'JUNK_ACTION' };
-  expect( headerReducer(initialState, junk as IHeaderAction )).toMatchSnapshot();
+  it('HEADER_SET_RANK', () => {
+    expect( initialState.get('rank') ).toBe('');
+    const action = actions.headerSetRank('4th_rank');
+    const state = headerReducer(initialState, action);
+    expect ( state.get('rank') ).toBe('4th_rank');
+    expect( globalReducer(initialState, action) ).toMatchObject(state);
+  });
+
+  it('HEADER_SET_RANK - invalid input', () => {
+    expect(() => actions.headerSetRank('best rank'))
+      .toThrow('Unknown rank "best rank"');
+  });
+
+  it('JUNK action', () => {
+    const junk = { type: 'JUNK_ACTION' };
+    expect( headerReducer(initialState, junk as IHeaderAction )).toMatchSnapshot();
+  });
 });

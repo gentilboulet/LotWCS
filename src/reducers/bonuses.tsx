@@ -20,30 +20,27 @@ export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreSt
           state.set('chi', bonus.value);
           break;
         case constants.BONUS_SKILL_RANK:
-          const idx = state.get('skills')
+          const index = state.get('skills')
             .findIndex((s: IStoreSkillJS) => { return s.name === bonus.skill; });
 
-          if (state.getIn(['skills', idx]).value + 5 >  derived.maxSkillBonus(state)) {
+          if (state.getIn(['skills', index]).value + 5 >  derived.maxSkillBonus(state)) {
             throw 'Something went wrong, skill overflow';
           }
 
-          state.updateIn(['skills', idx], (s: IStoreSkillJS) => {
-            s.value += 5; return s;
-          });
+          state.updateIn(['skills', index, 'value'], (value: number) => { return value + 5; });
           break;
         case constants.BONUS_SPECIALITY:
-          const skillIdx = state.get('skills')
-            .findIndex((s: IStoreSkillJS) => { return s.name === bonus.skill; });
-          const specialities = state.getIn(['skills', skillIdx]).specialities;
+          const skillIndex = state.get('skills').findIndex((s: IStoreSkillJS) => { return s.name === bonus.skill; });
+          const specialities = state.getIn(['skills', skillIndex]).specialities;
           const speIdx = specialities.findIn((spe: IStoreSkillSpecialityJS) => {
             return spe.name === bonus.speciality;
           });
 
-          if (state.getIn(['skills', skillIdx]).specialities[speIdx].bought) {
+          if (state.getIn(['skills', skillIndex]).specialities[speIdx].bought) {
             throw 'Something went wrong, speciality already bought';
           }
 
-          state.setIn(['skills', skillIdx, 'specialities', speIdx, 'bought'], true);
+          state.setIn(['skills', skillIndex, 'specialities', speIdx, 'bought'], true);
 
           break;
         default:

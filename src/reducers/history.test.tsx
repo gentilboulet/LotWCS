@@ -5,43 +5,59 @@ import { IStoreState } from '../types/state';
 
 import * as header from '../actions/header';
 import { resetToInitialState } from '../actions/initial';
-import { historyDelete, IHistoryAction } from '../actions/history';
+import { historyDeleteUpTo, IHistoryAction } from '../actions/history';
 import { historyReducer } from './history';
 
 const initialState: IStoreState = initialStateFactory();
 
-it('initialState', () => {
-  expect( initialState ).toMatchSnapshot();
+describe('Testing pushToHistory', () => {
+  it('pushToHistory', () => {
+    const action = header.headerSetName('Dummy Name');
+    expect( initialState.getIn(['history', 0]) ).toMatchObject( resetToInitialState() );
+
+    const state = pushToHistory(initialState, action);
+    expect( state.getIn(['history', 0]) ).toMatchObject( initialState.getIn(['history', 0]) );
+    expect( state.getIn(['history', 1]) ).toMatchObject( action );
+  });
 });
 
-it('pushToHistory', () => {
-  expect( pushToHistory(initialState, header.headerSetName('Dummy name'))).toMatchSnapshot();
+describe('Testing replayHistory', () => {
+  it('replayHistory', () => {
+    const actions: IAction[] = [
+      resetToInitialState(),
+      header.headerSetName('Roberts'),
+      header.headerSetConcept('Dread pirate Robert'),
+      resetToInitialState(),
+      header.headerSetName('John')
+    ];
+    const state = replayHistory(initialState, actions);
+    expect( state ).toMatchSnapshot();
+    expect( state.get('name') ).toBe('John');
+    expect( state.get('concept') ).toBe('No Concept');
+    expect( state.get('history').length === (actions.length + 1) );
+  });
 });
 
-it('replayHistory', () => {
-  const actions: IAction[] = [
-    resetToInitialState(),
-    header.headerSetName('Name'),
-    header.headerSetConcept('Concept'),
-    resetToInitialState(),
-    header.headerSetName('Name2')
-  ];
-  expect( replayHistory(initialState, actions)).toMatchSnapshot();
-});
+describe('Testing historyReducer', () => {
+  it('deleteHistory', () => {
+    const actions: IAction[] = [
+      resetToInitialState(),
+      header.headerSetName('Roberts'),
+      header.headerSetConcept('Dread pirate Roberts'),
+      header.headerSetArchetype('warrior'),
+      header.headerSetRank('4th_rank'),
+    ];
+    const stateBefore = replayHistory(initialState, actions);
+    expect( stateBefore ).toMatchSnapshot();
+    const state = replayHistory(stateBefore, [historyDeleteUpTo(1)]);
+    expect( state ).toMatchSnapshot();
+    expect( state.get('name') ).toBe('Roberts');
+    expect( state.get('concept') ).toBe('No Concept');
+    expect( state.get('history').length === (1 + 1) );
+  });
 
-it('deleteHistory', () => {
-  const actions: IAction[] = [
-    resetToInitialState(),
-    header.headerSetName('SetName'),
-    header.headerSetConcept('SetConcept'),
-    header.headerSetArchetype('warrior'),
-    header.headerSetRank('4th_rank'),
-    historyDelete(2)
-  ];
-  expect( replayHistory(initialState, actions)).toMatchSnapshot();
-});
-
-it('JUNK_ACTION', () => {
-  const junk = { type: 'JUNK_ACTION' };
-  expect( historyReducer(initialState, junk as IHistoryAction )).toMatchSnapshot();
+  it('Junk value', () => {
+    const junk = { type: 'JUNK_ACTION' };
+    expect( historyReducer(initialState, junk as IHistoryAction )).toMatchSnapshot();
+  });
 });
