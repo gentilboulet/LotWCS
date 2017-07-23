@@ -34,7 +34,7 @@ The src directory is divided by responsibility:
 Here are the action creators, a lot of helper functions present to generate an input to a specific action understandable by the reducers.
 
 ### components
-__This directory regroups "renderer" components, handling only rendering and catching user inputs. __
+__This directory regroups "renderer" components, handling only rendering and catching user inputs.__
 
 Theirs props must provide everything they need to know to do their job.
 
@@ -42,10 +42,9 @@ Theirs props must provide everything they need to know to do their job.
 Constants definitions, mainly used to specify available action.type value, on which the reducers rely to identify actions.
 
 ### containers
-__This directory regroups "containers" components and other functions for reading elements from the state. __
+__This directory regroups "containers" components and other functions for reading elements from the state.__
 
-Those are obtained by connecting the store and the state to a "renderer" component.
-To do so, three steps are taken for each one:
+Those are obtained by connecting the store and the state to a "renderer" component, following [the canonical method from Redux](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options):
 * mapStateToProps: maps the state to the props, by transforming it, by adding information from static data ;
 * mapDispatchToProps: maps dispach actions to the props, passing through the props the dispatch+action creator, allowing subsequent "renderer" components to trigger actions.
 * mergeProps: merges both previous "sub props" to the one sent to the "renderer component".
@@ -55,7 +54,7 @@ Each container component is connected to a renderer component of the same name.
 Static data and some data extraction functions.
 
 ### reducers
-__This directory regroups reducers, performing modifying actions to the state. __
+__This directory regroups reducers, performing modifying actions to the state.__
 
 Here are the global reducer, the one plugged to the Redux Store and a lot of sub reducers, handling a specific subset of actions.
 One important rule to note is that no action is applied to the state by different reducers.
