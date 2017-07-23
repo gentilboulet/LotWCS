@@ -27,7 +27,6 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
     case initial.INITIAL_STATE:
       return initialStateFactory();
     case skills.SKILLS_BUY:
-    case skills.SKILLS_DO_STUFF:
       return skillsReducer(state, action);
     case loresheets.LORESHEET_OPEN:
     case loresheets.LORESHEET_BUY_BONUS:

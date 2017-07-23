@@ -1,6 +1,5 @@
-import CharacterSkills, { ICharacterSkillsProps, ISkillProps, ISpecialityProps }
-  from '../components/CharacterSkills';
-import * as actions from '../actions/skills';
+import CharacterSkills, { ICharacterSkillsProps, ISkillProps, ISpecialityProps } from '../components/CharacterSkills';
+import * as skillActions from '../actions/skills';
 import { IStoreState } from '../types/state';
 import { ICost } from '../types/costs';
 import { connect, Dispatch } from 'react-redux';
@@ -36,10 +35,10 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): IMapDispatchToProps {
+function mapDispatchToProps(dispatch: Dispatch<skillActions.ISkillAction>): IMapDispatchToProps {
   return {
-    onSkillBuy: (skill: string, cost: ICost) => dispatch(actions.skillsBuy(skill, cost)),
-    onSpecialityBuy: (skill: string, speciality: string) => dispatch(actions.skillsDoStuff(skill + speciality)),
+    onSkillBuy: (skill: string, cost: ICost) => dispatch(skillActions.skillsBuy(skill, cost)),
+    onSpecialityBuy: (skill: string, speciality: string) => { return; },
   };
 }
 

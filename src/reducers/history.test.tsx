@@ -12,7 +12,7 @@ const initialState: IStoreState = initialStateFactory();
 
 describe('Testing pushToHistory', () => {
   it('pushToHistory', () => {
-    const action = header.headerSetName('Dummy Name');
+    const action = header.setName('Dummy Name');
     expect( initialState.getIn(['history', 0]) ).toMatchObject( resetToInitialState() );
 
     const state = pushToHistory(initialState, action);
@@ -25,10 +25,10 @@ describe('Testing replayHistory', () => {
   it('replayHistory', () => {
     const actions: IAction[] = [
       resetToInitialState(),
-      header.headerSetName('Roberts'),
-      header.headerSetConcept('Dread pirate Robert'),
+      header.setName('Roberts'),
+      header.setConcept('Dread pirate Robert'),
       resetToInitialState(),
-      header.headerSetName('John')
+      header.setName('John')
     ];
     const state = replayHistory(initialState, actions);
     expect( state ).toMatchSnapshot();
@@ -42,10 +42,10 @@ describe('Testing historyReducer', () => {
   it('deleteHistory', () => {
     const actions: IAction[] = [
       resetToInitialState(),
-      header.headerSetName('Roberts'),
-      header.headerSetConcept('Dread pirate Roberts'),
-      header.headerSetArchetype('warrior'),
-      header.headerSetRank('4th_rank'),
+      header.setName('Roberts'),
+      header.setConcept('Dread pirate Roberts'),
+      header.setArchetype('warrior'),
+      header.setRank('4th_rank'),
     ];
     const stateBefore = replayHistory(initialState, actions);
     expect( stateBefore ).toMatchSnapshot();
