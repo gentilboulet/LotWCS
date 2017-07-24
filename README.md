@@ -65,9 +65,16 @@ Typescript types definitions.
 ## Data flow
 The data trickle down from the state to feed the props of the components.
 
-When a container maps the state to the props of a component, it must check which actions are available or not, and it must take prepare the cost of the action by checking for discount.
+### Game specifics - handling cost discounts
+
+Some options that you can buy for a character can give a discount on the cost (in destiny/entanglement) of next buys.
+An extra step must be taken to check if the character dispose of enough of destiny/entanglement to buy stuff taking into account discounts.
+
+### Implementation
+
+When a container maps the state to the props of a component, it must check which actions are available (which things can be bought) and it prepares an object representing the cost of the action (representing the cost and the applicable discounts).
 In the static data, costs are plain numbers.
-Conversion is handled by helper functions in the containers/costs.tsx file.
+It is handled by helper functions in the containers/costs.tsx file to prepare this cost object.
 Functions are also provided to check if something is affordable for the character, and checking how eventual cost discounts will be used for the current cost.
 
 To update the store, the dispatch of an action is encapsulated as an anonymous function to be passed to the renderer component through its props.
