@@ -2,6 +2,7 @@ import { IStoreState } from '../types/state';
 
 import { initialStateFactory } from './initial';
 import * as actions from '../actions/bonuses';
+import { IBonus } from '../types/bonuses';
 import { applyBonuses } from './bonuses';
 
 const initialState: IStoreState  = initialStateFactory();
@@ -35,10 +36,6 @@ describe('Testing applyBonuses', () => {
     expect( state.getIn(['skills', 0, 'value']) ).toBe(5);
   });
 
-  /*it('BONUS_SPECIALITY', () => {
-
-  });*/
-
   it('should handle an empty list', () => {
     const state = applyBonuses(initialState, []);
     expect(state).toMatchObject(initialState);
@@ -46,7 +43,7 @@ describe('Testing applyBonuses', () => {
 
   it('should do nothing with a junk bonus', () => {
     const junk = { type: 'JUNK' };
-    const bonuses = [actions.destiny(12), actions.entanglement(13), actions.startingChi(14), junk];
+    const bonuses = [actions.destiny(12), actions.entanglement(13), actions.startingChi(14), junk as IBonus];
     const state = applyBonuses(initialState, bonuses);
     expect( state.get('destiny') ).toBe(12);
     expect( state.get('entanglement') ).toBe(13);
