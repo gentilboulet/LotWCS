@@ -1,9 +1,8 @@
 import { makeTypedFactory } from 'typed-immutable-record';
 import * as Immutable from 'immutable';
 import { IStoreStateJS, IStoreState,
-  IStoreSkill, skillFactory,
-  IStoreSkillSpecialityJS,
-  IStoreLoresheet } from '../types/state';
+  IStoreSkill, skillFactory, IStoreSkillSpeciality,
+  IStoreLoresheet, IStoreLoresheetOption } from '../types/state';
 
 import { resetToInitialState } from '../actions/initial';
 import { IAction } from '../types/actions';
@@ -25,13 +24,11 @@ export const defaultStateJS: IStoreStateJS = {
     return skillFactory({
       name: s.name,
       value: 0,
-      specialities: Immutable.List<IStoreSkillSpecialityJS>(s.specialities.map(
-        (spe: string) => { return {name: spe, bought: false}; }
-      )),
     });
   })),
-
+  skillSpecialities: Immutable.List<IStoreSkillSpeciality>([]),
   loresheets: Immutable.List<IStoreLoresheet>([]),
+  loresheetOptions: Immutable.List<IStoreLoresheetOption>([]),
   discounts: Immutable.List([]),
   bonuses: Immutable.List([]),
 

@@ -9,7 +9,7 @@ import { globalReducer } from './global';
 import { loresheets } from '../data/loresheets';
 
 const initialState: IStoreState  = initialStateFactory();
-/* tslint:disable:no-console */
+
 describe('Testing loresheetsReducer', () => {
   const noCost = {
     destiny: 0, entanglement: 0,
@@ -24,8 +24,7 @@ describe('Testing loresheetsReducer', () => {
       const action = loresheetsActions.open(dataLoresheet.uid, noCost);
       const state = loresheetsReducer(initialState, action);
       expect( getLoresheetIndex(state, dataLoresheet.uid) ).toBe(0);
-      // Why does this fail ??
-      // expect( globalReducer(initialState, action) ).toMatchObject(state);
+      expect( getLoresheetIndex(globalReducer(initialState, action), dataLoresheet.uid) ).toBe(0);
     });
   });
 
@@ -39,8 +38,7 @@ describe('Testing loresheetsReducer', () => {
         const buyOption = loresheetsActions.buyOption(dataLoresheet.uid, option.uid, noCost);
         const state = loresheetsReducer(stateWithLoresheet, buyOption);
         expect( getLoresheetOptionIndex(state, dataLoresheet.uid, option.uid) ).toBe(0);
-        // Why does this fail ??
-        // expect( globalReducer(stateWithLoresheet, buyOption) ).toMatchObject(state);
+        expect( getLoresheetOptionIndex(globalReducer(stateWithLoresheet, buyOption), dataLoresheet.uid, option.uid) ).toBe(0)
       });
     });
   });

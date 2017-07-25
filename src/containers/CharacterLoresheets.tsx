@@ -1,9 +1,10 @@
 import { connect, Dispatch } from 'react-redux';
 import CharacterLoresheets from '../components/CharacterLoresheets';
 import * as loresheetsActions from '../actions/loresheets';
-import { IStoreState, IStoreLoresheetJS, IStoreLoresheetOptionJS } from '../types/state';
+import { IStoreState } from '../types/state';
 import { canOpenLoresheet, getCostOpenLoresheet,
   canBuyOptionLoresheet, getCostBuyOptionLoresheet } from './costs';
+import { getLoresheetIndex, getLoresheetOptionIndex } from '../reducers/loresheets';
 import { ICharacterLoresheetsProps,
   ILoresheetsCharacterLoresheetsProps, ILoresheetsOptionsCharacterLoresheetsProps,
   ILoresheetsOptionsCostCharacterLoresheetsProps
@@ -24,8 +25,6 @@ interface IMapDispatchToProps {
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     loresheets: dataLS.map((ls: ILoresheet): ILoresheetsCharacterLoresheetsProps => {
-      const knIdx = state.get('loresheets')
-        .findIndex((stateLS: IStoreLoresheetJS) => { return stateLS.uid === ls.uid; });
       return {
         uid: ls.uid,
         name: ls.name,
@@ -39,9 +38,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
             type: op.type,
             description: op.description,
 
-            known: (knIdx >= 0 &&
-                    state.getIn(['loresheets', knIdx]).options.findIndex(
-              (knOp: IStoreLoresheetOptionJS) => { return knOp.uid === op.uid; }) >= 0),
+            known: (getLoresheetOptionIndex(state, ls.uid, op.uid) >= 0),
             costs: lsOptionCostToValues(op.cost).map((v: number): ILoresheetsOptionsCostCharacterLoresheetsProps => {
               return {
                 originalCost: v,
@@ -53,7 +50,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
           };
         }),
 
-        known: (knIdx !== -1 ),
+        known: (getLoresheetIndex(state, ls.uid) >= 0),
         canOpen: canOpenLoresheet(state, ls.uid, ls.cost),
         cost: getCostOpenLoresheet(state, ls.uid, ls.cost),
         costStr: String(ls.cost)
