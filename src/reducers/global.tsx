@@ -5,6 +5,9 @@ import { IStoreState } from '../types/state';
 import * as header from '../constants/header';
 import { headerReducer } from '../reducers/header';
 
+import * as chi from '../constants/chi';
+import { chiReducer } from '../reducers/chi';
+
 import * as initial from '../constants/initial';
 import { initialStateFactory } from '../reducers/initial';
 
@@ -24,6 +27,8 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
     case header.HEADER_SET_NAME:
     case header.HEADER_SET_RANK:
       return headerReducer(state, action);
+    case chi.CHI_BUY:
+      return chiReducer(state, action);
     case initial.INITIAL_STATE:
       return initialStateFactory();
     case skills.SKILLS_BUY:

@@ -2,6 +2,7 @@ import * as Immutable from 'immutable';
 import { makeTypedFactory } from 'typed-immutable-record';
 
 import {
+  defaultChiFactory,
   IStoreLoresheet, IStoreLoresheetOption,
   IStoreSkill, IStoreSkillSpeciality,
   IStoreState, IStoreStateJS,
@@ -22,7 +23,6 @@ export const defaultStateJS: IStoreStateJS = {
   archetypeModified: false,
   rank: '',
   rankValue: -1,
-  chi: 0,
   rankModified: false,
   entanglement: 0,
   destiny: 0,
@@ -38,6 +38,7 @@ export const defaultStateJS: IStoreStateJS = {
   discounts: Immutable.List([]),
   bonuses: Immutable.List([]),
   history: Immutable.List<IAction>([resetToInitialState()]),
+  chi: defaultChiFactory(),
 };
 
 export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultStateJS);

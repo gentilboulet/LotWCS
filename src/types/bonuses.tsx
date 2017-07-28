@@ -1,4 +1,5 @@
 import * as constants from '../constants/bonuses';
+import { IChiNames, IChiCultivations } from '../types/state';
 
 export interface IBonusDestiny {
   type: constants.BONUS_DESTINY;
@@ -10,8 +11,15 @@ export interface IBonusEntanglement {
   value: number;
 }
 
-export interface IBonusStartingChi {
-  type: constants.BONUS_STARTING_CHI;
+export interface IBonusChi {
+  type: constants.BONUS_CHI;
+  chi: IChiNames;
+  value: number;
+}
+
+export interface IBonusCultivation {
+  type: constants.BONUS_CULTIVATION;
+  cultivation: IChiCultivations;
   value: number;
 }
 
@@ -34,7 +42,8 @@ export interface IBonusSpeciality {
 export type IBonus =
   IBonusDestiny
   | IBonusEntanglement
-  | IBonusStartingChi
+  | IBonusChi
+  | IBonusCultivation
   | IBonusOneAmongN
   | IBonusSkillRank
   | IBonusSpeciality
@@ -45,7 +54,8 @@ export function isBonus(bonus: any): boolean {
   switch (bonus.type) {
     case constants.BONUS_DESTINY:
     case constants.BONUS_ENTANGLEMENT:
-    case constants.BONUS_STARTING_CHI:
+    case constants.BONUS_CHI:
+    case constants.BONUS_CULTIVATION:
     case constants.BONUS_ONE_AMONG_N:
     case constants.BONUS_SKILL_RANK:
     case constants.BONUS_SPECIALITY:

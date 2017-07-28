@@ -1,8 +1,9 @@
 import * as constants from '../constants/bonuses';
 import { IBonus,
-  IBonusDestiny, IBonusEntanglement, IBonusOneAmongN,
-  IBonusSkillRank, IBonusSpeciality, IBonusStartingChi,
+  IBonusDestiny, IBonusEntanglement, IBonusChi, IBonusCultivation, IBonusOneAmongN,
+  IBonusSkillRank, IBonusSpeciality,
 } from '../types/bonuses';
+import { IChiNames, IChiCultivations } from '../types/state';
 
 export function destiny(value: number): IBonusDestiny {
     return { type: constants.BONUS_DESTINY, value };
@@ -12,8 +13,12 @@ export function entanglement(value: number): IBonusEntanglement {
   return { type: constants.BONUS_ENTANGLEMENT, value };
 }
 
-export function startingChi(value: number): IBonusStartingChi {
-  return { type: constants.BONUS_STARTING_CHI, value };
+export function chi(value: number, chiName: IChiNames): IBonusChi {
+  return { type: constants.BONUS_CHI, chi: chiName, value};
+}
+
+export function cultivation(value: number, cultivationName: IChiCultivations): IBonusCultivation {
+  return { type: constants.BONUS_CULTIVATION, value, cultivation: cultivationName };
 }
 
 export function oneAmongN(bonuses: IBonus[]): IBonusOneAmongN {

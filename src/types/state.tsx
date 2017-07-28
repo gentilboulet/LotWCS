@@ -53,6 +53,55 @@ export function loresheetOptionFactory(option: IStoreLoresheetOptionJS): IStoreL
   return f(option);
 }
 
+interface IStoreChiJS {
+  general: number;
+  generalCultivation: number;
+  wood: number;
+  woodCultivation: number;
+  fire: number;
+  fireCultivation: number;
+  earth: number;
+  earthCultivation: number;
+  water: number;
+  waterCultivation: number;
+  metal: number;
+  metalCultivation: number;
+  enlightened: number;
+  enlightenedCultivation: number;
+  demon: number;
+  demonCultivation: number;
+}
+
+export type IChiNames = 'general' | 'wood' | 'fire' | 'earth' | 'water' | 'metal' | 'enlightened' | 'demon';
+export type IChiCultivations = 'generalCultivation' | 'woodCultivation' | 'fireCultivation' | 'earthCultivation'
+  | 'waterCultivation' | 'metalCultivation' | 'enlightenedCultivation' | 'demonCultivation';
+
+export function fromChiToCultivationName(chi: IChiNames): IChiCultivations {
+  return chi.concat('Cultivation') as IChiCultivations;
+}
+
+export function fromCultivationToChiName(cultivation: IChiCultivations): IChiNames {
+  return cultivation.split('Cultivation')[0] as IChiNames;
+}
+
+export interface IStoreChi extends TypedRecord<IStoreChi>, IStoreChiJS {}
+
+export function defaultChiFactory(): IStoreChi {
+  const defaultChi: IStoreChiJS = {
+    general: 0, generalCultivation: 0,
+    wood: 0, woodCultivation: 0,
+    fire: 0, fireCultivation: 0,
+    earth: 0, earthCultivation: 0,
+    water: 0, waterCultivation: 0,
+    metal: 0, metalCultivation: 0,
+    enlightened: 0, enlightenedCultivation: 0,
+    demon: 0, demonCultivation: 0
+  };
+
+  const f = makeTypedFactory<IStoreChiJS, IStoreChi>(defaultChi);
+  return f(defaultChi);
+}
+
 export interface IStoreStateJS {
   name: string;
   concept: string;
@@ -63,7 +112,6 @@ export interface IStoreStateJS {
   rankModified: boolean;
   entanglement: number;
   destiny: number;
-  chi: number;
   skills: Immutable.List<IStoreSkill>;
   skillSpecialities: Immutable.List<IStoreSkillSpeciality>;
   loresheets: Immutable.List<IStoreLoresheet>;
@@ -71,6 +119,7 @@ export interface IStoreStateJS {
   discounts: Immutable.List<IDiscount>;
   bonuses: Immutable.List<IBonus>;
   history: Immutable.List<IAction>;
+  chi: IStoreChi;
 }
 
 export interface IStoreState extends TypedRecord<IStoreState>, IStoreStateJS {}

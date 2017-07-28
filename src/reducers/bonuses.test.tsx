@@ -4,33 +4,34 @@ import { initialStateFactory } from './initial';
 import * as actions from '../actions/bonuses';
 import { IBonus } from '../types/bonuses';
 import { applyBonuses } from './bonuses';
+import { getChiValue } from './chi';
 import { getSkillIndex, getSpecialityIndex } from './skills';
 
 const initialState: IStoreState  = initialStateFactory();
 
 describe('Testing applyBonuses', () => {
-  it('should receive a BONUS_DESTINY action', () => {
+  it('should receive a BONUS_DESTINY', () => {
     const bonuses = [actions.destiny(12)];
     const state = applyBonuses(initialState, bonuses);
     expect( initialState.get('destiny') ).toBe(0);
     expect( state.get('destiny') ).toBe(12);
   });
 
-  it('should receive a BONUS_ENTANGLEMENT action', () => {
+  it('should receive a BONUS_ENTANGLEMENT', () => {
     const bonuses = [actions.entanglement(13)];
     const state = applyBonuses(initialState, bonuses);
     expect( initialState.get('entanglement') ).toBe(0);
     expect( state.get('entanglement') ).toBe(13);
   });
 
-  it('should receive a BONUS_STARTING_CHI action', () => {
-    const bonuses = [actions.startingChi(14)];
+  it('should receive a BONUS_CHI', () => {
+    const bonuses = [actions.chi(14, 'general')];
     const state = applyBonuses(initialState, bonuses);
-    expect( initialState.get('chi') ).toBe(0);
-    expect( state.get('chi') ).toBe(14);
+    expect( getChiValue(initialState, 'general') ).toBe(0);
+    expect( getChiValue(state, 'general') ).toBe(14);
   });
 
-  it('should receive a BONUS_SKILL_RANK action', () => {
+  it('should receive a BONUS_SKILL_RANK', () => {
     const bonuses = [actions.skillRank('Awareness')];
     const state = applyBonuses(initialState, bonuses);
     expect( getSkillIndex(initialState, 'Awareness') ).toBe(0);
@@ -38,7 +39,7 @@ describe('Testing applyBonuses', () => {
     expect( state.getIn(['skills', 0, 'value']) ).toBe(5);
   });
 
-  it('should receive a BONUS_SPECIALITY action', () => {
+  it('should receive a BONUS_SPECIALITY', () => {
     const testSkill = 'Awareness';
     const testSpeciality = 'Hear';
 
@@ -56,11 +57,11 @@ describe('Testing applyBonuses', () => {
 
   it('should do nothing with a junk bonus', () => {
     const junk = { type: 'JUNK' };
-    const bonuses = [actions.destiny(12), actions.entanglement(13), actions.startingChi(14), junk as IBonus];
+    const bonuses = [actions.destiny(12), actions.entanglement(13), actions.chi(14, 'general'), junk as IBonus];
     const state = applyBonuses(initialState, bonuses);
     expect( state.get('destiny') ).toBe(12);
     expect( state.get('entanglement') ).toBe(13);
-    expect( state.get('chi') ).toBe(14);
+    expect( getChiValue(state, 'general') ).toBe(14);
   });
 
 });
