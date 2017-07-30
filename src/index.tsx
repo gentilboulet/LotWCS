@@ -1,15 +1,15 @@
 /* Redux and state management */
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { devToolsEnhancer  } from 'redux-devtools-extension';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 /* React and DOM management */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { initialStateFactory } from './reducers/initial';
 import { globalReducer } from './reducers/global';
+import { initialStateFactory } from './reducers/initial';
 import { IStoreState } from './types/state';
 
 const store = createStore<IStoreState>(
@@ -19,6 +19,7 @@ const store = createStore<IStoreState>(
 );
 
 import registerServiceWorker from './registerServiceWorker';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 

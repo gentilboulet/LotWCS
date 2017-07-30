@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import * as classnames from 'classnames';
+import * as React from 'react';
+import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 
 export interface ITabsProps {
   defaultTab?: string;
@@ -26,17 +26,8 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
       activeTab: this.props.defaultTab,
     };
   }
-
-  toggle(tab: string) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab,
-      });
-    }
-  }
-
-/* tslint:disable:no-any */
-  render() {
+  public render() {
+    /* tslint:disable:no-any */
     return (
       <div>
         <Nav tabs={true}>
@@ -62,6 +53,14 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
         </TabContent>
       </div>
     );
+  }
+
+  private toggle(tab: string) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab,
+      });
+    }
   }
 }
 

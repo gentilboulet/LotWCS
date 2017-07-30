@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
+
+import { loresheetsCategories } from '../../data/loresheets';
 import { ICost } from '../../types/costs';
 import LoresheetCategory from './LoresheetCategory';
-import { loresheetsCategories } from '../../data/loresheets';
 
 export interface ILoresheetsOptionsCostCharacterLoresheetsProps {
   originalCost: number;
@@ -42,8 +43,8 @@ export interface ICharacterLoresheetsProps {
 }
 
 class CharacterLoresheets extends
-  React.Component<ICharacterLoresheetsProps, object> {
-  render() {
+  React.Component<ICharacterLoresheetsProps, {}> {
+  public render() {
     let idxCategory = 0;
     return(
       <Container className="CharacterHistory">
@@ -52,7 +53,7 @@ class CharacterLoresheets extends
               return (
                 <LoresheetCategory
                   category={category}
-                  loresheets={this.props.loresheets.filter(ls => { return ls.category === category; })}
+                  loresheets={this.props.loresheets.filter(ls => (ls.category === category) )}
                   onOpenLS={this.props.onOpenLS}
                   onBuyOptionLS={this.props.onBuyOptionLS}
                   key={'LoresheetCategory_' + idxCategory++}

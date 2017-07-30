@@ -38,7 +38,9 @@ describe('Testing loresheetsReducer', () => {
         const buyOption = loresheetsActions.buyOption(dataLoresheet.uid, option.uid, noCost);
         const state = loresheetsReducer(stateWithLoresheet, buyOption);
         expect( getLoresheetOptionIndex(state, dataLoresheet.uid, option.uid) ).toBe(0);
-        expect( getLoresheetOptionIndex(globalReducer(stateWithLoresheet, buyOption), dataLoresheet.uid, option.uid) ).toBe(0)
+        expect(
+          getLoresheetOptionIndex(globalReducer(stateWithLoresheet, buyOption), dataLoresheet.uid, option.uid) 
+          ).toBe(0)
       });
     });
   });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Collapse, ListGroupItem, Button } from 'reactstrap';
+import { Button, Collapse, ListGroupItem } from 'reactstrap';
 
 export interface ICollapsibleProps {
   title: string;
@@ -21,11 +21,22 @@ class Collapsible extends React.Component<ICollapsibleProps, ICollapsibleState> 
     this.renderTitleOpen = this.renderTitleOpen.bind(this);
   }
 
-  toggle() {
+  public render() {
+    return (
+      <div>
+        {this.state.collapse ? this.renderTitleOpen() : this.renderTitle()}
+        <Collapse isOpen={this.state.collapse}>
+          {this.props.children}
+        </Collapse>
+      </div>
+    );
+  }
+
+  private toggle() {
     this.setState({ collapse: !this.state.collapse });
   }
 
-  renderTitle(): JSX.Element {
+  private renderTitle(): JSX.Element {
     return (
     <ListGroupItem
       className="justify-content-between"
@@ -35,7 +46,7 @@ class Collapsible extends React.Component<ICollapsibleProps, ICollapsibleState> 
     </ListGroupItem>);
   }
 
-  renderTitleOpen(): JSX.Element {
+  private renderTitleOpen(): JSX.Element {
     return (
     <ListGroupItem
       className="justify-content-between"
@@ -44,17 +55,6 @@ class Collapsible extends React.Component<ICollapsibleProps, ICollapsibleState> 
     {this.props.title} : {(!this.props.description ? '' : this.props.description)}
     <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
     </ListGroupItem>);
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.collapse ? this.renderTitleOpen() : this.renderTitle()}
-        <Collapse isOpen={this.state.collapse}>
-          {this.props.children}
-        </Collapse>
-      </div>
-    );
   }
 }
 

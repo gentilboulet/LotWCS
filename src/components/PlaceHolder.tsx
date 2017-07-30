@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Card, CardText, CardBlock, CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardBlock, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 
-export interface IPlaceHolderProps {}
-
-class PlaceHolder extends React.Component<IPlaceHolderProps, object> {
-  render() {
+class PlaceHolder extends React.Component<{}, {}> {
+  public render() {
     return (
       <Card block={true} >
         <CardTitle>This is a placeholder </CardTitle>

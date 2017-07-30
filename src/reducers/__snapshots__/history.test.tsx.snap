@@ -141,38 +141,6 @@ Object {
       "type": "HEADER_SET_ARCHETYPE",
     },
     Object {
-      "perks": Array [
-        Object {
-          "type": "BONUS_DESTINY",
-          "value": 20,
-        },
-        Object {
-          "skills": Array [
-            "Awareness",
-            "Confidence",
-            "Crafting",
-            "Finesse",
-            "Hardiness",
-            "Inspire",
-            "Learning",
-            "Medicine",
-            "Might",
-            "Perform",
-            "Politics",
-            "Ride",
-            "Stealth",
-            "Survival",
-            "Tactics",
-            "Wu Wei",
-          ],
-          "type": "DISCOUNT_SKILL",
-          "value": 20,
-        },
-        Object {
-          "type": "BONUS_STARTING_CHI",
-          "value": 10,
-        },
-      ],
       "rank": "4th_rank",
       "type": "HEADER_SET_RANK",
       "value": 2,

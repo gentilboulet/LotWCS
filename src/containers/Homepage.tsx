@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import CharacterHeader from '../containers/CharacterHeader';
 
 class Homepage extends React.Component<RouteComponentProps<{}>> {
-  render() {
+  public render() {
     return (
       <div>
         <Header />

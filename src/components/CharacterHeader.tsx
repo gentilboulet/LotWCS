@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+
 import EditText from '../components/EditText';
 import DDLText from '../components/DDLText';
+
 import { archetypes } from '../data/archetypes';
 import { ranks } from '../data/ranks';
 
@@ -22,15 +24,15 @@ export interface ICharacterHeaderProps {
   lockRank: boolean;
 }
 
-class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
-  render() {
+class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
+  public render() {
     return (
       <Container className="CharacterHeader">
         <Row>
           <EditText
             header="Character Name"
             default={this.props.name}
-            validate={(s: string) => { return s.length > 0; }}
+            validate={(s: string) => (s.length >= 0)}
             onSubmit={(s: string) => { this.props.onSetName(s); }}
           />
         </Row>
@@ -38,7 +40,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
           <EditText
             header="Character Concept"
             default={this.props.concept}
-            validate={(s: string) => { return s.length >= 0; }}
+            validate={(s: string) => (s.length >= 0)}
             onSubmit={(s: string) => { this.props.onSetConcept(s); }}
           />
         </Row>
@@ -47,9 +49,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
             <DDLText
               header="Character Archetype"
               default={this.props.archetype}
-              values={archetypes.map(
-                ({name: n, key: k}) => { return {label: n, key: k}; }
-              )}
+              values={archetypes.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
               onSubmit={(s: string) => { this.props.onSetArchetype(s); }}
               locked={this.props.lockArchetype}
             />
@@ -58,9 +58,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
             <DDLText
               header="Character Rank"
               default={this.props.rank}
-              values={ranks.map(
-                ({name: n, key: k}) => { return {label: n, key: k}; }
-              )}
+              values={ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
               onSubmit={(s: string) => { this.props.onSetRank(s); }}
               locked={this.props.lockRank}
             />
@@ -71,8 +69,8 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, object> {
             <EditText
               header="Destiny"
               default={(this.props.destiny).toString()}
-              validate={(s: string) => { return false; }}
-              onSubmit={(s: string) => { return ; }}
+              validate={(s: string) => false}
+              onSubmit={(s: string) => { return; }}
               locked={true}
             />
           </Col>

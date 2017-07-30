@@ -1,11 +1,11 @@
+import * as constants from '../constants/bonuses';
 import { IBonus, isBonus } from '../types/bonuses';
 import { IStoreState } from '../types/state';
 import * as skills from './skills';
-import * as constants from '../constants/bonuses';
 
 export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreState {
   return oldState.withMutations(state => {
-    bonuses.filter((bonus: IBonus) => { return isBonus(bonus); })
+    bonuses.filter((bonus: IBonus) => isBonus(bonus))
            .forEach((bonus: IBonus) => {
       switch (bonus.type) {
         case constants.BONUS_DESTINY:

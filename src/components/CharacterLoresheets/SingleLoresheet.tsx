@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ListGroupItem, Button } from 'reactstrap';
-import Collapsible from '../Collapsible';
+import { Icon } from 'react-fa';
+import { Button, ListGroupItem } from 'reactstrap';
+
+import { ICost } from '../../types/costs';
 import { ILoresheetsCharacterLoresheetsProps,
   ILoresheetsOptionsCharacterLoresheetsProps,
   ILoresheetsOptionsCostCharacterLoresheetsProps } from '../CharacterLoresheets';
-import { ICost } from '../../types/costs';
-import { Icon } from 'react-fa';
+import Collapsible from '../Collapsible';
 
 export interface ISingleLoresheetProps {
   loresheet: ILoresheetsCharacterLoresheetsProps;
@@ -24,31 +25,7 @@ export default class SingleLoresheet extends
       this.openLS = this.openLS.bind(this);
     }
 
-    openLS() {
-      return this.props.onOpenLS(this.props.loresheet.uid, this.props.loresheet.cost);
-    }
-
-    renderButton(o: ILoresheetsOptionsCharacterLoresheetsProps): JSX.Element {
-      if (
-        o.costs
-        .filter((c: ILoresheetsOptionsCostCharacterLoresheetsProps) => { return c.canBuy; } )
-        .length > 0) {
-        return <Button><Icon name="check"/></Button>;
-      } else {
-        return <Button><Icon name="times"/></Button>;
-      }
-    }
-
-    renderCollapsibleDescription(): JSX.Element {
-      if (!this.props.loresheet.canOpen) { return <div><span>{this.props.loresheet.description}</span></div>; }
-      return (
-        <div>
-          <span>{this.props.loresheet.description}</span>
-          <span><Button onClick={this.openLS}>Open ({this.props.loresheet.costStr})</Button></span>
-        </div>);
-    }
-
-    render() {
+    public render() {
       return (
         <Collapsible
           title={this.props.loresheet.name}
@@ -63,5 +40,29 @@ export default class SingleLoresheet extends
           })}
         </Collapsible>
       );
+    }
+
+    private openLS() {
+      return this.props.onOpenLS(this.props.loresheet.uid, this.props.loresheet.cost);
+    }
+
+    private renderButton(o: ILoresheetsOptionsCharacterLoresheetsProps): JSX.Element {
+      if (
+        o.costs
+        .filter((c: ILoresheetsOptionsCostCharacterLoresheetsProps) => c.canBuy )
+        .length > 0) {
+        return <Button><Icon name="check"/></Button>;
+      } else {
+        return <Button><Icon name="times"/></Button>;
+      }
+    }
+
+    private renderCollapsibleDescription(): JSX.Element {
+      if (!this.props.loresheet.canOpen) { return <div><span>{this.props.loresheet.description}</span></div>; }
+      return (
+        <div>
+          <span>{this.props.loresheet.description}</span>
+          <span><Button onClick={this.openLS}>Open ({this.props.loresheet.costStr})</Button></span>
+        </div>);
     }
   }

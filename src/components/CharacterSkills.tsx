@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ICost } from '../types/costs';
+import { Col, Container, Row } from 'reactstrap';
+
 import EditSkill from '../components/EditSkill';
-import { Container, Row, Col } from 'reactstrap';
+import { ICost } from '../types/costs';
 
 export interface ISpecialityProps {
   name: string;
@@ -24,8 +25,8 @@ export interface ICharacterSkillsProps {
   onSpecialityBuy: (skill: string, speciality: string, cost: ICost) => void;
 }
 
-class CharacterSkills extends React.Component<ICharacterSkillsProps, object> {
-  render() {
+class CharacterSkills extends React.Component<ICharacterSkillsProps, {}> {
+  public render() {
     return(
       <Container className="CharacterSkills">
         <Col>

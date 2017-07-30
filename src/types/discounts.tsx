@@ -14,7 +14,7 @@ export interface IDiscountLoresheet {
 
 export interface IDiscountLoresheetOption {
   type: constants.DISCOUNT_LORESHEET_OPTION;
-  uids: { lsUid: string , optUid: string[]; }[];
+  uids: Array<{ lsUid: string , optUid: string[]; }>;
   value: number;
 }
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Button, Input, InputGroup, InputGroupAddon, Col, Row, Container } from 'reactstrap';
 import Icon from 'react-fa';
+import { Button, Col, Container, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
+
 import FieldHeader from './FieldHeader';
 
 export interface IEditTextProps {
@@ -40,14 +41,23 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     this.renderValue = this.renderValue.bind(this);
     this.renderInput = this.renderInput.bind(this);
   }
+  public render(): JSX.Element {
+    return (this.state.edit) ? this.renderInput() : this.renderValue();
+  }
 
-  startEdit() {
+  public componentWillReceiveProps(nextProps: IEditTextProps) {
+    this.setState({
+      value: nextProps.default,
+    });
+  }
+
+  private startEdit() {
     if (this.props.locked ? false : true) {
       this.setState({edit: true});
     }
   }
 
-  endEdit() {
+  private endEdit() {
     if ( this.props.validate(this.state.value) ) {
       this.setState({
         edit: false,
@@ -58,27 +68,21 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     }
   }
 
-  componentWillReceiveProps(nextProps: IEditTextProps) {
-    this.setState({
-      value: nextProps.default,
-    });
-  }
-
-  textChange(e: IEditTextEvent) {
+  private textChange(e: IEditTextEvent) {
     this.setState({ value: e.target.value });
   }
 
-  renderHeader(): JSX.Element {
+  private renderHeader(): JSX.Element {
     return <FieldHeader label={this.props.header} />;
   }
 
-  renderButton(isValueValid: boolean): JSX.Element {
+  private renderButton(isValueValid: boolean): JSX.Element {
     const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
     const btnKo = (<Button color="danger"><Icon name="times" /></Button>);
     return (isValueValid) ? btnOk : btnKo;
   }
 
-  renderValue(): JSX.Element {
+  private renderValue(): JSX.Element {
     return (
       <Container >
         <Row
@@ -93,7 +97,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     );
   }
 
-  renderInput(): JSX.Element {
+  private renderInput(): JSX.Element {
     const isValueValid = this.props.validate(this.state.value);
     const validationInputState = (isValueValid ? 'success' : 'error');
     return (
@@ -115,10 +119,6 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
         </Row>
       </Container>
     );
-  }
-
-  render(): JSX.Element {
-    return (this.state.edit) ? this.renderInput() : this.renderValue();
   }
 }
 

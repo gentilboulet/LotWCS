@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
+
 import { IAction }  from '../types/actions';
 
 export interface ICharacterHistoryProps {
@@ -7,8 +8,8 @@ export interface ICharacterHistoryProps {
   onDelete: (id: number) => void;
 }
 
-class CharacterHistory extends React.Component<ICharacterHistoryProps, object> {
-  render() {
+class CharacterHistory extends React.Component<ICharacterHistoryProps, {}> {
+  public render() {
     let idx: number = 0;
     return(
       <Container className="CharacterHistory">

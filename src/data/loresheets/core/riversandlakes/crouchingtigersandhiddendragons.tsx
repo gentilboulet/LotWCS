@@ -1,5 +1,5 @@
-import { ILoresheet } from '../../../../types/loresheets';
 import * as bonuses from '../../../../actions/bonuses';
+import { ILoresheet } from '../../../../types/loresheets';
 
 /* tslint:disable:max-line-length */
 export const crouchingtigersandhiddendragons: ILoresheet = {

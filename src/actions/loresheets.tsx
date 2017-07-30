@@ -17,18 +17,9 @@ export interface ILoresheetBuyOption {
 export type ILoresheetAction = ILoresheetOpen | ILoresheetBuyOption;
 
 export function open(uid: string, cost: ICost): ILoresheetOpen {
-  return {
-    type: constants.LORESHEET_OPEN,
-    uid: uid,
-    cost: cost,
-  };
+  return { cost, type: constants.LORESHEET_OPEN, uid };
 }
 
 export function buyOption(lsUid: string, uid: string, cost: ICost): ILoresheetBuyOption {
-  return {
-    type: constants.LORESHEET_BUY_OPTION,
-    lsUid: lsUid,
-    uid: uid,
-    cost: cost,
-  };
+  return { cost, lsUid, type: constants.LORESHEET_BUY_OPTION, uid };
 }

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './header.css';
 
 class Header extends React.Component<{}> {
-  render() {
+  public render() {
     return (
       <div className="header">
         <h1>Legends of the Wulin Character Sheet</h1>

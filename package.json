@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/classnames": "^2.2.0",
     "@types/jest": "^19.2.4",
     "@types/node": "^7.0.36",
     "@types/react": "^15.0.38",
@@ -12,6 +13,7 @@
     "@types/react-redux": "^4.4.41",
     "@types/react-router": "^4.0.14",
     "@types/react-router-dom": "^4.0.7",
+    "@types/reactstrap": "^4.3.7",
     "bootstrap": "^4.0.0-alpha.6",
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
@@ -30,16 +32,16 @@
     "typed-immutable-record": "0.0.6"
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.0",
     "@types/react-test-renderer": "^15.5.0",
-    "@types/reactstrap": "^4.3.7",
     "react-scripts-ts": "2.2.0",
-    "react-test-renderer": "^15.5.4"
+    "react-test-renderer": "^15.5.4",
+    "tslint-eslint-rules": "^4.1.1"
   },
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "lint": "tslint --project ."
   }
 }

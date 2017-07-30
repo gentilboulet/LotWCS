@@ -1,12 +1,18 @@
-import { makeTypedFactory } from 'typed-immutable-record';
 import * as Immutable from 'immutable';
-import { IStoreStateJS, IStoreState,
-  IStoreSkill, skillFactory, IStoreSkillSpeciality,
-  IStoreLoresheet, IStoreLoresheetOption } from '../types/state';
+import { makeTypedFactory } from 'typed-immutable-record';
+
+import {
+  IStoreLoresheet, IStoreLoresheetOption,
+  IStoreSkill, IStoreSkillSpeciality,
+  IStoreState, IStoreStateJS,
+  skillFactory,
+} from '../types/state';
 
 import { resetToInitialState } from '../actions/initial';
+
 import { IAction } from '../types/actions';
 import { IDataSkill } from '../types/skills';
+
 import { skills } from '../data/skills';
 
 export const defaultStateJS: IStoreStateJS = {
@@ -31,7 +37,6 @@ export const defaultStateJS: IStoreStateJS = {
   loresheetOptions: Immutable.List<IStoreLoresheetOption>([]),
   discounts: Immutable.List([]),
   bonuses: Immutable.List([]),
-
   history: Immutable.List<IAction>([resetToInitialState()]),
 };
 

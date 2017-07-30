@@ -1,7 +1,9 @@
 import * as React from 'react';
-import Collapsible from '../Collapsible';
-import { ILoresheetsCharacterLoresheetsProps } from '../CharacterLoresheets';
+
 import { ICost } from '../../types/costs';
+
+import { ILoresheetsCharacterLoresheetsProps } from '../CharacterLoresheets';
+import Collapsible from '../Collapsible';
 import SingleLoresheet from './SingleLoresheet';
 
 export interface ILoresheetCategoryProps {
@@ -13,8 +15,8 @@ export interface ILoresheetCategoryProps {
 }
 
 export default class LoresheetCategory extends
-  React.Component<ILoresheetCategoryProps, object> {
-    render() {
+  React.Component<ILoresheetCategoryProps, {}> {
+    public render() {
       return (
         <Collapsible title={this.props.category} color="info">
           {this.props.loresheets

@@ -1,6 +1,7 @@
 import * as constants from '../constants/skills';
-import { ICost } from '../types/costs';
 import { skills } from '../data/skills';
+
+import { ICost } from '../types/costs';
 import { IDataSkill } from '../types/skills';
 
 export interface ISkillBuy {
@@ -16,24 +17,14 @@ export interface ISkillSpecialityBuy {
   cost: ICost;
 }
 
-export type ISkillAction = ISkillBuy | ISkillSpecialityBuy
-;
+export type ISkillAction = ISkillBuy | ISkillSpecialityBuy;
 
-export function skillsBuy(s: string, c: ICost): ISkillBuy {
-  const foundSkill = skills.find((skill: IDataSkill) => { return skill.name === s; });
-  if (! foundSkill ) { throw 'Unknown skill "' + s + '"'; }
-  return {
-    type: constants.SKILLS_BUY,
-    name: s,
-    cost: c,
-  };
+export function skillsBuy(name: string, cost: ICost): ISkillBuy {
+  const foundSkill = skills.find((skill: IDataSkill) => (skill.name === name) );
+  if (! foundSkill ) { throw new Error('Unknown skill "' + name + '"'); }
+  return { cost, name, type: constants.SKILLS_BUY, };
 }
 
-export function skillSpecialityBuy(skill: string, speciality: string, c: ICost): ISkillSpecialityBuy {
-  return {
-    type: constants.SKILLS_SPECIALITY_BUY,
-    skill: skill,
-    speciality: speciality,
-    cost: c,
-  };
+export function skillSpecialityBuy(skill: string, speciality: string, cost: ICost): ISkillSpecialityBuy {
+  return { cost, skill, speciality, type: constants.SKILLS_SPECIALITY_BUY };
 }

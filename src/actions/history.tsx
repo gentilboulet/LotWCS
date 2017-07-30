@@ -8,8 +8,5 @@ export interface IhistoryDeleteUpTo {
 export type IHistoryAction = IhistoryDeleteUpTo;
 
 export function historyDeleteUpTo(id: number): IhistoryDeleteUpTo {
-  return {
-    type: constants.HISTORY_DELETE,
-    id: id,
-  };
+  return { type: constants.HISTORY_DELETE, id };
 }

@@ -1,32 +1,30 @@
 import { ISkillAction } from '../actions/skills';
-import { IStoreState, IStoreSkillJS, IStoreSkillSpecialityJS, specialityFactory } from '../types/state';
 import * as constants from '../constants/skills';
 import * as derived from '../containers/derived';
+import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState, specialityFactory } from '../types/state';
 
 // Sub Reducers
 import { applyCost } from './costs';
 import { pushToHistory } from './history';
 
 export function getSkillIndex(state: IStoreState, skillName: string): number {
- return state.get('skills')
- .findIndex((s: IStoreSkillJS) => { return s.name === skillName; });
+ return state.get('skills').findIndex((s: IStoreSkillJS) => (s.name === skillName));
 }
 
 export function increaseValue(state: IStoreState, skillName: string): void {
   const index = getSkillIndex(state, skillName);
 
   if (state.getIn(['skills', index]).value + 5 >  derived.maxSkillBonus(state)) {
-    throw 'Something went wrong, skill overflow';
+    throw new Error('Something went wrong, skill overflow');
   }
 
-  state.updateIn(['skills', index, 'value'], v => { return v + 5; });
+  state.updateIn(['skills', index, 'value'], v => (v + 5));
 }
 
 export function getSpecialityIndex(state: IStoreState, skillName: string, specialityName: string): number {
- const skillIndex = state.get('skills').findIndex((skill: IStoreSkillJS) => {
-  return skill.name === skillName; });
+ const skillIndex = getSkillIndex(state, skillName);
 
- if (skillIndex === -1) { throw 'Something went wrong, unknown skill for speciality'; }
+ if (skillIndex === -1) { throw new Error('Something went wrong, unknown skill for speciality'); }
 
  return state.get('skillSpecialities').findIndex((speciality: IStoreSkillSpecialityJS) => {
    return speciality.name === specialityName;
@@ -37,13 +35,13 @@ export function addSpeciality(state: IStoreState, skillName: string,  speciality
  const specialityIndex = getSpecialityIndex(state, skillName, specialityName);
 
  if (specialityIndex !== -1) {
-  throw 'Something went wrong, speciality already bought';
+  throw new Error('Something went wrong, speciality already bought');
  }
 
- state.updateIn(['skillSpecialities'], list => { return list.push(
-  specialityFactory({ skill: skillName, name: specialityName})
-  );
- });
+ state.updateIn(['skillSpecialities'], list => list.push(
+     specialityFactory({ skill: skillName, name: specialityName})
+   )
+ );
 }
 
 export function skillsReducer(oldState: IStoreState, action: ISkillAction): IStoreState {

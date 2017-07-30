@@ -1,15 +1,13 @@
 import * as React from 'react';
 
-import { Tabs, Tab } from '../components/Tabs';
 import PlaceHolder from '../components/PlaceHolder';
-import CharacterSkills from '../containers/CharacterSkills';
+import { Tab, Tabs } from '../components/Tabs';
 import CharacterHistory from '../containers/CharacterHistory';
 import CharacterLoresheets from '../containers/CharacterLoresheets';
+import CharacterSkills from '../containers/CharacterSkills';
 
-export interface ICharacterBodyProps {}
-
-class CharacterBody extends React.Component<ICharacterBodyProps, object> {
-  render() {
+class CharacterBody extends React.Component<{}, {}> {
+  public render() {
     return(
       <Tabs defaultTab="skills">
         <Tab title="Character Skills" tabId="skills">

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Button,
-  Col, Row, Container } from 'reactstrap';
 import Icon from 'react-fa';
+import { Button, Col, Container, Row } from 'reactstrap';
+
 import { ICost } from '../types/costs';
 
 import FieldHeader from './FieldHeader';
@@ -43,39 +43,7 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
     this.specialitiesList = this.specialitiesList.bind(this);
   }
 
-  startEdit() {
-      this.setState({edit: true});
-  }
-
-  endEdit() {
-    this.setState({
-      edit: false,
-    });
-  }
-
-  buySkill() {
-    this.props.onSkillBuy(this.props.name, this.props.cost);
-  }
-
-  renderHeader(): JSX.Element {
-    return <FieldHeader label={this.props.name} />;
-  }
-
-  specialitiesList(): JSX.Element {
-    return(
-      <div>
-      {this.props.specialities.map(
-        (s: IEditSkillSpecialityProps) => { return (s.bought ? s.name : ''); }
-      )}
-      </div>
-    );
-  }
-
-  renderButton(icon: string, f: () => void) {
-    return <Button onClick={f}><Icon name={icon}/></Button>;
-  }
-
-  render() {
+  public render() {
     if (!this.state.edit) {
       return(
         <Container>
@@ -103,6 +71,38 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
         </Container>
       );
     }
+  }
+
+  private startEdit() {
+      this.setState({edit: true});
+  }
+
+  private endEdit() {
+    this.setState({
+      edit: false,
+    });
+  }
+
+  private buySkill() {
+    this.props.onSkillBuy(this.props.name, this.props.cost);
+  }
+
+  private renderHeader(): JSX.Element {
+    return <FieldHeader label={this.props.name} />;
+  }
+
+  private specialitiesList(): JSX.Element {
+    return(
+      <div>
+      {this.props.specialities.map(
+        (s: IEditSkillSpecialityProps) => (s.bought ? s.name : '')
+      )}
+      </div>
+    );
+  }
+
+  private renderButton(icon: string, f: () => void) {
+    return <Button onClick={f}><Icon name={icon}/></Button>;
   }
 }
 

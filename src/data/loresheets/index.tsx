@@ -1,4 +1,5 @@
 import { ILoresheet, ILoresheetOption } from '../../types/loresheets';
+/* tslint:disable:ordered-imports */
 
 // Core rulebook //
 // Rivers and Lakes
@@ -24,10 +25,8 @@ export const loresheets: ILoresheet[] = Array(
 );
 
 export const loresheetsCategories: string[] =
-  loresheets.map( d => { return d.category; })
-            .filter(
-              (value: string, index: number, self: Array<string>) => { return self.indexOf(value) === index; }
-            );
+  loresheets.map( d => d.category )
+            .filter( (value: string, index: number, self: string[]) => (self.indexOf(value) === index) );
 
 export function lsOptionCostToValues(costStr: string): number[] {
   const DEFAULT_MAXIMUM = 10;
@@ -39,19 +38,19 @@ export function lsOptionCostToValues(costStr: string): number[] {
   } else if (singlePlus.test(costStr)) {
     const arr = singlePlus.exec(costStr);
     const min = Number((arr as string[])[1]);
-    return Array.from(new Array(DEFAULT_MAXIMUM).keys()).filter((v: number) => { return min <= v; });
+    return Array.from(new Array(DEFAULT_MAXIMUM).keys()).filter((v: number) => (min <= v));
   } else if (range.test(costStr)) {
     const arr = range.exec(costStr);
     const min = Number((arr as string[])[1]);
     const max = Number((arr as string[])[2]);
-    return Array.from(new Array(DEFAULT_MAXIMUM + 1).keys()).filter((v: number) => { return min <= v && v <= max; });
+    return Array.from(new Array(DEFAULT_MAXIMUM + 1).keys()).filter((v: number) => (min <= v && v <= max));
   } else {
-    throw 'lsOptionCostToValues unknown cost "' + costStr + '"';
+    throw new Error('lsOptionCostToValues unknown cost "' + costStr + '"');
   }
 }
 
 export function optionLS(lsUid: string, optUid: string): ILoresheetOption {
-  const idxLS = loresheets.findIndex(ls => { return ls.uid === lsUid; });
-  const idxOpt = loresheets[idxLS].options.findIndex(o => { return o.uid === optUid; });
+  const idxLS = loresheets.findIndex(ls => (ls.uid === lsUid));
+  const idxOpt = loresheets[idxLS].options.findIndex(o => (o.uid === optUid));
   return loresheets[idxLS].options[idxOpt];
 }

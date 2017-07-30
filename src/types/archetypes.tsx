@@ -5,4 +5,4 @@ export interface IDataArchetype {
   breath: string;
 }
 
-export interface IDataArchetypes extends Array<IDataArchetype> {}
+export type IDataArchetypes = Array<IDataArchetype>;

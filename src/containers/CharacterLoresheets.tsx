@@ -1,17 +1,22 @@
 import { connect, Dispatch } from 'react-redux';
-import CharacterLoresheets from '../components/CharacterLoresheets';
+
 import * as loresheetsActions from '../actions/loresheets';
-import { IStoreState } from '../types/state';
-import { canOpenLoresheet, getCostOpenLoresheet,
-  canBuyOptionLoresheet, getCostBuyOptionLoresheet } from './costs';
 import { getLoresheetIndex, getLoresheetOptionIndex } from '../reducers/loresheets';
+import { canBuyOptionLoresheet, canOpenLoresheet,
+  getCostBuyOptionLoresheet, getCostOpenLoresheet } from './costs';
+
 import { ICharacterLoresheetsProps,
   ILoresheetsCharacterLoresheetsProps, ILoresheetsOptionsCharacterLoresheetsProps,
   ILoresheetsOptionsCostCharacterLoresheetsProps
 } from '../components/CharacterLoresheets';
+
 import { ICost } from '../types/costs';
 import { ILoresheet, ILoresheetOption } from '../types/loresheets';
+import { IStoreState } from '../types/state';
+
 import { loresheets as dataLS, lsOptionCostToValues } from '../data/loresheets';
+
+import CharacterLoresheets from '../components/CharacterLoresheets';
 
 interface IMapStateToProps {
   loresheets: ILoresheetsCharacterLoresheetsProps[];
@@ -61,8 +66,8 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 
 function mapDispatchToProps(dispatch: Dispatch<loresheetsActions.ILoresheetAction>): IMapDispatchToProps {
   return {
+    onBuyOptionLS: (lsUid: string, uid: string, cost: ICost) => dispatch(loresheetsActions.buyOption(lsUid, uid, cost)),
     onOpenLS: (uid: string, cost: ICost) => dispatch(loresheetsActions.open(uid, cost)),
-    onBuyOptionLS: (lsUid: string, uid: string, cost: ICost) => dispatch(loresheetsActions.buyOption(lsUid, uid, cost))
   };
 }
 

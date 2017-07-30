@@ -1,7 +1,9 @@
-import CharacterHeader, { ICharacterHeaderProps } from '../components/CharacterHeader';
+import { connect, Dispatch } from 'react-redux';
+
 import * as headerActions from '../actions/header';
 import { IStoreState } from '../types/state';
-import { connect, Dispatch } from 'react-redux';
+
+import CharacterHeader, { ICharacterHeaderProps } from '../components/CharacterHeader';
 
 interface IMapStateToProps {
   name: string;
