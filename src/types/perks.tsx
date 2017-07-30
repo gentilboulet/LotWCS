@@ -1,4 +1,4 @@
 import { IBonus } from './bonuses';
-import { IReduction } from './reductions';
+import { IDiscount } from './discounts';
 
-export type IPerk = IBonus | IReduction;
+export type IPerk = IBonus | IDiscount;

@@ -1,10 +1,10 @@
 import { IStoreState,
   IStoreSkillJS, IStoreSkillSpecialityJS,
   IStoreLoresheetJS, IStoreLoresheetOptionJS } from '../types/state';
-import { IReduction } from '../types/reductions';
+import { IDiscount } from '../types/discounts';
 import { ILoresheetOptionPrerequisite } from '../types/loresheets';
 import { ICost } from '../types/costs';
-import * as constants from '../constants/reductions';
+import * as constants from '../constants/discounts';
 import * as derived from './derived';
 
 import { optionLS } from '../data/loresheets';
@@ -16,18 +16,18 @@ function _canHandleCost(state: IStoreState, cost: ICost): boolean {
   return true;
 }
 
-function _handleReduction(state: IStoreState, idx: number, cost: number): ICost {
+function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
   if (idx === -1) {
-    return { destiny: cost, entanglement: 0, reductionIdx: idx, reductionNewValue: 0};
+    return { destiny: cost, entanglement: 0, discountIdx: idx, discountNewValue: 0};
   } else {
-    const reduction = state.getIn(['reductions', idx]).value;
-    const remainingCost = Math.max(0, cost - reduction);
-    const usedReductionValue = cost - remainingCost;
+    const discount = state.getIn(['discounts', idx]).value;
+    const remainingCost = Math.max(0, cost - discount);
+    const usedDiscountValue = cost - remainingCost;
     return {
       destiny: remainingCost,
       entanglement: 0,
-      reductionIdx: idx,
-      reductionNewValue: reduction - usedReductionValue
+      discountIdx: idx,
+      discountNewValue: discount - usedDiscountValue
     };
   }
 }
@@ -55,13 +55,13 @@ export function canBuySkill(state: IStoreState, skill: string): boolean {
 export function getCostSkill(state: IStoreState, skill: string): ICost {
   const defCost = 2;
 
-  const idx = state.get('reductions')
-    .findIndex((r: IReduction) => {
-      return ( r.type === constants.REDUCTION_SKILL )
+  const idx = state.get('discounts')
+    .findIndex((r: IDiscount) => {
+      return ( r.type === constants.DISCOUNT_SKILL )
       && (r.skills.findIndex((s: string) => { return s === skill; }) >= 0);
     });
 
-  return _handleReduction(state, idx, defCost);
+  return _handleDiscount(state, idx, defCost);
 }
 
 export function canBuySpeciality(state: IStoreState, skill: string, speciality: string): boolean {
@@ -83,13 +83,13 @@ export function canBuySpeciality(state: IStoreState, skill: string, speciality: 
 export function getCostSpeciality(state: IStoreState, skill: string, speciality: string): ICost {
   const defCost = 1;
 
-  const idx = state.get('reductions')
-    .findIndex((r: IReduction) => {
-      return ( r.type === constants.REDUCTION_SKILL )
+  const idx = state.get('discounts')
+    .findIndex((r: IDiscount) => {
+      return ( r.type === constants.DISCOUNT_SKILL )
       && (r.skills.findIndex((s: string) => { return s === skill; }) >= 0);
     });
 
-  return _handleReduction(state, idx, defCost);
+  return _handleDiscount(state, idx, defCost);
 }
 
 export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
@@ -100,12 +100,12 @@ export function canOpenLoresheet(state: IStoreState, uid: string, openCost: numb
 }
 
 export function getCostOpenLoresheet(state: IStoreState, uid: string, cost: number): ICost {
-  const idx = state.get('reductions')
-    .findIndex((r: IReduction) => {
-      return ( r.type === constants.REDUCTION_LORESHEET )
+  const idx = state.get('discounts')
+    .findIndex((r: IDiscount) => {
+      return ( r.type === constants.DISCOUNT_LORESHEET )
       && (r.uids.findIndex((id: string) => { return id === uid; }) >= 0);
     });
-  return _handleReduction(state, idx, cost);
+  return _handleDiscount(state, idx, cost);
 }
 
 export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, buyCost: number): boolean {
@@ -140,12 +140,12 @@ export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: st
 }
 
 export function getCostBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, cost: number): ICost {
-  const idx = state.get('reductions')
-    .findIndex((r: IReduction) => {
-      return ( r.type === constants.REDUCTION_LORESHEET_OPTION )
+  const idx = state.get('discounts')
+    .findIndex((r: IDiscount) => {
+      return ( r.type === constants.DISCOUNT_LORESHEET_OPTION )
       && (r.uids.findIndex(id => { return id.lsUid === lsUid &&
         id.optUid.findIndex(optUid => { return optUid === uid; }) >= 0; })
       >= 0);
     });
-  return _handleReduction(state, idx, cost);
+  return _handleDiscount(state, idx, cost);
 }

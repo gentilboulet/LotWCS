@@ -1,5 +1,5 @@
-export const BONUS_REDUCTION = 'BONUS_REDUCTION';
-export type BONUS_REDUCTION = typeof BONUS_REDUCTION;
+export const BONUS_DISCOUNT = 'BONUS_DISCOUNT';
+export type BONUS_DISCOUNT = typeof BONUS_DISCOUNT;
 
 export const BONUS_DESTINY = 'BONUS_DESTINY';
 export type BONUS_DESTINY = typeof BONUS_DESTINY;

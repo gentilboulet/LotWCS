@@ -32,7 +32,7 @@ export const defaultStateJS: IStoreStateJS = {
   })),
 
   loresheets: Immutable.List<IStoreLoresheet>([]),
-  reductions: Immutable.List([]),
+  discounts: Immutable.List([]),
   bonuses: Immutable.List([]),
 
   history: Immutable.List<IAction>([resetToInitialState()]),

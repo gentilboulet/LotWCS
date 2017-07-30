@@ -8,6 +8,7 @@ Object {
   "chi": 0,
   "concept": "No Concept",
   "destiny": 0,
+  "discounts": Array [],
   "entanglement": 0,
   "history": Array [
     Object {
@@ -19,7 +20,6 @@ Object {
   "rank": "",
   "rankModified": false,
   "rankValue": -1,
-  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",

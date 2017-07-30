@@ -1,13 +1,13 @@
 export interface ICost {
   destiny: number;
   entanglement: number;
-  reductionIdx: number;
-  reductionNewValue: number;
+  discountIdx: number;
+  discountNewValue: number;
 }
 
 export const defaultCost: ICost = {
   destiny: 0,
   entanglement: 0,
-  reductionIdx: -1,
-  reductionNewValue: 0,
+  discountIdx: -1,
+  discountNewValue: 0,
 };

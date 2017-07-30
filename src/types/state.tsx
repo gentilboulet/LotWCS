@@ -1,7 +1,7 @@
 import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
 import * as Immutable from 'immutable';
 import { IAction } from '../types/actions';
-import { IReduction } from '../types/reductions';
+import { IDiscount } from '../types/discounts';
 import { IBonus } from '../types/bonuses';
 
 // Used as an object, not needed as an immutable map
@@ -61,7 +61,7 @@ export interface IStoreStateJS {
   chi: number;
   skills: Immutable.List<IStoreSkill>;
   loresheets: Immutable.List<IStoreLoresheet>;
-  reductions: Immutable.List<IReduction>;
+  discounts: Immutable.List<IDiscount>;
   bonuses: Immutable.List<IBonus>;
   history: Immutable.List<IAction>;
 }
