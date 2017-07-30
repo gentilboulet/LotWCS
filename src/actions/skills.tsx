@@ -9,7 +9,14 @@ export interface ISkillBuy {
   cost: ICost;
 }
 
-export type ISkillAction = ISkillBuy
+export interface ISkillSpecialityBuy {
+  type: constants.SKILLS_SPECIALITY_BUY;
+  skill: string;
+  speciality: string;
+  cost: ICost;
+}
+
+export type ISkillAction = ISkillBuy | ISkillSpecialityBuy
 ;
 
 export function skillsBuy(s: string, c: ICost): ISkillBuy {
@@ -18,6 +25,15 @@ export function skillsBuy(s: string, c: ICost): ISkillBuy {
   return {
     type: constants.SKILLS_BUY,
     name: s,
+    cost: c,
+  };
+}
+
+export function skillSpecialityBuy(skill: string, speciality: string, c: ICost): ISkillSpecialityBuy {
+  return {
+    type: constants.SKILLS_SPECIALITY_BUY,
+    skill: skill,
+    speciality: speciality,
     cost: c,
   };
 }

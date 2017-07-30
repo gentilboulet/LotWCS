@@ -1,9 +1,9 @@
-import { IStoreState, IStoreLoresheet } from '../types/state';
+import { IStoreState } from '../types/state';
 import { ILoresheet, ILoresheetOption } from '../types/loresheets';
 
 import { initialStateFactory } from './initial';
 import * as loresheetsActions from '../actions/loresheets';
-import { loresheetsReducer } from './loresheets';
+import { loresheetsReducer, getLoresheetIndex, getLoresheetOptionIndex } from './loresheets';
 import { globalReducer } from './global';
 
 import { loresheets } from '../data/loresheets';
@@ -18,15 +18,12 @@ describe('Testing loresheetsReducer', () => {
 
   it('should receive a LORESHEET_OPEN action', () => {
     loresheets.forEach((dataLoresheet: ILoresheet) => {
-      const indexLoresheet = initialState.get('loresheets')
-        .findIndex((loresheetInState: IStoreLoresheet) => {
-          return loresheetInState.uid === dataLoresheet.uid; });
-      expect( indexLoresheet ).toBe(-1); // Not found in the initial state
+
+      expect( getLoresheetIndex(initialState, dataLoresheet.uid) ).toBe(-1); // Not found in the initial state
 
       const action = loresheetsActions.open(dataLoresheet.uid, noCost);
       const state = loresheetsReducer(initialState, action);
-      expect( state.getIn(['loresheets', 0]).uid ).toBe(dataLoresheet.uid); // Expected at index 0
-      expect( globalReducer(initialState, action).getIn(['loresheets', 0]).uid ).toBe(dataLoresheet.uid);
+      expect( getLoresheetIndex(state, dataLoresheet.uid) ).toBe(0);
       // Why does this fail ??
       // expect( globalReducer(initialState, action) ).toMatchObject(state);
     });
@@ -36,12 +33,12 @@ describe('Testing loresheetsReducer', () => {
     loresheets.forEach((dataLoresheet: ILoresheet) => {
       const openLoresheetAction = loresheetsActions.open(dataLoresheet.uid, noCost);
       const stateWithLoresheet = loresheetsReducer(initialState, openLoresheetAction);
-      expect( stateWithLoresheet.getIn(['loresheets', 0]).uid ).toBe(dataLoresheet.uid); // Expected at index 0
+      expect( getLoresheetIndex(stateWithLoresheet, dataLoresheet.uid) ).toBe(0);
 
       dataLoresheet.options.forEach((option: ILoresheetOption) => {
         const buyOption = loresheetsActions.buyOption(dataLoresheet.uid, option.uid, noCost);
         const state = loresheetsReducer(stateWithLoresheet, buyOption);
-        expect( state.getIn(['loresheets', 0, 'options', 0, 'uid']) ).toBe(option.uid);
+        expect( getLoresheetOptionIndex(state, dataLoresheet.uid, option.uid) ).toBe(0);
         // Why does this fail ??
         // expect( globalReducer(stateWithLoresheet, buyOption) ).toMatchObject(state);
       });

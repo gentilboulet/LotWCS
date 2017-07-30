@@ -7,43 +7,48 @@ import { IBonus } from '../types/bonuses';
 // Used as an object, not needed as an immutable map
 export interface IStoreSkillSpecialityJS {
   name: string;
-  bought: boolean;
+  skill: string;
+}
+
+export interface IStoreSkillSpeciality extends TypedRecord<IStoreSkillSpeciality>, IStoreSkillSpecialityJS {}
+
+export function specialityFactory(s: IStoreSkillSpecialityJS): IStoreSkillSpeciality {
+  const defaultSpeciality: IStoreSkillSpecialityJS = { name: 'error', skill: 'error' };
+  const f = makeTypedFactory<IStoreSkillSpecialityJS, IStoreSkillSpeciality>(defaultSpeciality);
+  return f(s);
 }
 
 export interface IStoreSkillJS {
   name: string;
   value: number;
-  specialities: Immutable.List<IStoreSkillSpecialityJS>;
 }
 
 export interface IStoreSkill extends TypedRecord<IStoreSkill>, IStoreSkillJS {}
 
 export function skillFactory(s: IStoreSkillJS): IStoreSkill {
-  const defaultSkill = { name: 'error', value: NaN,
-    specialities: Immutable.List<IStoreSkillSpecialityJS>() };
+  const defaultSkill: IStoreSkillJS = { name: 'error', value: NaN };
   const f = makeTypedFactory<IStoreSkillJS, IStoreSkill>(defaultSkill);
   return f(s);
 }
 
 export interface IStoreLoresheetJS {
   uid: string;
-  options: Immutable.List<IStoreLoresheetOptionJS>;
 }
 
 export interface IStoreLoresheet extends TypedRecord<IStoreLoresheet>, IStoreLoresheetJS {}
 
 export function loresheetFactory(ls: IStoreLoresheetJS): IStoreLoresheet {
-  const defaultLS = { uid: 'error', options: Immutable.List<IStoreLoresheetOption>() };
+  const defaultLS: IStoreLoresheetJS = { uid: 'error' };
   const f = makeTypedFactory<IStoreLoresheetJS, IStoreLoresheet>(defaultLS);
   return f(ls);
 }
 
-export interface IStoreLoresheetOptionJS { uid: string; }
+export interface IStoreLoresheetOptionJS { loresheetUid: string; uid: string; }
 
 export interface IStoreLoresheetOption extends TypedRecord<IStoreLoresheetOption>, IStoreLoresheetOptionJS {}
 
 export function loresheetOptionFactory(option: IStoreLoresheetOptionJS): IStoreLoresheetOption {
-  const defaultOpt = { uid: 'error' };
+  const defaultOpt = { loresheetUid: 'error', uid: 'error' };
   const f = makeTypedFactory<IStoreLoresheetOptionJS, IStoreLoresheetOption>(defaultOpt);
   return f(option);
 }
@@ -60,7 +65,9 @@ export interface IStoreStateJS {
   destiny: number;
   chi: number;
   skills: Immutable.List<IStoreSkill>;
+  skillSpecialities: Immutable.List<IStoreSkillSpeciality>;
   loresheets: Immutable.List<IStoreLoresheet>;
+  loresheetOptions: Immutable.List<IStoreLoresheetOption>;
   discounts: Immutable.List<IDiscount>;
   bonuses: Immutable.List<IBonus>;
   history: Immutable.List<IAction>;

@@ -1,7 +1,7 @@
 import { IBonus, isBonus } from '../types/bonuses';
-import { IStoreState, IStoreSkillJS, IStoreSkillSpecialityJS } from '../types/state';
+import { IStoreState } from '../types/state';
+import * as skills from './skills';
 import * as constants from '../constants/bonuses';
-import * as derived from '../containers/derived';
 
 export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreState {
   return oldState.withMutations(state => {
@@ -20,28 +20,10 @@ export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreSt
           state.set('chi', bonus.value);
           break;
         case constants.BONUS_SKILL_RANK:
-          const index = state.get('skills')
-            .findIndex((s: IStoreSkillJS) => { return s.name === bonus.skill; });
-
-          if (state.getIn(['skills', index]).value + 5 >  derived.maxSkillBonus(state)) {
-            throw 'Something went wrong, skill overflow';
-          }
-
-          state.updateIn(['skills', index, 'value'], (value: number) => { return value + 5; });
+          skills.increaseValue(state, bonus.skill);
           break;
         case constants.BONUS_SPECIALITY:
-          const skillIndex = state.get('skills').findIndex((s: IStoreSkillJS) => { return s.name === bonus.skill; });
-          const specialities = state.getIn(['skills', skillIndex]).specialities;
-          const speIdx = specialities.findIn((spe: IStoreSkillSpecialityJS) => {
-            return spe.name === bonus.speciality;
-          });
-
-          if (state.getIn(['skills', skillIndex]).specialities[speIdx].bought) {
-            throw 'Something went wrong, speciality already bought';
-          }
-
-          state.setIn(['skills', skillIndex, 'specialities', speIdx, 'bought'], true);
-
+          skills.addSpeciality(state, bonus.skill, bonus.speciality);
           break;
         default:
           return;
