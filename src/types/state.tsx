@@ -4,7 +4,6 @@ import { IAction } from '../types/actions';
 import { IDiscount } from '../types/discounts';
 import { IBonus } from '../types/bonuses';
 
-// Used as an object, not needed as an immutable map
 export interface IStoreSkillSpecialityJS {
   name: string;
   skill: string;
@@ -102,6 +101,32 @@ export function defaultChiFactory(): IStoreChi {
   return f(defaultChi);
 }
 
+export interface IStoreKungFuTechniqueJS {
+  name: string;
+  uid: string;
+}
+export interface IStoreKungFuTechnique extends TypedRecord<IStoreKungFuTechnique>, IStoreKungFuTechniqueJS {}
+
+export function techniqueFactory(technique: IStoreKungFuTechniqueJS): IStoreKungFuTechnique {
+  const defaultTechnique: IStoreKungFuTechniqueJS = { name: 'error', uid: 'error' };
+  const f = makeTypedFactory<IStoreKungFuTechniqueJS, IStoreKungFuTechnique>(defaultTechnique);
+  return f(technique);
+}
+
+export interface IStoreKungFuJS {
+  name: string;
+  uid: string;
+  techniques: Immutable.List<IStoreKungFuTechnique>;
+}
+
+export function kungfuFactory(kungfu: IStoreKungFuJS): IStoreKungFu {
+  const defaultKungfu: IStoreKungFuJS = { name: 'error', uid: 'error', techniques: Immutable.List() };
+  const f = makeTypedFactory<IStoreKungFuJS, IStoreKungFu>(defaultKungfu);
+  return f(kungfu);
+}
+
+export interface IStoreKungFu extends TypedRecord<IStoreKungFu>, IStoreKungFuJS {}
+
 export interface IStoreStateJS {
   name: string;
   concept: string;
@@ -120,6 +145,8 @@ export interface IStoreStateJS {
   bonuses: Immutable.List<IBonus>;
   history: Immutable.List<IAction>;
   chi: IStoreChi;
+  externalKungFus: Immutable.List<IStoreKungFu>;
+  internalKungFus: Immutable.List<IStoreKungFu>;
 }
 
 export interface IStoreState extends TypedRecord<IStoreState>, IStoreStateJS {}

@@ -3,6 +3,7 @@ import { makeTypedFactory } from 'typed-immutable-record';
 
 import {
   defaultChiFactory,
+  IStoreKungFu, 
   IStoreLoresheet, IStoreLoresheetOption,
   IStoreSkill, IStoreSkillSpeciality,
   IStoreState, IStoreStateJS,
@@ -12,9 +13,8 @@ import {
 import { resetToInitialState } from '../actions/initial';
 
 import { IAction } from '../types/actions';
-import { IDataSkill } from '../types/skills';
 
-import { skills } from '../data/skills';
+import { IDataSkill, skills } from '../data/skills';
 
 export const defaultStateJS: IStoreStateJS = {
   name: 'No Name',
@@ -39,6 +39,8 @@ export const defaultStateJS: IStoreStateJS = {
   bonuses: Immutable.List([]),
   history: Immutable.List<IAction>([resetToInitialState()]),
   chi: defaultChiFactory(),
+  externalKungFus: Immutable.List<IStoreKungFu>([]),
+  internalKungFus: Immutable.List<IStoreKungFu>([]),
 };
 
 export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultStateJS);

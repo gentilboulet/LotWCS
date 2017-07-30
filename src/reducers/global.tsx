@@ -11,6 +11,9 @@ import { chiReducer } from '../reducers/chi';
 import * as initial from '../constants/initial';
 import { initialStateFactory } from '../reducers/initial';
 
+import * as kungfus from '../constants/kungfus';
+import { kungfuReducer } from '../reducers/kungfus';
+
 import * as history from '../constants/history';
 import { historyReducer } from '../reducers/history';
 
@@ -31,6 +34,11 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
       return chiReducer(state, action);
     case initial.INITIAL_STATE:
       return initialStateFactory();
+    case kungfus.KUNGFU_OPEN_STYLE:
+    case kungfus.KUNGFU_CUSTOM_NAME_FOR_STYLE:
+    case kungfus.KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE:
+    case kungfus.KUNGFU_BUY_TECHNIQUE:
+      return kungfuReducer(state, action);
     case skills.SKILLS_BUY:
       return skillsReducer(state, action);
     case loresheets.LORESHEET_OPEN:

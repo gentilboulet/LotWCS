@@ -1,4 +1,4 @@
-import { IChiActions } from '../actions/chi';
+import { IChiAction } from '../actions/chi';
 import { IStoreState, IChiNames, IChiCultivations, fromCultivationToChiName }
   from '../types/state';
 import * as constants from '../constants/chi';
@@ -32,7 +32,7 @@ export function getChiValue(state: IStoreState, chiName: IChiNames): number {
   return state.getIn(['chi', chiName]);
 }
 
-export function chiReducer(oldState: IStoreState, action: IChiActions): IStoreState {
+export function chiReducer(oldState: IStoreState, action: IChiAction): IStoreState {
   switch (action.type) {
     case constants.CHI_BUY:
       return oldState.withMutations(state => {

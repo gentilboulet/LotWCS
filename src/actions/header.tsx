@@ -1,9 +1,7 @@
 import * as constants from '../constants/header';
 
-import { archetypes } from '../data/archetypes';
-import { ranks } from '../data/ranks';
-import { IDataArchetype } from '../types/archetypes';
-import { IDataRank } from '../types/ranks';
+import { archetypes, IDataArchetype } from '../data/archetypes';
+import { IDataRank, ranks } from '../data/ranks';
 
 export interface IHeaderSetName {
   type: constants.HEADER_SET_NAME;

@@ -9,7 +9,7 @@ export interface IChiBuy {
   cost: ICost;
 }
 
-export type IChiActions = IChiBuy;
+export type IChiAction = IChiBuy;
 
 export function chiBuy(chi: IChiNames, value: number, cost: ICost): IChiBuy {
   return { type: constants.CHI_BUY, chiType: chi, value: value, cost: cost };

@@ -1,8 +1,7 @@
 import * as constants from '../constants/skills';
-import { skills } from '../data/skills';
+import { IDataSkill, skills } from '../data/skills';
 
 import { ICost } from '../types/costs';
-import { IDataSkill } from '../types/skills';
 
 export interface ISkillBuy {
   type: constants.SKILLS_BUY;

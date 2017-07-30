@@ -27,11 +27,13 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
+  "externalKungFus": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
     },
   ],
+  "internalKungFus": Array [],
   "loresheetOptions": Array [],
   "loresheets": Array [],
   "name": "No Name",
@@ -158,6 +160,7 @@ Object {
     },
   ],
   "entanglement": 0,
+  "externalKungFus": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -180,6 +183,7 @@ Object {
       "value": 2,
     },
   ],
+  "internalKungFus": Array [],
   "loresheetOptions": Array [],
   "loresheets": Array [],
   "name": "Roberts",
@@ -283,6 +287,7 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
+  "externalKungFus": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -292,6 +297,7 @@ Object {
       "type": "HEADER_SET_NAME",
     },
   ],
+  "internalKungFus": Array [],
   "loresheetOptions": Array [],
   "loresheets": Array [],
   "name": "Roberts",
@@ -395,6 +401,7 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
+  "externalKungFus": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
@@ -404,6 +411,7 @@ Object {
       "type": "HEADER_SET_NAME",
     },
   ],
+  "internalKungFus": Array [],
   "loresheetOptions": Array [],
   "loresheets": Array [],
   "name": "John",

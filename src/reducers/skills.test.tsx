@@ -1,8 +1,7 @@
 import { IStoreState } from '../types/state';
 import { ISkillAction } from '../actions/skills';
 
-import { skills } from '../data/skills';
-import { IDataSkill } from '../types/skills';
+import { IDataSkill, skills } from '../data/skills';
 
 import { initialStateFactory } from './initial';
 import * as actions from '../actions/skills';

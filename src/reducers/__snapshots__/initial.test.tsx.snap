@@ -27,11 +27,13 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
+  "externalKungFus": Array [],
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
     },
   ],
+  "internalKungFus": Array [],
   "loresheetOptions": Array [],
   "loresheets": Array [],
   "name": "No Name",
