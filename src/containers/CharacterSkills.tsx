@@ -20,7 +20,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
       return {
         name: skill.name,
         value: skill.value,
-        specialities: skill.specialities.map( (speciality: ISpecialityProps) => {
+        specialities: state.get('skillSpecialities').map( (speciality: ISpecialityProps) => {
           return {
             name: speciality.name,
             bought: speciality.bought,

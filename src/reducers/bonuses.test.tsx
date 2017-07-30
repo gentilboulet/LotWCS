@@ -4,6 +4,7 @@ import { initialStateFactory } from './initial';
 import * as actions from '../actions/bonuses';
 import { IBonus } from '../types/bonuses';
 import { applyBonuses } from './bonuses';
+import { getSkillIndex, getSpecialityIndex } from './skills';
 
 const initialState: IStoreState  = initialStateFactory();
 
@@ -32,8 +33,20 @@ describe('Testing applyBonuses', () => {
   it('should receive a BONUS_SKILL_RANK action', () => {
     const bonuses = [actions.skillRank('Awareness')];
     const state = applyBonuses(initialState, bonuses);
+    expect( getSkillIndex(initialState, 'Awareness') ).toBe(0);
     expect( initialState.getIn(['skills', 0, 'value']) ).toBe(0);
     expect( state.getIn(['skills', 0, 'value']) ).toBe(5);
+  });
+
+  it('should receive a BONUS_SPECIALITY action', () => {
+    const testSkill = 'Awareness';
+    const testSpeciality = 'Hear';
+
+    const bonuses = [actions.speciality(testSkill, testSpeciality)];
+    const state = applyBonuses(initialState, bonuses);
+
+    expect( getSpecialityIndex(initialState, testSkill, testSpeciality) ).toBe(-1);
+    expect( getSpecialityIndex(state, testSkill, testSpeciality) ).toBe(0);
   });
 
   it('should handle an empty list', () => {

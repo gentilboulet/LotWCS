@@ -1,10 +1,21 @@
 import { ILoresheetAction } from '../actions/loresheets';
-import { IStoreState, IStoreLoresheetJS, IStoreLoresheetOptionJS,
+import { IStoreState, IStoreLoresheet, IStoreLoresheetOption,
   loresheetFactory, loresheetOptionFactory } from '../types/state';
 import * as constants from '../constants/loresheets';
 import { pushToHistory } from './history';
 import { applyCost } from './costs';
 import * as Immutable from 'immutable';
+
+export function getLoresheetIndex(state: IStoreState, loresheetUid: string): number {
+  return state.get('loresheets').findIndex((loresheetInState: IStoreLoresheet) => {
+      return loresheetInState.uid === loresheetUid; });
+}
+
+export function getLoresheetOptionIndex(state: IStoreState, loresheetUid: string, loresheetOptionUid: string): number {
+  return state.get('loresheetOptions').findIndex((optionsInState: IStoreLoresheetOption) => {
+    return optionsInState.loresheetUid === loresheetUid && optionsInState.uid === loresheetOptionUid;
+  });
+}
 
 export function loresheetsReducer(oldState: IStoreState, action: ILoresheetAction): IStoreState {
   switch (action.type) {
@@ -12,9 +23,9 @@ export function loresheetsReducer(oldState: IStoreState, action: ILoresheetActio
       return oldState.withMutations(state => {
         applyCost(state, action.cost);
 
-        state.updateIn(['loresheets'], (list) => {
+        state.updateIn(['loresheets'], (list: Immutable.List<IStoreLoresheet>) => {
           const newLoresheet =
-            loresheetFactory({ uid: action.uid, options: Immutable.List<IStoreLoresheetOptionJS>() });
+            loresheetFactory({ uid: action.uid });
           return list.push(newLoresheet);
         });
 
@@ -24,12 +35,12 @@ export function loresheetsReducer(oldState: IStoreState, action: ILoresheetActio
       return oldState.withMutations(state => {
         applyCost(state, action.cost);
 
-        const loresheetIndex = state.getIn(['loresheets']).findIndex((ls: IStoreLoresheetJS) => {
+        const loresheetIndex = state.getIn(['loresheets']).findIndex((ls: IStoreLoresheet) => {
           return ls.uid === action.lsUid;
         });
-
-        state.updateIn(['loresheets', loresheetIndex, 'options'], (list: Immutable.List<IStoreLoresheetOptionJS>) => {
-          const newOption = loresheetOptionFactory({ uid: action.uid });
+        if (loresheetIndex === -1) { throw 'Internal error : loresheet not found'; }
+        state.updateIn(['loresheetOptions'], (list: Immutable.List<IStoreLoresheetOption>) => {
+          const newOption = loresheetOptionFactory({ loresheetUid: action.lsUid, uid: action.uid });
           return list.push(newOption);
         });
 
