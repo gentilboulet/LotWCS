@@ -50,7 +50,7 @@ export function isBonus(bonus: any): boolean {
     case constants.BONUS_SKILL_RANK:
     case constants.BONUS_SPECIALITY:
       return true;
-    case constants.BONUS_REDUCTION:
+    case constants.BONUS_DISCOUNT:
     default:
       return false;
   }

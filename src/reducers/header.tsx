@@ -4,9 +4,9 @@ import * as constants from '../constants/header';
 
 // Sub Reducers
 import { IBonus } from '../types/bonuses';
-import { IReduction } from '../types/reductions';
+import { IDiscount } from '../types/discounts';
 import { applyBonuses } from './bonuses';
-import { pushToReductions } from './reductions';
+import { pushToDiscounts } from './discounts';
 import { pushToHistory } from './history';
 
 export function headerReducer(oldState: IStoreState, action: IHeaderAction): IStoreState {
@@ -27,7 +27,7 @@ export function headerReducer(oldState: IStoreState, action: IHeaderAction): ISt
         state.set('rankModified', true);
         state.set('rankValue', action.value);
         applyBonuses(state, action.perks as IBonus[]);
-        pushToReductions(state, action.perks as IReduction[]);
+        pushToDiscounts(state, action.perks as IDiscount[]);
         pushToHistory(state, action);
       });
     case constants.HEADER_SET_ARCHETYPE:

@@ -8,6 +8,7 @@ Object {
   "chi": 0,
   "concept": "No Concept",
   "destiny": 0,
+  "discounts": Array [],
   "entanglement": 0,
   "history": Array [
     Object {
@@ -19,7 +20,6 @@ Object {
   "rank": "",
   "rankModified": false,
   "rankValue": -1,
-  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",
@@ -461,6 +461,30 @@ Object {
   "chi": 10,
   "concept": "Dread pirate Roberts",
   "destiny": 20,
+  "discounts": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+  ],
   "entanglement": 0,
   "history": Array [
     Object {
@@ -503,7 +527,7 @@ Object {
             "Tactics",
             "Wu Wei",
           ],
-          "type": "REDUCTION_SKILL",
+          "type": "DISCOUNT_SKILL",
           "value": 20,
         },
         Object {
@@ -521,30 +545,6 @@ Object {
   "rank": "4th_rank",
   "rankModified": true,
   "rankValue": 2,
-  "reductions": Array [
-    Object {
-      "skills": Array [
-        "Awareness",
-        "Confidence",
-        "Crafting",
-        "Finesse",
-        "Hardiness",
-        "Inspire",
-        "Learning",
-        "Medicine",
-        "Might",
-        "Perform",
-        "Politics",
-        "Ride",
-        "Stealth",
-        "Survival",
-        "Tactics",
-        "Wu Wei",
-      ],
-      "type": "REDUCTION_SKILL",
-      "value": 20,
-    },
-  ],
   "skills": Array [
     Object {
       "name": "Awareness",
@@ -986,6 +986,7 @@ Object {
   "chi": 0,
   "concept": "No Concept",
   "destiny": 0,
+  "discounts": Array [],
   "entanglement": 0,
   "history": Array [
     Object {
@@ -1001,7 +1002,6 @@ Object {
   "rank": "",
   "rankModified": false,
   "rankValue": -1,
-  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",
@@ -1443,6 +1443,7 @@ Object {
   "chi": 0,
   "concept": "No Concept",
   "destiny": 0,
+  "discounts": Array [],
   "entanglement": 0,
   "history": Array [
     Object {
@@ -1458,7 +1459,6 @@ Object {
   "rank": "",
   "rankModified": false,
   "rankValue": -1,
-  "reductions": Array [],
   "skills": Array [
     Object {
       "name": "Awareness",

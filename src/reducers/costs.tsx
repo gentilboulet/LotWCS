@@ -1,7 +1,7 @@
 import { IStoreState } from '../types/state';
 import { ICost } from '../types/costs';
 
-import { updateReductions } from './reductions';
+import { updateDiscounts } from './discounts';
 
 export function applyCost(oldState: IStoreState, cost: ICost): IStoreState {
   // I don't know why, tests do not trigger a tslint error
@@ -12,6 +12,6 @@ export function applyCost(oldState: IStoreState, cost: ICost): IStoreState {
 
     if (state.get('destiny') < 0) { throw 'Negative destiny reached'; }
     if (state.get('entanglement') < 0) { throw 'Negative entanglement reached'; }
-    updateReductions(state, cost);
+    updateDiscounts(state, cost);
   });
 }

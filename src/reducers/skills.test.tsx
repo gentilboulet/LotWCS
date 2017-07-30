@@ -14,7 +14,7 @@ const initialState: IStoreState  = initialStateFactory();
 describe('Testing skillsReducer', () => {
   const noCost = {
     destiny: 0, entanglement: 0,
-    reductionIdx: -1, reductionNewValue: 0
+    discountIdx: -1, discountNewValue: 0
   };
 
   it('should receive a SKILLS_BUY action', () => {
