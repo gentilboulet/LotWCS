@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`JUNK_ACTION 1`] = `
+exports[`Testing historyReducer should do nothing with a junk action 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
@@ -453,7 +453,532 @@ Object {
 }
 `;
 
-exports[`deleteHistory 1`] = `
+exports[`Testing historyReducer should receive an HISTORY_DELETE action 1`] = `
+Object {
+  "archetype": "warrior",
+  "archetypeModified": true,
+  "bonuses": Array [],
+  "chi": 10,
+  "concept": "Dread pirate Roberts",
+  "destiny": 20,
+  "entanglement": 0,
+  "history": Array [
+    Object {
+      "type": "INITIAL_STATE",
+    },
+    Object {
+      "name": "Roberts",
+      "type": "HEADER_SET_NAME",
+    },
+    Object {
+      "concept": "Dread pirate Roberts",
+      "type": "HEADER_SET_CONCEPT",
+    },
+    Object {
+      "archetype": "warrior",
+      "type": "HEADER_SET_ARCHETYPE",
+    },
+    Object {
+      "perks": Array [
+        Object {
+          "type": "BONUS_DESTINY",
+          "value": 20,
+        },
+        Object {
+          "skills": Array [
+            "Awareness",
+            "Confidence",
+            "Crafting",
+            "Finesse",
+            "Hardiness",
+            "Inspire",
+            "Learning",
+            "Medicine",
+            "Might",
+            "Perform",
+            "Politics",
+            "Ride",
+            "Stealth",
+            "Survival",
+            "Tactics",
+            "Wu Wei",
+          ],
+          "type": "REDUCTION_SKILL",
+          "value": 20,
+        },
+        Object {
+          "type": "BONUS_STARTING_CHI",
+          "value": 10,
+        },
+      ],
+      "rank": "4th_rank",
+      "type": "HEADER_SET_RANK",
+      "value": 2,
+    },
+  ],
+  "loresheets": Array [],
+  "name": "Roberts",
+  "rank": "4th_rank",
+  "rankModified": true,
+  "rankValue": 2,
+  "reductions": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "REDUCTION_SKILL",
+      "value": 20,
+    },
+  ],
+  "skills": Array [
+    Object {
+      "name": "Awareness",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Hear",
+        },
+        Object {
+          "bought": false,
+          "name": "See",
+        },
+        Object {
+          "bought": false,
+          "name": "Smell",
+        },
+        Object {
+          "bought": false,
+          "name": "Taste",
+        },
+        Object {
+          "bought": false,
+          "name": "Touch",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Confidence",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Appear steadfast",
+        },
+        Object {
+          "bought": false,
+          "name": "Focus on Breath (for Courtiers)",
+        },
+        Object {
+          "bought": false,
+          "name": "Recover from the Disorient Marvel",
+        },
+        Object {
+          "bought": false,
+          "name": "Resist Courtier’s Arts",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Crafting",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Armor",
+        },
+        Object {
+          "bought": false,
+          "name": "Buildings",
+        },
+        Object {
+          "bought": false,
+          "name": "Cloth",
+        },
+        Object {
+          "bought": false,
+          "name": "Cooking",
+        },
+        Object {
+          "bought": false,
+          "name": "Gardening",
+        },
+        Object {
+          "bought": false,
+          "name": "Painting",
+        },
+        Object {
+          "bought": false,
+          "name": "Tools",
+        },
+        Object {
+          "bought": false,
+          "name": "Weapons",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Finesse",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Acrobatics",
+        },
+        Object {
+          "bought": false,
+          "name": "Cheating",
+        },
+        Object {
+          "bought": false,
+          "name": "Escaping Bonds",
+        },
+        Object {
+          "bought": false,
+          "name": "Picking Pockets",
+        },
+        Object {
+          "bought": false,
+          "name": "Sleight of Hand",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Hardiness",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Disease",
+        },
+        Object {
+          "bought": false,
+          "name": "Focusing on Breath (for Warriors)",
+        },
+        Object {
+          "bought": false,
+          "name": "Poison",
+        },
+        Object {
+          "bought": false,
+          "name": "Recovering From Injuries",
+        },
+        Object {
+          "bought": false,
+          "name": "Staying Awake",
+        },
+        Object {
+          "bought": false,
+          "name": "Enduring Torture",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Inspire",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Debating",
+        },
+        Object {
+          "bought": false,
+          "name": "Intimidation",
+        },
+        Object {
+          "bought": false,
+          "name": "Outright Lies",
+        },
+        Object {
+          "bought": false,
+          "name": "Public Speeches",
+        },
+        Object {
+          "bought": false,
+          "name": "Specific Courtier’s Arts techniques",
+        },
+        Object {
+          "bought": false,
+          "name": "Spinning the Facts",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Learning",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Calligraphy",
+        },
+        Object {
+          "bought": false,
+          "name": "Focus on Breath (for Scholars)",
+        },
+        Object {
+          "bought": false,
+          "name": "History",
+        },
+        Object {
+          "bought": false,
+          "name": "Math",
+        },
+        Object {
+          "bought": false,
+          "name": "Other Cultures",
+        },
+        Object {
+          "bought": false,
+          "name": "Philosophy",
+        },
+        Object {
+          "bought": false,
+          "name": "Specific Scholar’s Arts Techniques",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Medicine",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Disease",
+        },
+        Object {
+          "bought": false,
+          "name": "Focus on Breath (for Doctors)",
+        },
+        Object {
+          "bought": false,
+          "name": "Injuries",
+        },
+        Object {
+          "bought": false,
+          "name": "Poison",
+        },
+        Object {
+          "bought": false,
+          "name": "Pressure Points",
+        },
+        Object {
+          "bought": false,
+          "name": "Specific Doctor’s Arts Techniques",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Might",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Breaking",
+        },
+        Object {
+          "bought": false,
+          "name": "Lifting",
+        },
+        Object {
+          "bought": false,
+          "name": "Pushing",
+        },
+        Object {
+          "bought": false,
+          "name": "Throwing",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Perform",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Acting",
+        },
+        Object {
+          "bought": false,
+          "name": "Ceremonial Performances",
+        },
+        Object {
+          "bought": false,
+          "name": "Dancing",
+        },
+        Object {
+          "bought": false,
+          "name": "Poetry",
+        },
+        Object {
+          "bought": false,
+          "name": "Singing",
+        },
+        Object {
+          "bought": false,
+          "name": "Music",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Politics",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Specific region or faction",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Ride",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Caring for Your Horse",
+        },
+        Object {
+          "bought": false,
+          "name": "Coaxing Your Horse into Dangerous Terrain",
+        },
+        Object {
+          "bought": false,
+          "name": "Racing",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Stealth",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Camouflage",
+        },
+        Object {
+          "bought": false,
+          "name": "Deception",
+        },
+        Object {
+          "bought": false,
+          "name": "Eavesdropping",
+        },
+        Object {
+          "bought": false,
+          "name": "In Shadows",
+        },
+        Object {
+          "bought": false,
+          "name": "Silence",
+        },
+        Object {
+          "bought": false,
+          "name": "Smuggling",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Survival",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "At Sea",
+        },
+        Object {
+          "bought": false,
+          "name": "Cities",
+        },
+        Object {
+          "bought": false,
+          "name": "Deserts",
+        },
+        Object {
+          "bought": false,
+          "name": "Forests",
+        },
+        Object {
+          "bought": false,
+          "name": "Mountains",
+        },
+        Object {
+          "bought": false,
+          "name": "Prisons",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Tactics",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Battlefield Analysis",
+        },
+        Object {
+          "bought": false,
+          "name": "Disruption",
+        },
+        Object {
+          "bought": false,
+          "name": "Escorting Caravans",
+        },
+        Object {
+          "bought": false,
+          "name": "Sieging Fortresses",
+        },
+        Object {
+          "bought": false,
+          "name": "Specific Warrior’s Arts Techniques",
+        },
+      ],
+      "value": 0,
+    },
+    Object {
+      "name": "Wu Wei",
+      "specialities": Array [
+        Object {
+          "bought": false,
+          "name": "Focusing on Breath (for Priests)",
+        },
+        Object {
+          "bought": false,
+          "name": "Resisting Curses",
+        },
+        Object {
+          "bought": false,
+          "name": "Sensing Chi",
+        },
+        Object {
+          "bought": false,
+          "name": "Social Perception",
+        },
+        Object {
+          "bought": false,
+          "name": "Specific Priest’s Arts Techniques",
+        },
+      ],
+      "value": 0,
+    },
+  ],
+}
+`;
+
+exports[`Testing historyReducer should receive an HISTORY_DELETE action 2`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
@@ -467,12 +992,12 @@ Object {
       "type": "INITIAL_STATE",
     },
     Object {
-      "name": "SetName",
+      "name": "Roberts",
       "type": "HEADER_SET_NAME",
     },
   ],
   "loresheets": Array [],
-  "name": "SetName",
+  "name": "Roberts",
   "rank": "",
   "rankModified": false,
   "rankValue": -1,
@@ -910,460 +1435,7 @@ Object {
 }
 `;
 
-exports[`initialState 1`] = `
-Object {
-  "archetype": "",
-  "archetypeModified": false,
-  "bonuses": Array [],
-  "chi": 0,
-  "concept": "No Concept",
-  "destiny": 0,
-  "entanglement": 0,
-  "history": Array [
-    Object {
-      "type": "INITIAL_STATE",
-    },
-  ],
-  "loresheets": Array [],
-  "name": "No Name",
-  "rank": "",
-  "rankModified": false,
-  "rankValue": -1,
-  "reductions": Array [],
-  "skills": Array [
-    Object {
-      "name": "Awareness",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Hear",
-        },
-        Object {
-          "bought": false,
-          "name": "See",
-        },
-        Object {
-          "bought": false,
-          "name": "Smell",
-        },
-        Object {
-          "bought": false,
-          "name": "Taste",
-        },
-        Object {
-          "bought": false,
-          "name": "Touch",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Confidence",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Appear steadfast",
-        },
-        Object {
-          "bought": false,
-          "name": "Focus on Breath (for Courtiers)",
-        },
-        Object {
-          "bought": false,
-          "name": "Recover from the Disorient Marvel",
-        },
-        Object {
-          "bought": false,
-          "name": "Resist Courtier’s Arts",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Crafting",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Armor",
-        },
-        Object {
-          "bought": false,
-          "name": "Buildings",
-        },
-        Object {
-          "bought": false,
-          "name": "Cloth",
-        },
-        Object {
-          "bought": false,
-          "name": "Cooking",
-        },
-        Object {
-          "bought": false,
-          "name": "Gardening",
-        },
-        Object {
-          "bought": false,
-          "name": "Painting",
-        },
-        Object {
-          "bought": false,
-          "name": "Tools",
-        },
-        Object {
-          "bought": false,
-          "name": "Weapons",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Finesse",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Acrobatics",
-        },
-        Object {
-          "bought": false,
-          "name": "Cheating",
-        },
-        Object {
-          "bought": false,
-          "name": "Escaping Bonds",
-        },
-        Object {
-          "bought": false,
-          "name": "Picking Pockets",
-        },
-        Object {
-          "bought": false,
-          "name": "Sleight of Hand",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Hardiness",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Disease",
-        },
-        Object {
-          "bought": false,
-          "name": "Focusing on Breath (for Warriors)",
-        },
-        Object {
-          "bought": false,
-          "name": "Poison",
-        },
-        Object {
-          "bought": false,
-          "name": "Recovering From Injuries",
-        },
-        Object {
-          "bought": false,
-          "name": "Staying Awake",
-        },
-        Object {
-          "bought": false,
-          "name": "Enduring Torture",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Inspire",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Debating",
-        },
-        Object {
-          "bought": false,
-          "name": "Intimidation",
-        },
-        Object {
-          "bought": false,
-          "name": "Outright Lies",
-        },
-        Object {
-          "bought": false,
-          "name": "Public Speeches",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Courtier’s Arts techniques",
-        },
-        Object {
-          "bought": false,
-          "name": "Spinning the Facts",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Learning",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Calligraphy",
-        },
-        Object {
-          "bought": false,
-          "name": "Focus on Breath (for Scholars)",
-        },
-        Object {
-          "bought": false,
-          "name": "History",
-        },
-        Object {
-          "bought": false,
-          "name": "Math",
-        },
-        Object {
-          "bought": false,
-          "name": "Other Cultures",
-        },
-        Object {
-          "bought": false,
-          "name": "Philosophy",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Scholar’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Medicine",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Disease",
-        },
-        Object {
-          "bought": false,
-          "name": "Focus on Breath (for Doctors)",
-        },
-        Object {
-          "bought": false,
-          "name": "Injuries",
-        },
-        Object {
-          "bought": false,
-          "name": "Poison",
-        },
-        Object {
-          "bought": false,
-          "name": "Pressure Points",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Doctor’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Might",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Breaking",
-        },
-        Object {
-          "bought": false,
-          "name": "Lifting",
-        },
-        Object {
-          "bought": false,
-          "name": "Pushing",
-        },
-        Object {
-          "bought": false,
-          "name": "Throwing",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Perform",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Acting",
-        },
-        Object {
-          "bought": false,
-          "name": "Ceremonial Performances",
-        },
-        Object {
-          "bought": false,
-          "name": "Dancing",
-        },
-        Object {
-          "bought": false,
-          "name": "Poetry",
-        },
-        Object {
-          "bought": false,
-          "name": "Singing",
-        },
-        Object {
-          "bought": false,
-          "name": "Music",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Politics",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Specific region or faction",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Ride",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Caring for Your Horse",
-        },
-        Object {
-          "bought": false,
-          "name": "Coaxing Your Horse into Dangerous Terrain",
-        },
-        Object {
-          "bought": false,
-          "name": "Racing",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Stealth",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Camouflage",
-        },
-        Object {
-          "bought": false,
-          "name": "Deception",
-        },
-        Object {
-          "bought": false,
-          "name": "Eavesdropping",
-        },
-        Object {
-          "bought": false,
-          "name": "In Shadows",
-        },
-        Object {
-          "bought": false,
-          "name": "Silence",
-        },
-        Object {
-          "bought": false,
-          "name": "Smuggling",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Survival",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "At Sea",
-        },
-        Object {
-          "bought": false,
-          "name": "Cities",
-        },
-        Object {
-          "bought": false,
-          "name": "Deserts",
-        },
-        Object {
-          "bought": false,
-          "name": "Forests",
-        },
-        Object {
-          "bought": false,
-          "name": "Mountains",
-        },
-        Object {
-          "bought": false,
-          "name": "Prisons",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Tactics",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Battlefield Analysis",
-        },
-        Object {
-          "bought": false,
-          "name": "Disruption",
-        },
-        Object {
-          "bought": false,
-          "name": "Escorting Caravans",
-        },
-        Object {
-          "bought": false,
-          "name": "Sieging Fortresses",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Warrior’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Wu Wei",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Focusing on Breath (for Priests)",
-        },
-        Object {
-          "bought": false,
-          "name": "Resisting Curses",
-        },
-        Object {
-          "bought": false,
-          "name": "Sensing Chi",
-        },
-        Object {
-          "bought": false,
-          "name": "Social Perception",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Priest’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-  ],
-}
-`;
-
-exports[`pushToHistory 1`] = `
+exports[`Testing replayHistory should replay an history of actions 1`] = `
 Object {
   "archetype": "",
   "archetypeModified": false,
@@ -1377,469 +1449,12 @@ Object {
       "type": "INITIAL_STATE",
     },
     Object {
-      "name": "Dummy name",
+      "name": "John",
       "type": "HEADER_SET_NAME",
     },
   ],
   "loresheets": Array [],
-  "name": "No Name",
-  "rank": "",
-  "rankModified": false,
-  "rankValue": -1,
-  "reductions": Array [],
-  "skills": Array [
-    Object {
-      "name": "Awareness",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Hear",
-        },
-        Object {
-          "bought": false,
-          "name": "See",
-        },
-        Object {
-          "bought": false,
-          "name": "Smell",
-        },
-        Object {
-          "bought": false,
-          "name": "Taste",
-        },
-        Object {
-          "bought": false,
-          "name": "Touch",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Confidence",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Appear steadfast",
-        },
-        Object {
-          "bought": false,
-          "name": "Focus on Breath (for Courtiers)",
-        },
-        Object {
-          "bought": false,
-          "name": "Recover from the Disorient Marvel",
-        },
-        Object {
-          "bought": false,
-          "name": "Resist Courtier’s Arts",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Crafting",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Armor",
-        },
-        Object {
-          "bought": false,
-          "name": "Buildings",
-        },
-        Object {
-          "bought": false,
-          "name": "Cloth",
-        },
-        Object {
-          "bought": false,
-          "name": "Cooking",
-        },
-        Object {
-          "bought": false,
-          "name": "Gardening",
-        },
-        Object {
-          "bought": false,
-          "name": "Painting",
-        },
-        Object {
-          "bought": false,
-          "name": "Tools",
-        },
-        Object {
-          "bought": false,
-          "name": "Weapons",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Finesse",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Acrobatics",
-        },
-        Object {
-          "bought": false,
-          "name": "Cheating",
-        },
-        Object {
-          "bought": false,
-          "name": "Escaping Bonds",
-        },
-        Object {
-          "bought": false,
-          "name": "Picking Pockets",
-        },
-        Object {
-          "bought": false,
-          "name": "Sleight of Hand",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Hardiness",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Disease",
-        },
-        Object {
-          "bought": false,
-          "name": "Focusing on Breath (for Warriors)",
-        },
-        Object {
-          "bought": false,
-          "name": "Poison",
-        },
-        Object {
-          "bought": false,
-          "name": "Recovering From Injuries",
-        },
-        Object {
-          "bought": false,
-          "name": "Staying Awake",
-        },
-        Object {
-          "bought": false,
-          "name": "Enduring Torture",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Inspire",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Debating",
-        },
-        Object {
-          "bought": false,
-          "name": "Intimidation",
-        },
-        Object {
-          "bought": false,
-          "name": "Outright Lies",
-        },
-        Object {
-          "bought": false,
-          "name": "Public Speeches",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Courtier’s Arts techniques",
-        },
-        Object {
-          "bought": false,
-          "name": "Spinning the Facts",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Learning",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Calligraphy",
-        },
-        Object {
-          "bought": false,
-          "name": "Focus on Breath (for Scholars)",
-        },
-        Object {
-          "bought": false,
-          "name": "History",
-        },
-        Object {
-          "bought": false,
-          "name": "Math",
-        },
-        Object {
-          "bought": false,
-          "name": "Other Cultures",
-        },
-        Object {
-          "bought": false,
-          "name": "Philosophy",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Scholar’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Medicine",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Disease",
-        },
-        Object {
-          "bought": false,
-          "name": "Focus on Breath (for Doctors)",
-        },
-        Object {
-          "bought": false,
-          "name": "Injuries",
-        },
-        Object {
-          "bought": false,
-          "name": "Poison",
-        },
-        Object {
-          "bought": false,
-          "name": "Pressure Points",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Doctor’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Might",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Breaking",
-        },
-        Object {
-          "bought": false,
-          "name": "Lifting",
-        },
-        Object {
-          "bought": false,
-          "name": "Pushing",
-        },
-        Object {
-          "bought": false,
-          "name": "Throwing",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Perform",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Acting",
-        },
-        Object {
-          "bought": false,
-          "name": "Ceremonial Performances",
-        },
-        Object {
-          "bought": false,
-          "name": "Dancing",
-        },
-        Object {
-          "bought": false,
-          "name": "Poetry",
-        },
-        Object {
-          "bought": false,
-          "name": "Singing",
-        },
-        Object {
-          "bought": false,
-          "name": "Music",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Politics",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Specific region or faction",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Ride",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Caring for Your Horse",
-        },
-        Object {
-          "bought": false,
-          "name": "Coaxing Your Horse into Dangerous Terrain",
-        },
-        Object {
-          "bought": false,
-          "name": "Racing",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Stealth",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Camouflage",
-        },
-        Object {
-          "bought": false,
-          "name": "Deception",
-        },
-        Object {
-          "bought": false,
-          "name": "Eavesdropping",
-        },
-        Object {
-          "bought": false,
-          "name": "In Shadows",
-        },
-        Object {
-          "bought": false,
-          "name": "Silence",
-        },
-        Object {
-          "bought": false,
-          "name": "Smuggling",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Survival",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "At Sea",
-        },
-        Object {
-          "bought": false,
-          "name": "Cities",
-        },
-        Object {
-          "bought": false,
-          "name": "Deserts",
-        },
-        Object {
-          "bought": false,
-          "name": "Forests",
-        },
-        Object {
-          "bought": false,
-          "name": "Mountains",
-        },
-        Object {
-          "bought": false,
-          "name": "Prisons",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Tactics",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Battlefield Analysis",
-        },
-        Object {
-          "bought": false,
-          "name": "Disruption",
-        },
-        Object {
-          "bought": false,
-          "name": "Escorting Caravans",
-        },
-        Object {
-          "bought": false,
-          "name": "Sieging Fortresses",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Warrior’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-    Object {
-      "name": "Wu Wei",
-      "specialities": Array [
-        Object {
-          "bought": false,
-          "name": "Focusing on Breath (for Priests)",
-        },
-        Object {
-          "bought": false,
-          "name": "Resisting Curses",
-        },
-        Object {
-          "bought": false,
-          "name": "Sensing Chi",
-        },
-        Object {
-          "bought": false,
-          "name": "Social Perception",
-        },
-        Object {
-          "bought": false,
-          "name": "Specific Priest’s Arts Techniques",
-        },
-      ],
-      "value": 0,
-    },
-  ],
-}
-`;
-
-exports[`replayHistory 1`] = `
-Object {
-  "archetype": "",
-  "archetypeModified": false,
-  "bonuses": Array [],
-  "chi": 0,
-  "concept": "No Concept",
-  "destiny": 0,
-  "entanglement": 0,
-  "history": Array [
-    Object {
-      "type": "INITIAL_STATE",
-    },
-    Object {
-      "name": "Name2",
-      "type": "HEADER_SET_NAME",
-    },
-  ],
-  "loresheets": Array [],
-  "name": "Name2",
+  "name": "John",
   "rank": "",
   "rankModified": false,
   "rankValue": -1,

@@ -17,7 +17,7 @@ export function historyReducer(oldState: IStoreState, action: IHistoryAction): I
   switch (action.type) {
     case constants.HISTORY_DELETE:
       const list: IAction[] = oldState.get('history').toJS();
-      return replayHistory(oldState, list.slice(0, action.id));
+      return replayHistory(oldState, list.slice(0, action.id + 1)); // +1 needed to skip initialState
     default:
       return oldState;
   }

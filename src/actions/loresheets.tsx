@@ -7,16 +7,16 @@ export interface ILoresheetOpen {
   cost: ICost;
 }
 
-export interface ILoresheetBuyBonus {
-  type: constants.LORESHEET_BUY_BONUS;
+export interface ILoresheetBuyOption {
+  type: constants.LORESHEET_BUY_OPTION;
   lsUid: string;
   uid: string;
   cost: ICost;
 }
 
-export type ILoresheetAction = ILoresheetOpen | ILoresheetBuyBonus;
+export type ILoresheetAction = ILoresheetOpen | ILoresheetBuyOption;
 
-export function loresheetOpen(uid: string, cost: ICost): ILoresheetOpen {
+export function open(uid: string, cost: ICost): ILoresheetOpen {
   return {
     type: constants.LORESHEET_OPEN,
     uid: uid,
@@ -24,9 +24,9 @@ export function loresheetOpen(uid: string, cost: ICost): ILoresheetOpen {
   };
 }
 
-export function loresheetBuyBonus(lsUid: string, uid: string, cost: ICost): ILoresheetBuyBonus {
+export function buyOption(lsUid: string, uid: string, cost: ICost): ILoresheetBuyOption {
   return {
-    type: constants.LORESHEET_BUY_BONUS,
+    type: constants.LORESHEET_BUY_OPTION,
     lsUid: lsUid,
     uid: uid,
     cost: cost,

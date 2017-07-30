@@ -1,6 +1,6 @@
 import { IStoreState,
   IStoreSkillJS, IStoreSkillSpecialityJS,
-  IStoreLoresheetsJS, IStoreLoresheetOptionJS } from '../types/state';
+  IStoreLoresheetJS, IStoreLoresheetOptionJS } from '../types/state';
 import { IReduction } from '../types/reductions';
 import { ILoresheetOptionPrerequisite } from '../types/loresheets';
 import { ICost } from '../types/costs';
@@ -93,7 +93,7 @@ export function getCostSpeciality(state: IStoreState, skill: string, speciality:
 }
 
 export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
-  const idx = state.get('loresheets').findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === uid; });
+  const idx = state.get('loresheets').findIndex((ls: IStoreLoresheetJS) => { return ls.uid === uid; });
   if (idx !== -1) { return false; } // Already opened
   const cost: ICost = getCostOpenLoresheet(state, uid, openCost);
   return _canHandleCost(state, cost);
@@ -109,7 +109,7 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string, cost: numb
 }
 
 export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, buyCost: number): boolean {
-  const idxLS = state.get('loresheets').findIndex((ls: IStoreLoresheetsJS) => { return ls.uid === lsUid; });
+  const idxLS = state.get('loresheets').findIndex((ls: IStoreLoresheetJS) => { return ls.uid === lsUid; });
   if (idxLS === -1) { return false; } // LS not open
 
   const dataOpt = optionLS(lsUid, uid);

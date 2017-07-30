@@ -3,7 +3,7 @@ import * as Immutable from 'immutable';
 import { IStoreStateJS, IStoreState,
   IStoreSkill, skillFactory,
   IStoreSkillSpecialityJS,
-  IStoreLoresheets } from '../types/state';
+  IStoreLoresheet } from '../types/state';
 
 import { resetToInitialState } from '../actions/initial';
 import { IAction } from '../types/actions';
@@ -31,7 +31,7 @@ export const defaultStateJS: IStoreStateJS = {
     });
   })),
 
-  loresheets: Immutable.List<IStoreLoresheets>([]),
+  loresheets: Immutable.List<IStoreLoresheet>([]),
   reductions: Immutable.List([]),
   bonuses: Immutable.List([]),
 

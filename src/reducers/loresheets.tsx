@@ -1,5 +1,6 @@
 import { ILoresheetAction } from '../actions/loresheets';
-import { IStoreState, IStoreLoresheetsJS, IStoreLoresheetOptionJS } from '../types/state';
+import { IStoreState, IStoreLoresheetJS, IStoreLoresheetOptionJS,
+  loresheetFactory, loresheetOptionFactory } from '../types/state';
 import * as constants from '../constants/loresheets';
 import { pushToHistory } from './history';
 import { applyCost } from './costs';
@@ -11,26 +12,28 @@ export function loresheetsReducer(oldState: IStoreState, action: ILoresheetActio
       return oldState.withMutations(state => {
         applyCost(state, action.cost);
 
-        state.updateIn(['loresheets'], (list: Immutable.List<IStoreLoresheetsJS>) => {
-          return list.push({
-            uid: action.uid, options: Immutable.List<IStoreLoresheetOptionJS>()
-          }); }
-        );
+        state.updateIn(['loresheets'], (list) => {
+          const newLoresheet =
+            loresheetFactory({ uid: action.uid, options: Immutable.List<IStoreLoresheetOptionJS>() });
+          return list.push(newLoresheet);
+        });
 
         pushToHistory(state, action);
       });
-    case constants.LORESHEET_BUY_BONUS:
+    case constants.LORESHEET_BUY_OPTION:
       return oldState.withMutations(state => {
         applyCost(state, action.cost);
 
-        const lsIdx = state.getIn(['loresheets']).findIndex((ls: IStoreLoresheetsJS) => {
+        const loresheetIndex = state.getIn(['loresheets']).findIndex((ls: IStoreLoresheetJS) => {
           return ls.uid === action.lsUid;
         });
-        state.updateIn(['loresheets', lsIdx, 'options'], (list: Immutable.List<IStoreLoresheetOptionJS>) => {
-          return list.push({uid: action.uid});
+
+        state.updateIn(['loresheets', loresheetIndex, 'options'], (list: Immutable.List<IStoreLoresheetOptionJS>) => {
+          const newOption = loresheetOptionFactory({ uid: action.uid });
+          return list.push(newOption);
         });
+
         pushToHistory(state, action);
-        throw 'action not handled yet.';
       });
     default:
   }

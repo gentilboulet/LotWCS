@@ -18,7 +18,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 
 function mapDispatchToProps(dispatch: Dispatch<actions.IHistoryAction>): IMapDispatchToProps {
   return { onDelete: (id: number) => {
-    dispatch(actions.historyDelete(id));
+    dispatch(actions.historyDeleteUpTo(id));
   }};
 }
 

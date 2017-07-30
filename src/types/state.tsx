@@ -25,19 +25,27 @@ export function skillFactory(s: IStoreSkillJS): IStoreSkill {
   return f(s);
 }
 
-export interface IStoreLoresheetOptionJS { uid: string; }
-
-export interface IStoreLoresheetsJS {
+export interface IStoreLoresheetJS {
   uid: string;
   options: Immutable.List<IStoreLoresheetOptionJS>;
 }
 
-export interface IStoreLoresheets extends TypedRecord<IStoreLoresheets>, IStoreLoresheetsJS {}
+export interface IStoreLoresheet extends TypedRecord<IStoreLoresheet>, IStoreLoresheetJS {}
 
-export function loresheetFactory(ls: IStoreLoresheetsJS): IStoreLoresheets {
-  const defaultLS = { uid: '', options: Immutable.List<IStoreLoresheetsJS>() };
-  const f = makeTypedFactory<IStoreLoresheetsJS, IStoreLoresheets>(defaultLS);
+export function loresheetFactory(ls: IStoreLoresheetJS): IStoreLoresheet {
+  const defaultLS = { uid: 'error', options: Immutable.List<IStoreLoresheetOption>() };
+  const f = makeTypedFactory<IStoreLoresheetJS, IStoreLoresheet>(defaultLS);
   return f(ls);
+}
+
+export interface IStoreLoresheetOptionJS { uid: string; }
+
+export interface IStoreLoresheetOption extends TypedRecord<IStoreLoresheetOption>, IStoreLoresheetOptionJS {}
+
+export function loresheetOptionFactory(option: IStoreLoresheetOptionJS): IStoreLoresheetOption {
+  const defaultOpt = { uid: 'error' };
+  const f = makeTypedFactory<IStoreLoresheetOptionJS, IStoreLoresheetOption>(defaultOpt);
+  return f(option);
 }
 
 export interface IStoreStateJS {
@@ -52,7 +60,7 @@ export interface IStoreStateJS {
   destiny: number;
   chi: number;
   skills: Immutable.List<IStoreSkill>;
-  loresheets: Immutable.List<IStoreLoresheetsJS>;
+  loresheets: Immutable.List<IStoreLoresheet>;
   reductions: Immutable.List<IReduction>;
   bonuses: Immutable.List<IBonus>;
   history: Immutable.List<IAction>;

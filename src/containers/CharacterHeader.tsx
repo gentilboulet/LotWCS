@@ -1,5 +1,5 @@
 import CharacterHeader, { ICharacterHeaderProps } from '../components/CharacterHeader';
-import * as actions from '../actions/header';
+import * as headerActions from '../actions/header';
 import { IStoreState } from '../types/state';
 import { connect, Dispatch } from 'react-redux';
 
@@ -36,12 +36,12 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.IHeaderAction>): IMapDispatchToProps {
+function mapDispatchToProps(dispatch: Dispatch<headerActions.IHeaderAction>): IMapDispatchToProps {
   return {
-    onSetName: (s: string) => dispatch(actions.headerSetName(s)),
-    onSetConcept: (s: string) => dispatch(actions.headerSetConcept(s)),
-    onSetArchetype: (s: string) => dispatch(actions.headerSetArchetype(s)),
-    onSetRank: (s: string) => dispatch(actions.headerSetRank(s)),
+    onSetName: (s: string) => dispatch(headerActions.setName(s)),
+    onSetConcept: (s: string) => dispatch(headerActions.setConcept(s)),
+    onSetArchetype: (s: string) => dispatch(headerActions.setArchetype(s)),
+    onSetRank: (s: string) => dispatch(headerActions.setRank(s)),
   };
 }
 
