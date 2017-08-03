@@ -1,5 +1,5 @@
 import * as constants from '../constants/bonuses';
-import { IChiNames, IChiCultivations } from '../types/state';
+import * as dataChi from '../data/chi';
 
 export interface IBonusDestiny {
   type: constants.BONUS_DESTINY;
@@ -13,13 +13,13 @@ export interface IBonusEntanglement {
 
 export interface IBonusChi {
   type: constants.BONUS_CHI;
-  chi: IChiNames;
+  chi: dataChi.IChiNames;
   value: number;
 }
 
 export interface IBonusCultivation {
   type: constants.BONUS_CULTIVATION;
-  cultivation: IChiCultivations;
+  cultivation: dataChi.IChiCultivations;
   value: number;
 }
 

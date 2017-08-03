@@ -53,3 +53,8 @@ export const ranks: IDataRanks = [
     value: 5,
   }
 ];
+
+export function validateRank(rank: string): void {
+  const foundRank = ranks.find((dataRank: IDataRank) => (dataRank.key === rank));
+  if (! foundRank ) { throw new Error('Invalid rank "' + rank + '"'); }
+}

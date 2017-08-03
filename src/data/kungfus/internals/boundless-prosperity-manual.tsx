@@ -1,10 +1,10 @@
 /* tslint:disable:max-line-length */
-import { IChiNames } from '../../../types/state';
+import * as dataChi from '../../../data/chi';
 import * as effects from '../../../actions/effects';
 
 export const boundlessProsperityManual = {
   name: 'Boundless Prosperity Manual',
-  element: 'wood' as IChiNames,
+  element: 'wood' as dataChi.IChiNames,
   techniques: [
     {
       level: 1,

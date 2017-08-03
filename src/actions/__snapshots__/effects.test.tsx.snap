@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing effect creators should create a combat statistic effect 1`] = `
+Object {
+  "increase": 10,
+  "statistic": "strike",
+  "type": "EFFECT_COMBAT_STATISTIC",
+}
+`;
+
+exports[`Testing effect creators should create a conditional text effect 1`] = `
+Object {
+  "text": Array [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Maecenas justo sapien, posuere at malesuada nec, dictum congue sapien.",
+  ],
+  "type": "EFFECT_CONDITIONAL_TEXT",
+}
+`;
+
+exports[`Testing effect creators should create a single line conditional text effect 1`] = `
+Object {
+  "text": Array [
+    "Lorem ipsum dolor sit amet.",
+  ],
+  "type": "EFFECT_CONDITIONAL_TEXT",
+}
+`;
+
+exports[`Testing effect creators should create an increase base chi for threshold effect 1`] = `
+Object {
+  "chiIncrease": 123,
+  "type": "EFFECT_CHI_THRESHOLD_INCREASE_BASE_CHI",
+}
+`;

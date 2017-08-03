@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing loresheet action creators should create a buy option action 1`] = `
+Object {
+  "cost": Object {
+    "destiny": 0,
+    "discountIdx": -1,
+    "discountNewValue": 0,
+    "entanglement": 0,
+  },
+  "lsUid": "jianghu",
+  "type": "LORESHEET_BUY_OPTION",
+  "uid": "familiarity",
+}
+`;
+
+exports[`Testing loresheet action creators should create an open action 1`] = `
+Object {
+  "cost": Object {
+    "destiny": 0,
+    "discountIdx": -1,
+    "discountNewValue": 0,
+    "entanglement": 0,
+  },
+  "type": "LORESHEET_OPEN",
+  "uid": "jianghu",
+}
+`;

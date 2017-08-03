@@ -6,12 +6,14 @@ export function combatStatistic(statistic: IEffectStatistic, increase: number): 
   return { increase, statistic, type: constants.EFFECT_COMBAT_STATISTIC };
 }
 
-export function conditionalText(text: string[]): IEffectConditionalText {
+export function conditionalText(textInput: string[]): IEffectConditionalText {
+  const text = textInput.filter((line: string) => (line.length > 0));
+  if (text.length === 0) { throw new Error('Error with conditionalText : empty text'); } 
   return { text, type: constants.EFFECT_CONDITIONAL_TEXT };
 }
 
 export function conditionalOnelineText(text: string): IEffectConditionalText {
-  return { text: new Array<string>(text), type: constants.EFFECT_CONDITIONAL_TEXT };
+  return conditionalText(new Array<string>(text));
 }
 
 export function increaseBaseChiForThreshold(chiIncrease: number): IEffectChiThresholdIncreaseBaseChi {

@@ -36,3 +36,8 @@ export const archetypes: IDataArchetypes = [
     name: 'Doctor',
   }
 ];
+
+export function validateArchetype(archetype: string): void {
+  const foundArchetype = archetypes.find((dataArchetype: IDataArchetype) => (dataArchetype.key === archetype) );
+  if (! foundArchetype ) { throw new Error('Invalid archetype "' + archetype + '"'); }
+}

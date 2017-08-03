@@ -1,7 +1,7 @@
 import * as constants from '../constants/header';
 
-import { archetypes, IDataArchetype } from '../data/archetypes';
-import { IDataRank, ranks } from '../data/ranks';
+import * as dataArchetypes from '../data/archetypes';
+import * as dataRanks from '../data/ranks';
 
 export interface IHeaderSetName {
   type: constants.HEADER_SET_NAME;
@@ -21,7 +21,6 @@ export interface IHeaderSetArchetype {
 export interface IHeaderSetRank {
   type: constants.HEADER_SET_RANK;
   rank: string;
-  value: number;
 }
 
 export type IHeaderAction = IHeaderSetName | IHeaderSetConcept | IHeaderSetArchetype | IHeaderSetRank;
@@ -35,13 +34,11 @@ export function setConcept(concept: string): IHeaderSetConcept {
 }
 
 export function setArchetype(archetype: string): IHeaderSetArchetype {
-  const foundArchetype = archetypes.find((dataArchetype: IDataArchetype) => (dataArchetype.key === archetype) );
-  if (! foundArchetype ) { throw new Error('Unknown archetype "' + archetype + '"'); }
+  dataArchetypes.validateArchetype(archetype);
   return { archetype, type: constants.HEADER_SET_ARCHETYPE };
 }
 
 export function setRank(rank: string): IHeaderSetRank {
-  const foundRank = ranks.find((dataRank: IDataRank) => (dataRank.key === rank) );
-  if (! foundRank ) { throw new Error('Unknown rank "' + rank + '"'); }
-  return { rank, type: constants.HEADER_SET_RANK, value: foundRank.value };
+  dataRanks.validateRank(rank);
+  return { rank, type: constants.HEADER_SET_RANK };
 }

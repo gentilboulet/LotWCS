@@ -180,7 +180,6 @@ Object {
     Object {
       "rank": "4th_rank",
       "type": "HEADER_SET_RANK",
-      "value": 2,
     },
   ],
   "internalKungFus": Array [],

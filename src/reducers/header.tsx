@@ -1,6 +1,6 @@
 import { IHeaderAction } from '../actions/header';
 import * as constants from '../constants/header';
-import { ranks as dataRanks } from '../data/ranks';
+import * as dataRanks from '../data/ranks';
 import { IStoreState } from '../types/state';
 
 // Sub Reducers
@@ -27,12 +27,12 @@ export function headerReducer(oldState: IStoreState, action: IHeaderAction): ISt
       return oldState.withMutations(state => {
         state.set('rank', action.rank );
         state.set('rankModified', true);
-        state.set('rankValue', action.value);
 
-        const idx = dataRanks.findIndex((data) => (data.key === action.rank));
+        const idx = dataRanks.ranks.findIndex((data) => (data.key === action.rank));
+        state.set('rankValue', dataRanks.ranks[idx].value);
 
-        applyBonuses(state, dataRanks[idx].perks as IBonus[]);
-        pushToDiscounts(state, dataRanks[idx].perks as IDiscount[]);
+        applyBonuses(state, dataRanks.ranks[idx].perks as IBonus[]);
+        pushToDiscounts(state, dataRanks.ranks[idx].perks as IDiscount[]);
         pushToHistory(state, action);
       });
     case constants.HEADER_SET_ARCHETYPE:

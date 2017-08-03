@@ -1,4 +1,4 @@
-import { IChiNames } from '../../types/state';
+import * as dataChi from '../../data/chi';
 import { IEffect } from '../../types/effects';
 
 export type IWeaponType = 'Flexible'|'Massive'|'Paired'|'Ranged'|'Saber'|'Staff'|'Spear'|'Sword'|'Unarmed';
@@ -43,7 +43,7 @@ export interface IDataExternalKungfu {
 
 export interface IDataInternalKungfu {
   name: string;
-  element: IChiNames;
+  element: dataChi.IChiNames;
   techniques: IDataInternalKungfuTechnique[];
   uid?: string;
 }

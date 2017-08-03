@@ -28,6 +28,20 @@ export const loresheetsCategories: string[] =
   loresheets.map( d => d.category )
             .filter( (value: string, index: number, self: string[]) => (self.indexOf(value) === index) );
 
+export function validateLoresheet(uid: string): void {
+  if (! loresheets.find((loresheet: ILoresheet) => (loresheet.uid === uid)) ) {
+    throw new Error('Invalid loresheet "' + uid + '"');
+  }
+}
+
+export function validateLoresheetOption(lsUid: string, uid: string): void {
+  validateLoresheet(lsUid);
+  const loresheetIndex = loresheets.findIndex((ls: ILoresheet) => (ls.uid === lsUid));
+  if (! loresheets[loresheetIndex].options.find((option: ILoresheetOption) => (option.uid === uid))) {
+    throw new Error('Invalid loresheet option " + uid + "');
+  }
+}
+
 export function lsOptionCostToValues(costStr: string): number[] {
   const DEFAULT_MAXIMUM = 10;
   const single = new RegExp(/^\d+$/);

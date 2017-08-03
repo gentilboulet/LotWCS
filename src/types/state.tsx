@@ -1,5 +1,6 @@
 import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
 import * as Immutable from 'immutable';
+
 import { IAction } from '../types/actions';
 import { IDiscount } from '../types/discounts';
 import { IBonus } from '../types/bonuses';
@@ -71,18 +72,6 @@ interface IStoreChiJS {
   demonCultivation: number;
 }
 
-export type IChiNames = 'general' | 'wood' | 'fire' | 'earth' | 'water' | 'metal' | 'enlightened' | 'demon';
-export type IChiCultivations = 'generalCultivation' | 'woodCultivation' | 'fireCultivation' | 'earthCultivation'
-  | 'waterCultivation' | 'metalCultivation' | 'enlightenedCultivation' | 'demonCultivation';
-
-export function fromChiToCultivationName(chi: IChiNames): IChiCultivations {
-  return chi.concat('Cultivation') as IChiCultivations;
-}
-
-export function fromCultivationToChiName(cultivation: IChiCultivations): IChiNames {
-  return cultivation.split('Cultivation')[0] as IChiNames;
-}
-
 export interface IStoreChi extends TypedRecord<IStoreChi>, IStoreChiJS {}
 
 export function defaultChiFactory(): IStoreChi {
@@ -105,6 +94,7 @@ export interface IStoreKungFuTechniqueJS {
   name: string;
   uid: string;
 }
+
 export interface IStoreKungFuTechnique extends TypedRecord<IStoreKungFuTechnique>, IStoreKungFuTechniqueJS {}
 
 export function techniqueFactory(technique: IStoreKungFuTechniqueJS): IStoreKungFuTechnique {

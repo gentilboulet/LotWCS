@@ -1,20 +1,21 @@
 import { IChiAction } from '../actions/chi';
-import { IStoreState, IChiNames, IChiCultivations, fromCultivationToChiName }
-  from '../types/state';
+import { IStoreState } from '../types/state';
 import * as constants from '../constants/chi';
+import * as dataChi from '../data/chi';
 
 // Sub Reducers
 import { applyCost } from './costs';
 import { pushToHistory } from './history';
 
-export function increaseValue(state: IStoreState, chiName: IChiNames, value: number): void {
+export function increaseValue(state: IStoreState, chiName: dataChi.IChiNames, value: number): void {
   state.updateIn(['chi', chiName], chi => { return chi + value; });
 }
 
-export function increaseCultivation(state: IStoreState, cultivationName: IChiCultivations, value: number): void {
+export function increaseCultivation(
+  state: IStoreState, cultivationName: dataChi.IChiCultivations, value: number): void {
   const actualCultivation = state.getIn(['chi', cultivationName]);
 
-  const chiName: IChiNames = fromCultivationToChiName(cultivationName);
+  const chiName: dataChi.IChiNames = dataChi.fromCultivationToChiName(cultivationName);
   const actualChi = state.getIn(['chi', chiName]);
 
   let newCultivation = actualCultivation + value;
@@ -28,7 +29,7 @@ export function increaseCultivation(state: IStoreState, cultivationName: IChiCul
   increaseValue(state, chiName, newChiValue - actualChi);
 }
 
-export function getChiValue(state: IStoreState, chiName: IChiNames): number {
+export function getChiValue(state: IStoreState, chiName: dataChi.IChiNames): number {
   return state.getIn(['chi', chiName]);
 }
 
