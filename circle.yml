@@ -1,10 +1,10 @@
 machine:
   node:
-    version: 5.0.0
-
+    version: 7.7.1
 test:
-  - npm test
-  - npm test -- --coverage
+  override:
+    - npm test
+    - npm test -- --coverage
 
 general:
   artifacts:
