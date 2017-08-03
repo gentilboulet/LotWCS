@@ -1,12 +1,11 @@
 import { IStoreState } from '../types/state';
-import { ILoresheet, ILoresheetOption } from '../types/loresheets';
 
 import { initialStateFactory } from './initial';
 import * as loresheetsActions from '../actions/loresheets';
 import { loresheetsReducer, getLoresheetIndex, getLoresheetOptionIndex } from './loresheets';
 import { globalReducer } from './global';
 
-import { loresheets } from '../data/loresheets';
+import * as dataLoresheets from '../data/loresheets';
 
 const initialState: IStoreState  = initialStateFactory();
 
@@ -17,7 +16,7 @@ describe('Testing loresheetsReducer', () => {
   };
 
   it('should receive a LORESHEET_OPEN action', () => {
-    loresheets.forEach((dataLoresheet: ILoresheet) => {
+    dataLoresheets.loresheets.forEach((dataLoresheet: dataLoresheets.IDataLoresheet) => {
 
       expect( getLoresheetIndex(initialState, dataLoresheet.uid) ).toBe(-1); // Not found in the initial state
 
@@ -29,17 +28,17 @@ describe('Testing loresheetsReducer', () => {
   });
 
   it('should receive LORESHEET_BUY_OPTION action', () => {
-    loresheets.forEach((dataLoresheet: ILoresheet) => {
-      const openLoresheetAction = loresheetsActions.open(dataLoresheet.uid, noCost);
+    dataLoresheets.loresheets.forEach((loresheet: dataLoresheets.IDataLoresheet) => {
+      const openLoresheetAction = loresheetsActions.open(loresheet.uid, noCost);
       const stateWithLoresheet = loresheetsReducer(initialState, openLoresheetAction);
-      expect( getLoresheetIndex(stateWithLoresheet, dataLoresheet.uid) ).toBe(0);
+      expect( getLoresheetIndex(stateWithLoresheet, loresheet.uid) ).toBe(0);
 
-      dataLoresheet.options.forEach((option: ILoresheetOption) => {
-        const buyOption = loresheetsActions.buyOption(dataLoresheet.uid, option.uid, noCost);
+      loresheet.options.forEach((option: dataLoresheets.IDataLoresheetOption) => {
+        const buyOption = loresheetsActions.buyOption(loresheet.uid, option.uid, noCost);
         const state = loresheetsReducer(stateWithLoresheet, buyOption);
-        expect( getLoresheetOptionIndex(state, dataLoresheet.uid, option.uid) ).toBe(0);
+        expect( getLoresheetOptionIndex(state, loresheet.uid, option.uid) ).toBe(0);
         expect(
-          getLoresheetOptionIndex(globalReducer(stateWithLoresheet, buyOption), dataLoresheet.uid, option.uid) 
+          getLoresheetOptionIndex(globalReducer(stateWithLoresheet, buyOption), loresheet.uid, option.uid)
           ).toBe(0)
       });
     });

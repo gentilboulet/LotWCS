@@ -1,14 +1,12 @@
 import { ICost } from '../types/costs';
 import { IDiscount } from '../types/discounts';
-import { ILoresheetOptionPrerequisite } from '../types/loresheets';
 import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState } from '../types/state';
 
 import * as constants from '../constants/discounts';
+import * as dataLoresheets from '../data/loresheets';
 import { getLoresheetIndex, getLoresheetOptionIndex } from '../reducers/loresheets';
 
 import * as derived from './derived';
-
-import { optionLS } from '../data/loresheets';
 
 // helper functions
 function _canHandleCost(state: IStoreState, cost: ICost): boolean {
@@ -106,13 +104,13 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string, cost: numb
 export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, buyCost: number): boolean {
   if ( getLoresheetIndex(state, lsUid) === -1) { return false; } // LS not open
 
-  const dataOpt = optionLS(lsUid, uid);
+  const dataOpt = dataLoresheets.optionLS(lsUid, uid);
   const idxOpt = getLoresheetOptionIndex(state, lsUid, uid);
 
   if (idxOpt === -1 && !dataOpt.repeatable) { return false; } // Already bought & not repeatable
 
   if (dataOpt.prerequisites.filter( // filter checked prereqs
-      (p: ILoresheetOptionPrerequisite) => {
+      (p: dataLoresheets.IDataLoresheetOptionPrerequisite) => {
         if (typeof p === 'string') {
           return getLoresheetOptionIndex(state, lsUid, p) !== -1;
         } else if ( p.type === 'OR' ) {

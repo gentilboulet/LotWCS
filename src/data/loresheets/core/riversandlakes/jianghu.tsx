@@ -1,7 +1,7 @@
-import { ILoresheet } from '../../../../types/loresheets';
+import { IDataLoresheet } from '../../../../data/loresheets';
 
 /* tslint:disable:max-line-length */
-export const jianghu: ILoresheet = {
+export const jianghu: IDataLoresheet = {
   uid: 'jianghu',
   name: 'The Jiang Hu',
   category: 'Rivers and Lakes',
