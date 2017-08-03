@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 5.0.0
+
+test:
+  - npm test
+  - npm test -- --coverage
+
+general:
+  artifacts:
+    - "coverage" # relative to the build directory
