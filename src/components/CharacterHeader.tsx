@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'reactstrap';
 import EditText from '../components/EditText';
 import DDLText from '../components/DDLText';
 
-import { archetypes } from '../data/archetypes';
-import { ranks } from '../data/ranks';
+import * as dataArchetypes from '../data/archetypes';
+import * as dataRanks from '../data/ranks';
 
 export interface ICharacterHeaderProps {
   name: string;
@@ -49,7 +49,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
             <DDLText
               header="Character Archetype"
               default={this.props.archetype}
-              values={archetypes.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
+              values={dataArchetypes.archetypes.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
               onSubmit={(s: string) => { this.props.onSetArchetype(s); }}
               locked={this.props.lockArchetype}
             />
@@ -58,7 +58,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
             <DDLText
               header="Character Rank"
               default={this.props.rank}
-              values={ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
+              values={dataRanks.ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
               onSubmit={(s: string) => { this.props.onSetRank(s); }}
               locked={this.props.lockRank}
             />

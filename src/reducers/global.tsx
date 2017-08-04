@@ -23,6 +23,9 @@ import { skillsReducer } from '../reducers/skills';
 import * as loresheets from '../constants/loresheets';
 import { loresheetsReducer } from '../reducers/loresheets';
 
+import * as virtues from '../constants/virtues';
+import { virtuesReducer } from '../reducers/virtues';
+
 export function globalReducer(state: IStoreState, action: IAction): IStoreState {
   switch (action.type) {
     case header.HEADER_SET_ARCHETYPE:
@@ -46,6 +49,8 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
       return loresheetsReducer(state, action);
     case history.HISTORY_DELETE:
       return historyReducer(state, action);
+    case virtues.VIRTUE_INCREASE:
+      return virtuesReducer(state, action);
     default:
       return state;
   }

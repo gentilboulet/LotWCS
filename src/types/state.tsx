@@ -1,6 +1,8 @@
 import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
 import * as Immutable from 'immutable';
 
+import * as dataVirtues from '../data/virtues';
+
 import { IAction } from '../types/actions';
 import { IDiscount } from '../types/discounts';
 import { IBonus } from '../types/bonuses';
@@ -117,6 +119,20 @@ export function kungfuFactory(kungfu: IStoreKungFuJS): IStoreKungFu {
 
 export interface IStoreKungFu extends TypedRecord<IStoreKungFu>, IStoreKungFuJS {}
 
+export interface IStoreVirtueJS {
+  name: string;
+  type: dataVirtues.IDataVirtueType;
+  value: number;
+}
+
+export function virtueFactory(name: string, type: dataVirtues.IDataVirtueType): IStoreVirtue {
+  const defaultVirtue: IStoreVirtueJS = { name: 'error', type: '' as dataVirtues.IDataVirtueType, value: 0 };
+  const f = makeTypedFactory<IStoreVirtueJS, IStoreVirtue>(defaultVirtue);
+  return f({name, type, value: 0 });
+}
+
+export interface IStoreVirtue extends TypedRecord<IStoreVirtue>, IStoreVirtueJS {}
+
 export interface IStoreStateJS {
   name: string;
   concept: string;
@@ -137,6 +153,7 @@ export interface IStoreStateJS {
   chi: IStoreChi;
   externalKungFus: Immutable.List<IStoreKungFu>;
   internalKungFus: Immutable.List<IStoreKungFu>;
+  virtues: Immutable.List<IStoreVirtue>;
 }
 
 export interface IStoreState extends TypedRecord<IStoreState>, IStoreStateJS {}
