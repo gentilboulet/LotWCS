@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing external kungfu action creator should create an OPEN_STYLE action with an external kungfu 1`] = `
+Object {
+  "cost": Object {
+    "destiny": 0,
+    "discountIdx": -1,
+    "discountNewValue": 0,
+    "entanglement": 0,
+  },
+  "kungfuType": "KUNGFU_EXTERNAL",
+  "type": "KUNGFU_OPEN_STYLE",
+  "uid": "Blossom Harvest",
+}
+`;
+
+exports[`Testing external kungfu action creator should create an OPEN_STYLE action with an internal kungfu 1`] = `
+Object {
+  "cost": Object {
+    "destiny": 0,
+    "discountIdx": -1,
+    "discountNewValue": 0,
+    "entanglement": 0,
+  },
+  "kungfuType": "KUNGFU_INTERNAL",
+  "type": "KUNGFU_OPEN_STYLE",
+  "uid": "Boundless Prosperity Manual",
+}
+`;
