@@ -1,6 +1,6 @@
 /* tslint:disable:max-line-length */
 import * as dataChi from '../../../data/chi';
-import * as effects from '../../../actions/effects';
+import * as effects from '../../../perks/actions/effects';
 
 export const boundlessProsperityManual = {
   name: 'Boundless Prosperity Manual',

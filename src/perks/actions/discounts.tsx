@@ -1,5 +1,5 @@
 import * as constants from '../constants/discounts';
-import * as dataSkills from '../data/skills';
+import * as dataSkills from '../../data/skills';
 import { IDiscountSkill } from '../types/discounts';
 
 export function discountSkillFactory(value: number, subset?: string[]): IDiscountSkill {

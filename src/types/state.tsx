@@ -4,8 +4,8 @@ import * as Immutable from 'immutable';
 import * as dataVirtues from '../data/virtues';
 
 import { IAction } from '../types/actions';
-import { IDiscount } from '../types/discounts';
-import { IBonus } from '../types/bonuses';
+import { IDiscount } from '../perks/types/discounts';
+import { IBonus } from '../perks/types/bonuses';
 
 export interface IStoreSkillSpecialityJS {
   name: string;

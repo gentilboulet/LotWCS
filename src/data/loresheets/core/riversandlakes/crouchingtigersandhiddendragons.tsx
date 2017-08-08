@@ -1,4 +1,4 @@
-import * as bonuses from '../../../../actions/bonuses';
+import * as bonuses from '../../../../perks/actions/bonuses';
 import { IDataLoresheet } from '../../../../data/loresheets';
 
 /* tslint:disable:max-line-length */

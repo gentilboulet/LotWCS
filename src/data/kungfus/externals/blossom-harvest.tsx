@@ -1,5 +1,5 @@
 import { IDataExternalKungfu } from '../index';
-import * as effects from '../../../actions/effects';
+import * as effects from '../../../perks/actions/effects';
 
 /* tslint:disable:max-line-length */
 

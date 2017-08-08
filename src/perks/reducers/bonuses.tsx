@@ -1,8 +1,8 @@
 import * as constants from '../constants/bonuses';
 import { IBonus, isBonus } from '../types/bonuses';
-import { IStoreState } from '../types/state';
-import * as chi from './chi';
-import * as skills from './skills';
+import { IStoreState } from '../../types/state';
+import * as chi from '../../reducers/chi';
+import * as skills from '../../reducers/skills';
 
 export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreState {
   return oldState.withMutations(state => {

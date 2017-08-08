@@ -1,8 +1,8 @@
 import * as Immutable from 'immutable';
 
-import { ICost } from '../types/costs';
+import { ICost } from '../../types/costs';
 import { IDiscount, isDiscount } from '../types/discounts';
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../../types/state';
 
 export function pushToDiscounts(oldState: IStoreState, discounts: IDiscount[]): IStoreState {
   return oldState.withMutations((state: IStoreState) => {

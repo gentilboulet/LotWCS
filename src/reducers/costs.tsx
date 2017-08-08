@@ -1,7 +1,7 @@
 import { ICost } from '../types/costs';
 import { IStoreState } from '../types/state';
 
-import { updateDiscounts } from './discounts';
+import { updateDiscounts } from '../perks/reducers/discounts';
 
 export function applyCost(oldState: IStoreState, cost: ICost): IStoreState {
   return oldState.withMutations(state => {

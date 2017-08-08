@@ -4,11 +4,11 @@ import * as dataRanks from '../data/ranks';
 import { IStoreState } from '../types/state';
 
 // Sub Reducers
-import { IBonus } from '../types/bonuses';
-import { IDiscount } from '../types/discounts';
+import { IBonus } from '../perks/types/bonuses';
+import { IDiscount } from '../perks/types/discounts';
 
-import { applyBonuses } from './bonuses';
-import { pushToDiscounts } from './discounts';
+import { applyBonuses } from '../perks/reducers/bonuses';
+import { pushToDiscounts } from '../perks/reducers/discounts';
 import { pushToHistory } from './history';
 
 export function headerReducer(oldState: IStoreState, action: IHeaderAction): IStoreState {

@@ -1,8 +1,8 @@
 import { ICost } from '../types/costs';
-import { IDiscount } from '../types/discounts';
+import { IDiscount } from '../perks/types/discounts';
 import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState } from '../types/state';
 
-import * as constants from '../constants/discounts';
+import * as constants from '../perks/constants/discounts';
 import * as dataLoresheets from '../data/loresheets';
 import { getLoresheetIndex, getLoresheetOptionIndex } from '../reducers/loresheets';
 

@@ -16,7 +16,7 @@ import { wulinsage } from './core/riversandlakes/wulinsage';
 // Heretic Lores
 // Secrets Arts
 
-import { IPerk } from '../../types/perks';
+import { IPerk } from '../../perks/types';
 
 export interface IDataLoresheetOptionPrerequisiteAND {
   type: 'AND';

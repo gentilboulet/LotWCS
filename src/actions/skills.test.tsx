@@ -35,7 +35,6 @@ describe('Testing for skill action creators', () => {
   it('should not create a buy speciality action on an invalid speciality', () => {
     const skill = 'Awareness';
     const speciality = '';
-    console.log(speciality.length);
     expect( () => actions.skillSpecialityBuy(skill, speciality, noCost) ).toThrow();
   });
 });

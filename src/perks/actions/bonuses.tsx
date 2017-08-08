@@ -3,8 +3,8 @@ import { IBonus,
   IBonusDestiny, IBonusEntanglement, IBonusChi, IBonusCultivation, IBonusOneAmongN,
   IBonusSkillRank, IBonusSpeciality,
 } from '../types/bonuses';
-import * as dataChi from '../data/chi';
-import * as dataSkill from '../data/skills';
+import * as dataChi from '../../data/chi';
+import * as dataSkill from '../../data/skills';
 
 export function destiny(value: number): IBonusDestiny {
     return { type: constants.BONUS_DESTINY, value };
