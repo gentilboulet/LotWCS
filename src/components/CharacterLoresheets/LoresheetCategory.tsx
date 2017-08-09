@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { ICost } from '../../costs/types';
+import { ICost } from 'costs/types';
 
-import { ILoresheetsCharacterLoresheetsProps } from '../CharacterLoresheets';
-import Collapsible from '../Collapsible';
+import { ILoresheetsCharacterLoresheetsProps } from 'components/CharacterLoresheets';
+import Collapsible from 'components/Collapsible';
 import SingleLoresheet from './SingleLoresheet';
 
 export interface ILoresheetCategoryProps {

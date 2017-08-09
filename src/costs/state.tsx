@@ -1,12 +1,12 @@
-import { ICost } from '../costs/types';
-import { IDiscount } from '../perks/types/discounts';
-import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState } from '../state/types';
+import { ICost } from 'costs/types';
+import { IDiscount } from 'perks/types/discounts';
+import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState } from 'state/types';
 
-import * as constants from '../perks/constants/discounts';
-import * as dataLoresheets from '../data/loresheets';
-import { getLoresheetIndex, getLoresheetOptionIndex } from '../reducers/loresheets';
+import * as constants from 'perks/constants/discounts';
+import * as dataLoresheets from 'data/loresheets';
+import { getLoresheetIndex, getLoresheetOptionIndex } from 'state/reducers/loresheets';
 
-import * as derived from '../state/derived';
+import * as derived from 'state/derived';
 
 // helper functions
 function _canHandleCost(state: IStoreState, cost: ICost): boolean {

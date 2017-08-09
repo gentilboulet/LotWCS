@@ -5,9 +5,9 @@ import CharacterLoresheets from './CharacterLoresheets';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { initialStateFactory } from '../reducers/initial';
-import { globalReducer } from '../reducers/global';
-import { IStoreState } from '../state/types';
+import { initialStateFactory } from 'state/initial';
+import { globalReducer } from 'state/reducers/global';
+import { IStoreState } from 'state/types';
 
 const store = createStore<IStoreState>(
   globalReducer,

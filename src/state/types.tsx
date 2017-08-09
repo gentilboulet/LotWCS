@@ -1,11 +1,11 @@
 import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
 import * as Immutable from 'immutable';
 
-import * as dataVirtues from '../data/virtues';
+import * as dataVirtues from 'data/virtues';
 
-import { IAction } from '../actions/types';
-import { IDiscount } from '../perks/types/discounts';
-import { IBonus } from '../perks/types/bonuses';
+import { IAction } from 'state/actions/types';
+import { IDiscount } from 'perks/types/discounts';
+import { IBonus } from 'perks/types/bonuses';
 
 export interface IStoreSkillSpecialityJS {
   name: string;

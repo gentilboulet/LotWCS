@@ -1,4 +1,4 @@
-import * as constants from '../constants/discounts';
+import * as constants from 'perks/constants/discounts';
 
 export interface IDiscountSkill {
   type: constants.DISCOUNT_SKILL;

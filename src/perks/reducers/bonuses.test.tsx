@@ -1,11 +1,11 @@
-import { IStoreState } from '../../state/types';
+import { IStoreState } from 'state/types';
 
-import { initialStateFactory } from '../../reducers/initial';
-import * as actions from '../actions/bonuses';
-import { IBonus } from '../types/bonuses';
+import { initialStateFactory } from 'state/initial';
+import * as actions from 'perks/actions/bonuses';
+import { IBonus } from 'perks/types/bonuses';
 import { applyBonuses } from './bonuses';
-import { getChiValue } from '../../reducers/chi';
-import { getSkillIndex, getSpecialityIndex } from '../../reducers/skills';
+import { getChiValue } from 'state/reducers/chi';
+import { getSkillIndex, getSpecialityIndex } from 'state/reducers/skills';
 
 const initialState: IStoreState  = initialStateFactory();
 

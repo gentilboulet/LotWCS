@@ -8,8 +8,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { globalReducer } from './reducers/global';
-import { initialStateFactory } from './reducers/initial';
+import { globalReducer } from './state/reducers/global';
+import { initialStateFactory } from './state/initial';
 import { IStoreState } from './state/types';
 
 const store = createStore<IStoreState>(

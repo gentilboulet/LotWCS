@@ -1,4 +1,4 @@
-import * as constants from '../constants/effects';
+import * as constants from 'perks/constants/effects';
 
 export type IEffectStatistic = 'speed' | 'footwork' | 'strike' | 'damage' | 'block' | 'toughness';
 

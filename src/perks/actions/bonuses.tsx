@@ -1,10 +1,10 @@
-import * as constants from '../constants/bonuses';
+import * as constants from 'perks/constants/bonuses';
 import { IBonus,
   IBonusDestiny, IBonusEntanglement, IBonusChi, IBonusCultivation, IBonusOneAmongN,
   IBonusSkillRank, IBonusSpeciality,
-} from '../types/bonuses';
-import * as dataChi from '../../data/chi';
-import * as dataSkill from '../../data/skills';
+} from 'perks/types/bonuses';
+import * as dataChi from 'data/chi';
+import * as dataSkill from 'data/skills';
 
 export function destiny(value: number): IBonusDestiny {
     return { type: constants.BONUS_DESTINY, value };

@@ -1,6 +1,6 @@
 import { IEffectStatistic, IEffectChiThresholdIncreaseBaseChi,
-  IEffectCombatStatistic, IEffectConditionalText } from '../types/effects';
-import * as constants from '../constants/effects';
+  IEffectCombatStatistic, IEffectConditionalText } from 'perks/types/effects';
+import * as constants from 'perks/constants/effects';
 
 export function combatStatistic(statistic: IEffectStatistic, increase: number): IEffectCombatStatistic {
   return { increase, statistic, type: constants.EFFECT_COMBAT_STATISTIC };
@@ -8,7 +8,7 @@ export function combatStatistic(statistic: IEffectStatistic, increase: number): 
 
 export function conditionalText(textInput: string[]): IEffectConditionalText {
   const text = textInput.filter((line: string) => (line.length > 0));
-  if (text.length === 0) { throw new Error('Error with conditionalText : empty text'); } 
+  if (text.length === 0) { throw new Error('Error with conditionalText : empty text'); }
   return { text, type: constants.EFFECT_CONDITIONAL_TEXT };
 }
 

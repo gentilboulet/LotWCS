@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import PlaceHolder from '../components/PlaceHolder';
-import { Tab, Tabs } from '../components/Tabs';
-import CharacterHistory from '../containers/CharacterHistory';
-import CharacterLoresheets from '../containers/CharacterLoresheets';
-import CharacterSkills from '../containers/CharacterSkills';
+import PlaceHolder from 'components/PlaceHolder';
+import { Tab, Tabs } from 'components/Tabs';
+import CharacterHistory from 'containers/CharacterHistory';
+import CharacterLoresheets from 'containers/CharacterLoresheets';
+import CharacterSkills from 'containers/CharacterSkills';
 
 class CharacterBody extends React.Component<{}, {}> {
   public render() {

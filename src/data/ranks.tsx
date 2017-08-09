@@ -1,8 +1,8 @@
 /* tslint:disable:max-line-length */
-import * as bonus from '../perks/actions/bonuses';
-import * as discount from '../perks/actions/discounts';
+import * as bonus from 'perks/actions/bonuses';
+import * as discount from 'perks/actions/discounts';
 
-import { IPerk } from '../perks/types';
+import { IPerk } from 'perks/types';
 
 export interface IDataRank {
   name: string;

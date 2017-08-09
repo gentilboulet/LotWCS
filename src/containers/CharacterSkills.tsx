@@ -1,9 +1,9 @@
-import CharacterSkills, { ICharacterSkillsProps, ISkillProps, ISpecialityProps } from '../components/CharacterSkills';
-import * as skillActions from '../actions/skills';
-import { IStoreState } from '../state/types';
-import { ICost } from '../costs/types';
+import CharacterSkills, { ICharacterSkillsProps, ISkillProps, ISpecialityProps } from 'components/CharacterSkills';
+import * as skillActions from 'state/actions/skills';
+import { IStoreState } from 'state/types';
+import { ICost } from 'costs/types';
 import { connect, Dispatch } from 'react-redux';
-import { getCostSkill, canBuySkill, getCostSpeciality, canBuySpeciality } from '../costs/state';
+import { getCostSkill, canBuySkill, getCostSpeciality, canBuySpeciality } from 'costs/state';
 
 interface IMapStateToProps {
   skills: ISkillProps[];
