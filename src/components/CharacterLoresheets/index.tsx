@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container } from 'reactstrap';
 
 import * as dataLoresheets from '../../data/loresheets';
-import { ICost } from '../../types/costs';
+import { ICost } from '../../costs/types';
 import LoresheetCategory from './LoresheetCategory';
 
 export interface ILoresheetsOptionsCostCharacterLoresheetsProps {

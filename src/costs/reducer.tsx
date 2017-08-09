@@ -1,4 +1,4 @@
-import { ICost } from '../types/costs';
+import { ICost } from '../costs/types';
 import { IStoreState } from '../types/state';
 
 import { updateDiscounts } from '../perks/reducers/discounts';

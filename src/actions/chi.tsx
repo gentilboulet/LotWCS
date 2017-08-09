@@ -1,6 +1,6 @@
 import * as constants from '../constants/chi';
 import * as dataChi from '../data/chi';
-import { ICost } from '../types/costs';
+import { ICost } from '../costs/types';
 
 export interface IChiBuy {
   type: constants.CHI_BUY;

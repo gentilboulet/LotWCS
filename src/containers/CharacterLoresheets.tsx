@@ -3,14 +3,14 @@ import { connect, Dispatch } from 'react-redux';
 import * as loresheetsActions from '../actions/loresheets';
 import { getLoresheetIndex, getLoresheetOptionIndex } from '../reducers/loresheets';
 import { canBuyOptionLoresheet, canOpenLoresheet,
-  getCostBuyOptionLoresheet, getCostOpenLoresheet } from './costs';
+  getCostBuyOptionLoresheet, getCostOpenLoresheet } from '../costs/state';
 
 import { ICharacterLoresheetsProps,
   ILoresheetsCharacterLoresheetsProps, ILoresheetsOptionsCharacterLoresheetsProps,
   ILoresheetsOptionsCostCharacterLoresheetsProps
 } from '../components/CharacterLoresheets';
 
-import { ICost } from '../types/costs';
+import { ICost } from '../costs/types';
 import { IStoreState } from '../types/state';
 
 import * as dataLoresheets from '../data/loresheets';

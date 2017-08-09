@@ -4,7 +4,7 @@ import * as constants from '../constants/chi';
 import * as dataChi from '../data/chi';
 
 // Sub Reducers
-import { applyCost } from './costs';
+import { applyCost } from '../costs/reducer';
 import { pushToHistory } from './history';
 
 export function increaseValue(state: IStoreState, chiName: dataChi.IChiNames, value: number): void {

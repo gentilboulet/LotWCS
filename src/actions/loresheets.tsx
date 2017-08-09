@@ -1,5 +1,5 @@
 import * as constants from '../constants/loresheets';
-import { ICost } from '../types/costs';
+import { ICost } from '../costs/types';
 import * as dataLoresheets from '../data/loresheets';
 
 export interface ILoresheetOpen {

@@ -1,10 +1,10 @@
 import { ISkillAction } from '../actions/skills';
 import * as constants from '../constants/skills';
-import * as derived from '../containers/derived';
+import * as derived from '../state/derived';
 import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState, specialityFactory } from '../types/state';
 
 // Sub Reducers
-import { applyCost } from './costs';
+import { applyCost } from '../costs/reducer';
 import { pushToHistory } from './history';
 
 export function getSkillIndex(state: IStoreState, skillName: string): number {

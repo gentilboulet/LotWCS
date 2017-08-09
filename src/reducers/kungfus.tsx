@@ -3,7 +3,7 @@ import * as Immutable from 'immutable';
 import { IKungFuAction } from '../actions/kungfus';
 import { IStoreState, IStoreKungFuJS, IStoreKungFuTechniqueJS, techniqueFactory, kungfuFactory } from '../types/state';
 import { pushToHistory } from './history';
-import { applyCost } from './costs';
+import { applyCost } from '../costs/reducer';
 
 import * as constants from '../constants/kungfus';
 

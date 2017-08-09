@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon } from 'react-fa';
 import { Button, ListGroupItem } from 'reactstrap';
 
-import { ICost } from '../../types/costs';
+import { ICost } from '../../costs/types';
 import { ILoresheetsCharacterLoresheetsProps,
   ILoresheetsOptionsCharacterLoresheetsProps,
   ILoresheetsOptionsCostCharacterLoresheetsProps } from '../CharacterLoresheets';

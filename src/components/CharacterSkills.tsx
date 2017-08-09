@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 
 import EditSkill from '../components/EditSkill';
-import { ICost } from '../types/costs';
+import { ICost } from '../costs/types';
 
 export interface ISpecialityProps {
   name: string;

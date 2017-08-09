@@ -1,6 +1,6 @@
 import * as Immutable from 'immutable';
 
-import { ICost } from '../../types/costs';
+import { ICost } from '../../costs/types';
 import { IDiscount, isDiscount } from '../types/discounts';
 import { IStoreState } from '../../types/state';
 

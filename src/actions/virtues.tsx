@@ -1,7 +1,7 @@
 import * as constants from '../constants/virtues';
 import * as dataVirtues from '../data/virtues';
 
-import { ICost } from '../types/costs';
+import { ICost } from '../costs/types';
 
 export interface IVirtueIncrease {
   type: constants.VIRTUE_INCREASE;

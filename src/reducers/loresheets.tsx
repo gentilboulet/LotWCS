@@ -2,7 +2,7 @@ import * as Immutable from 'immutable';
 
 import { ILoresheetAction } from '../actions/loresheets';
 import * as constants from '../constants/loresheets';
-import { applyCost } from './costs';
+import { applyCost } from '../costs/reducer';
 import { pushToHistory } from './history';
 import {
   IStoreLoresheet, IStoreLoresheetOption,
