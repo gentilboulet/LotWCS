@@ -1,4 +1,4 @@
-import { IStoreState } from '../../types/state';
+import { IStoreState } from '../../state/types';
 
 import { initialStateFactory } from '../../reducers/initial';
 import * as actions from '../actions/bonuses';

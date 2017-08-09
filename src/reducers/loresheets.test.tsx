@@ -1,4 +1,4 @@
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 
 import { initialStateFactory } from './initial';
 import * as loresheetsActions from '../actions/loresheets';

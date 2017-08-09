@@ -1,4 +1,4 @@
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 import { IHeaderAction } from '../actions/header';
 
 import { initialStateFactory } from './initial';

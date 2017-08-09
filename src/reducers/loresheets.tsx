@@ -7,7 +7,7 @@ import { pushToHistory } from './history';
 import {
   IStoreLoresheet, IStoreLoresheetOption,
   IStoreState,
-  loresheetFactory, loresheetOptionFactory } from '../types/state';
+  loresheetFactory, loresheetOptionFactory } from '../state/types';
 
 export function getLoresheetIndex(state: IStoreState, loresheetUid: string): number {
   return state.get('loresheets').findIndex((loresheetInState: IStoreLoresheet) => {

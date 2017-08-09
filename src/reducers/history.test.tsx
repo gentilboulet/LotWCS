@@ -1,7 +1,7 @@
 import { pushToHistory, replayHistory } from './history';
 import { initialStateFactory } from './initial';
-import { IAction } from '../types/actions';
-import { IStoreState } from '../types/state';
+import { IAction } from '../actions/types';
+import { IStoreState } from '../state/types';
 
 import * as header from '../actions/header';
 import { resetToInitialState } from '../actions/initial';

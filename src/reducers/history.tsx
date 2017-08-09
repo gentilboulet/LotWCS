@@ -1,7 +1,7 @@
 import { IHistoryAction } from '../actions/history';
 import * as constants from '../constants/history';
-import { IAction } from '../types/actions';
-import { IStoreState } from '../types/state';
+import { IAction } from '../actions/types';
+import { IStoreState } from '../state/types';
 import { globalReducer } from './global';
 
 export function pushToHistory(state: IStoreState, action: IAction): IStoreState {

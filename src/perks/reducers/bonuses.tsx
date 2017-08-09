@@ -1,6 +1,6 @@
 import * as constants from '../constants/bonuses';
 import { IBonus, isBonus } from '../types/bonuses';
-import { IStoreState } from '../../types/state';
+import { IStoreState } from '../../state/types';
 import * as chi from '../../reducers/chi';
 import * as skills from '../../reducers/skills';
 

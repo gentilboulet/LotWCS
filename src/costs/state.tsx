@@ -1,6 +1,6 @@
 import { ICost } from '../costs/types';
 import { IDiscount } from '../perks/types/discounts';
-import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState } from '../types/state';
+import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState } from '../state/types';
 
 import * as constants from '../perks/constants/discounts';
 import * as dataLoresheets from '../data/loresheets';

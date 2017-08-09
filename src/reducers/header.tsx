@@ -1,7 +1,7 @@
 import { IHeaderAction } from '../actions/header';
 import * as constants from '../constants/header';
 import * as dataRanks from '../data/ranks';
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 
 // Sub Reducers
 import { IBonus } from '../perks/types/bonuses';

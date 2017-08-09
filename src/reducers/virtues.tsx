@@ -1,7 +1,7 @@
 import { IVirtueAction } from '../actions/virtues';
 import * as constants from '../constants/virtues';
 import * as dataVirtue from '../data/virtues';
-import { IStoreState, IStoreVirtue, virtueFactory } from '../types/state';
+import { IStoreState, IStoreVirtue, virtueFactory } from '../state/types';
 
 import { pushToHistory } from './history';
 

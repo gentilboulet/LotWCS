@@ -3,7 +3,7 @@ import * as Immutable from 'immutable';
 
 import * as dataVirtues from '../data/virtues';
 
-import { IAction } from '../types/actions';
+import { IAction } from '../actions/types';
 import { IDiscount } from '../perks/types/discounts';
 import { IBonus } from '../perks/types/bonuses';
 

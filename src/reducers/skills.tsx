@@ -1,7 +1,7 @@
 import { ISkillAction } from '../actions/skills';
 import * as constants from '../constants/skills';
 import * as derived from '../state/derived';
-import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState, specialityFactory } from '../types/state';
+import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState, specialityFactory } from '../state/types';
 
 // Sub Reducers
 import { applyCost } from '../costs/reducer';

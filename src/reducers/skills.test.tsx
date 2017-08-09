@@ -1,4 +1,4 @@
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 import { ISkillAction } from '../actions/skills';
 
 import * as dataSkills from '../data/skills';

@@ -1,4 +1,4 @@
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 import * as actions from '../actions/virtues';
 
 import * as dataVirtues from '../data/virtues';

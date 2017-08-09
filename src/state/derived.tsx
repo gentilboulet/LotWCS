@@ -1,4 +1,4 @@
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 
 export function chiAura(state: IStoreState): number {
   return state.get('rankValue');

@@ -1,7 +1,7 @@
 import { connect, Dispatch } from 'react-redux';
 
 import * as headerActions from '../actions/header';
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 
 import CharacterHeader, { ICharacterHeaderProps } from '../components/CharacterHeader';
 

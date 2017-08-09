@@ -1,5 +1,5 @@
-import { IAction } from '../types/actions';
-import { IStoreState } from '../types/state';
+import { IAction } from '../actions/types';
+import { IStoreState } from '../state/types';
 
 // Sub Reducers
 import * as header from '../constants/header';

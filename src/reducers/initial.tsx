@@ -9,11 +9,11 @@ import {
   IStoreState, IStoreStateJS,
   IStoreVirtue,
   skillFactory, virtueFactory
-} from '../types/state';
+} from '../state/types';
 
 import { resetToInitialState } from '../actions/initial';
 
-import { IAction } from '../types/actions';
+import { IAction } from '../actions/types';
 
 import * as dataSkills from '../data/skills';
 import * as dataVirtues from '../data/virtues';

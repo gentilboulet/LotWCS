@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { initialStateFactory } from '../reducers/initial';
 import { globalReducer } from '../reducers/global';
-import { IStoreState } from '../types/state';
+import { IStoreState } from '../state/types';
 
 const store = createStore<IStoreState>(
   globalReducer,
