@@ -7,18 +7,18 @@ import { applyCost } from './costs';
 
 import * as constants from '../constants/kungfus';
 
-function getStateString(type: constants.KUNGFU_TYPE) {
+function _getStateString(type: constants.KUNGFU_TYPE) {
   return (type === constants.KUNGFU_INTERNAL) ? 'internalKungFus' : 'externalKungFus';
 }
 
 export function getKungFuIndex(state: IStoreState, type: constants.KUNGFU_TYPE, style: string): number {
-  const stateString: string = getStateString(type);
+  const stateString: string = _getStateString(type);
   return state.get(stateString).findIndex((kf: IStoreKungFuJS) => (kf.uid === style));
 }
 
 export function getKungFuTechniqueIndex(
   state: IStoreState, type: constants.KUNGFU_TYPE, style: string, technique: string): number {
-  const stateString: string = getStateString(type);
+  const stateString: string = _getStateString(type);
   const styleIndex = getKungFuIndex(state, type, style);
   if (styleIndex === -1) {
     throw new Error('Something went wrong, ' + type + ' kungfu not found');
@@ -28,7 +28,7 @@ export function getKungFuTechniqueIndex(
 }
 
 export function openStyle(state: IStoreState, type: constants.KUNGFU_TYPE, style: string): void {
-  const stateString: string = getStateString(type);
+  const stateString: string = _getStateString(type);
   state.updateIn([stateString], list => list.push(
       kungfuFactory({ name: style, uid: style, techniques: Immutable.List() })
     )
@@ -36,7 +36,7 @@ export function openStyle(state: IStoreState, type: constants.KUNGFU_TYPE, style
 }
 
 export function buyTechnique(state: IStoreState, type: constants.KUNGFU_TYPE, style: string, technique: string): void {
-  const stateString: string = getStateString(type);
+  const stateString: string = _getStateString(type);
   const styleIndex = getKungFuIndex(state, type, style);
   if (styleIndex === -1) {
     throw new Error('Something went wrong, ' + type + ' kungfu not found');
@@ -58,13 +58,13 @@ export function kungfuReducer(oldState: IStoreState, action: IKungFuAction): ISt
       case constants.KUNGFU_OPEN_STYLE:
         return oldState.withMutations(state => {
           applyCost(state, action.cost);
-          openStyle(state, action.kungfuType, action.styleUid);
+          openStyle(state, action.kungfuType, action.uid);
           pushToHistory(state, action);
         });
       case constants.KUNGFU_BUY_TECHNIQUE:
         return oldState.withMutations(state => {
           applyCost(state, action.cost);
-          buyTechnique(state, action.kungfuType, action.styleUid, action.techniqueUid);
+          buyTechnique(state, action.kungfuType, action.styleUid, action.uid);
           pushToHistory(state, action);
         });
       case constants.KUNGFU_CUSTOM_NAME_FOR_STYLE:

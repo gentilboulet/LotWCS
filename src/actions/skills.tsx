@@ -25,5 +25,6 @@ export function skillsBuy(name: string, cost: ICost): ISkillBuy {
 
 export function skillSpecialityBuy(skill: string, speciality: string, cost: ICost): ISkillSpecialityBuy {
   dataSkills.validateSkill(skill);
+  if (speciality.length === 0) { throw new Error ('Empty speciality'); }
   return { cost, skill, speciality, type: constants.SKILLS_SPECIALITY_BUY };
 }

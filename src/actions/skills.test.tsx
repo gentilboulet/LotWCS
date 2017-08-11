@@ -26,9 +26,16 @@ describe('Testing for skill action creators', () => {
     expect( a ).toMatchSnapshot();
   });
 
-  it('should not create a buy speciality on an invalid skill action', () => {
+  it('should not create a buy speciality action on an invalid skill', () => {
     const skill = 'Not a skill';
     const speciality = 'Hear';
+    expect( () => actions.skillSpecialityBuy(skill, speciality, noCost) ).toThrow();
+  });
+
+  it('should not create a buy speciality action on an invalid speciality', () => {
+    const skill = 'Awareness';
+    const speciality = '';
+    console.log(speciality.length);
     expect( () => actions.skillSpecialityBuy(skill, speciality, noCost) ).toThrow();
   });
 });

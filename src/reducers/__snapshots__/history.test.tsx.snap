@@ -107,6 +107,58 @@ Object {
       "value": 0,
     },
   ],
+  "virtues": Array [
+    Object {
+      "name": "Honor",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Benevolence",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Righteousness",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Loyalty",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Force",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Revenge",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Individualism",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Obsession",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ruthlessness",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ferocity",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+  ],
 }
 `;
 
@@ -256,6 +308,58 @@ Object {
       "value": 0,
     },
   ],
+  "virtues": Array [
+    Object {
+      "name": "Honor",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Benevolence",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Righteousness",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Loyalty",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Force",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Revenge",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Individualism",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Obsession",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ruthlessness",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ferocity",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+  ],
 }
 `;
 
@@ -370,6 +474,58 @@ Object {
       "value": 0,
     },
   ],
+  "virtues": Array [
+    Object {
+      "name": "Honor",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Benevolence",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Righteousness",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Loyalty",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Force",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Revenge",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Individualism",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Obsession",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ruthlessness",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ferocity",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+  ],
 }
 `;
 
@@ -481,6 +637,58 @@ Object {
     },
     Object {
       "name": "Wu Wei",
+      "value": 0,
+    },
+  ],
+  "virtues": Array [
+    Object {
+      "name": "Honor",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Benevolence",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Righteousness",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Loyalty",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Force",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Revenge",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Individualism",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Obsession",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ruthlessness",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ferocity",
+      "type": "VIRTUE_SELFISH",
       "value": 0,
     },
   ],

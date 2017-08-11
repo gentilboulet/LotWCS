@@ -3,18 +3,20 @@ import { makeTypedFactory } from 'typed-immutable-record';
 
 import {
   defaultChiFactory,
-  IStoreKungFu, 
+  IStoreKungFu,
   IStoreLoresheet, IStoreLoresheetOption,
   IStoreSkill, IStoreSkillSpeciality,
   IStoreState, IStoreStateJS,
-  skillFactory,
+  IStoreVirtue,
+  skillFactory, virtueFactory
 } from '../types/state';
 
 import { resetToInitialState } from '../actions/initial';
 
 import { IAction } from '../types/actions';
 
-import { IDataSkill, skills } from '../data/skills';
+import * as dataSkills from '../data/skills';
+import * as dataVirtues from '../data/virtues';
 
 export const defaultStateJS: IStoreStateJS = {
   name: 'No Name',
@@ -26,7 +28,7 @@ export const defaultStateJS: IStoreStateJS = {
   rankModified: false,
   entanglement: 0,
   destiny: 0,
-  skills: Immutable.List<IStoreSkill>(skills.map((s: IDataSkill) => {
+  skills: Immutable.List<IStoreSkill>(dataSkills.skills.map((s: dataSkills.IDataSkill) => {
     return skillFactory({
       name: s.name,
       value: 0,
@@ -41,6 +43,7 @@ export const defaultStateJS: IStoreStateJS = {
   chi: defaultChiFactory(),
   externalKungFus: Immutable.List<IStoreKungFu>([]),
   internalKungFus: Immutable.List<IStoreKungFu>([]),
+  virtues: Immutable.List<IStoreVirtue>(dataVirtues.virtues.map(v => virtueFactory(v.name, v.type)))
 };
 
 export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultStateJS);
