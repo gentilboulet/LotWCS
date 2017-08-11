@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing the FieldHeader component should render without crashing 1`] = `
+<h4>
+  <span
+    className="align-text-middle"
+  >
+    something
+  </span>
+</h4>
+`;

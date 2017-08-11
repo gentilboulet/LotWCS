@@ -1,7 +1,7 @@
-import { ILoresheet } from '../../../../types/loresheets';
+import { IDataLoresheet } from '../../../../data/loresheets';
 
 /* tslint:disable:max-line-length */
-export const wulin: ILoresheet = {
+export const wulin: IDataLoresheet = {
   uid: 'wulin',
   name: 'The Wulin',
   category: 'Rivers and Lakes',

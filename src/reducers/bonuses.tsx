@@ -1,6 +1,7 @@
 import * as constants from '../constants/bonuses';
 import { IBonus, isBonus } from '../types/bonuses';
 import { IStoreState } from '../types/state';
+import * as chi from './chi';
 import * as skills from './skills';
 
 export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreState {
@@ -16,8 +17,11 @@ export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreSt
           const e = state.get('entanglement');
           state.set('entanglement', e + bonus.value);
           break;
-        case constants.BONUS_STARTING_CHI:
-          state.set('chi', bonus.value);
+        case constants.BONUS_CHI:
+          chi.increaseValue(state, bonus.chi, bonus.value);
+          break;
+        case constants.BONUS_CULTIVATION:
+          chi.increaseCultivation(state, bonus.cultivation, bonus.value);
           break;
         case constants.BONUS_SKILL_RANK:
           skills.increaseValue(state, bonus.skill);

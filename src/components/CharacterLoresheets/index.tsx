@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
 
-import { loresheetsCategories } from '../../data/loresheets';
+import * as dataLoresheets from '../../data/loresheets';
 import { ICost } from '../../types/costs';
 import LoresheetCategory from './LoresheetCategory';
 
@@ -49,7 +49,7 @@ class CharacterLoresheets extends
     return(
       <Container className="CharacterHistory">
         {
-          loresheetsCategories.map((category: string) => {
+          dataLoresheets.loresheetsCategories.map((category: string) => {
               return (
                 <LoresheetCategory
                   category={category}

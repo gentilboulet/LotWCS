@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing history action creators should create an history delete action 1`] = `
+Object {
+  "id": 12,
+  "type": "HISTORY_DELETE",
+}
+`;

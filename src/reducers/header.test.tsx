@@ -33,22 +33,12 @@ describe('Testing headerReducer', () => {
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
-  it('should receive a HEADER_SET_ARCHETYPE action with an invalid input and do nothing', () => {
-    expect(() => actions.setArchetype('not a valid archetype') )
-      .toThrow('Unknown archetype "not a valid archetype"');
-  });
-
   it('should receive a HEADER_SET_RANK action', () => {
     expect( initialState.get('rank') ).toBe('');
     const action = actions.setRank('4th_rank');
     const state = headerReducer(initialState, action);
     expect ( state.get('rank') ).toBe('4th_rank');
     expect( globalReducer(initialState, action) ).toMatchObject(state);
-  });
-
-  it('should receive a HEADER_SET_RANK action with an invalid input and do nothing', () => {
-    expect(() => actions.setRank('best rank'))
-      .toThrow('Unknown rank "best rank"');
   });
 
   it('should do nothing with a junk action', () => {

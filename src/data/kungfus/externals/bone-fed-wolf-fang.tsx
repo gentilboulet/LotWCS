@@ -13,7 +13,7 @@
       {
         name:"Circling Pack",
         cost:4,
-        desc:"Wolves strike from all sides to overwhelm their prey. You force a response with your weapon, creating an opening so you can deal a blow to a vulnerable spot.",
+        description:"Wolves strike from all sides to overwhelm their prey. You force a response with your weapon, creating an opening so you can deal a blow to a vulnerable spot.",
         effect:{
           type:'CONDITIONAL',
           bonus: new Array({
@@ -25,7 +25,7 @@
       {
         name:"Fighting With Fire",
         cost:4,
-        desc:"Fire is a useful, if dangerous, tool to use in war. Its effects on the enemy are startling: set something ablaze that they value and they will flock towards it; set something ablaze that they can afford to lose and they won’t dare approach. So too must your strikes be utilized to force them into a pattern and method of your choosing. An enemy that follows your lead is not worthy of the name",
+        description:"Fire is a useful, if dangerous, tool to use in war. Its effects on the enemy are startling: set something ablaze that they value and they will flock towards it; set something ablaze that they can afford to lose and they won’t dare approach. So too must your strikes be utilized to force them into a pattern and method of your choosing. An enemy that follows your lead is not worthy of the name",
         effect:{
           type:'CONDITIONAL',
           bonus: new Array({ category:'block',
@@ -39,7 +39,7 @@
       {
         name:"March Towards Hell",
         cost:4,
-        desc:"The wise general makes his enemies tire themselves out by forcing them to march towards his position. Once in battle, he cleverly uses his troops to dictate the maneuvers of his enemy. Your attacks follow the same philosophy; your enemies are already defeated, the slaughter a mere formality.",
+        description:"The wise general makes his enemies tire themselves out by forcing them to march towards his position. Once in battle, he cleverly uses his troops to dictate the maneuvers of his enemy. Your attacks follow the same philosophy; your enemies are already defeated, the slaughter a mere formality.",
         effect:{
           type:'CONDITIONAL',
           bonus: new Array({
@@ -51,7 +51,7 @@
       {
         name:"Rainfall at Night",
         cost:4,
-        desc:"The battlefield is where wars are ended, but to a peerless general their outcome is determined beforehand. Assassinate their officers, poison the wells, fill their hearts with propaganda, and creep inside their camps to set fires and steal horses. These are the ways of the warrior who knows neither honor nor defeat.",
+        description:"The battlefield is where wars are ended, but to a peerless general their outcome is determined beforehand. Assassinate their officers, poison the wells, fill their hearts with propaganda, and creep inside their camps to set fires and steal horses. These are the ways of the warrior who knows neither honor nor defeat.",
         effect:{
           type:'CONDITIONAL',
           bonus: new Array({ category:'strike',
@@ -63,7 +63,7 @@
       {
         name:"Wolves Devour the Lion",
         cost:4,
-        desc:"Stress bruised ribs until they crack. Lash sore flesh until it rips. The tales of glorious battle are for the halls of gold and silk, but they are built on your acts in the fields of iron and wolves.",
+        description:"Stress bruised ribs until they crack. Lash sore flesh until it rips. The tales of glorious battle are for the halls of gold and silk, but they are built on your acts in the fields of iron and wolves.",
         effect:{
           type:'CONDITIONAL',
           bonus: new Array({ category:'damage',

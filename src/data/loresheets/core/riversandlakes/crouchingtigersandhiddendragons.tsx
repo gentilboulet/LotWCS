@@ -1,8 +1,8 @@
 import * as bonuses from '../../../../actions/bonuses';
-import { ILoresheet } from '../../../../types/loresheets';
+import { IDataLoresheet } from '../../../../data/loresheets';
 
 /* tslint:disable:max-line-length */
-export const crouchingtigersandhiddendragons: ILoresheet = {
+export const crouchingtigersandhiddendragons: IDataLoresheet = {
   uid: 'tigersanddragons',
   name: 'Crouching Tigers and Hidden Dragons',
   category: 'Rivers and Lakes',

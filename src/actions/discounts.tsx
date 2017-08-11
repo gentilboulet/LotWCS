@@ -1,14 +1,14 @@
 import * as constants from '../constants/discounts';
-import { skills } from '../data/skills';
+import * as dataSkills from '../data/skills';
 import { IDiscountSkill } from '../types/discounts';
-import { IDataSkill } from '../types/skills';
 
 export function discountSkillFactory(value: number, subset?: string[]): IDiscountSkill {
-  if (subset) {
+  if (subset && subset.length > 0) {
+    subset.map((skill: string) => dataSkills.validateSkill(skill));
     return { skills: subset, type: constants.DISCOUNT_SKILL, value, };
   } else {
     return {
-      skills: skills.map((s: IDataSkill) => s.name),
+      skills: dataSkills.skills.map((s: dataSkills.IDataSkill) => s.name),
       type: constants.DISCOUNT_SKILL,
       value,
     };

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing for skill action creators should create a buy speciality action 1`] = `
+Object {
+  "cost": Object {
+    "destiny": 0,
+    "discountIdx": -1,
+    "discountNewValue": 0,
+    "entanglement": 0,
+  },
+  "skill": "Awareness",
+  "speciality": "Hear",
+  "type": "SKILLS_SPECIALITY_BUY",
+}
+`;

@@ -1,8 +1,7 @@
 import * as constants from '../constants/skills';
-import { skills } from '../data/skills';
+import * as dataSkills from '../data/skills';
 
 import { ICost } from '../types/costs';
-import { IDataSkill } from '../types/skills';
 
 export interface ISkillBuy {
   type: constants.SKILLS_BUY;
@@ -20,11 +19,11 @@ export interface ISkillSpecialityBuy {
 export type ISkillAction = ISkillBuy | ISkillSpecialityBuy;
 
 export function skillsBuy(name: string, cost: ICost): ISkillBuy {
-  const foundSkill = skills.find((skill: IDataSkill) => (skill.name === name) );
-  if (! foundSkill ) { throw new Error('Unknown skill "' + name + '"'); }
-  return { cost, name, type: constants.SKILLS_BUY, };
+  dataSkills.validateSkill(name);
+  return { cost, name, type: constants.SKILLS_BUY };
 }
 
 export function skillSpecialityBuy(skill: string, speciality: string, cost: ICost): ISkillSpecialityBuy {
+  dataSkills.validateSkill(skill);
   return { cost, skill, speciality, type: constants.SKILLS_SPECIALITY_BUY };
 }

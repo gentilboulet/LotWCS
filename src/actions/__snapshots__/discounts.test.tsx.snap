@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing discount creators should create a skill discount 1`] = `
+Object {
+  "skills": Array [
+    "Awareness",
+    "Confidence",
+    "Crafting",
+    "Finesse",
+    "Hardiness",
+    "Inspire",
+    "Learning",
+    "Medicine",
+    "Might",
+    "Perform",
+    "Politics",
+    "Ride",
+    "Stealth",
+    "Survival",
+    "Tactics",
+    "Wu Wei",
+  ],
+  "type": "DISCOUNT_SKILL",
+  "value": 10,
+}
+`;
+
+exports[`Testing discount creators should create a skill discount for a single skill 1`] = `
+Object {
+  "skills": Array [
+    "Awareness",
+    "Politics",
+  ],
+  "type": "DISCOUNT_SKILL",
+  "value": 10,
+}
+`;
+
+exports[`Testing discount creators should create a skill discount with an empty subset 1`] = `
+Object {
+  "skills": Array [
+    "Awareness",
+    "Confidence",
+    "Crafting",
+    "Finesse",
+    "Hardiness",
+    "Inspire",
+    "Learning",
+    "Medicine",
+    "Might",
+    "Perform",
+    "Politics",
+    "Ride",
+    "Stealth",
+    "Survival",
+    "Tactics",
+    "Wu Wei",
+  ],
+  "type": "DISCOUNT_SKILL",
+  "value": 10,
+}
+`;

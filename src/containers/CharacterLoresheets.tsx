@@ -11,10 +11,9 @@ import { ICharacterLoresheetsProps,
 } from '../components/CharacterLoresheets';
 
 import { ICost } from '../types/costs';
-import { ILoresheet, ILoresheetOption } from '../types/loresheets';
 import { IStoreState } from '../types/state';
 
-import { loresheets as dataLS, lsOptionCostToValues } from '../data/loresheets';
+import * as dataLoresheets from '../data/loresheets';
 
 import CharacterLoresheets from '../components/CharacterLoresheets';
 
@@ -29,36 +28,39 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    loresheets: dataLS.map((ls: ILoresheet): ILoresheetsCharacterLoresheetsProps => {
-      return {
-        uid: ls.uid,
-        name: ls.name,
-        category: ls.category,
-        description: ls.description,
-        ruleset: ls.ruleset,
+    loresheets: dataLoresheets.loresheets
+      .map((ls: dataLoresheets.IDataLoresheet): ILoresheetsCharacterLoresheetsProps => {
+        return {
+          uid: ls.uid,
+          name: ls.name,
+          category: ls.category,
+          description: ls.description,
+          ruleset: ls.ruleset,
 
-        options: ls.options.map((op: ILoresheetOption): ILoresheetsOptionsCharacterLoresheetsProps => {
-          return {
-            uid: op.uid,
-            type: op.type,
-            description: op.description,
+          options: ls.options
+          .map((op: dataLoresheets.IDataLoresheetOption): ILoresheetsOptionsCharacterLoresheetsProps => {
+            return {
+              uid: op.uid,
+              type: op.type,
+              description: op.description,
 
-            known: (getLoresheetOptionIndex(state, ls.uid, op.uid) >= 0),
-            costs: lsOptionCostToValues(op.cost).map((v: number): ILoresheetsOptionsCostCharacterLoresheetsProps => {
-              return {
-                originalCost: v,
-                canBuy: canBuyOptionLoresheet(state, ls.uid, op.uid, v),
-                cost: getCostBuyOptionLoresheet(state, ls.uid, op.uid, v)
-              };
-             }),
-            costsStr: op.cost
-          };
-        }),
+              known: (getLoresheetOptionIndex(state, ls.uid, op.uid) >= 0),
+              costs: dataLoresheets.lsOptionCostToValues(op.cost)
+                .map((v: number): ILoresheetsOptionsCostCharacterLoresheetsProps => {
+                  return {
+                    originalCost: v,
+                    canBuy: canBuyOptionLoresheet(state, ls.uid, op.uid, v),
+                    cost: getCostBuyOptionLoresheet(state, ls.uid, op.uid, v)
+                  };
+                }),
+              costsStr: op.cost
+            };
+          }),
 
-        known: (getLoresheetIndex(state, ls.uid) >= 0),
-        canOpen: canOpenLoresheet(state, ls.uid, ls.cost),
-        cost: getCostOpenLoresheet(state, ls.uid, ls.cost),
-        costStr: String(ls.cost)
+          known: (getLoresheetIndex(state, ls.uid) >= 0),
+          canOpen: canOpenLoresheet(state, ls.uid, ls.cost),
+          cost: getCostOpenLoresheet(state, ls.uid, ls.cost),
+          costStr: String(ls.cost)
       };
     })
   };

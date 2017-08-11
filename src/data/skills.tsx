@@ -1,4 +1,9 @@
-import { IDataSkills } from '../types/skills';
+export interface IDataSkill {
+  name: string;
+  specialities: string[];
+}
+
+export interface IDataSkills extends Array<IDataSkill> {}
 
 export const skills: IDataSkills = [
   {
@@ -60,3 +65,8 @@ export const skills: IDataSkills = [
   'Social Perception', 'Specific Priest’s Arts Techniques']
 }
 ];
+
+export function validateSkill(name: string): void {
+  const foundSkill = skills.find((dataSkill: IDataSkill) => (dataSkill.name === name ));
+  if (! foundSkill ) { throw new Error('Unknown skill "' + name + '"'); }
+}

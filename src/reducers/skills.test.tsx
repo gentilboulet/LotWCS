@@ -1,8 +1,7 @@
 import { IStoreState } from '../types/state';
 import { ISkillAction } from '../actions/skills';
 
-import { skills } from '../data/skills';
-import { IDataSkill } from '../types/skills';
+import { IDataSkill, skills } from '../data/skills';
 
 import { initialStateFactory } from './initial';
 import * as actions from '../actions/skills';
@@ -30,7 +29,7 @@ describe('Testing skillsReducer', () => {
   });
 
   it('should do nothing with a SKILLS_BUY action with an invalid skill', () => {
-    expect(() => actions.skillsBuy('not a skill', noCost) ).toThrow('Unknown skill "not a skill"');
+    expect(() => actions.skillsBuy('not a skill', noCost) ).toThrow();
   });
 
   it('should receive a SKILLS_SPECIALITY_BUY action', () => {
