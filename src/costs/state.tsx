@@ -1,10 +1,11 @@
 import { ICost } from 'costs/types';
 import { IDiscount } from 'perks/types/discounts';
-import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState } from 'state/types';
+import { IStoreState } from 'state/types';
 
 import * as constants from 'perks/constants/discounts';
 import * as dataLoresheets from 'data/loresheets';
-import { getLoresheetIndex, getLoresheetOptionIndex } from 'state/reducers/loresheets';
+import * as loresheets from 'state/loresheets';
+import * as skills from 'state/skills';
 
 import * as derived from 'state/derived';
 
@@ -44,8 +45,7 @@ function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
  */
 
 export function canBuySkill(state: IStoreState, skill: string): boolean {
-  const idx = state.get('skills').findIndex((s: IStoreSkillJS) => (s.name === skill));
-  const value = state.getIn(['skills', idx, 'value']);
+  const value = skills.getSkillValue(state, skill);
   if ( (value + 5) > derived.maxSkillBonus(state) ) { return false; }
   const cost = getCostSkill(state, skill);
   return _canHandleCost(state, cost);
@@ -64,8 +64,7 @@ export function getCostSkill(state: IStoreState, skill: string): ICost {
 }
 
 export function canBuySpeciality(state: IStoreState, skill: string, speciality: string): boolean {
-  const specialityIdx = state.getIn(['skillsSpecialities'])
-    .findIndex((spe: IStoreSkillSpecialityJS) => (spe.name === speciality && spe.skill === skill));
+  const specialityIdx = skills.getSpecialityIndex(state, skill, speciality);
 
   if ( specialityIdx < 0 ) { return false; }
 
@@ -86,7 +85,7 @@ export function getCostSpeciality(state: IStoreState, skill: string, speciality:
 }
 
 export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
-  const idx = getLoresheetIndex(state, uid);
+  const idx = loresheets.getLoresheetIndex(state, uid);
   if (idx !== -1) { return false; } // Already opened
   const cost: ICost = getCostOpenLoresheet(state, uid, openCost);
   return _canHandleCost(state, cost);
@@ -102,25 +101,27 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string, cost: numb
 }
 
 export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, buyCost: number): boolean {
-  if ( getLoresheetIndex(state, lsUid) === -1) { return false; } // LS not open
+  if ( loresheets.getLoresheetIndex(state, lsUid) === -1) { return false; } // LS not open
 
   const dataOpt = dataLoresheets.optionLS(lsUid, uid);
-  const idxOpt = getLoresheetOptionIndex(state, lsUid, uid);
+  const idxOpt = loresheets.getLoresheetOptionIndex(state, lsUid, uid);
 
   if (idxOpt === -1 && !dataOpt.repeatable) { return false; } // Already bought & not repeatable
 
   if (dataOpt.prerequisites.filter( // filter checked prereqs
       (p: dataLoresheets.IDataLoresheetOptionPrerequisite) => {
         if (typeof p === 'string') {
-          return getLoresheetOptionIndex(state, lsUid, p) !== -1;
+          return loresheets.getLoresheetOptionIndex(state, lsUid, p) !== -1;
         } else if ( p.type === 'OR' ) {
           return p.prerequisites
-            .filter((prerequisiteUid: string) => (getLoresheetOptionIndex(state, lsUid, prerequisiteUid) !== -1))
-            .length > 0;
+            .filter(
+              (prerequisiteUid: string) => (loresheets.getLoresheetOptionIndex(state, lsUid, prerequisiteUid) !== -1)
+            ).length > 0;
         } else if ( p.type === 'AND') {
           return p.prerequisites
-            .filter((prerequisiteUid: string) => (getLoresheetOptionIndex(state, lsUid, prerequisiteUid) !== -1))
-            .length === p.prerequisites.length;
+            .filter(
+              (prerequisiteUid: string) => (loresheets.getLoresheetOptionIndex(state, lsUid, prerequisiteUid) !== -1)
+            ).length === p.prerequisites.length;
         }
         return false;
       }
