@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Container, Row } from 'reactstrap';
 
-import CharacterBody from '../../components/CharacterBody';
-import CharacterHeader from '../../containers/CharacterHeader';
+import CharacterBody from 'components/CharacterBody';
+import CharacterHeader from 'containers/CharacterHeader';
 
 import './App.css';
 

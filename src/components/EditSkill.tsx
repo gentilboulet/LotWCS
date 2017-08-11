@@ -2,7 +2,7 @@ import * as React from 'react';
 import Icon from 'react-fa';
 import { Button, Col, Container, Row } from 'reactstrap';
 
-import { ICost } from '../types/costs';
+import { ICost } from 'costs/types';
 
 import FieldHeader from './FieldHeader';
 

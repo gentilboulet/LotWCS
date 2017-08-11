@@ -1,4 +1,4 @@
-import { IDataLoresheet } from '../../../../data/loresheets';
+import { IDataLoresheet } from 'data/loresheets';
 
 /* tslint:disable:max-line-length */
 export const wulin: IDataLoresheet = {

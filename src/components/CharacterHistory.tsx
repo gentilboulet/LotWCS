@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 
-import { IAction }  from '../types/actions';
+import { IAction }  from 'state/actions/types';
 
 export interface ICharacterHistoryProps {
   history: IAction[];

@@ -1,6 +1,6 @@
-import * as dataChi from '../../data/chi';
-import * as constants from '../../constants/kungfus';
-import { IEffect } from '../../types/effects';
+import * as dataChi from 'data/chi';
+import * as constants from 'constants/kungfus';
+import { IEffect } from 'perks/types/effects';
 
 export type IWeaponType = 'Flexible'|'Massive'|'Paired'|'Ranged'|'Saber'|'Staff'|'Spear'|'Sword'|'Unarmed';
 

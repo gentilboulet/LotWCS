@@ -1,5 +1,5 @@
-import * as bonuses from '../../../../actions/bonuses';
-import { IDataLoresheet } from '../../../../data/loresheets';
+import * as bonuses from 'perks/actions/bonuses';
+import { IDataLoresheet } from 'data/loresheets';
 
 /* tslint:disable:max-line-length */
 export const crouchingtigersandhiddendragons: IDataLoresheet = {

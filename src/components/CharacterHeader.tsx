@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import EditText from '../components/EditText';
-import DDLText from '../components/DDLText';
+import EditText from 'components/EditText';
+import DDLText from 'components/DDLText';
 
-import * as dataArchetypes from '../data/archetypes';
-import * as dataRanks from '../data/ranks';
+import * as dataArchetypes from 'data/archetypes';
+import * as dataRanks from 'data/ranks';
 
 export interface ICharacterHeaderProps {
   name: string;
