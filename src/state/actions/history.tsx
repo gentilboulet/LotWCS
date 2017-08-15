@@ -1,4 +1,4 @@
-import * as constants from 'constants/history';
+import * as constants from 'state/constants/history';
 
 export interface IhistoryDeleteUpTo {
   type: constants.HISTORY_DELETE;

@@ -1,5 +1,5 @@
 import { ISkillAction } from 'state/actions/skills';
-import * as constants from 'constants/skills';
+import * as constants from 'state/constants/skills';
 import { IStoreState } from 'state/types';
 
 // Sub Reducers

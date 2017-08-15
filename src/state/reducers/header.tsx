@@ -1,5 +1,5 @@
 import { IHeaderAction } from 'state/actions/header';
-import * as constants from 'constants/header';
+import * as constants from 'state/constants/header';
 import * as header from 'state/header';
 import { IStoreState } from 'state/types';
 

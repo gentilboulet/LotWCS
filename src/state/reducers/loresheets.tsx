@@ -1,5 +1,5 @@
 import { ILoresheetAction } from 'state/actions/loresheets';
-import * as constants from 'constants/loresheets';
+import * as constants from 'state/constants/loresheets';
 import { applyCost } from 'costs/reducer';
 import { pushToHistory } from 'state/history';
 import { IStoreState } from 'state/types';

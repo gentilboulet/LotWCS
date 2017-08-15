@@ -2,28 +2,28 @@ import { IAction } from 'state/actions/types';
 import { IStoreState } from 'state/types';
 
 // Sub Reducers
-import * as header from 'constants/header';
+import * as header from 'state/constants/header';
 import { headerReducer } from 'state/reducers/header';
 
-import * as chi from 'constants/chi';
+import * as chi from 'state/constants/chi';
 import { chiReducer } from 'state/reducers/chi';
 
-import * as initial from 'constants/initial';
+import * as initial from 'state/constants/initial';
 import { initialStateFactory } from 'state/initial';
 
-import * as kungfus from 'constants/kungfus';
+import * as kungfus from 'state/constants/kungfus';
 import { kungfuReducer } from 'state/reducers/kungfus';
 
-import * as history from 'constants/history';
+import * as history from 'state/constants/history';
 import { historyReducer } from 'state/reducers/history';
 
-import * as skills from 'constants/skills';
+import * as skills from 'state/constants/skills';
 import { skillsReducer } from 'state/reducers/skills';
 
-import * as loresheets from 'constants/loresheets';
+import * as loresheets from 'state/constants/loresheets';
 import { loresheetsReducer } from 'state/reducers/loresheets';
 
-import * as virtues from 'constants/virtues';
+import * as virtues from 'state/constants/virtues';
 import { virtuesReducer } from 'state/reducers/virtues';
 
 export function globalReducer(state: IStoreState, action: IAction): IStoreState {
