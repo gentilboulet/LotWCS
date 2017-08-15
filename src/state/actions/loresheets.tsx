@@ -1,4 +1,4 @@
-import * as constants from 'constants/loresheets';
+import * as constants from 'state/constants/loresheets';
 import { ICost } from 'costs/types';
 import * as dataLoresheets from 'data/loresheets';
 

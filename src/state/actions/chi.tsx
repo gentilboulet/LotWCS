@@ -1,4 +1,4 @@
-import * as constants from 'constants/chi';
+import * as constants from 'state/constants/chi';
 import * as dataChi from 'data/chi';
 import { ICost } from 'costs/types';
 

@@ -1,4 +1,4 @@
-import * as constants from 'constants/initial';
+import * as constants from 'state/constants/initial';
 
 export interface IInitialState {
   type: constants.INITIAL_STATE;

@@ -1,9 +1,8 @@
 import { connect, Dispatch } from 'react-redux';
 
 import * as loresheetsActions from 'state/actions/loresheets';
-import { getLoresheetIndex, getLoresheetOptionIndex } from 'state/reducers/loresheets';
-import { canBuyOptionLoresheet, canOpenLoresheet,
-  getCostBuyOptionLoresheet, getCostOpenLoresheet } from 'costs/state';
+import * as loresheets from 'state/loresheets';
+import * as costs from 'costs/state';
 
 import { ICharacterLoresheetsProps,
   ILoresheetsCharacterLoresheetsProps, ILoresheetsOptionsCharacterLoresheetsProps,
@@ -44,22 +43,22 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
               type: op.type,
               description: op.description,
 
-              known: (getLoresheetOptionIndex(state, ls.uid, op.uid) >= 0),
+              known: (loresheets.getLoresheetOptionIndex(state, ls.uid, op.uid) >= 0),
               costs: dataLoresheets.lsOptionCostToValues(op.cost)
                 .map((v: number): ILoresheetsOptionsCostCharacterLoresheetsProps => {
                   return {
                     originalCost: v,
-                    canBuy: canBuyOptionLoresheet(state, ls.uid, op.uid, v),
-                    cost: getCostBuyOptionLoresheet(state, ls.uid, op.uid, v)
+                    canBuy: costs.canBuyOptionLoresheet(state, ls.uid, op.uid, v),
+                    cost: costs.getCostBuyOptionLoresheet(state, ls.uid, op.uid, v)
                   };
                 }),
               costsStr: op.cost
             };
           }),
 
-          known: (getLoresheetIndex(state, ls.uid) >= 0),
-          canOpen: canOpenLoresheet(state, ls.uid, ls.cost),
-          cost: getCostOpenLoresheet(state, ls.uid, ls.cost),
+          known: (loresheets.getLoresheetIndex(state, ls.uid) >= 0),
+          canOpen: costs.canOpenLoresheet(state, ls.uid, ls.cost),
+          cost: costs.getCostOpenLoresheet(state, ls.uid, ls.cost),
           costStr: String(ls.cost)
       };
     })
