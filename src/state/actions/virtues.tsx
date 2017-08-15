@@ -1,4 +1,4 @@
-import * as constants from 'constants/virtues';
+import * as constants from 'state/constants/virtues';
 import * as dataVirtues from 'data/virtues';
 
 import { ICost } from 'costs/types';

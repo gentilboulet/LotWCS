@@ -1,4 +1,4 @@
-import * as constants from 'constants/header';
+import * as constants from 'state/constants/header';
 
 import * as dataArchetypes from 'data/archetypes';
 import * as dataRanks from 'data/ranks';

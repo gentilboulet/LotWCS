@@ -1,4 +1,4 @@
-import * as constants from 'constants/kungfus';
+import * as constants from 'state/constants/kungfus';
 import * as dataKungFu from 'data/kungfus';
 import { ICost } from 'costs/types';
 
@@ -6,7 +6,7 @@ export interface IKungFuOpenStyle {
   type: constants.KUNGFU_OPEN_STYLE;
   cost: ICost;
   uid: string;
-  kungfuType: constants.KUNGFU_TYPE;
+  kungfuType: dataKungFu.KUNGFU_TYPE;
 }
 
 export interface IKungFuBuyTechnique {
@@ -14,14 +14,14 @@ export interface IKungFuBuyTechnique {
   cost: ICost;
   styleUid: string;
   uid: string;
-  kungfuType: constants.KUNGFU_TYPE;
+  kungfuType: dataKungFu.KUNGFU_TYPE;
 }
 
 export interface IKungFuSetCustomStyleName {
   type: constants.KUNGFU_CUSTOM_NAME_FOR_STYLE;
   uid: string;
   name: string;
-  kungfuType: constants.KUNGFU_TYPE;
+  kungfuType: dataKungFu.KUNGFU_TYPE;
 }
 
 export interface IKungFuSetCustomTechniqueName {
@@ -29,27 +29,27 @@ export interface IKungFuSetCustomTechniqueName {
   styleUid: string;
   uid: string;
   name: string;
-  kungfuType: constants.KUNGFU_TYPE;
+  kungfuType: dataKungFu.KUNGFU_TYPE;
 }
 
 export type IKungFuAction = IKungFuOpenStyle | IKungFuBuyTechnique
 | IKungFuSetCustomStyleName | IKungFuSetCustomTechniqueName
 
-export function openStyle(uid: string, kungfuType: constants.KUNGFU_TYPE, cost: ICost): IKungFuOpenStyle {
+export function openStyle(uid: string, kungfuType: dataKungFu.KUNGFU_TYPE, cost: ICost): IKungFuOpenStyle {
   dataKungFu.validateKungFuType(kungfuType);
   dataKungFu.validateKungFuStyle(uid, kungfuType);
   return { type: constants.KUNGFU_OPEN_STYLE, cost, uid, kungfuType }
 }
 
 export function buyTechnique(
-  styleUid: string, uid: string, kungfuType: constants.KUNGFU_TYPE, cost: ICost): IKungFuBuyTechnique {
+  styleUid: string, uid: string, kungfuType: dataKungFu.KUNGFU_TYPE, cost: ICost): IKungFuBuyTechnique {
   dataKungFu.validateKungFuType(kungfuType);
   dataKungFu.validateKungFuStyle(styleUid, kungfuType);
   dataKungFu.validateKungFuTechnique(styleUid, uid, kungfuType);
   return { type: constants.KUNGFU_BUY_TECHNIQUE, cost, styleUid, uid, kungfuType };
 }
 
-export function customStyleName(uid: string, kungfuType: constants.KUNGFU_TYPE, name: string): IKungFuSetCustomStyleName {
+export function customStyleName(uid: string, kungfuType: dataKungFu.KUNGFU_TYPE, name: string): IKungFuSetCustomStyleName {
   dataKungFu.validateKungFuType(kungfuType);
   dataKungFu.validateKungFuStyle(uid, kungfuType);
   if (name.length < 1) { throw new Error ('Invalid new name'); };
@@ -57,7 +57,7 @@ export function customStyleName(uid: string, kungfuType: constants.KUNGFU_TYPE, 
 }
 
 export function customTechniqueName(
-  styleUid: string, uid: string, kungfuType: constants.KUNGFU_TYPE, name: string
+  styleUid: string, uid: string, kungfuType: dataKungFu.KUNGFU_TYPE, name: string
 ): IKungFuSetCustomTechniqueName {
   dataKungFu.validateKungFuType(kungfuType);
   dataKungFu.validateKungFuStyle(styleUid, kungfuType);

@@ -1,10 +1,10 @@
 import { IStoreState } from 'state/types';
 import * as actions from 'state/actions/virtues';
-
+import * as virtues from 'state/virtues';
 import * as dataVirtues from 'data/virtues';
 
 import { initialStateFactory } from 'state/initial';
-import { getVirtueIndex, virtuesReducer } from './virtues';
+import { virtuesReducer } from './virtues';
 
 const initialState: IStoreState  = initialStateFactory();
 
@@ -16,7 +16,7 @@ describe('Testing virtueReducer', () => {
 
   it('should receive a VIRTUE_INCREASE action with an existing virtue', () => {
     dataVirtues.virtues.forEach( (virtue: dataVirtues.IDataVirtue) => {
-      const index = getVirtueIndex(initialState, virtue.name);
+      const index = virtues.getVirtueIndex(initialState, virtue.name);
       expect(initialState.getIn(['virtues', index, 'value'])).toBe(0);
 
       const action = actions.increase(virtue.name, virtue.type, 3, noCost);
@@ -28,7 +28,7 @@ describe('Testing virtueReducer', () => {
 
   it('should receive a VIRTUE_INCREASE action with a new virtue', () => {
     const virtue: dataVirtues.IDataVirtue = { name: 'New Virtue', type: dataVirtues.VIRTUE_CHIVALROUS };
-    const index = getVirtueIndex(initialState, virtue.name);
+    const index = virtues.getVirtueIndex(initialState, virtue.name);
     expect(initialState.getIn(['virtues', index, 'value'])).toBe(0);
 
     const action = actions.increase(virtue.name, virtue.type, 3, noCost);

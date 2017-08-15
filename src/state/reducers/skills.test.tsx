@@ -5,7 +5,8 @@ import * as dataSkills from 'data/skills';
 
 import { initialStateFactory } from 'state/initial';
 import * as actions from 'state/actions/skills';
-import { skillsReducer, getSkillIndex, getSpecialityIndex } from './skills';
+import { skillsReducer } from 'state/reducers/skills';
+import * as skills from 'state/skills';
 
 const initialState: IStoreState  = initialStateFactory();
 
@@ -17,7 +18,7 @@ describe('Testing skillsReducer', () => {
 
   it('should receive a SKILLS_BUY action', () => {
     dataSkills.skills.forEach( (skillInData: dataSkills.IDataSkill) => {
-      const index = getSkillIndex(initialState, skillInData.name);
+      const index = skills.getSkillIndex(initialState, skillInData.name);
 
       expect(initialState.getIn(['skills', index, 'value'])).toBe(0);
       const action = actions.skillsBuy(skillInData.name, noCost);
@@ -28,7 +29,7 @@ describe('Testing skillsReducer', () => {
 
   it('should not accept an overflow on a SKILLS_BUY action', () => {
     dataSkills.skills.forEach( (skillInData: dataSkills.IDataSkill) => {
-      const index = getSkillIndex(initialState, skillInData.name);
+      const index = skills.getSkillIndex(initialState, skillInData.name);
 
       expect(initialState.getIn(['skills', index, 'value'])).toBe(0);
       const action = actions.skillsBuy(skillInData.name, noCost);
@@ -40,12 +41,12 @@ describe('Testing skillsReducer', () => {
   it('should receive a SKILLS_SPECIALITY_BUY action', () => {
     const specialityName = 'Hear';
     const skillName = 'Awareness';
-    const index = getSpecialityIndex(initialState, skillName, specialityName);
+    const index = skills.getSpecialityIndex(initialState, skillName, specialityName);
     expect(index).toBe(-1);
 
     const action = actions.skillSpecialityBuy(skillName, specialityName, noCost);
     const state = skillsReducer(initialState, action);
-    expect( getSpecialityIndex(state, skillName, specialityName) ).toBe(0);
+    expect( skills.getSpecialityIndex(state, skillName, specialityName) ).toBe(0);
   });
 
   it('should should not receive an already bought SKILLS_SPECIALITY_BUY action', () => {
@@ -53,7 +54,7 @@ describe('Testing skillsReducer', () => {
     const skillName = 'Awareness';
     const action = actions.skillSpecialityBuy(skillName, specialityName, noCost);
     const state = skillsReducer(initialState, action);
-    expect( getSpecialityIndex(state, skillName, specialityName) ).toBe(0);
+    expect( skills.getSpecialityIndex(state, skillName, specialityName) ).toBe(0);
     expect( () => { skillsReducer(state, action); }).toThrowError();
   });
 
