@@ -2,19 +2,19 @@ import * as Immutable from 'immutable';
 
 import { IStoreState, IStoreKungFuJS, IStoreKungFuTechniqueJS, techniqueFactory, kungfuFactory } from 'state/types';
 
-import * as constants from 'constants/kungfus';
+import * as datas from 'data/kungfus';
 
-function _getStateString(type: constants.KUNGFU_TYPE) {
-  return (type === constants.KUNGFU_INTERNAL) ? 'internalKungFus' : 'externalKungFus';
+function _getStateString(type: datas.KUNGFU_TYPE) {
+  return (type === datas.KUNGFU_INTERNAL) ? 'internalKungFus' : 'externalKungFus';
 }
 
-export function getKungFuIndex(state: IStoreState, type: constants.KUNGFU_TYPE, style: string): number {
+export function getKungFuIndex(state: IStoreState, type: datas.KUNGFU_TYPE, style: string): number {
   const stateString: string = _getStateString(type);
   return state.get(stateString).findIndex((kf: IStoreKungFuJS) => (kf.uid === style));
 }
 
 export function getKungFuTechniqueIndex(
-  state: IStoreState, type: constants.KUNGFU_TYPE, style: string, technique: string): number {
+  state: IStoreState, type: datas.KUNGFU_TYPE, style: string, technique: string): number {
   const stateString: string = _getStateString(type);
   const styleIndex = getKungFuIndex(state, type, style);
   if (styleIndex === -1) {
@@ -24,7 +24,7 @@ export function getKungFuTechniqueIndex(
     .findIndex((tech: IStoreKungFuTechniqueJS) => (tech.uid === technique));
 }
 
-export function openStyle(state: IStoreState, type: constants.KUNGFU_TYPE, style: string): void {
+export function openStyle(state: IStoreState, type: datas.KUNGFU_TYPE, style: string): void {
   const stateString: string = _getStateString(type);
   state.updateIn([stateString], list => list.push(
       kungfuFactory({ name: style, uid: style, techniques: Immutable.List() })
@@ -32,7 +32,7 @@ export function openStyle(state: IStoreState, type: constants.KUNGFU_TYPE, style
   );
 }
 
-export function buyTechnique(state: IStoreState, type: constants.KUNGFU_TYPE, style: string, technique: string): void {
+export function buyTechnique(state: IStoreState, type: datas.KUNGFU_TYPE, style: string, technique: string): void {
   const stateString: string = _getStateString(type);
   const styleIndex = getKungFuIndex(state, type, style);
   if (styleIndex === -1) {

@@ -70,12 +70,11 @@ export const internalKungfus: IDataInternalKungfus = Array(
 );
 
 export function validateKungFuType(type: KUNGFU_TYPE): void {
-  switch(type)
-  {
+  switch (type) {
     case KUNGFU_EXTERNAL: return;
     case KUNGFU_INTERNAL: return;
     default:
-      throw new Error('Invalid kung fu type : "' + type +'"');
+      throw new Error('Invalid kung fu type : "' + type + '"');
   }
 }
 
@@ -87,7 +86,7 @@ export function validateKungFuStyle(styleUid: string, type: KUNGFU_TYPE): void {
       throw new Error('Invalid external kungfu "' + styleUid + '"');
     }
   } else {
-    const filtered = internalKungfus.filter((kf: IDataInternalKungfu) => (kf.uid === styleUid))
+    const filtered = internalKungfus.filter((kf: IDataInternalKungfu) => (kf.uid === styleUid));
     if (filtered.length < 1) {
       throw new Error('Invalid internal kungfu "' + styleUid + '"');
     }

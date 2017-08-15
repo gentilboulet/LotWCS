@@ -4,7 +4,7 @@ import { pushToHistory } from 'state/history';
 import { applyCost } from 'costs/reducer';
 
 import * as kungfus from 'state/kungfus';
-import * as constants from 'constants/kungfus';
+import * as constants from 'state/constants/kungfus';
 
 export function kungfuReducer(oldState: IStoreState, action: IKungFuAction): IStoreState {
   switch (action.type) {
