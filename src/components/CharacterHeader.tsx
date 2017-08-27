@@ -32,7 +32,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
           <EditText
             header="Character Name"
             default={this.props.name}
-            validate={(s: string) => (s.length >= 0)}
+            validate={(s: string) => (s.trim().length > 0)}
             onSubmit={(s: string) => { this.props.onSetName(s); }}
           />
         </Row>
@@ -40,7 +40,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
           <EditText
             header="Character Concept"
             default={this.props.concept}
-            validate={(s: string) => (s.length >= 0)}
+            validate={(s: string) => (s.trim().length > 0)}
             onSubmit={(s: string) => { this.props.onSetConcept(s); }}
           />
         </Row>

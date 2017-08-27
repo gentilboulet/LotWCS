@@ -4,6 +4,13 @@ import { Button, Col, Container, Input, InputGroup, InputGroupAddon, Row } from 
 
 import FieldHeader from './FieldHeader';
 
+const styles = {
+  row: {
+    height: 56,
+    'align-items': 'center',
+  }
+}
+
 export interface IEditTextProps {
   header: string;
   default: string;
@@ -30,18 +37,10 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
       value: this.props.default,
     };
 
-    this.startEdit = this.startEdit.bind(this);
-    this.endEdit = this.endEdit.bind(this);
-    this.textChange = this.textChange.bind(this);
-
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
-
-    this.renderHeader = this.renderHeader.bind(this);
-    this.renderButton = this.renderButton.bind(this);
-    this.renderValue = this.renderValue.bind(this);
-    this.renderInput = this.renderInput.bind(this);
   }
-  public render(): JSX.Element {
+
+  render(): JSX.Element {
     return (this.state.edit) ? this.renderInput() : this.renderValue();
   }
 
@@ -51,13 +50,16 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     });
   }
 
-  private startEdit() {
+  startEdit = () => {
     if (this.props.locked ? false : true) {
       this.setState({edit: true});
     }
   }
 
-  private endEdit() {
+  endEdit = () => {
+    this.setState({
+      value: this.state.value.trim()
+    });
     if ( this.props.validate(this.state.value) ) {
       this.setState({
         edit: false,
@@ -68,42 +70,43 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
     }
   }
 
-  private textChange(e: IEditTextEvent) {
+  textChange = (e: IEditTextEvent) => {
     this.setState({ value: e.target.value });
   }
 
-  private renderHeader(): JSX.Element {
+  renderHeader = (): JSX.Element => {
     return <FieldHeader label={this.props.header} />;
   }
 
-  private renderButton(isValueValid: boolean): JSX.Element {
+  renderButton = (isValueValid: boolean): JSX.Element => {
     const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
-    const btnKo = (<Button color="danger"><Icon name="times" /></Button>);
+    const btnKo = (<Button color="success" disabled><Icon name="check" /></Button>);
     return (isValueValid) ? btnOk : btnKo;
   }
 
-  private renderValue(): JSX.Element {
+  renderValue = (): JSX.Element => {
     return (
       <Container >
         <Row
           onClick={this.startEdit}
           role="button"
           disabled={true}
+          style={styles.row}
         >
-          {this.renderHeader()}
+          <Col xs="6">{this.renderHeader()}</Col>
           <Col>{this.state.value}</Col>
         </Row>
       </Container>
     );
   }
 
-  private renderInput(): JSX.Element {
+  renderInput = (): JSX.Element => {
     const isValueValid = this.props.validate(this.state.value);
     const validationInputState = (isValueValid ? 'success' : 'error');
     return (
       <Container>
-        <Row>
-          <Col>{this.renderHeader()}</Col>
+        <Row style={styles.row}>
+          <Col xs="6">{this.renderHeader()}</Col>
           <Col>
             <InputGroup>
               <Input
