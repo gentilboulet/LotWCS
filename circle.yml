@@ -1,8 +1,0 @@
-#test:
-#  override:
-#    - npm test
-#    - npm test -- --coverage
-
-#general:
-#  artifacts:
-#    - "coverage" # relative to the build directory
