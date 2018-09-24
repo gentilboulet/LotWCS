@@ -1,8 +1,9 @@
-import * as constants from 'state/constants/history';
-import { IHistoryAction } from 'state/actions/history';
-import * as history from 'state/history';
-import { IStoreState } from 'state/types';
 import { IAction } from 'state/actions/types';
+import { IStoreState } from 'state/types';
+
+import { IHistoryAction } from 'state/actions/history';
+import * as constants from 'state/constants/history';
+import * as history from 'state/history';
 
 export function historyReducer(oldState: IStoreState, action: IHistoryAction): IStoreState {
   switch (action.type) {

@@ -1,4 +1,5 @@
 /* tslint:disable:max-line-length */
+/* tslint:disable:object-literal-sort-keys */
 import * as dataChi from 'data/chi';
 import * as effects from 'perks/actions/effects';
 

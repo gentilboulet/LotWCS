@@ -94,6 +94,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   private renderDropdownItems(): JSX.Element[] {
     return this.props.values.map( ({key, label}: IDDLItem) => {
       return (
+// tslint:disable-next-line jsx-no-lambda
         <DropdownItem key={key} onClick={() => {this.select(key); }}>
           {label}
         </DropdownItem>
@@ -116,7 +117,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
                 {this.renderDropdownItems()}
               </DropdownMenu>
             </ButtonDropdown>
-            <InputGroupAddon>
+            <InputGroupAddon addonType="append">
                 {this.renderButton(labelForSelectedKey)}
             </InputGroupAddon>
           </InputGroup>

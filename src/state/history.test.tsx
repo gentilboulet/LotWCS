@@ -1,10 +1,11 @@
-import { pushToHistory, replayHistory } from './history';
-import { initialStateFactory } from 'state/initial';
 import { IAction } from 'state/actions/types';
 import { IStoreState } from 'state/types';
 
 import * as header from 'state/actions/header';
 import { resetToInitialState } from 'state/actions/initial';
+import { initialStateFactory } from 'state/initial';
+
+import { pushToHistory, replayHistory } from './history';
 
 const initialState: IStoreState = initialStateFactory();
 

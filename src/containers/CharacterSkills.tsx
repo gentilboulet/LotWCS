@@ -1,9 +1,12 @@
-import CharacterSkills, { ICharacterSkillsProps, ISkillProps, ISpecialityProps } from 'components/CharacterSkills';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+
+import { canBuySkill, canBuySpeciality, getCostSkill, getCostSpeciality } from 'costs/state';
+import { ICost } from 'costs/types';
 import * as skillActions from 'state/actions/skills';
 import { IStoreState } from 'state/types';
-import { ICost } from 'costs/types';
-import { connect, Dispatch } from 'react-redux';
-import { getCostSkill, canBuySkill, getCostSpeciality, canBuySpeciality } from 'costs/state';
+
+import CharacterSkills, { ICharacterSkillsProps, ISkillProps, ISpecialityProps } from 'components/CharacterSkills';
 
 interface IMapStateToProps {
   skills: ISkillProps[];
@@ -18,18 +21,19 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     skills: state.get('skills').map( (skill: ISkillProps) => {
       return {
-        name: skill.name,
-        value: skill.value,
-        specialities: state.get('skillSpecialities').map( (speciality: ISpecialityProps) => {
-          return {
-            name: speciality.name,
-            bought: speciality.bought,
-            canBuySpeciality: canBuySpeciality(state, skill.name, speciality.name),
-            cost: getCostSpeciality(state, skill.name, speciality.name)
-          };
-        }),
         canBuySkill: canBuySkill(state, skill.name),
         cost: getCostSkill(state, skill.name),
+        name: skill.name,
+        value: skill.value,
+
+        specialities: state.get('skillSpecialities').map( (speciality: ISpecialityProps) => {
+          return {
+            bought: speciality.bought,
+            canBuySpeciality: canBuySpeciality(state, skill.name, speciality.name),
+            cost: getCostSpeciality(state, skill.name, speciality.name),
+            name: speciality.name
+          };
+        }),
       };
     }),
   };

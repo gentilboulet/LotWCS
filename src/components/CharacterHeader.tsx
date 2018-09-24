@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 
-import EditText from 'components/EditText';
 import DDLText from 'components/DDLText';
+import EditText from 'components/EditText';
 
 import * as dataArchetypes from 'data/archetypes';
 import * as dataRanks from 'data/ranks';
@@ -32,7 +32,9 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
           <EditText
             header="Character Name"
             default={this.props.name}
+// tslint:disable-next-line jsx-no-lambda
             validate={(s: string) => (s.trim().length > 0)}
+// tslint:disable-next-line jsx-no-lambda
             onSubmit={(s: string) => { this.props.onSetName(s); }}
           />
         </Row>
@@ -40,7 +42,9 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
           <EditText
             header="Character Concept"
             default={this.props.concept}
+// tslint:disable-next-line jsx-no-lambda
             validate={(s: string) => (s.trim().length > 0)}
+// tslint:disable-next-line jsx-no-lambda
             onSubmit={(s: string) => { this.props.onSetConcept(s); }}
           />
         </Row>
@@ -50,6 +54,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
               header="Character Archetype"
               default={this.props.archetype}
               values={dataArchetypes.archetypes.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
+// tslint:disable-next-line jsx-no-lambda
               onSubmit={(s: string) => { this.props.onSetArchetype(s); }}
               locked={this.props.lockArchetype}
             />
@@ -59,6 +64,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
               header="Character Rank"
               default={this.props.rank}
               values={dataRanks.ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
+// tslint:disable-next-line jsx-no-lambda
               onSubmit={(s: string) => { this.props.onSetRank(s); }}
               locked={this.props.lockRank}
             />
@@ -69,7 +75,9 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
             <EditText
               header="Destiny"
               default={(this.props.destiny).toString()}
+// tslint:disable-next-line jsx-no-lambda
               validate={(s: string) => false}
+// tslint:disable-next-line jsx-no-lambda
               onSubmit={(s: string) => { return; }}
               locked={true}
             />
@@ -78,7 +86,9 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
             <EditText
               header="Entanglement"
               default={(this.props.entanglement).toString()}
-              validate={(s: string) => { return false; }}
+// tslint:disable-next-line jsx-no-lambda
+              validate={(s: string) => false }
+// tslint:disable-next-line jsx-no-lambda
               onSubmit={(s: string) => { return ; }}
               locked={true}
             />

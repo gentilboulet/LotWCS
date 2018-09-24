@@ -1,8 +1,9 @@
 import { ILoresheetAction } from 'state/actions/loresheets';
-import * as constants from 'state/constants/loresheets';
-import { applyCost } from 'costs/reducer';
-import { pushToHistory } from 'state/history';
 import { IStoreState } from 'state/types';
+
+import { applyCost } from 'costs/reducer';
+import * as constants from 'state/constants/loresheets';
+import { pushToHistory } from 'state/history';
 
 import * as loresheets from 'state/loresheets';
 

@@ -1,6 +1,7 @@
 import * as constants from 'perks/constants/discounts';
-import * as dataSkills from 'data/skills';
 import { IDiscountSkill } from 'perks/types/discounts';
+
+import * as dataSkills from 'data/skills';
 
 export function discountSkillFactory(value: number, subset?: string[]): IDiscountSkill {
   if (subset && subset.length > 0) {

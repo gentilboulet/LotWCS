@@ -24,11 +24,11 @@ export function getLoresheetOptionIndex(state: IStoreState, loresheetUid: string
   });
 }
 
-export function addLoresheetOption(state: IStoreState, loresheetUid: string, optionUid: string): void {
-  const loresheetIndex = getLoresheetIndex(state, loresheetUid);
+export function addLoresheetOption(state: IStoreState, lsUid: string, optionUid: string): void {
+  const loresheetIndex = getLoresheetIndex(state, lsUid);
   if (loresheetIndex === -1) { throw new Error('Internal error : loresheet not found'); }
   state.updateIn(['loresheetOptions'], (list: Immutable.List<IStoreLoresheetOption>) => {
-    const newOption = loresheetOptionFactory({ loresheetUid: loresheetUid, uid: optionUid });
+    const newOption = loresheetOptionFactory({ loresheetUid: lsUid, uid: optionUid });
     return list.push(newOption);
   });
 }

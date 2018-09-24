@@ -1,7 +1,7 @@
-import * as constants from 'state/constants/skills';
-import * as dataSkills from 'data/skills';
-
 import { ICost } from 'costs/types';
+import * as dataSkills from 'data/skills';
+import * as constants from 'state/constants/skills';
+
 
 export interface ISkillBuy {
   type: constants.SKILLS_BUY;

@@ -10,13 +10,6 @@ interface ITabsState {
   activeTab?: string;
 }
 
-export interface ITabProps {
-    tabId: string;
-    title: string;
-}
-
-class Tab extends React.Component<ITabProps, object> {}
-
 class Tabs extends React.Component<ITabsProps, ITabsState> {
   constructor(props: ITabsProps) {
     super(props);
@@ -35,6 +28,7 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
           return (<NavItem>
                     <NavLink
                       className={classnames({ active: this.state.activeTab === child.props.tabId })}
+// tslint:disable-next-line jsx-no-lambda
                       onClick={() => this.toggle(child.props.tabId)}
                     >
                       {child.props.title}
@@ -64,4 +58,4 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
   }
 }
 
-export { Tabs, Tab };
+export { Tabs };

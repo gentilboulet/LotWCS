@@ -2,8 +2,9 @@ import * as actions from './skills';
 
 describe('Testing for skill action creators', () => {
   const noCost = {
-    destiny: 0, entanglement: 0,
-    discountIdx: -1, discountNewValue: 0
+    destiny: 0,
+    discountIdx: -1, discountNewValue: 0,
+    entanglement: 0
   };
 
   it('should create a buy skill action', () => {

@@ -1,10 +1,10 @@
-import { IStoreState } from 'state/types';
 import { ISkillAction } from 'state/actions/skills';
+import { IStoreState } from 'state/types';
 
 import * as dataSkills from 'data/skills';
 
-import { initialStateFactory } from 'state/initial';
 import * as actions from 'state/actions/skills';
+import { initialStateFactory } from 'state/initial';
 import { skillsReducer } from 'state/reducers/skills';
 import * as skills from 'state/skills';
 
@@ -12,8 +12,9 @@ const initialState: IStoreState  = initialStateFactory();
 
 describe('Testing skillsReducer', () => {
   const noCost = {
-    destiny: 0, entanglement: 0,
-    discountIdx: -1, discountNewValue: 0
+    destiny: 0,
+    discountIdx: -1, discountNewValue: 0,
+    entanglement: 0
   };
 
   it('should receive a SKILLS_BUY action', () => {

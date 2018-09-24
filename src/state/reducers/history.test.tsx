@@ -1,12 +1,13 @@
-import { initialStateFactory } from 'state/initial';
 import { IAction } from 'state/actions/types';
+import { initialStateFactory } from 'state/initial';
 import { IStoreState } from 'state/types';
 
 import * as header from 'state/actions/header';
-import { resetToInitialState } from 'state/actions/initial';
 import { historyDeleteUpTo, IHistoryAction } from 'state/actions/history';
-import { historyReducer } from './history';
+import { resetToInitialState } from 'state/actions/initial';
 import * as history from 'state/history';
+
+import { historyReducer } from './history';
 
 const initialState: IStoreState = initialStateFactory();
 

@@ -1,10 +1,11 @@
-import * as actions from './kungfus';
 import * as dataKungfus from 'data/kungfus';
+import * as actions from './kungfus';
 
 describe('Testing external kungfu action creator', () => {
   const noCost = {
-    destiny: 0, entanglement: 0,
-    discountIdx: -1, discountNewValue: 0
+    destiny: 0, 
+    discountIdx: -1, discountNewValue: 0,
+    entanglement: 0
   };
 
   expect(dataKungfus.externalKungfus.length).toBeGreaterThan(0);

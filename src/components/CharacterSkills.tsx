@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 
-import EditSkill from './EditSkill';
+import EditSkill from 'components/EditSkill';
 import { ICost } from 'costs/types';
 
 export interface ISpecialityProps {

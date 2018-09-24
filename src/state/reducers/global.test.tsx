@@ -1,7 +1,7 @@
-import { IStoreState } from 'state/types';
 import { IAction } from 'state/actions/types';
-
 import { initialStateFactory } from 'state/initial';
+import { IStoreState } from 'state/types';
+
 import { globalReducer } from './global';
 
 const initialState: IStoreState  = initialStateFactory();

@@ -1,10 +1,11 @@
 import { IKungFuAction } from 'state/actions/kungfus';
 import { IStoreState } from 'state/types';
-import { pushToHistory } from 'state/history';
-import { applyCost } from 'costs/reducer';
 
-import * as kungfus from 'state/kungfus';
+import { applyCost } from 'costs/reducer';
+import { pushToHistory } from 'state/history';
+
 import * as constants from 'state/constants/kungfus';
+import * as kungfus from 'state/kungfus';
 
 export function kungfuReducer(oldState: IStoreState, action: IKungFuAction): IStoreState {
   switch (action.type) {

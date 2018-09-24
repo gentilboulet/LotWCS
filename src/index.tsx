@@ -8,11 +8,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { globalReducer } from './state/reducers/global';
+import { IAction } from './state/actions/types';
 import { initialStateFactory } from './state/initial';
+import { globalReducer } from './state/reducers/global';
 import { IStoreState } from './state/types';
 
-const store = createStore<IStoreState>(
+const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
   initialStateFactory(),
   devToolsEnhancer({})

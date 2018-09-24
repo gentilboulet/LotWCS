@@ -2,6 +2,7 @@ import { IDataExternalKungfu } from 'data/kungfus';
 import * as effects from 'perks/actions/effects';
 
 /* tslint:disable:max-line-length */
+/* tslint:disable:object-literal-sort-keys */
 
 export const blossomHarvest: IDataExternalKungfu = {
   name: 'Blossom Harvest',

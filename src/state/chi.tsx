@@ -1,8 +1,8 @@
-import { IStoreState } from 'state/types';
 import * as dataChi from 'data/chi';
+import { IStoreState } from 'state/types';
 
 export function increaseValue(state: IStoreState, chiName: dataChi.IChiNames, value: number): void {
-  state.updateIn(['chi', chiName], chi => { return chi + value; });
+  state.updateIn(['chi', chiName], chi => chi + value);
 }
 
 export function increaseCultivation(
@@ -19,7 +19,7 @@ export function increaseCultivation(
     newChiValue ++;
   }
 
-  state.updateIn(['chi', cultivationName], cultivation => { return cultivation + value; });
+  state.updateIn(['chi', cultivationName], cultivation => cultivation + value);
   increaseValue(state, chiName, newChiValue - actualChi);
 }
 

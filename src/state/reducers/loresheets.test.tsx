@@ -1,10 +1,10 @@
+import { initialStateFactory } from 'state/initial';
 import { IStoreState } from 'state/types';
 
-import { initialStateFactory } from 'state/initial';
 import * as loresheetsActions from 'state/actions/loresheets';
-import { loresheetsReducer } from 'state/reducers/loresheets';
-import { globalReducer } from 'state/reducers/global';
 import * as loresheets from 'state/loresheets';
+import { globalReducer } from 'state/reducers/global';
+import { loresheetsReducer } from 'state/reducers/loresheets';
 
 import * as dataLoresheets from 'data/loresheets';
 
@@ -12,8 +12,9 @@ const initialState: IStoreState  = initialStateFactory();
 
 describe('Testing loresheetsReducer', () => {
   const noCost = {
-    destiny: 0, entanglement: 0,
-    discountIdx: -1, discountNewValue: 0
+    destiny: 0,
+    discountIdx: -1, discountNewValue: 0,
+    entanglement: 0
   };
 
   it('should receive a LORESHEET_OPEN action', () => {

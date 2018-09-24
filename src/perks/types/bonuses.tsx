@@ -1,5 +1,5 @@
-import * as constants from 'perks/constants/bonuses';
 import * as dataChi from 'data/chi';
+import * as constants from 'perks/constants/bonuses';
 
 export interface IBonusDestiny {
   type: constants.BONUS_DESTINY;
