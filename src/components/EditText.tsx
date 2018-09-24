@@ -6,7 +6,7 @@ import FieldHeader from './FieldHeader';
 
 const styles = {
   row: {
-    'align-items': 'center',
+    alignItems: 'center',
     height: 56,
   }
 }
