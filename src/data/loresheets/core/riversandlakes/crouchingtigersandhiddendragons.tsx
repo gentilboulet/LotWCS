@@ -1,7 +1,8 @@
-import * as bonuses from 'perks/actions/bonuses';
 import { IDataLoresheet } from 'data/loresheets';
+import * as bonuses from 'perks/actions/bonuses';
 
 /* tslint:disable:max-line-length */
+/* tslint:disable:object-literal-sort-keys */
 export const crouchingtigersandhiddendragons: IDataLoresheet = {
   uid: 'tigersanddragons',
   name: 'Crouching Tigers and Hidden Dragons',

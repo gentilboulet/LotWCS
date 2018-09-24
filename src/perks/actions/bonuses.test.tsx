@@ -1,5 +1,5 @@
-import * as bonuses from './bonuses';
 import * as dataChi from 'data/chi';
+import * as bonuses from './bonuses';
 
 describe('Testing bonus creators', () => {
   it('should create a destiny bonus', () => {

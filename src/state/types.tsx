@@ -1,11 +1,12 @@
-import { TypedRecord, makeTypedFactory } from 'typed-immutable-record';
+/* tslint:disable:object-literal-sort-keys */
 import * as Immutable from 'immutable';
+import { makeTypedFactory, TypedRecord } from 'typed-immutable-record';
 
 import * as dataVirtues from 'data/virtues';
 
-import { IAction } from 'state/actions/types';
-import { IDiscount } from 'perks/types/discounts';
 import { IBonus } from 'perks/types/bonuses';
+import { IDiscount } from 'perks/types/discounts';
+import { IAction } from 'state/actions/types';
 
 export interface IStoreSkillSpecialityJS {
   name: string;

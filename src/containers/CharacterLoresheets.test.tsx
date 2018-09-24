@@ -3,13 +3,16 @@ import * as ReactDOM from 'react-dom';
 // import * as renderer from 'react-test-renderer';
 import CharacterLoresheets from './CharacterLoresheets';
 
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { initialStateFactory } from 'state/initial';
-import { globalReducer } from 'state/reducers/global';
+import { IAction } from 'state/actions/types';
 import { IStoreState } from 'state/types';
 
-const store = createStore<IStoreState>(
+import { createStore } from 'redux';
+import { initialStateFactory } from 'state/initial';
+import { globalReducer } from 'state/reducers/global';
+
+import { Provider } from 'react-redux';
+
+const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
   initialStateFactory()
 );

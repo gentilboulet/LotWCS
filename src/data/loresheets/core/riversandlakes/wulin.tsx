@@ -1,6 +1,7 @@
 import { IDataLoresheet } from 'data/loresheets';
 
 /* tslint:disable:max-line-length */
+/* tslint:disable:object-literal-sort-keys */
 export const wulin: IDataLoresheet = {
   uid: 'wulin',
   name: 'The Wulin',

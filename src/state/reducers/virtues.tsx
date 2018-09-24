@@ -2,8 +2,8 @@ import { IVirtueAction } from 'state/actions/virtues';
 import * as constants from 'state/constants/virtues';
 import { IStoreState } from 'state/types';
 
-import * as virtues from 'state/virtues';
 import { pushToHistory } from 'state/history';
+import * as virtues from 'state/virtues';
 
 export function virtuesReducer(oldState: IStoreState, action: IVirtueAction): IStoreState {
   switch (action.type) {

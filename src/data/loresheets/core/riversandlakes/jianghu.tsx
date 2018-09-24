@@ -1,6 +1,7 @@
 import { IDataLoresheet } from 'data/loresheets';
 
 /* tslint:disable:max-line-length */
+/* tslint:disable:object-literal-sort-keys */
 export const jianghu: IDataLoresheet = {
   uid: 'jianghu',
   name: 'The Jiang Hu',

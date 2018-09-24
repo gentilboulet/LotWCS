@@ -1,10 +1,11 @@
-import * as actions from './loresheets';
 import * as dataLoresheets from 'data/loresheets';
+import * as actions from './loresheets';
 
 describe('Testing loresheet action creators', () => {
   const noCost = {
-    destiny: 0, entanglement: 0,
-    discountIdx: -1, discountNewValue: 0
+    destiny: 0,
+    discountIdx: -1, discountNewValue: 0,
+    entanglement: 0
   };
 
   it('should create an open action', () => {

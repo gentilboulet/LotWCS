@@ -1,9 +1,11 @@
+import { initialStateFactory } from 'state/initial';
 import { IStoreState } from 'state/types';
 
-import { initialStateFactory } from 'state/initial';
-import * as actions from 'perks/actions/bonuses';
-import { IBonus } from 'perks/types/bonuses';
 import { applyBonuses } from './bonuses';
+
+import { IBonus } from 'perks/types/bonuses';
+
+import * as actions from 'perks/actions/bonuses';
 import * as chi from 'state/chi';
 import * as skills from 'state/skills';
 

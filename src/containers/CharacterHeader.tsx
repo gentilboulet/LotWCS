@@ -1,4 +1,5 @@
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import * as headerActions from 'state/actions/header';
 import { IStoreState } from 'state/types';
@@ -26,12 +27,12 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    name: state.get('name'),
-    concept: state.get('concept'),
     archetype: state.get('archetype'),
-    rank: state.get('rank'),
-    entanglement: state.get('entanglement'),
+    concept: state.get('concept'),
     destiny: state.get('destiny'),
+    entanglement: state.get('entanglement'),
+    name: state.get('name'),
+    rank: state.get('rank'),
 
     lockArchetype: state.get('rankModified'),
     lockRank: state.get('rankModified')
@@ -40,9 +41,9 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 
 function mapDispatchToProps(dispatch: Dispatch<headerActions.IHeaderAction>): IMapDispatchToProps {
   return {
-    onSetName: (s: string) => dispatch(headerActions.setName(s)),
-    onSetConcept: (s: string) => dispatch(headerActions.setConcept(s)),
     onSetArchetype: (s: string) => dispatch(headerActions.setArchetype(s)),
+    onSetConcept: (s: string) => dispatch(headerActions.setConcept(s)),
+    onSetName: (s: string) => dispatch(headerActions.setName(s)),
     onSetRank: (s: string) => dispatch(headerActions.setRank(s)),
   };
 }

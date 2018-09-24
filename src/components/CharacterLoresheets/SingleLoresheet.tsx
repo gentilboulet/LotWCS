@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Icon } from 'react-fa';
 import { Button, ListGroupItem } from 'reactstrap';
 
-import { ICost } from 'costs/types';
-import { ILoresheetsCharacterLoresheetsProps,
-  ILoresheetsOptionsCharacterLoresheetsProps,
-  ILoresheetsOptionsCostCharacterLoresheetsProps } from 'components/CharacterLoresheets';
 import Collapsible from 'components/Collapsible';
+
+import { 
+  ILoresheetsCharacterLoresheetsProps,
+  ILoresheetsOptionsCharacterLoresheetsProps,
+  ILoresheetsOptionsCostCharacterLoresheetsProps,
+} from 'components/CharacterLoresheets';
+import { ICost } from 'costs/types';
 
 export interface ISingleLoresheetProps {
   loresheet: ILoresheetsCharacterLoresheetsProps;

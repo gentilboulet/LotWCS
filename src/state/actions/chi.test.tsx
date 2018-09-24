@@ -1,10 +1,10 @@
-import * as actions from './chi';
 import * as dataChi from 'data/chi';
+import * as actions from './chi';
 
 describe('Testing chi action creator', () => {
   const noCost = {
-    destiny: 0, entanglement: 0,
-    discountIdx: -1, discountNewValue: 0
+    destiny: 0, discountIdx: -1, discountNewValue: 0,
+    entanglement: 0
   };
 
   it('should create a chi buy action', () => {

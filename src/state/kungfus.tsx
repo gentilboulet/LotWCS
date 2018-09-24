@@ -1,6 +1,6 @@
 import * as Immutable from 'immutable';
 
-import { IStoreState, IStoreKungFuJS, IStoreKungFuTechniqueJS, techniqueFactory, kungfuFactory } from 'state/types';
+import { IStoreKungFuJS, IStoreKungFuTechniqueJS, IStoreState, kungfuFactory, techniqueFactory } from 'state/types';
 
 import * as datas from 'data/kungfus';
 

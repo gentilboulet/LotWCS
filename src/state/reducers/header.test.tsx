@@ -1,10 +1,11 @@
-import { IStoreState } from 'state/types';
 import { IHeaderAction } from 'state/actions/header';
-
 import { initialStateFactory } from 'state/initial';
-import * as actions from 'state/actions/header';
-import { headerReducer } from './header';
+import { IStoreState } from 'state/types';
+
 import { globalReducer } from './global';
+import { headerReducer } from './header';
+
+import * as actions from 'state/actions/header';
 
 const initialState: IStoreState  = initialStateFactory();
 

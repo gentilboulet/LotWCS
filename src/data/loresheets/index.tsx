@@ -1,4 +1,4 @@
-/* tslint:disable:ordered-imports */
+/* tslint:disable:import-sources-order named-imports-order ordered-imports*/
 
 // Core rulebook //
 // Rivers and Lakes

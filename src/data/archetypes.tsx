@@ -5,7 +5,7 @@ export interface IDataArchetype {
   breath: string;
 }
 
-export type IDataArchetypes = Array<IDataArchetype>;
+export type IDataArchetypes = IDataArchetype[];
 
 /* tslint:disable:max-line-length */
 export const archetypes: IDataArchetypes = [

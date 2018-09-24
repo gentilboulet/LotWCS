@@ -1,7 +1,8 @@
 import { IChiAction } from 'state/actions/chi';
 import { IStoreState } from 'state/types';
-import * as constants from 'state/constants/chi';
+
 import * as chi from 'state/chi';
+import * as constants from 'state/constants/chi';
 
 // Sub Reducers
 import { applyCost } from 'costs/reducer';

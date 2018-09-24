@@ -1,159 +1,159 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing initialStateFactory should be constant 1`] = `
-Object {
+Immutable.Record {
+  "name": "No Name",
+  "concept": "No Concept",
   "archetype": "",
   "archetypeModified": false,
-  "bonuses": Array [],
-  "chi": Object {
-    "demon": 0,
-    "demonCultivation": 0,
-    "earth": 0,
-    "earthCultivation": 0,
-    "enlightened": 0,
-    "enlightenedCultivation": 0,
-    "fire": 0,
-    "fireCultivation": 0,
-    "general": 0,
-    "generalCultivation": 0,
-    "metal": 0,
-    "metalCultivation": 0,
-    "water": 0,
-    "waterCultivation": 0,
-    "wood": 0,
-    "woodCultivation": 0,
-  },
-  "concept": "No Concept",
-  "destiny": 0,
-  "discounts": Array [],
-  "entanglement": 0,
-  "externalKungFus": Array [],
-  "history": Array [
-    Object {
-      "type": "INITIAL_STATE",
-    },
-  ],
-  "internalKungFus": Array [],
-  "loresheetOptions": Array [],
-  "loresheets": Array [],
-  "name": "No Name",
   "rank": "",
-  "rankModified": false,
   "rankValue": -1,
-  "skillSpecialities": Array [],
-  "skills": Array [
-    Object {
+  "rankModified": false,
+  "entanglement": 0,
+  "destiny": 0,
+  "skills": Immutable.List [
+    Immutable.Record {
       "name": "Awareness",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Confidence",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Crafting",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Finesse",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Hardiness",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Inspire",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Learning",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Medicine",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Might",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Perform",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Politics",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Ride",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Stealth",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Survival",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Tactics",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Wu Wei",
       "value": 0,
     },
   ],
-  "virtues": Array [
+  "skillSpecialities": Immutable.List [],
+  "loresheets": Immutable.List [],
+  "loresheetOptions": Immutable.List [],
+  "discounts": Immutable.List [],
+  "bonuses": Immutable.List [],
+  "history": Immutable.List [
     Object {
+      "type": "INITIAL_STATE",
+    },
+  ],
+  "chi": Immutable.Record {
+    "general": 0,
+    "generalCultivation": 0,
+    "wood": 0,
+    "woodCultivation": 0,
+    "fire": 0,
+    "fireCultivation": 0,
+    "earth": 0,
+    "earthCultivation": 0,
+    "water": 0,
+    "waterCultivation": 0,
+    "metal": 0,
+    "metalCultivation": 0,
+    "enlightened": 0,
+    "enlightenedCultivation": 0,
+    "demon": 0,
+    "demonCultivation": 0,
+  },
+  "externalKungFus": Immutable.List [],
+  "internalKungFus": Immutable.List [],
+  "virtues": Immutable.List [
+    Immutable.Record {
       "name": "Honor",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Benevolence",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Righteousness",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Loyalty",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Force",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Revenge",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Individualism",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Obsession",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Ruthlessness",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Object {
+    Immutable.Record {
       "name": "Ferocity",
       "type": "VIRTUE_SELFISH",
       "value": 0,

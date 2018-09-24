@@ -1,8 +1,11 @@
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+
 import CharacterHistory, { ICharacterHistoryProps } from 'components/CharacterHistory';
+
 import * as actions from 'state/actions/history';
-import { IStoreState } from 'state/types';
 import { IAction } from 'state/actions/types';
+import { IStoreState } from 'state/types';
 
 interface IMapStateToProps {
   history: IAction[];

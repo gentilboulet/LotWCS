@@ -1,6 +1,6 @@
-import * as constants from 'state/constants/loresheets';
 import { ICost } from 'costs/types';
 import * as dataLoresheets from 'data/loresheets';
+import * as constants from 'state/constants/loresheets';
 
 export interface ILoresheetOpen {
   type: constants.LORESHEET_OPEN;

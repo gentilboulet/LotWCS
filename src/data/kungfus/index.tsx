@@ -1,6 +1,6 @@
 import * as dataChi from 'data/chi';
-import { IEffect } from 'perks/types/effects';
 import { WEAPON_TYPE } from 'data/weapons';
+import { IEffect } from 'perks/types/effects';
 
 // Constants used to differentiate between kungfus
 export const KUNGFU_EXTERNAL = 'KUNGFU_EXTERNAL';
@@ -20,7 +20,7 @@ export interface IDataExternalKungfuStatistics {
     toughness: 0|5|10|15|20;
 }
 
-export type IDataExternalKungfuPrerequisite = { uid: string };
+export interface IDataExternalKungfuPrerequisite { uid: string };
 
 export interface IDataExternalKungfuTechnique {
     name: string;
@@ -56,8 +56,8 @@ export interface IDataInternalKungfu {
   uid: string;
 }
 
-export type IDataExternalKungfus = Array<IDataExternalKungfu>;
-export type IDataInternalKungfus = Array<IDataInternalKungfu>;
+export type IDataExternalKungfus = IDataExternalKungfu[];
+export type IDataInternalKungfus = IDataInternalKungfu[];
 
 import { blossomHarvest } from './externals/blossom-harvest';
 export const externalKungfus: IDataExternalKungfus = Array(

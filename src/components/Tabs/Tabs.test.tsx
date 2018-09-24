@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import { Tab, Tabs } from './Tabs';
 
-describe('Testing the Tab component', () => {  
+import { Tab } from './Tab';
+import { Tabs } from './Tabs';
+
+describe('Testing the Tabs component', () => {  
   it('should render without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Tabs />, div);

@@ -1,8 +1,9 @@
 import * as constants from 'perks/constants/bonuses';
 import { IBonus,
-  IBonusDestiny, IBonusEntanglement, IBonusChi, IBonusCultivation, IBonusOneAmongN,
+  IBonusChi, IBonusCultivation, IBonusDestiny, IBonusEntanglement, IBonusOneAmongN,
   IBonusSkillRank, IBonusSpeciality,
 } from 'perks/types/bonuses';
+
 import * as dataChi from 'data/chi';
 import * as dataSkill from 'data/skills';
 

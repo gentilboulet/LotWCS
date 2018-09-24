@@ -1,17 +1,18 @@
+import { initialStateFactory } from 'state/initial';
 import { IStoreState } from 'state/types';
+import { virtuesReducer } from './virtues';
+
+import * as dataVirtues from 'data/virtues';
 import * as actions from 'state/actions/virtues';
 import * as virtues from 'state/virtues';
-import * as dataVirtues from 'data/virtues';
-
-import { initialStateFactory } from 'state/initial';
-import { virtuesReducer } from './virtues';
 
 const initialState: IStoreState  = initialStateFactory();
 
 describe('Testing virtueReducer', () => {
   const noCost = {
-    destiny: 0, entanglement: 0,
-    discountIdx: -1, discountNewValue: 0
+    destiny: 0,
+    discountIdx: -1, discountNewValue: 0,
+    entanglement: 0
   };
 
   it('should receive a VIRTUE_INCREASE action with an existing virtue', () => {

@@ -11,12 +11,13 @@ import {
   skillFactory, virtueFactory
 } from './types';
 
-import { IAction } from './actions/types';
 import { resetToInitialState } from './actions/initial';
+import { IAction } from './actions/types';
 
 import * as dataSkills from 'data/skills';
 import * as dataVirtues from 'data/virtues';
 
+/* tslint:disable:object-literal-sort-keys */
 export const defaultStateJS: IStoreStateJS = {
   name: 'No Name',
   concept: 'No Concept',

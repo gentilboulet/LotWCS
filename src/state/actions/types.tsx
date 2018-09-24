@@ -1,10 +1,11 @@
 import { IInitialStateAction } from './initial';
-import { IHeaderAction } from './header';
+
 import { IChiAction } from './chi';
-import { ISkillAction } from './skills';
-import { ILoresheetAction } from './loresheets';
+import { IHeaderAction } from './header';
 import { IHistoryAction } from './history';
 import { IKungFuAction } from './kungfus';
+import { ILoresheetAction } from './loresheets';
+import { ISkillAction } from './skills';
 import { IVirtueAction } from './virtues';
 
 export type IAction =
