@@ -20,9 +20,9 @@ export function chi(value: number, chiName: dataChi.IChiNames): IBonusChi {
   return { type: constants.BONUS_CHI, chi: chiName, value};
 }
 
-export function cultivation(value: number, cultivationName: dataChi.IChiCultivations): IBonusCultivation {
-  dataChi.validateCultivation(cultivationName);
-  return { type: constants.BONUS_CULTIVATION, value, cultivation: cultivationName};
+export function cultivation(value: number, chiName: dataChi.IChiNames): IBonusCultivation {
+  dataChi.validateChi(chiName);
+  return { type: constants.BONUS_CULTIVATION, value, cultivation: chiName};
 }
 
 export function oneAmongN(bonuses: IBonus[]): IBonusOneAmongN | IBonus {

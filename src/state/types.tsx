@@ -2,6 +2,8 @@
 import * as Immutable from 'immutable';
 import { makeTypedFactory, TypedRecord } from 'typed-immutable-record';
 
+import { ChiState } from 'state/chi';
+
 import * as dataVirtues from 'data/virtues';
 
 import { IBonus } from 'perks/types/bonuses';
@@ -54,43 +56,6 @@ export function loresheetOptionFactory(option: IStoreLoresheetOptionJS): IStoreL
   const defaultOpt = { loresheetUid: 'error', uid: 'error' };
   const f = makeTypedFactory<IStoreLoresheetOptionJS, IStoreLoresheetOption>(defaultOpt);
   return f(option);
-}
-
-interface IStoreChiJS {
-  general: number;
-  generalCultivation: number;
-  wood: number;
-  woodCultivation: number;
-  fire: number;
-  fireCultivation: number;
-  earth: number;
-  earthCultivation: number;
-  water: number;
-  waterCultivation: number;
-  metal: number;
-  metalCultivation: number;
-  enlightened: number;
-  enlightenedCultivation: number;
-  demon: number;
-  demonCultivation: number;
-}
-
-export interface IStoreChi extends TypedRecord<IStoreChi>, IStoreChiJS {}
-
-export function defaultChiFactory(): IStoreChi {
-  const defaultChi: IStoreChiJS = {
-    general: 0, generalCultivation: 0,
-    wood: 0, woodCultivation: 0,
-    fire: 0, fireCultivation: 0,
-    earth: 0, earthCultivation: 0,
-    water: 0, waterCultivation: 0,
-    metal: 0, metalCultivation: 0,
-    enlightened: 0, enlightenedCultivation: 0,
-    demon: 0, demonCultivation: 0
-  };
-
-  const f = makeTypedFactory<IStoreChiJS, IStoreChi>(defaultChi);
-  return f(defaultChi);
 }
 
 export interface IStoreKungFuTechniqueJS {
@@ -151,7 +116,7 @@ export interface IStoreStateJS {
   discounts: Immutable.List<IDiscount>;
   bonuses: Immutable.List<IBonus>;
   history: Immutable.List<IAction>;
-  chi: IStoreChi;
+  chi: ChiState ;
   externalKungFus: Immutable.List<IStoreKungFu>;
   internalKungFus: Immutable.List<IStoreKungFu>;
   virtues: Immutable.List<IStoreVirtue>;

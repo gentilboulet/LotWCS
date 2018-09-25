@@ -40,7 +40,7 @@ export const ranks: IDataRanks = [
     perks: [bonus.destiny(50), discount.discountSkillFactory(20), bonus.chi(10, 'general')],
     value: 3,
   }, {
-    description: 'River size, Joss, Ch, replenishment and Chi Aura limit are 4. Lake size is 9. Maximum skill bonus is +20.',
+    description: 'River size, Joss, Chi replenishment and Chi Aura limit are 4. Lake size is 9. Maximum skill bonus is +20.',
     key: '2nd_rank',
     name: '2nd Rank',
     perks: [bonus.destiny(100), discount.discountSkillFactory(20), bonus.chi(10, 'general')],

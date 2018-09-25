@@ -19,7 +19,7 @@ export interface IBonusChi {
 
 export interface IBonusCultivation {
   type: constants.BONUS_CULTIVATION;
-  cultivation: dataChi.IChiCultivations;
+  cultivation: dataChi.IChiNames;
   value: number;
 }
 

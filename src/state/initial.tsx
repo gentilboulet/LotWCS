@@ -2,7 +2,6 @@ import * as Immutable from 'immutable';
 import { makeTypedFactory } from 'typed-immutable-record';
 
 import {
-  defaultChiFactory,
   IStoreKungFu,
   IStoreLoresheet, IStoreLoresheetOption,
   IStoreSkill, IStoreSkillSpeciality,
@@ -10,6 +9,8 @@ import {
   IStoreVirtue,
   skillFactory, virtueFactory
 } from './types';
+
+import { ChiState } from 'state/chi';
 
 import { resetToInitialState } from './actions/initial';
 import { IAction } from './actions/types';
@@ -40,7 +41,7 @@ export const defaultStateJS: IStoreStateJS = {
   discounts: Immutable.List([]),
   bonuses: Immutable.List([]),
   history: Immutable.List<IAction>([resetToInitialState()]),
-  chi: defaultChiFactory(),
+  chi: new ChiState(),
   externalKungFus: Immutable.List<IStoreKungFu>([]),
   internalKungFus: Immutable.List<IStoreKungFu>([]),
   virtues: Immutable.List<IStoreVirtue>(dataVirtues.virtues.map(v => virtueFactory(v.name, v.type)))

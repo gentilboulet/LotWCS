@@ -1,7 +1,6 @@
 import { IChiAction } from 'state/actions/chi';
 import { IStoreState } from 'state/types';
 
-import * as chi from 'state/chi';
 import * as constants from 'state/constants/chi';
 
 // Sub Reducers
@@ -14,7 +13,7 @@ export function chiReducer(oldState: IStoreState, action: IChiAction): IStoreSta
       return oldState.withMutations(state => {
         applyCost(state, action.cost);
 
-        chi.increaseValue(state, action.chiType, action.value);
+        state.update('chi', chi => chi.increaseChi(state, action.chiType, action.value) );
 
         pushToHistory(state, action);
       });

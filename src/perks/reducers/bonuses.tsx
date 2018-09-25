@@ -3,11 +3,10 @@ import { IBonus, isBonus } from 'perks/types/bonuses';
 
 import { IStoreState } from 'state/types';
 
-import * as chi from 'state/chi';
 import * as skills from 'state/skills';
 
 export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreState {
-  return oldState.withMutations(state => {
+  const ret = oldState.withMutations(state => {
     bonuses.filter((bonus: IBonus) => isBonus(bonus))
            .forEach((bonus: IBonus) => {
       switch (bonus.type) {
@@ -20,10 +19,10 @@ export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreSt
           state.set('entanglement', e + bonus.value);
           break;
         case constants.BONUS_CHI:
-          chi.increaseValue(state, bonus.chi, bonus.value);
+          state.update('chi', chi => chi.increaseChi(bonus.chi, bonus.value) );
           break;
         case constants.BONUS_CULTIVATION:
-          chi.increaseCultivation(state, bonus.cultivation, bonus.value);
+	        state.update('chi', chi => chi.increaseCultivation(bonus.cultivation, bonus.value) );
           break;
         case constants.BONUS_SKILL_RANK:
           skills.increaseValue(state, bonus.skill);
@@ -36,4 +35,5 @@ export function applyBonuses(oldState: IStoreState, bonuses: IBonus[]): IStoreSt
       }
     });
   });
+  return ret;
 }

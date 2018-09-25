@@ -6,7 +6,6 @@ import { applyBonuses } from './bonuses';
 import { IBonus } from 'perks/types/bonuses';
 
 import * as actions from 'perks/actions/bonuses';
-import * as chi from 'state/chi';
 import * as skills from 'state/skills';
 
 const initialState: IStoreState  = initialStateFactory();
@@ -29,8 +28,8 @@ describe('Testing applyBonuses', () => {
   it('should receive a BONUS_CHI', () => {
     const bonuses = [actions.chi(14, 'general')];
     const state = applyBonuses(initialState, bonuses);
-    expect( chi.getChiValue(initialState, 'general') ).toBe(0);
-    expect( chi.getChiValue(state, 'general') ).toBe(14);
+    expect( initialState.get('chi').getChi('general') ).toBe(0);
+    expect( state.get('chi').getChi('general') ).toBe(14);
   });
 
   it('should receive a BONUS_SKILL_RANK', () => {
@@ -52,6 +51,16 @@ describe('Testing applyBonuses', () => {
     expect( skills.getSpecialityIndex(state, testSkill, testSpeciality) ).toBe(0);
   });
 
+  it('should receive a BONUS_CULTIVATION', () => {
+    const bonuses = [actions.cultivation(4, 'fire')];
+    const state = applyBonuses(initialState, bonuses);
+
+    expect( initialState.get('chi').getChi('fire') ).toBe(0);
+    expect( state.get('chi').getChi('fire') ).toBe(2);
+    expect( initialState.get('chi').getCultivation('fire') ).toBe(0);
+    expect( state.get('chi').getCultivation('fire') ).toBe(1);
+  });
+
   it('should handle an empty list', () => {
     const state = applyBonuses(initialState, []);
     expect(state).toMatchObject(initialState);
@@ -63,7 +72,7 @@ describe('Testing applyBonuses', () => {
     const state = applyBonuses(initialState, bonuses);
     expect( state.get('destiny') ).toBe(12);
     expect( state.get('entanglement') ).toBe(13);
-    expect( chi.getChiValue(state, 'general') ).toBe(14);
+    expect( state.get('chi').getChi('general') ).toBe(14);
   });
 
 });

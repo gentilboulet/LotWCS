@@ -28,16 +28,16 @@ describe('Testing bonus creators', () => {
   })
 
   it('should create an cultivation bonus', () => {
-    const cultivationName = dataChi.fromChiToCultivationName('fire');
-    const b = bonuses.cultivation(10, cultivationName);
+    const chiName = 'fire';
+    const b = bonuses.cultivation(10, chiName);
     expect( b.value ).toBe(10);
-    expect( b.cultivation ).toBe(cultivationName);
+    expect( b.cultivation ).toBe(chiName);
     expect( b ).toMatchSnapshot();
   });
 
   it('should not create an invalid cultivation bonus', () => {
-    const cultivationName = 'garbageCultivation';
-    expect( () => bonuses.cultivation(10, cultivationName as dataChi.IChiCultivations) ).toThrow();
+    const chiName = 'garbageCultivation';
+    expect( () => bonuses.cultivation(10, chiName as dataChi.IChiNames) ).toThrow();
   });
 
   it('should create an oneAmongN bonus', () => {
