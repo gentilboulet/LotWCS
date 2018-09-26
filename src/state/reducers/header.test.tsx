@@ -1,6 +1,6 @@
 import { IHeaderAction } from 'state/actions/header';
 import { initialStateFactory } from 'state/initial';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import { globalReducer } from './global';
 import { headerReducer } from './header';
@@ -11,34 +11,34 @@ const initialState: IStoreState  = initialStateFactory();
 
 describe('Testing headerReducer', () => {
   it('should receive a HEADER_SET_NAME action', () => {
-    expect( initialState.get('name') ).toBe('No Name');
+    expect( initialState.name ).toBeUndefined();
     const action = actions.setName('Robert');
     const state = headerReducer(initialState, action);
-    expect ( state.get('name') ).toBe('Robert');
+    expect ( state.name ).toBe('Robert');
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
   it('should receive a HEADER_SET_CONCEPT action', () => {
-    expect( initialState.get('concept') ).toBe('No Concept');
+    expect( initialState.concept ).toBeUndefined();
     const action = actions.setConcept('The Black Dog of Jianghu');
     const state = headerReducer(initialState, action);
-    expect ( state.get('concept') ).toBe('The Black Dog of Jianghu');
+    expect ( state.concept ).toBe('The Black Dog of Jianghu');
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
   it('should receive a HEADER_SET_ARCHETYPE action', () => {
-    expect( initialState.get('archetype') ).toBe('');
+    expect( initialState.archetype ).toBeUndefined();
     const action = actions.setArchetype('warrior');
     const state = headerReducer(initialState, action);
-    expect ( state.get('archetype') ).toBe('warrior');
+    expect ( state.archetype ).toBe('warrior');
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
   it('should receive a HEADER_SET_RANK action', () => {
-    expect( initialState.get('rank') ).toBe('');
+    expect( initialState.rank ).toBeUndefined();
     const action = actions.setRank('4th_rank');
     const state = headerReducer(initialState, action);
-    expect ( state.get('rank') ).toBe('4th_rank');
+    expect ( state.rank ? state.rank.name : undefined ).toBe('4th_rank');
     expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 

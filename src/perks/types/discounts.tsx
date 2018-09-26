@@ -1,8 +1,9 @@
+import { TSkillName } from 'data/skills';
 import * as constants from 'perks/constants/discounts';
 
 export interface IDiscountSkill {
   type: constants.DISCOUNT_SKILL;
-  skills: string[];
+  skills: TSkillName[] ;
   value: number;
 }
 
@@ -23,7 +24,6 @@ export type IDiscount =
   | IDiscountLoresheet
   | IDiscountLoresheetOption;
 
-/* tslint:disable:no-any */
 export function isDiscount(r: any): boolean {
   switch (r.type) {
     case constants.DISCOUNT_SKILL:

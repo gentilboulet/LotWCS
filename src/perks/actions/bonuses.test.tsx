@@ -1,4 +1,3 @@
-import * as dataChi from 'data/chi';
 import * as bonuses from './bonuses';
 
 describe('Testing bonus creators', () => {
@@ -22,22 +21,12 @@ describe('Testing bonus creators', () => {
     expect( b ).toMatchSnapshot();
   });
 
-  it('should not create an invalid chi bonus', () => {
-    const chiName = 'garbage';
-    expect( () => bonuses.chi(10, chiName as dataChi.IChiNames) ).toThrow();
-  })
-
   it('should create an cultivation bonus', () => {
     const chiName = 'fire';
-    const b = bonuses.cultivation(10, chiName);
+    const b = bonuses.cultivation(chiName, 10);
     expect( b.value ).toBe(10);
-    expect( b.cultivation ).toBe(chiName);
+    expect( b.chi ).toBe(chiName);
     expect( b ).toMatchSnapshot();
-  });
-
-  it('should not create an invalid cultivation bonus', () => {
-    const chiName = 'garbageCultivation';
-    expect( () => bonuses.cultivation(10, chiName as dataChi.IChiNames) ).toThrow();
   });
 
   it('should create an oneAmongN bonus', () => {
@@ -71,11 +60,6 @@ describe('Testing bonus creators', () => {
     expect( b ).toMatchSnapshot();
   });
 
-  it('should not create an invalid skill rank bonus', () => {
-    const skillName = 'error';
-    expect( () => bonuses.skillRank(skillName) ).toThrow();
-  });
-
   it('should create a skill speciality bonus', () => {
     const skillName = 'Awareness';
     const specialityName = 'Hear';
@@ -85,11 +69,6 @@ describe('Testing bonus creators', () => {
     expect( b ).toMatchSnapshot();
   });
 
-  it('should not create an invalid skill speciality bonus', () => {
-    const skillName = 'Error is my name';
-    const specialityName = 'Hear';
-    expect( () => bonuses.speciality(skillName, specialityName) ).toThrow();
-  });
 
   it('should create a skill with a not in data speciality bonus', () => {
     const skillName = 'Awareness';

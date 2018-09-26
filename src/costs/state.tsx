@@ -1,13 +1,30 @@
+/*
+
 import { ICost } from 'costs/types';
 import { IDiscount } from 'perks/types/discounts';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import * as dataLoresheets from 'data/loresheets';
 import * as constants from 'perks/constants/discounts';
 import * as loresheets from 'state/loresheets';
-import * as skills from 'state/skills';
 
 import * as derived from 'state/derived';
+
+import { ICost } from 'costs/types';
+import { IStoreState } from 'state/type';
+
+import { updateDiscounts } from 'perks/reducers/discounts';
+
+export function applyCost(baseState: IStoreState, cost: ICost): IStoreState {
+    state.set('destiny', state.get('destiny') - cost.destiny);
+    state.set('entanglement', state.get('entanglement') - cost.entanglement);
+
+    if (state.get('destiny') < 0) { throw new Error('Negative destiny reached'); }
+    if (state.get('entanglement') < 0) { throw new Error('Negative entanglement reached'); }
+    updateDiscounts(state, cost);
+  });
+  return baseState;
+}
 
 // helper functions
 function _canHandleCost(state: IStoreState, cost: ICost): boolean {
@@ -32,20 +49,8 @@ function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
   }
 }
 
-/*
-  Export canBuy and getCost for some actions. Available :
-    canBuySkill
-    getCostSkill
-    canBuySpeciality
-    getCostSpeciality
-    canOpenLoresheet
-    getCostOpenLoresheet
-    canBuyOptionLoresheet
-    getCostsArrayBuyOptionLoresheet
- */
-
 export function canBuySkill(state: IStoreState, skill: string): boolean {
-  const value = skills.getSkillValue(state, skill);
+  const value = state.get('skills').getSkillValue(state, skill);
   if ( (value + 5) > derived.maxSkillBonus(state) ) { return false; }
   const cost = getCostSkill(state, skill);
   return _canHandleCost(state, cost);
@@ -64,7 +69,7 @@ export function getCostSkill(state: IStoreState, skill: string): ICost {
 }
 
 export function canBuySpeciality(state: IStoreState, skill: string, speciality: string): boolean {
-  const specialityIdx = skills.getSpecialityIndex(state, skill, speciality);
+  const specialityIdx = state.get('skills').getSpecialityIndex(state, skill, speciality);
 
   if ( specialityIdx < 0 ) { return false; }
 
@@ -141,3 +146,4 @@ export function getCostBuyOptionLoresheet(state: IStoreState, lsUid: string, uid
     });
   return _handleDiscount(state, idx, cost);
 }
+*/

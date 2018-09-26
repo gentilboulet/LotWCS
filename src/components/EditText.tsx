@@ -13,7 +13,7 @@ const styles = {
 
 export interface IEditTextProps {
   header: string;
-  default: string;
+  default?: string;
   locked?: boolean;
   validate: (v: string) => boolean ;
   onSubmit: (v: string) => void;
@@ -34,7 +34,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
 
     this.state = {
       edit: false,
-      value: this.props.default,
+      value: this.props.default ? this.props.default : '',
     };
 
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
@@ -46,7 +46,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
 
   public componentWillReceiveProps(nextProps: IEditTextProps) {
     this.setState({
-      value: nextProps.default,
+      value: nextProps.default ? nextProps.default : '',
     });
   }
 

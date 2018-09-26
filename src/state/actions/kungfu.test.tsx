@@ -1,5 +1,5 @@
-import * as dataKungfus from 'data/kungfus';
-import * as actions from './kungfus';
+import * as dataKungfus from 'data/kungfu';
+import * as actions from './kungfu';
 
 describe('Testing external kungfu action creator', () => {
   const noCost = {

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 // import * as renderer from 'react-test-renderer';
-import CharacterLoresheets from './CharacterLoresheets';
+import CharacterSkills from './CharacterSkills';
 
 import { IAction } from 'state/actions/types';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import { createStore } from 'redux';
 import { initialStateFactory } from 'state/initial';
@@ -17,12 +17,12 @@ const store = createStore<IStoreState, IAction, any, any>(
   initialStateFactory()
 );
 
-describe('Testing the CharacterLoresheets container', () => {
+describe('Testing the CharacterSkills container', () => {
   it('should render without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <Provider store={store}>
-        <CharacterLoresheets />
+        <CharacterSkills />
       </Provider>,
     div);
   });

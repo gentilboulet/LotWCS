@@ -1,6 +1,6 @@
 import { IAction } from 'state/actions/types';
 import { initialStateFactory } from 'state/initial';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import * as header from 'state/actions/header';
 import { historyDeleteUpTo, IHistoryAction } from 'state/actions/history';
@@ -24,9 +24,9 @@ describe('Testing historyReducer', () => {
     expect( stateBefore ).toMatchSnapshot();
     const state = history.replayHistory(stateBefore, [historyDeleteUpTo(1)]);
     expect( state ).toMatchSnapshot();
-    expect( state.get('name') ).toBe('Roberts');
-    expect( state.get('concept') ).toBe('No Concept');
-    expect( state.get('history').length === (1 + 1) );
+    expect( state.name ).toBe('Roberts');
+    expect( state.concept ).toBeUndefined();
+    expect( state.history.length === (1 + 1) );
   });
 
   it('should do nothing with a junk action', () => {

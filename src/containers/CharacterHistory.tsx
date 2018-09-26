@@ -5,7 +5,7 @@ import CharacterHistory, { ICharacterHistoryProps } from 'components/CharacterHi
 
 import * as actions from 'state/actions/history';
 import { IAction } from 'state/actions/types';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 interface IMapStateToProps {
   history: IAction[];
@@ -16,7 +16,7 @@ interface IMapDispatchToProps {
 }
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
-  return { history: state.get('history') };
+  return { history: state.history };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<actions.IHistoryAction>): IMapDispatchToProps {

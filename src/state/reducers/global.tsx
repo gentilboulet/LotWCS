@@ -1,5 +1,5 @@
 import { IAction } from 'state/actions/types';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 // Sub Reducers
 import * as header from 'state/constants/header';
@@ -11,8 +11,8 @@ import { chiReducer } from 'state/reducers/chi';
 import * as initial from 'state/constants/initial';
 import { initialStateFactory } from 'state/initial';
 
-import * as kungfus from 'state/constants/kungfus';
-import { kungfuReducer } from 'state/reducers/kungfus';
+import * as kungfu from 'state/constants/kungfu';
+import { kungfuReducer } from 'state/reducers/kungfu';
 
 import * as history from 'state/constants/history';
 import { historyReducer } from 'state/reducers/history';
@@ -37,10 +37,10 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
       return chiReducer(state, action);
     case initial.INITIAL_STATE:
       return initialStateFactory();
-    case kungfus.KUNGFU_OPEN_STYLE:
-    case kungfus.KUNGFU_CUSTOM_NAME_FOR_STYLE:
-    case kungfus.KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE:
-    case kungfus.KUNGFU_BUY_TECHNIQUE:
+    case kungfu.KUNGFU_OPEN_STYLE:
+    case kungfu.KUNGFU_CUSTOM_NAME_FOR_STYLE:
+    case kungfu.KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE:
+    case kungfu.KUNGFU_BUY_TECHNIQUE:
       return kungfuReducer(state, action);
     case skills.SKILLS_BUY:
       return skillsReducer(state, action);

@@ -1,4 +1,4 @@
-import { IDataExternalKungfu } from 'data/kungfus';
+import { IDataExternalKungfu } from 'data/kungfu/types';
 import * as effects from 'perks/actions/effects';
 
 /* tslint:disable:max-line-length */

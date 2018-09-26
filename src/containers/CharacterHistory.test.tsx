@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import CharacterHistory from './CharacterHistory';
 
 import { IAction } from 'state/actions/types';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import { createStore } from 'redux';
 import { initialStateFactory } from 'state/initial';

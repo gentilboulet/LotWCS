@@ -1,12 +1,13 @@
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */
-import * as dataChi from 'data/chi';
+
+import { IDataInternalKungfu } from 'data/kungfu/types';
 import * as effects from 'perks/actions/effects';
 
-export const boundlessProsperityManual = {
+export const boundlessProsperityManual: IDataInternalKungfu = {
   name: 'Boundless Prosperity Manual',
   uid: 'Boundless Prosperity Manual',
-  element: 'wood' as dataChi.IChiNames,
+  element: 'wood',
   techniques: [
     {
       level: 1,

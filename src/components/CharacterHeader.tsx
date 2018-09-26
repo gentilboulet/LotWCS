@@ -8,12 +8,12 @@ import * as dataArchetypes from 'data/archetypes';
 import * as dataRanks from 'data/ranks';
 
 export interface ICharacterHeaderProps {
-  name: string;
-  concept: string;
-  rank: string;
-  archetype: string;
-  entanglement: number;
+  name: string | undefined;
+  concept: string | undefined;
+  archetype: string | undefined;
+  rank: {name: string, value: number}| undefined;
   destiny: number;
+  entanglement: number;
 
   onSetName: (s: string) => void;
   onSetConcept: (s: string) => void;
@@ -62,7 +62,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
           <Col>
             <DDLText
               header="Character Rank"
-              default={this.props.rank}
+              default={this.props.rank ? this.props.rank.name : '' }
               values={dataRanks.ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
 // tslint:disable-next-line jsx-no-lambda
               onSubmit={(s: string) => { this.props.onSetRank(s); }}

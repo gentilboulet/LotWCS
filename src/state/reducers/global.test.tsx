@@ -1,6 +1,6 @@
 import { IAction } from 'state/actions/types';
 import { initialStateFactory } from 'state/initial';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import { globalReducer } from './global';
 

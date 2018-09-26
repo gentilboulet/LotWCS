@@ -15,14 +15,12 @@ export function entanglement(value: number): IBonusEntanglement {
   return { type: constants.BONUS_ENTANGLEMENT, value };
 }
 
-export function chi(value: number, chiName: dataChi.IChiNames): IBonusChi {
-  dataChi.validateChi(chiName);
+export function chi(value: number, chiName: dataChi.TChiName): IBonusChi {
   return { type: constants.BONUS_CHI, chi: chiName, value};
 }
 
-export function cultivation(value: number, chiName: dataChi.IChiNames): IBonusCultivation {
-  dataChi.validateChi(chiName);
-  return { type: constants.BONUS_CULTIVATION, value, cultivation: chiName};
+export function cultivation(chiName: dataChi.TChiName, value: number): IBonusCultivation {
+  return { type: constants.BONUS_CULTIVATION, value, chi: chiName};
 }
 
 export function oneAmongN(bonuses: IBonus[]): IBonusOneAmongN | IBonus {
@@ -31,12 +29,10 @@ export function oneAmongN(bonuses: IBonus[]): IBonusOneAmongN | IBonus {
   return { type: constants.BONUS_ONE_AMONG_N, bonuses };
 }
 
-export function skillRank(skill: string): IBonusSkillRank {
-  dataSkill.validateSkill(skill);
+export function skillRank(skill: dataSkill.TSkillName): IBonusSkillRank {
   return { type: constants.BONUS_SKILL_RANK, skill };
 }
 
-export function speciality(skill: string, specialityName: string): IBonusSpeciality {
-  dataSkill.validateSkill(skill);
+export function speciality(skill: dataSkill.TSkillName, specialityName: string): IBonusSpeciality {
   return { type: constants.BONUS_SPECIALITY, skill, speciality: specialityName };
 }

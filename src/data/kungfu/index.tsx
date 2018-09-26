@@ -1,8 +1,4 @@
-import * as dataChi from 'data/chi';
-import { WEAPON_TYPE } from 'data/weapons';
-import { IEffect } from 'perks/types/effects';
-
-// Constants used to differentiate between kungfus
+// Constants used to differentiate between kungfu
 export const KUNGFU_EXTERNAL = 'KUNGFU_EXTERNAL';
 export type KUNGFU_EXTERNAL = typeof KUNGFU_EXTERNAL;
 
@@ -11,61 +7,22 @@ export type KUNGFU_INTERNAL = typeof KUNGFU_INTERNAL;
 
 export type KUNGFU_TYPE = KUNGFU_INTERNAL | KUNGFU_EXTERNAL;
 
-export interface IDataExternalKungfuStatistics {
-    speed: 0|5|10|15|20;
-    footwork: 0|5|10|15|20;
-    strike: 0|5|10|15|20;
-    damage: 0|5|10|15|20;
-    block: 0|5|10|15|20;
-    toughness: 0|5|10|15|20;
-}
+import {
+  IDataExternalKungfu,
+  IDataExternalKungfuTechnique,
 
-export interface IDataExternalKungfuPrerequisite { uid: string };
+  IDataInternalKungfu,
+  IDataInternalKungfuTechnique
+} from './types'
 
-export interface IDataExternalKungfuTechnique {
-    name: string;
-    cost: number;
-    description: string;
-    effect: IEffect;
-    uid: string;
-    prerequisites?: IDataExternalKungfuPrerequisite[];
-}
-
-export interface IDataInternalKungfuTechnique {
-    name: string;
-    level: number; // 1 | 2 | 3 | 4 | 5;
-    description: string;
-    effect: IEffect;
-    uid: string;
-}
-
-export interface IDataExternalKungfu {
-  name: string;
-  laugths: string;
-  fears: string;
-  weapons: WEAPON_TYPE[];
-  statistics: IDataExternalKungfuStatistics;
-  techniques: IDataExternalKungfuTechnique[];
-  uid: string;
-}
-
-export interface IDataInternalKungfu {
-  name: string;
-  element: dataChi.IChiNames;
-  techniques: IDataInternalKungfuTechnique[];
-  uid: string;
-}
-
-export type IDataExternalKungfus = IDataExternalKungfu[];
-export type IDataInternalKungfus = IDataInternalKungfu[];
 
 import { blossomHarvest } from './externals/blossom-harvest';
-export const externalKungfus: IDataExternalKungfus = Array(
+export const externalKungfus: IDataExternalKungfu[] = Array(
   blossomHarvest
 );
 
 import { boundlessProsperityManual } from './internals/boundless-prosperity-manual';
-export const internalKungfus: IDataInternalKungfus = Array(
+export const internalKungfus: IDataInternalKungfu[] = Array(
   boundlessProsperityManual
 );
 
@@ -78,7 +35,7 @@ export function validateKungFuType(type: KUNGFU_TYPE): void {
   }
 }
 
-export function validateKungFuStyle(styleUid: string, type: KUNGFU_TYPE): void {
+export function validateKungFuStyle(type: KUNGFU_TYPE, styleUid: string): void {
   validateKungFuType(type);
   if (type === KUNGFU_EXTERNAL) {
     const filtered = externalKungfus.filter((kf: IDataExternalKungfu) => (kf.uid === styleUid));
@@ -93,8 +50,8 @@ export function validateKungFuStyle(styleUid: string, type: KUNGFU_TYPE): void {
   }
 }
 
-export function validateKungFuTechnique(styleUid: string, techniqueUid: string, type: KUNGFU_TYPE): void {
-  validateKungFuStyle(styleUid, type);
+export function validateKungFuTechnique(type: KUNGFU_TYPE, styleUid: string, techniqueUid: string): void {
+  validateKungFuStyle(type, styleUid);
   if (type === KUNGFU_EXTERNAL) {
     const filtered = externalKungfus.filter((kf: IDataExternalKungfu) => {
       return kf.uid === styleUid

@@ -11,7 +11,7 @@ import { ICharacterLoresheetsProps,
 } from 'components/CharacterLoresheets';
 
 import { ICost } from 'costs/types';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import * as dataLoresheets from 'data/loresheets';
 

@@ -1,18 +1,33 @@
-import * as dataVirtue from 'data/virtues';
-import { IStoreState, IStoreVirtue, virtueFactory } from 'state/types';
+import { IDataVirtue, IDataVirtueType, virtues } from 'data/virtues';
 
-export function getVirtueIndex(state: IStoreState, virtue: string): number {
-  return state.get('virtues').findIndex((v: IStoreVirtue) => (v.name === virtue));
+interface IVirtueState {
+    name: string;
+    value: number;
+    type: IDataVirtueType;
 }
 
-export function addVirtue(state: IStoreState, name: string, type: dataVirtue.IDataVirtueType): void {
-  state.updateIn(['virtues'], list => list.push(
-      virtueFactory(name, type)
-    )
-  );
+export type TVirtuesState = IVirtueState[];
+
+export function createState(): TVirtuesState {
+  return virtues.map((virtue: IDataVirtue) => {
+    return { name: virtue.name, value: 0, type: virtue.type };
+  });
 }
-export function increaseVirtue(
-  state: IStoreState, name: string, increase: number): void {
-  const index = getVirtueIndex(state, name);
-  state.updateIn(['virtues', index, 'value'], v => (v + increase));
+
+export function add(state: TVirtuesState, name: string, type: IDataVirtueType): void {
+  state.push({ name, value: 0, type });
+}
+
+export function increase(state: TVirtuesState, name: string, value: number): void {
+  state.forEach(virtue => {
+    if(virtue.name === name) { virtue.value+= value; }
+  })
+}
+
+export function isVirtuePresent(state: TVirtuesState, name: string): boolean {
+  return state.findIndex(virtue => name === virtue.name) !== -1;
+}
+
+export function getVirtue(state: TVirtuesState, name: string): IVirtueState | undefined {
+  return state.find(virtue => name === virtue.name);
 }

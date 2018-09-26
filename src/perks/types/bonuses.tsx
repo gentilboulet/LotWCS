@@ -1,4 +1,4 @@
-import * as dataChi from 'data/chi';
+import { TChiName } from 'data/chi';
 import * as constants from 'perks/constants/bonuses';
 
 export interface IBonusDestiny {
@@ -13,13 +13,13 @@ export interface IBonusEntanglement {
 
 export interface IBonusChi {
   type: constants.BONUS_CHI;
-  chi: dataChi.IChiNames;
+  chi: TChiName;
   value: number;
 }
 
 export interface IBonusCultivation {
   type: constants.BONUS_CULTIVATION;
-  cultivation: dataChi.IChiNames;
+  chi: TChiName;
   value: number;
 }
 
@@ -49,7 +49,6 @@ export type IBonus =
   | IBonusSpeciality
 ;
 
-/* tslint:disable:no-any */
 export function isBonus(bonus: any): boolean {
   switch (bonus.type) {
     case constants.BONUS_DESTINY:

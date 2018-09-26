@@ -1,20 +1,21 @@
-import * as Immutable from 'immutable';
+/*
+import { produce } from 'immer';
 
 import { ICost } from 'costs/types';
 import { IDiscount, isDiscount } from 'perks/types/discounts';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
-export function pushToDiscounts(oldState: IStoreState, discounts: IDiscount[]): IStoreState {
-  return oldState.withMutations((state: IStoreState) => {
+export function pushToDiscounts(baseState: IStoreState, discounts: IDiscount[]): IStoreState {
+  return baseState.withMutations((state: IStoreState) => {
     discounts
       .filter((r: IDiscount) => isDiscount(r) )
       .forEach((r: IDiscount) => { state.updateIn(['discounts'], (list) => list.push(r) ); });
   });
 }
 
-export function updateDiscounts(oldState: IStoreState, cost: ICost) {
-  if (cost.discountIdx < 0) { return oldState; }
-  return oldState.withMutations((state: IStoreState) => {
+export function updateDiscounts(baseState: IStoreState, cost: ICost) {
+  if (cost.discountIdx < 0) { return baseState; }
+  return baseState.withMutations((state: IStoreState) => {
     if (cost.discountNewValue === 0) {
       // Remove the discount
       state.updateIn(['discounts'], (list: Immutable.List<IDiscount>) => list.delete(cost.discountIdx));
@@ -27,3 +28,6 @@ export function updateDiscounts(oldState: IStoreState, cost: ICost) {
     }
   });
 }
+*/
+
+export {};

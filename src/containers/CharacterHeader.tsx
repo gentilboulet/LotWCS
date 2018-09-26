@@ -2,15 +2,15 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import * as headerActions from 'state/actions/header';
-import { IStoreState } from 'state/types';
+import { IStoreState } from 'state/type';
 
 import CharacterHeader, { ICharacterHeaderProps } from 'components/CharacterHeader';
 
 interface IMapStateToProps {
-  name: string;
-  concept: string;
-  archetype: string;
-  rank: string;
+  name: string | undefined;
+  concept: string | undefined;
+  archetype: string | undefined;
+  rank: {name: string, value: number}| undefined;
   destiny: number;
   entanglement: number;
 
@@ -27,15 +27,15 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    archetype: state.get('archetype'),
-    concept: state.get('concept'),
-    destiny: state.get('destiny'),
-    entanglement: state.get('entanglement'),
-    name: state.get('name'),
-    rank: state.get('rank'),
+    archetype: state.archetype,
+    concept: state.concept,
+    destiny: state.destiny,
+    entanglement: state.entanglement,
+    name: state.name,
+    rank: state.rank,
 
-    lockArchetype: state.get('rankModified'),
-    lockRank: state.get('rankModified')
+    lockArchetype: typeof state.archetype !== undefined,
+    lockRank: typeof state.rank !== undefined
   };
 }
 

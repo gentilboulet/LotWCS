@@ -1,49 +1,31 @@
-/* tslint:disable:max-classes-per-file */
-import * as Immutable from 'immutable';
+import { chiNames, TChiName } from 'data/chi';
 
-import * as dataChi from 'data/chi';
+export type TChiState = {
+  [chi in TChiName]: { value: number, cultivation: number};
+}
 
-class ChiInnerState extends Immutable.Record({value: 0, cultivation: 0}) {};
+export function createState(): TChiState {
+  const state = {} as TChiState;
+  chiNames.forEach((chi: TChiName) => {
+    state[chi] = { value: 0, cultivation: 0};
+  });
+  return state;
+}
 
-const defaultChi = {
-  general: new ChiInnerState(),
+export function increase(state: TChiState, name: TChiName, value: number): void {
+   state[name].value += value;
+}
 
-  earth: new ChiInnerState(),
-  fire: new ChiInnerState(),
-  metal: new ChiInnerState(),
-  water: new ChiInnerState(),
-  wood: new ChiInnerState(),
+export function increaseCultivation(state: TChiState, name: TChiName, value: number): void {
+  const actualCultivation = state[name].cultivation;
+  const actualChi = state[name].value;
 
-  corrupt: new ChiInnerState(),
-  enlightened: new ChiInnerState(),
-};
-
-export class ChiState extends Immutable.Record(defaultChi) {
-  public getChi(chiName: dataChi.IChiNames): number {
-    return this.getIn([chiName, 'value']);
+  let newCultivation = actualCultivation + value;
+  let newChiValue = actualChi;
+  while (newCultivation >= newChiValue) {
+    newChiValue ++;
+    newCultivation -= newChiValue;
   }
-
-  public getCultivation(chiName: dataChi.IChiNames): number {
-    return this.getIn([chiName, 'cultivation']);
-  }
-
-  public increaseChi(chiName: dataChi.IChiNames, value: number): ChiState {
-    const chi = this.getChi(chiName);
-    return this.setIn([chiName, 'value'], chi+value) as ChiState;
-  }
-
-  public increaseCultivation(chiName: dataChi.IChiNames, value: number): ChiState {
-    const actualCultivation = this.getCultivation(chiName);
-    const actualChi = this.getChi(chiName);
-
-    let newCultivation = actualCultivation + value;
-    let newChiValue = actualChi;
-    while (newCultivation >= newChiValue) {
-      newChiValue ++;
-      newCultivation -= newChiValue;
-    }
-
-    return this.setIn([chiName, 'value'], newChiValue)
-               .setIn([chiName, 'cultivation'], newCultivation) as ChiState;
-  }
+  state[name].value = newChiValue;
+  state[name].cultivation = newCultivation;
 }

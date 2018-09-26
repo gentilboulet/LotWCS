@@ -33,7 +33,7 @@ Object {
 
 exports[`Testing bonus creators should create an cultivation bonus 1`] = `
 Object {
-  "cultivation": "fire",
+  "chi": "fire",
   "type": "BONUS_CULTIVATION",
   "value": 10,
 }
