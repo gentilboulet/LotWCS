@@ -4,12 +4,13 @@ import { Button, ListGroupItem } from 'reactstrap';
 
 import Collapsible from 'components/Collapsible';
 
-import { 
+import {
   ILoresheetsCharacterLoresheetsProps,
   ILoresheetsOptionsCharacterLoresheetsProps,
   ILoresheetsOptionsCostCharacterLoresheetsProps,
 } from 'components/CharacterLoresheets';
-import { ICost } from 'costs/types';
+
+import { ICost } from 'state/costs';
 
 export interface ISingleLoresheetProps {
   loresheet: ILoresheetsCharacterLoresheetsProps;

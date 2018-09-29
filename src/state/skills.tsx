@@ -1,9 +1,13 @@
 import { skills as data, TSkillName } from 'data/skills';
 
+import { canPayCost, getCostSkill } from 'state/costs';
+import { maxSkillBonus } from 'state/derived';
+import { IStoreState } from 'state/type';
+
 interface ISkill {
   name: string;
   specialities: string[];
-  value: 0;
+  value: number;
 }
 
 export type TSkillsState = {
@@ -22,9 +26,9 @@ export function createState(): TSkillsState {
   return state as TSkillsState;
 }
 
-export function increase(state: TSkillsState, skillName: string, maxSkillBonus: number): void {
+export function increase(state: TSkillsState, skillName: string, maxSkillValue: number): void {
   const old = state[skillName].value;
-  if( old + 5 > maxSkillBonus) {
+  if( old + 5 > maxSkillValue) {
     throw new Error('Skill overflow');
   }
   state[skillName].value += 5;
@@ -40,4 +44,13 @@ export function addSpeciality(state: TSkillsState, skillName: string, speciality
     throw new Error('Something went wrong, speciality "'+specialityName+'" for skill "'+skillName+'" already bought');
   }
   state[skillName].specialities.push(specialityName);
+}
+
+export function canBuySkill(state: IStoreState, skillName: TSkillName): boolean {
+  const value = state.skills[skillName].value;
+  const max = maxSkillBonus(state);
+  if ( max === undefined ) { return false; }
+  if ( (value + 5) > max ) { return false; }
+  const cost = getCostSkill(state, skillName);
+  return canPayCost(state, cost);
 }

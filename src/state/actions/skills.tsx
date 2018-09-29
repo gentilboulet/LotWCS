@@ -1,6 +1,6 @@
-import { ICost } from 'costs/types';
 import { TSkillName } from 'data/skills';
 import * as constants from 'state/constants/skills';
+import { ICost } from 'state/costs';
 
 
 export interface ISkillBuy {

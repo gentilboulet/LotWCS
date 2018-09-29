@@ -9,13 +9,13 @@ import * as ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { IAction } from 'state/actions/types';
-import { initialStateFactory } from 'state/initial';
+import { testingStateFactory } from 'state/initial';
 import { globalReducer } from 'state/reducers/global';
 import { IStoreState } from 'state/type';
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
-  initialStateFactory(),
+  testingStateFactory(),
   devToolsEnhancer({})
 );
 

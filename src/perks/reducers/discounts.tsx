@@ -1,7 +1,7 @@
 /*
 import { produce } from 'immer';
 
-import { ICost } from 'costs/types';
+import { ICost } from 'state/costs';
 import { IDiscount, isDiscount } from 'perks/types/discounts';
 import { IStoreState } from 'state/type';
 

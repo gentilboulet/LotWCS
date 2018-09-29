@@ -1,10 +1,10 @@
-import * as React from 'react';
+/*import * as React from 'react';
 import Icon from 'react-fa';
 import { Button, Col, Container, Row } from 'reactstrap';
 
-import { ICost } from 'costs/types';
+import { ICost } from 'state/costs';
 
-import FieldHeader from './FieldHeader';
+import FieldHeader from 'components/FieldHeader';
 
 export interface IEditSkillSpecialityProps {
   name: string;
@@ -107,3 +107,4 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
 }
 
 export default EditSkill;
+*/

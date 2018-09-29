@@ -1,6 +1,6 @@
-import { ICost } from 'costs/types';
 import * as dataKungFu from 'data/kungfu';
 import * as constants from 'state/constants/kungfu';
+import { ICost } from 'state/costs';
 
 export interface IKungFuOpenStyle {
   type: constants.KUNGFU_OPEN_STYLE;

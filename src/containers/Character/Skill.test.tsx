@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 // import * as renderer from 'react-test-renderer';
-import CharacterSkills from './CharacterSkills';
+import Skill from './Skill';
 
 import { IAction } from 'state/actions/types';
 import { IStoreState } from 'state/type';
@@ -17,12 +17,12 @@ const store = createStore<IStoreState, IAction, any, any>(
   initialStateFactory()
 );
 
-describe('Testing the CharacterSkills container', () => {
+describe('Testing the Skills container', () => {
   it('should render without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <Provider store={store}>
-        <CharacterSkills />
+        <Skill name={'Awareness'}/>
       </Provider>,
     div);
   });

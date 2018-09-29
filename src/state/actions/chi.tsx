@@ -1,6 +1,6 @@
-import { ICost } from 'costs/types';
 import { TChiName } from 'data/chi';
 import * as constants from 'state/constants/chi';
+import { ICost } from 'state/costs';
 
 export interface IChiBuy {
   type: constants.CHI_BUY;

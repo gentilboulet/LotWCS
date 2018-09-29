@@ -1,8 +1,9 @@
-import * as React from 'react';
+/*import * as React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 
-import EditSkill from 'components/EditSkill';
-import { ICost } from 'costs/types';
+import { ICost } from 'state/costs';
+
+import EditSpeciality from './EditSpeciality';
 
 export interface ISpecialityProps {
   name: string;
@@ -11,36 +12,36 @@ export interface ISpecialityProps {
   canBuySpeciality: boolean;
 }
 
-export interface ISkillProps {
+export interface ISpecialityProps {
   name: string;
   value: number;
   cost: ICost;
-  canBuySkill: boolean;
+  canBuySpeciality: boolean;
   specialities: [ISpecialityProps];
 }
 
-export interface ICharacterSkillsProps {
-  skills: ISkillProps[];
-  onSkillBuy: (skill: string, cost: ICost) => void;
+export interface ISpecialityProps {
+  skills: ISpecialityProps[];
+  onSpecialityBuy: (skill: string, cost: ICost) => void;
   onSpecialityBuy: (skill: string, speciality: string, cost: ICost) => void;
 }
 
-class CharacterSkills extends React.Component<ICharacterSkillsProps, {}> {
+class Speciality extends React.Component<ISpecialityProps, {}> {
   public render() {
     return(
-      <Container className="CharacterSkills">
+      <Container className="Speciality">
         <Col>
           {
             this.props.skills.map(
-              (s: ISkillProps) => { return (
-                <Row key={'rowSkill' + s.name}>
-                  <EditSkill
+              (s: ISpecialityProps) => { return (
+                <Row key={'rowSpeciality' + s.name}>
+                  <EditSpeciality
                     name={s.name}
                     value={s.value}
                     cost={s.cost}
                     specialities={s.specialities}
-                    canBuySkill={s.canBuySkill}
-                    onSkillBuy={this.props.onSkillBuy}
+                    canBuySpeciality={s.canBuySpeciality}
+                    onSpecialityBuy={this.props.onSpecialityBuy}
                     onSpecialityBuy={this.props.onSpecialityBuy}
                   />
                 </Row> ); }
@@ -51,4 +52,5 @@ class CharacterSkills extends React.Component<ICharacterSkillsProps, {}> {
   }
 }
 
-export default CharacterSkills;
+export default Speciality;
+*/

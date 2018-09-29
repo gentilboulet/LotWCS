@@ -1,20 +1,42 @@
+import { IStoreState } from 'state/type';
+
+import { TSkillName } from 'data/skills';
+
+export interface ICost {
+  destiny: number;
+  discountIdx?: number;
+  discountNewValue?: number;
+  entanglement: number;
+}
+
+function _costFactory(destiny: number, entanglement: number): ICost {
+  return { destiny, entanglement };
+}
+
+export const emptyCost: ICost = _costFactory(0, 0);
+
+export function canPayCost(state:IStoreState, cost: ICost): boolean {
+  if(state.destiny < cost.destiny ) { return false; }
+  if(state.entanglement < cost.entanglement ) { return false; }
+  return true;
+}
+
+export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
+  const defaultCost = 2;
 /*
+    const idx = state.get('discounts')
+      .findIndex((r: IDiscount) => {
+        return ( r.type === constants.DISCOUNT_SKILL )
+        && (r.skills.findIndex((s: string) => (s === skill) ) >= 0);
+      });
 
-import { ICost } from 'costs/types';
-import { IDiscount } from 'perks/types/discounts';
-import { IStoreState } from 'state/type';
+    return _handleDiscount(state, idx, defCost);
+  }
+*/
+  return _costFactory(defaultCost, 0);
+}
 
-import * as dataLoresheets from 'data/loresheets';
-import * as constants from 'perks/constants/discounts';
-import * as loresheets from 'state/loresheets';
-
-import * as derived from 'state/derived';
-
-import { ICost } from 'costs/types';
-import { IStoreState } from 'state/type';
-
-import { updateDiscounts } from 'perks/reducers/discounts';
-
+/*
 export function applyCost(baseState: IStoreState, cost: ICost): IStoreState {
     state.set('destiny', state.get('destiny') - cost.destiny);
     state.set('entanglement', state.get('entanglement') - cost.entanglement);
@@ -24,13 +46,6 @@ export function applyCost(baseState: IStoreState, cost: ICost): IStoreState {
     updateDiscounts(state, cost);
   });
   return baseState;
-}
-
-// helper functions
-function _canHandleCost(state: IStoreState, cost: ICost): boolean {
-  if ( (state.get('destiny') - cost.destiny) < 0 ) { return false; }
-  if ( (state.get('entanglement') - cost.entanglement) < 0 ) { return false; }
-  return true;
 }
 
 function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
@@ -47,25 +62,6 @@ function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
       entanglement: 0,
     };
   }
-}
-
-export function canBuySkill(state: IStoreState, skill: string): boolean {
-  const value = state.get('skills').getSkillValue(state, skill);
-  if ( (value + 5) > derived.maxSkillBonus(state) ) { return false; }
-  const cost = getCostSkill(state, skill);
-  return _canHandleCost(state, cost);
-}
-
-export function getCostSkill(state: IStoreState, skill: string): ICost {
-  const defCost = 2;
-
-  const idx = state.get('discounts')
-    .findIndex((r: IDiscount) => {
-      return ( r.type === constants.DISCOUNT_SKILL )
-      && (r.skills.findIndex((s: string) => (s === skill) ) >= 0);
-    });
-
-  return _handleDiscount(state, idx, defCost);
 }
 
 export function canBuySpeciality(state: IStoreState, skill: string, speciality: string): boolean {

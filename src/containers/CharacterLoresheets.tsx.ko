@@ -10,7 +10,7 @@ import { ICharacterLoresheetsProps,
   ILoresheetsOptionsCostCharacterLoresheetsProps
 } from 'components/CharacterLoresheets';
 
-import { ICost } from 'costs/types';
+import { ICost } from 'state/costs';
 import { IStoreState } from 'state/type';
 
 import * as dataLoresheets from 'data/loresheets';
