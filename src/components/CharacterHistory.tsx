@@ -15,9 +15,10 @@ class CharacterHistory extends React.Component<ICharacterHistoryProps, {}> {
       <Container className="CharacterHistory">
         <Col>
           {this.props.history.map(
-            (s: IAction) => { return (
+            (action: IAction) => { return (
               <Row key={'rowHistory_' + idx++}>
-                <Col>{s.type}</Col>
+                <Col>{action.type}</Col>
+                <Col>{JSON.stringify(action)}</Col>
               </Row> ); }
           )}
         </Col>

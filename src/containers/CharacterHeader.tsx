@@ -25,6 +25,7 @@ interface IMapDispatchToProps {
   onSetRank: (s: string) => void;
 }
 
+/* tslint:disable */
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     archetype: state.archetype,
@@ -34,8 +35,8 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
     name: state.name,
     rank: state.rank,
 
-    lockArchetype: typeof state.archetype !== undefined,
-    lockRank: typeof state.rank !== undefined
+    lockArchetype: state.archetype !== undefined,
+    lockRank: state.rank !== undefined
   };
 }
 

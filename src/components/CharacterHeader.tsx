@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'reactstrap';
 
 import DDLText from 'components/DDLText';
 import EditText from 'components/EditText';
+import StaticText from 'components/StaticText';
 
 import * as dataArchetypes from 'data/archetypes';
 import * as dataRanks from 'data/ranks';
@@ -32,20 +33,16 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
           <EditText
             header="Character Name"
             default={this.props.name}
-// tslint:disable-next-line jsx-no-lambda
-            validate={(s: string) => (s.trim().length > 0)}
-// tslint:disable-next-line jsx-no-lambda
-            onSubmit={(s: string) => { this.props.onSetName(s); }}
+            validate={this.isStringNotNull}
+            onSubmit={this.props.onSetName}
           />
         </Row>
         <Row>
           <EditText
             header="Character Concept"
             default={this.props.concept}
-// tslint:disable-next-line jsx-no-lambda
-            validate={(s: string) => (s.trim().length > 0)}
-// tslint:disable-next-line jsx-no-lambda
-            onSubmit={(s: string) => { this.props.onSetConcept(s); }}
+            validate={this.isStringNotNull}
+            onSubmit={this.props.onSetConcept}
           />
         </Row>
         <Row>
@@ -54,8 +51,7 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
               header="Character Archetype"
               default={this.props.archetype}
               values={dataArchetypes.archetypes.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
-// tslint:disable-next-line jsx-no-lambda
-              onSubmit={(s: string) => { this.props.onSetArchetype(s); }}
+              onSubmit={this.props.onSetArchetype}
               locked={this.props.lockArchetype}
             />
           </Col>
@@ -64,39 +60,30 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
               header="Character Rank"
               default={this.props.rank ? this.props.rank.name : '' }
               values={dataRanks.ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
-// tslint:disable-next-line jsx-no-lambda
-              onSubmit={(s: string) => { this.props.onSetRank(s); }}
+              onSubmit={this.props.onSetRank}
               locked={this.props.lockRank}
             />
           </Col>
         </Row>
         <Row>
           <Col>
-            <EditText
+            <StaticText
               header="Destiny"
-              default={(this.props.destiny).toString()}
-// tslint:disable-next-line jsx-no-lambda
-              validate={(s: string) => false}
-// tslint:disable-next-line jsx-no-lambda
-              onSubmit={(s: string) => { return; }}
-              locked={true}
+              value={this.props.destiny.toString()}
             />
           </Col>
           <Col>
-            <EditText
+            <StaticText
               header="Entanglement"
-              default={(this.props.entanglement).toString()}
-// tslint:disable-next-line jsx-no-lambda
-              validate={(s: string) => false }
-// tslint:disable-next-line jsx-no-lambda
-              onSubmit={(s: string) => { return ; }}
-              locked={true}
+              value={this.props.entanglement.toString()}
             />
           </Col>
         </Row>
       </Container>
     );
   }
+
+  private isStringNotNull(s: string): boolean { return s.trim().length > 0; };
 }
 
 export default CharacterHeader;

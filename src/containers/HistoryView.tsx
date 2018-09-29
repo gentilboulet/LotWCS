@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import App from 'components/App';
 import Header from 'components/Header';
+import CharacterHistory from 'containers/CharacterHistory';
 
-class Homepage extends React.Component<RouteComponentProps<{}>> {
+class HistoryView extends React.Component<RouteComponentProps<{}>> {
   public render() {
     return (
       <div>
         <Header />
-        <App />
+        <CharacterHistory />
       </div>
     );
   }
 }
 
-export default Homepage;
+export default HistoryView;
