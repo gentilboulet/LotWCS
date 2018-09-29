@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Container, Row } from 'reactstrap';
 
-import CharacterBody from 'components/CharacterBody';
-import CharacterHeader from 'containers/CharacterHeader';
+import Body from 'components/Character/Body';
+import Header from 'containers/Character/Header';
 
 import './App.css';
 
@@ -11,10 +11,10 @@ class App extends React.Component<{}, {}> {
     return (
       <Container className="App">
         <Row>
-          <CharacterHeader />
+          <Header />
         </Row>
         <Row>
-          <CharacterBody />
+          <Body />
         </Row>
       </Container>
     );

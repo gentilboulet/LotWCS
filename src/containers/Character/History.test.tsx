@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import CharacterHeader from './CharacterHeader';
+// import * as renderer from 'react-test-renderer';
+import History from './History';
 
 import { IAction } from 'state/actions/types';
 import { IStoreState } from 'state/type';
@@ -16,12 +17,12 @@ const store = createStore<IStoreState, IAction, any, any>(
   initialStateFactory()
 );
 
-describe('Testing the CharacterHeader container', () => {
+describe('Testing the History container', () => {
   it('should render without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <Provider store={store}>
-        <CharacterHeader />
+        <History />
       </Provider>,
     div);
   });

@@ -3,16 +3,16 @@ import { Col, Container, Row } from 'reactstrap';
 
 import { IAction }  from 'state/actions/types';
 
-export interface ICharacterHistoryProps {
+export interface IHistoryProps {
   history: IAction[];
   onDelete: (id: number) => void;
 }
 
-class CharacterHistory extends React.Component<ICharacterHistoryProps, {}> {
+class History extends React.Component<IHistoryProps, {}> {
   public render() {
     let idx: number = 0;
     return(
-      <Container className="CharacterHistory">
+      <Container className="History">
         <Col>
           {this.props.history.map(
             (action: IAction) => { return (
@@ -27,4 +27,4 @@ class CharacterHistory extends React.Component<ICharacterHistoryProps, {}> {
   }
 }
 
-export default CharacterHistory;
+export default History;

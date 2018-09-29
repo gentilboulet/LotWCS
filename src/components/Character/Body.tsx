@@ -2,11 +2,11 @@ import * as React from 'react';
 
 import PlaceHolder from 'components/PlaceHolder';
 import { Tab, Tabs } from 'components/Tabs';
-import CharacterHistory from 'containers/CharacterHistory';
+import History from 'containers/Character/History';
 // import CharacterLoresheets from 'containers/CharacterLoresheets';
 // import CharacterSkills from 'containers/CharacterSkills';
 
-class CharacterBody extends React.Component<{}, {}> {
+class Body extends React.Component<{}, {}> {
   public render() {
     return(
       <Tabs defaultTab="skills">
@@ -25,11 +25,11 @@ class CharacterBody extends React.Component<{}, {}> {
           <div />
         </Tab>
         <Tab title="History" tabId="history">
-          <CharacterHistory />
+          <History />
         </Tab>
       </Tabs>
     );
   }
 }
 
-export default CharacterBody;
+export default Body;

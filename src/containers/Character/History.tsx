@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import CharacterHistory, { ICharacterHistoryProps } from 'components/CharacterHistory';
+import History, { IHistoryProps } from 'components/Character/History';
 
 import * as actions from 'state/actions/history';
 import { IAction } from 'state/actions/types';
@@ -28,8 +28,8 @@ function mapDispatchToProps(dispatch: Dispatch<actions.IHistoryAction>): IMapDis
 function mergeProps(
   propsFromState: IMapStateToProps,
   propsForDispatch: IMapDispatchToProps
-): ICharacterHistoryProps {
+): IHistoryProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterHistory);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(History);

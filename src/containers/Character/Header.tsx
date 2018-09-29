@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import * as headerActions from 'state/actions/header';
 import { IStoreState } from 'state/type';
 
-import CharacterHeader, { ICharacterHeaderProps } from 'components/CharacterHeader';
+import Header, { IHeaderProps } from 'components/Character/Header';
 
 interface IMapStateToProps {
   name: string | undefined;
@@ -52,8 +52,8 @@ function mapDispatchToProps(dispatch: Dispatch<headerActions.IHeaderAction>): IM
 function mergeProps(
   propsFromState: IMapStateToProps,
   propsForDispatch: IMapDispatchToProps
-): ICharacterHeaderProps {
+): IHeaderProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(CharacterHeader);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Header);

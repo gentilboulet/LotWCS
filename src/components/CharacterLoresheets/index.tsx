@@ -47,7 +47,7 @@ class CharacterLoresheets extends
   public render() {
     let idxCategory = 0;
     return(
-      <Container className="CharacterHistory">
+      <Container className="History">
         {
           dataLoresheets.loresheetsCategories.map((category: string) => {
               return (

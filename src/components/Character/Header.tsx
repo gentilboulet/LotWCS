@@ -8,7 +8,7 @@ import StaticText from 'components/StaticText';
 import * as dataArchetypes from 'data/archetypes';
 import * as dataRanks from 'data/ranks';
 
-export interface ICharacterHeaderProps {
+export interface IHeaderProps {
   name: string | undefined;
   concept: string | undefined;
   archetype: string | undefined;
@@ -25,10 +25,10 @@ export interface ICharacterHeaderProps {
   lockRank: boolean;
 }
 
-class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
+class Header extends React.Component<IHeaderProps, {}> {
   public render() {
     return (
-      <Container className="CharacterHeader">
+      <Container className="Header">
         <Row>
           <EditText
             header="Character Name"
@@ -86,4 +86,4 @@ class CharacterHeader extends React.Component<ICharacterHeaderProps, {}> {
   private isStringNotNull(s: string): boolean { return s.trim().length > 0; };
 }
 
-export default CharacterHeader;
+export default Header;
