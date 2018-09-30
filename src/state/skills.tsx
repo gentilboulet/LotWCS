@@ -1,43 +1,63 @@
-import * as derived from 'state/derived';
-import { IStoreSkillJS, IStoreSkillSpecialityJS, IStoreState, specialityFactory } from 'state/types';
+import { skills as data, TSkillName } from 'data/skills';
 
-export function getSkillIndex(state: IStoreState, skillName: string): number {
- return state.get('skills').findIndex((s: IStoreSkillJS) => (s.name === skillName));
+import { canPayCost, getCostSkill, getCostSpeciality } from 'state/costs';
+import { maxSkillBonus } from 'state/derived';
+import { IStoreState } from 'state/type';
+
+interface ISkill {
+  name: string;
+  specialities: string[];
+  value: number;
 }
 
-export function getSkillValue(state: IStoreState, skillName: string): number {
-  return state.getIn(['skills', getSkillIndex(state, skillName), 'value']);
+export type TSkillsState = {
+  [skill in TSkillName]: ISkill;
 }
 
-export function increaseValue(state: IStoreState, skillName: string): void {
-  const index = getSkillIndex(state, skillName);
-
-  if (getSkillValue(state, skillName) + 5 >  derived.maxSkillBonus(state)) {
-    throw new Error('Something went wrong, skill overflow');
-  }
-
-  state.updateIn(['skills', index, 'value'], v => (v + 5));
-}
-
-export function getSpecialityIndex(state: IStoreState, skillName: string, specialityName: string): number {
- const skillIndex = getSkillIndex(state, skillName);
-
- if (skillIndex === -1) { throw new Error('Something went wrong, unknown skill for speciality'); }
-
- return state.get('skillSpecialities').findIndex((speciality: IStoreSkillSpecialityJS) => {
-   return speciality.name === specialityName;
+export function createState(): TSkillsState {
+  const state = {};
+  Object.keys(data).forEach(skill => {
+    state[skill] = {
+      name: skill,
+      specialities: [],
+      value: 0
+    };
   });
+  return state as TSkillsState;
 }
 
-export function addSpeciality(state: IStoreState, skillName: string,  specialityName: string): void {
- const specialityIndex = getSpecialityIndex(state, skillName, specialityName);
+export function increase(state: TSkillsState, skillName: string, maxSkillValue: number): void {
+  const old = state[skillName].value;
+  if( old + 5 > maxSkillValue) {
+    throw new Error('Skill overflow');
+  }
+  state[skillName].value += 5;
+}
 
- if (specialityIndex !== -1) {
-  throw new Error('Something went wrong, speciality already bought');
- }
+export function isSpecialityPresent(state: TSkillsState, skillName: string, specialityName: string): boolean {
+  const specialityIndex = state[skillName].specialities.findIndex((speciality: string) => speciality === specialityName);
+  return specialityIndex !== -1;
+}
 
- state.updateIn(['skillSpecialities'], list => list.push(
-     specialityFactory({ skill: skillName, name: specialityName})
-   )
- );
+export function addSpeciality(state: TSkillsState, skillName: string, specialityName: string): void {
+  if(isSpecialityPresent(state, skillName, specialityName) ) {
+    throw new Error('Something went wrong, speciality "'+specialityName+'" for skill "'+skillName+'" already bought');
+  }
+  state[skillName].specialities.push(specialityName);
+}
+
+export function canBuySkill(state: IStoreState, skillName: TSkillName): boolean {
+  const value = state.skills[skillName].value;
+  const max = maxSkillBonus(state);
+  if ( max === undefined ) { return false; }
+  if ( (value + 5) > max ) { return false; }
+  const cost = getCostSkill(state, skillName);
+  return canPayCost(state, cost);
+}
+
+export function canBuySpeciality(state: IStoreState, skillName: TSkillName, speciality: string): boolean {
+  const specialityIdx = state.skills[skillName].specialities.findIndex((s: string) => s === speciality);
+  if ( specialityIdx !== -1 ) { return false; }
+  const cost = getCostSpeciality(state, skillName, speciality);
+  return canPayCost(state, cost);
 }

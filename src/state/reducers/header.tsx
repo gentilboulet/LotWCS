@@ -1,33 +1,33 @@
+import { produce } from 'immer';
+
 import { IHeaderAction } from 'state/actions/header';
 import * as constants from 'state/constants/header';
-import * as header from 'state/header';
-import { IStoreState } from 'state/types';
+import { setRank } from 'state/header';
+import { IStoreState } from 'state/type';
 
-import { pushToHistory } from 'state/history';
-
-export function headerReducer(oldState: IStoreState, action: IHeaderAction): IStoreState {
+export function headerReducer(baseState: IStoreState, action: IHeaderAction): IStoreState {
   switch (action.type) {
     case constants.HEADER_SET_NAME:
-      return oldState.withMutations(state => {
-        header.setName(state, action.name);
-        pushToHistory(state, action);
+      return produce(baseState, draftState => {
+        draftState.name = action.name;
+        draftState.history.push(action);
       });
     case constants.HEADER_SET_CONCEPT:
-      return oldState.withMutations(state => {
-        header.setConcept(state, action.concept);
-        pushToHistory(state, action);
+      return produce(baseState, draftState => {
+        draftState.concept = action.concept;
+        draftState.history.push(action);
       });
     case constants.HEADER_SET_RANK:
-      return oldState.withMutations(state => {
-        header.setRank(state, action.rank);
-        pushToHistory(state, action);
+      return produce(baseState, draftState => {
+        setRank(draftState, action.rank);
+        draftState.history.push(action);
       });
     case constants.HEADER_SET_ARCHETYPE:
-      return oldState.withMutations(state => {
-        header.setArchetype(state, action.archetype);
-        pushToHistory(state, action);
+      return produce(baseState, draftState => {
+        draftState.archetype = action.archetype;
+        draftState.history.push(action);
       });
     default:
   }
-  return oldState;
+  return baseState;
 }

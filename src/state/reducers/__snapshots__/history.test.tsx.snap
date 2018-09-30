@@ -1,159 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing historyReducer should do nothing with a junk action 1`] = `
-Immutable.Record {
-  "name": "No Name",
-  "concept": "No Concept",
-  "archetype": "",
-  "archetypeModified": false,
-  "rank": "",
-  "rankValue": -1,
-  "rankModified": false,
-  "entanglement": 0,
+Object {
+  "archetype": undefined,
+  "bonuses": Array [],
+  "chi": Object {
+    "corrupt": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "earth": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "enlightened": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "fire": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "general": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "metal": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "water": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "wood": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+  },
+  "concept": undefined,
   "destiny": 0,
-  "skills": Immutable.List [
-    Immutable.Record {
-      "name": "Awareness",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Confidence",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Crafting",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Finesse",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Hardiness",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Inspire",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Learning",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Medicine",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Might",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Perform",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Politics",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Ride",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Stealth",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Survival",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Tactics",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Wu Wei",
-      "value": 0,
-    },
-  ],
-  "skillSpecialities": Immutable.List [],
-  "loresheets": Immutable.List [],
-  "loresheetOptions": Immutable.List [],
-  "discounts": Immutable.List [],
-  "bonuses": Immutable.List [],
-  "history": Immutable.List [
+  "discounts": Array [],
+  "entanglement": 0,
+  "history": Array [
     Object {
       "type": "INITIAL_STATE",
     },
   ],
-  "chi": Immutable.Record {
-    "general": 0,
-    "generalCultivation": 0,
-    "wood": 0,
-    "woodCultivation": 0,
-    "fire": 0,
-    "fireCultivation": 0,
-    "earth": 0,
-    "earthCultivation": 0,
-    "water": 0,
-    "waterCultivation": 0,
-    "metal": 0,
-    "metalCultivation": 0,
-    "enlightened": 0,
-    "enlightenedCultivation": 0,
-    "demon": 0,
-    "demonCultivation": 0,
+  "kungfu": Object {
+    "KUNGFU_EXTERNAL": Object {},
+    "KUNGFU_INTERNAL": Object {},
   },
-  "externalKungFus": Immutable.List [],
-  "internalKungFus": Immutable.List [],
-  "virtues": Immutable.List [
-    Immutable.Record {
+  "loresheets": Object {},
+  "name": undefined,
+  "rank": undefined,
+  "skills": Object {
+    "Awareness": Object {
+      "name": "Awareness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Confidence": Object {
+      "name": "Confidence",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Crafting": Object {
+      "name": "Crafting",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Finesse": Object {
+      "name": "Finesse",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Hardiness": Object {
+      "name": "Hardiness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Inspire": Object {
+      "name": "Inspire",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Learning": Object {
+      "name": "Learning",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Medicine": Object {
+      "name": "Medicine",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Might": Object {
+      "name": "Might",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Perform": Object {
+      "name": "Perform",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Politics": Object {
+      "name": "Politics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Ride": Object {
+      "name": "Ride",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Stealth": Object {
+      "name": "Stealth",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Survival": Object {
+      "name": "Survival",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Tactics": Object {
+      "name": "Tactics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Wu Wei": Object {
+      "name": "Wu Wei",
+      "specialities": Array [],
+      "value": 0,
+    },
+  },
+  "virtues": Array [
+    Object {
       "name": "Honor",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Benevolence",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Righteousness",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Loyalty",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Force",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Revenge",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Individualism",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Obsession",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Ruthlessness",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Ferocity",
       "type": "VIRTUE_SELFISH",
       "value": 0,
@@ -163,86 +192,46 @@ Immutable.Record {
 `;
 
 exports[`Testing historyReducer should receive an HISTORY_DELETE action 1`] = `
-Immutable.Record {
-  "name": "Roberts",
-  "concept": "Dread pirate Roberts",
+Object {
   "archetype": "warrior",
-  "archetypeModified": true,
-  "rank": "4th_rank",
-  "rankValue": 2,
-  "rankModified": true,
-  "entanglement": 0,
+  "bonuses": Array [],
+  "chi": Object {
+    "corrupt": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "earth": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "enlightened": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "fire": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "general": Object {
+      "cultivation": 0,
+      "value": 10,
+    },
+    "metal": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "water": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "wood": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+  },
+  "concept": "Dread pirate Roberts",
   "destiny": 20,
-  "skills": Immutable.List [
-    Immutable.Record {
-      "name": "Awareness",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Confidence",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Crafting",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Finesse",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Hardiness",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Inspire",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Learning",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Medicine",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Might",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Perform",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Politics",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Ride",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Stealth",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Survival",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Tactics",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Wu Wei",
-      "value": 0,
-    },
-  ],
-  "skillSpecialities": Immutable.List [],
-  "loresheets": Immutable.List [],
-  "loresheetOptions": Immutable.List [],
-  "discounts": Immutable.List [
+  "discounts": Array [
     Object {
       "skills": Array [
         "Awareness",
@@ -266,8 +255,8 @@ Immutable.Record {
       "value": 20,
     },
   ],
-  "bonuses": Immutable.List [],
-  "history": Immutable.List [
+  "entanglement": 0,
+  "history": Array [
     Object {
       "type": "INITIAL_STATE",
     },
@@ -288,73 +277,145 @@ Immutable.Record {
       "type": "HEADER_SET_RANK",
     },
   ],
-  "chi": Immutable.Record {
-    "general": 10,
-    "generalCultivation": 0,
-    "wood": 0,
-    "woodCultivation": 0,
-    "fire": 0,
-    "fireCultivation": 0,
-    "earth": 0,
-    "earthCultivation": 0,
-    "water": 0,
-    "waterCultivation": 0,
-    "metal": 0,
-    "metalCultivation": 0,
-    "enlightened": 0,
-    "enlightenedCultivation": 0,
-    "demon": 0,
-    "demonCultivation": 0,
+  "kungfu": Object {
+    "KUNGFU_EXTERNAL": Object {},
+    "KUNGFU_INTERNAL": Object {},
   },
-  "externalKungFus": Immutable.List [],
-  "internalKungFus": Immutable.List [],
-  "virtues": Immutable.List [
-    Immutable.Record {
+  "loresheets": Object {},
+  "name": "Roberts",
+  "rank": Object {
+    "name": "4th_rank",
+    "value": 2,
+  },
+  "skills": Object {
+    "Awareness": Object {
+      "name": "Awareness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Confidence": Object {
+      "name": "Confidence",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Crafting": Object {
+      "name": "Crafting",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Finesse": Object {
+      "name": "Finesse",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Hardiness": Object {
+      "name": "Hardiness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Inspire": Object {
+      "name": "Inspire",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Learning": Object {
+      "name": "Learning",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Medicine": Object {
+      "name": "Medicine",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Might": Object {
+      "name": "Might",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Perform": Object {
+      "name": "Perform",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Politics": Object {
+      "name": "Politics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Ride": Object {
+      "name": "Ride",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Stealth": Object {
+      "name": "Stealth",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Survival": Object {
+      "name": "Survival",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Tactics": Object {
+      "name": "Tactics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Wu Wei": Object {
+      "name": "Wu Wei",
+      "specialities": Array [],
+      "value": 0,
+    },
+  },
+  "virtues": Array [
+    Object {
       "name": "Honor",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Benevolence",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Righteousness",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Loyalty",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Force",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Revenge",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Individualism",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Obsession",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Ruthlessness",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Ferocity",
       "type": "VIRTUE_SELFISH",
       "value": 0,
@@ -364,88 +425,48 @@ Immutable.Record {
 `;
 
 exports[`Testing historyReducer should receive an HISTORY_DELETE action 2`] = `
-Immutable.Record {
-  "name": "Roberts",
-  "concept": "No Concept",
-  "archetype": "",
-  "archetypeModified": false,
-  "rank": "",
-  "rankValue": -1,
-  "rankModified": false,
-  "entanglement": 0,
+Object {
+  "archetype": undefined,
+  "bonuses": Array [],
+  "chi": Object {
+    "corrupt": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "earth": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "enlightened": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "fire": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "general": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "metal": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "water": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "wood": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+  },
+  "concept": undefined,
   "destiny": 0,
-  "skills": Immutable.List [
-    Immutable.Record {
-      "name": "Awareness",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Confidence",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Crafting",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Finesse",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Hardiness",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Inspire",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Learning",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Medicine",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Might",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Perform",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Politics",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Ride",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Stealth",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Survival",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Tactics",
-      "value": 0,
-    },
-    Immutable.Record {
-      "name": "Wu Wei",
-      "value": 0,
-    },
-  ],
-  "skillSpecialities": Immutable.List [],
-  "loresheets": Immutable.List [],
-  "loresheetOptions": Immutable.List [],
-  "discounts": Immutable.List [],
-  "bonuses": Immutable.List [],
-  "history": Immutable.List [
+  "discounts": Array [],
+  "entanglement": 0,
+  "history": Array [
     Object {
       "type": "INITIAL_STATE",
     },
@@ -454,73 +475,142 @@ Immutable.Record {
       "type": "HEADER_SET_NAME",
     },
   ],
-  "chi": Immutable.Record {
-    "general": 0,
-    "generalCultivation": 0,
-    "wood": 0,
-    "woodCultivation": 0,
-    "fire": 0,
-    "fireCultivation": 0,
-    "earth": 0,
-    "earthCultivation": 0,
-    "water": 0,
-    "waterCultivation": 0,
-    "metal": 0,
-    "metalCultivation": 0,
-    "enlightened": 0,
-    "enlightenedCultivation": 0,
-    "demon": 0,
-    "demonCultivation": 0,
+  "kungfu": Object {
+    "KUNGFU_EXTERNAL": Object {},
+    "KUNGFU_INTERNAL": Object {},
   },
-  "externalKungFus": Immutable.List [],
-  "internalKungFus": Immutable.List [],
-  "virtues": Immutable.List [
-    Immutable.Record {
+  "loresheets": Object {},
+  "name": "Roberts",
+  "rank": undefined,
+  "skills": Object {
+    "Awareness": Object {
+      "name": "Awareness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Confidence": Object {
+      "name": "Confidence",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Crafting": Object {
+      "name": "Crafting",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Finesse": Object {
+      "name": "Finesse",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Hardiness": Object {
+      "name": "Hardiness",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Inspire": Object {
+      "name": "Inspire",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Learning": Object {
+      "name": "Learning",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Medicine": Object {
+      "name": "Medicine",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Might": Object {
+      "name": "Might",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Perform": Object {
+      "name": "Perform",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Politics": Object {
+      "name": "Politics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Ride": Object {
+      "name": "Ride",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Stealth": Object {
+      "name": "Stealth",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Survival": Object {
+      "name": "Survival",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Tactics": Object {
+      "name": "Tactics",
+      "specialities": Array [],
+      "value": 0,
+    },
+    "Wu Wei": Object {
+      "name": "Wu Wei",
+      "specialities": Array [],
+      "value": 0,
+    },
+  },
+  "virtues": Array [
+    Object {
       "name": "Honor",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Benevolence",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Righteousness",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Loyalty",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Force",
       "type": "VIRTUE_CHIVALROUS",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Revenge",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Individualism",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Obsession",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Ruthlessness",
       "type": "VIRTUE_SELFISH",
       "value": 0,
     },
-    Immutable.Record {
+    Object {
       "name": "Ferocity",
       "type": "VIRTUE_SELFISH",
       "value": 0,

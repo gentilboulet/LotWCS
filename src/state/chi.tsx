@@ -1,28 +1,31 @@
-import * as dataChi from 'data/chi';
-import { IStoreState } from 'state/types';
+import { chiNames, TChiName } from 'data/chi';
 
-export function increaseValue(state: IStoreState, chiName: dataChi.IChiNames, value: number): void {
-  state.updateIn(['chi', chiName], chi => chi + value);
+export type TChiState = {
+  [chi in TChiName]: { value: number, cultivation: number};
 }
 
-export function increaseCultivation(
-  state: IStoreState, cultivationName: dataChi.IChiCultivations, value: number): void {
-  const actualCultivation = state.getIn(['chi', cultivationName]);
+export function createState(): TChiState {
+  const state = {} as TChiState;
+  chiNames.forEach((chi: TChiName) => {
+    state[chi] = { value: 0, cultivation: 0};
+  });
+  return state;
+}
 
-  const chiName: dataChi.IChiNames = dataChi.fromCultivationToChiName(cultivationName);
-  const actualChi = state.getIn(['chi', chiName]);
+export function increase(state: TChiState, name: TChiName, value: number): void {
+   state[name].value += value;
+}
+
+export function increaseCultivation(state: TChiState, name: TChiName, value: number): void {
+  const actualCultivation = state[name].cultivation;
+  const actualChi = state[name].value;
 
   let newCultivation = actualCultivation + value;
   let newChiValue = actualChi;
   while (newCultivation >= newChiValue) {
-    newCultivation -= actualChi;
     newChiValue ++;
+    newCultivation -= newChiValue;
   }
-
-  state.updateIn(['chi', cultivationName], cultivation => cultivation + value);
-  increaseValue(state, chiName, newChiValue - actualChi);
-}
-
-export function getChiValue(state: IStoreState, chiName: dataChi.IChiNames): number {
-  return state.getIn(['chi', chiName]);
+  state[name].value = newChiValue;
+  state[name].cultivation = newCultivation;
 }

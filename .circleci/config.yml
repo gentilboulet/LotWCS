@@ -19,6 +19,9 @@ jobs:
         key: dependency-cache-{{ checksum "package.json" }}        
         paths:        
           - ./node_modules     
+    - run: # linter
+        name: tslint
+        command: ./node_modules/tslint/bin/tslint --project .
     - run: # run tests       
         name: test      
         command: npm test    

@@ -1,49 +1,54 @@
-import * as Immutable from 'immutable';
-import { makeTypedFactory } from 'typed-immutable-record';
+import { IStoreState } from 'state/type';
 
-import {
-  defaultChiFactory,
-  IStoreKungFu,
-  IStoreLoresheet, IStoreLoresheetOption,
-  IStoreSkill, IStoreSkillSpeciality,
-  IStoreState, IStoreStateJS,
-  IStoreVirtue,
-  skillFactory, virtueFactory
-} from './types';
+import { createState as createHistoryState } from 'state/history';
 
-import { resetToInitialState } from './actions/initial';
-import { IAction } from './actions/types';
+import { createState as createChiState } from 'state/chi';
+import { createState as createaKungFuState } from 'state/kungfu';
+import { createState as createLoresheetsState } from 'state/loresheets';
+import { createState as createSkillsState } from 'state/skills';
+import { createState as createVirtuesState } from 'state/virtues';
 
-import * as dataSkills from 'data/skills';
-import * as dataVirtues from 'data/virtues';
+import { createState as createBonusesState } from 'state/bonuses';
+import { createState as createDiscountsState } from 'state/discounts';
 
-/* tslint:disable:object-literal-sort-keys */
-export const defaultStateJS: IStoreStateJS = {
-  name: 'No Name',
-  concept: 'No Concept',
-  archetype: '',
-  archetypeModified: false,
-  rank: '',
-  rankValue: -1,
-  rankModified: false,
-  entanglement: 0,
-  destiny: 0,
-  skills: Immutable.List<IStoreSkill>(dataSkills.skills.map((s: dataSkills.IDataSkill) => {
-    return skillFactory({
-      name: s.name,
-      value: 0,
-    });
-  })),
-  skillSpecialities: Immutable.List<IStoreSkillSpeciality>([]),
-  loresheets: Immutable.List<IStoreLoresheet>([]),
-  loresheetOptions: Immutable.List<IStoreLoresheetOption>([]),
-  discounts: Immutable.List([]),
-  bonuses: Immutable.List([]),
-  history: Immutable.List<IAction>([resetToInitialState()]),
-  chi: defaultChiFactory(),
-  externalKungFus: Immutable.List<IStoreKungFu>([]),
-  internalKungFus: Immutable.List<IStoreKungFu>([]),
-  virtues: Immutable.List<IStoreVirtue>(dataVirtues.virtues.map(v => virtueFactory(v.name, v.type)))
-};
+function emptyInitialStateFactory(): IStoreState {
+  return {
+    archetype: undefined,
+    concept: undefined,
+    name: undefined,
+    rank: undefined,
 
-export const initialStateFactory = makeTypedFactory<IStoreStateJS, IStoreState>(defaultStateJS);
+    destiny: 0,
+    entanglement: 0,
+
+    history: createHistoryState(),
+
+    chi: createChiState(),
+    kungfu: createaKungFuState(),
+    loresheets: createLoresheetsState(),
+    skills: createSkillsState(),
+    virtues: createVirtuesState(),
+
+    bonuses: createBonusesState(),
+    discounts: createDiscountsState()
+  }
+}
+
+import { setArchetype, setRank } from 'state/actions/header';
+import { skillSpecialityBuy } from 'state/actions/skills';
+import { replayHistory } from './history';
+
+export function testingStateFactory(): IStoreState {
+  const initial = emptyInitialStateFactory();
+  const actions = [
+    setRank('4th_rank'),
+    setArchetype('warrior'),
+    skillSpecialityBuy('Awareness', 'Hear', {destiny: 0, entanglement: 0})
+  ];
+  initial.destiny += 5;
+  return replayHistory(initial, actions);
+}
+
+export function initialStateFactory(): IStoreState {
+  return emptyInitialStateFactory();
+}

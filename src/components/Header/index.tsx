@@ -12,6 +12,7 @@ class Header extends React.Component<{}> {
         <nav className="link-list">
           <Link to="/">Homepage</Link>
           <Link to="/test">Test</Link>
+          <Link to="/history">History</Link>
         </nav>
       </div>
     );

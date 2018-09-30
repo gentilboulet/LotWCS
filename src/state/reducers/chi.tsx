@@ -1,24 +1,21 @@
-import { IChiAction } from 'state/actions/chi';
-import { IStoreState } from 'state/types';
+import { produce } from 'immer';
 
-import * as chi from 'state/chi';
+import { IChiAction } from 'state/actions/chi';
+import { IStoreState } from 'state/type';
+
 import * as constants from 'state/constants/chi';
 
-// Sub Reducers
-import { applyCost } from 'costs/reducer';
-import { pushToHistory } from 'state/history';
+import { increase } from 'state/chi';
 
-export function chiReducer(oldState: IStoreState, action: IChiAction): IStoreState {
+export function chiReducer(baseState: IStoreState, action: IChiAction): IStoreState {
   switch (action.type) {
     case constants.CHI_BUY:
-      return oldState.withMutations(state => {
-        applyCost(state, action.cost);
-
-        chi.increaseValue(state, action.chiType, action.value);
-
-        pushToHistory(state, action);
+      return produce(baseState, draftState => {
+        // applyCost(state, action.cost);
+        increase(draftState.chi, action.chi, action.value);
+        draftState.history.push(action);
       });
     default:
   }
-  return oldState;
+  return baseState;
 }

@@ -2,7 +2,7 @@
 
 exports[`Testing chi action creator should create a chi buy action 1`] = `
 Object {
-  "chiType": "fire",
+  "chi": "fire",
   "cost": Object {
     "destiny": 0,
     "discountIdx": -1,

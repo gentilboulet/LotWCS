@@ -4,7 +4,7 @@ import { Card, CardBody, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 class PlaceHolder extends React.Component<{}, {}> {
   public render() {
     return (
-      <Card block={true} >
+      <Card>
         <CardTitle>This is a placeholder </CardTitle>
         <CardSubtitle>The content will soon be added</CardSubtitle>
         <CardBody>

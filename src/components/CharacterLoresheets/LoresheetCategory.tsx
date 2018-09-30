@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ICost } from 'costs/types';
+import { ICost } from 'state/costs';
 
 import { ILoresheetsCharacterLoresheetsProps } from 'components/CharacterLoresheets';
 import Collapsible from 'components/Collapsible';

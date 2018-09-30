@@ -16,7 +16,11 @@ import { wulinsage } from './core/riversandlakes/wulinsage';
 // Heretic Lores
 // Secrets Arts
 
-import { IPerk } from 'perks/types';
+import { IBonus } from 'state/bonuses';
+import { IDiscount } from 'state/discounts';
+import { IEffect } from 'state/effects';
+
+type IPerk = IBonus | IDiscount | IEffect;
 
 export interface IDataLoresheetOptionPrerequisiteAND {
   type: 'AND';
@@ -61,7 +65,7 @@ export const loresheets: IDataLoresheet[] = Array(
 );
 
 export const loresheetsCategories: string[] =
-  loresheets.map( d => d.category )
+  loresheets.map( ls => ls.category )
             .filter( (value: string, index: number, self: string[]) => (self.indexOf(value) === index) );
 
 export function validateLoresheet(uid: string): void {
@@ -99,7 +103,7 @@ export function lsOptionCostToValues(costStr: string): number[] {
   }
 }
 
-export function optionLS(lsUid: string, optUid: string): IDataLoresheetOption {
+export function optionLoresheetData(lsUid: string, optUid: string): IDataLoresheetOption {
   const idxLS = loresheets.findIndex(ls => (ls.uid === lsUid));
   const idxOpt = loresheets[idxLS].options.findIndex(o => (o.uid === optUid));
   return loresheets[idxLS].options[idxOpt];

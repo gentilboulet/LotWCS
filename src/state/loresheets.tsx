@@ -1,34 +1,42 @@
-import * as Immutable from 'immutable';
+import { optionLoresheetData, validateLoresheet, validateLoresheetOption } from 'data/loresheets';
 
-import {
-  IStoreLoresheet, IStoreLoresheetOption,
-  IStoreState,
-  loresheetFactory, loresheetOptionFactory } from 'state/types';
-
-export function getLoresheetIndex(state: IStoreState, loresheetUid: string): number {
-  return state.get('loresheets').findIndex((loresheetInState: IStoreLoresheet) => {
-      return loresheetInState.uid === loresheetUid; });
+export interface ILoresheetOptionState {
+  uid: string;
 }
 
-export function addLoresheet(state: IStoreState, loresheetUid: string): void {
-  state.updateIn(['loresheets'], (list: Immutable.List<IStoreLoresheet>) => {
-    const newLoresheet =
-      loresheetFactory({ uid: loresheetUid });
-    return list.push(newLoresheet);
-  });
+export interface ILoresheetsState {
+  [lsUid: string]: ILoresheetOptionState[];
 }
 
-export function getLoresheetOptionIndex(state: IStoreState, loresheetUid: string, loresheetOptionUid: string): number {
-  return state.get('loresheetOptions').findIndex((optionsInState: IStoreLoresheetOption) => {
-    return optionsInState.loresheetUid === loresheetUid && optionsInState.uid === loresheetOptionUid;
-  });
+export function createState() : ILoresheetsState {
+  return {};
 }
 
-export function addLoresheetOption(state: IStoreState, lsUid: string, optionUid: string): void {
-  const loresheetIndex = getLoresheetIndex(state, lsUid);
-  if (loresheetIndex === -1) { throw new Error('Internal error : loresheet not found'); }
-  state.updateIn(['loresheetOptions'], (list: Immutable.List<IStoreLoresheetOption>) => {
-    const newOption = loresheetOptionFactory({ loresheetUid: lsUid, uid: optionUid });
-    return list.push(newOption);
-  });
+export function openLoresheet(state: ILoresheetsState, loresheetUid: string): void {
+  validateLoresheet(loresheetUid);
+  state[loresheetUid] = [];
+}
+
+export function isLoresheetPresent(state: ILoresheetsState, loresheetUid: string) : boolean {
+  const loresheetIndex = Object.keys(state).findIndex(stateLoresheetUid => stateLoresheetUid===loresheetUid);
+  return loresheetIndex !== -1;
+}
+
+export function isLoresheetOptionPresent(state: ILoresheetsState, loresheetUid: string, optionUid: string) : boolean {
+  const optionIndex = state[loresheetUid].findIndex(option => option.uid === optionUid);
+  return optionIndex !== -1;
+}
+
+export function addLoresheetOption(state: ILoresheetsState, loresheetUid: string, optionUid: string): void {
+  validateLoresheet(loresheetUid);
+  validateLoresheetOption(loresheetUid, optionUid);
+
+  if (! isLoresheetPresent(state, loresheetUid) ) { throw new Error('Internal error : loresheet not found'); }
+  if ( isLoresheetOptionPresent(state, loresheetUid, optionUid)
+  && !optionLoresheetData(loresheetUid, optionUid).repeatable) {
+    throw new Error('Internal error : loresheet option is not repeatable');
+  }
+  /* TODO check prerequisites */
+
+  state[loresheetUid].push({uid: optionUid});
 }

@@ -1,4 +1,3 @@
-import * as dataChi from 'data/chi';
 import * as actions from './chi';
 
 describe('Testing chi action creator', () => {
@@ -8,17 +7,11 @@ describe('Testing chi action creator', () => {
   };
 
   it('should create a chi buy action', () => {
-    const chiType: dataChi.IChiNames = 'fire';
+    const chiType = 'fire';
     const value = 123;
     const action = actions.chiBuy(chiType, value, noCost);
-    expect( action.chiType ).toBe(chiType);
+    expect( action.chi ).toBe(chiType);
     expect( action.value ).toBe(value);
     expect( action ).toMatchSnapshot();
-  });
-
-  it('should not create an invalid chi buy action', () => {
-    const chiType = 'totally not fire';
-    const value = 123;
-    expect( () => actions.chiBuy(chiType as dataChi.IChiNames, value, noCost) ).toThrow();
   });
 });
