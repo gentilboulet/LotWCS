@@ -29,14 +29,17 @@ function emptyInitialStateFactory(): IStoreState {
 }
 
 import { setArchetype, setRank } from 'state/actions/header';
+import { skillSpecialityBuy } from 'state/actions/skills';
 import { replayHistory } from './history';
 
 export function testingStateFactory(): IStoreState {
   const initial = emptyInitialStateFactory();
   const actions = [
     setRank('4th_rank'),
-    setArchetype('warrior')
+    setArchetype('warrior'),
+    skillSpecialityBuy('Awareness', 'Hear', {destiny: 0, entanglement: 0})
   ];
+  initial.destiny += 5;
   return replayHistory(initial, actions);
 }
 

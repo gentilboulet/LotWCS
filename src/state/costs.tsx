@@ -36,6 +36,20 @@ export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
   return _costFactory(defaultCost, 0);
 }
 
+export function getCostSpeciality(state: IStoreState, skillName: TSkillName, speciality: string): ICost {
+  const defaultCost = 1;
+/*
+  const idx = state.get('discounts')
+    .findIndex((r: IDiscount) => {
+      return ( r.type === constants.DISCOUNT_SKILL )
+        && (r.skills.findIndex((s: string) => (s === skill)) >= 0);
+    });
+  return _handleDiscount(state, idx, defCost);
+*/
+  return _costFactory(defaultCost, 0);
+}
+
+
 /*
 export function applyCost(baseState: IStoreState, cost: ICost): IStoreState {
     state.set('destiny', state.get('destiny') - cost.destiny);
@@ -64,26 +78,7 @@ function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
   }
 }
 
-export function canBuySpeciality(state: IStoreState, skill: string, speciality: string): boolean {
-  const specialityIdx = state.get('skills').getSpecialityIndex(state, skill, speciality);
 
-  if ( specialityIdx < 0 ) { return false; }
-
-  const cost = getCostSpeciality(state, skill, speciality);
-  return _canHandleCost(state, cost);
-}
-
-export function getCostSpeciality(state: IStoreState, skill: string, speciality: string): ICost {
-  const defCost = 1;
-
-  const idx = state.get('discounts')
-    .findIndex((r: IDiscount) => {
-      return ( r.type === constants.DISCOUNT_SKILL )
-        && (r.skills.findIndex((s: string) => (s === skill)) >= 0);
-    });
-
-  return _handleDiscount(state, idx, defCost);
-}
 
 export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
   const idx = loresheets.getLoresheetIndex(state, uid);

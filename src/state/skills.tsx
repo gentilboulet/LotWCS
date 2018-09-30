@@ -1,6 +1,6 @@
 import { skills as data, TSkillName } from 'data/skills';
 
-import { canPayCost, getCostSkill } from 'state/costs';
+import { canPayCost, getCostSkill, getCostSpeciality } from 'state/costs';
 import { maxSkillBonus } from 'state/derived';
 import { IStoreState } from 'state/type';
 
@@ -52,5 +52,12 @@ export function canBuySkill(state: IStoreState, skillName: TSkillName): boolean 
   if ( max === undefined ) { return false; }
   if ( (value + 5) > max ) { return false; }
   const cost = getCostSkill(state, skillName);
+  return canPayCost(state, cost);
+}
+
+export function canBuySpeciality(state: IStoreState, skillName: TSkillName, speciality: string): boolean {
+  const specialityIdx = state.skills[skillName].specialities.findIndex((s: string) => s === speciality);
+  if ( specialityIdx !== -1 ) { return false; }
+  const cost = getCostSpeciality(state, skillName, speciality);
   return canPayCost(state, cost);
 }

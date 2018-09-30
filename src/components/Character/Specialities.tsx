@@ -1,56 +1,35 @@
-/*import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import * as React from 'react';
+import { Col, Container } from 'reactstrap';
 
 import { ICost } from 'state/costs';
 
-import EditSpeciality from './EditSpeciality';
+import EditSpecialities from './EditSpecialities';
 
-export interface ISpecialityProps {
-  name: string;
-  bought: boolean;
-  cost: ICost;
-  canBuySpeciality: boolean;
+export interface ISpecialitiesProps {
+  available: Array<{
+    name: string,
+    canBuy: boolean
+    cost: ICost,
+  }>
+  bought: string[];
+
+  onBuy: (speciality: string, cost: ICost) => void;
 }
 
-export interface ISpecialityProps {
-  name: string;
-  value: number;
-  cost: ICost;
-  canBuySpeciality: boolean;
-  specialities: [ISpecialityProps];
-}
-
-export interface ISpecialityProps {
-  skills: ISpecialityProps[];
-  onSpecialityBuy: (skill: string, cost: ICost) => void;
-  onSpecialityBuy: (skill: string, speciality: string, cost: ICost) => void;
-}
-
-class Speciality extends React.Component<ISpecialityProps, {}> {
+class Specialities extends React.Component<ISpecialitiesProps, {}> {
   public render() {
     return(
-      <Container className="Speciality">
+      <Container className="Specialities">
         <Col>
-          {
-            this.props.skills.map(
-              (s: ISpecialityProps) => { return (
-                <Row key={'rowSpeciality' + s.name}>
-                  <EditSpeciality
-                    name={s.name}
-                    value={s.value}
-                    cost={s.cost}
-                    specialities={s.specialities}
-                    canBuySpeciality={s.canBuySpeciality}
-                    onSpecialityBuy={this.props.onSpecialityBuy}
-                    onSpecialityBuy={this.props.onSpecialityBuy}
-                  />
-                </Row> ); }
-          )}
+          <EditSpecialities
+            bought={this.props.bought}
+            available={this.props.available}
+            onBuy={this.props.onBuy}
+          />
         </Col>
       </Container>
     );
   }
 }
 
-export default Speciality;
-*/
+export default Specialities;

@@ -43,6 +43,7 @@ export function globalReducer(state: IStoreState, action: IAction): IStoreState 
     case kungfu.KUNGFU_BUY_TECHNIQUE:
       return kungfuReducer(state, action);
     case skills.SKILLS_BUY:
+    case skills.SKILLS_SPECIALITY_BUY:
       return skillsReducer(state, action);
     case loresheets.LORESHEET_OPEN:
     case loresheets.LORESHEET_BUY_OPTION:
