@@ -8,6 +8,9 @@ import { createState as createLoresheetsState } from 'state/loresheets';
 import { createState as createSkillsState } from 'state/skills';
 import { createState as createVirtuesState } from 'state/virtues';
 
+import { createState as createBonusesState } from 'state/bonuses';
+import { createState as createDiscountsState } from 'state/discounts';
+
 function emptyInitialStateFactory(): IStoreState {
   return {
     archetype: undefined,
@@ -25,6 +28,9 @@ function emptyInitialStateFactory(): IStoreState {
     loresheets: createLoresheetsState(),
     skills: createSkillsState(),
     virtues: createVirtuesState(),
+
+    bonuses: createBonusesState(),
+    discounts: createDiscountsState()
   }
 }
 

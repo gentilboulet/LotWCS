@@ -3,6 +3,7 @@
 exports[`Testing globalReducer should do nothing with a junk action 1`] = `
 Object {
   "archetype": undefined,
+  "bonuses": Array [],
   "chi": Object {
     "corrupt": Object {
       "cultivation": 0,
@@ -39,6 +40,7 @@ Object {
   },
   "concept": undefined,
   "destiny": 0,
+  "discounts": Array [],
   "entanglement": 0,
   "history": Array [
     Object {

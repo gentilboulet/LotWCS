@@ -1,3 +1,4 @@
+import { IDiscount, updateDiscounts } from 'state/discounts';
 import { IStoreState } from 'state/type';
 
 import { TSkillName } from 'data/skills';
@@ -9,64 +10,10 @@ export interface ICost {
   entanglement: number;
 }
 
-function _costFactory(destiny: number, entanglement: number): ICost {
-  return { destiny, entanglement };
-}
-
-export const emptyCost: ICost = _costFactory(0, 0);
-
-export function canPayCost(state:IStoreState, cost: ICost): boolean {
-  if(state.destiny < cost.destiny ) { return false; }
-  if(state.entanglement < cost.entanglement ) { return false; }
-  return true;
-}
-
-export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
-  const defaultCost = 2;
-/*
-    const idx = state.get('discounts')
-      .findIndex((r: IDiscount) => {
-        return ( r.type === constants.DISCOUNT_SKILL )
-        && (r.skills.findIndex((s: string) => (s === skill) ) >= 0);
-      });
-
-    return _handleDiscount(state, idx, defCost);
-  }
-*/
-  return _costFactory(defaultCost, 0);
-}
-
-export function getCostSpeciality(state: IStoreState, skillName: TSkillName, speciality: string): ICost {
-  const defaultCost = 1;
-/*
-  const idx = state.get('discounts')
-    .findIndex((r: IDiscount) => {
-      return ( r.type === constants.DISCOUNT_SKILL )
-        && (r.skills.findIndex((s: string) => (s === skill)) >= 0);
-    });
-  return _handleDiscount(state, idx, defCost);
-*/
-  return _costFactory(defaultCost, 0);
-}
-
-
-/*
-export function applyCost(baseState: IStoreState, cost: ICost): IStoreState {
-    state.set('destiny', state.get('destiny') - cost.destiny);
-    state.set('entanglement', state.get('entanglement') - cost.entanglement);
-
-    if (state.get('destiny') < 0) { throw new Error('Negative destiny reached'); }
-    if (state.get('entanglement') < 0) { throw new Error('Negative entanglement reached'); }
-    updateDiscounts(state, cost);
-  });
-  return baseState;
-}
-
-function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
-  if (idx === -1) {
-    return { destiny: cost, discountIdx: idx, discountNewValue: 0, entanglement: 0, };
-  } else {
-    const discount = state.getIn(['discounts', idx]).value;
+function _costFactory(state: IStoreState, idx: number, cost: number): ICost {
+  if (idx === -1) {  return { destiny: cost, entanglement: 0 }; }
+  else {
+    const discount = state.discounts[idx].value;
     const remainingCost = Math.max(0, cost - discount);
     const usedDiscountValue = cost - remainingCost;
     return {
@@ -77,6 +24,52 @@ function _handleDiscount(state: IStoreState, idx: number, cost: number): ICost {
     };
   }
 }
+
+export const emptyCost: ICost = { destiny: 0, entanglement: 0 };
+
+export function canPayCost(state:IStoreState, cost: ICost): boolean {
+  if(state.destiny < cost.destiny ) { return false; }
+  if(state.entanglement < cost.entanglement ) { return false; }
+  return true;
+}
+
+export function applyCost(state: IStoreState, cost: ICost): void {
+    state.destiny -= cost.destiny;
+    state.entanglement -= cost.entanglement;
+
+    if (state.destiny < 0) { throw new Error('Negative destiny reached'); }
+    if (state.entanglement < 0) { throw new Error('Negative entanglement reached'); }
+    updateDiscounts(state, cost);
+
+}
+
+import { DISCOUNT_SKILL } from 'state/constants/perks/discounts';
+export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
+  const defaultCost = 2;
+
+  const idx = state.discounts.findIndex((d:IDiscount) => {
+    if(d.type !== DISCOUNT_SKILL) { return false }
+    if(d.skills.length === 0) { return true; } // Any skills
+    return -1 !== d.skills.findIndex((s: TSkillName) => s === skillName);
+  })
+
+  return _costFactory(state, idx, defaultCost);
+}
+
+export function getCostSpeciality(state: IStoreState, skillName: TSkillName, speciality: string): ICost {
+  const defaultCost = 1;
+
+  const idx = state.discounts.findIndex((d:IDiscount) => {
+    if(d.type !== DISCOUNT_SKILL) { return false }
+    if(d.skills.length === 0) { return true; } // Any skills
+    return -1 !== d.skills.findIndex((s: TSkillName) => s === skillName);
+  })
+
+  return _costFactory(state, idx, defaultCost);
+}
+
+
+/*
 
 
 

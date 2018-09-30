@@ -1,6 +1,6 @@
 import { TChiName } from 'data/chi';
 import { WEAPON_TYPE } from 'data/weapons';
-import { IEffect } from 'perks/types/effects';
+import { IEffect } from 'state/effects';
 
 // Constants used to differentiate between kungfu
 export const KUNGFU_EXTERNAL = 'KUNGFU_EXTERNAL';

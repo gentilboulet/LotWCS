@@ -6,6 +6,9 @@ import { ILoresheetsState } from 'state/loresheets';;
 import { TSkillsState } from 'state/skills';
 import { TVirtuesState } from 'state/virtues';
 
+import { TBonusesState } from 'state/bonuses';
+import { TDiscountsState } from 'state/discounts';
+
 export interface IStoreState {
   name: string | undefined;
   concept: string | undefined;
@@ -22,4 +25,7 @@ export interface IStoreState {
   loresheets: ILoresheetsState;
   skills: TSkillsState;
   virtues: TVirtuesState;
+
+  bonuses: TBonusesState;
+  discounts : TDiscountsState;
 }

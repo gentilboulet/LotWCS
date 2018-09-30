@@ -2,7 +2,7 @@
 /* tslint:disable:object-literal-sort-keys */
 
 import { IDataInternalKungfu } from 'data/kungfu/types';
-import * as effects from 'perks/actions/effects';
+import * as effects from 'state/actions/perks/effects';
 
 export const boundlessProsperityManual: IDataInternalKungfu = {
   name: 'Boundless Prosperity Manual',

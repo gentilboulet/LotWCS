@@ -1,5 +1,5 @@
 import { IDataLoresheet } from 'data/loresheets';
-import * as bonuses from 'perks/actions/bonuses';
+import { bonusOneAmongN, bonusSpeciality } from 'state/actions/perks/bonuses';
 
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */
@@ -36,10 +36,10 @@ export const crouchingtigersandhiddendragons: IDataLoresheet = {
       type: 'Bonus',
       repeatable: false,
       prerequisites: [],
-      perks: [bonuses.oneAmongN(
+      perks: [bonusOneAmongN(
         [
-          bonuses.speciality('Wu Wei', 'Sense Chi'),
-          bonuses.speciality('Wu Wei', 'Hide Killer Intent')
+          bonusSpeciality('Wu Wei', 'Sense Chi'),
+          bonusSpeciality('Wu Wei', 'Hide Killer Intent')
         ])
       ],  }
   ],

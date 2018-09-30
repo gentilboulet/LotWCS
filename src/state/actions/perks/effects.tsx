@@ -1,7 +1,7 @@
-import * as constants from 'perks/constants/effects';
-import { 
-  IEffectChiThresholdIncreaseBaseChi, IEffectCombatStatistic, IEffectConditionalText, IEffectStatistic 
-} from 'perks/types/effects';
+import * as constants from 'state/constants/perks/effects';
+import {
+  IEffectChiThresholdIncreaseBaseChi, IEffectCombatStatistic, IEffectConditionalText, IEffectStatistic
+} from 'state/effects';
 
 export function combatStatistic(statistic: IEffectStatistic, increase: number): IEffectCombatStatistic {
   return { increase, statistic, type: constants.EFFECT_COMBAT_STATISTIC };
