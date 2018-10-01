@@ -4,19 +4,19 @@ import { Button, Col, Container, Row } from 'reactstrap';
 
 import FieldHeader from 'components/FieldHeader';
 
-export interface IEditSkillProps {
+export interface IEditNumericProps {
   name: string;
   value: number;
   canBuy: boolean;
   onBuy: () => void;
 }
 
-interface IEditSkillState {
+interface IEditNumericState {
   edit: boolean;
 }
 
-class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
-  constructor(props: IEditSkillProps) {
+class EditNumeric extends React.Component<IEditNumericProps, IEditNumericState> {
+  constructor(props: IEditNumericProps) {
     super(props);
 
     this.state = {
@@ -84,4 +84,4 @@ class EditSkill extends React.Component<IEditSkillProps, IEditSkillState> {
   }
 }
 
-export default EditSkill;
+export default EditNumeric;

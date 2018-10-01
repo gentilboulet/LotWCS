@@ -4,14 +4,14 @@ import { ICost } from 'state/costs';
 
 import { TSkillName } from 'data/skills';
 
-import EditSkill from './EditSkill';
+import EditNumeric from 'components/EditNumeric';
 
 export interface ISkillProps {
   name: TSkillName;
   value: number;
   cost: ICost;
   canBuy: boolean;
-  onBuy: (skill: TSkillName, cost: ICost) => void;
+  onBuy: (cost: ICost) => void;
 }
 
 class Skill extends React.Component<ISkillProps, {}> {
@@ -21,7 +21,7 @@ class Skill extends React.Component<ISkillProps, {}> {
   }
   public render() {
     return(
-      <EditSkill
+      <EditNumeric
         name={this.props.name}
         value={this.props.value}
         canBuy={this.props.canBuy}
@@ -30,7 +30,7 @@ class Skill extends React.Component<ISkillProps, {}> {
     );
   }
 
-  private onBuy(): void { this.props.onBuy(this.props.name, this.props.cost); };
+  private onBuy(): void { this.props.onBuy(this.props.cost); };
 }
 
 export default Skill;

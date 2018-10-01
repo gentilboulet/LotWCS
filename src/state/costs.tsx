@@ -1,7 +1,6 @@
 import { IDiscount, updateDiscounts } from 'state/discounts';
 import { IStoreState } from 'state/type';
 
-import { TSkillName } from 'data/skills';
 
 export interface ICost {
   destiny: number;
@@ -43,6 +42,7 @@ export function applyCost(state: IStoreState, cost: ICost): void {
 
 }
 
+import { TSkillName } from 'data/skills';
 import { DISCOUNT_SKILL } from 'state/constants/perks/discounts';
 export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
   const defaultCost = 2;
@@ -68,10 +68,21 @@ export function getCostSpeciality(state: IStoreState, skillName: TSkillName, spe
   return _costFactory(state, idx, defaultCost);
 }
 
+import { TChiName } from 'data/chi';
+import { DISCOUNT_CHI } from 'state/constants/perks/discounts';
+export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
+  const defaultCost = state.chi[chiName].value; // TODO cultivation
+ 
+  const idx = state.discounts.findIndex((d:IDiscount) => {
+    if(d.type !== DISCOUNT_CHI) { return false }
+    if(d.chis.length === 0) { return true; } // Any chi
+    return -1 !== d.chis.findIndex((s: TChiName) => s === chiName);
+  })
+  
+  return _costFactory(state, idx, defaultCost);
+}
 
 /*
-
-
 
 export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
   const idx = loresheets.getLoresheetIndex(state, uid);
