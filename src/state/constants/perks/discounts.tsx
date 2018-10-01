@@ -1,3 +1,6 @@
+export const DISCOUNT_CHI = 'DISCOUNT_CHI';
+export type DISCOUNT_CHI = typeof DISCOUNT_CHI;
+
 export const DISCOUNT_SKILL = 'DISCOUNT_SKILL';
 export type DISCOUNT_SKILL = typeof DISCOUNT_SKILL;
 

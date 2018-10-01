@@ -1,4 +1,6 @@
 import { chiNames, TChiName } from 'data/chi';
+import { canPayCost, getCostChi } from 'state/costs';
+import { IStoreState } from 'state/type';
 
 export type TChiState = {
   [chi in TChiName]: { value: number, cultivation: number};
@@ -28,4 +30,10 @@ export function increaseCultivation(state: TChiState, name: TChiName, value: num
   }
   state[name].value = newChiValue;
   state[name].cultivation = newCultivation;
+}
+
+export function canBuyChi(state: IStoreState, chiName: TChiName): boolean {
+  // const value = state.chi[chiName].value;
+  const cost = getCostChi(state, chiName);
+  return canPayCost(state, cost);
 }

@@ -5,6 +5,7 @@ import { Tab, Tabs } from 'components/Tabs';
 import History from 'containers/Character/History';
 // import CharacterLoresheets from 'containers/CharacterLoresheets';
 
+import Chis from 'components/Character/Chis';
 import Skills from 'components/Character/Skills';
 
 class Body extends React.Component<{}, {}> {
@@ -17,6 +18,9 @@ class Body extends React.Component<{}, {}> {
         <Tab title="Kung Fu" tabId="kungfu">
           <PlaceHolder>Kung fu learnt by the character.
           </PlaceHolder>
+        </Tab>
+        <Tab title="Chi" tabId="chi">
+	  <Chis />
         </Tab>
         <Tab title="Loresheets" tabId="loresheets">
           <div />

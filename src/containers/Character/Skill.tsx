@@ -22,7 +22,7 @@ interface IProps {
 }
 
 interface IMapDispatchToProps {
-  onBuy: (skill: TSkillName, cost: ICost) => void;
+  onBuy: (cost: ICost) => void;
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
@@ -34,11 +34,11 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>): IMapDispatchToProps {
+function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>, props: IProps): IMapDispatchToProps {
   return {
-    onBuy: (skill: TSkillName, cost: ICost) => {
+    onBuy: (cost: ICost) => {
 
-      dispatch(actions.skillsBuy(skill, cost))
+      dispatch(actions.skillsBuy(props.name, cost))
     }
   };
 }

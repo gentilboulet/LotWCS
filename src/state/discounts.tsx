@@ -1,12 +1,19 @@
 import { ICost } from 'state/costs';
 import { IStoreState } from 'state/type';
 
+import { TChiName } from 'data/chi';
 import { TSkillName } from 'data/skills';
 import * as constants from 'state/constants/perks/discounts';
 
 export interface IDiscountSkill {
   type: constants.DISCOUNT_SKILL;
   skills: TSkillName[] ;
+  value: number;
+}
+
+export interface IDiscountChi {
+  type: constants.DISCOUNT_CHI;
+  chis: TChiName[] ;
   value: number;
 }
 
@@ -24,11 +31,13 @@ export interface IDiscountLoresheetOption {
 
 export type IDiscount =
   IDiscountSkill
+  | IDiscountChi
   | IDiscountLoresheet
   | IDiscountLoresheetOption;
 
 export function isDiscount(r: any): boolean {
   switch (r.type) {
+    case constants.DISCOUNT_CHI:
     case constants.DISCOUNT_SKILL:
     case constants.DISCOUNT_LORESHEET:
     case constants.DISCOUNT_LORESHEET_OPTION:
