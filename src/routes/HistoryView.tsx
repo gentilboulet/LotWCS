@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import Header from 'components/Header';
+import AppHeader from 'components/AppHeader';
 import History from 'containers/Character/History';
 
 class HistoryView extends React.Component<RouteComponentProps<{}>> {
   public render() {
     return (
       <div>
-        <Header />
+        <AppHeader />
         <History />
       </div>
     );

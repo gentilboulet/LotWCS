@@ -25,10 +25,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
 /* Pages */
-/* tslint:disable:ordered-imports */
-import Homepage from 'containers/Homepage';
-import TestView from 'containers/TestView';
-import HistoryView from 'containers/HistoryView';
+import App from 'routes/App';
+import HistoryView from 'routes/HistoryView';
+import Homepage from 'routes/Homepage';
+import TestView from 'routes/TestView';
 
 ReactDOM.render(
   <div>
@@ -36,8 +36,9 @@ ReactDOM.render(
       <Router>
         <div>
           <Route exact={true} path="/" component={Homepage} />
-          <Route exact={true} path="/test" component={TestView} />
+	  <Route exact={true} path="/app" component={App} />
           <Route exact={true} path="/history" component={HistoryView} />
+          <Route exact={true} path="/test" component={TestView} />
         </div>
       </Router>
     </Provider>

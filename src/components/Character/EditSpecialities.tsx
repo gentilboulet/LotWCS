@@ -65,11 +65,8 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
   }
 
   private renderNoEdit() {
-    return <Container>
-      <Row
-        onClick={this.startEdit}
-        role="button"
-        >{this.renderBoughtSpecialities()}</Row>
+    return <Container onClick={this.startEdit} role="button">
+      <Row>{this.renderBoughtSpecialities()}</Row>
       </Container>
   }
 

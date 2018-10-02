@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 
-import Header from 'components/Header';
+import AppHeader from 'components/AppHeader';
 
 class TestView extends React.Component<RouteComponentProps<{}>> {
   public render() {
     return (
       <div>
-        <Header />
+        <AppHeader />
         <span> Testing something </span>
       </div>
     );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Col, Container } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 
 import { ICost } from 'state/costs';
 
@@ -20,13 +20,13 @@ class Specialities extends React.Component<ISpecialitiesProps, {}> {
   public render() {
     return(
       <Container className="Specialities">
-        <Col>
+	<Row><Col>
           <EditSpecialities
             bought={this.props.bought}
             available={this.props.available}
             onBuy={this.props.onBuy}
           />
-        </Col>
+        </Col></Row>
       </Container>
     );
   }
