@@ -19,7 +19,7 @@ describe('Testing virtueReducer', () => {
     dataVirtues.virtues.forEach( (virtue: dataVirtues.IDataVirtue) => {
       expect(isVirtuePresent(initialState.virtues, virtue.name) ).toBeTruthy();
 
-      const action = actions.increase(virtue.name, virtue.type, 3, noCost);
+      const action = actions.increase(virtue.name, 3, noCost);
       const state = virtuesReducer(initialState, action);
       const newVirtue = getVirtue(state.virtues, virtue.name);
       expect(newVirtue).toBeDefined();
@@ -28,17 +28,12 @@ describe('Testing virtueReducer', () => {
     });
   });
 
-  it('should receive a VIRTUE_INCREASE action with a new virtue', () => {
+  it('should fail to receive a VIRTUE_INCREASE action with a new virtue', () => {
     const virtue: dataVirtues.IDataVirtue = { name: 'New Virtue', type: dataVirtues.VIRTUE_CHIVALROUS };
     expect(isVirtuePresent(initialState.virtues, virtue.name) ).toBeFalsy();
 
-    const action = actions.increase(virtue.name, virtue.type, 3, noCost);
-    const state = virtuesReducer(initialState, action);
-    expect(isVirtuePresent(state.virtues, virtue.name) ).toBeTruthy();
-    const newVirtue = getVirtue(state.virtues, virtue.name);
-    expect(newVirtue).toBeDefined();
-    expect( newVirtue ? newVirtue.value : undefined ).toBe(3);
-    expect( newVirtue ? newVirtue.type : undefined ).toBe(virtue.type);
+    const action = actions.increase(virtue.name, 3, noCost);
+    expect( () => virtuesReducer(initialState, action) ).toThrowError();
   });
 
   it('should do nothing with a junk action', () => {

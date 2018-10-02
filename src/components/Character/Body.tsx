@@ -8,6 +8,7 @@ import History from 'containers/Character/History';
 import Chis from 'components/Character/Chis';
 import Loresheets from 'components/Character/Loresheets';
 import Skills from 'components/Character/Skills';
+import Virtues from 'containers/Character/Virtues';
 
 class Body extends React.Component<{}, {}> {
   public render() {
@@ -25,6 +26,9 @@ class Body extends React.Component<{}, {}> {
         </Tab>
         <Tab title="Loresheets" tabId="loresheets">
           <Loresheets />
+        </Tab>
+        <Tab title="Virtues" tabId="virtues">
+          <Virtues />
         </Tab>
         <Tab title="History" tabId="history">
           <History />

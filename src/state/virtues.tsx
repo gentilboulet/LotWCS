@@ -1,4 +1,6 @@
 import { IDataVirtue, IDataVirtueType, virtues } from 'data/virtues';
+import { canPayCost, getCostVirtue } from 'state/costs';
+import { IStoreState } from 'state/type';
 
 interface IVirtueState {
     name: string;
@@ -14,11 +16,14 @@ export function createState(): TVirtuesState {
   });
 }
 
-export function add(state: TVirtuesState, name: string, type: IDataVirtueType): void {
-  state.push({ name, value: 0, type });
+export function add(state: TVirtuesState, name: string, type: IDataVirtueType, value: number): void {
+  state.push({ name, value, type });
 }
 
 export function increase(state: TVirtuesState, name: string, value: number): void {
+  if(! isVirtuePresent(state, name)) {
+    throw new Error('Internal Error : unknwon new virtue ' + name);
+  }
   state.forEach(virtue => {
     if(virtue.name === name) { virtue.value+= value; }
   })
@@ -30,4 +35,14 @@ export function isVirtuePresent(state: TVirtuesState, name: string): boolean {
 
 export function getVirtue(state: TVirtuesState, name: string): IVirtueState | undefined {
   return state.find(virtue => name === virtue.name);
+}
+
+export function canBuyVirtue(state: IStoreState, name: string): boolean {
+  const findIndex = state.virtues.findIndex(v => name === v.name);
+  if( findIndex === -1 ) { return false; }
+  const virtue = state.virtues[findIndex];
+  if( (virtue.value+1) > 5 )  { return false; }
+
+  const cost = getCostVirtue(state, name);
+  return canPayCost(state, cost);
 }

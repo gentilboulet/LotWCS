@@ -140,3 +140,11 @@ export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: st
 }
 
 */
+
+export function getCostVirtue(state: IStoreState, name: string): ICost {
+  /*
+   DISCOUNT !
+
+  */
+  return _costFactory(state, -1, 5);
+}

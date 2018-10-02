@@ -22,12 +22,14 @@ class Chi extends React.Component<IChiProps, {}> {
     this.onBuy = this.onBuy.bind(this);
   }
   public render() {
+    const name = this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
+
     return(
       <Container>
         <Row>
           <Col>
             <EditNumeric
-              name={this.props.name}
+              name={name}
               value={this.props.value}
               canBuy={this.props.canBuy}
               onBuy={this.onBuy}
