@@ -1,5 +1,8 @@
 import { optionLoresheetData, validateLoresheet, validateLoresheetOption } from 'data/loresheets';
 
+import { canPayCost, getCostOpenLoresheet } from 'state/costs';
+import { IStoreState } from 'state/type';
+
 export interface ILoresheetOptionState {
   uid: string;
 }
@@ -40,3 +43,10 @@ export function addLoresheetOption(state: ILoresheetsState, loresheetUid: string
 
   state[loresheetUid].push({uid: optionUid});
 }
+
+export function canBuyLoresheet(state: IStoreState, uid: string): boolean {
+  if (isLoresheetPresent(state.loresheets, uid)) { return false; } // Already opened
+  const cost = getCostOpenLoresheet(state, uid);
+  return canPayCost(state, cost);
+}
+

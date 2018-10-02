@@ -18,7 +18,7 @@ class Deck extends React.Component<IDeckProps, IDeckState> {
 
     this.renderButton = this.renderButton.bind(this);
     this.renderHeader = this.renderHeader.bind(this);
-    this.state = { toggle: true };
+    this.state = { toggle: false };
   }
 
   public render(): JSX.Element {

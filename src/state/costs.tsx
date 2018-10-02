@@ -82,23 +82,19 @@ export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
   return _costFactory(state, idx, defaultCost);
 }
 
-/*
-
-export function canOpenLoresheet(state: IStoreState, uid: string, openCost: number): boolean {
-  const idx = loresheets.getLoresheetIndex(state, uid);
-  if (idx !== -1) { return false; } // Already opened
-  const cost: ICost = getCostOpenLoresheet(state, uid, openCost);
-  return _canHandleCost(state, cost);
-}
-
-export function getCostOpenLoresheet(state: IStoreState, uid: string, cost: number): ICost {
-  const idx = state.get('discounts')
+export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
+/*  const idx = state.get('discounts')
     .findIndex((r: IDiscount) => {
       return ( r.type === constants.DISCOUNT_LORESHEET )
       && (r.uids.findIndex((id: string) => (id === uid)) >= 0);
     });
   return _handleDiscount(state, idx, cost);
+*/
+  return _costFactory(state, -1, 1);
 }
+
+/*
+
 
 export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, buyCost: number): boolean {
   if ( loresheets.getLoresheetIndex(state, lsUid) === -1) { return false; } // LS not open
