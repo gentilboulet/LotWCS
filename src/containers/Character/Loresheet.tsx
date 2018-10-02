@@ -26,8 +26,8 @@ interface IProps {
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
-  const foundIndex = Object.keys(state.loresheets).findIndex((ls) => ls === props.uid);
-  const options = (foundIndex !== -1) ? state.loresheets[foundIndex] : [];
+  const loresheetUid = Object.keys(state.loresheets).find((ls) => ls === props.uid);
+  const options = (loresheetUid !== undefined) ? state.loresheets[loresheetUid] : [];
   return {
   	canBuy: canBuyLoresheet(state, props.uid),
   	cost: getCostOpenLoresheet(state, props.uid),

@@ -20,16 +20,15 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
     };
   }
   public render() {
-    /* tslint:disable:no-any */
     return (
       <Container>
         <Nav tabs={true}>
         {React.Children.map(this.props.children, (child: any) => {
+          const toggleMe = () => this.toggle(child.props.tabId);
           return (<NavItem>
                     <NavLink
                       className={classnames({ active: this.state.activeTab === child.props.tabId })}
-// tslint:disable-next-line jsx-no-lambda
-                      onClick={() => this.toggle(child.props.tabId)}
+                      onClick={toggleMe}
                     >
                       {child.props.title}
                     </NavLink>

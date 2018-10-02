@@ -93,9 +93,9 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
 
   private renderDropdownItems(): JSX.Element[] {
     return this.props.values.map( ({key, label}: IDDLItem) => {
+      const selectMe = () => this.select(key);
       return (
-// tslint:disable-next-line jsx-no-lambda
-        <DropdownItem key={key} onClick={() => {this.select(key); }}>
+        <DropdownItem key={key} onClick={selectMe}>
           {label}
         </DropdownItem>
       );
