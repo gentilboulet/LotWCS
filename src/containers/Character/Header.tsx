@@ -25,7 +25,6 @@ interface IMapDispatchToProps {
   onSetRank: (s: string) => void;
 }
 
-/* tslint:disable */
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     archetype: state.archetype,

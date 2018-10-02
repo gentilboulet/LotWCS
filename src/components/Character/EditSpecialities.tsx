@@ -20,22 +20,11 @@ interface IEditSpecialitiesState {
 }
 
 class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEditSpecialitiesState> {
-  private canBuy: boolean;
-  private indexNewSpeciality: number;
-
   constructor(props: IEditSpecialitiesProps) {
     super(props);
-
     this.state = {
       edit: false
     };
-
-    if(this.props.available !== undefined)
-    {
-      this.canBuy = this.props.available.some(option => option.canBuy);
-      this.indexNewSpeciality = this.props.available.findIndex(option => option.name.length === 0)
-    }
-    else { this.canBuy = false; }
 
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
@@ -65,9 +54,13 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
   }
 
   private renderNoEdit() {
-    return <Container onClick={this.startEdit} role="button">
-      <Row>{this.renderBoughtSpecialities()}</Row>
-      </Container>
+    const canBuy = this.props.available.some(option => option.canBuy);
+    return <Container>
+             <Row>
+               {this.renderBoughtSpecialities()}
+               <Col xs={1} sm={1} md={1} lg={1} xl={1}>{canBuy ? this.renderButton('plus', this.startEdit) : ''}</Col>
+             </Row>
+           </Container>
   }
 
   private renderEdit() {
@@ -81,12 +74,12 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
               options={this.props.available
               .filter(data => data.canBuy)
               .map(data => data.name)}
-              defaultSelected={this.props.bought}
+              selected={this.props.bought}
               placeholder="Chose a speciality..."
               onChange={this.selectedChange}
             />
             <InputGroupAddon addonType="append">
-              {this.renderButton('times', this.endEdit)}
+              {this.renderButton('check', this.endEdit)}
             </InputGroupAddon>
           </InputGroup>
         </Col>
@@ -95,7 +88,8 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
   }
 
   private startEdit(): void {
-    if(this.canBuy) {
+    const canBuy = this.props.available.some(option => option.canBuy);
+    if(canBuy) {
       this.setState({edit: true});
     }
   }
@@ -132,8 +126,9 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
       }
     } else
     {
-      if(this.props.available[this.indexNewSpeciality].canBuy) {
-        this.props.onBuy(speciality, this.props.available[this.indexNewSpeciality].cost);
+      const indexNewSpeciality = this.props.available.findIndex(option => option.name.length === 0)
+      if(this.props.available[indexNewSpeciality].canBuy) {
+        this.props.onBuy(speciality, this.props.available[indexNewSpeciality].cost);
       }
     }
   }

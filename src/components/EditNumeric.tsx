@@ -5,7 +5,7 @@ import { Button, Col, Container, Row } from 'reactstrap';
 import FieldHeader from 'components/FieldHeader';
 
 export interface IEditNumericProps {
-  name: string;
+  name: string | JSX.Element;
   value: number;
   canBuy: boolean;
   onBuy: () => void;
@@ -15,7 +15,7 @@ interface IEditNumericState {
   edit: boolean;
 }
 
-class EditNumeric extends React.Component<IEditNumericProps, IEditNumericState> {
+class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericState> {
   constructor(props: IEditNumericProps) {
     super(props);
 
@@ -47,12 +47,10 @@ class EditNumeric extends React.Component<IEditNumericProps, IEditNumericState> 
       return(
         <Container>
           <Row>
-            <Col>{this.renderHeader()}</Col>
-            <Col>{this.props.value}</Col>
-            <Col>
-              {this.props.canBuy ? this.renderButton('plus', this.buySkill) : ''}
-              {this.renderButton('times', this.endEdit)}
-            </Col>
+            <Col >{this.renderHeader()}</Col>
+            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.props.value}</Col>
+            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.props.canBuy ? this.renderButton('plus', this.buySkill) : ''}</Col>
+            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.renderButton('times', this.endEdit)}</Col>
           </Row>
         </Container>
       );

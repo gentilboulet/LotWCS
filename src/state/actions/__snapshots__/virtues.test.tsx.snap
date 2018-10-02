@@ -11,7 +11,6 @@ Object {
   "name": "New virtue name",
   "type": "VIRTUE_INCREASE",
   "value": 3,
-  "virtueType": "VIRTUE_SELFISH",
 }
 `;
 
@@ -26,7 +25,6 @@ Object {
   "name": "Honor",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_CHIVALROUS",
 }
 `;
 
@@ -41,7 +39,6 @@ Object {
   "name": "Benevolence",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_CHIVALROUS",
 }
 `;
 
@@ -56,7 +53,6 @@ Object {
   "name": "Righteousness",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_CHIVALROUS",
 }
 `;
 
@@ -71,7 +67,6 @@ Object {
   "name": "Loyalty",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_CHIVALROUS",
 }
 `;
 
@@ -86,7 +81,6 @@ Object {
   "name": "Force",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_CHIVALROUS",
 }
 `;
 
@@ -101,7 +95,6 @@ Object {
   "name": "Revenge",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_SELFISH",
 }
 `;
 
@@ -116,7 +109,6 @@ Object {
   "name": "Individualism",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_SELFISH",
 }
 `;
 
@@ -131,7 +123,6 @@ Object {
   "name": "Obsession",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_SELFISH",
 }
 `;
 
@@ -146,7 +137,6 @@ Object {
   "name": "Ruthlessness",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_SELFISH",
 }
 `;
 
@@ -161,6 +151,5 @@ Object {
   "name": "Ferocity",
   "type": "VIRTUE_INCREASE",
   "value": 10,
-  "virtueType": "VIRTUE_SELFISH",
 }
 `;
