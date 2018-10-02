@@ -1,6 +1,6 @@
 import * as classnames from 'classnames';
 import * as React from 'react';
-import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
+import { Container, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 
 export interface ITabsProps {
   defaultTab?: string;
@@ -22,7 +22,7 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
   public render() {
     /* tslint:disable:no-any */
     return (
-      <div>
+      <Container>
         <Nav tabs={true}>
         {React.Children.map(this.props.children, (child: any) => {
           return (<NavItem>
@@ -45,7 +45,7 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
           }
         )}
         </TabContent>
-      </div>
+      </Container>
     );
   }
 

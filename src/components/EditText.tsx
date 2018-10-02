@@ -2,7 +2,7 @@ import * as React from 'react';
 import Icon from 'react-fa';
 import { Button, Col, Container, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
 
-import FieldHeader from './FieldHeader';
+import FieldHeader from 'components/FieldHeader';
 
 const styles = {
   row: {
@@ -93,7 +93,7 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
           disabled={true}
           style={styles.row}
         >
-          <Col xs="6">{this.renderHeader()}</Col>
+          <Col>{this.renderHeader()}</Col>
           <Col>{this.state.value}</Col>
         </Row>
       </Container>

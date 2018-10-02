@@ -1,5 +1,8 @@
 import { optionLoresheetData, validateLoresheet, validateLoresheetOption } from 'data/loresheets';
 
+import { canPayCost, getCostBuyLoresheetOption, getCostOpenLoresheet } from 'state/costs';
+import { IStoreState } from 'state/type';
+
 export interface ILoresheetOptionState {
   uid: string;
 }
@@ -23,11 +26,12 @@ export function isLoresheetPresent(state: ILoresheetsState, loresheetUid: string
 }
 
 export function isLoresheetOptionPresent(state: ILoresheetsState, loresheetUid: string, optionUid: string) : boolean {
+  if(state[loresheetUid] === undefined) { return false; }
   const optionIndex = state[loresheetUid].findIndex(option => option.uid === optionUid);
   return optionIndex !== -1;
 }
 
-export function addLoresheetOption(state: ILoresheetsState, loresheetUid: string, optionUid: string): void {
+export function buyLoresheetOption(state: ILoresheetsState, loresheetUid: string, optionUid: string): void {
   validateLoresheet(loresheetUid);
   validateLoresheetOption(loresheetUid, optionUid);
 
@@ -39,4 +43,17 @@ export function addLoresheetOption(state: ILoresheetsState, loresheetUid: string
   /* TODO check prerequisites */
 
   state[loresheetUid].push({uid: optionUid});
+}
+
+export function canBuyLoresheet(state: IStoreState, uid: string): boolean {
+  if (isLoresheetPresent(state.loresheets, uid)) { return false; } // Already opened
+  const cost = getCostOpenLoresheet(state, uid);
+  return canPayCost(state, cost);
+}
+
+export function canBuyLoresheetOption(state: IStoreState, lsUid: string, uid: string): boolean {
+  if (! isLoresheetPresent(state.loresheets, lsUid) ) { return false; } // Not opened
+  if ( isLoresheetOptionPresent(state.loresheets, lsUid, uid) && !optionLoresheetData(lsUid, uid).repeatable) { return false; } // Already bought
+  const cost = getCostBuyLoresheetOption(state, lsUid, uid);
+  return canPayCost(state, cost);
 }
