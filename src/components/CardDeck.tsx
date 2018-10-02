@@ -45,7 +45,7 @@ class Deck extends React.Component<IDeckProps, IDeckState> {
 	  <Container>
           <Row>
             <Col>{this.props.title}</Col>
-            <Col xs={1} sm={1} md={1} lg={1} xl={1} >{this.renderButton()}</Col>
+            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.renderButton()}</Col>
           </Row>
 	</Container>
         </CardTitle>

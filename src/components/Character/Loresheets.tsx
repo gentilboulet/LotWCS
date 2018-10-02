@@ -18,7 +18,7 @@ class Loresheets extends React.PureComponent<{}, {}> {
   public render() {
     return (
       <Container style={styles}>
-      {this.renderCategories()} 
+      {this.renderCategories()}
       </Container>
     );
   }

@@ -72,13 +72,13 @@ import { TChiName } from 'data/chi';
 import { DISCOUNT_CHI } from 'state/constants/perks/discounts';
 export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
   const defaultCost = state.chi[chiName].value; // TODO cultivation
- 
+
   const idx = state.discounts.findIndex((d:IDiscount) => {
     if(d.type !== DISCOUNT_CHI) { return false }
     if(d.chis.length === 0) { return true; } // Any chi
     return -1 !== d.chis.findIndex((s: TChiName) => s === chiName);
   })
-  
+
   return _costFactory(state, idx, defaultCost);
 }
 
@@ -90,6 +90,18 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
     });
   return _handleDiscount(state, idx, cost);
 */
+  return _costFactory(state, -1, 1);
+}
+
+export function getCostBuyLoresheetOption(state: IStoreState, lsUid: string, uid: string): ICost {
+  /*const idx = state.get('discounts')
+    .findIndex((r: IDiscount) => {
+      return ( r.type === constants.DISCOUNT_LORESHEET_OPTION )
+      && (r.uids.findIndex(id => { return id.lsUid === lsUid &&
+        id.optUid.findIndex(optUid => (optUid === uid)) >= 0; })
+      >= 0);
+    });
+  return _handleDiscount(state, idx, cost);*/
   return _costFactory(state, -1, 1);
 }
 
@@ -127,14 +139,4 @@ export function canBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: st
   return _canHandleCost(state, cost);
 }
 
-export function getCostBuyOptionLoresheet(state: IStoreState, lsUid: string, uid: string, cost: number): ICost {
-  const idx = state.get('discounts')
-    .findIndex((r: IDiscount) => {
-      return ( r.type === constants.DISCOUNT_LORESHEET_OPTION )
-      && (r.uids.findIndex(id => { return id.lsUid === lsUid &&
-        id.optUid.findIndex(optUid => (optUid === uid)) >= 0; })
-      >= 0);
-    });
-  return _handleDiscount(state, idx, cost);
-}
 */

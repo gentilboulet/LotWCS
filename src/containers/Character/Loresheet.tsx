@@ -14,6 +14,7 @@ interface IMapStateToProps {
   known: boolean;
   canBuy: boolean;
   cost: ICost;
+  knownOptions: Array<{ uid: string, payload?: any }>;
 }
 
 interface IMapDispatchToProps {
@@ -25,12 +26,15 @@ interface IProps {
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+  const foundIndex = Object.keys(state.loresheets).findIndex((ls) => ls === props.uid);
+  const options = (foundIndex !== -1) ? state.loresheets[foundIndex] : [];
   return {
-	canBuy: canBuyLoresheet(state, props.uid),
-	cost: getCostOpenLoresheet(state, props.uid),
-	known: isLoresheetPresent(state.loresheets, props.uid),
-	uid: props.uid,
-      };
+  	canBuy: canBuyLoresheet(state, props.uid),
+  	cost: getCostOpenLoresheet(state, props.uid),
+  	known: isLoresheetPresent(state.loresheets, props.uid),
+    knownOptions: options,
+  	uid: props.uid,
+  };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<ILoresheetAction>, props: IProps): IMapDispatchToProps {

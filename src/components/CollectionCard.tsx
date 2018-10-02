@@ -3,11 +3,12 @@ import * as React from 'react';
 import { Card, CardBody, CardFooter, CardHeader, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 
 export interface ICollectionCardProps {
-  title: string  | JSX.Element;
+  title?: string  | JSX.Element;
   subtitle?: string;
   text: string  | JSX.Element;
   footer?: string  | JSX.Element;
   header?: string  | JSX.Element;
+  onClick?: () => void;
 }
 
 export default class CollectionCard extends React.Component<ICollectionCardProps, {} > {
@@ -33,7 +34,7 @@ export default class CollectionCard extends React.Component<ICollectionCardProps
     return (
       <div>
       {this.renderCardHeader()}
-      <CardBody>
+      <CardBody role="button" onClick={this.props.onClick}>
         {this.renderCardTitle()}
         {this.renderCardSubtitle()}
         {this.renderCardText()}
@@ -43,22 +44,16 @@ export default class CollectionCard extends React.Component<ICollectionCardProps
     );
   }
 
-  private renderCardHeader(): JSX.Element {
-    if (this.props.header) {
-      return <CardHeader>{this.props.header}</CardHeader>;
-    }
-    return <div />;
+  private renderCardHeader(): JSX.Element | void {
+    if (this.props.header) { return <CardHeader>{this.props.header}</CardHeader>;}
   }
 
-  private renderCardTitle(): JSX.Element {
-    return <CardTitle>{this.props.title}</CardTitle>;
+  private renderCardTitle(): JSX.Element | void {
+    if(this.props.title) { return <CardTitle>{this.props.title}</CardTitle>; }
   }
 
-  private renderCardSubtitle(): JSX.Element {
-    if (this.props.subtitle) {
-      return <CardSubtitle>{this.props.subtitle}</CardSubtitle>;
-    }
-    return <div />;
+  private renderCardSubtitle(): JSX.Element | void{
+    if (this.props.subtitle) { return <CardSubtitle>{this.props.subtitle}</CardSubtitle>; }
   }
 
   private renderCardText(): JSX.Element {

@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import {
-  Modal, ModalBody, ModalFooter, ModalHeader
- } from 'reactstrap';
+import { Container, Modal, ModalBody, ModalHeader } from 'reactstrap';
 
 import CollectionCard from 'components/CollectionCard';
 
@@ -31,19 +29,17 @@ export default class ModalCard extends React.Component<IModalCardProps, IModalCa
 
   public render() {
     return (
-      <div>
-      <div onClick={this.toggle} role="button">
-        {this.renderCard()}
-      </div>
-      {this.renderModal()}
-      </div>
-    );
+    <Container>
+      <Container>{this.renderCard()}</Container>
+      <Container>{this.renderModal()}</Container>
+    </Container>);
   }
 
   private renderCard(): JSX.Element {
     return (
       <CollectionCard
         header={this.props.card.header}
+        onClick={this.toggle}
         title={this.props.card.title}
         subtitle={this.props.card.subtitle}
         text={this.props.card.text}
@@ -54,16 +50,12 @@ export default class ModalCard extends React.Component<IModalCardProps, IModalCa
 
   private renderModal(): JSX.Element {
     return (
-      <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg">
+    <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg">
       <ModalHeader toggle={this.toggle}>{this.props.card.title}</ModalHeader>
-      <ModalBody>
-        {this.props.children}
-      </ModalBody>
-      <ModalFooter>
-	Footing Mode
-      </ModalFooter>
+      <ModalBody>{this.props.children}</ModalBody>
     </Modal>
     );
+    // <ModalFooter>{this.props.footer}</ModalFooter>
   }
 
   private toggle() {
