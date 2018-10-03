@@ -80,11 +80,9 @@ describe('Testing applyBonuses', () => {
 
   it('should do nothing with a junk bonus', () => {
     const junk = { type: 'JUNK' };
-    const bonuses = [actions.bonusDestiny(12), actions.bonusEntanglement(13), actions.bonusChi(14, 'general'), junk as IBonus];
+    const bonuses = [junk as IBonus];
     const state = applyBonuses(initialState, bonuses);
-    expect( state.destiny ).toBe(37);
-    expect( state.entanglement ).toBe(13);
-    expect( state.chi.general.value ).toBe(24);
+    expect(state).toMatchObject(initialState);
   });
 
 });

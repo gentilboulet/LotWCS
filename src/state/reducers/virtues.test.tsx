@@ -1,10 +1,12 @@
 import { initialStateFactory } from 'state/initial';
 import { IStoreState } from 'state/type';
-import { virtuesReducer } from './virtues';
 
 import * as dataVirtues from 'data/virtues';
 import * as actions from 'state/actions/virtues';
-import { getVirtue, isVirtuePresent } from 'state/virtues';
+import { isVirtuePresent } from 'state/virtues';
+
+import { globalReducer } from './global';
+import { virtuesReducer } from './virtues';
 
 const initialState: IStoreState  = initialStateFactory();
 
@@ -21,10 +23,11 @@ describe('Testing virtueReducer', () => {
 
       const action = actions.increase(virtue.name, 3, noCost);
       const state = virtuesReducer(initialState, action);
-      const newVirtue = getVirtue(state.virtues, virtue.name);
+      const newVirtue = state.virtues.find(v => v.name === virtue.name);
       expect(newVirtue).toBeDefined();
       expect( newVirtue ? newVirtue.value : undefined ).toBe(3);
       expect( newVirtue ? newVirtue.type : undefined ).toBe(virtue.type);
+      expect( globalReducer(initialState, action) ).toMatchObject(state);
     });
   });
 

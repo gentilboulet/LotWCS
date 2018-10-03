@@ -36,7 +36,7 @@ ReactDOM.render(
       <Router>
         <div>
           <Route exact={true} path="/" component={Homepage} />
-	  <Route exact={true} path="/app" component={App} />
+	        <Route exact={true} path="/app" component={App} />
           <Route exact={true} path="/history" component={HistoryView} />
           <Route exact={true} path="/test" component={TestView} />
         </div>
