@@ -28,6 +28,7 @@ describe('Testing skillsReducer', () => {
       const action = skillsBuy(skillInData.name, noCost);
       const state = skillsReducer(initialState, action);
       expect(state.skills[key].value).toBe(5);
+      expect( globalReducer(initialState, action) ).toMatchObject(state);
     });
   });
 
@@ -43,6 +44,7 @@ describe('Testing skillsReducer', () => {
     const state = skillsReducer(initialState, action);
     expect( isSpecialityPresent(initialState.skills,skillName,specialityName) ).toBeFalsy();
     expect( isSpecialityPresent(state.skills,skillName,specialityName) ).toBeTruthy();
+    expect( globalReducer(initialState, action) ).toMatchObject(state);
   });
 
   it('should should not receive an already bought SKILLS_SPECIALITY_BUY action', () => {

@@ -28,9 +28,7 @@ export function createState(): TSkillsState {
 
 export function increase(state: TSkillsState, skillName: string, maxSkillValue: number): void {
   const old = state[skillName].value;
-  if( old + 5 > maxSkillValue) {
-    throw new Error('Skill overflow');
-  }
+  if( old + 5 > maxSkillValue) { throw new Error('Skill '+skillName+' overflow'); }
   state[skillName].value += 5;
 }
 
@@ -49,15 +47,13 @@ export function addSpeciality(state: TSkillsState, skillName: string, speciality
 export function canBuySkill(state: IStoreState, skillName: TSkillName): boolean {
   const value = state.skills[skillName].value;
   const max = maxSkillBonus(state);
-  if ( max === undefined ) { return false; }
   if ( (value + 5) > max ) { return false; }
   const cost = getCostSkill(state, skillName);
   return canPayCost(state, cost);
 }
 
 export function canBuySpeciality(state: IStoreState, skillName: TSkillName, speciality: string): boolean {
-  const specialityIdx = state.skills[skillName].specialities.findIndex((s: string) => s === speciality);
-  if ( specialityIdx !== -1 ) { return false; }
+  if ( isSpecialityPresent(state.skills, skillName, speciality) ) { return false; }
   const cost = getCostSpeciality(state, skillName, speciality);
   return canPayCost(state, cost);
 }

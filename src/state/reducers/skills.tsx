@@ -14,7 +14,7 @@ export function skillsReducer(baseState: IStoreState, action: ISkillAction): ISt
     return produce(baseState, draftState => {
       applyCost(draftState, action.cost);
       const max = maxSkillBonus(draftState);
-      increase(draftState.skills, action.name, max ? max : 0 );
+      increase(draftState.skills, action.name, max );
       draftState.history.push(action);
     });
     case constants.SKILLS_SPECIALITY_BUY:

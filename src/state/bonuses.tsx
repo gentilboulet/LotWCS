@@ -96,7 +96,7 @@ export function applyBonuses(baseState: IStoreState, bonuses: IBonus[]): IStoreS
         break;
         case constants.BONUS_SKILL_RANK:
         const max = maxSkillBonus(draftState);
-        skills.increase(draftState.skills, bonus.skill, max ? max : 0);
+        skills.increase(draftState.skills, bonus.skill, max );
         break;
         case constants.BONUS_SPECIALITY:
         skills.addSpeciality(draftState.skills, bonus.skill, bonus.speciality);

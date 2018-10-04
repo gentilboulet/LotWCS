@@ -25,7 +25,7 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
 
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
-    this.buySkill = this.buySkill.bind(this);
+    this.doBuy = this.doBuy.bind(this);
     this.renderHeader = this.renderHeader.bind(this);
     this.renderButton = this.renderButton.bind(this);
   }
@@ -49,11 +49,18 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
           <Row>
             <Col >{this.renderHeader()}</Col>
             <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.props.value}</Col>
-            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.props.canBuy ? this.renderButton('plus', this.buySkill) : ''}</Col>
+            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.props.canBuy ? this.renderButton('plus', this.doBuy) : ''}</Col>
             <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.renderButton('times', this.endEdit)}</Col>
           </Row>
         </Container>
       );
+    }
+  }
+
+  public componentDidUpdate() {
+    if(this.state.edit && !this.props.canBuy )
+    {
+      this.endEdit();
     }
   }
 
@@ -69,7 +76,7 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
     });
   }
 
-  private buySkill() {
+  private doBuy() {
     this.props.onBuy();
   }
 
