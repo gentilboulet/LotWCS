@@ -26,9 +26,9 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "coverage-test": "set CI=true && react-scripts-ts test --env=jsdom --coverage",
+    "coverage-test": "set CI=true && react-scripts-ts test --env=jsdom --coverage --runInBand",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test": "react-scripts-ts test --env=jsdom",
+    "test": "react-scripts-ts test --env=jsdom --runInBand",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
