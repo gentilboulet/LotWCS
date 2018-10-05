@@ -31,12 +31,8 @@ export function addKungFuTechnique(state: IKungFuState, type: KUNGFU_TYPE, style
   validateKungFuStyle(type, styleUid);
   validateKungFuTechnique(type, styleUid, techniqueUid);
 
-  if (! isStylePresent(state, type, styleUid) ) {
-    throw new Error('Internal error : style not open');
-  }
-  if (isStyleTechniquePresent(state, type, styleUid, techniqueUid)) {
-    throw new Error('Internal error : technique already presents');
-  }
+  if (! isStylePresent(state, type, styleUid) ) { throw new Error('Internal error : style not open'); }
+  if (isStyleTechniquePresent(state, type, styleUid, techniqueUid)) { throw new Error('Internal error : technique already presents'); }
 
   state[type][styleUid].push(techniqueUid);
 }
