@@ -20,7 +20,7 @@ class Specialities extends React.Component<ISpecialitiesProps, {}> {
   public render() {
     return(
       <Container className="Specialities">
-	<Row><Col>
+	       <Row><Col>
           <EditSpecialities
             bought={this.props.bought}
             available={this.props.available}

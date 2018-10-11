@@ -26,9 +26,15 @@ class LoresheetOptions extends React.PureComponent<ILoresheetOptionsProps, {}> {
   private renderOptions(loresheet: IDataLoresheet): JSX.Element {
     const returns: any = [];
     loresheet.options.forEach((dataOption: IDataLoresheetOption) => {
-      this.props.knownOptions.filter((knownOption) => knownOption.uid === dataOption.uid)
-      .forEach((knownOption, index) => returns.push(this.renderKnownLoresheetOption(dataOption, knownOption, index)));
-      returns.push(this.renderOpenLoresheetOption(dataOption));
+      let knownIndex = -1;
+        this.props.knownOptions.filter((knownOption) => knownOption.uid === dataOption.uid)
+        .forEach((knownOption, index) => {
+          knownIndex = index;
+          returns.push(this.renderKnownLoresheetOption(dataOption, knownOption, index));
+        });
+        if(knownIndex === -1 || dataOption.repeatable) {
+          returns.push(this.renderOpenLoresheetOption(dataOption));
+        }
     });
     return returns;
   }

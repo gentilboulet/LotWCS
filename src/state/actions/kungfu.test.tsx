@@ -8,16 +8,16 @@ describe('Testing external kungfu action creator', () => {
     entanglement: 0
   };
 
-  expect(dataKungfus.externalKungfus.length).toBeGreaterThan(0);
-  expect(dataKungfus.internalKungfus.length).toBeGreaterThan(0);
+  expect(dataKungfus.externalKungfu.length).toBeGreaterThan(0);
+  expect(dataKungfus.internalKungfu.length).toBeGreaterThan(0);
 
   // Typescript error checking can't be sure arrays are not empty
-  if (dataKungfus.externalKungfus.length === 0 || dataKungfus.internalKungfus.length === 0) {
+  if (dataKungfus.externalKungfu.length === 0 || dataKungfus.internalKungfu.length === 0) {
     throw new Error('Impossible failure in tests');
   }
 
-  const validExternal = dataKungfus.externalKungfus[0];
-  const validInternal = dataKungfus.internalKungfus[0];
+  const validExternal = dataKungfus.externalKungfu[0];
+  const validInternal = dataKungfus.internalKungfu[0];
 
   it('should validate testing data :)', () => {
     expect(validExternal.uid.length).toBeGreaterThan(0);

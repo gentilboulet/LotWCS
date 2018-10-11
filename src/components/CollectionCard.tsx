@@ -5,7 +5,7 @@ import { Card, CardBody, CardFooter, CardHeader, CardSubtitle, CardText, CardTit
 export interface ICollectionCardProps {
   title?: string  | JSX.Element;
   subtitle?: string;
-  text: string  | JSX.Element;
+  text: string ;
   footer?: string  | JSX.Element;
   header?: string  | JSX.Element;
   onClick?: () => void;
