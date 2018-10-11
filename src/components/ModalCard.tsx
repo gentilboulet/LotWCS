@@ -8,7 +8,7 @@ export interface IModalCardProps {
   card: {
     title: string | JSX.Element;
     subtitle?: string;
-    text: string  | JSX.Element;
+    text: string;
     footer?: string  | JSX.Element;
     header?: string | JSX.Element;
   };

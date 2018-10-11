@@ -1,28 +1,30 @@
-// Constants used to differentiate between kungfu
-export const KUNGFU_EXTERNAL = 'KUNGFU_EXTERNAL';
-export type KUNGFU_EXTERNAL = typeof KUNGFU_EXTERNAL;
-
-export const KUNGFU_INTERNAL = 'KUNGFU_INTERNAL';
-export type KUNGFU_INTERNAL = typeof KUNGFU_INTERNAL;
-
-export type KUNGFU_TYPE = KUNGFU_INTERNAL | KUNGFU_EXTERNAL;
-
 import {
   IDataExternalKungfu,
   IDataExternalKungfuTechnique,
 
   IDataInternalKungfu,
-  IDataInternalKungfuTechnique
+  IDataInternalKungfuTechnique,
+
+  KUNGFU_EXTERNAL, KUNGFU_INTERNAL, KUNGFU_TYPE
 } from './types'
+
+export {
+  IDataExternalKungfu,
+  IDataExternalKungfuTechnique,
+
+  IDataInternalKungfu,
+  IDataInternalKungfuTechnique,
+
+  KUNGFU_EXTERNAL, KUNGFU_INTERNAL, KUNGFU_TYPE };
 
 
 import { blossomHarvest } from './externals/blossom-harvest';
-export const externalKungfus: IDataExternalKungfu[] = Array(
+export const externalKungfu: IDataExternalKungfu[] = Array(
   blossomHarvest
 );
 
 import { boundlessProsperityManual } from './internals/boundless-prosperity-manual';
-export const internalKungfus: IDataInternalKungfu[] = Array(
+export const internalKungfu: IDataInternalKungfu[] = Array(
   boundlessProsperityManual
 );
 
@@ -38,12 +40,12 @@ export function validateKungFuType(type: KUNGFU_TYPE): void {
 export function validateKungFuStyle(type: KUNGFU_TYPE, styleUid: string): void {
   validateKungFuType(type);
   if (type === KUNGFU_EXTERNAL) {
-    const filtered = externalKungfus.filter((kf: IDataExternalKungfu) => (kf.uid === styleUid));
+    const filtered = externalKungfu.filter((kf: IDataExternalKungfu) => (kf.uid === styleUid));
     if (filtered.length < 1) {
       throw new Error('Invalid external kungfu "' + styleUid + '"');
     }
   } else {
-    const filtered = internalKungfus.filter((kf: IDataInternalKungfu) => (kf.uid === styleUid));
+    const filtered = internalKungfu.filter((kf: IDataInternalKungfu) => (kf.uid === styleUid));
     if (filtered.length < 1) {
       throw new Error('Invalid internal kungfu "' + styleUid + '"');
     }
@@ -53,7 +55,7 @@ export function validateKungFuStyle(type: KUNGFU_TYPE, styleUid: string): void {
 export function validateKungFuTechnique(type: KUNGFU_TYPE, styleUid: string, techniqueUid: string): void {
   validateKungFuStyle(type, styleUid);
   if (type === KUNGFU_EXTERNAL) {
-    const filtered = externalKungfus.filter((kf: IDataExternalKungfu) => {
+    const filtered = externalKungfu.filter((kf: IDataExternalKungfu) => {
       return kf.uid === styleUid
       && kf.techniques.filter((tech: IDataExternalKungfuTechnique) => (tech.uid === techniqueUid)).length > 0;
     });
@@ -61,12 +63,25 @@ export function validateKungFuTechnique(type: KUNGFU_TYPE, styleUid: string, tec
       throw new Error('Invalid external kungfu technique "' + techniqueUid + '" for style "' + styleUid + '"');
     }
   } else {
-    const filtered = internalKungfus.filter((kf: IDataInternalKungfu) => {
+    const filtered = internalKungfu.filter((kf: IDataInternalKungfu) => {
       return kf.uid === styleUid
       && kf.techniques.filter((tech: IDataInternalKungfuTechnique) => (tech.uid === techniqueUid)).length > 0;
     });
     if (filtered.length < 1) {
       throw new Error('Invalid internal kungfu technique "' + techniqueUid + '" for style "' + styleUid + '"');
     }
+  }
+}
+
+export function kungfuTechniqueData(type: KUNGFU_TYPE, styleUid: string, techUid: string): IDataExternalKungfuTechnique | IDataInternalKungfuTechnique {
+  if(type === KUNGFU_EXTERNAL) {
+    const idxKF = externalKungfu.findIndex(kf => (kf.uid === styleUid));
+    const idxTech = externalKungfu[idxKF].techniques.findIndex(t => (t.uid === techUid));
+    return externalKungfu[idxKF].techniques[idxTech];
+  }
+  else {
+    const idxKF = internalKungfu.findIndex(kf => (kf.uid === styleUid));
+    const idxTech = internalKungfu[idxKF].techniques.findIndex(t => (t.uid === techUid));
+    return internalKungfu[idxKF].techniques[idxTech];
   }
 }

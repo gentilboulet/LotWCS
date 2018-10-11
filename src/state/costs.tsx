@@ -148,3 +148,17 @@ export function getCostVirtue(state: IStoreState, name: string): ICost {
   */
   return _costFactory(state, -1, 5);
 }
+
+export function getCostKungFuStyle(state: IStoreState, type: any, uid: string): ICost {
+  /*
+   DISCOUNT !
+  */
+  return _costFactory(state, -1, 10);
+}
+
+export function getCostKungFuTechnique(state: IStoreState, type: any, styleUid: string, uid: string): ICost {
+  /*
+   DISCOUNT !
+  */
+  return _costFactory(state, -1, 10);
+}

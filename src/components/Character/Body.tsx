@@ -6,6 +6,7 @@ import History from 'containers/Character/History';
 // import CharacterLoresheets from 'containers/CharacterLoresheets';
 
 import Chis from 'components/Character/Chis';
+import ExternalKungFuList from 'components/Character/ExternalKungFuList';
 import Loresheets from 'components/Character/Loresheets';
 import Skills from 'components/Character/Skills';
 import Virtues from 'containers/Character/Virtues';
@@ -17,12 +18,15 @@ class Body extends React.Component<{}, {}> {
         <Tab title="Character Skills" tabId="skills">
           <Skills />
         </Tab>
+        <Tab title="External Kung Fu" tabId="externalkungfu">
+          <ExternalKungFuList />
+        </Tab>
         <Tab title="Kung Fu" tabId="kungfu">
           <PlaceHolder>Kung fu learnt by the character.
           </PlaceHolder>
         </Tab>
         <Tab title="Chi" tabId="chi">
-	  <Chis />
+          <Chis />
         </Tab>
         <Tab title="Loresheets" tabId="loresheets">
           <Loresheets />
