@@ -41,13 +41,3 @@ export function canBuyVirtue(state: IStoreState, name: string): boolean {
   const cost = getCostVirtue(state, name);
   return canPayCost(state, cost);
 }
-
-export function canBuyVirtue(state: IStoreState, name: string): boolean {
-  const findIndex = state.virtues.findIndex(v => name === v.name);
-  if( findIndex === -1 ) { return false; }
-  const virtue = state.virtues[findIndex];
-  if( (virtue.value+1) > 5 )  { return false; }
-
-  const cost = getCostVirtue(state, name);
-  return canPayCost(state, cost);
-}
