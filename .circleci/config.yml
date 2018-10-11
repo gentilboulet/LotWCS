@@ -39,7 +39,13 @@ jobs:
         command: ./node_modules/tslint/bin/tslint --project .
     - run: # run tests
         name: test
-        command: 'npm test'
+        command: 'npm run test-ci'
+        environment:
+                CI: true
+                JEST_JUNIT_OUTPUT_DIR: test-results/jest/
+                JEST_JUNIT_OUTPUT_NAME: results.xml
+    - store_test_results: # special step to upload test results for display in Test Summary
+        path: test-results
   build:
     <<: *defaults
     parallelism: 1
@@ -49,7 +55,7 @@ jobs:
     - run: # build app
         name: build
         command: 'npm run build'
-  data_collection:
+  coverage:
     <<: *defaults
     parallelism: 1
     steps: # a collection of executable commands
@@ -57,19 +63,12 @@ jobs:
         at: .
     - run: # run coverage report
         name: code-coverage
-        command: 'npm run coverage-test'
-        no_output_timeout: 20m
+        command: 'npm run coverage-test-ci'
+        environment:
+                CI: true
     - run: # send to coveralls
         name: coveralls
         command: 'npm run coveralls'
-    - store_artifacts: # special step to save test results as as artifact
-        path: test-results.xml
-        prefix: tests
-    - store_artifacts:
-        path: coverage
-        prefix: coverage
-    - store_test_results: # special step to upload test results for display in Test Summary
-        path: test-results.xml
 
 workflows:
   version: 2
@@ -82,7 +81,7 @@ workflows:
       - test:
           requires:
             - env_setup
-      - data_collection:
+      - coverage:
           requires:
             -  build
             -  test
