@@ -26,7 +26,7 @@ jobs:
           - ./node_modules
     - persist_to_workspace:
         root: .
-        paths: 
+        paths:
           - .
   test:
     <<: *defaults
@@ -46,6 +46,7 @@ jobs:
                 JEST_JUNIT_OUTPUT_NAME: results.xml
     - store_test_results: # special step to upload test results for display in Test Summary
         path: test-results
+
   build:
     <<: *defaults
     parallelism: 1
@@ -55,6 +56,23 @@ jobs:
     - run: # build app
         name: build
         command: 'npm run build'
+    - persist_to_workspace:
+        root: .
+        paths:
+          - build
+
+  deploy:
+    <<: *defaults
+    parallelism: 1
+    environment:
+      - SOURCE_BRANCH: master
+      - TARGET_BRANCH: gh-pages
+    steps: # a collection of executable commands
+    - attach_workspace:
+        at: .
+    - deploy: # build app
+        command: './.circleci/deploy.sh'
+
   coverage:
     <<: *defaults
     parallelism: 1
@@ -74,7 +92,11 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - env_setup
+      - env_setup:
+          filters:
+            branches:
+              ignore: gh-pages
+
       - build:
           requires:
             - env_setup
@@ -85,3 +107,9 @@ workflows:
           requires:
             -  build
             -  test
+      - deploy:
+          requires:
+            -  build
+          filters:
+            branches:
+              only: master
