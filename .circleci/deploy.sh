@@ -1,17 +1,21 @@
-!/bin/#!/usr/bin/env bash
+#!/bin/bash
+
+set -e
 
  if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
-    git config --global user.email $GH_EMAIL
-    git config --global user.name $GH_NAME
+    mkdir -p ~/.ssh
+    ssh-keyscan github.com >> ~/.ssh/known_hosts
 
     git clone $CIRCLE_REPOSITORY_URL gh-pages
 
     cd gh-pages
+
+    git config user.name "CircleCI auto deploy"
+    git config user.email "circleci@lotwcs.com"
+
     git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
     git rm -rf .
     cd ..
-
-    npm run build
 
     cp -a build/. gh-pages/.
 
