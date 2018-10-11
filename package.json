@@ -12,6 +12,7 @@
     "bootstrap": "^4.1.3",
     "classnames": "^2.2.6",
     "immer": "^1.7.2",
+    "jest-junit": "^5.2.0",
     "react": "^16.5.2",
     "react-bootstrap-typeahead": "^3.2.3",
     "react-dom": "^16.5.2",
@@ -26,9 +27,10 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "coverage-test": "set CI=true && react-scripts-ts test --env=jsdom --coverage --runInBand",
+    "coverage-test-ci": "react-scripts-ts test --env=jsdom --coverage --runInBand",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test": "react-scripts-ts test --env=jsdom --runInBand",
+    "test": "react-scripts-ts test --env=jsdom",
+    "test-ci": "react-scripts-ts test --env=jsdom --runInBand --reporters=jest-junit",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
