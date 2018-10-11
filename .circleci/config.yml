@@ -1,10 +1,15 @@
+defaults: &defaults
+  working_directory: ~/gentilboulet/LotWCS
+  docker: # run the steps with Docker
+  - image: circleci/node:10.7.0
+
+
+
 version: 2
 jobs:
-  build:
-    working_directory: ~/gentilboulet/LotWCS
+  env_setup:
+    <<: *defaults
     parallelism: 1
-    docker: # run the steps with Docker
-    - image: circleci/node:10.7.0
     steps: # a collection of executable commands
     - checkout # special step to check out source code to working directory
     - run:
@@ -13,18 +18,43 @@ jobs:
     - restore_cache: # special step to restore the dependency cache
         key: dependency-cache-{{ checksum "package.json" }}
     - run:
-        name: install-npm-wee
+        name: install-npm
         command: npm install
     - save_cache: # special step to save the dependency cache
         key: dependency-cache-{{ checksum "package.json" }}
         paths:
           - ./node_modules
+    - persist_to_workspace:
+        root: .
+        paths: 
+          - .
+  test:
+    <<: *defaults
+    parallelism: 1
+    steps: # a collection of executable commands
+    - attach_workspace:
+        at: .
     - run: # linter
         name: tslint
         command: ./node_modules/tslint/bin/tslint --project .
     - run: # run tests
         name: test
-        command: npm test
+        command: 'npm test'
+  build:
+    <<: *defaults
+    parallelism: 1
+    steps: # a collection of executable commands
+    - attach_workspace:
+        at: .
+    - run: # build app
+        name: build
+        command: 'npm run build'
+  data_collection:
+    <<: *defaults
+    parallelism: 1
+    steps: # a collection of executable commands
+    - attach_workspace:
+        at: .
     - run: # run coverage report
         name: code-coverage
         command: 'npm run coverage-test'
@@ -40,3 +70,19 @@ jobs:
         prefix: coverage
     - store_test_results: # special step to upload test results for display in Test Summary
         path: test-results.xml
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - env_setup
+      - build:
+          requires:
+            - env_setup
+      - test:
+          requires:
+            - env_setup
+      - data_collection:
+          requires:
+            -  build
+            -  test
