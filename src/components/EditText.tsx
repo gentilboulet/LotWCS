@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Icon from 'react-fa';
-import { Button, Col, Container, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
+import { Button, Col, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
 
 import FieldHeader from 'components/FieldHeader';
 
@@ -28,7 +28,7 @@ export interface IEditTextEvent {
   target: { value: string };
 }
 
-class EditText extends React.Component<IEditTextProps, IEditTextState> {
+class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
   constructor(props: IEditTextProps) {
     super(props);
 
@@ -58,12 +58,10 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
 
   private endEdit = () => {
     this.setState({
-      value: this.state.value.trim()
+      edit: false,
+      value: this.state.value.trim(),
     });
     if ( this.props.validate(this.state.value) ) {
-      this.setState({
-        edit: false,
-      });
       if (this.state.value !== this.props.default) {
         this.props.onSubmit(this.state.value);
       }
@@ -80,47 +78,42 @@ class EditText extends React.Component<IEditTextProps, IEditTextState> {
 
   private renderButton = (isValueValid: boolean): JSX.Element => {
     const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
-    const btnKo = (<Button color="success" disabled={true}><Icon name="check" /></Button>);
+    const btnKo = (<Button onClick={this.endEdit} color="danger"><Icon name="times" /></Button>);
     return (isValueValid) ? btnOk : btnKo;
   }
 
   private renderValue = (): JSX.Element => {
     return (
-      <Container >
-        <Row
-          onClick={this.startEdit}
-          role="button"
-          disabled={true}
-          style={styles.row}
-        >
-          <Col>{this.renderHeader()}</Col>
-          <Col>{this.state.value}</Col>
-        </Row>
-      </Container>
+      <Row
+        onClick={this.startEdit}
+        role="button"
+        disabled={true}
+        style={styles.row}
+      >
+        <Col xs="6">{this.renderHeader()}</Col>
+        <Col>{this.state.value}</Col>
+      </Row>
     );
   }
 
   private renderInput = (): JSX.Element => {
     const isValueValid = this.props.validate(this.state.value);
-    const validationInputState = (isValueValid ? 'success' : 'error');
     return (
-      <Container>
-        <Row style={styles.row}>
-          <Col xs="6">{this.renderHeader()}</Col>
-          <Col>
-            <InputGroup>
-              <Input
-                state={validationInputState}
-                onChange={this.textChange}
-                value={this.state.value}
-              />
-              <InputGroupAddon addonType="append">
-                  {this.renderButton(isValueValid)}
-              </InputGroupAddon>
-            </InputGroup>
-          </Col>
-        </Row>
-      </Container>
+      <Row style={styles.row}>
+        <Col xs="6">{this.renderHeader()}</Col>
+        <Col>
+          <InputGroup>
+            <Input
+              valid={isValueValid}
+              onChange={this.textChange}
+              value={this.state.value}
+            />
+            <InputGroupAddon addonType="append">
+                {this.renderButton(isValueValid)}
+            </InputGroupAddon>
+          </InputGroup>
+        </Col>
+      </Row>
     );
   }
 }

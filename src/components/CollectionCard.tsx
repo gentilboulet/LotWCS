@@ -11,7 +11,7 @@ export interface ICollectionCardProps {
   onClick?: () => void;
 }
 
-export default class CollectionCard extends React.Component<ICollectionCardProps, {} > {
+export default class CollectionCard extends React.PureComponent<ICollectionCardProps, {} > {
   constructor(props: ICollectionCardProps) {
     super(props);
     this.renderCardBody = this.renderCardBody.bind(this);

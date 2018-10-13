@@ -18,7 +18,7 @@ interface IModalCardState {
   modal: boolean;
 }
 
-export default class ModalCard extends React.Component<IModalCardProps, IModalCardState> {
+export default class ModalCard extends React.PureComponent<IModalCardProps, IModalCardState> {
   constructor(props: IModalCardProps) {
     super(props);
     this.toggle = this.toggle.bind(this);

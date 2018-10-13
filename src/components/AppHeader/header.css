@@ -1,12 +1,27 @@
 .header {
-  text-align: center;
-  background-color: #e4e4e4;
-  border: 1px solid lightgrey;
+  padding-top: 10px;
 }
 
-.link-list {
-  display: flex;
-  margin: auto;
-  width: 50%;
-  justify-content: space-around;
+.header-left {
+  display: inline;
+  width: 80%;
+}
+
+.header-right{
+  display: inline;
+  width: 20%;
+  align-self: flex-end;
+}
+
+.app-name {
+  height: inherit;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.header-nav {
+  height: 50px;
 }
