@@ -4,13 +4,12 @@ import { Card, CardBody, CardText } from 'reactstrap';
 import ControlledList from 'components/ControlledList';
 
 import ExternalKungFu from 'containers/Character/ExternalKungFu';
-import { externalKungfu, getKungFuType, internalKungfu, KUNGFU_EXTERNAL, kungfuData } from 'data/kungfu';
+import { externalKungfu, getKungFuType, internalKungfu, KUNGFU_EXTERNAL } from 'data/kungfu';
 
 class KungFuList extends React.PureComponent<{}, {}> {
   constructor(props: {}) {
     super(props);
 
-    this.renderListItemLabel = this.renderListItemLabel.bind(this);
     this.renderItem = this.renderItem.bind(this);
   }
 
@@ -25,12 +24,6 @@ class KungFuList extends React.PureComponent<{}, {}> {
         renderItem={this.renderItem}
       />
     );
-  }
-
-  private renderListItemLabel(uid: string): string {
-    const type = getKungFuType(uid);
-    const data = kungfuData(type, uid);
-    return data.name;
   }
 
   private renderItem(uid: string): JSX.Element {

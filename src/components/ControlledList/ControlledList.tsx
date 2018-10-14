@@ -20,7 +20,7 @@ const styles = {
 }
 
 export interface IControlledListProps {
-  options: Array<{id: string, label: string}>;
+  options: Array<{id: string, label: string, disabled?: boolean}>;
   preSelected?: string[];
   renderItem: (id: string) => JSX.Element;
 }
@@ -59,9 +59,13 @@ class ControlledList extends React.PureComponent<IControlledListProps, IControll
 
   private renderList(): JSX.Element[] {
     return this.props.options.map(o => {
-      const toggle = () => this.itemOnSelectedToggle(o);
-      const selected = this.state.selected.indexOf(o.id) !== -1;
-      return <ControlledListItem key={o.id} label={o.label} onSelectedToggle={toggle} selected={selected} />;
+      if(! o.disabled) {
+        const toggle = () => this.itemOnSelectedToggle(o);
+        const selected = this.state.selected.indexOf(o.id) !== -1;
+        return <ControlledListItem key={o.id} label={o.label} onSelectedToggle={toggle} selected={selected} />;
+      } else {
+        return <ControlledListItem key={o.id} label={o.label} />;
+      }
     });
   }
 

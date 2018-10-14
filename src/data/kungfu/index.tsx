@@ -21,8 +21,10 @@ export {
 
 
 import { blossomHarvest } from './externals/blossom-harvest';
+import { boneFedWolfFang } from './externals/bone-fed-wolf-fang';
 export const externalKungfu: IDataExternalKungfu[] = Array(
-  blossomHarvest
+  blossomHarvest,
+  boneFedWolfFang
 );
 
 import { boundlessProsperityManual } from './internals/boundless-prosperity-manual';

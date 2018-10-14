@@ -45,9 +45,6 @@ class ExternalKungFu extends React.Component<IExternalKungFuProps, {}> {
   constructor(props: IExternalKungFuProps) {
     super(props);
 
-    /* tslint:disable no-console */
-    console.log("ExternalKungFuTechnique", this.props);
-
     this.renderCrunch = this.renderCrunch.bind(this);
     this.renderStats = this.renderStats.bind(this);
     this.renderTechniques = this.renderTechniques.bind(this);
