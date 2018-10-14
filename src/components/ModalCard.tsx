@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Container, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 
 import CollectionCard from 'components/CollectionCard';
 
@@ -28,11 +28,7 @@ export default class ModalCard extends React.PureComponent<IModalCardProps, IMod
   }
 
   public render() {
-    return (
-    <Container>
-      <Container>{this.renderCard()}</Container>
-      <Container>{this.renderModal()}</Container>
-    </Container>);
+    return <div>{this.renderCard()}{this.renderModal()}</div>;
   }
 
   private renderCard(): JSX.Element {

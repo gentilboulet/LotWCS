@@ -8,7 +8,7 @@ import { IStoreState } from 'state/type';
 
 import ExternalKungFu, { IExternalKungFuProps } from 'components/Character/ExternalKungFu';
 
-import { KUNGFU_EXTERNAL } from 'data/kungfu/types';
+import { IDataExternalKungfu, IDataExternalKungfuStatistics, KUNGFU_EXTERNAL, kungfuData } from 'data/kungfu';
 
 interface IProps {
   uid: string;
@@ -20,6 +20,7 @@ interface IMapStateToProps {
   knownTechniques: string[];
   uid: string;
   cost: ICost;
+  statistics: IDataExternalKungfuStatistics;
 }
 
 interface IMapDispatchToProps {
@@ -28,11 +29,15 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   const isOpen = isStylePresent(state.kungfu,  KUNGFU_EXTERNAL, props.uid);
+
+  const statistics = (kungfuData(KUNGFU_EXTERNAL, props.uid) as IDataExternalKungfu).statistics;
+
   return {
     canOpen: canOpenKungFu(state, KUNGFU_EXTERNAL, props.uid),
     cost: getCostKungFuStyle(state, KUNGFU_EXTERNAL, props.uid),
     isOpen,
     knownTechniques: (isOpen ? state.kungfu[KUNGFU_EXTERNAL][props.uid] : []),
+    statistics,
     uid: props.uid,
   };
 }
