@@ -7,6 +7,7 @@ import * as effects from 'state/actions/perks/effects';
 export const blossomHarvest: IDataExternalKungfu = {
   name: 'Blossom Harvest',
   uid: 'Blossom Harvest',
+  qualities: ['This is one of the most honest and straightforward fighting styles there is. It dispenses with trickery or fancy moves, and compensates with sweat and resilience. Its training methods use everyday items and situations, such as running upstream through a river to build stamina, and using farming tools to practice weapon forms. Most of its techniques and theories also incorporate metaphors that are easy for common people to understand.', 'Because it is so approachable, it has achieved a folk hero status; peasant rebellions often start training with this fighting style, calling those who stand against injustice “Blossoming Heroes”.'],
   weapons: ['Massive', 'Staff', 'Unarmed'],
   laugths: 'A chain is only as strong as its weakest link, and so Blossom Harvest laughs at styles that are overly complicated or full of flourishes. These intricate methods are easily smashed aside and broken. It likewise laughs at such trivialities as being outnumbered, or disadvantageous terrain – pure grit and hellish training have rendered Blossoming Heroes fearless to such things!',
   fears: 'This style has problems when facing fighters who are reactive. Blossom Harvest’s openness is easy to read and predict, giving such opponents everything they need. It’s also ill-prepared for enemies who wield supernatural forces or influence.',

@@ -70,6 +70,7 @@ class ExternalKungFu extends React.Component<IExternalKungFuProps, {}> {
                  {data.weapons.map(w => <Button key={w} outline={true} disabled={true} style={styles.button} size="sm">{w}</Button>)}
                </p>
              </div>
+             <div><h5 style={styles.inline}>Qualities</h5>: {data.qualities.map((q, i) => <p style={(i===0) ? styles.inline : {}} key={i}>{q}</p>)}</div>
              <div><h5 style={styles.inline}>Laught</h5>: <p style={styles.inline}>{data.laugths}</p></div>
              <div><h5 style={styles.inline}>Fears</h5>: <p style={styles.inline}>{data.fears}</p></div>
              <div><h5 style={styles.inline}>Techniques</h5></div>

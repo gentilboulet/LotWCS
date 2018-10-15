@@ -16,14 +16,6 @@ export interface ILoresheetProps {
 }
 
 const styles = {
-  container: {
-    borderColor: 'lightgrey',
-    borderRadius: '10px',
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    marginBottom: '5px',
-    marginTop: '5px',
-  },
   inline: {
     display: 'inline'
   },

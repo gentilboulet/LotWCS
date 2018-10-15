@@ -41,6 +41,7 @@ export interface IDataInternalKungfuTechnique {
 
 export interface IDataExternalKungfu {
   name: string;
+  qualities: string[];
   laugths: string;
   fears: string;
   weapons: WEAPON_TYPE[];
@@ -52,6 +53,7 @@ export interface IDataExternalKungfu {
 export interface IDataInternalKungfu {
   name: string;
   element: TChiName;
+  description: string;
   techniques: IDataInternalKungfuTechnique[];
   uid: string;
 }

@@ -7,6 +7,7 @@ import * as effects from 'state/actions/perks/effects';
 export const boundlessProsperityManual: IDataInternalKungfu = {
   name: 'Boundless Prosperity Manual',
   uid: 'Boundless Prosperity Manual',
+  description: 'One of the most famous instructions on health is the Boundless Prosperity Manual. It teaches proper breathing and exercise, and brings long life and vigorous health. Some rare copies go much further! They can teach you how to transcend mortal limitations through internal alchemy. Those who carefully decipher the clues and study the methods await a transformation to a higher state of being! These rare copies are all jealously guarded by gangs and martial masters.',
   element: 'wood',
   techniques: [
     {

@@ -8,6 +8,7 @@ export const boneFedWolfFang: IDataExternalKungfu = {
   name:"Bone-Fed Wolf Fang",
   uid: "Bone-Fed Wolf Fang",
   weapons: ['Massive', 'Saber'],
+  qualities: ['Generations of battlefield experience have shaped a fighting style developed with the practicalities of warfare in mind. Some maneuvers were loosely inspired by the gruesome methods by which wolves drag down their prey. It is mainly taught by the military, but unfortunately, many deserters take up a life of banditry, making this style a common plague for simple people. Because of this, the style is also often called a dog’s way of fighting.', 'This style focuses on hard, linear movements designed to cripple and exploit weaknesses–the supreme soldier needs efficiency, not beauty. It cruelly maims first, and dispatches second. No methods are too dishonest when victory is on the line.'],
   laugths: "The wolf laughs at honesty, which it rewards with hungry teeth. Above all else, the wolf knows no greater joy than to fight someone vulnerable or caught off guard.",
   fears: "The wolf fears what is hidden or unorthodox, for his many strategies don’t account for them. The wolf also dislikes being outnumbered and surrounded; it relies on being the hunting pack, not the hunted.",
   statistics: {
