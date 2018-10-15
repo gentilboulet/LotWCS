@@ -1,10 +1,11 @@
-import { optionLoresheetData, validateLoresheet, validateLoresheetOption } from 'data/loresheets';
+import { getLoresheetOptionData, validateLoresheet, validateLoresheetOption } from 'data/loresheets';
 
 import { canPayCost, getCostBuyLoresheetOption, getCostOpenLoresheet } from 'state/costs';
 import { IStoreState } from 'state/type';
 
 export interface ILoresheetOptionState {
   uid: string;
+  payload: any;
 }
 
 export interface ILoresheetsState {
@@ -37,12 +38,12 @@ export function buyLoresheetOption(state: ILoresheetsState, loresheetUid: string
 
   if (! isLoresheetPresent(state, loresheetUid) ) { throw new Error('Internal error : loresheet not found'); }
   if ( isLoresheetOptionPresent(state, loresheetUid, optionUid)
-  && !optionLoresheetData(loresheetUid, optionUid).repeatable) {
+  && !getLoresheetOptionData(loresheetUid, optionUid).repeatable) {
     throw new Error('Internal error : loresheet option is not repeatable');
   }
   /* TODO check prerequisites */
 
-  state[loresheetUid].push({uid: optionUid});
+  state[loresheetUid].push({uid: optionUid, payload:{}});
 }
 
 export function canBuyLoresheet(state: IStoreState, uid: string): boolean {
@@ -53,7 +54,7 @@ export function canBuyLoresheet(state: IStoreState, uid: string): boolean {
 
 export function canBuyLoresheetOption(state: IStoreState, lsUid: string, uid: string): boolean {
   if (! isLoresheetPresent(state.loresheets, lsUid) ) { return false; } // Not opened
-  if ( isLoresheetOptionPresent(state.loresheets, lsUid, uid) && !optionLoresheetData(lsUid, uid).repeatable) { return false; } // Already bought
+  if ( isLoresheetOptionPresent(state.loresheets, lsUid, uid) && !getLoresheetOptionData(lsUid, uid).repeatable) { return false; } // Already bought
   const cost = getCostBuyLoresheetOption(state, lsUid, uid);
   return canPayCost(state, cost);
 }

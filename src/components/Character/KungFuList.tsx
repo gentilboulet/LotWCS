@@ -14,12 +14,15 @@ class KungFuList extends React.PureComponent<{}, {}> {
   }
 
   public render() {
-    const externals = externalKungfu.map(kf => ({id: kf.uid, label: kf.name}));
-    const internals = internalKungfu.map(kf => ({id: kf.uid, label: kf.name}));
+    const externals = externalKungfu.map(kf => ({id: kf.uid, label: kf.name, disabled: false}));
+    const internals = internalKungfu.map(kf => ({id: kf.uid, label: kf.name, disabled: false}));
+
+    const externalHeader = [{id: 'External Styles', label: 'External Styles', disabled: true}];
+    const internalHeader = [{id: 'Interal Styles', label: 'Interal Styles', disabled: true}];
 
     return (
       <ControlledList
-        options={externals.concat(internals)}
+        options={externalHeader.concat(externals).concat(internalHeader).concat(internals)}
         preSelected={['Blossom Harvest']}
         renderItem={this.renderItem}
       />

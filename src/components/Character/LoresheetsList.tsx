@@ -27,6 +27,7 @@ class LoresheetsList extends React.PureComponent<{}, {}> {
 
     return  <ControlledList
               options={options}
+              preSelected={['wulin']}
               renderItem={this.renderItem}
             />
   }

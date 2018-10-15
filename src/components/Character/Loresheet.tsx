@@ -1,58 +1,75 @@
 import * as React from 'react';
 import Icon from 'react-fa';
-import { Button, Col, Container, Row } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 
-import { IDataLoresheet, loresheets } from 'data/loresheets';
+import { getLoresheetData, IDataLoresheet } from 'data/loresheets';
 import { ICost } from 'state/costs';
 
-import LoresheetOptions from 'components/Character/LoresheetOptions';
-import ModalCard from 'components/ModalCard';
+import LoresheetOption from 'containers/Character/LoresheetOption';
 
 export interface ILoresheetProps {
   uid: string;
   known: boolean;
-  knownOptions: Array<{ uid: string, payload?: any }>;
   cost: ICost;
   canBuy: boolean;
   onBuy: (cost: ICost) => void;
 }
 
+const styles = {
+  container: {
+    borderColor: 'lightgrey',
+    borderRadius: '10px',
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    marginBottom: '5px',
+    marginTop: '5px',
+  },
+  inline: {
+    display: 'inline'
+  },
+  right: {
+    float: 'right' as 'right',
+  }
+};
+
 class Loresheet extends React.Component<ILoresheetProps, {}> {
   constructor(props: ILoresheetProps) {
     super(props);
 
-    this.onBuy = this.onBuy.bind(this);
-    this.renderHeader = this.renderHeader.bind(this);
+    this.renderOptions = this.renderOptions.bind(this);
+    this.renderButton = this.renderButton.bind(this);
   }
 
   public render() {
-    const found = loresheets.find((ls: IDataLoresheet) => ls.uid === this.props.uid);
-    if( found === undefined) { return; }
-    const card = {
-      header: this.renderHeader(),
-      text: found.description,
-      title: found.name,
-    };
-    return <ModalCard card={card}>
-      <LoresheetOptions
-        knownOptions={this.props.knownOptions}
-        lsUid={this.props.uid}
-      />
-    </ModalCard>;
+    const data = getLoresheetData(this.props.uid) as IDataLoresheet;
+    return <div>
+             <div><h4 style={styles.inline}>{data.name}</h4><span style={styles.right}>{this.renderButton()}</span></div>
+             <div><p style={styles.inline}>{data.description}</p></div>
+             <div>{this.renderOptions(data)}</div>
+           </div>
   }
 
-  private onBuy(): void { this.props.onBuy(this.props.cost); }
-
-  private renderHeader(): JSX.Element {
-    return (<Container><Row><Col/>
-      <Col xs={1} sm={1} md={1} lg={1} xl={1} >{this.renderButton()}</Col>
-      <Col xs={1} sm={1} md={1} lg={1} xl={1} />
-    </Row></Container>);
+  private renderOptions(data: IDataLoresheet): JSX.Element {
+    return <Table hover={true}>
+             <thead>
+               <tr>
+                 <th>Type</th>
+                 <th>Cost</th>
+                 <th>Effect</th>
+                 <th />
+               </tr>
+             </thead>
+             <tbody>
+             {data.options.map(o => <LoresheetOption key={o.uid} lsUid={data.uid} uid={o.uid} />)}
+             </tbody>
+           </Table>
   }
+
   private renderButton(): JSX.Element {
-    if(this.props.known) { return <Button color="primary"><Icon name="leanpub" /></Button>; }
-    if(this.props.canBuy) { return (<Button  onClick={this.onBuy} color="success"><Icon name="unlock-alt" /></Button>); }
-    else { return (<Button color="danger"><Icon name="times" /></Button>); }
+    const onClick = () => this.props.onBuy(this.props.cost);
+    if(this.props.canBuy) { return (<Button color="success" style={styles.inline} onClick={onClick}><Icon name="unlock-alt" /></Button>); }
+    else if(this.props.known) { return <Button color="primary" style={styles.inline} disabled={true}><Icon name="leanpub" /></Button>; }
+    else { return (<Button color="danger" style={styles.inline}><Icon name="times" /></Button>); }
   }
 }
 

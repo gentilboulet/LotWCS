@@ -103,7 +103,12 @@ export function lsOptionCostToValues(costStr: string): number[] {
   }
 }
 
-export function optionLoresheetData(lsUid: string, optUid: string): IDataLoresheetOption {
+export function getLoresheetData(lsUid: string): IDataLoresheet {
+  const idxLS = loresheets.findIndex(ls => (ls.uid === lsUid));
+  return loresheets[idxLS];
+}
+
+export function getLoresheetOptionData(lsUid: string, optUid: string): IDataLoresheetOption {
   const idxLS = loresheets.findIndex(ls => (ls.uid === lsUid));
   const idxOpt = loresheets[idxLS].options.findIndex(o => (o.uid === optUid));
   return loresheets[idxLS].options[idxOpt];
