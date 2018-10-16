@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Typeahead,  } from 'react-bootstrap-typeahead';
 import Icon from 'react-fa';
-import { Button, Col, Container, InputGroup, InputGroupAddon, Row } from 'reactstrap';
+import { Button, Col, Container, Row } from 'reactstrap';
 
 import { ICost } from 'state/costs';
 
@@ -67,7 +67,6 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
     return <Container>
       <Row>
         <Col>
-          <InputGroup>
             <Typeahead
               allowNew={true}
               multiple={true}
@@ -78,10 +77,7 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
               placeholder="Chose a speciality..."
               onChange={this.selectedChange}
             />
-            <InputGroupAddon addonType="append">
-              {this.renderButton('check', this.endEdit)}
-            </InputGroupAddon>
-          </InputGroup>
+            {this.renderButton('check', this.endEdit)}
         </Col>
       </Row>
     </Container>

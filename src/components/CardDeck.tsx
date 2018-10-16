@@ -11,7 +11,7 @@ interface IDeckState {
   toggle: boolean;
 }
 
-class Deck extends React.Component<IDeckProps, IDeckState> {
+class Deck extends React.PureComponent<IDeckProps, IDeckState> {
   constructor(props: IDeckProps) {
     super(props);
     this.toggle = this.toggle.bind(this);

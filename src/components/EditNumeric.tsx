@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Icon from 'react-fa';
-import { Button, Col, Container, Row } from 'reactstrap';
+import { Button, Col, Container, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
 
 import FieldHeader from 'components/FieldHeader';
 
@@ -38,7 +38,7 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
             onClick={this.startEdit}
             role="button"
           >
-          <Col>{this.renderHeader()}</Col>
+          <Col xs={6}>{this.renderHeader()}</Col>
           <Col>{this.props.value}</Col>
           </Row>
         </Container>
@@ -47,10 +47,16 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
       return(
         <Container>
           <Row>
-            <Col >{this.renderHeader()}</Col>
-            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.props.value}</Col>
-            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.props.canBuy ? this.renderButton('plus', this.doBuy) : ''}</Col>
-            <Col xs={1} sm={1} md={1} lg={1} xl={1}>{this.renderButton('times', this.endEdit)}</Col>
+            <Col xs={6}>{this.renderHeader()}</Col>
+            <Col>
+              <InputGroup>
+                <Input value={this.props.value} readOnly={true} />
+                <InputGroupAddon addonType="append">
+                  {this.props.canBuy ? this.renderButton('plus', this.doBuy) : null }
+                  {this.renderButton('times', this.endEdit)}
+                </InputGroupAddon>
+              </InputGroup>
+            </Col>
           </Row>
         </Container>
       );

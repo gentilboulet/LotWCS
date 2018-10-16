@@ -18,11 +18,11 @@ const store = createStore<IStoreState, IAction, any, any>(
 
 describe('Testing the LoresheetOption container', () => {
   it('should render without crashing', () => {
-    const div = document.createElement('div');
+    const tbody = document.createElement('tbody');
     ReactDOM.render(
       <Provider store={store}>
         <LoresheetOption lsUid="wulin" uid="tieswithanother" />
       </Provider>,
-    div);
+    tbody);
   });
 });

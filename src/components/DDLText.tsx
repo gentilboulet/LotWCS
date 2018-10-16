@@ -1,9 +1,15 @@
 import * as React from 'react';
 import Icon from 'react-fa';
-import { Button, ButtonDropdown, Col, DropdownItem, DropdownMenu, DropdownToggle,
-  InputGroup, InputGroupAddon, Row } from 'reactstrap';
+import { Button, ButtonDropdown, Col, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'reactstrap';
 
 import FieldHeader from './FieldHeader';
+
+const styles = {
+  row: {
+    alignItems: 'center',
+    height: 56,
+  },
+};
 
 export interface IDDLItem {
     key: string;
@@ -28,7 +34,15 @@ export interface IDDLTextEvent {
   target: { value: string };
 }
 
-class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
+class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
+
+  protected static getDerivedStateFromProps(props: IDDLTextProps, state: IDDLTextState): IDDLTextState {
+    if(!state.edit) {
+      state.value = props.default ? props.default : '';
+    }
+    return state;
+  }
+
   constructor(props: IDDLTextProps) {
     super(props);
 
@@ -48,6 +62,7 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
     this.renderDropdownItems = this.renderDropdownItems.bind(this);
     this.renderHeader = this.renderHeader.bind(this);
   }
+
   public render(): JSX.Element {
     return (this.state.edit) ? this.renderDropdownList() : this.renderValue();
   }
@@ -105,22 +120,18 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   private renderDropdownList(): JSX.Element {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
-      <Row>
-        <Col>{this.renderHeader()}</Col>
+      <Row style={styles.row}>
+        <Col xs="6">{this.renderHeader()}</Col>
         <Col>
-          <InputGroup>
-            <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDDL}>
-              <DropdownToggle caret={true}>
-                {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
-              </DropdownToggle>
-              <DropdownMenu>
-                {this.renderDropdownItems()}
-              </DropdownMenu>
-            </ButtonDropdown>
-            <InputGroupAddon addonType="append">
-                {this.renderButton(labelForSelectedKey)}
-            </InputGroupAddon>
-          </InputGroup>
+          <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDDL} >
+            <DropdownToggle caret={true}>
+              {labelForSelectedKey.length > 0 ? labelForSelectedKey : 'Choose a ' + this.props.header}
+            </DropdownToggle>
+            <DropdownMenu right={true}>
+              {this.renderDropdownItems()}
+            </DropdownMenu>
+          </ButtonDropdown>
+          {this.renderButton(labelForSelectedKey)}
         </Col>
       </Row>
     );
@@ -129,9 +140,9 @@ class DDLText extends React.Component<IDDLTextProps, IDDLTextState> {
   private renderValue(): JSX.Element {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
-      <Row onClick={this.startEdit} role="button">
-        {this.renderHeader()}
-        <Col>
+      <Row onClick={this.startEdit} role="button" style={styles.row}>
+          <Col xs="6">{this.renderHeader()}</Col>
+          <Col xs="6">
           {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
         </Col>
       </Row>

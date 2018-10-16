@@ -10,11 +10,10 @@ import { IStoreState } from 'state/type';
 import Loresheet, { ILoresheetProps } from 'components/Character/Loresheet';
 
 interface IMapStateToProps {
-  uid: string;
-  known: boolean;
   canBuy: boolean;
   cost: ICost;
-  knownOptions: Array<{ uid: string, payload?: any }>;
+  known: boolean;
+  uid: string;
 }
 
 interface IMapDispatchToProps {
@@ -26,13 +25,10 @@ interface IProps {
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
-  const loresheetUid = Object.keys(state.loresheets).find((ls) => ls === props.uid);
-  const options = (loresheetUid !== undefined) ? state.loresheets[loresheetUid] : [];
   return {
   	canBuy: canBuyLoresheet(state, props.uid),
   	cost: getCostOpenLoresheet(state, props.uid),
   	known: isLoresheetPresent(state.loresheets, props.uid),
-    knownOptions: options,
   	uid: props.uid,
   };
 }

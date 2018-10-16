@@ -11,7 +11,7 @@ export interface ICollapsibleState {
   collapse: boolean;
 }
 
-class Collapsible extends React.Component<ICollapsibleProps, ICollapsibleState> {
+class Collapsible extends React.PureComponent<ICollapsibleProps, ICollapsibleState> {
   constructor(props: ICollapsibleProps) {
     super(props);
     this.toggle = this.toggle.bind(this);

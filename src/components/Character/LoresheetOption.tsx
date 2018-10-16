@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { Icon } from 'react-fa';
-import { Button, Col, Container, Row  } from 'reactstrap';
+import { Button  } from 'reactstrap';
 
-import { optionLoresheetData } from 'data/loresheets';
+import { getLoresheetOptionData } from 'data/loresheets';
 import { ICost } from 'state/costs';
-
-import CollectionCard from 'components/CollectionCard';
 
 export interface ILoresheetOptionProps {
   lsUid: string;
@@ -14,6 +12,7 @@ export interface ILoresheetOptionProps {
   costs?: Array<{value: number, cost: ICost}>;
   canBuy: boolean;
   onBuy: (cost: ICost) => void;
+  payloads: any[];
 }
 
 class LoresheetOption extends React.Component<ILoresheetOptionProps, {}> {
@@ -21,37 +20,52 @@ class LoresheetOption extends React.Component<ILoresheetOptionProps, {}> {
     super(props);
 
     this.onBuy = this.onBuy.bind(this);
-    this.renderHeader = this.renderHeader.bind(this);
     this.renderButton = this.renderButton.bind(this);
+
+    this.renderKnown = this.renderKnown.bind(this);
+    this.renderNotKnown = this.renderNotKnown.bind(this);
   }
 
   public render() {
-    const dataOption = optionLoresheetData(this.props.lsUid, this.props.uid);
-    if(dataOption === undefined) { return; }
-    return <CollectionCard
-      footer="Buy Me !!"
-      header={this.renderHeader(dataOption.type)}
-      text={dataOption.description}
-    />;
+    const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
+    if(data === undefined) { return; }
+    const known = this.props.payloads.map((payload,index) => this.renderKnown(payload, index));
+    if(known.length > 0 && data.repeatable) {
+      return known.concat(this.renderNotKnown());
+    } else if (known.length > 0) {
+      return known;
+    } else {
+      return this.renderNotKnown();
+    }
   }
 
-  private renderHeader(type: string): JSX.Element {
-    return <Container>
-             <Row>
-               <Col>{type}</Col>
-               <Col xs={1} sm={1} md={1} lg={1} xl={1} >{this.renderButton()}</Col>
-               <Col xs={1} sm={1} md={1} lg={1} xl={1} />
-             </Row>
-          </Container>;
-  }
-
-  private renderButton(): JSX.Element {
-    if(this.props.canBuy) { return (<Button  onClick={this.onBuy} color="success"><Icon name="unlock-alt" /></Button>); }
+  private renderButton(canBuy: boolean): JSX.Element {
+    if(canBuy) { return (<Button color="success"><Icon name="unlock-alt" /></Button>); }
     else { return (<Button color="danger"><Icon name="times" /></Button>); }
   }
 
+  private renderKnown(payload: any, index: number): JSX.Element {
+    const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
+    return <tr key={'known_'+data.uid+'_'+index}>
+     <td>{data.type}</td>
+     <td>{data.cost}</td>
+     <td>{data.description}</td>
+     <td>{this.renderButton(false)}</td>
+    </tr>
+  }
+
+  private renderNotKnown(): JSX.Element {
+    const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
+    return <tr key={'unknown_'+data.uid} role="button" onClick={this.onBuy} >
+       <td>{data.type}</td>
+       <td>{data.cost}</td>
+       <td>{data.description}</td>
+       <td>{this.renderButton(this.props.canBuy)}</td>
+      </tr>
+  }
+
   private onBuy(): void {
-    if(this.props.cost !== undefined)
+    if(this.props.cost !== undefined && this.props.canBuy)
     { this.props.onBuy(this.props.cost); }
   }
 }

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
 
 import DDLText from 'components/DDLText';
 import EditText from 'components/EditText';
@@ -25,61 +24,53 @@ export interface IHeaderProps {
   lockRank: boolean;
 }
 
-class Header extends React.Component<IHeaderProps, {}> {
+import './Character.css';
+
+class Header extends React.PureComponent<IHeaderProps, {}> {
   public render() {
     return (
-      <Container className="Header">
-        <Row>
-          <EditText
-            header="Character Name"
-            default={this.props.name}
-            validate={this.isStringNotNull}
-            onSubmit={this.props.onSetName}
-          />
-        </Row>
-        <Row>
-          <EditText
-            header="Character Concept"
-            default={this.props.concept}
-            validate={this.isStringNotNull}
-            onSubmit={this.props.onSetConcept}
-          />
-        </Row>
-        <Row>
-          <Col>
-            <DDLText
-              header="Character Archetype"
-              default={this.props.archetype}
-              values={dataArchetypes.archetypes.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
-              onSubmit={this.props.onSetArchetype}
-              locked={this.props.lockArchetype}
-            />
-          </Col>
-          <Col>
-            <DDLText
-              header="Character Rank"
-              default={this.props.rank ? this.props.rank.name : '' }
-              values={dataRanks.ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
-              onSubmit={this.props.onSetRank}
-              locked={this.props.lockRank}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <StaticText
-              header="Destiny"
-              value={this.props.destiny.toString()}
-            />
-          </Col>
-          <Col>
-            <StaticText
-              header="Entanglement"
-              value={this.props.entanglement.toString()}
-            />
-          </Col>
-        </Row>
-      </Container>
+      <div className="Character-header">
+        <EditText
+          header="Character Name"
+          default={this.props.name}
+          validate={this.isStringNotNull}
+          onSubmit={this.props.onSetName}
+        />
+        <EditText
+          header="Character Concept"
+          default={this.props.concept}
+          validate={this.isStringNotNull}
+          onSubmit={this.props.onSetConcept}
+        />
+        <DDLText
+          header="Character Archetype"
+          default={this.props.archetype}
+          values={dataArchetypes.archetypes
+            .sort((a: dataArchetypes.IDataArchetype, b: dataArchetypes.IDataArchetype) => {
+              if(a.name < b.name) { return -1; }
+              if(a.name > b.name) { return 1; }
+              return 0;
+            })
+            .map( (a: dataArchetypes.IDataArchetype) => ({ label: a.name, key: a.key}) )}
+          onSubmit={this.props.onSetArchetype}
+          locked={this.props.lockArchetype}
+        />
+        <DDLText
+          header="Character Rank"
+          default={this.props.rank ? this.props.rank.name : '' }
+          values={dataRanks.ranks.map( ({name: n, key: k}) => ({ label: n, key: k}) )}
+          onSubmit={this.props.onSetRank}
+          locked={this.props.lockRank}
+        />
+        <StaticText
+          header="Destiny"
+          value={this.props.destiny.toString()}
+        />
+        <StaticText
+          header="Entanglement"
+          value={this.props.entanglement.toString()}
+        />
+      </div>
     );
   }
 

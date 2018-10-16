@@ -19,3 +19,15 @@ export interface IEffectChiThresholdIncreaseBaseChi {
 }
 
 export type IEffect = IEffectCombatStatistic | IEffectConditionalText | IEffectChiThresholdIncreaseBaseChi;
+
+
+export function effectToString(effect: IEffect): string {
+    switch(effect.type) {
+      case constants.EFFECT_COMBAT_STATISTIC:
+        return (effect.increase > 0 ? '+':'')+effect.increase+' to '+effect.statistic;
+      case constants.EFFECT_CONDITIONAL_TEXT:
+        return effect.text.toString();
+      case constants.EFFECT_CHI_THRESHOLD_INCREASE_BASE_CHI:
+        return (effect.chiIncrease > 0 ? '+' : '')+effect.chiIncrease+ ' to Chi Threshold';
+    }
+}

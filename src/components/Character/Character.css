@@ -8,10 +8,10 @@
 }
 
 .Character-header {
-  background-color: #222;
-  height: 150px;
   padding: 20px;
-  color: white;
+  border-bottom-style: solid;
+  border-bottom-width:1px;
+  border-bottom-color: lightgrey;
 }
 
 .Character-intro {

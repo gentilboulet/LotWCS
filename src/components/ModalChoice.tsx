@@ -9,7 +9,7 @@ interface IModalChoiceState {
   modal: boolean;
 }
 
-export default class ModalChoice extends React.Component<IModalChoiceProps, IModalChoiceState> {
+export default class ModalChoice extends React.PureComponent<IModalChoiceProps, IModalChoiceState> {
   constructor(props: IModalChoiceProps) {
     super(props);
     this.toggle = this.toggle.bind(this);

@@ -1,5 +1,6 @@
 import {
   IDataExternalKungfu,
+  IDataExternalKungfuStatistics,
   IDataExternalKungfuTechnique,
 
   IDataInternalKungfu,
@@ -10,6 +11,7 @@ import {
 
 export {
   IDataExternalKungfu,
+  IDataExternalKungfuStatistics,
   IDataExternalKungfuTechnique,
 
   IDataInternalKungfu,
@@ -19,8 +21,10 @@ export {
 
 
 import { blossomHarvest } from './externals/blossom-harvest';
+import { boneFedWolfFang } from './externals/bone-fed-wolf-fang';
 export const externalKungfu: IDataExternalKungfu[] = Array(
-  blossomHarvest
+  blossomHarvest,
+  boneFedWolfFang
 );
 
 import { boundlessProsperityManual } from './internals/boundless-prosperity-manual';
@@ -70,6 +74,26 @@ export function validateKungFuTechnique(type: KUNGFU_TYPE, styleUid: string, tec
     if (filtered.length < 1) {
       throw new Error('Invalid internal kungfu technique "' + techniqueUid + '" for style "' + styleUid + '"');
     }
+  }
+}
+
+export function getKungFuType(styleUid: string) : KUNGFU_TYPE {
+    const externalIdx = externalKungfu.findIndex(kf => (kf.uid === styleUid));
+    const internalIdx = internalKungfu.findIndex(kf => (kf.uid === styleUid));
+    if(externalIdx !== -1) { return KUNGFU_EXTERNAL }
+    else if (internalIdx !== -1) { return KUNGFU_INTERNAL }
+    // else { throw new Error('Unknwon kungfu ' + styleUid); }
+    else { return KUNGFU_INTERNAL; }
+}
+
+export function kungfuData(type: KUNGFU_TYPE, styleUid: string): IDataExternalKungfu | IDataInternalKungfu {
+  if(type === KUNGFU_EXTERNAL) {
+    const idxKF = externalKungfu.findIndex(kf => (kf.uid === styleUid));
+    return externalKungfu[idxKF];
+  }
+  else {
+    const idxKF = internalKungfu.findIndex(kf => (kf.uid === styleUid));
+    return internalKungfu[idxKF];
   }
 }
 

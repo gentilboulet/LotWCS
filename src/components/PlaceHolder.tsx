@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card, CardBody, CardSubtitle, CardText, CardTitle } from 'reactstrap';
 
-class PlaceHolder extends React.Component<{}, {}> {
+class PlaceHolder extends React.PureComponent<{}, {}> {
   public render() {
     return (
       <Card>

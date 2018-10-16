@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface IFieldHeader { label: string | JSX.Element; }
 
-class FieldHeader extends React.Component<IFieldHeader, {}> {
+class FieldHeader extends React.PureComponent<IFieldHeader, {}> {
   public render(): JSX.Element {
     return (
       <h4>

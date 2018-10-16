@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Icon } from 'react-fa';
 import { Button  } from 'reactstrap';
 
-import { IDataExternalKungfuTechnique, KUNGFU_EXTERNAL, kungfuTechniqueData } from 'data/kungfu';
+import { IDataInternalKungfuTechnique, KUNGFU_INTERNAL, kungfuTechniqueData } from 'data/kungfu';
 import { ICost } from 'state/costs';
 import { effectToString } from 'state/effects';
 
-export interface IExternalKungFuTechniqueProps {
+export interface IInternalKungFuTechniqueProps {
   styleUid: string;
   uid: string;
   cost?: ICost;
@@ -15,8 +15,8 @@ export interface IExternalKungFuTechniqueProps {
   onBuy: (cost: ICost) => void;
 }
 
-class ExternalKungFuTechnique extends React.Component<IExternalKungFuTechniqueProps, {}> {
-  constructor(props: IExternalKungFuTechniqueProps) {
+class InternalKungFuTechnique extends React.Component<IInternalKungFuTechniqueProps, {}> {
+  constructor(props: IInternalKungFuTechniqueProps) {
     super(props);
 
     this.onBuy = this.onBuy.bind(this);
@@ -24,14 +24,14 @@ class ExternalKungFuTechnique extends React.Component<IExternalKungFuTechniquePr
   }
 
   public render() {
-    const technique = kungfuTechniqueData(KUNGFU_EXTERNAL, this.props.styleUid, this.props.uid) as IDataExternalKungfuTechnique;
+    const technique = kungfuTechniqueData(KUNGFU_INTERNAL, this.props.styleUid, this.props.uid) as IDataInternalKungfuTechnique;
     if(technique === undefined) { return; }
 
     const effect = effectToString(technique.effect);
 
     return <tr key={technique.uid} role="button" onClick={this.onBuy} >
      <td>{technique.name}</td>
-     <td>{technique.cost}</td>
+     <td>{technique.level}</td>
      <td>{technique.description}{(effect.length>0?' '+effect : null)}</td>
      <td>{this.renderButton()}</td>
     </tr>
@@ -48,4 +48,4 @@ class ExternalKungFuTechnique extends React.Component<IExternalKungFuTechniquePr
   }
 }
 
-export default ExternalKungFuTechnique;
+export default InternalKungFuTechnique;

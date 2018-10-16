@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Container, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Modal, ModalBody, ModalHeader } from 'reactstrap';
 
 import CollectionCard from 'components/CollectionCard';
 
@@ -18,7 +18,7 @@ interface IModalCardState {
   modal: boolean;
 }
 
-export default class ModalCard extends React.Component<IModalCardProps, IModalCardState> {
+export default class ModalCard extends React.PureComponent<IModalCardProps, IModalCardState> {
   constructor(props: IModalCardProps) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -28,11 +28,7 @@ export default class ModalCard extends React.Component<IModalCardProps, IModalCa
   }
 
   public render() {
-    return (
-    <Container>
-      <Container>{this.renderCard()}</Container>
-      <Container>{this.renderModal()}</Container>
-    </Container>);
+    return <div>{this.renderCard()}{this.renderModal()}</div>;
   }
 
   private renderCard(): JSX.Element {

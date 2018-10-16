@@ -6,9 +6,9 @@ import { getCostKungFuStyle, ICost } from 'state/costs';
 import { canOpenKungFu, isStylePresent } from 'state/kungfu';
 import { IStoreState } from 'state/type';
 
-import ExternalKungFu, { IExternalKungFuProps } from 'components/Character/ExternalKungFu';
+import InternalKungFu, { IInternalKungFuProps } from 'components/Character/InternalKungFu';
 
-import { IDataExternalKungfu, IDataExternalKungfuStatistics, KUNGFU_EXTERNAL, kungfuData } from 'data/kungfu';
+import { KUNGFU_INTERNAL } from 'data/kungfu';
 
 interface IProps {
   uid: string;
@@ -20,7 +20,6 @@ interface IMapStateToProps {
   knownTechniques: string[];
   uid: string;
   cost: ICost;
-  statistics: IDataExternalKungfuStatistics;
 }
 
 interface IMapDispatchToProps {
@@ -28,31 +27,28 @@ interface IMapDispatchToProps {
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
-  const isOpen = isStylePresent(state.kungfu,  KUNGFU_EXTERNAL, props.uid);
-
-  const statistics = (kungfuData(KUNGFU_EXTERNAL, props.uid) as IDataExternalKungfu).statistics;
+  const isOpen = isStylePresent(state.kungfu,  KUNGFU_INTERNAL, props.uid);
 
   return {
-    canOpen: canOpenKungFu(state, KUNGFU_EXTERNAL, props.uid),
-    cost: getCostKungFuStyle(state, KUNGFU_EXTERNAL, props.uid),
+    canOpen: canOpenKungFu(state, KUNGFU_INTERNAL, props.uid),
+    cost: getCostKungFuStyle(state, KUNGFU_INTERNAL, props.uid),
     isOpen,
-    knownTechniques: (isOpen ? state.kungfu[KUNGFU_EXTERNAL][props.uid] : []),
-    statistics,
+    knownTechniques: (isOpen ? state.kungfu[KUNGFU_INTERNAL][props.uid] : []),
     uid: props.uid,
   };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<IKungFuAction>, props: IProps):IMapDispatchToProps {
   return {
-    onOpen: (cost: ICost) => dispatch(openStyle(props.uid, KUNGFU_EXTERNAL, cost)),
+    onOpen: (cost: ICost) => dispatch(openStyle(props.uid, KUNGFU_INTERNAL, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
   propsForDispatch: IMapDispatchToProps
-): IExternalKungFuProps {
+): IInternalKungFuProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ExternalKungFu);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(InternalKungFu);

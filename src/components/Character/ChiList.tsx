@@ -11,7 +11,7 @@ const styles = {
   }
 }
 
-class Chis extends React.PureComponent<{}, {}> {
+class ChiList extends React.PureComponent<{}, {}> {
   public render() {
     return (
       <Container style={styles}>{
@@ -25,4 +25,4 @@ class Chis extends React.PureComponent<{}, {}> {
   }
 }
 
-export default Chis;
+export default ChiList;
