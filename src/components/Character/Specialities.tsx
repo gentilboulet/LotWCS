@@ -1,31 +1,33 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { ICost } from 'state/costs';
+import { ICost } from "state/costs";
 
-import EditSpecialities from './EditSpecialities';
+import EditSpecialities from "./EditSpecialities";
 
 export interface ISpecialitiesProps {
   available: Array<{
-    name: string,
-    canBuy: boolean
-    cost: ICost,
-  }>
+    name: string;
+    canBuy: boolean;
+    cost: ICost;
+  }>;
   bought: string[];
 
   onBuy: (speciality: string, cost: ICost) => void;
 }
 
-class Specialities extends React.Component<ISpecialitiesProps, {}> {
+class Specialities extends React.PureComponent<ISpecialitiesProps, {}> {
   public render() {
-    return(
+    return (
       <div className="Specialities">
-	       <div><div>
-          <EditSpecialities
-            bought={this.props.bought}
-            available={this.props.available}
-            onBuy={this.props.onBuy}
-          />
-        </div></div>
+        <div>
+          <div>
+            <EditSpecialities
+              bought={this.props.bought}
+              available={this.props.available}
+              onBuy={this.props.onBuy}
+            />
+          </div>
+        </div>
       </div>
     );
   }

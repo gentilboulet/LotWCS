@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface IControlledListItemProps {
   label: string;
@@ -10,24 +10,39 @@ export interface IControlledListItemState {
   selected: boolean;
 }
 
-class ControlledListItem extends React.Component<IControlledListItemProps, IControlledListItemState> {
+class ControlledListItem extends React.PureComponent<
+  IControlledListItemProps,
+  IControlledListItemState
+> {
   constructor(props: IControlledListItemProps) {
     super(props);
 
-    this.state = { selected: this.props.selected ? this.props.selected && this.canToggle(): false };
+    this.state = {
+      selected: this.props.selected
+        ? this.props.selected && this.canToggle()
+        : false
+    };
 
     this.toggle = this.toggle.bind(this);
     this.canToggle = this.canToggle.bind(this);
   }
 
   public render() {
-    if(this.canToggle()) {
-      return <div onClick={this.toggle}>{this.state.selected ? <b>{this.props.label}</b> : this.props.label }</div>;
+    if (this.canToggle()) {
+      return (
+        <div onClick={this.toggle}>
+          {this.state.selected ? <b>{this.props.label}</b> : this.props.label}
+        </div>
+      );
     } else {
       const style = {
         textAlign: "center" as "center"
-      }
-      return <div style={style}><em>{this.props.label}</em></div>;
+      };
+      return (
+        <div style={style}>
+          <em>{this.props.label}</em>
+        </div>
+      );
     }
   }
 
@@ -36,11 +51,13 @@ class ControlledListItem extends React.Component<IControlledListItemProps, ICont
   }
 
   private toggle() {
-    if(this.canToggle()) {
+    if (this.canToggle()) {
       this.setState({
         selected: !this.state.selected
       });
-      if(this.props.onSelectedToggle !== undefined) { this.props.onSelectedToggle(); } // To disable some warning
+      if (this.props.onSelectedToggle !== undefined) {
+        this.props.onSelectedToggle();
+      } // To disable some warning
     }
   }
 }
