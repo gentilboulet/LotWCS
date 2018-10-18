@@ -21,19 +21,23 @@ class AppHeader extends React.Component<{}, {isOpen: boolean}> {
 
   public render() {
     return (
-     <ul>
-       <li><Link to="/">LotWCS</Link></li>
-       <li><Link to="/skills">Skills</Link></li>
-       <li><Link to="/chi">Chi</Link></li>
-       <li><Link to="/virtues">Virtues</Link></li>
-       <li><Link to="/equipment">Equipment</Link></li>
-       <li><Link to="/conditions">Conditions</Link></li>
-       <li><Link to="/kungfu" >{"Kung\u00A0Fu"}</Link></li>
-       <li><Link to="/loresheets">Loresheets</Link></li>
-       <li><Link to="/history">History</Link></li>
-       <li><Link to="/print">Full sheet</Link></li>
-       <li><Link to="/config"><button className="seconday"><Icon name="cog" /></button></Link></li>
+     <nav className="navbar">
+       <ul className="left">
+         <Link to="/"><li><h1>LotWCS</h1></li></Link>
+         <Link to="/skills"><li>Skills</li></Link>
+         <Link to="/chi"><li>Chi</li></Link>
+         <Link to="/virtues"><li>Virtues</li></Link>
+         <Link to="/equipment"><li>Equipment</li></Link>
+         <Link to="/conditions"><li>Conditions</li></Link>
+         <Link to="/kungfu"><li>{"Kung\u00A0Fu"}</li></Link>
+         <Link to="/loresheets"><li>Loresheets</li></Link>
+         <Link to="/history"><li>History</li></Link>
+       </ul>
+       <ul className="right">
+        <Link to="/print"><li>Full sheet</li></Link>
+        <Link to="/config"><li><Icon name="cog" /></li></Link>
       </ul>
+     </nav>
     );
   }
 }
