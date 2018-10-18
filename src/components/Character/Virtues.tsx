@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
 
 import { ICost } from 'state/costs';
 
@@ -32,15 +31,15 @@ class Virtues extends React.Component<IVirtuesProps, {}> {
     const max = Math.max(chivalrousVirtues.length, selfishVirtues.length);
 
     const rows = [
-      <Row key="header"><Col><FieldHeader label="Chivalrous Virtues" /></Col><Col><FieldHeader label="Selfish Virtues" /></Col></Row>
+      <div key="header"><div><FieldHeader label="Chivalrous Virtues" /></div><div><FieldHeader label="Selfish Virtues" /></div></div>
     ];
     for(let i = 0; i < max; i++) {
-      const cvCol = (i < chivalrousVirtues.length) ? (<Col>{this.renderVirtue(chivalrousVirtues[i])}</Col>) : <Col />;
-      const svCol = (i < selfishVirtues.length) ? <Col>{this.renderVirtue(selfishVirtues[i])}</Col> : <Col />;
+      const cvdiv = (i < chivalrousVirtues.length) ? (<div>{this.renderVirtue(chivalrousVirtues[i])}</div>) : <div />;
+      const svdiv = (i < selfishVirtues.length) ? <div>{this.renderVirtue(selfishVirtues[i])}</div> : <div />;
 
-      rows.push(<Row key={'virtues_'+i}>{cvCol}{svCol}</Row>);
+      rows.push(<div key={'virtues_'+i}>{cvdiv}{svdiv}</div>);
     }
-    return <Container>{rows.map(r => r)}</Container>;
+    return <div>{rows.map(r => r)}</div>;
   }
 
   private renderVirtue(virtue: IVirtueProp): JSX.Element {

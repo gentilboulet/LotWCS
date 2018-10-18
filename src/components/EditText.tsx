@@ -1,15 +1,7 @@
 import * as React from 'react';
 import Icon from 'react-fa';
-import { Button, Col, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
 
 import FieldHeader from 'components/FieldHeader';
-
-const styles = {
-  row: {
-    alignItems: 'center',
-    height: 56,
-  }
-}
 
 export interface IEditTextProps {
   header: string;
@@ -76,44 +68,41 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
     return <FieldHeader label={this.props.header} />;
   }
 
-  private renderButton = (isValueValid: boolean): JSX.Element => {
-    const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
-    const btnKo = (<Button onClick={this.endEdit} color="danger"><Icon name="times" /></Button>);
+  private renderdiv = (isValueValid: boolean): JSX.Element => {
+    const btnOk = (<div onClick={this.endEdit} color="success"><Icon name="check" /></div>);
+    const btnKo = (<div onClick={this.endEdit} color="danger"><Icon name="times" /></div>);
     return (isValueValid) ? btnOk : btnKo;
   }
 
   private renderValue = (): JSX.Element => {
     return (
-      <Row
+      <div
         onClick={this.startEdit}
         role="button"
-        disabled={true}
-        style={styles.row}
       >
-        <Col xs="6">{this.renderHeader()}</Col>
-        <Col>{this.state.value}</Col>
-      </Row>
+        <div>{this.renderHeader()}</div>
+        <div>{this.state.value}</div>
+      </div>
     );
   }
 
   private renderInput = (): JSX.Element => {
     const isValueValid = this.props.validate(this.state.value);
     return (
-      <Row style={styles.row}>
-        <Col xs="6">{this.renderHeader()}</Col>
-        <Col>
-          <InputGroup>
-            <Input
-              valid={isValueValid}
+      <div>
+        <div>{this.renderHeader()}</div>
+        <div>
+          <div>
+            <input
               onChange={this.textChange}
               value={this.state.value}
             />
-            <InputGroupAddon addonType="append">
-                {this.renderButton(isValueValid)}
-            </InputGroupAddon>
-          </InputGroup>
-        </Col>
-      </Row>
+            <div>
+                {this.renderdiv(isValueValid)}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

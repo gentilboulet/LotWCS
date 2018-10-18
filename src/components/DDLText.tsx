@@ -1,15 +1,7 @@
 import * as React from 'react';
 import Icon from 'react-fa';
-import { Button, ButtonDropdown, Col, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'reactstrap';
 
 import FieldHeader from './FieldHeader';
-
-const styles = {
-  row: {
-    alignItems: 'center',
-    height: 56,
-  },
-};
 
 export interface IDDLItem {
     key: string;
@@ -101,8 +93,8 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
   }
 
   private renderButton(labelForSelectedKey: string): JSX.Element {
-    const btnOk = (<Button onClick={this.endEdit} color="success"><Icon name="check" /></Button>);
-    const btnKo = (<Button onClick={this.endEdit} color="danger"><Icon name="times" /></Button>);
+    const btnOk = (<button onClick={this.endEdit} color="success"><Icon name="check" /></button>);
+    const btnKo = (<button onClick={this.endEdit} color="danger"><Icon name="times" /></button>);
     return (labelForSelectedKey.length > 0) ? btnOk : btnKo;
   }
 
@@ -110,9 +102,9 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
     return this.props.values.map( ({key, label}: IDDLItem) => {
       const selectMe = () => this.select(key);
       return (
-        <DropdownItem key={key} onClick={selectMe}>
+        <div key={key} onClick={selectMe}>
           {label}
-        </DropdownItem>
+        </div>
       );
     });
   }
@@ -120,32 +112,32 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
   private renderDropdownList(): JSX.Element {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
-      <Row style={styles.row}>
-        <Col xs="6">{this.renderHeader()}</Col>
-        <Col>
-          <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDDL} >
-            <DropdownToggle caret={true}>
+      <div>
+        <div>{this.renderHeader()}</div>
+        <div>
+          <div>
+            <div>
               {labelForSelectedKey.length > 0 ? labelForSelectedKey : 'Choose a ' + this.props.header}
-            </DropdownToggle>
-            <DropdownMenu right={true}>
+            </div>
+            <div>
               {this.renderDropdownItems()}
-            </DropdownMenu>
-          </ButtonDropdown>
+            </div>
+          </div>
           {this.renderButton(labelForSelectedKey)}
-        </Col>
-      </Row>
+        </div>
+      </div>
     );
   }
 
   private renderValue(): JSX.Element {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
-      <Row onClick={this.startEdit} role="button" style={styles.row}>
-          <Col xs="6">{this.renderHeader()}</Col>
-          <Col xs="6">
+      <div onClick={this.startEdit} role="button">
+          <div>{this.renderHeader()}</div>
+          <div>
           {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
-        </Col>
-      </Row>
+        </div>
+      </div>
     );
   }
 }

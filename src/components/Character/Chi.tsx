@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
 
 import { ICost } from 'state/costs';
 
@@ -25,20 +24,20 @@ class Chi extends React.Component<IChiProps, {}> {
     const name = this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
 
     return(
-      <Container>
-        <Row>
-          <Col>
+      <div>
+        <div>
+          <div>
             <EditNumeric
               name={name}
               value={this.props.value}
               canBuy={this.props.canBuy}
               onBuy={this.onBuy}
             />
-          </Col>
-          <Col>{"cultivation "+this.props.cultivation}
-          </Col>
-        </Row>
-      </Container>
+          </div>
+          <div>{"cultivation "+this.props.cultivation}
+          </div>
+        </div>
+      </div>
     );
   }
 

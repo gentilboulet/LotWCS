@@ -1,23 +1,6 @@
 import * as React from 'react';
-import { Col, Container, ListGroup, Row } from 'reactstrap';
 
 import ControlledListItem from './ControlledListItem';
-
-const styles = {
-  container: {
-    textAlign: "justify" as 'justify',
-  },
-  listLeft: {
-    marginLeft: '0px',
-    paddingLeft: '0px',
-    paddingRight: '3px',
-  },
-  listRight: {
-    marginRight: '0px',
-    paddingRight: '0px',
-    paddingeft: '3px',
-  },
-}
 
 export interface IControlledListProps {
   options: Array<{id: string, label: string, disabled?: boolean}>;
@@ -44,16 +27,16 @@ class ControlledList extends React.PureComponent<IControlledListProps, IControll
 
   public render() {
     return (
-      <Container fluid={true} style={styles.container}>
-        <Row>
-          <Col xs={3} style={styles.listLeft}>
-            <ListGroup>{this.renderList()}</ListGroup>
-          </Col>
-          <Col xs={9} style={styles.listRight}>
+      <div>
+        <div>
+          <div>
+            <div>{this.renderList()}</div>
+          </div>
+          <div>
             {this.renderSelected()}
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     );
   }
 

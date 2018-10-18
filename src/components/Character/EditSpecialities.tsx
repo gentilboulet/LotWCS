@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Typeahead,  } from 'react-bootstrap-typeahead';
 import Icon from 'react-fa';
-import { Button, Col, Container, Row } from 'reactstrap';
 
 import { ICost } from 'state/costs';
 
@@ -44,43 +42,35 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
   }
 
   private renderButton(icon: string, f: () => void) {
-    return <Button onClick={f}><Icon name={icon}/></Button>;
+    return <button onClick={f}><Icon name={icon}/></button>;
   }
 
   private renderBoughtSpecialities() {
     return this.props.bought.map((speciality: string) => {
-      return <Col key={speciality}>{speciality}</Col>;
+      return <div key={speciality}>{speciality}</div>;
     });
   }
 
   private renderNoEdit() {
     const canBuy = this.props.available.some(option => option.canBuy);
-    return <Container>
-             <Row>
+    return <div>
+             <div>
                {this.renderBoughtSpecialities()}
-               <Col xs={1} sm={1} md={1} lg={1} xl={1}>{canBuy ? this.renderButton('plus', this.startEdit) : ''}</Col>
-             </Row>
-           </Container>
+               <div>{canBuy ? this.renderButton('plus', this.startEdit) : ''}</div>
+             </div>
+           </div>
   }
 
   private renderEdit() {
-    return <Container>
-      <Row>
-        <Col>
-            <Typeahead
-              allowNew={true}
-              multiple={true}
-              options={this.props.available
-              .filter(data => data.canBuy)
-              .map(data => data.name)}
-              selected={this.props.bought}
-              placeholder="Chose a speciality..."
-              onChange={this.selectedChange}
-            />
+    return <div>
+      <div>
+        <div>
+            <div>
             {this.renderButton('check', this.endEdit)}
-        </Col>
-      </Row>
-    </Container>
+	    </div>
+        </div>
+      </div>
+    </div>
   }
 
   private startEdit(): void {

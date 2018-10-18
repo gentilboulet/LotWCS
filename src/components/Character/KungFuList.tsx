@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Card, CardBody, CardText } from 'reactstrap';
 
 import ControlledList from 'components/ControlledList';
 
@@ -34,7 +33,7 @@ class KungFuList extends React.PureComponent<{}, {}> {
     if(type === KUNGFU_EXTERNAL) {
       return <ExternalKungFu uid={uid} />
     } else {
-      return <Card><CardBody top="true"><CardText>{uid}</CardText></CardBody></Card>
+      return <div><div><div>{uid}</div></div></div>
     }
   }
 }

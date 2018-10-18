@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 import { IAction }  from 'state/actions/types';
 
@@ -26,20 +25,20 @@ class History extends React.Component<IHistoryProps, IHistoryState> {
 
   public render() {
     return(
-      <Container className="History">
-        <ListGroup>
+      <div className="History">
+        <div>
           {this.props.history.map((action: IAction, index: number) => this.renderHistoryAction(action, index))}
-        </ListGroup>
-      </Container>
+        </div>
+      </div>
     );
   }
 
   private renderHistoryAction(action: IAction, index: number): JSX.Element {
       const onClick = () => this.rollbackHistory(index);
-      return <ListGroupItem key={'rowHistory_' + index} tag="button" onClick={onClick} action={true}>
-            <ListGroupItemHeading>{(index+1)+" "+action.type}</ListGroupItemHeading>
-            <ListGroupItemText>{JSON.stringify(action)}</ListGroupItemText>
-          </ListGroupItem>
+      return <div key={'rowHistory_' + index} onClick={onClick}>
+            <div>{(index+1)+" "+action.type}</div>
+            <div>{JSON.stringify(action)}</div>
+          </div>
   }
 
   private rollbackHistory(index: number): void {

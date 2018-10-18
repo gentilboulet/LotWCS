@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { ListGroupItem } from 'reactstrap';
-
 export interface IControlledListItemProps {
   label: string;
   selected?: boolean;
@@ -24,12 +22,12 @@ class ControlledListItem extends React.Component<IControlledListItemProps, ICont
 
   public render() {
     if(this.canToggle()) {
-      return <ListGroupItem tag="button" action={true} onClick={this.toggle}>{this.state.selected ? <b>{this.props.label}</b> : this.props.label }</ListGroupItem>;
+      return <div onClick={this.toggle}>{this.state.selected ? <b>{this.props.label}</b> : this.props.label }</div>;
     } else {
       const style = {
         textAlign: "center" as "center"
       }
-      return <ListGroupItem style={style}><em>{this.props.label}</em></ListGroupItem>;
+      return <div style={style}><em>{this.props.label}</em></div>;
     }
   }
 

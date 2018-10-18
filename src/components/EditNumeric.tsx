@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Icon from 'react-fa';
-import { Button, Col, Container, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
 
 import FieldHeader from 'components/FieldHeader';
 
@@ -33,32 +32,32 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
   public render() {
     if (!this.state.edit) {
       return(
-        <Container>
-          <Row
+        <div>
+          <div
             onClick={this.startEdit}
             role="button"
           >
-          <Col xs={6}>{this.renderHeader()}</Col>
-          <Col>{this.props.value}</Col>
-          </Row>
-        </Container>
+          <div>{this.renderHeader()}</div>
+          <div>{this.props.value}</div>
+          </div>
+        </div>
       );
     } else {
       return(
-        <Container>
-          <Row>
-            <Col xs={6}>{this.renderHeader()}</Col>
-            <Col>
-              <InputGroup>
-                <Input value={this.props.value} readOnly={true} />
-                <InputGroupAddon addonType="append">
+        <div>
+          <div>
+            <div>{this.renderHeader()}</div>
+            <div>
+              <div>
+                <input value={this.props.value} readOnly={true} />
+                <div>
                   {this.props.canBuy ? this.renderButton('plus', this.doBuy) : null }
                   {this.renderButton('times', this.endEdit)}
-                </InputGroupAddon>
-              </InputGroup>
-            </Col>
-          </Row>
-        </Container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     }
   }
@@ -91,7 +90,7 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
   }
 
   private renderButton(icon: string, f: () => void) {
-    return <Button onClick={f}><Icon name={icon}/></Button>;
+    return <div onClick={f}><Icon name={icon}/></div>;
   }
 }
 

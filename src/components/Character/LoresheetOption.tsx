@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Icon } from 'react-fa';
-import { Button  } from 'reactstrap';
 
 import { getLoresheetOptionData } from 'data/loresheets';
 import { ICost } from 'state/costs';
@@ -40,8 +39,8 @@ class LoresheetOption extends React.Component<ILoresheetOptionProps, {}> {
   }
 
   private renderButton(canBuy: boolean): JSX.Element {
-    if(canBuy) { return (<Button color="success"><Icon name="unlock-alt" /></Button>); }
-    else { return (<Button color="danger"><Icon name="times" /></Button>); }
+    if(canBuy) { return (<button color="success"><Icon name="unlock-alt" /></button>); }
+    else { return (<button color="danger"><Icon name="times" /></button>); }
   }
 
   private renderKnown(payload: any, index: number): JSX.Element {

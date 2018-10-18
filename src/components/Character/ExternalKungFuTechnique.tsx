@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Icon } from 'react-fa';
-import { Button  } from 'reactstrap';
 
 import { IDataExternalKungfuTechnique, KUNGFU_EXTERNAL, kungfuTechniqueData } from 'data/kungfu';
 import { ICost } from 'state/costs';
@@ -38,8 +37,8 @@ class ExternalKungFuTechnique extends React.Component<IExternalKungFuTechniquePr
   }
 
   private renderButton(): JSX.Element {
-    if(this.props.canBuy) { return (<Button color="success"><Icon name="unlock-alt" /></Button>); }
-    else { return (<Button color="danger"><Icon name="times" /></Button>); }
+    if(this.props.canBuy) { return (<button color="success"><Icon name="unlock-alt" /></button>); }
+    else { return (<button color="danger"><Icon name="times" /></button>); }
   }
 
   private onBuy(): void {

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Container } from 'reactstrap';
 
 import AppHeader from 'components/AppHeader';
 
@@ -22,18 +21,18 @@ class App extends React.PureComponent<{}, {}> {
   public render() {
     return (
       <BrowserRouter>
-          <Container fluid={true}>
-          <AppHeader />
-          <Route exact={true} path="/" component={Homepage} />
-          <Route exact={true} path="/skills" component={Skills} />
-          <Route exact={true} path="/chi" component={Chi} />
-          <Route exact={true} path="/virtues" component={Virtues} />
-          <Route exact={true} path="/equipment" component={Equipment} />
-          <Route exact={true} path="/conditions" component={Conditions} />
-          <Route exact={true} path="/kungfu" component={KungFu} />
-          <Route exact={true} path="/loresheets" component={Loresheets} />
-          <Route exact={true} path="/history" component={History} />
-          </Container>
+          <div className="lotwcs">
+	  <AppHeader />
+	  <Route exact={true} path="/" component={Homepage} />
+	  <Route exact={true} path="/skills" component={Skills} />
+	  <Route exact={true} path="/chi" component={Chi} />
+	  <Route exact={true} path="/virtues" component={Virtues} />
+	  <Route exact={true} path="/equipment" component={Equipment} />
+	  <Route exact={true} path="/conditions" component={Conditions} />
+	  <Route exact={true} path="/kungfu" component={KungFu} />
+	  <Route exact={true} path="/loresheets" component={Loresheets} />
+	  <Route exact={true} path="/history" component={History} />
+          </div>
       </BrowserRouter>
     );
   }

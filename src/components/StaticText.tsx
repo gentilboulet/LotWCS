@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Col, Row } from 'reactstrap';
 
 import FieldHeader from './FieldHeader';
 
@@ -8,20 +7,13 @@ export interface IStaticTextProps {
   value: string;
 }
 
-const styles = {
-  row: {
-    alignItems: 'center',
-    height: 56,
-  }
-};
-
 class StaticText extends React.PureComponent<IStaticTextProps, {}> {
   public render = (): JSX.Element => {
     return (
-      <Row style={styles.row}>
-        <Col xs="6">{this.renderHeader()}</Col>
-        <Col>{this.props.value}</Col>
-      </Row>
+      <div>
+        <div>{this.renderHeader()}</div>
+        <div>{this.props.value}</div>
+      </div>
     );
   }
 

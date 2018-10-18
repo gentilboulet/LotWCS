@@ -20,7 +20,6 @@ const store = createStore<IStoreState, IAction, any, any>(
 
 import registerServiceWorker from './registerServiceWorker';
 
-import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
 import App from 'App';
