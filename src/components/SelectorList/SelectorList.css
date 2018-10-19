@@ -59,7 +59,7 @@
 }
 
 .selector-list .search-list .header {
-  cursor: context-menu;
+  cursor: default;
   text-align: center;
 }
 

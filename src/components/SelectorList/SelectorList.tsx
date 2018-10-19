@@ -30,7 +30,7 @@ class SelectorList extends React.PureComponent<
     this.state = {
       searched: this.props.options.map(o => {
         if (o.meta) {
-          return o.meta;
+          return o.id;
         } else {
           return o.label;
         }
@@ -73,7 +73,9 @@ class SelectorList extends React.PureComponent<
     return (
       <ul className="search-list">
         {this.state.searched.map(id => {
-          const option = this.props.options.find(o => o.id === id);
+          const option = this.props.options.find((prop) => {
+	    return prop.id === id;
+          });
           if (option === undefined) {
             return;
           }
@@ -140,7 +142,7 @@ class SelectorList extends React.PureComponent<
         .filter(option => {
           if (input.length === 0) {
             return true;
-          }
+	  }
           if (option.meta) {
             return option.meta.toLowerCase().search(input) !== -1;
           } else {
