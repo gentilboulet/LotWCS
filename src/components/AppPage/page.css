@@ -1,6 +1,4 @@
 .app-page {
   padding: 0 10px;
   border: 1px solid black;
-  max-height: 100vh;
-  overflow: auto;
 }

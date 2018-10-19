@@ -1,9 +1,16 @@
-import * as React from 'react';
+import * as React from "react";
 
-import ControlledList from 'components/ControlledList';
+import SelectorList, { IOption } from "components/SelectorList";
 
-import ExternalKungFu from 'containers/Character/ExternalKungFu';
-import { externalKungfu, getKungFuType, internalKungfu, KUNGFU_EXTERNAL } from 'data/kungfu';
+import ExternalKungFu from "containers/Character/ExternalKungFu";
+import InternalKungFu from "containers/Character/InternalKungFu";
+
+import {
+  externalKungfu,
+  getKungFuType,
+  internalKungfu,
+  KUNGFU_EXTERNAL
+} from "data/kungfu";
 
 class KungFuList extends React.PureComponent<{}, {}> {
   constructor(props: {}) {
@@ -13,16 +20,43 @@ class KungFuList extends React.PureComponent<{}, {}> {
   }
 
   public render() {
-    const externals = externalKungfu.map(kf => ({id: kf.uid, label: kf.name, disabled: false}));
-    const internals = internalKungfu.map(kf => ({id: kf.uid, label: kf.name, disabled: false}));
+    const externals: IOption[] = externalKungfu.map(kf => ({
+      disabled: false,
+      id: kf.uid,
+      label: kf.name,
+      meta: kf.name + "," + "external"
+    }));
+    const internals: IOption[] = internalKungfu.map(kf => ({
+      disabled: false,
+      id: kf.uid,
+      label: kf.name,
+      meta: kf.name + "," + "internal"
+    }));
 
-    const externalHeader = [{id: 'External Styles', label: 'External Styles', disabled: true}];
-    const internalHeader = [{id: 'Interal Styles', label: 'Interal Styles', disabled: true}];
+    const externalHeader: IOption[] = [
+      {
+        disabled: true,
+        id: "External Styles",
+        label: "External Styles",
+        meta: "external"
+      }
+    ];
+    const internalHeader: IOption[] = [
+      {
+        disabled: true,
+        id: "Interal Styles",
+        label: "Interal Styles",
+        meta: "internal"
+      }
+    ];
 
     return (
-      <ControlledList
-        options={externalHeader.concat(externals).concat(internalHeader).concat(internals)}
-        preSelected={['Blossom Harvest']}
+      <SelectorList
+        options={externalHeader
+          .concat(externals)
+          .concat(internalHeader)
+          .concat(internals)}
+        preSelected={["Blossom Harvest"]}
         renderItem={this.renderItem}
       />
     );
@@ -30,10 +64,10 @@ class KungFuList extends React.PureComponent<{}, {}> {
 
   private renderItem(uid: string): JSX.Element {
     const type = getKungFuType(uid);
-    if(type === KUNGFU_EXTERNAL) {
-      return <ExternalKungFu uid={uid} />
+    if (type === KUNGFU_EXTERNAL) {
+      return <ExternalKungFu uid={uid} />;
     } else {
-      return <div><div><div>{uid}</div></div></div>
+      return <InternalKungFu uid={uid} />;
     }
   }
 }
