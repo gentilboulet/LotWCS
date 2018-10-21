@@ -18,17 +18,11 @@ export interface ISpecialitiesProps {
 class Specialities extends React.PureComponent<ISpecialitiesProps, {}> {
   public render() {
     return (
-      <div className="Specialities">
-        <div>
-          <div>
-            <EditSpecialities
-              bought={this.props.bought}
-              available={this.props.available}
-              onBuy={this.props.onBuy}
-            />
-          </div>
-        </div>
-      </div>
+      <EditSpecialities
+        bought={this.props.bought}
+        available={this.props.available}
+        onBuy={this.props.onBuy}
+      />
     );
   }
 }

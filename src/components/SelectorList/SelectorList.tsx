@@ -1,13 +1,8 @@
 import * as React from "react";
 
-import "./SelectorList.css";
+import { IOption } from "components/SelectorList";
 
-export interface IOption {
-  id: string;
-  label: string;
-  meta?: string;
-  disabled?: boolean;
-}
+import "./SelectorList.css";
 
 interface ISelectorListProps {
   options: IOption[];
@@ -28,11 +23,11 @@ class SelectorList extends React.PureComponent<
     super(props);
 
     this.state = {
-      searched: this.props.options.map(o => {
-        if (o.meta) {
-          return o.id;
+      searched: this.props.options.map(option => {
+        if (option.meta) {
+          return option.id;
         } else {
-          return o.label;
+          return option.label;
         }
       }),
       selected: this.props.preSelected ? this.props.preSelected : []
@@ -73,8 +68,8 @@ class SelectorList extends React.PureComponent<
     return (
       <ul className="search-list">
         {this.state.searched.map(id => {
-          const option = this.props.options.find((prop) => {
-	    return prop.id === id;
+          const option = this.props.options.find(prop => {
+            return prop.id === id;
           });
           if (option === undefined) {
             return;
@@ -142,7 +137,7 @@ class SelectorList extends React.PureComponent<
         .filter(option => {
           if (input.length === 0) {
             return true;
-	  }
+          }
           if (option.meta) {
             return option.meta.toLowerCase().search(input) !== -1;
           } else {

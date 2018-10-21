@@ -1,4 +1,4 @@
-import SelectorList, { IOption } from "./SelectorList";
+import SelectorList from "./SelectorList";
 
 export interface IOption {
   id: string;

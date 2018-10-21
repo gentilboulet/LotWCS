@@ -1,13 +1,12 @@
-import * as React from 'react';
-import Icon from 'react-fa';
-
-import FieldHeader from 'components/FieldHeader';
+import * as React from "react";
+import Icon from "react-fa";
+import { Button, Input, InputGroup, InputGroupAddon } from "reactstrap";
 
 export interface IEditTextProps {
   header: string;
   default?: string;
   locked?: boolean;
-  validate: (v: string) => boolean ;
+  validate: (v: string) => boolean;
   onSubmit: (v: string) => void;
 }
 
@@ -26,82 +25,94 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
 
     this.state = {
       edit: false,
-      value: this.props.default ? this.props.default : '',
+      value: this.props.default ? this.props.default : ""
     };
 
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+    this.startEdit = this.startEdit.bind(this);
+    this.endEdit = this.endEdit.bind(this);
+    this.textChange = this.textChange.bind(this);
+    this.renderEdit = this.renderEdit.bind(this);
+    this.renderNoEdit = this.renderNoEdit.bind(this);
   }
 
   public render(): JSX.Element {
-    return (this.state.edit) ? this.renderInput() : this.renderValue();
+    return this.state.edit ? this.renderEdit() : this.renderNoEdit();
   }
 
   public componentWillReceiveProps(nextProps: IEditTextProps) {
     this.setState({
-      value: nextProps.default ? nextProps.default : '',
+      value: nextProps.default ? nextProps.default : ""
     });
   }
 
-  private startEdit = () => {
+  private startEdit() {
     if (this.props.locked ? false : true) {
-      this.setState({edit: true});
+      this.setState({ edit: true });
     }
   }
 
-  private endEdit = () => {
+  private endEdit() {
     this.setState({
       edit: false,
-      value: this.state.value.trim(),
+      value: this.state.value.trim()
     });
-    if ( this.props.validate(this.state.value) ) {
+    if (this.props.validate(this.state.value)) {
       if (this.state.value !== this.props.default) {
         this.props.onSubmit(this.state.value);
       }
     }
   }
 
-  private textChange = (e: IEditTextEvent) => {
+  private textChange(e: IEditTextEvent) {
     this.setState({ value: e.target.value });
   }
 
-  private renderHeader = (): JSX.Element => {
-    return <FieldHeader label={this.props.header} />;
+  private renderButton(isValueValid: boolean): JSX.Element {
+    const btnOk = (
+      <Button onClick={this.endEdit} color="success">
+        <Icon name="check" />
+      </Button>
+    );
+    const btnKo = (
+      <Button onClick={this.endEdit} color="danger">
+        <Icon name="times" />
+      </Button>
+    );
+    return isValueValid ? btnOk : btnKo;
   }
 
-  private renderdiv = (isValueValid: boolean): JSX.Element => {
-    const btnOk = (<div onClick={this.endEdit} color="success"><Icon name="check" /></div>);
-    const btnKo = (<div onClick={this.endEdit} color="danger"><Icon name="times" /></div>);
-    return (isValueValid) ? btnOk : btnKo;
-  }
-
-  private renderValue = (): JSX.Element => {
+  private renderNoEdit(): JSX.Element {
     return (
-      <div
-        onClick={this.startEdit}
-        role="button"
-      >
-        <div>{this.renderHeader()}</div>
-        <div>{this.state.value}</div>
+      <div className="Grid-cell" onClick={this.startEdit} role="button">
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">
+            {this.props.header}
+          </InputGroupAddon>
+          <div className="form-control">{this.state.value}</div>
+        </InputGroup>
       </div>
     );
   }
 
-  private renderInput = (): JSX.Element => {
+  private renderEdit(): JSX.Element {
     const isValueValid = this.props.validate(this.state.value);
     return (
-      <div>
-        <div>{this.renderHeader()}</div>
-        <div>
-          <div>
-            <input
-              onChange={this.textChange}
-              value={this.state.value}
-            />
-            <div>
-                {this.renderdiv(isValueValid)}
-            </div>
-          </div>
-        </div>
+      <div className="Grid-cell">
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">
+            {this.props.header}
+          </InputGroupAddon>
+          <Input
+            onChange={this.textChange}
+            value={this.state.value}
+            placeholder={this.state.value}
+            valid={isValueValid}
+          />
+          <InputGroupAddon addonType="append">
+            {this.renderButton(isValueValid)}
+          </InputGroupAddon>
+        </InputGroup>
       </div>
     );
   }

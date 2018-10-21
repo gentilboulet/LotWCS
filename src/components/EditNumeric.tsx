@@ -1,7 +1,8 @@
-import * as React from 'react';
-import Icon from 'react-fa';
+import * as React from "react";
+import Icon from "react-fa";
+import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
-import FieldHeader from 'components/FieldHeader';
+import FieldHeader from "components/FieldHeader";
 
 export interface IEditNumericProps {
   name: string | JSX.Element;
@@ -14,12 +15,15 @@ interface IEditNumericState {
   edit: boolean;
 }
 
-class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericState> {
+class EditNumeric extends React.PureComponent<
+  IEditNumericProps,
+  IEditNumericState
+> {
   constructor(props: IEditNumericProps) {
     super(props);
 
     this.state = {
-      edit: false,
+      edit: false
     };
 
     this.startEdit = this.startEdit.bind(this);
@@ -31,53 +35,45 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
 
   public render() {
     if (!this.state.edit) {
-      return(
-        <div>
-          <div
-            onClick={this.startEdit}
-            role="button"
-          >
-          <div>{this.renderHeader()}</div>
-          <div>{this.props.value}</div>
-          </div>
-        </div>
+      return (
+        <InputGroup onClick={this.startEdit} role="button">
+          <InputGroupAddon addonType="prepend">
+            {this.props.name}
+          </InputGroupAddon>
+          <div className="form-control">{this.props.value}</div>
+        </InputGroup>
       );
     } else {
-      return(
-        <div>
-          <div>
-            <div>{this.renderHeader()}</div>
-            <div>
-              <div>
-                <input value={this.props.value} readOnly={true} />
-                <div>
-                  {this.props.canBuy ? this.renderButton('plus', this.doBuy) : null }
-                  {this.renderButton('times', this.endEdit)}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      return (
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">
+            {this.props.name}
+          </InputGroupAddon>
+          <div className="form-control">{this.props.value}</div>
+          <InputGroupAddon addonType="append">
+            {this.props.canBuy ? this.renderButton("plus", this.doBuy) : null}
+            {this.renderButton("times", this.endEdit)}
+          </InputGroupAddon>
+        </InputGroup>
       );
     }
   }
 
   public componentDidUpdate() {
-    if(this.state.edit && !this.props.canBuy )
-    {
+    if (this.state.edit && !this.props.canBuy) {
       this.endEdit();
     }
   }
 
   private startEdit() {
-    if(this.props.canBuy) {
-      this.setState({edit: true});
+    if (this.props.canBuy) {
+      this.setState({ edit: true });
     }
   }
 
   private endEdit() {
     this.setState({
-      edit: false,
+      edit: false
     });
   }
 
@@ -90,7 +86,11 @@ class EditNumeric extends React.PureComponent<IEditNumericProps, IEditNumericSta
   }
 
   private renderButton(icon: string, f: () => void) {
-    return <div onClick={f}><Icon name={icon}/></div>;
+    return (
+      <Button onClick={f}>
+        <Icon name={icon} />
+      </Button>
+    );
   }
 }
 
