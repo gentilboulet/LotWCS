@@ -2,11 +2,12 @@ import * as React from "react";
 import Icon from "react-fa";
 import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
+import TokenInput from "components/TokenInput";
 import { ICost } from "state/costs";
 
 interface IEditSpecialitiesProps {
   bought: string[];
-  available: Array<{
+  specialities: Array<{
     name: string;
     canBuy: boolean;
     cost: ICost;
@@ -30,7 +31,6 @@ class EditSpecialities extends React.PureComponent<
 
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
-    this.selectedChange = this.selectedChange.bind(this);
     this.isValueValid = this.isValueValid.bind(this);
 
     this.buySpeciality = this.buySpeciality.bind(this);
@@ -48,60 +48,59 @@ class EditSpecialities extends React.PureComponent<
     }
   }
 
-  private renderButton(icon: string, f: () => void) {
+  private renderButton(icon: string, color: string, f: () => void) {
     return (
-      <Button onClick={f}>
+      <Button onClick={f} color={color}>
         <Icon name={icon} />
       </Button>
     );
   }
 
   private renderBoughtSpecialities() {
-    return this.props.bought.map((speciality: string) => {
-      return <div key={speciality}>{speciality}</div>;
+    return this.props.bought.map((speciality: string, index: number) => {
+      return (index > 0 ? ", " : "") + speciality;
     });
   }
 
   private renderNoEdit() {
-    const canBuy = this.props.available.some(option => option.canBuy);
+    const canBuy = this.props.specialities.some(option => option.canBuy);
     return (
       <InputGroup onClick={this.startEdit} role="button">
         <div className="form-control">{this.renderBoughtSpecialities()}</div>
-        <InputGroupAddon addonType="append">
-          {canBuy ? this.renderButton("plus", this.startEdit) : ""}
-        </InputGroupAddon>
+        {canBuy ? (
+          <InputGroupAddon addonType="append">
+            {this.renderButton("plus", "default", this.startEdit)}
+          </InputGroupAddon>
+        ) : (
+          ""
+        )}
       </InputGroup>
     );
   }
 
   private renderEdit() {
-    const onChange = (
-      tags: string[],
-      changed: string[],
-      changedIndexes: number[]
-    ) => {
-      /* tslint:disable no-console */
-      console.log(
-        "on changing with tags ",
-        tags,
-        "changed, ",
-        changed,
-        "at idx",
-        changedIndexes
-      );
-    };
+    const optionList = this.props.specialities.map(speciality => {
+      return { id: speciality.name, name: speciality.name };
+    });
 
     return (
       <InputGroup>
+        <TokenInput
+          allowNew={true}
+          labelKey="name"
+          onAdd={this.buySpeciality}
+          options={optionList}
+          tokens={this.props.bought}
+        />
         <InputGroupAddon addonType="append">
-          {this.renderButton("check", this.endEdit)}
+          {this.renderButton("check", "success", this.endEdit)}
         </InputGroupAddon>
       </InputGroup>
     );
   }
 
   private startEdit(): void {
-    const canBuy = this.props.available.some(option => option.canBuy);
+    const canBuy = this.props.specialities.some(option => option.canBuy);
     if (canBuy) {
       this.setState({ edit: true });
     }
@@ -121,44 +120,39 @@ class EditSpecialities extends React.PureComponent<
     );
   }
 
-  private selectedChange(selected: any[]): void {
-    this.endEdit();
-    selected.forEach((value: any) => {
-      if (typeof value === "string") {
-        this.buySpeciality(value);
-      } else if (typeof value === "object") {
-        this.buySpeciality(value.label);
-      }
-    });
-  }
-
   private buySpeciality(speciality: string) {
+    /* tslint:disable no-console */
+    console.log("new spe ? ", speciality);
     if (speciality.length === 0) {
+      console.log("new spe lenght 0");
       return;
     }
     if (!this.isValueValid(speciality)) {
+      console.log("new spe  invalid");
       return;
     }
 
-    const foundIndex = this.props.available.findIndex(available => {
+    const foundIndex = this.props.specialities.findIndex(available => {
       return available.name === speciality;
     });
+    console.log("foundIndex", foundIndex);
 
     if (foundIndex !== -1) {
-      if (this.props.available[foundIndex].canBuy) {
+      if (this.props.specialities[foundIndex].canBuy) {
         this.props.onBuy(
-          this.props.available[foundIndex].name,
-          this.props.available[foundIndex].cost
+          this.props.specialities[foundIndex].name,
+          this.props.specialities[foundIndex].cost
         );
       }
     } else {
-      const indexNewSpeciality = this.props.available.findIndex(
+      const indexNewSpeciality = this.props.specialities.findIndex(
         option => option.name.length === 0
       );
-      if (this.props.available[indexNewSpeciality].canBuy) {
+      console.log("indexNewSpeciality", indexNewSpeciality);
+      if (this.props.specialities[indexNewSpeciality].canBuy) {
         this.props.onBuy(
           speciality,
-          this.props.available[indexNewSpeciality].cost
+          this.props.specialities[indexNewSpeciality].cost
         );
       }
     }

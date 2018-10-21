@@ -5,7 +5,7 @@ import { ICost } from "state/costs";
 import EditSpecialities from "./EditSpecialities";
 
 export interface ISpecialitiesProps {
-  available: Array<{
+  specialities: Array<{
     name: string;
     canBuy: boolean;
     cost: ICost;
@@ -20,7 +20,7 @@ class Specialities extends React.PureComponent<ISpecialitiesProps, {}> {
     return (
       <EditSpecialities
         bought={this.props.bought}
-        available={this.props.available}
+        specialities={this.props.specialities}
         onBuy={this.props.onBuy}
       />
     );
