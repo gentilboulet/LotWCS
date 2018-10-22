@@ -84,7 +84,7 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
 
   private renderNoEdit(): JSX.Element {
     return (
-      <div className="Grid-cell" onClick={this.startEdit} role="button">
+      <div onClick={this.startEdit} role="button">
         <InputGroup>
           <InputGroupAddon addonType="prepend">
             {this.props.header}
@@ -98,7 +98,7 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
   private renderEdit(): JSX.Element {
     const isValueValid = this.props.validate(this.state.value);
     return (
-      <div className="Grid-cell">
+      <div>
         <InputGroup>
           <InputGroupAddon addonType="prepend">
             {this.props.header}

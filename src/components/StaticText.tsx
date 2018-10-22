@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import FieldHeader from './FieldHeader';
+import { InputGroup, InputGroupAddon } from "reactstrap";
 
 export interface IStaticTextProps {
   header: string;
@@ -10,15 +9,13 @@ export interface IStaticTextProps {
 class StaticText extends React.PureComponent<IStaticTextProps, {}> {
   public render = (): JSX.Element => {
     return (
-      <div>
-        <div>{this.renderHeader()}</div>
-        <div>{this.props.value}</div>
-      </div>
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">
+            {this.props.header}
+          </InputGroupAddon>
+          <div className="form-control">{this.props.value}</div>
+        </InputGroup>
     );
-  }
-
-  private renderHeader = (): JSX.Element => {
-    return <FieldHeader label={this.props.header} />;
   }
 }
 

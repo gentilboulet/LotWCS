@@ -5,6 +5,7 @@ import { ICost } from "state/costs";
 import { TChiName } from "data/chi";
 
 import EditNumeric from "components/EditNumeric";
+import StaticText from "components/StaticText";
 
 export interface IChiProps {
   name: TChiName;
@@ -25,18 +26,18 @@ class Chi extends React.PureComponent<IChiProps, {}> {
       this.props.name.charAt(0).toUpperCase() + this.props.name.slice(1);
 
     return (
-      <div>
-        <div>
-          <div>
+      <div className="Grid">
+	<div className="Grid-cell">
             <EditNumeric
               name={name}
               value={this.props.value}
               canBuy={this.props.canBuy}
               onBuy={this.onBuy}
             />
-          </div>
-          <div>{"cultivation " + this.props.cultivation}</div>
-        </div>
+	  </div>
+	  <div className="Grid-cell">
+	    <StaticText header="Cultivation" value={this.props.cultivation.toString()} />
+	  </div>
       </div>
     );
   }
