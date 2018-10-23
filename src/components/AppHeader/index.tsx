@@ -1,15 +1,10 @@
-import * as React from 'react';
-import Icon from 'react-fa';
-import { Link } from 'react-router-dom';
-import { Button, Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap';
+import * as React from "react";
+import Icon from "react-fa";
+import { Link } from "react-router-dom";
 
-import './header.css';
+import "./header.css";
 
-const styleButtonLink: React.CSSProperties = {
-  padding: 0,
-}
-
-class AppHeader extends React.Component<{}, {isOpen: boolean}> {
+class AppHeader extends React.PureComponent<{}, { isOpen: boolean }> {
   constructor(props: any) {
     super(props);
 
@@ -26,26 +21,49 @@ class AppHeader extends React.Component<{}, {isOpen: boolean}> {
 
   public render() {
     return (
-     <Navbar className="ml-auto" color="light" light={true} expand="md">
-       <NavbarBrand className="nav-link" href="/">LotWCS</NavbarBrand>
-       <NavbarToggler onClick={this.toggle} />
-       <Collapse isOpen={this.state.isOpen} navbar={true}>
-        <Nav className="ml-auto" navbar={true}>
-          <NavItem><Link className="nav-link" to="/skills">Skills</Link></NavItem>
-          <NavItem><Link className="nav-link" to="/chi">Chi</Link></NavItem>
-          <NavItem><Link className="nav-link" to="/virtues">Virtues</Link></NavItem>
-          <NavItem><Link className="nav-link" to="/equipment">Equipment</Link></NavItem>
-          <NavItem><Link className="nav-link" to="/conditions">Conditions</Link></NavItem>
-          <NavItem><Link className="nav-link" to="/kungfu" >{"Kung\u00A0Fu"}</Link></NavItem>
-          <NavItem><Link className="nav-link" to="/loresheets">Loresheets</Link></NavItem>
-        </Nav>
-        <Nav className="ml-auto w-100 justify-content-end" navbar={true}>
-          <NavItem><Link className="nav-link" to="/history">History</Link></NavItem>
-          <NavItem><Link className="nav-link" to="/print">Full sheet</Link></NavItem>
-          <NavItem><Link className="nav-link" style={styleButtonLink} to="/config"><Button className="seconday"><Icon name="cog" /></Button></Link></NavItem>
-        </Nav>
-        </Collapse>
-      </Navbar>
+      <nav className="navbar">
+        <ul className="left">
+          <Link to="/">
+            <li>
+              <h1>LotWCS</h1>
+            </li>
+          </Link>
+          <Link to="/skills">
+            <li>Skills</li>
+          </Link>
+          <Link to="/chi">
+            <li>Chi</li>
+          </Link>
+          <Link to="/virtues">
+            <li>Virtues</li>
+          </Link>
+          <Link to="/equipment">
+            <li>Equipment</li>
+          </Link>
+          <Link to="/conditions">
+            <li>Conditions</li>
+          </Link>
+          <Link to="/kungfu">
+            <li>{"Kung\u00A0Fu"}</li>
+          </Link>
+          <Link to="/loresheets">
+            <li>Loresheets</li>
+          </Link>
+          <Link to="/history">
+            <li>History</li>
+          </Link>
+        </ul>
+        <ul className="right">
+          <Link to="/print">
+            <li>Full sheet</li>
+          </Link>
+          <Link to="/config">
+            <li>
+              <Icon name="cog" />
+            </li>
+          </Link>
+        </ul>
+      </nav>
     );
   }
 }

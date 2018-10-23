@@ -1,27 +1,53 @@
-.header {
-  padding-top: 10px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid black;
+  padding: 10px 10px 0 10px;
+  font-weight: 300;
 }
 
-.header-left {
-  display: inline;
-  width: 80%;
+.navbar ul {
+  align-items: flex-end;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
-.header-right{
-  display: inline;
-  width: 20%;
-  align-self: flex-end;
+.navbar ul.left {
+  justify-content: flex-start;
 }
 
-.app-name {
-  height: inherit;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  text-align: center;
+.navbar ul.right {
+  justify-content: flex-end;
 }
 
-.header-nav {
-  height: 50px;
+.navbar h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.navbar li {
+  border: 1px solid black;
+  border-bottom: 0;
+  padding: 12px;
+  list-style-type: none;
+  margin: 0;
+  font-size: 20px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.navbar li:hover {
+  background-color: gainsboro;
+}
+
+.navbar li:active {
+  background-color: darkgrey;
+}
+
+.navbar a {
+  align-items: flex-end;
+  color: inherit;
+  text-decoration: none;
 }

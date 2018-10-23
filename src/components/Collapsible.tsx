@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button, Collapse, ListGroupItem } from 'reactstrap';
 
 export interface ICollapsibleProps {
   title: string;
@@ -25,9 +24,9 @@ class Collapsible extends React.PureComponent<ICollapsibleProps, ICollapsibleSta
     return (
       <div>
         {this.state.collapse ? this.renderTitleOpen() : this.renderTitle()}
-        <Collapse isOpen={this.state.collapse}>
+        <div>
           {this.props.children}
-        </Collapse>
+        </div>
       </div>
     );
   }
@@ -38,23 +37,23 @@ class Collapsible extends React.PureComponent<ICollapsibleProps, ICollapsibleSta
 
   private renderTitle(): JSX.Element {
     return (
-    <ListGroupItem
+    <div
       className="justify-content-between"
       color={(!this.props.color ? '' : this.props.color)}
     >
-    {this.props.title} <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
-    </ListGroupItem>);
+    {this.props.title} <button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</button>
+    </div>);
   }
 
   private renderTitleOpen(): JSX.Element {
     return (
-    <ListGroupItem
+    <div
       className="justify-content-between"
       color={(!this.props.color ? '' : this.props.color)}
     >
     {this.props.title} : {(!this.props.description ? '' : this.props.description)}
-    <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</Button>
-    </ListGroupItem>);
+    <button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</button>
+    </div>);
   }
 }
 

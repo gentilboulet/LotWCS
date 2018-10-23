@@ -1,0 +1,58 @@
+.TokenInput {
+  display: flex
+}
+
+.TokenInput-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.TokenInput-dropdown-content {
+  background-color: #f1f1f1;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  display: block;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.TokenInput-dropdown-content span {
+  border: lightgray 1px solid;
+  border-collapse: collapse;
+  border-radius: 2px;
+  color: black;
+  cursor: pointer;
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+
+.TokenInput-dropdown-content span:active {
+  background-color: #e2e2e2;
+}
+
+/* Show the dropdown menu on hover */
+.TokenInput-dropdown:hover .TokenInput-dropdown-content {display: block;}
+
+.TokenInput-input {
+  border: 0;
+  font-size: inherit;
+  height: inherit;
+  padding: 0;
+  width: 100%;
+}
+
+.TokenInput-token {
+  background-color: lightblue;
+  border-radius: 2px;
+  margin: 0 5px;
+  padding: 1px 5px 1px 5px;
+}
+
+.TokenInput-token:first-child {
+  margin-left: -5px;
+}
+
+.TokenInput-token-list {
+}

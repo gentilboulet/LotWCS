@@ -1,11 +1,10 @@
-import * as React from 'react';
-import { Button, Table } from 'reactstrap';
+import * as React from "react";
 
-import { IDataInternalKungfu, KUNGFU_INTERNAL, kungfuData, } from 'data/kungfu';
-import { ICost } from 'state/costs';
+import { IDataInternalKungfu, KUNGFU_INTERNAL, kungfuData } from "data/kungfu";
+import { ICost } from "state/costs";
 
-import InternalKungFuTechnique from 'containers/Character/InternalKungFuTechnique';
-import { Icon } from 'react-fa';
+import InternalKungFuTechnique from "containers/Character/InternalKungFuTechnique";
+import { Icon } from "react-fa";
 
 export interface IInternalKungFuProps {
   uid: string;
@@ -16,20 +15,7 @@ export interface IInternalKungFuProps {
   onOpen: (cost: ICost) => void;
 }
 
-const styles = {
-  button: {
-    marginLeft: '5px',
-    marginRight: '5px',
-  },
-  inline: {
-    display: 'inline'
-  },
-  right: {
-    float: 'right' as 'right',
-  }
-};
-
-class InternalKungFu extends React.Component<IInternalKungFuProps, {}> {
+class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
   constructor(props: IInternalKungFuProps) {
     super(props);
 
@@ -38,37 +24,77 @@ class InternalKungFu extends React.Component<IInternalKungFuProps, {}> {
   }
 
   public render() {
-    const data = kungfuData(KUNGFU_INTERNAL, this.props.uid) as IDataInternalKungfu;
-    return <div>
-             <div><h4 style={styles.inline}>{data.name}</h4><span style={styles.right}>{this.renderButton()}</span></div>
-             <div><h5 style={styles.inline}>description</h5>: <p style={styles.inline}>{data.description}</p></div>
-             <div><h5 style={styles.inline}>Element</h5>:<p style={styles.inline}>{data.element}</p></div>
-             <div><h5 style={styles.inline}>Techniques</h5></div>
-             {this.renderTechniques(data)}
-            </div>
+    const data = kungfuData(
+      KUNGFU_INTERNAL,
+      this.props.uid
+    ) as IDataInternalKungfu;
+    return (
+      <div>
+        <div>
+          <h4>{data.name}</h4>
+          <span>{this.renderButton()}</span>
+        </div>
+        <div>
+          <h5>description</h5>: <p>{data.description}</p>
+        </div>
+        <div>
+          <h5>Element</h5>:<p>{data.element}</p>
+        </div>
+        <div>
+          <h5>Techniques</h5>
+        </div>
+        {this.renderTechniques(data)}
+      </div>
+    );
   }
 
   private renderTechniques(data: IDataInternalKungfu): JSX.Element {
-    return <Table hover={true}>
-             <thead>
-               <tr>
-                 <th>Name</th>
-                 <th>Level</th>
-                 <th>Effect</th>
-                 <th />
-               </tr>
-             </thead>
-             <tbody>
-             {data.techniques.sort((a, b) => a.level-b.level).map(t => <InternalKungFuTechnique key={t.uid} styleUid={data.uid} uid={t.uid} />)}
-             </tbody>
-           </Table>
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Level</th>
+            <th>Effect</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {data.techniques
+            .sort((a, b) => a.level - b.level)
+            .map(t => (
+              <InternalKungFuTechnique
+                key={t.uid}
+                styleUid={data.uid}
+                uid={t.uid}
+              />
+            ))}
+        </tbody>
+      </table>
+    );
   }
 
   private renderButton(): JSX.Element {
     const onClick = () => this.props.onOpen(this.props.cost);
-    if(this.props.canOpen) { return (<Button color="success" style={styles.inline} onClick={onClick}><Icon name="unlock-alt" /></Button>); }
-    else if(this.props.isOpen) { return <Button color="primary" style={styles.inline} disabled={true}><Icon name="leanpub" /></Button>; }
-    else { return (<Button color="danger" style={styles.inline}><Icon name="times" /></Button>); }
+    if (this.props.canOpen) {
+      return (
+        <button color="success" onClick={onClick}>
+          <Icon name="unlock-alt" />
+        </button>
+      );
+    } else if (this.props.isOpen) {
+      return (
+        <button color="primary" disabled={true}>
+          <Icon name="leanpub" />
+        </button>
+      );
+    } else {
+      return (
+        <button color="danger">
+          <Icon name="times" />
+        </button>
+      );
+    }
   }
 }
 

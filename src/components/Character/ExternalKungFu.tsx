@@ -1,11 +1,15 @@
-import * as React from 'react';
-import { Button, Col, Container, Row, Table } from 'reactstrap';
+import * as React from "react";
 
-import { IDataExternalKungfu, IDataExternalKungfuStatistics, KUNGFU_EXTERNAL, kungfuData, } from 'data/kungfu';
-import { ICost } from 'state/costs';
+import {
+  IDataExternalKungfu,
+  IDataExternalKungfuStatistics,
+  KUNGFU_EXTERNAL,
+  kungfuData
+} from "data/kungfu";
+import { ICost } from "state/costs";
 
-import ExternalKungFuTechnique from 'containers/Character/ExternalKungFuTechnique';
-import { Icon } from 'react-fa';
+import ExternalKungFuTechnique from "containers/Character/ExternalKungFuTechnique";
+import { Icon } from "react-fa";
 
 export interface IExternalKungFuProps {
   uid: string;
@@ -17,31 +21,7 @@ export interface IExternalKungFuProps {
   statistics: IDataExternalKungfuStatistics;
 }
 
-const styles = {
-  button: {
-    marginLeft: '5px',
-    marginRight: '5px',
-  },
-  col: {
-    padding: '0px',
-  },
-  container: {
-    borderColor: 'lightgrey',
-    borderRadius: '10px',
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    marginBottom: '5px',
-    marginTop: '5px',
-  },
-  inline: {
-    display: 'inline'
-  },
-  right: {
-    float: 'right' as 'right',
-  }
-};
-
-class ExternalKungFu extends React.Component<IExternalKungFuProps, {}> {
+class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
   constructor(props: IExternalKungFuProps) {
     super(props);
 
@@ -52,65 +32,116 @@ class ExternalKungFu extends React.Component<IExternalKungFuProps, {}> {
   }
 
   public render() {
-    const data = kungfuData(KUNGFU_EXTERNAL, this.props.uid) as IDataExternalKungfu;
-    return  <Container fluid={true} style={styles.container}>
-              <Row>
-                <Col xs={10} style={styles.col}>{this.renderCrunch(data)}</Col>
-                <Col xs={2} style={styles.col}>{this.renderStats()}</Col>
-              </Row>
-            </Container>
+    const data = kungfuData(
+      KUNGFU_EXTERNAL,
+      this.props.uid
+    ) as IDataExternalKungfu;
+    return (
+      <div>
+        <div>
+          <div>{this.renderCrunch(data)}</div>
+          <div>{this.renderStats()}</div>
+        </div>
+      </div>
+    );
   }
 
   private renderCrunch(data: IDataExternalKungfu): JSX.Element {
-    return <div>
-             <div><h4 style={styles.inline}>{data.name}</h4><span style={styles.right}>{this.renderButton()}</span></div>
-             <div>
-               <h5 style={styles.inline}>Weapons</h5>:
-               <p style={styles.inline}>
-                 {data.weapons.map(w => <Button key={w} outline={true} disabled={true} style={styles.button} size="sm">{w}</Button>)}
-               </p>
-             </div>
-             <div><h5 style={styles.inline}>Qualities</h5>: {data.qualities.map((q, i) => <p style={(i===0) ? styles.inline : {}} key={i}>{q}</p>)}</div>
-             <div><h5 style={styles.inline}>Laught</h5>: <p style={styles.inline}>{data.laugths}</p></div>
-             <div><h5 style={styles.inline}>Fears</h5>: <p style={styles.inline}>{data.fears}</p></div>
-             <div><h5 style={styles.inline}>Techniques</h5></div>
-             {this.renderTechniques(data)}
-           </div>
+    return (
+      <div>
+        <div>
+          <h4>{data.name}</h4>
+          <span>{this.renderButton()}</span>
+        </div>
+        <div>
+          <h5>Weapons</h5>:
+          <p>
+            {data.weapons.map(w => (
+              <button key={w} disabled={true}>
+                {w}
+              </button>
+            ))}
+          </p>
+        </div>
+        <div>
+          <h5>Qualities</h5>: {data.qualities.map((q, i) => <p key={i}>{q}</p>)}
+        </div>
+        <div>
+          <h5>Laught</h5>: <p>{data.laugths}</p>
+        </div>
+        <div>
+          <h5>Fears</h5>: <p>{data.fears}</p>
+        </div>
+        <div>
+          <h5>Techniques</h5>
+        </div>
+        {this.renderTechniques(data)}
+      </div>
+    );
   }
 
   private renderStats(): JSX.Element {
-    return <Table>
-             <tbody>
-             {
-               Object.keys(this.props.statistics).map(s => {
-                 return <tr key={s}><td>{s}</td><td>{this.props.statistics[s]}</td></tr>;
-               })
-             }
-             </tbody>
-           </Table>;
+    return (
+      <table>
+        <tbody>
+          {Object.keys(this.props.statistics).map(s => {
+            return (
+              <tr key={s}>
+                <td>{s}</td>
+                <td>{this.props.statistics[s]}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
   }
 
   private renderTechniques(data: IDataExternalKungfu): JSX.Element {
-    return <Table hover={true}>
-             <thead>
-               <tr>
-                 <th>Name</th>
-                 <th>Cost</th>
-                 <th>Effect</th>
-                 <th />
-               </tr>
-             </thead>
-             <tbody>
-             {data.techniques.map(t => <ExternalKungFuTechnique key={t.uid} styleUid={data.uid} uid={t.uid} />)}
-             </tbody>
-           </Table>
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Cost</th>
+            <th>Effect</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {data.techniques.map(t => (
+            <ExternalKungFuTechnique
+              key={t.uid}
+              styleUid={data.uid}
+              uid={t.uid}
+            />
+          ))}
+        </tbody>
+      </table>
+    );
   }
 
   private renderButton(): JSX.Element {
     const onClick = () => this.props.onOpen(this.props.cost);
-    if(this.props.canOpen) { return (<Button color="success" style={styles.inline} onClick={onClick}><Icon name="unlock-alt" /></Button>); }
-    else if(this.props.isOpen) { return <Button color="primary" style={styles.inline} disabled={true}><Icon name="leanpub" /></Button>; }
-    else { return (<Button color="danger" style={styles.inline}><Icon name="times" /></Button>); }
+    if (this.props.canOpen) {
+      return (
+        <button color="success" onClick={onClick}>
+          <Icon name="unlock-alt" />
+        </button>
+      );
+    } else if (this.props.isOpen) {
+      return (
+        <button color="primary" disabled={true}>
+          <Icon name="leanpub" />
+        </button>
+      );
+    } else {
+      return (
+        <button color="danger">
+          <Icon name="times" />
+        </button>
+      );
+    }
   }
 }
 

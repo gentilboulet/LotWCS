@@ -1,26 +1,18 @@
 import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
 
 import Chi from 'containers/Character/Chi';
 import { chiNames, TChiName } from 'data/chi';
 
-const styles = {
-  row: {
-    alignItems: 'center',
-    height: 56,
-  }
-}
-
 class ChiList extends React.PureComponent<{}, {}> {
   public render() {
     return (
-      <Container style={styles}>{
+      <div>{
         chiNames.map((name: TChiName) => {
-          return <Row key={name} style={styles.row}>
-                  <Col><Chi name={name} /></Col>
-                </Row>;
+          return <div key={name}>
+                  <div><Chi name={name} /></div>
+                </div>;
         })
-      }</Container>
+      }</div>
     );
   }
 }

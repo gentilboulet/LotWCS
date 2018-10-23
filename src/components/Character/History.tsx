@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { Container, ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import * as React from "react";
 
-import { IAction }  from 'state/actions/types';
+import { IAction } from "state/actions/types";
 
 export interface IHistoryProps {
   history: IAction[];
@@ -12,12 +11,12 @@ export interface IHistoryState {
   hoverIndex: number;
 }
 
-class History extends React.Component<IHistoryProps, IHistoryState> {
+class History extends React.PureComponent<IHistoryProps, IHistoryState> {
   constructor(props: IHistoryProps) {
     super(props);
 
     this.state = {
-      hoverIndex: this.props.history.length,
+      hoverIndex: this.props.history.length
     };
 
     this.renderHistoryAction.bind(this);
@@ -25,27 +24,30 @@ class History extends React.Component<IHistoryProps, IHistoryState> {
   }
 
   public render() {
-    return(
-      <Container className="History">
-        <ListGroup>
-          {this.props.history.map((action: IAction, index: number) => this.renderHistoryAction(action, index))}
-        </ListGroup>
-      </Container>
+    return (
+      <div className="History">
+        <div>
+          {this.props.history.map((action: IAction, index: number) =>
+            this.renderHistoryAction(action, index)
+          )}
+        </div>
+      </div>
     );
   }
 
   private renderHistoryAction(action: IAction, index: number): JSX.Element {
-      const onClick = () => this.rollbackHistory(index);
-      return <ListGroupItem key={'rowHistory_' + index} tag="button" onClick={onClick} action={true}>
-            <ListGroupItemHeading>{(index+1)+" "+action.type}</ListGroupItemHeading>
-            <ListGroupItemText>{JSON.stringify(action)}</ListGroupItemText>
-          </ListGroupItem>
+    const onClick = () => this.rollbackHistory(index);
+    return (
+      <div key={"rowHistory_" + index} onClick={onClick}>
+        <div>{index + 1 + " " + action.type}</div>
+        <div>{JSON.stringify(action)}</div>
+      </div>
+    );
   }
 
   private rollbackHistory(index: number): void {
     this.props.onDelete(index);
   }
-
 }
 
 export default History;
