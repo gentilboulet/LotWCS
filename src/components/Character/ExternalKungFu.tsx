@@ -64,10 +64,7 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
           </p>
         </div>
         <div>
-          <h5>Qualities</h5>:{" "}
-          {data.qualities.map((q, i) => (
-            <p key={i}>{q}</p>
-          ))}
+          <h5>Qualities</h5>: {data.qualities.map((q, i) => <p key={i}>{q}</p>)}
         </div>
         <div>
           <h5>Laught</h5>: <p>{data.laugths}</p>

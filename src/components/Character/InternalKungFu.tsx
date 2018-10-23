@@ -60,13 +60,15 @@ class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
           </tr>
         </thead>
         <tbody>
-          {data.techniques.sort((a, b) => a.level - b.level).map(t => (
-            <InternalKungFuTechnique
-              key={t.uid}
-              styleUid={data.uid}
-              uid={t.uid}
-            />
-          ))}
+          {data.techniques
+            .sort((a, b) => a.level - b.level)
+            .map(t => (
+              <InternalKungFuTechnique
+                key={t.uid}
+                styleUid={data.uid}
+                uid={t.uid}
+              />
+            ))}
         </tbody>
       </table>
     );

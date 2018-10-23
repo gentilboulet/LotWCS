@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import { InputGroup, InputGroupAddon } from "reactstrap";
 
 export interface IStaticTextProps {
@@ -9,14 +9,14 @@ export interface IStaticTextProps {
 class StaticText extends React.PureComponent<IStaticTextProps, {}> {
   public render = (): JSX.Element => {
     return (
-        <InputGroup>
-          <InputGroupAddon addonType="prepend">
-            {this.props.header}
-          </InputGroupAddon>
-          <div className="form-control">{this.props.value}</div>
-        </InputGroup>
+      <InputGroup>
+        <InputGroupAddon addonType="prepend">
+          {this.props.header}
+        </InputGroupAddon>
+        <div className="form-control">{this.props.value}</div>
+      </InputGroup>
     );
-  }
+  };
 }
 
 export default StaticText;

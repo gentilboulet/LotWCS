@@ -1,11 +1,11 @@
-import * as React from 'react';
-import Icon from 'react-fa';
+import * as React from "react";
+import Icon from "react-fa";
 
-import FieldHeader from './FieldHeader';
+import FieldHeader from "./FieldHeader";
 
 export interface IDDLItem {
-    key: string;
-    label: string;
+  key: string;
+  label: string;
 }
 
 export interface IDDLTextProps {
@@ -27,10 +27,12 @@ export interface IDDLTextEvent {
 }
 
 class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
-
-  protected static getDerivedStateFromProps(props: IDDLTextProps, state: IDDLTextState): IDDLTextState {
-    if(!state.edit) {
-      state.value = props.default ? props.default : '';
+  protected static getDerivedStateFromProps(
+    props: IDDLTextProps,
+    state: IDDLTextState
+  ): IDDLTextState {
+    if (!state.edit) {
+      state.value = props.default ? props.default : "";
     }
     return state;
   }
@@ -41,7 +43,7 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
     this.state = {
       dropdownOpen: false,
       edit: false,
-      value: (this.props.default ? this.props.default : '')
+      value: this.props.default ? this.props.default : ""
     };
 
     this.startEdit = this.startEdit.bind(this);
@@ -56,36 +58,41 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
   }
 
   public render(): JSX.Element {
-    return (this.state.edit) ? this.renderDropdownList() : this.renderValue();
+    return this.state.edit ? this.renderDropdownList() : this.renderValue();
   }
 
   private startEdit() {
-    if (this.props.locked ? false : true)  {
-      this.setState({edit: true, dropdownOpen: false});
+    if (this.props.locked ? false : true) {
+      this.setState({ edit: true, dropdownOpen: false });
     }
   }
 
   private endEdit() {
-    this.setState({edit: false, dropdownOpen: false});
+    this.setState({ edit: false, dropdownOpen: false });
     const labelForSelectedKey = this.getLabelForSelectedKey();
-    if (this.state.value !== this.props.default && labelForSelectedKey.length > 0 ) {
+    if (
+      this.state.value !== this.props.default &&
+      labelForSelectedKey.length > 0
+    ) {
       this.props.onSubmit(this.state.value);
     }
   }
 
   private toggleDDL() {
-    this.setState({dropdownOpen: !this.state.dropdownOpen});
+    this.setState({ dropdownOpen: !this.state.dropdownOpen });
   }
 
   private select(key: string) {
-    this.setState({value: key});
+    this.setState({ value: key });
   }
 
   private getLabelForSelectedKey(): string {
     return this.props.values
-      .map( ({key, label}: IDDLItem) => ( key === this.state.value ? label : '') )
-      .filter( (e: string) => (e !== ''))
-      .join(', ');
+      .map(
+        ({ key, label }: IDDLItem) => (key === this.state.value ? label : "")
+      )
+      .filter((e: string) => e !== "")
+      .join(", ");
   }
 
   private renderHeader(): JSX.Element {
@@ -93,13 +100,21 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
   }
 
   private renderButton(labelForSelectedKey: string): JSX.Element {
-    const btnOk = (<button onClick={this.endEdit} color="success"><Icon name="check" /></button>);
-    const btnKo = (<button onClick={this.endEdit} color="danger"><Icon name="times" /></button>);
-    return (labelForSelectedKey.length > 0) ? btnOk : btnKo;
+    const btnOk = (
+      <button onClick={this.endEdit} color="success">
+        <Icon name="check" />
+      </button>
+    );
+    const btnKo = (
+      <button onClick={this.endEdit} color="danger">
+        <Icon name="times" />
+      </button>
+    );
+    return labelForSelectedKey.length > 0 ? btnOk : btnKo;
   }
 
   private renderDropdownItems(): JSX.Element[] {
-    return this.props.values.map( ({key, label}: IDDLItem) => {
+    return this.props.values.map(({ key, label }: IDDLItem) => {
       const selectMe = () => this.select(key);
       return (
         <div key={key} onClick={selectMe}>
@@ -117,11 +132,11 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
         <div>
           <div>
             <div>
-              {labelForSelectedKey.length > 0 ? labelForSelectedKey : 'Choose a ' + this.props.header}
+              {labelForSelectedKey.length > 0
+                ? labelForSelectedKey
+                : "Choose a " + this.props.header}
             </div>
-            <div>
-              {this.renderDropdownItems()}
-            </div>
+            <div>{this.renderDropdownItems()}</div>
           </div>
           {this.renderButton(labelForSelectedKey)}
         </div>
@@ -133,9 +148,11 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
     const labelForSelectedKey = this.getLabelForSelectedKey();
     return (
       <div onClick={this.startEdit} role="button">
-          <div>{this.renderHeader()}</div>
-          <div>
-          {labelForSelectedKey.length > 0 ? labelForSelectedKey : this.state.value}
+        <div>{this.renderHeader()}</div>
+        <div>
+          {labelForSelectedKey.length > 0
+            ? labelForSelectedKey
+            : this.state.value}
         </div>
       </div>
     );
