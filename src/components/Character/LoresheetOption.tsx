@@ -46,7 +46,7 @@ class LoresheetOption extends React.PureComponent<ILoresheetOptionProps, {}> {
     if (canBuy) {
       return (
         <button color="success">
-          <Icon name="unlock-alt" />
+          <Icon name="graduation-cap" />
         </button>
       );
     } else {

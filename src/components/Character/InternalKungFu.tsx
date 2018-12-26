@@ -30,15 +30,21 @@ class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
     ) as IDataInternalKungfu;
     return (
       <div>
-        <div>
+        <div className="Grid" style={{ justifyContent: "space-between" }}>
           <h4>{data.name}</h4>
-          <span>{this.renderButton()}</span>
+          <span style={{ justifyContent: "flex-end" }}>
+            {this.renderButton()}
+          </span>
         </div>
         <div>
-          <h5>description</h5>: <p>{data.description}</p>
+          <h5>Description</h5>
+          <p>{data.description}</p>
         </div>
-        <div>
-          <h5>Element</h5>:<p>{data.element}</p>
+        <div className="Grid">
+          <h5>Element</h5>
+          <p>
+            <button disabled={true}>{data.element}</button>
+          </p>
         </div>
         <div>
           <h5>Techniques</h5>
@@ -79,7 +85,7 @@ class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
     if (this.props.canOpen) {
       return (
         <button color="success" onClick={onClick}>
-          <Icon name="unlock-alt" />
+          <Icon name="graduation-cap" />
         </button>
       );
     } else if (this.props.isOpen) {

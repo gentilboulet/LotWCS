@@ -40,7 +40,6 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
       <div>
         <div>
           <div>{this.renderCrunch(data)}</div>
-          <div>{this.renderStats()}</div>
         </div>
       </div>
     );
@@ -49,12 +48,14 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
   private renderCrunch(data: IDataExternalKungfu): JSX.Element {
     return (
       <div>
-        <div>
+        <div className="Grid" style={{ justifyContent: "space-between" }}>
           <h4>{data.name}</h4>
-          <span>{this.renderButton()}</span>
+          <span style={{ justifyContent: "flex-end" }}>
+            {this.renderButton()}
+          </span>
         </div>
-        <div>
-          <h5>Weapons</h5>:
+        <div className="Grid">
+          <h5>Weapons</h5>
           <p>
             {data.weapons.map(w => (
               <button key={w} disabled={true}>
@@ -63,19 +64,31 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
             ))}
           </p>
         </div>
-        <div>
-          <h5>Qualities</h5>: {data.qualities.map((q, i) => <p key={i}>{q}</p>)}
-        </div>
-        <div>
-          <h5>Laught</h5>: <p>{data.laugths}</p>
-        </div>
-        <div>
-          <h5>Fears</h5>: <p>{data.fears}</p>
+        <div className="Grid">
+          <div className="Grid-cell">
+            <div className="Grid">
+              <h5>Qualities</h5>
+              {data.qualities.map((q, i) => (
+                <p key={i}>{q}</p>
+              ))}
+            </div>
+            <div className="Grid">
+              <h5>Laught</h5>
+              <p>{data.laugths}</p>
+            </div>
+            <div className="Grid">
+              <h5>Fears</h5>
+              <p>{data.fears}</p>
+            </div>
+          </div>
+          <div className="Grid-cell" style={{ flexGrow: 0 }}>
+            {this.renderStats()}
+          </div>
         </div>
         <div>
           <h5>Techniques</h5>
+          {this.renderTechniques(data)}
         </div>
-        {this.renderTechniques(data)}
       </div>
     );
   }
@@ -126,7 +139,7 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
     if (this.props.canOpen) {
       return (
         <button color="success" onClick={onClick}>
-          <Icon name="unlock-alt" />
+          <Icon name="graduation-cap" />
         </button>
       );
     } else if (this.props.isOpen) {

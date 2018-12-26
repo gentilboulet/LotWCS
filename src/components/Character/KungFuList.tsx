@@ -56,7 +56,7 @@ class KungFuList extends React.PureComponent<{}, {}> {
           .concat(externals)
           .concat(internalHeader)
           .concat(internals)}
-        preSelected={["Blossom Harvest"]}
+        preSelected={[]}
         renderItem={this.renderItem}
       />
     );

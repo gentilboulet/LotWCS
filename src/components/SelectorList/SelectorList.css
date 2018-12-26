@@ -61,6 +61,8 @@
 .selector-list .search-list .header {
   cursor: default;
   text-align: center;
+  border: none;
+  background-color: lightgrey;
 }
 
 

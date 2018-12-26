@@ -26,9 +26,11 @@ class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
     const data = getLoresheetData(this.props.uid) as IDataLoresheet;
     return (
       <div>
-        <div>
+        <div className="Grid" style={{ justifyContent: "space-between" }}>
           <h4>{data.name}</h4>
-          <span>{this.renderButton()}</span>
+          <span style={{ justifyContent: "flex-end" }}>
+            {this.renderButton()}
+          </span>
         </div>
         <div>
           <p>{data.description}</p>
@@ -63,7 +65,7 @@ class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
     if (this.props.canBuy) {
       return (
         <button color="success" onClick={onClick}>
-          <Icon name="unlock-alt" />
+          <Icon name="graduation-cap" />
         </button>
       );
     } else if (this.props.known) {
