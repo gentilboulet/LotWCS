@@ -32,7 +32,7 @@ interface IMapDispatchToProps {
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   const newSpecialityAvailability = {
     canBuy: canBuySpeciality(state, props.skill, ""),
-    cost: getCostSpeciality(state, props.skill, ""),
+    cost: getCostSpeciality(state),
     name: ""
   };
 
@@ -48,7 +48,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     specialities: merge.map((speciality: string) => {
       return {
         canBuy: canBuySpeciality(state, props.skill, speciality),
-        cost: getCostSpeciality(state, props.skill, speciality),
+        cost: getCostSpeciality(state),
         name: speciality
       };
     })

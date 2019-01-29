@@ -3,9 +3,8 @@
 exports[`Testing virtue action creator should create a virtue increase action with a non existing virtue 1`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "New virtue name",
@@ -17,9 +16,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 1`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Honor",
@@ -31,9 +29,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 2`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Benevolence",
@@ -45,9 +42,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 3`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Righteousness",
@@ -59,9 +55,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 4`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Loyalty",
@@ -73,9 +68,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 5`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Force",
@@ -87,9 +81,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 6`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Revenge",
@@ -101,9 +94,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 7`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Individualism",
@@ -115,9 +107,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 8`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Obsession",
@@ -129,9 +120,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 9`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Ruthlessness",
@@ -143,9 +133,8 @@ Object {
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 10`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "name": "Ferocity",

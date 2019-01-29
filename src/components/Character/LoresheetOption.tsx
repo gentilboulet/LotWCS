@@ -7,8 +7,7 @@ import { ICost } from "state/costs";
 export interface ILoresheetOptionProps {
   lsUid: string;
   uid: string;
-  cost?: ICost;
-  costs?: Array<{ value: number; cost: ICost }>;
+  cost: ICost[];
   canBuy: boolean;
   onBuy: (cost: ICost) => void;
   payloads: any[];
@@ -58,12 +57,20 @@ class LoresheetOption extends React.PureComponent<ILoresheetOptionProps, {}> {
     }
   }
 
+  private fromCostToString(cost: number | { min: number; max: number }) {
+    if (typeof cost === "number") {
+      return cost;
+    } else {
+      return cost.min + "-" + cost.max;
+    }
+  }
+
   private renderKnown(payload: any, index: number): JSX.Element {
     const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
     return (
       <tr key={"known_" + data.uid + "_" + index}>
         <td>{data.type}</td>
-        <td>{data.cost}</td>
+        <td>{this.fromCostToString(data.cost)}</td>
         <td>{data.description}</td>
         <td>{this.renderButton(false)}</td>
       </tr>
@@ -75,7 +82,7 @@ class LoresheetOption extends React.PureComponent<ILoresheetOptionProps, {}> {
     return (
       <tr key={"unknown_" + data.uid} role="button" onClick={this.onBuy}>
         <td>{data.type}</td>
-        <td>{data.cost}</td>
+        <td>{this.fromCostToString(data.cost)}</td>
         <td>{data.description}</td>
         <td>{this.renderButton(this.props.canBuy)}</td>
       </tr>
@@ -84,7 +91,7 @@ class LoresheetOption extends React.PureComponent<ILoresheetOptionProps, {}> {
 
   private onBuy(): void {
     if (this.props.cost !== undefined && this.props.canBuy) {
-      this.props.onBuy(this.props.cost);
+      // this.props.onBuy(this.props.cost); TODO
     }
   }
 }

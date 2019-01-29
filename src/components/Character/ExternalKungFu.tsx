@@ -40,7 +40,6 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
       <div>
         <div>
           <div>{this.renderCrunch(data)}</div>
-          <div>{this.renderStats()}</div>
         </div>
       </div>
     );

@@ -36,6 +36,7 @@ function emptyInitialStateFactory(): IStoreState {
 
 import { setArchetype, setRank } from "state/actions/header";
 import { skillSpecialityBuy } from "state/actions/skills";
+import { zeroCost } from "./costs";
 import { replayHistory } from "./history";
 
 export function testingStateFactory(): IStoreState {
@@ -43,8 +44,8 @@ export function testingStateFactory(): IStoreState {
   const actions = [
     setRank("4th_rank"),
     setArchetype("warrior"),
-    skillSpecialityBuy("Awareness", "Hear", { destiny: 0, entanglement: 0 }),
-    skillSpecialityBuy("Awareness", "Sight", { destiny: 0, entanglement: 0 })
+    skillSpecialityBuy("Awareness", "Hear", zeroCost),
+    skillSpecialityBuy("Awareness", "Sight", zeroCost)
   ];
   initial.destiny += 5;
   return replayHistory(initial, actions);

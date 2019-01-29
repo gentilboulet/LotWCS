@@ -3,9 +3,8 @@
 exports[`Testing loresheet action creators should create a buy option action 1`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "lsUid": "jianghu",
@@ -17,9 +16,8 @@ Object {
 exports[`Testing loresheet action creators should create an open action 1`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "type": "LORESHEET_OPEN",

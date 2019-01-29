@@ -3,9 +3,8 @@
 exports[`Testing external kungfu action creator should create an OPEN_STYLE action with an external kungfu 1`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "kungfuType": "KUNGFU_EXTERNAL",
@@ -17,9 +16,8 @@ Object {
 exports[`Testing external kungfu action creator should create an OPEN_STYLE action with an internal kungfu 1`] = `
 Object {
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
     "entanglement": 0,
   },
   "kungfuType": "KUNGFU_INTERNAL",

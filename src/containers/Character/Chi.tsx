@@ -1,20 +1,20 @@
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
-import * as actions from 'state/actions/chi';
-import { canBuyChi } from 'state/chi';
-import { getCostChi, ICost } from 'state/costs';
-import { IStoreState } from 'state/type';
+import * as actions from "state/actions/chi";
+import { canBuyChi } from "state/chi";
+import { getCostChi, ICost } from "state/costs";
+import { IStoreState } from "state/type";
 
-import Chi, { IChiProps } from 'components/Character/Chi';
-import { TChiName } from 'data/chi';
+import Chi, { IChiProps } from "components/Character/Chi";
+import { TChiName } from "data/chi";
 
 interface IMapStateToProps {
   canBuy: boolean;
   cost: ICost;
-  cultivation: number; 
+  cultivation: number;
   name: TChiName;
-  value: number; 
+  value: number;
 }
 
 interface IMapDispatchToProps {
@@ -27,17 +27,20 @@ interface IProps {
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
-    canBuy: canBuyChi(state, props.name),
+    canBuy: canBuyChi(/*state, props.name*/),
     cost: getCostChi(state, props.name),
     cultivation: state.chi[props.name].cultivation,
     name: props.name,
-    value: state.chi[props.name].value,
+    value: state.chi[props.name].value
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.IChiAction>, props: IProps): IMapDispatchToProps {
+function mapDispatchToProps(
+  dispatch: Dispatch<actions.IChiAction>,
+  props: IProps
+): IMapDispatchToProps {
   return {
-    onBuy: (cost: ICost) => dispatch(actions.chiBuy(props.name, 1, cost)),
+    onBuy: (cost: ICost) => dispatch(actions.chiBuy(props.name, 1, cost))
   };
 }
 
@@ -48,4 +51,8 @@ function mergeProps(
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Chi);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(Chi);
