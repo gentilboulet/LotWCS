@@ -1,12 +1,12 @@
-import { IChiAction } from "state/actions/chi";
-import { initialStateFactory } from "state/initial";
-import { IStoreState } from "state/type";
+import { IChiAction } from "../actions/chi";
+import { initialStateFactory } from "../initial";
+import { IStoreState } from "../type";
 
 import { chiReducer } from "./chi";
 import { globalReducer } from "./global";
 
-import * as actions from "state/actions/chi";
-import { zeroCost } from "state/costs";
+import * as actions from "../actions/chi";
+import { zeroCost } from "../costs";
 
 const initialState: IStoreState = initialStateFactory();
 

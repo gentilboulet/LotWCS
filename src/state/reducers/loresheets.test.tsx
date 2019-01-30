@@ -1,14 +1,14 @@
-import { initialStateFactory } from "state/initial";
-import { IStoreState } from "state/type";
+import { initialStateFactory } from "../initial";
+import { IStoreState } from "../type";
 
-import * as loresheetsActions from "state/actions/loresheets";
-import { zeroCost } from "state/costs";
-import * as loresheets from "state/loresheets";
+import * as loresheetsActions from "../actions/loresheets";
+import { zeroCost } from "../costs";
+import * as loresheets from "../loresheets";
 
-import { globalReducer } from "state/reducers/global";
-import { loresheetsReducer } from "state/reducers/loresheets";
+import { globalReducer } from "../reducers/global";
+import { loresheetsReducer } from "../reducers/loresheets";
 
-import * as dataLoresheets from "data/loresheets";
+import * as dataLoresheets from "../../data/loresheets";
 
 const initialState: IStoreState = initialStateFactory();
 

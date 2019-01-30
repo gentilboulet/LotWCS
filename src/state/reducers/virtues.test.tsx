@@ -1,10 +1,10 @@
-import { initialStateFactory } from "state/initial";
-import { IStoreState } from "state/type";
+import { initialStateFactory } from "../initial";
+import { IStoreState } from "../type";
 
-import * as dataVirtues from "data/virtues";
-import * as actions from "state/actions/virtues";
-import { zeroCost } from "state/costs";
-import { isVirtuePresent } from "state/virtues";
+import * as dataVirtues from "../../data/virtues";
+import * as actions from "../actions/virtues";
+import { zeroCost } from "../costs";
+import { isVirtuePresent } from "../virtues";
 
 import { globalReducer } from "./global";
 import { virtuesReducer } from "./virtues";

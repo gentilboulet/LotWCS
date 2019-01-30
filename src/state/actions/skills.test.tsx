@@ -1,4 +1,4 @@
-import { zeroCost } from "state/costs";
+import { zeroCost } from "../costs";
 import * as actions from "./skills";
 describe("Testing for skill action creators", () => {
   it("should create a buy skill action", () => {

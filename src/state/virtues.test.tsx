@@ -1,7 +1,7 @@
-import { initialStateFactory } from "state/initial";
-import { IStoreState } from "state/type";
+import { initialStateFactory } from "./initial";
+import { IStoreState } from "./type";
 
-import * as dataVirtues from "data/virtues";
+import * as dataVirtues from "../data/virtues";
 
 import {
   add,

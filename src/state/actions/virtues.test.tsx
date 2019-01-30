@@ -1,5 +1,5 @@
-import * as dataVirtues from "data/virtues";
-import { zeroCost } from "state/costs";
+import * as dataVirtues from "../../data/virtues";
+import { zeroCost } from "../costs";
 import * as actions from "./virtues";
 
 describe("Testing virtue action creator", () => {

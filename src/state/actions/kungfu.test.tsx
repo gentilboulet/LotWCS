@@ -1,5 +1,10 @@
-import * as dataKungfus from "data/kungfu";
-import { zeroCost } from "state/costs";
+import * as dataKungfus from "../../data/kungfu";
+import {
+  KUNGFU_EXTERNAL,
+  KUNGFU_INTERNAL,
+  KUNGFU_TYPE
+} from "../../data/kungfu/types";
+import { zeroCost } from "../costs";
 import * as actions from "./kungfu";
 
 describe("Testing external kungfu action creator", () => {
@@ -26,7 +31,7 @@ describe("Testing external kungfu action creator", () => {
 
   it("should create an OPEN_STYLE action with an internal kungfu", () => {
     const uid = validInternal.uid;
-    const type = dataKungfus.KUNGFU_INTERNAL;
+    const type = KUNGFU_INTERNAL;
     const a = actions.openStyle(uid, type, zeroCost);
     expect(a.uid).toBe(uid);
     expect(a.kungfuType).toBe(type);
@@ -35,7 +40,7 @@ describe("Testing external kungfu action creator", () => {
 
   it("should create an OPEN_STYLE action with an external kungfu", () => {
     const uid = validExternal.uid;
-    const type = dataKungfus.KUNGFU_EXTERNAL;
+    const type = KUNGFU_EXTERNAL;
     const a = actions.openStyle(uid, type, zeroCost);
     expect(a.uid).toBe(uid);
     expect(a.kungfuType).toBe(type);
@@ -43,7 +48,7 @@ describe("Testing external kungfu action creator", () => {
   });
 
   it("should not create an OPEN_STYLE action with an erroneous kungfu type", () => {
-    const type = "TOTALLY A KUNGFU TYPE" as dataKungfus.KUNGFU_TYPE;
+    const type = "TOTALLY A KUNGFU TYPE" as KUNGFU_TYPE;
     expect(() =>
       actions.openStyle(validExternal.uid, type, zeroCost)
     ).toThrow();
@@ -51,28 +56,20 @@ describe("Testing external kungfu action creator", () => {
 
   it("should not create an OPEN_STYLE action with an erroneous internal kungfu", () => {
     const uid = "TOTALLY A KUNGFU UID";
-    expect(() =>
-      actions.openStyle(uid, dataKungfus.KUNGFU_INTERNAL, zeroCost)
-    ).toThrow();
-    expect(() =>
-      actions.openStyle("", dataKungfus.KUNGFU_INTERNAL, zeroCost)
-    ).toThrow();
+    expect(() => actions.openStyle(uid, KUNGFU_INTERNAL, zeroCost)).toThrow();
+    expect(() => actions.openStyle("", KUNGFU_INTERNAL, zeroCost)).toThrow();
   });
 
   it("should not create an OPEN_STYLE action with an erroneous external kungfu", () => {
     const uid = "TOTALLY A KUNGFU UID";
-    expect(() =>
-      actions.openStyle(uid, dataKungfus.KUNGFU_EXTERNAL, zeroCost)
-    ).toThrow();
-    expect(() =>
-      actions.openStyle("", dataKungfus.KUNGFU_EXTERNAL, zeroCost)
-    ).toThrow();
+    expect(() => actions.openStyle(uid, KUNGFU_EXTERNAL, zeroCost)).toThrow();
+    expect(() => actions.openStyle("", KUNGFU_EXTERNAL, zeroCost)).toThrow();
   });
 
   it("should create a BUY_TECHNIQUE action with an internal kungfu", () => {
     const techUid = validInternal.techniques[0].uid;
     const uid = validInternal.uid;
-    const type = dataKungfus.KUNGFU_INTERNAL;
+    const type = KUNGFU_INTERNAL;
     const a = actions.buyTechnique(uid, techUid, type, zeroCost);
     expect(a.uid).toBe(techUid);
     expect(a.kungfuType).toBe(type);
@@ -82,7 +79,7 @@ describe("Testing external kungfu action creator", () => {
   it("should create a BUY_TECHNIQUE action with an external kungfu", () => {
     const techUid = validExternal.techniques[0].uid;
     const uid = validExternal.uid;
-    const type = dataKungfus.KUNGFU_EXTERNAL;
+    const type = KUNGFU_EXTERNAL;
     const a = actions.buyTechnique(uid, techUid, type, zeroCost);
     expect(a.uid).toBe(techUid);
     expect(a.kungfuType).toBe(type);
@@ -90,7 +87,7 @@ describe("Testing external kungfu action creator", () => {
   });
 
   it("should not create an BUY_TECHNIQUE action with an erroneous kungfu type", () => {
-    const type = "TOTALLY A KUNGFU TYPE" as dataKungfus.KUNGFU_TYPE;
+    const type = "TOTALLY A KUNGFU TYPE" as KUNGFU_TYPE;
     const techUid = validExternal.techniques[0].uid;
     expect(() =>
       actions.buyTechnique(techUid, validExternal.uid, type, zeroCost)
@@ -101,10 +98,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = "TOTALLY A KUNGFU UID";
     const techUid = validInternal.techniques[0].uid;
     expect(() =>
-      actions.buyTechnique(techUid, uid, dataKungfus.KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_INTERNAL, zeroCost)
     ).toThrow();
     expect(() =>
-      actions.buyTechnique(techUid, "", dataKungfus.KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique(techUid, "", KUNGFU_INTERNAL, zeroCost)
     ).toThrow();
   });
 
@@ -112,10 +109,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = "TOTALLY A KUNGFU UID";
     const techUid = validExternal.techniques[0].uid;
     expect(() =>
-      actions.buyTechnique(techUid, uid, dataKungfus.KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_EXTERNAL, zeroCost)
     ).toThrow();
     expect(() =>
-      actions.buyTechnique(techUid, "", dataKungfus.KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique(techUid, "", KUNGFU_EXTERNAL, zeroCost)
     ).toThrow();
   });
 
@@ -123,10 +120,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = validInternal.techniques[0].uid;
     const techUid = "TOTALLY A KUNGFU TECHNIQUE UID";
     expect(() =>
-      actions.buyTechnique(techUid, uid, dataKungfus.KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_INTERNAL, zeroCost)
     ).toThrow();
     expect(() =>
-      actions.buyTechnique("", uid, dataKungfus.KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique("", uid, KUNGFU_INTERNAL, zeroCost)
     ).toThrow();
   });
 
@@ -134,10 +131,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = validExternal.techniques[0].uid;
     const techUid = "TOTALLY A KUNGFU TECHNIQUE UID";
     expect(() =>
-      actions.buyTechnique(techUid, uid, dataKungfus.KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_EXTERNAL, zeroCost)
     ).toThrow();
     expect(() =>
-      actions.buyTechnique("", uid, dataKungfus.KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique("", uid, KUNGFU_EXTERNAL, zeroCost)
     ).toThrow();
   });
 });

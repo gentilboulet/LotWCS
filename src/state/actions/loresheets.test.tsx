@@ -1,5 +1,5 @@
-import * as dataLoresheets from "data/loresheets";
-import { zeroCost } from "state/costs";
+import * as dataLoresheets from "../../data/loresheets";
+import { zeroCost } from "../costs";
 import * as actions from "./loresheets";
 
 describe("Testing loresheet action creators", () => {

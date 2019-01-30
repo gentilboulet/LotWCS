@@ -1,4 +1,4 @@
-import { zeroCost } from "state/costs";
+import { zeroCost } from "../costs";
 import * as actions from "./chi";
 
 describe("Testing chi action creator", () => {

@@ -1,19 +1,15 @@
-import {
-  ISkillAction,
-  skillsBuy,
-  skillSpecialityBuy
-} from "state/actions/skills";
-import { IStoreState } from "state/type";
+import { ISkillAction, skillsBuy, skillSpecialityBuy } from "../actions/skills";
+import { IStoreState } from "../type";
 
-import * as dataSkills from "data/skills";
+import * as dataSkills from "../../data/skills";
 
-import { zeroCost } from "state/costs";
-import { initialStateFactory } from "state/initial";
-import { skillsReducer } from "state/reducers/skills";
-import { isSpecialityPresent } from "state/skills";
+import { zeroCost } from "../costs";
+import { initialStateFactory } from "../initial";
+import { skillsReducer } from "../reducers/skills";
+import { isSpecialityPresent } from "../skills";
 
-import { setRank } from "state/actions/header";
-import { globalReducer } from "state/reducers/global";
+import { setRank } from "../actions/header";
+import { globalReducer } from "../reducers/global";
 
 const initialState: IStoreState = globalReducer(
   initialStateFactory(),
@@ -23,11 +19,12 @@ const initialState: IStoreState = globalReducer(
 describe("Testing skillsReducer", () => {
   it("should receive a SKILLS_BUY action", () => {
     Object.keys(dataSkills.skills).forEach(key => {
-      const skillInData = dataSkills.skills[key];
-      expect(initialState.skills[key].value).toBe(0);
+      const skillName = key as dataSkills.TSkillName;
+      const skillInData = dataSkills.skills[skillName];
+      expect(initialState.skills[skillName].value).toBe(0);
       const action = skillsBuy(skillInData.name, zeroCost);
       const state = skillsReducer(initialState, action);
-      expect(state.skills[key].value).toBe(5);
+      expect(state.skills[skillName].value).toBe(5);
       expect(globalReducer(initialState, action)).toMatchObject(state);
     });
   });

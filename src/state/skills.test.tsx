@@ -1,15 +1,15 @@
-import { IStoreState } from "state/type";
+import { IStoreState } from "./type";
 
-import * as dataSkills from "data/skills";
+import * as dataSkills from "../data/skills";
 
-import { initialStateFactory } from "state/initial";
+import { initialStateFactory } from "./initial";
 import {
   addSpeciality,
   canBuySkill,
   canBuySpeciality,
   increase,
   isSpecialityPresent
-} from "state/skills";
+} from "./skills";
 
 describe("Testing skills state", () => {
   it("should do increase existing skills value", () => {
