@@ -1,9 +1,5 @@
-import {
-  getDiscountIndexes,
-  IDiscount,
-  updateDiscounts
-} from "state/discounts";
-import { IStoreState } from "state/type";
+import { getDiscountIndexes, IDiscount, updateDiscounts } from "./discounts";
+import { IStoreState } from "./type";
 
 export interface ICost {
   canPay: boolean;
@@ -61,8 +57,8 @@ export function applyCost(state: IStoreState, cost: ICost): void {
   updateDiscounts(state, cost);
 }
 
-import { TSkillName } from "data/skills";
-import { DISCOUNT_SKILL } from "state/constants/perks/discounts";
+import { TSkillName } from "../data/skills";
+import { DISCOUNT_SKILL } from "./constants/perks/discounts";
 export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
   const defaultCost = 2;
 
@@ -83,8 +79,8 @@ export function getCostSpeciality(state: IStoreState): ICost {
   return _costFactory(state, defaultCost, []);
 }
 
-import { TChiName } from "data/chi";
-import { DISCOUNT_CHI } from "state/constants/perks/discounts";
+import { TChiName } from "../data/chi";
+import { DISCOUNT_CHI } from "./constants/perks/discounts";
 export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
   const chiValue = state.chi[chiName].value;
   const chiMultiplicator =
@@ -112,8 +108,8 @@ export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
   return _costFactory(state, defaultCost, chiDiscountIdx);
 }
 
-import { getLoresheetData } from "data/loresheets";
-import { DISCOUNT_LORESHEET } from "state/constants/perks/discounts";
+import { getLoresheetData } from "../data/loresheets";
+import { DISCOUNT_LORESHEET } from "./constants/perks/discounts";
 export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
   const lsData = getLoresheetData(uid);
   const defaultCost = lsData.cost;
@@ -130,8 +126,8 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
   return _costFactory(state, defaultCost, lsDiscountIdx);
 }
 
-import { getLoresheetOptionData } from "data/loresheets";
-import { DISCOUNT_LORESHEET_OPTION } from "state/constants/perks/discounts";
+import { getLoresheetOptionData } from "../data/loresheets";
+import { DISCOUNT_LORESHEET_OPTION } from "./constants/perks/discounts";
 
 function _getCostBuyLoresheetOptionOneCost(
   state: IStoreState,
@@ -188,9 +184,9 @@ import {
   IDataExternalKungfuTechnique,
   IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
-  KUNGFU_TYPE,
-  kungfuTechniqueData
-} from "data/kungfu";
+  KUNGFU_TYPE
+} from "../data/kungfu/types";
+import { kungfuTechniqueData } from "../data/kungfu";
 export function getCostKungFuTechnique(
   state: IStoreState,
   type: KUNGFU_TYPE,

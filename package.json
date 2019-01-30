@@ -3,44 +3,46 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/classnames": "^2.2.6",
+    "@types/jest": "23.3.13",
+    "@types/node": "10.12.19",
+    "@types/react": "16.7.22",
+    "@types/react-dom": "16.0.11",
     "@types/react-fa": "^4.1.5",
-    "@types/react-redux": "^6.0.9",
+    "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
-    "@types/reactstrap": "^6.4.2",
-    "bootstrap": "^4.1.3",
-    "classnames": "^2.2.6",
-    "immer": "^1.7.2",
-    "jest-junit": "^5.2.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "@types/reactstrap": "^7.1.1",
+    "bootstrap": "^4.2.1",
+    "coveralls": "^3.0.2",
+    "immer": "^1.12.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "react-fa": "^5.0.0",
-    "react-redux": "^5.0.7",
+    "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "2.17.0",
-    "reactstrap": "^6.5.0",
-    "redux": "^4.0.0",
-    "tokenfield": "^1.0.1"
+    "react-scripts": "2.1.3",
+    "reactstrap": "^7.1.0",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "tokenfield": "^1.1.3",
+    "typescript": "3.2.4"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "coverage-test-ci": "react-scripts-ts test --env=jsdom --coverage --runInBand",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "coverage-test-ci": "react-scripts test --coverage --runInBand",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test": "react-scripts-ts test --env=jsdom",
-    "test-ci": "react-scripts-ts test --env=jsdom --runInBand --reporters=jest-junit",
-    "eject": "react-scripts-ts eject"
+    "test-ci": "react-scripts test --runInBand --reporters=jest-junit"
   },
-  "devDependencies": {
-    "@types/jest": "^23.3.2",
-    "@types/node": "^10.10.3",
-    "@types/react": "^16.4.14",
-    "@types/react-dom": "^16.0.7",
-    "@types/react-test-renderer": "^16.0.2",
-    "coveralls": "^3.0.2",
-    "react-test-renderer": "^16.5.2",
-    "redux-devtools-extension": "^2.13.5",
-    "typescript": "^3.0.3"
-  }
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

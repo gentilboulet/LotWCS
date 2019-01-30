@@ -1,16 +1,16 @@
 import * as React from "react";
 
-import SelectorList, { IOption } from "components/SelectorList";
+import SelectorList, { IOption } from "../../components/SelectorList";
 
-import ExternalKungFu from "containers/Character/ExternalKungFu";
-import InternalKungFu from "containers/Character/InternalKungFu";
+import ExternalKungFu from "../../containers/Character/ExternalKungFu";
+import InternalKungFu from "../../containers/Character/InternalKungFu";
 
 import {
   externalKungfu,
   getKungFuType,
-  internalKungfu,
-  KUNGFU_EXTERNAL
-} from "data/kungfu";
+  internalKungfu
+} from "../../data/kungfu";
+import { KUNGFU_EXTERNAL } from "../../data/kungfu/types";
 
 class KungFuList extends React.PureComponent<{}, {}> {
   constructor(props: {}) {

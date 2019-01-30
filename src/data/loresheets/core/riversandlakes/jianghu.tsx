@@ -1,4 +1,4 @@
-import { IDataLoresheet } from "data/loresheets";
+import { IDataLoresheet } from "../../../loresheets";
 
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */

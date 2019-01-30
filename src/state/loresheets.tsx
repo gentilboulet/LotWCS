@@ -2,8 +2,8 @@ import {
   getLoresheetOptionData,
   validateLoresheet,
   validateLoresheetOption
-} from "data/loresheets";
-import { IStoreState } from "state/type";
+} from "../data/loresheets";
+import { IStoreState } from "./type";
 
 export interface ILoresheetOptionState {
   uid: string;

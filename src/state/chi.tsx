@@ -1,4 +1,4 @@
-import { chiNames, TChiName } from "data/chi";
+import { chiNames, TChiName } from "../data/chi";
 
 export type TChiState = {
   [chi in TChiName]: { value: number; cultivation: number }

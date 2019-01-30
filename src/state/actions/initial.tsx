@@ -1,4 +1,4 @@
-import * as constants from 'state/constants/initial';
+import * as constants from "../constants/initial";
 
 export interface IInitialState {
   type: constants.INITIAL_STATE;
@@ -7,5 +7,5 @@ export interface IInitialState {
 export type IInitialStateAction = IInitialState;
 
 export function resetToInitialState(): IInitialState {
-  return {type: constants.INITIAL_STATE};
+  return { type: constants.INITIAL_STATE };
 }

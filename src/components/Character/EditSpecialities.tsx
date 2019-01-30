@@ -2,8 +2,8 @@ import * as React from "react";
 import Icon from "react-fa";
 import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
-import TokenInput from "components/TokenInput";
-import { ICost } from "state/costs";
+import TokenInput from "../../components/TokenInput";
+import { ICost } from "../../state/costs";
 
 interface IEditSpecialitiesProps {
   bought: string[];

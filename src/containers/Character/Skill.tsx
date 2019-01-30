@@ -1,14 +1,14 @@
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
-import * as actions from 'state/actions/skills';
-import { getCostSkill, ICost } from 'state/costs';
-import { canBuySkill } from 'state/skills';
-import { IStoreState } from 'state/type';
+import * as actions from "../../state/actions/skills";
+import { getCostSkill, ICost } from "../../state/costs";
+import { canBuySkill } from "../../state/skills";
+import { IStoreState } from "../../state/type";
 
-import { TSkillName } from 'data/skills';
+import { TSkillName } from "../../data/skills";
 
-import Skill, { ISkillProps } from 'components/Character/Skill';
+import Skill, { ISkillProps } from "../../components/Character/Skill";
 
 interface IMapStateToProps {
   canBuy: boolean;
@@ -34,19 +34,26 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<actions.ISkillAction>, props: IProps): IMapDispatchToProps {
+function mapDispatchToProps(
+  dispatch: Dispatch<actions.ISkillAction>,
+  props: IProps
+): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost) => {
-
-      dispatch(actions.skillsBuy(props.name, cost))
+      dispatch(actions.skillsBuy(props.name, cost));
     }
   };
 }
 
-function mergeProps(propsFromState: IMapStateToProps,
-                    propsForDispatch: IMapDispatchToProps
-                  ): ISkillProps {
+function mergeProps(
+  propsFromState: IMapStateToProps,
+  propsForDispatch: IMapDispatchToProps
+): ISkillProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Skill);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(Skill);

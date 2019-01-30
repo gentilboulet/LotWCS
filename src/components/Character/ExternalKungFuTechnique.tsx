@@ -3,11 +3,11 @@ import { Icon } from "react-fa";
 
 import {
   IDataExternalKungfuTechnique,
-  KUNGFU_EXTERNAL,
-  kungfuTechniqueData
-} from "data/kungfu";
-import { ICost } from "state/costs";
-import { effectToString } from "state/effects";
+  KUNGFU_EXTERNAL
+} from "../../data/kungfu/types";
+import { kungfuTechniqueData } from "../../data/kungfu";
+import { ICost } from "../../state/costs";
+import { effectToString } from "../../state/effects";
 
 export interface IExternalKungFuTechniqueProps {
   styleUid: string;

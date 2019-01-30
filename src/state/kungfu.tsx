@@ -1,11 +1,10 @@
 import {
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
-  KUNGFU_TYPE,
-  validateKungFuStyle,
-  validateKungFuTechnique
-} from "data/kungfu";
-import { IStoreState } from "state/type";
+  KUNGFU_TYPE
+} from "../data/kungfu/types";
+import { validateKungFuStyle, validateKungFuTechnique } from "../data/kungfu";
+import { IStoreState } from "./type";
 
 export interface IKungFuState {
   [KUNGFU_EXTERNAL]: { [uid: string]: string[] };

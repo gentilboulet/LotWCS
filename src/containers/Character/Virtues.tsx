@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import * as actions from "state/actions/virtues";
-import { getCostVirtue, ICost } from "state/costs";
-import { IStoreState } from "state/type";
-import { canBuyVirtue } from "state/virtues";
+import * as actions from "../../state/actions/virtues";
+import { getCostVirtue, ICost } from "../../state/costs";
+import { IStoreState } from "../../state/type";
+import { canBuyVirtue } from "../../state/virtues";
 
-import Virtues, { IVirtuesProps } from "components/Character/Virtues";
-import { IDataVirtueType } from "data/virtues";
+import Virtues, { IVirtuesProps } from "../../components/Character/Virtues";
+import { IDataVirtueType } from "../../data/virtues";
 
 interface IMapStateToProps {
   virtues: Array<{

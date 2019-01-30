@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import * as actions from "state/actions/chi";
-import { canBuyChi } from "state/chi";
-import { getCostChi, ICost } from "state/costs";
-import { IStoreState } from "state/type";
+import * as actions from "../../state/actions/chi";
+import { canBuyChi } from "../../state/chi";
+import { getCostChi, ICost } from "../../state/costs";
+import { IStoreState } from "../../state/type";
 
-import Chi, { IChiProps } from "components/Character/Chi";
-import { TChiName } from "data/chi";
+import Chi, { IChiProps } from "../../components/Character/Chi";
+import { TChiName } from "../../data/chi";
 
 interface IMapStateToProps {
   canBuy: boolean;

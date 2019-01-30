@@ -1,15 +1,15 @@
 import * as React from "react";
+import { Icon } from "react-fa";
 
 import {
   IDataExternalKungfu,
   IDataExternalKungfuStatistics,
-  KUNGFU_EXTERNAL,
-  kungfuData
-} from "data/kungfu";
-import { ICost } from "state/costs";
+  KUNGFU_EXTERNAL
+} from "../../data/kungfu/types";
+import { kungfuData } from "../../data/kungfu";
+import { ICost } from "../../state/costs";
 
-import ExternalKungFuTechnique from "containers/Character/ExternalKungFuTechnique";
-import { Icon } from "react-fa";
+import ExternalKungFuTechnique from "../../containers/Character/ExternalKungFuTechnique";
 
 export interface IExternalKungFuProps {
   uid: string;
@@ -97,14 +97,16 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
     return (
       <table>
         <tbody>
-          {Object.keys(this.props.statistics).map(s => {
-            return (
-              <tr key={s}>
-                <td>{s}</td>
-                <td>{this.props.statistics[s]}</td>
-              </tr>
-            );
-          })}
+          {Object.keys(this.props.statistics).map(
+            (s: string): JSX.Element => {
+              return (
+                <tr key={s}>
+                  <td>{s}</td>
+                  <td>{this.props.statistics[s]}</td>
+                </tr>
+              );
+            }
+          )}
         </tbody>
       </table>
     );

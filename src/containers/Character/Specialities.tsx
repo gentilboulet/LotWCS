@@ -1,16 +1,16 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import * as actions from "state/actions/skills";
-import { getCostSpeciality, ICost } from "state/costs";
-import { canBuySpeciality } from "state/skills";
-import { IStoreState } from "state/type";
+import * as actions from "../../state/actions/skills";
+import { getCostSpeciality, ICost } from "../../state/costs";
+import { canBuySpeciality } from "../../state/skills";
+import { IStoreState } from "../../state/type";
 
-import { skills as data, TSkillName } from "data/skills";
+import { skills as data, TSkillName } from "../../data/skills";
 
 import Specialities, {
   ISpecialitiesProps
-} from "components/Character/Specialities";
+} from "../../components/Character/Specialities";
 
 interface IMapStateToProps {
   bought: string[];
@@ -26,7 +26,7 @@ interface IProps {
 }
 
 interface IMapDispatchToProps {
-  onBuy: (skill: TSkillName, cost: ICost) => void;
+  onBuy: (speciality: string, cost: ICost) => void;
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {

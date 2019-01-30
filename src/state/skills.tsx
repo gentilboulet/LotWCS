@@ -1,6 +1,6 @@
-import { skills as data, TSkillName } from "data/skills";
-import { maxSkillBonus } from "state/derived";
-import { IStoreState } from "state/type";
+import { skills as data, TSkillName } from "../data/skills";
+import { maxSkillBonus } from "./derived";
+import { IStoreState } from "./type";
 
 interface ISkill {
   name: string;
@@ -13,18 +13,21 @@ export type TSkillsState = { [skill in TSkillName]: ISkill };
 export function createState(): TSkillsState {
   const state = {};
   Object.keys(data).forEach(skill => {
-    state[skill] = {
-      name: skill,
-      specialities: [],
-      value: 0
-    };
+    Object.defineProperty(state, skill, {
+      value: {
+        name: skill,
+        specialities: [],
+        value: 0
+      },
+      writable: true
+    });
   });
   return state as TSkillsState;
 }
 
 export function increase(
   state: TSkillsState,
-  skillName: string,
+  skillName: TSkillName,
   maxSkillValue: number
 ): void {
   const old = state[skillName].value;
@@ -36,7 +39,7 @@ export function increase(
 
 export function isSpecialityPresent(
   state: TSkillsState,
-  skillName: string,
+  skillName: TSkillName,
   specialityName: string
 ): boolean {
   const specialityIndex = state[skillName].specialities.findIndex(
@@ -47,7 +50,7 @@ export function isSpecialityPresent(
 
 export function addSpeciality(
   state: TSkillsState,
-  skillName: string,
+  skillName: TSkillName,
   specialityName: string
 ): void {
   if (isSpecialityPresent(state, skillName, specialityName)) {

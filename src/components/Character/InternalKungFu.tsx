@@ -1,10 +1,11 @@
 import * as React from "react";
-
-import { IDataInternalKungfu, KUNGFU_INTERNAL, kungfuData } from "data/kungfu";
-import { ICost } from "state/costs";
-
-import InternalKungFuTechnique from "containers/Character/InternalKungFuTechnique";
 import { Icon } from "react-fa";
+
+import { IDataInternalKungfu, KUNGFU_INTERNAL } from "../../data/kungfu/types";
+import { kungfuData } from "../../data/kungfu";
+import { ICost } from "../../state/costs";
+
+import InternalKungFuTechnique from "../../containers/Character/InternalKungFuTechnique";
 
 export interface IInternalKungFuProps {
   uid: string;

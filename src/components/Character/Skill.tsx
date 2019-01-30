@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { ICost } from "state/costs";
+import { ICost } from "../../state/costs";
 
-import { TSkillName } from "data/skills";
+import { TSkillName } from "../../data/skills";
 
-import EditNumeric from "components/EditNumeric";
+import EditNumeric from "../../components/EditNumeric";
 
 export interface ISkillProps {
   name: TSkillName;

@@ -1,10 +1,10 @@
 import * as React from "react";
 import Icon from "react-fa";
 
-import { getLoresheetData, IDataLoresheet } from "data/loresheets";
-import { ICost } from "state/costs";
+import { getLoresheetData, IDataLoresheet } from "../../data/loresheets";
+import { ICost } from "../../state/costs";
 
-import LoresheetOption from "containers/Character/LoresheetOption";
+import LoresheetOption from "../../containers/Character/LoresheetOption";
 
 export interface ILoresheetProps {
   uid: string;

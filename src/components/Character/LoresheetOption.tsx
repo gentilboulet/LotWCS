@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Icon } from "react-fa";
 
-import { getLoresheetOptionData } from "data/loresheets";
-import { ICost } from "state/costs";
+import { getLoresheetOptionData } from "../../data/loresheets";
+import { ICost } from "../../state/costs";
 
 export interface ILoresheetOptionProps {
   lsUid: string;

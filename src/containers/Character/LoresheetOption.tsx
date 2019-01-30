@@ -1,18 +1,18 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { getCostBuyLoresheetOption, ICost } from "state/costs";
+import { getCostBuyLoresheetOption, ICost } from "../../state/costs";
 
-import { buyOption, ILoresheetAction } from "state/actions/loresheets";
+import { buyOption, ILoresheetAction } from "../../state/actions/loresheets";
 import {
   canBuyLoresheetOption,
   isLoresheetOptionPresent
-} from "state/loresheets";
-import { IStoreState } from "state/type";
+} from "../../state/loresheets";
+import { IStoreState } from "../../state/type";
 
 import LoresheetOption, {
   ILoresheetOptionProps
-} from "components/Character/LoresheetOption";
+} from "../../components/Character/LoresheetOption";
 
 interface IMapStateToProps {
   lsUid: string;

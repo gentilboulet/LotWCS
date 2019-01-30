@@ -1,16 +1,16 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { IKungFuAction, openStyle } from "state/actions/kungfu";
-import { getCostKungFuStyle, ICost } from "state/costs";
-import { canOpenKungFu, isStylePresent } from "state/kungfu";
-import { IStoreState } from "state/type";
+import { IKungFuAction, openStyle } from "../../state/actions/kungfu";
+import { getCostKungFuStyle, ICost } from "../../state/costs";
+import { canOpenKungFu, isStylePresent } from "../../state/kungfu";
+import { IStoreState } from "../../state/type";
 
 import InternalKungFu, {
   IInternalKungFuProps
-} from "components/Character/InternalKungFu";
+} from "../../components/Character/InternalKungFu";
 
-import { KUNGFU_INTERNAL } from "data/kungfu";
+import { KUNGFU_INTERNAL } from "../../data/kungfu/types";
 
 interface IProps {
   uid: string;

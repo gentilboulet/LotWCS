@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import EditText from "components/EditText";
+import EditText from "../../components/EditText";
 
 export interface INameProps {
   value: string | undefined;

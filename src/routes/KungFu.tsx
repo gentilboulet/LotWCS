@@ -1,9 +1,9 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
-import AppIntro from "components/AppIntro";
-import AppPage from "components/AppPage";
-import KungFuList from "components/Character/KungFuList";
+import AppIntro from "../components/AppIntro";
+import AppPage from "../components/AppPage";
+import KungFuList from "../components/Character/KungFuList";
 
 class RouteKungFu extends React.PureComponent<RouteComponentProps<{}>> {
   public render() {

@@ -2,7 +2,7 @@ import * as React from "react";
 import Icon from "react-fa";
 import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
-import FieldHeader from "components/FieldHeader";
+import FieldHeader from "./FieldHeader";
 
 export interface IEditNumericProps {
   name: string | JSX.Element;

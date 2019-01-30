@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { IOption } from "components/SelectorList";
+import { IOption } from "../SelectorList";
 
 import "./SelectorList.css";
 

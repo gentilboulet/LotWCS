@@ -1,11 +1,14 @@
-import { produce } from 'immer';
+import { produce } from "immer";
 
-import { IHeaderAction } from 'state/actions/header';
-import * as constants from 'state/constants/header';
-import { setRank } from 'state/header';
-import { IStoreState } from 'state/type';
+import { IHeaderAction } from "../actions/header";
+import * as constants from "../constants/header";
+import { setRank } from "../header";
+import { IStoreState } from "../type";
 
-export function headerReducer(baseState: IStoreState, action: IHeaderAction): IStoreState {
+export function headerReducer(
+  baseState: IStoreState,
+  action: IHeaderAction
+): IStoreState {
   switch (action.type) {
     case constants.HEADER_SET_NAME:
       return produce(baseState, draftState => {

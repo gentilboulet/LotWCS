@@ -1,5 +1,5 @@
-import { IDataVirtue, IDataVirtueType, virtues } from "data/virtues";
-import { IStoreState } from "state/type";
+import { IDataVirtue, IDataVirtueType, virtues } from "../data/virtues";
+import { IStoreState } from "./type";
 
 export interface IVirtueState {
   name: string;

@@ -1,15 +1,15 @@
 import * as React from "react";
 
-import { ICost } from "state/costs";
+import { ICost } from "../../state/costs";
 
 import {
   IDataVirtueType,
   VIRTUE_CHIVALROUS,
   VIRTUE_SELFISH
-} from "data/virtues";
+} from "../../data/virtues";
 
-import EditNumeric from "components/EditNumeric";
-import FieldHeader from "components/FieldHeader";
+import EditNumeric from "../../components/EditNumeric";
+import FieldHeader from "../../components/FieldHeader";
 
 interface IVirtueProp {
   type: IDataVirtueType;

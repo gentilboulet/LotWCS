@@ -1,32 +1,36 @@
-import { IAction } from 'state/actions/types';
-import { IStoreState } from 'state/type';
+import { IAction } from "../../state/actions/types";
+import { IStoreState } from "../../state/type";
 
 // Sub Reducers
-import * as header from 'state/constants/header';
-import { headerReducer } from 'state/reducers/header';
+import * as header from "../../state/constants/header";
+import { headerReducer } from "../../state/reducers/header";
 
-import * as chi from 'state/constants/chi';
-import { chiReducer } from 'state/reducers/chi';
+import * as chi from "../../state/constants/chi";
+import { chiReducer } from "../../state/reducers/chi";
 
-import * as initial from 'state/constants/initial';
-import { initialStateFactory } from 'state/initial';
+import * as initial from "../../state/constants/initial";
+import { initialStateFactory } from "../../state/initial";
 
-import * as kungfu from 'state/constants/kungfu';
-import { kungfuReducer } from 'state/reducers/kungfu';
+import * as kungfu from "../../state/constants/kungfu";
+import { kungfuReducer } from "../../state/reducers/kungfu";
 
-import * as history from 'state/constants/history';
-import { historyReducer } from 'state/reducers/history';
+import * as history from "../../state/constants/history";
+import { historyReducer } from "../../state/reducers/history";
 
-import * as skills from 'state/constants/skills';
-import { skillsReducer } from 'state/reducers/skills';
+import * as skills from "../../state/constants/skills";
+import { skillsReducer } from "../../state/reducers/skills";
 
-import * as loresheets from 'state/constants/loresheets';
-import { loresheetsReducer } from 'state/reducers/loresheets';
+import * as loresheets from "../../state/constants/loresheets";
+import { loresheetsReducer } from "../../state/reducers/loresheets";
 
-import * as virtues from 'state/constants/virtues';
-import { virtuesReducer } from 'state/reducers/virtues';
+import * as virtues from "../../state/constants/virtues";
+import { virtuesReducer } from "../../state/reducers/virtues";
 
-export function globalReducer(state: IStoreState, action: IAction): IStoreState {
+export function globalReducer(
+  state: IStoreState | undefined,
+  action: IAction
+): IStoreState {
+  if (!state) return initialStateFactory();
   switch (action.type) {
     case header.HEADER_SET_ARCHETYPE:
     case header.HEADER_SET_CONCEPT:

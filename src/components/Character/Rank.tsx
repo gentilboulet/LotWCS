@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import DDLText from "components/DDLText";
-import { ranks } from "data/ranks";
+import DDLText from "../../components/DDLText";
+import { ranks } from "../../data/ranks";
 
 export interface IRankProps {
   rank: { name: string; value: number } | undefined;

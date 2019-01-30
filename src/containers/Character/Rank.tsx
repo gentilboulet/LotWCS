@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import * as headerActions from "state/actions/header";
-import { IStoreState } from "state/type";
+import * as headerActions from "../../state/actions/header";
+import { IStoreState } from "../../state/type";
 
-import Rank, { IRankProps } from "components/Character/Rank";
+import Rank, { IRankProps } from "../../components/Character/Rank";
 
 interface IMapStateToProps {
   rank: { name: string; value: number } | undefined;

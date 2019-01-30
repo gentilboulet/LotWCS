@@ -1,9 +1,9 @@
-import { ICost } from "state/costs";
-import { IStoreState } from "state/type";
+import { ICost } from "./costs";
+import { IStoreState } from "./type";
 
-import { TChiName } from "data/chi";
-import { TSkillName } from "data/skills";
-import * as constants from "state/constants/perks/discounts";
+import { TChiName } from "../data/chi";
+import { TSkillName } from "../data/skills";
+import * as constants from "./constants/perks/discounts";
 
 export interface IDiscountSkill {
   type: constants.DISCOUNT_SKILL;

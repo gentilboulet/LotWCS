@@ -1,14 +1,19 @@
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
-import { getCostKungFuTechnique, ICost } from 'state/costs';
+import { getCostKungFuTechnique, ICost } from "../../state/costs";
 
-import { buyTechnique, IKungFuAction } from 'state/actions/kungfu';
-import { canBuyKungFuTechnique, isStyleTechniquePresent } from 'state/kungfu';
-import { IStoreState } from 'state/type';
+import { buyTechnique, IKungFuAction } from "../../state/actions/kungfu";
+import {
+  canBuyKungFuTechnique,
+  isStyleTechniquePresent
+} from "../../state/kungfu";
+import { IStoreState } from "../../state/type";
 
-import ExternalKungFuTechnique, { IExternalKungFuTechniqueProps } from 'components/Character/ExternalKungFuTechnique';
-import { KUNGFU_EXTERNAL } from 'data/kungfu';
+import ExternalKungFuTechnique, {
+  IExternalKungFuTechniqueProps
+} from "../../components/Character/ExternalKungFuTechnique";
+import { KUNGFU_EXTERNAL } from "../../data/kungfu/types";
 
 interface IMapStateToProps {
   styleUid: string;
@@ -16,7 +21,7 @@ interface IMapStateToProps {
   known: boolean;
   canBuy: boolean;
   cost?: ICost;
-  costs?: Array<{value: number, cost: ICost}>;
+  costs?: Array<{ value: number; cost: ICost }>;
 }
 
 interface IMapDispatchToProps {
@@ -24,29 +29,54 @@ interface IMapDispatchToProps {
 }
 
 interface IProps {
-  styleUid: string,
+  styleUid: string;
   uid: string;
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
-  	canBuy: canBuyKungFuTechnique(state, KUNGFU_EXTERNAL, props.styleUid, props.uid),
-  	cost: getCostKungFuTechnique(state, KUNGFU_EXTERNAL, props.styleUid, props.uid),
-  	known: isStyleTechniquePresent(state.kungfu, KUNGFU_EXTERNAL,  props.styleUid, props.uid),
+    canBuy: canBuyKungFuTechnique(
+      state,
+      KUNGFU_EXTERNAL,
+      props.styleUid,
+      props.uid
+    ),
+    cost: getCostKungFuTechnique(
+      state,
+      KUNGFU_EXTERNAL,
+      props.styleUid,
+      props.uid
+    ),
+    known: isStyleTechniquePresent(
+      state.kungfu,
+      KUNGFU_EXTERNAL,
+      props.styleUid,
+      props.uid
+    ),
     styleUid: props.styleUid,
-  	uid: props.uid,
+    uid: props.uid
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<IKungFuAction>, props: IProps): IMapDispatchToProps {
+function mapDispatchToProps(
+  dispatch: Dispatch<IKungFuAction>,
+  props: IProps
+): IMapDispatchToProps {
   return {
-    onBuy: (cost: ICost) => dispatch(buyTechnique(props.styleUid, props.uid, KUNGFU_EXTERNAL, cost)),
+    onBuy: (cost: ICost) =>
+      dispatch(buyTechnique(props.styleUid, props.uid, KUNGFU_EXTERNAL, cost))
   };
 }
 
-function mergeProps(propsFromState: IMapStateToProps,
-                    propsForDispatch: IMapDispatchToProps): IExternalKungFuTechniqueProps {
+function mergeProps(
+  propsFromState: IMapStateToProps,
+  propsForDispatch: IMapDispatchToProps
+): IExternalKungFuTechniqueProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ExternalKungFuTechnique);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(ExternalKungFuTechnique);

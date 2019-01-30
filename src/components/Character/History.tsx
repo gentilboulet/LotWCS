@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { IAction } from "state/actions/types";
+import { IAction } from "../../state/actions/types";
 
 export interface IHistoryProps {
   history: IAction[];
