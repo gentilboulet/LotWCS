@@ -1,5 +1,6 @@
 import {
   getLoresheetOptionData,
+  IDataLoresheetOptionPrerequisite,
   validateLoresheet,
   validateLoresheetOption
 } from "../data/loresheets";
@@ -16,14 +17,6 @@ export interface ILoresheetsState {
 
 export function createState(): ILoresheetsState {
   return {};
-}
-
-export function openLoresheet(
-  state: ILoresheetsState,
-  loresheetUid: string
-): void {
-  validateLoresheet(loresheetUid);
-  state[loresheetUid] = [];
 }
 
 export function isLoresheetPresent(
@@ -50,6 +43,55 @@ export function isLoresheetOptionPresent(
   return optionIndex !== -1;
 }
 
+export function canOpenLoresheet(state: IStoreState, uid: string): boolean {
+  return !isLoresheetPresent(state.loresheets, uid);
+}
+
+function _or(a: boolean, b: boolean) {
+  return a || b;
+}
+function _and(a: boolean, b: boolean) {
+  return a && b;
+}
+
+function _prerequisiteToBool(
+  state: ILoresheetsState,
+  lsUid: string,
+  prerequisite: IDataLoresheetOptionPrerequisite
+): boolean {
+  if (typeof prerequisite === "string") {
+    return isLoresheetOptionPresent(state, lsUid, prerequisite);
+  } else {
+    return prerequisite.prerequisites
+      .map((optUid: string) => {
+        const here = isLoresheetOptionPresent(state, lsUid, optUid);
+        return here;
+      })
+      .reduce(
+        prerequisite.type === "OR" ? _or : _and,
+        prerequisite.type === "OR" ? false : true
+      );
+  }
+}
+
+export function canBuyLoresheetOption(
+  state: ILoresheetsState,
+  lsUid: string,
+  uid: string
+): boolean {
+  if (!isLoresheetPresent(state, lsUid)) {
+    return false;
+  } // Not opened
+  const lsOptData = getLoresheetOptionData(lsUid, uid);
+  if (isLoresheetOptionPresent(state, lsUid, uid) && lsOptData.repeatable) {
+    return lsOptData.repeatable;
+  } // Already bought
+  const cb = lsOptData.prerequisites
+    .map(p => _prerequisiteToBool(state, lsUid, p))
+    .reduce(_and, true);
+  return cb;
+}
+
 export function buyLoresheetOption(
   state: ILoresheetsState,
   loresheetUid: string,
@@ -58,37 +100,21 @@ export function buyLoresheetOption(
   validateLoresheet(loresheetUid);
   validateLoresheetOption(loresheetUid, optionUid);
 
-  if (!isLoresheetPresent(state, loresheetUid)) {
-    throw new Error("Internal error : loresheet not found");
+  if (!canBuyLoresheetOption(state, loresheetUid, optionUid)) {
+    throw new Error(
+      "Internal error : impossible to buy loresheet option " +
+        loresheetUid +
+        "," +
+        optionUid
+    );
   }
-  if (
-    isLoresheetOptionPresent(state, loresheetUid, optionUid) &&
-    !getLoresheetOptionData(loresheetUid, optionUid).repeatable
-  ) {
-    throw new Error("Internal error : loresheet option is not repeatable");
-  }
-  /* TODO check prerequisites */
-
   state[loresheetUid].push({ uid: optionUid, payload: {} });
 }
 
-export function canBuyLoresheet(state: IStoreState, uid: string): boolean {
-  return !isLoresheetPresent(state.loresheets, uid);
-}
-
-export function canBuyLoresheetOption(
-  state: IStoreState,
-  lsUid: string,
-  uid: string
-): boolean {
-  if (!isLoresheetPresent(state.loresheets, lsUid)) {
-    return false;
-  } // Not opened
-  if (
-    isLoresheetOptionPresent(state.loresheets, lsUid, uid) &&
-    !getLoresheetOptionData(lsUid, uid).repeatable
-  ) {
-    return false;
-  } // Already bought
-  return true;
+export function openLoresheet(
+  state: ILoresheetsState,
+  loresheetUid: string
+): void {
+  validateLoresheet(loresheetUid);
+  state[loresheetUid] = [];
 }

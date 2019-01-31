@@ -123,22 +123,16 @@ class EditSpecialities extends React.PureComponent<
   }
 
   private buySpeciality(speciality: string) {
-    /* tslint:disable no-console */
-    console.log("new spe ? ", speciality);
     if (speciality.length === 0) {
-      console.log("new spe lenght 0");
       return;
     }
     if (!this.isValueValid(speciality)) {
-      console.log("new spe  invalid");
       return;
     }
 
     const foundIndex = this.props.specialities.findIndex(available => {
       return available.name === speciality;
     });
-    console.log("foundIndex", foundIndex);
-
     if (foundIndex !== -1) {
       if (this.props.specialities[foundIndex].canBuy) {
         this.props.onBuy(
@@ -150,7 +144,6 @@ class EditSpecialities extends React.PureComponent<
       const indexNewSpeciality = this.props.specialities.findIndex(
         option => option.name.length === 0
       );
-      console.log("indexNewSpeciality", indexNewSpeciality);
       if (this.props.specialities[indexNewSpeciality].canBuy) {
         this.props.onBuy(
           speciality,

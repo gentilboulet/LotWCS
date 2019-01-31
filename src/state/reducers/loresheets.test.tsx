@@ -53,6 +53,15 @@ describe("Testing loresheetsReducer", () => {
 
         loresheet.options.forEach(
           (option: dataLoresheets.IDataLoresheetOption) => {
+            if (
+              !loresheets.canBuyLoresheetOption(
+                stateWithLoresheet.loresheets,
+                loresheet.uid,
+                option.uid
+              )
+            ) {
+              return;
+            }
             const buyOption = loresheetsActions.buyOption(
               loresheet.uid,
               option.uid,

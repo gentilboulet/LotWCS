@@ -40,7 +40,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
       : lsState.filter(o => o.uid === props.uid).map(o => o.payload);
 
   return {
-    canBuy: canBuyLoresheetOption(state, props.lsUid, props.uid),
+    canBuy: canBuyLoresheetOption(state.loresheets, props.lsUid, props.uid),
     cost: getCostBuyLoresheetOption(state, props.lsUid, props.uid),
     known: isLoresheetOptionPresent(state.loresheets, props.lsUid, props.uid),
     lsUid: props.lsUid,

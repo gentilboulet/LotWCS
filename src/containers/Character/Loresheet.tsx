@@ -4,7 +4,7 @@ import { Dispatch } from "redux";
 import { getCostOpenLoresheet, ICost } from "../../state/costs";
 
 import { ILoresheetAction, open } from "../../state/actions/loresheets";
-import { canBuyLoresheet, isLoresheetPresent } from "../../state/loresheets";
+import { canOpenLoresheet, isLoresheetPresent } from "../../state/loresheets";
 import { IStoreState } from "../../state/type";
 
 import Loresheet, {
@@ -12,14 +12,14 @@ import Loresheet, {
 } from "../../components/Character/Loresheet";
 
 interface IMapStateToProps {
-  canBuy: boolean;
+  canOpen: boolean;
   cost: ICost;
   known: boolean;
   uid: string;
 }
 
 interface IMapDispatchToProps {
-  onBuy: (cost: ICost) => void;
+  onOpen: (cost: ICost) => void;
 }
 
 interface IProps {
@@ -28,7 +28,7 @@ interface IProps {
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
-    canBuy: canBuyLoresheet(state, props.uid),
+    canOpen: canOpenLoresheet(state, props.uid),
     cost: getCostOpenLoresheet(state, props.uid),
     known: isLoresheetPresent(state.loresheets, props.uid),
     uid: props.uid
@@ -40,7 +40,7 @@ function mapDispatchToProps(
   props: IProps
 ): IMapDispatchToProps {
   return {
-    onBuy: (cost: ICost) => dispatch(open(props.uid, cost))
+    onOpen: (cost: ICost) => dispatch(open(props.uid, cost))
   };
 }
 
