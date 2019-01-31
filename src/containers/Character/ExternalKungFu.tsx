@@ -10,12 +10,12 @@ import ExternalKungFu, {
   IExternalKungFuProps
 } from "../../components/Character/ExternalKungFu";
 
+import { kungfuData } from "../../data/kungfu";
 import {
   IDataExternalKungfu,
   IDataExternalKungfuStatistics,
   KUNGFU_EXTERNAL
 } from "../../data/kungfu/types";
-import { kungfuData } from "../../data/kungfu";
 
 interface IProps {
   uid: string;

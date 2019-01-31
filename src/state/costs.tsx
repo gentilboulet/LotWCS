@@ -180,13 +180,13 @@ export function getCostKungFuStyle(state: IStoreState): ICost {
   return _costFactory(state, 10);
 }
 
+import { kungfuTechniqueData } from "../data/kungfu";
 import {
   IDataExternalKungfuTechnique,
   IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
   KUNGFU_TYPE
 } from "../data/kungfu/types";
-import { kungfuTechniqueData } from "../data/kungfu";
 export function getCostKungFuTechnique(
   state: IStoreState,
   type: KUNGFU_TYPE,

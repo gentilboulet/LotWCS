@@ -62,7 +62,7 @@ class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
 
   private renderButton(): JSX.Element {
     const onClick = () => this.props.onBuy(this.props.cost);
-    if (this.props.canBuy) {
+    if (this.props.canBuy && this.props.cost.canPay) {
       return (
         <button color="success" onClick={onClick}>
           <Icon name="graduation-cap" />

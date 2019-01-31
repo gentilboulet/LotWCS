@@ -1,8 +1,8 @@
+import * as effects from "../../../state/actions/perks/effects";
+import { IDataInternalKungfu } from "../types";
+
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */
-
-import { IDataInternalKungfu } from "../types";
-import * as effects from "../../../state/actions/perks/effects";
 
 export const boundlessProsperityManual: IDataInternalKungfu = {
   name: "Boundless Prosperity Manual",

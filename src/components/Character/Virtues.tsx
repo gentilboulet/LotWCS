@@ -77,7 +77,7 @@ class Virtues extends React.PureComponent<IVirtuesProps, {}> {
       <EditNumeric
         name={virtue.name}
         value={virtue.value}
-        canBuy={virtue.canBuy}
+        canBuy={virtue.canBuy && virtue.cost.canPay}
         onBuy={virtue.onBuy}
       />
     );

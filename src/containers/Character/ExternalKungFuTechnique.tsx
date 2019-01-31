@@ -20,8 +20,7 @@ interface IMapStateToProps {
   uid: string;
   known: boolean;
   canBuy: boolean;
-  cost?: ICost;
-  costs?: Array<{ value: number; cost: ICost }>;
+  cost: ICost;
 }
 
 interface IMapDispatchToProps {

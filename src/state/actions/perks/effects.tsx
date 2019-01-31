@@ -29,7 +29,7 @@ export function increaseBaseChiForThreshold(
   chiIncrease: number
 ): IEffectChiThresholdIncreaseBaseChi {
   return {
-    type: constants.EFFECT_CHI_THRESHOLD_INCREASE_BASE_CHI,
-    chiIncrease
+    chiIncrease,
+    type: constants.EFFECT_CHI_THRESHOLD_INCREASE_BASE_CHI
   };
 }

@@ -1,9 +1,9 @@
+import { validateKungFuStyle, validateKungFuTechnique } from "../data/kungfu";
 import {
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
   KUNGFU_TYPE
 } from "../data/kungfu/types";
-import { validateKungFuStyle, validateKungFuTechnique } from "../data/kungfu";
 import { IStoreState } from "./type";
 
 export interface IKungFuState {

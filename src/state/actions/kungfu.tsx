@@ -1,5 +1,5 @@
-import { KUNGFU_TYPE } from "../../data/kungfu/types";
 import * as dataKungFu from "../../data/kungfu";
+import { KUNGFU_TYPE } from "../../data/kungfu/types";
 import * as constants from "../constants/kungfu";
 import { ICost } from "../costs";
 
@@ -59,11 +59,11 @@ export function buyTechnique(
   dataKungFu.validateKungFuStyle(kungfuType, styleUid);
   dataKungFu.validateKungFuTechnique(kungfuType, styleUid, uid);
   return {
-    type: constants.KUNGFU_BUY_TECHNIQUE,
     cost,
+    kungfuType,
     styleUid,
-    uid,
-    kungfuType
+    type: constants.KUNGFU_BUY_TECHNIQUE,
+    uid
   };
 }
 
@@ -78,10 +78,10 @@ export function customStyleName(
     throw new Error("Invalid new name");
   }
   return {
-    type: constants.KUNGFU_CUSTOM_NAME_FOR_STYLE,
-    uid,
+    kungfuType,
     name,
-    kungfuType
+    type: constants.KUNGFU_CUSTOM_NAME_FOR_STYLE,
+    uid
   };
 }
 
@@ -98,10 +98,10 @@ export function customTechniqueName(
     throw new Error("Invalid new name");
   }
   return {
-    type: constants.KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE,
-    styleUid,
-    uid,
+    kungfuType,
     name,
-    kungfuType
+    styleUid,
+    type: constants.KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE,
+    uid
   };
 }

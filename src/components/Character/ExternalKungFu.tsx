@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Icon } from "react-fa";
 
+import { kungfuData } from "../../data/kungfu";
 import {
   IDataExternalKungfu,
   IDataExternalKungfuStatistics,
   KUNGFU_EXTERNAL
 } from "../../data/kungfu/types";
-import { kungfuData } from "../../data/kungfu";
 import { ICost } from "../../state/costs";
 
 import ExternalKungFuTechnique from "../../containers/Character/ExternalKungFuTechnique";
@@ -138,7 +138,7 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
 
   private renderButton(): JSX.Element {
     const onClick = () => this.props.onOpen(this.props.cost);
-    if (this.props.canOpen) {
+    if (this.props.canOpen && this.props.cost.canPay) {
       return (
         <button color="success" onClick={onClick}>
           <Icon name="graduation-cap" />

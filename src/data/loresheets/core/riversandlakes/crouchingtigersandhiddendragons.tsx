@@ -1,8 +1,8 @@
-import { IDataLoresheet } from "../../../loresheets";
 import {
   bonusOneAmongN,
   bonusSpeciality
 } from "../../../../state/actions/perks/bonuses";
+import { IDataLoresheet } from "../../../loresheets";
 
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */

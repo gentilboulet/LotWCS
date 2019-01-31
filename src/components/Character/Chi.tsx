@@ -31,7 +31,7 @@ class Chi extends React.PureComponent<IChiProps, {}> {
           <EditNumeric
             name={name}
             value={this.props.value}
-            canBuy={this.props.canBuy}
+            canBuy={this.props.canBuy && this.props.canBuy}
             onBuy={this.onBuy}
           />
         </div>

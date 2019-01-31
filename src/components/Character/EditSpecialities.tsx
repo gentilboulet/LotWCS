@@ -63,7 +63,9 @@ class EditSpecialities extends React.PureComponent<
   }
 
   private renderNoEdit() {
-    const canBuy = this.props.specialities.some(option => option.canBuy);
+    const canBuy = this.props.specialities.some(
+      option => option.canBuy && option.cost.canPay
+    );
     return (
       <InputGroup onClick={this.startEdit} role="button">
         <div className="form-control">{this.renderBoughtSpecialities()}</div>

@@ -24,7 +24,7 @@ class Skill extends React.PureComponent<ISkillProps, {}> {
       <EditNumeric
         name={this.props.name}
         value={this.props.value}
-        canBuy={this.props.canBuy}
+        canBuy={this.props.canBuy && this.props.cost.canPay}
         onBuy={this.onBuy}
       />
     );

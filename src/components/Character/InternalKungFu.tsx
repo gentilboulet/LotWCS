@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Icon } from "react-fa";
 
-import { IDataInternalKungfu, KUNGFU_INTERNAL } from "../../data/kungfu/types";
 import { kungfuData } from "../../data/kungfu";
+import { IDataInternalKungfu, KUNGFU_INTERNAL } from "../../data/kungfu/types";
 import { ICost } from "../../state/costs";
 
 import InternalKungFuTechnique from "../../containers/Character/InternalKungFuTechnique";

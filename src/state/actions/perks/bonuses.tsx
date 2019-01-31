@@ -51,8 +51,8 @@ export function bonusSpeciality(
   specialityName: string
 ): IBonusSpeciality {
   return {
-    type: constants.BONUS_SPECIALITY,
     skill,
-    speciality: specialityName
+    speciality: specialityName,
+    type: constants.BONUS_SPECIALITY
   };
 }
