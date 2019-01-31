@@ -3,7 +3,7 @@ import { produce } from "immer";
 import { IKungFuAction } from "../actions/kungfu";
 import { IStoreState } from "../type";
 
-// import { applyCost } from 'costs/reducer';
+import { applyCost } from "../costs";
 
 import * as constants from "../constants/kungfu";
 import { addKungFuTechnique, openStyle } from "../kungfu";
@@ -15,13 +15,13 @@ export function kungfuReducer(
   switch (action.type) {
     case constants.KUNGFU_OPEN_STYLE:
       return produce(baseState, draftState => {
-        // applyCost(state, action.cost);
+        applyCost(draftState, action.cost);
         openStyle(draftState.kungfu, action.kungfuType, action.uid);
         draftState.history.push(action);
       });
     case constants.KUNGFU_BUY_TECHNIQUE:
       return produce(baseState, draftState => {
-        // applyCost(state, action.cost);
+        applyCost(draftState, action.cost);
         addKungFuTechnique(
           draftState.kungfu,
           action.kungfuType,

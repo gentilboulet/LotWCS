@@ -83,7 +83,7 @@ class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
 
   private renderButton(): JSX.Element {
     const onClick = () => this.props.onOpen(this.props.cost);
-    if (this.props.canOpen) {
+    if (this.props.canOpen && this.props.cost.canPay) {
       return (
         <button color="success" onClick={onClick}>
           <Icon name="graduation-cap" />

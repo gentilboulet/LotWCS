@@ -1,5 +1,10 @@
-import { validateKungFuStyle, validateKungFuTechnique } from "../data/kungfu";
 import {
+  kungfuTechniqueData,
+  validateKungFuStyle,
+  validateKungFuTechnique
+} from "../data/kungfu";
+import {
+  IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
   KUNGFU_TYPE
@@ -9,6 +14,7 @@ import { IStoreState } from "./type";
 export interface IKungFuState {
   [KUNGFU_EXTERNAL]: { [uid: string]: string[] };
   [KUNGFU_INTERNAL]: { [uid: string]: string[] };
+  noRestrictionInternal?: string[];
 }
 
 export function createState(): IKungFuState {
@@ -80,6 +86,26 @@ export function canOpenKungFu(
   return !isStylePresent(state.kungfu, type, styleUid);
 }
 
+function _knownInternalKungFuLevel(
+  state: IStoreState,
+  styleUid: string
+): number[] {
+  if (!isStylePresent(state.kungfu, KUNGFU_INTERNAL, styleUid)) {
+    return [];
+  }
+
+  return state.kungfu[KUNGFU_INTERNAL][styleUid]
+    .map(techniqueUid => {
+      const techData = kungfuTechniqueData(
+        KUNGFU_INTERNAL,
+        styleUid,
+        techniqueUid
+      ) as IDataInternalKungfuTechnique;
+      return techData.level;
+    })
+    .sort();
+}
+
 export function canBuyKungFuTechnique(
   state: IStoreState,
   type: KUNGFU_TYPE,
@@ -96,6 +122,24 @@ export function canBuyKungFuTechnique(
   if (type === KUNGFU_EXTERNAL) {
     return true;
   } else {
-    return false; // TODO TECH LOCKING BY LEVEL AND UNLOCK BY LS
+    if (state.kungfu.noRestrictionInternal) {
+      if (
+        -1 !==
+        state.kungfu.noRestrictionInternal.findIndex(uid => uid === styleUid)
+      ) {
+        return true;
+      }
+    }
+    const levels = _knownInternalKungFuLevel(state, styleUid);
+    const kfTechnique = kungfuTechniqueData(
+      KUNGFU_INTERNAL,
+      styleUid,
+      techniqueUid
+    ) as IDataInternalKungfuTechnique;
+
+    if (levels.length === 0 && kfTechnique.level === 1) {
+      return true;
+    }
+    return Math.max(...levels) === kfTechnique.level - 1;
   }
 }

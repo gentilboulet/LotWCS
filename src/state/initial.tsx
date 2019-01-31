@@ -47,7 +47,7 @@ export function testingStateFactory(): IStoreState {
     skillSpecialityBuy("Awareness", "Hear", zeroCost),
     skillSpecialityBuy("Awareness", "Sight", zeroCost)
   ];
-  initial.destiny += 5;
+  initial.destiny += 25;
   return replayHistory(initial, actions);
 }
 

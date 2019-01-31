@@ -27,14 +27,14 @@ export function _costFactory(
       return { idx, newValue };
     });
     return {
-      canPay: state.destiny > remainingCost,
+      canPay: state.destiny >= remainingCost,
       destiny: remainingCost,
       discounts,
       entanglement: 0
     };
   } else {
     return {
-      canPay: state.destiny > costValue,
+      canPay: state.destiny >= costValue,
       destiny: costValue,
       entanglement: 0
     };
