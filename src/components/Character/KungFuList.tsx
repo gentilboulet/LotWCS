@@ -44,8 +44,8 @@ class KungFuList extends React.PureComponent<{}, {}> {
     const internalHeader: IOption[] = [
       {
         disabled: true,
-        id: "Interal Styles",
-        label: "Interal Styles",
+        id: "Internal Styles",
+        label: "Internal Styles",
         meta: "internal"
       }
     ];
