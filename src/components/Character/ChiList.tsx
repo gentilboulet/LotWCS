@@ -5,6 +5,7 @@ import { chiNames, TChiName } from "../../data/chi";
 
 class ChiList extends React.PureComponent<{}, {}> {
   public render() {
+    // TODO showing something ?
     return (
       <div>
         {chiNames.map((name: TChiName) => {

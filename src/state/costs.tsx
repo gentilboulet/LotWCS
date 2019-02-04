@@ -8,10 +8,14 @@ export interface ICost {
     idx: number;
     newValue: number;
   }>;
-  entanglement: number;
+  original: number;
 }
 
-export const zeroCost: ICost = { canPay: true, destiny: 0, entanglement: 0 };
+export const zeroCost: ICost = {
+  canPay: true,
+  destiny: 0,
+  original: 0
+};
 export function _costFactory(
   state: IStoreState,
   costValue: number,
@@ -30,13 +34,13 @@ export function _costFactory(
       canPay: state.destiny >= remainingCost,
       destiny: remainingCost,
       discounts,
-      entanglement: 0
+      original: costValue
     };
   } else {
     return {
       canPay: state.destiny >= costValue,
       destiny: costValue,
-      entanglement: 0
+      original: costValue
     };
   }
 }
@@ -46,14 +50,14 @@ export function applyCost(state: IStoreState, cost: ICost): void {
     throw new Error("Unpayable cost");
   }
   state.destiny -= cost.destiny;
-  state.entanglement -= cost.entanglement;
+  // state.entanglement -= cost.entanglement;
 
   if (state.destiny < 0) {
     throw new Error("Negative destiny reached");
   }
-  if (state.entanglement < 0) {
-    throw new Error("Negative entanglement reached");
-  }
+  // if (state.entanglement < 0) {
+  //   throw new Error("Negative entanglement reached");
+  // }
   updateDiscounts(state, cost);
 }
 

@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "immer": "^1.12.1",
+    "rc-slider": "^8.6.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-fa": "^5.0.0",

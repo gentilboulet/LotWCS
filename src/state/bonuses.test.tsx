@@ -1,4 +1,4 @@
-import { initialStateFactory } from "./initial";
+import { testingStateFactory } from "./initial";
 import { IStoreState } from "./type";
 
 import { applyBonuses } from "./bonuses";
@@ -6,16 +6,6 @@ import { applyBonuses } from "./bonuses";
 import { IBonus } from "./bonuses";
 
 import * as actions from "./actions/perks/bonuses";
-
-import { setArchetype, setRank } from "./actions/header";
-import { replayHistory } from "./history";
-
-export function testingStateFactory(): IStoreState {
-  const initial = initialStateFactory();
-  const list = [setRank("4th_rank"), setArchetype("warrior")];
-  initial.destiny += 25;
-  return replayHistory(initial, list);
-}
 
 const initialState: IStoreState = testingStateFactory();
 
@@ -49,8 +39,8 @@ describe("Testing applyBonuses", () => {
   });
 
   it("should receive a BONUS_SPECIALITY", () => {
-    const testSkill = "Awareness";
-    const testSpeciality = "Hear";
+    const testSkill = "Medicine";
+    const testSpeciality = "Poison";
 
     const bonuses = [actions.bonusSpeciality(testSkill, testSpeciality)];
     const state = applyBonuses(initialState, bonuses);

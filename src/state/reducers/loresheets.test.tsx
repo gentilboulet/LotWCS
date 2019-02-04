@@ -53,6 +53,11 @@ describe("Testing loresheetsReducer", () => {
 
         loresheet.options.forEach(
           (option: dataLoresheets.IDataLoresheetOption) => {
+            const buyOption = loresheetsActions.buyOption(
+              loresheet.uid,
+              option.uid,
+              zeroCost
+            );
             if (
               !loresheets.canBuyLoresheetOption(
                 stateWithLoresheet.loresheets,
@@ -60,24 +65,22 @@ describe("Testing loresheetsReducer", () => {
                 option.uid
               )
             ) {
-              return;
+              expect(() =>
+                loresheetsReducer(stateWithLoresheet, buyOption)
+              ).toThrow();
+            } else {
+              const state = loresheetsReducer(stateWithLoresheet, buyOption);
+              expect(
+                loresheets.isLoresheetOptionPresent(
+                  state.loresheets,
+                  loresheet.uid,
+                  option.uid
+                )
+              ).toBeTruthy();
+              expect(
+                globalReducer(stateWithLoresheet, buyOption)
+              ).toMatchObject(state);
             }
-            const buyOption = loresheetsActions.buyOption(
-              loresheet.uid,
-              option.uid,
-              zeroCost
-            );
-            const state = loresheetsReducer(stateWithLoresheet, buyOption);
-            expect(
-              loresheets.isLoresheetOptionPresent(
-                state.loresheets,
-                loresheet.uid,
-                option.uid
-              )
-            ).toBeTruthy();
-            expect(globalReducer(stateWithLoresheet, buyOption)).toMatchObject(
-              state
-            );
           }
         );
       }
