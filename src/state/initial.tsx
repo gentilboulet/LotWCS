@@ -52,5 +52,6 @@ export function testingStateFactory(): IStoreState {
 }
 
 export function initialStateFactory(): IStoreState {
-  return emptyInitialStateFactory();
+  // return emptyInitialStateFactory();
+  return testingStateFactory();
 }

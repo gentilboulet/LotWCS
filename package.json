@@ -40,6 +40,7 @@
   "devDependencies": {
     "@types/jest": "23.3.13",
     "@types/node": "10.12.19",
+    "@types/rc-slider": "^8.6.1",
     "@types/react": "16.7.22",
     "@types/react-dom": "16.0.11",
     "@types/react-fa": "^4.1.5",
