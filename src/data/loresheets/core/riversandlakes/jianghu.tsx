@@ -19,7 +19,8 @@ export const jianghu: IDataLoresheet = {
         "You know how to navigate the Rivers and Lakes outside the Wulin organizations, in other Jiang Hu communities like the criminal underground, the ferrymen guilds, or the pleasure trade. Pick one such group; you get a +5 bonus to social rolls where familiarity with that subculture matters.",
       repeatable: true,
       prerequisites: [],
-      perks: []
+      perks: [],
+      payload: "an organization"
     },
     {
       uid: "knunderground",
@@ -41,7 +42,8 @@ export const jianghu: IDataLoresheet = {
       prerequisites: [
         { type: "OR", prerequisites: ["familiarity", "knunderground"] }
       ],
-      perks: []
+      perks: [],
+      payload: "an organization"
     }
   ]
 };

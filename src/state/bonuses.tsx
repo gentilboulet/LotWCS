@@ -34,7 +34,7 @@ export interface IBonusCultivation {
 
 export interface IBonusOneAmongN {
   type: constants.BONUS_ONE_AMONG_N;
-  bonuses: IBonus[];
+  bonuses: { [key in string]: IBonus };
 }
 
 export interface IBonusSkillRank {

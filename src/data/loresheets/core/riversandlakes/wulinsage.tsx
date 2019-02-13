@@ -19,7 +19,8 @@ export const wulinsage: IDataLoresheet = {
         "With Sage approval, you may introduce a fact about the truth behind the Wulin Sage that would influence the current story.",
       repeatable: true,
       prerequisites: [],
-      perks: []
+      perks: [],
+      payload: "a fact"
     },
     {
       uid: "tieswithsage",
@@ -38,7 +39,8 @@ export const wulinsage: IDataLoresheet = {
         "The Destiny of an NPC of your choice will be or is tied to the figure of the Wulin Sage.",
       repeatable: true,
       prerequisites: [],
-      perks: []
+      perks: [],
+      payload: "a NPC"
     }
   ]
 };

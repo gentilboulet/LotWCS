@@ -32,12 +32,14 @@ export function bonusCultivation(
   return { type: constants.BONUS_CULTIVATION, value, chi: chiName };
 }
 
-export function bonusOneAmongN(bonuses: IBonus[]): IBonusOneAmongN | IBonus {
-  if (bonuses.length === 0) {
+export function bonusOneAmongN(
+  bonuses: { [key in string]: IBonus }
+): IBonusOneAmongN | IBonus {
+  if (Object.keys(bonuses).length === 0) {
     throw new Error("Can not create one out of zero");
   }
-  if (bonuses.length === 1) {
-    return bonuses[0];
+  if (Object.keys(bonuses).length === 1) {
+    return Object.values(bonuses)[0];
   }
   return { type: constants.BONUS_ONE_AMONG_N, bonuses };
 }

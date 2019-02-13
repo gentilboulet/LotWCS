@@ -45,6 +45,7 @@ export interface IDataLoresheetOption {
   repeatable: boolean;
   prerequisites: IDataLoresheetOptionPrerequisite[];
   perks: IPerk[];
+  payload?: string;
 }
 
 export interface IDataLoresheet {

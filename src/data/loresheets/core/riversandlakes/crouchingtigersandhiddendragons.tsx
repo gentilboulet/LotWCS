@@ -23,7 +23,8 @@ export const crouchingtigersandhiddendragons: IDataLoresheet = {
         "You are hiding your true identity behind a disguise. Are you a noble passing as a beggar? Are you masquerading as someone of the opposite gender? Do you pretend to be a member of a certain organization while in reality serving another? Once a session, whenever the veil of your disguise seems to be pierced and protecting your fake identity gets you in trouble, earn 1 additional Destiny. If this is your first or second disadvantage you can get it for free, otherwise it costs 5 Destiny.",
       repeatable: false,
       prerequisites: [],
-      perks: []
+      perks: [],
+      payload: "an hidden identity"
     },
     {
       uid: "stabbingguesttechnique",
@@ -44,10 +45,10 @@ export const crouchingtigersandhiddendragons: IDataLoresheet = {
       repeatable: false,
       prerequisites: [],
       perks: [
-        bonusOneAmongN([
-          bonusSpeciality("Wu Wei", "Sense Chi"),
-          bonusSpeciality("Wu Wei", "Hide Killer Intent")
-        ])
+        bonusOneAmongN({
+          sensechi: bonusSpeciality("Wu Wei", "Sense Chi"),
+          hidekillerintent: bonusSpeciality("Wu Wei", "Hide Killer Intent")
+        })
       ]
     }
   ]
