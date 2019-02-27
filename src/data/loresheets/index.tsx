@@ -20,7 +20,7 @@ import { IBonus } from "../../state/bonuses";
 import { IDiscount } from "../../state/discounts";
 import { IEffect } from "../../state/effects";
 
-type IPerk = IBonus | IDiscount | IEffect;
+export type IPerk = IBonus | IDiscount | IEffect;
 
 export interface IDataLoresheetOptionPrerequisiteAND {
   type: "AND";

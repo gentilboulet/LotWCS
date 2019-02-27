@@ -83,7 +83,7 @@ class LoresheetOption extends React.PureComponent<
         <td>{data.type}</td>
         <td>{this.fromCostToString(data.cost)}</td>
         <td>{data.description}</td>
-        <td>{this.renderButton(false)}</td>
+        <td />
       </tr>
     );
   }

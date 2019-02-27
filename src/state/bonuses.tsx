@@ -37,6 +37,7 @@ export interface IBonusOneAmongN {
   bonuses: { [key in string]: IBonus };
 }
 
+// TODO : validity & auto resolution ?
 export interface IBonusSkillRank {
   type: constants.BONUS_SKILL_RANK;
   skill: TSkillName;
