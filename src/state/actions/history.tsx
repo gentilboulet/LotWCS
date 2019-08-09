@@ -1,12 +1,12 @@
 import * as constants from "../constants/history";
 
-export interface IhistoryDeleteUpTo {
+export interface IHistoryDeleteUpTo {
   type: constants.HISTORY_DELETE;
   id: number;
 }
 
-export type IHistoryAction = IhistoryDeleteUpTo;
+export type IHistoryAction = IHistoryDeleteUpTo;
 
-export function historyDeleteUpTo(id: number): IhistoryDeleteUpTo {
+export function historyDeleteUpTo(id: number): IHistoryDeleteUpTo {
   return { type: constants.HISTORY_DELETE, id };
 }
