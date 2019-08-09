@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.e91e8ef8.chunk.css",
-    "main.js": "/static/js/main.2326b995.chunk.js",
-    "main.js.map": "/static/js/main.2326b995.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/css/2.7bbd6671.chunk.css": "/static/css/2.7bbd6671.chunk.css",
-    "static/js/2.1c68a691.chunk.js": "/static/js/2.1c68a691.chunk.js",
-    "static/js/2.1c68a691.chunk.js.map": "/static/js/2.1c68a691.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.d084107947204e108782492812463f75.js": "/precache-manifest.d084107947204e108782492812463f75.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.7bbd6671.chunk.css.map": "/static/css/2.7bbd6671.chunk.css.map",
-    "static/css/main.e91e8ef8.chunk.css.map": "/static/css/main.e91e8ef8.chunk.css.map",
-    "static/media/font-awesome.css": "/static/media/fontawesome-webfont.fee66e71.woff"
+    "main.css": "/LotWCS/static/css/main.e91e8ef8.chunk.css",
+    "main.js": "/LotWCS/static/js/main.e473dfe0.chunk.js",
+    "main.js.map": "/LotWCS/static/js/main.e473dfe0.chunk.js.map",
+    "runtime~main.js": "/LotWCS/static/js/runtime~main.61174c03.js",
+    "runtime~main.js.map": "/LotWCS/static/js/runtime~main.61174c03.js.map",
+    "static/css/2.0da0d610.chunk.css": "/LotWCS/static/css/2.0da0d610.chunk.css",
+    "static/js/2.1c68a691.chunk.js": "/LotWCS/static/js/2.1c68a691.chunk.js",
+    "static/js/2.1c68a691.chunk.js.map": "/LotWCS/static/js/2.1c68a691.chunk.js.map",
+    "index.html": "/LotWCS/index.html",
+    "precache-manifest.97ed34739f77ae2e5f96379fc76d3b30.js": "/LotWCS/precache-manifest.97ed34739f77ae2e5f96379fc76d3b30.js",
+    "service-worker.js": "/LotWCS/service-worker.js",
+    "static/css/2.0da0d610.chunk.css.map": "/LotWCS/static/css/2.0da0d610.chunk.css.map",
+    "static/css/main.e91e8ef8.chunk.css.map": "/LotWCS/static/css/main.e91e8ef8.chunk.css.map",
+    "static/media/font-awesome.css": "/LotWCS/static/media/fontawesome-webfont.fee66e71.woff"
   }
 }
