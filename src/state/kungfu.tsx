@@ -1,14 +1,18 @@
 import {
+  kungfuData,
   kungfuTechniqueData,
   validateKungFuStyle,
   validateKungFuTechnique
 } from "../data/kungfu";
 import {
+  IDataExternalKungfu,
+  IDataExternalKungfuStatistics,
   IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
   KUNGFU_TYPE
 } from "../data/kungfu/types";
+import * as constants from "./constants/perks/effects";
 import { IStoreState } from "./type";
 
 export interface IKungFuState {
@@ -57,6 +61,38 @@ export function isStyleTechniquePresent(
     stateTechniqueUid => stateTechniqueUid === techniqueUid
   );
   return optionIndex !== -1;
+}
+
+export function getExternalKungFuStatistics(
+  state: IKungFuState,
+  styleUid: string
+): IDataExternalKungfuStatistics {
+  const dataStatistics = (kungfuData(
+    KUNGFU_EXTERNAL,
+    styleUid
+  ) as IDataExternalKungfu).statistics;
+
+  if (!isStylePresent(state, KUNGFU_EXTERNAL, styleUid)) {
+    return dataStatistics;
+  }
+
+  const statistics: IDataExternalKungfuStatistics = { ...dataStatistics };
+
+  state[KUNGFU_EXTERNAL][styleUid].forEach(techniqueUid => {
+    const kfTechnique = kungfuTechniqueData(
+      KUNGFU_EXTERNAL,
+      styleUid,
+      techniqueUid
+    );
+    switch (kfTechnique.effect.type) {
+      case constants.EFFECT_COMBAT_STATISTIC:
+        statistics[kfTechnique.effect.statistic] += kfTechnique.effect.increase;
+        break;
+      default:
+        break;
+    }
+  });
+  return statistics;
 }
 
 export function addKungFuTechnique(

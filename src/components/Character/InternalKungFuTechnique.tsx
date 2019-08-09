@@ -70,7 +70,9 @@ class InternalKungFuTechnique extends React.PureComponent<
   }
 
   private onBuy(): void {
-    this.props.onBuy(this.props.cost);
+    if (this.props.canBuy && this.props.cost.canPay) {
+      this.props.onBuy(this.props.cost);
+    }
   }
 }
 

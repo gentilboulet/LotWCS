@@ -12,13 +12,13 @@ export type KUNGFU_INTERNAL = typeof KUNGFU_INTERNAL;
 export type KUNGFU_TYPE = KUNGFU_INTERNAL | KUNGFU_EXTERNAL;
 
 export interface IDataExternalKungfuStatistics {
-  [index: string]: 0 | 5 | 10 | 15 | 20;
-  speed: 0 | 5 | 10 | 15 | 20;
-  footwork: 0 | 5 | 10 | 15 | 20;
-  strike: 0 | 5 | 10 | 15 | 20;
-  damage: 0 | 5 | 10 | 15 | 20;
-  block: 0 | 5 | 10 | 15 | 20;
-  toughness: 0 | 5 | 10 | 15 | 20;
+  [index: string]: number;
+  speed: number;
+  footwork: number;
+  strike: number;
+  damage: number;
+  block: number;
+  toughness: number;
 }
 
 export interface IDataExternalKungfuPrerequisite {
