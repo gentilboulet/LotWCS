@@ -1,10 +1,12 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import * as headerActions from "state/actions/header";
-import { IStoreState } from "state/type";
+import * as headerActions from "../../state/actions/header";
+import { IStoreState } from "../../state/type";
 
-import Archetype, { IArchetypeProps } from "components/Character/Archetype";
+import Archetype, {
+  IArchetypeProps
+} from "../../components/Character/Archetype";
 
 interface IMapStateToProps {
   locked: boolean;

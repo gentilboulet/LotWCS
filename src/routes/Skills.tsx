@@ -1,9 +1,9 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router";
 
-import AppIntro from "components/AppIntro";
-import AppPage from "components/AppPage";
-import Skills from "components/Character/Skills";
+import AppIntro from "../components/AppIntro";
+import AppPage from "../components/AppPage";
+import Skills from "../components/Character/Skills";
 
 import { Input } from "reactstrap";
 

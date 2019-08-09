@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import { ICost } from "state/costs";
+import { ICost } from "../../state/costs";
 
-import { TChiName } from "data/chi";
+import { TChiName } from "../../data/chi";
 
-import EditNumeric from "components/EditNumeric";
-import StaticText from "components/StaticText";
+import EditNumeric from "../../components/EditNumeric";
+import StaticText from "../../components/StaticText";
 
 export interface IChiProps {
   name: TChiName;
@@ -27,17 +27,20 @@ class Chi extends React.PureComponent<IChiProps, {}> {
 
     return (
       <div className="Grid">
-	<div className="Grid-cell">
-            <EditNumeric
-              name={name}
-              value={this.props.value}
-              canBuy={this.props.canBuy}
-              onBuy={this.onBuy}
-            />
-	  </div>
-	  <div className="Grid-cell">
-	    <StaticText header="Cultivation" value={this.props.cultivation.toString()} />
-	  </div>
+        <div className="Grid-cell">
+          <EditNumeric
+            name={name}
+            value={this.props.value}
+            canBuy={this.props.canBuy && this.props.canBuy}
+            onBuy={this.onBuy}
+          />
+        </div>
+        <div className="Grid-cell">
+          <StaticText
+            header="Cultivation"
+            value={this.props.cultivation.toString()}
+          />
+        </div>
       </div>
     );
   }

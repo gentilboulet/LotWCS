@@ -1,6 +1,6 @@
-import { TChiName } from 'data/chi';
-import * as constants from 'state/constants/chi';
-import { ICost } from 'state/costs';
+import { TChiName } from "../../data/chi";
+import * as constants from "../constants/chi";
+import { ICost } from "../costs";
 
 export interface IChiBuy {
   type: constants.CHI_BUY;
@@ -11,6 +11,6 @@ export interface IChiBuy {
 
 export type IChiAction = IChiBuy;
 
-export function chiBuy(chi: TChiName, value:number, cost: ICost): IChiBuy {
+export function chiBuy(chi: TChiName, value: number, cost: ICost): IChiBuy {
   return { chi, cost, type: constants.CHI_BUY, value };
 }

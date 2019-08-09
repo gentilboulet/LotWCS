@@ -1,15 +1,15 @@
 import * as React from "react";
+import { Icon } from "react-fa";
 
+import { kungfuData } from "../../data/kungfu";
 import {
   IDataExternalKungfu,
   IDataExternalKungfuStatistics,
-  KUNGFU_EXTERNAL,
-  kungfuData
-} from "data/kungfu";
-import { ICost } from "state/costs";
+  KUNGFU_EXTERNAL
+} from "../../data/kungfu/types";
+import { ICost } from "../../state/costs";
 
-import ExternalKungFuTechnique from "containers/Character/ExternalKungFuTechnique";
-import { Icon } from "react-fa";
+import ExternalKungFuTechnique from "../../containers/Character/ExternalKungFuTechnique";
 
 export interface IExternalKungFuProps {
   uid: string;
@@ -40,7 +40,6 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
       <div>
         <div>
           <div>{this.renderCrunch(data)}</div>
-          <div>{this.renderStats()}</div>
         </div>
       </div>
     );
@@ -98,14 +97,16 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
     return (
       <table>
         <tbody>
-          {Object.keys(this.props.statistics).map(s => {
-            return (
-              <tr key={s}>
-                <td>{s}</td>
-                <td>{this.props.statistics[s]}</td>
-              </tr>
-            );
-          })}
+          {Object.keys(this.props.statistics).map(
+            (s: string): JSX.Element => {
+              return (
+                <tr key={s}>
+                  <td>{s}</td>
+                  <td>{this.props.statistics[s]}</td>
+                </tr>
+              );
+            }
+          )}
         </tbody>
       </table>
     );
@@ -137,7 +138,7 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
 
   private renderButton(): JSX.Element {
     const onClick = () => this.props.onOpen(this.props.cost);
-    if (this.props.canOpen) {
+    if (this.props.canOpen && this.props.cost.canPay) {
       return (
         <button color="success" onClick={onClick}>
           <Icon name="graduation-cap" />

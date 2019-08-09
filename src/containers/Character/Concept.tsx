@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import * as headerActions from "state/actions/header";
-import { IStoreState } from "state/type";
+import * as headerActions from "../../state/actions/header";
+import { IStoreState } from "../../state/type";
 
-import Concept, { IConceptProps } from "components/Character/Concept";
+import Concept, { IConceptProps } from "../../components/Character/Concept";
 
 interface IMapStateToProps {
   value: string;

@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import DDLText from "components/DDLText";
-import { archetypes, IDataArchetype } from "data/archetypes";
+import DDLText from "../../components/DDLText";
+import { archetypes, IDataArchetype } from "../../data/archetypes";
 
 export interface IArchetypeProps {
   value: string | undefined;

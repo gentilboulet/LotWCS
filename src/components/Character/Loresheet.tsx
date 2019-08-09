@@ -1,17 +1,17 @@
 import * as React from "react";
 import Icon from "react-fa";
 
-import { getLoresheetData, IDataLoresheet } from "data/loresheets";
-import { ICost } from "state/costs";
+import { getLoresheetData, IDataLoresheet } from "../../data/loresheets";
+import { ICost } from "../../state/costs";
 
-import LoresheetOption from "containers/Character/LoresheetOption";
+import LoresheetOption from "../../containers/Character/LoresheetOption";
 
 export interface ILoresheetProps {
   uid: string;
   known: boolean;
   cost: ICost;
-  canBuy: boolean;
-  onBuy: (cost: ICost) => void;
+  canOpen: boolean;
+  onOpen: (cost: ICost) => void;
 }
 
 class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
@@ -61,8 +61,8 @@ class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
   }
 
   private renderButton(): JSX.Element {
-    const onClick = () => this.props.onBuy(this.props.cost);
-    if (this.props.canBuy) {
+    const onClick = () => this.props.onOpen(this.props.cost);
+    if (this.props.canOpen && this.props.cost.canPay) {
       return (
         <button color="success" onClick={onClick}>
           <Icon name="graduation-cap" />

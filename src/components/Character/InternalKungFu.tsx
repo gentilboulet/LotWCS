@@ -1,10 +1,11 @@
 import * as React from "react";
-
-import { IDataInternalKungfu, KUNGFU_INTERNAL, kungfuData } from "data/kungfu";
-import { ICost } from "state/costs";
-
-import InternalKungFuTechnique from "containers/Character/InternalKungFuTechnique";
 import { Icon } from "react-fa";
+
+import { kungfuData } from "../../data/kungfu";
+import { IDataInternalKungfu, KUNGFU_INTERNAL } from "../../data/kungfu/types";
+import { ICost } from "../../state/costs";
+
+import InternalKungFuTechnique from "../../containers/Character/InternalKungFuTechnique";
 
 export interface IInternalKungFuProps {
   uid: string;
@@ -82,7 +83,7 @@ class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
 
   private renderButton(): JSX.Element {
     const onClick = () => this.props.onOpen(this.props.cost);
-    if (this.props.canOpen) {
+    if (this.props.canOpen && this.props.cost.canPay) {
       return (
         <button color="success" onClick={onClick}>
           <Icon name="graduation-cap" />

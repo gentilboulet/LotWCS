@@ -4,10 +4,9 @@ exports[`Testing chi action creator should create a chi buy action 1`] = `
 Object {
   "chi": "fire",
   "cost": Object {
+    "canPay": true,
     "destiny": 0,
-    "discountIdx": -1,
-    "discountNewValue": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "type": "CHI_BUY",
   "value": 123,

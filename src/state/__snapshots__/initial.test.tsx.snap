@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing initialStateFactory should be constant 1`] = `
+exports[`Testing testingStateFactory should be constant 1`] = `
 Object {
-  "archetype": undefined,
+  "archetype": "warrior",
   "bonuses": Array [],
   "chi": Object {
     "corrupt": Object {
@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 0,
+      "value": 10,
     },
     "metal": Object {
       "cultivation": 0,
@@ -39,12 +39,63 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 0,
-  "discounts": Array [],
+  "destiny": 25,
+  "discounts": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+  ],
   "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
+    },
+    Object {
+      "rank": "4th_rank",
+      "type": "HEADER_SET_RANK",
+    },
+    Object {
+      "archetype": "warrior",
+      "type": "HEADER_SET_ARCHETYPE",
+    },
+    Object {
+      "cost": Object {
+        "canPay": true,
+        "destiny": 0,
+        "original": 0,
+      },
+      "skill": "Awareness",
+      "speciality": "Hear",
+      "type": "SKILLS_SPECIALITY_BUY",
+    },
+    Object {
+      "cost": Object {
+        "canPay": true,
+        "destiny": 0,
+        "original": 0,
+      },
+      "skill": "Awareness",
+      "speciality": "Sight",
+      "type": "SKILLS_SPECIALITY_BUY",
     },
   ],
   "kungfu": Object {
@@ -53,89 +104,11 @@ Object {
   },
   "loresheets": Object {},
   "name": undefined,
-  "rank": undefined,
-  "skills": Object {
-    "Awareness": Object {
-      "name": "Awareness",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Confidence": Object {
-      "name": "Confidence",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Crafting": Object {
-      "name": "Crafting",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Finesse": Object {
-      "name": "Finesse",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Hardiness": Object {
-      "name": "Hardiness",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Inspire": Object {
-      "name": "Inspire",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Learning": Object {
-      "name": "Learning",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Medicine": Object {
-      "name": "Medicine",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Might": Object {
-      "name": "Might",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Perform": Object {
-      "name": "Perform",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Politics": Object {
-      "name": "Politics",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Ride": Object {
-      "name": "Ride",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Stealth": Object {
-      "name": "Stealth",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Survival": Object {
-      "name": "Survival",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Tactics": Object {
-      "name": "Tactics",
-      "specialities": Array [],
-      "value": 0,
-    },
-    "Wu Wei": Object {
-      "name": "Wu Wei",
-      "specialities": Array [],
-      "value": 0,
-    },
+  "rank": Object {
+    "name": "4th_rank",
+    "value": 2,
   },
+  "skills": Object {},
   "virtues": Array [
     Object {
       "name": "Honor",

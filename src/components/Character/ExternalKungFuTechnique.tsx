@@ -1,19 +1,18 @@
 import * as React from "react";
 import { Icon } from "react-fa";
 
+import { kungfuTechniqueData } from "../../data/kungfu";
 import {
   IDataExternalKungfuTechnique,
-  KUNGFU_EXTERNAL,
-  kungfuTechniqueData
-} from "data/kungfu";
-import { ICost } from "state/costs";
-import { effectToString } from "state/effects";
+  KUNGFU_EXTERNAL
+} from "../../data/kungfu/types";
+import { ICost } from "../../state/costs";
+import { effectToString } from "../../state/effects";
 
 export interface IExternalKungFuTechniqueProps {
   styleUid: string;
   uid: string;
-  cost?: ICost;
-  costs?: Array<{ value: number; cost: ICost }>;
+  cost: ICost;
   canBuy: boolean;
   onBuy: (cost: ICost) => void;
 }
@@ -55,7 +54,7 @@ class ExternalKungFuTechnique extends React.PureComponent<
   }
 
   private renderButton(): JSX.Element {
-    if (this.props.canBuy) {
+    if (this.props.canBuy && this.props.cost.canPay) {
       return (
         <button color="success">
           <Icon name="graduation-cap" />
@@ -71,7 +70,7 @@ class ExternalKungFuTechnique extends React.PureComponent<
   }
 
   private onBuy(): void {
-    if (this.props.cost !== undefined && this.props.canBuy) {
+    if (this.props.canBuy && this.props.cost.canPay) {
       this.props.onBuy(this.props.cost);
     }
   }

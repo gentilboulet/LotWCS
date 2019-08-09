@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import StaticText from "components/StaticText";
+import StaticText from "../../components/StaticText";
 
 export interface IDestinyProps {
   value: number;

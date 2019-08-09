@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import SelectorList, { IOption } from "components/SelectorList";
+import SelectorList, { IOption } from "../../components/SelectorList";
 
-import Loresheet from "containers/Character/Loresheet";
+import Loresheet from "../../containers/Character/Loresheet";
 import {
   IDataLoresheet,
   loresheets,
   loresheetsCategories
-} from "data/loresheets";
+} from "../../data/loresheets";
 
 class LoresheetsList extends React.PureComponent<{}, {}> {
   constructor(props: {}) {
