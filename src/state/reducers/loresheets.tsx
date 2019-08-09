@@ -22,7 +22,12 @@ export function loresheetsReducer(
     case constants.LORESHEET_BUY_OPTION:
       return produce(baseState, draftState => {
         applyCost(draftState, action.cost);
-        buyLoresheetOption(draftState.loresheets, action.lsUid, action.uid);
+        buyLoresheetOption(
+          draftState.loresheets,
+          action.lsUid,
+          action.uid,
+          action.payload
+        );
         draftState.history.push(action);
       });
     default:

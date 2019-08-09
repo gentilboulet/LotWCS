@@ -95,7 +95,8 @@ export function canBuyLoresheetOption(
 export function buyLoresheetOption(
   state: ILoresheetsState,
   loresheetUid: string,
-  optionUid: string
+  optionUid: string,
+  payload?: string
 ): void {
   validateLoresheet(loresheetUid);
   validateLoresheetOption(loresheetUid, optionUid);
@@ -108,7 +109,7 @@ export function buyLoresheetOption(
         optionUid
     );
   }
-  state[loresheetUid].push({ uid: optionUid, payload: {} });
+  state[loresheetUid].push({ uid: optionUid, payload });
 }
 
 export function openLoresheet(

@@ -54,7 +54,8 @@ function mapDispatchToProps(
   props: IProps
 ): IMapDispatchToProps {
   return {
-    onBuy: (cost: ICost) => dispatch(buyOption(props.lsUid, props.uid, cost))
+    onBuy: (cost: ICost, payload?: string) =>
+      dispatch(buyOption(props.lsUid, props.uid, cost, payload))
   };
 }
 

@@ -13,6 +13,7 @@ export interface ILoresheetBuyOption {
   lsUid: string;
   uid: string;
   cost: ICost;
+  payload?: string;
 }
 
 export type ILoresheetAction = ILoresheetOpen | ILoresheetBuyOption;
@@ -25,8 +26,11 @@ export function open(uid: string, cost: ICost): ILoresheetOpen {
 export function buyOption(
   lsUid: string,
   uid: string,
-  cost: ICost
+  cost: ICost,
+  payload?: string
 ): ILoresheetBuyOption {
+  /* tslint:disable:no-console */
+  console.log("buyOption, payload", payload);
   dataLoresheets.validateLoresheetOption(lsUid, uid);
-  return { cost, lsUid, type: constants.LORESHEET_BUY_OPTION, uid };
+  return { cost, lsUid, type: constants.LORESHEET_BUY_OPTION, uid, payload };
 }

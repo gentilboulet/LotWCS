@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  Button,
-  FormGroup,
-  Input,
-  Label,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader
-} from "reactstrap";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 import { getLoresheetOptionData, IPerk } from "../../data/loresheets";
 import { IBonus } from "../../state/bonuses";
@@ -102,43 +93,51 @@ class LoresheetOptionPopup extends React.PureComponent<
     if (perk.type !== bonuses.BONUS_ONE_AMONG_N) {
       return;
     }
+    const onChange = (all: any) => {
+      /* tslint:disable:no-console */
+      console.log(all.target.value);
+    };
     return (
-      <FormGroup key={"bonus_" + key}>
-        <FormGroup check={true}>
-          {Object.keys(perk.bonuses).map((bonusKey: string) => (
-            <Label check={true} key={bonusKey}>
-              <Input type="radio" name="radio1" />
-              {fromBonusToString(perk.bonuses[bonusKey])}
-            </Label>
-          ))}
-        </FormGroup>
-      </FormGroup>
+      <div key={"bonus_" + key}>
+        {Object.keys(perk.bonuses).map((bonusKey: string) => (
+          <div key={bonusKey}>
+            <input
+              type="radio"
+              key={"radio_bonus_" + key}
+              name={"bonus_" + key}
+              onChange={onChange}
+            />
+            {fromBonusToString(perk.bonuses[bonusKey])}
+          </div>
+        ))}
+      </div>
     );
   }
 
   private renderPayload(payload: string): React.ReactNode {
     const onChange = (p: string) => {
       this.setState({
+        cost: this.state.cost,
         payload: p
       });
     };
     const notNull = (s: string) => s.length > 0;
     return (
-      <FormGroup key="payload">
-        <EditText
-          header={payload}
-          default={this.state.payload}
-          validate={notNull}
-          onSubmit={onChange}
-        />
-      </FormGroup>
+      <EditText
+        key={"payload"}
+        header={payload}
+        default={this.state.payload}
+        validate={notNull}
+        onSubmit={onChange}
+      />
     );
   }
 
   private renderComplexCost(): React.ReactNode {
     const onChange = (idx: number) => {
       this.setState({
-        cost: this.props.cost[idx]
+        cost: this.props.cost[idx],
+        payload: this.state.payload
       });
     };
 
@@ -153,8 +152,7 @@ class LoresheetOptionPopup extends React.PureComponent<
       marks = { ...marks, ...newMarks };
     });
     return (
-      <FormGroup key="cost">
-        <Label for="cost">Pay</Label>
+      <div key="cost">
         <Slider
           min={0}
           max={this.props.cost.length - 1} // 0-indexed
@@ -163,12 +161,20 @@ class LoresheetOptionPopup extends React.PureComponent<
           onChange={onChange}
           step={null}
         />
-      </FormGroup>
+        <br />
+      </div>
     );
   }
 
   private renderBuyButton(): React.ReactNode {
-    const active = this.state.cost ? this.state.cost.canPay : false;
+    const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
+
+    const requirePayload: React.ReactNode = data.payload ? true : false;
+    const activePayload =
+      !requirePayload || (this.state.payload && this.state.payload.length > 0);
+    const activeCost = this.state.cost ? this.state.cost.canPay : false;
+    const active = activePayload && activeCost;
+
     return (
       <Button disabled={!active} color="info" onClick={this.buyButtonClick}>
         Pay
@@ -180,6 +186,7 @@ class LoresheetOptionPopup extends React.PureComponent<
     if (this.state.cost && this.state.cost.canPay) {
       this.props.onBuy(this.state.cost, this.state.payload);
       this.props.toggle();
+      this.setState({});
     }
   }
 }

@@ -46,7 +46,6 @@ export function _costFactory(
 }
 
 export function applyCost(state: IStoreState, cost: ICost): void {
-  console.log("applyCost", cost);
   if (!cost.canPay) {
     throw new Error("Unpayable cost");
   }
