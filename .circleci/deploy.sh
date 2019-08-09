@@ -15,7 +15,7 @@ if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
 
   git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
   git rm -rf .
-  popd ..
+  popd
 
   cp -a build/. gh-pages/.
 
