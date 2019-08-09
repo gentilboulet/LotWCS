@@ -65,7 +65,7 @@ jobs:
     <<: *defaults
     parallelism: 1
     environment:
-      - SOURCE_BRANCH: circleci/autodeploy
+      - SOURCE_BRANCH: master
       - TARGET_BRANCH: gh-pages
     steps: # a collection of executable commands
     - attach_workspace:
@@ -115,4 +115,4 @@ workflows:
             -  build
           filters:
             branches:
-              only: circleci/autodeploy
+              only: master
