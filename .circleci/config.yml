@@ -74,7 +74,7 @@ jobs:
         fingerprints:
           - "90:f1:fe:49:a9:1a:0c:4a:5b:5a:c7:4c:4e:1e:28:63"
     - deploy: # build app
-        command: './.circleci/deploy.sh'
+        command: '/bin/bash ./.circleci/deploy.sh'
 
   coverage:
     <<: *defaults
