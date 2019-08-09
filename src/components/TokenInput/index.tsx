@@ -83,12 +83,18 @@ class TokenInput extends React.PureComponent<
   private renderSuggestion() {
     return this.matchOptionsWithInput(false)
       .filter((option: any) => option[this.labelKey].length > 0)
+      .filter(option => {
+        const label = option[this.labelKey];
+        const id = option[this.idKey];
+
+        if (!label || !id) {
+          return false;
+        }
+        return true;
+      })
       .map((option: any) => {
         const label = option[this.labelKey];
         const id = option[this.idKey];
-        if (!label || !id) {
-          return;
-        }
         const onClick = () => {
           this.props.onAdd(id);
           this.resetState();

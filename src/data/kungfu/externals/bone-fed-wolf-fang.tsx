@@ -24,7 +24,7 @@ export const boneFedWolfFang: IDataExternalKungfu = {
     block: +5,
     toughness: +5
   },
-  techniques: new Array(
+  techniques: [
     {
       name: "Circling Pack",
       cost: 4,
@@ -75,5 +75,5 @@ export const boneFedWolfFang: IDataExternalKungfu = {
       ),
       uid: "Wolves Devour the Lion"
     }
-  )
+  ]
 };
