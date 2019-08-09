@@ -1,4 +1,4 @@
-import { initialStateFactory } from "../initial";
+import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
 import * as loresheetsActions from "../actions/loresheets";
@@ -10,7 +10,7 @@ import { loresheetsReducer } from "../reducers/loresheets";
 
 import * as dataLoresheets from "../../data/loresheets";
 
-const initialState: IStoreState = initialStateFactory();
+const initialState: IStoreState = testingStateFactory();
 
 describe("Testing loresheetsReducer", () => {
   it("should receive a LORESHEET_OPEN action", () => {

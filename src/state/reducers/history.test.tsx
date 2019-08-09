@@ -1,5 +1,5 @@
 import { IAction } from "../actions/types";
-import { initialStateFactory } from "../initial";
+import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
 import * as header from "../actions/header";
@@ -9,7 +9,7 @@ import * as history from "../history";
 
 import { historyReducer } from "./history";
 
-const initialState: IStoreState = initialStateFactory();
+const initialState: IStoreState = testingStateFactory();
 
 describe("Testing historyReducer", () => {
   it("should receive an HISTORY_DELETE action", () => {

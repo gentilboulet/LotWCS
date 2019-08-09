@@ -6,13 +6,13 @@ import { createStore } from "redux";
 
 import App from "./index";
 
-import { initialStateFactory } from "../state/initial";
+import { testingStateFactory } from "../state/initial";
 import { IStoreState } from "../state/type";
 
 describe("Testing the App component", () => {
   const store = createStore<IStoreState, any, any, any>(
     (state: any) => state,
-    initialStateFactory()
+    testingStateFactory()
   );
 
   it("should render without crashing", () => {

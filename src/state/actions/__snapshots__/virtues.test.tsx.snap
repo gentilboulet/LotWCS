@@ -5,7 +5,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "New virtue name",
   "type": "VIRTUE_INCREASE",
@@ -18,7 +18,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Honor",
   "type": "VIRTUE_INCREASE",
@@ -31,7 +31,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Benevolence",
   "type": "VIRTUE_INCREASE",
@@ -44,7 +44,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Righteousness",
   "type": "VIRTUE_INCREASE",
@@ -57,7 +57,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Loyalty",
   "type": "VIRTUE_INCREASE",
@@ -70,7 +70,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Force",
   "type": "VIRTUE_INCREASE",
@@ -83,7 +83,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Revenge",
   "type": "VIRTUE_INCREASE",
@@ -96,7 +96,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Individualism",
   "type": "VIRTUE_INCREASE",
@@ -109,7 +109,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Obsession",
   "type": "VIRTUE_INCREASE",
@@ -122,7 +122,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Ruthlessness",
   "type": "VIRTUE_INCREASE",
@@ -135,7 +135,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "name": "Ferocity",
   "type": "VIRTUE_INCREASE",

@@ -1,4 +1,4 @@
-import { initialStateFactory } from "./initial";
+import { testingStateFactory } from "./initial";
 import { IStoreState } from "./type";
 
 import * as dataVirtues from "../data/virtues";
@@ -13,7 +13,7 @@ import {
 
 describe("Testing IVirtueState", () => {
   it("should do increase existing virtue value", () => {
-    const initialState: IStoreState = Object.assign({}, initialStateFactory());
+    const initialState: IStoreState = Object.assign({}, testingStateFactory());
     dataVirtues.virtues.forEach((virtue: dataVirtues.IDataVirtue) => {
       expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeTruthy();
       const initialVirtue = initialState.virtues.find(
@@ -33,7 +33,7 @@ describe("Testing IVirtueState", () => {
   });
 
   it("should not increase an unknown virtue to the state", () => {
-    const initialState: IStoreState = Object.assign({}, initialStateFactory());
+    const initialState: IStoreState = Object.assign({}, testingStateFactory());
     const junk: dataVirtues.IDataVirtue = {
       name: "New Virtue",
       type: dataVirtues.VIRTUE_CHIVALROUS
@@ -45,7 +45,7 @@ describe("Testing IVirtueState", () => {
   });
 
   it("should add a new virtue to the state", () => {
-    const initialState: IStoreState = Object.assign({}, initialStateFactory());
+    const initialState: IStoreState = Object.assign({}, testingStateFactory());
     const virtue: dataVirtues.IDataVirtue = {
       name: "New Virtue",
       type: dataVirtues.VIRTUE_CHIVALROUS
@@ -63,7 +63,7 @@ describe("Testing IVirtueState", () => {
   });
 
   it("should not add an existing virtue to the state", () => {
-    const initialState: IStoreState = Object.assign({}, initialStateFactory());
+    const initialState: IStoreState = Object.assign({}, testingStateFactory());
     const junk: dataVirtues.IDataVirtue = dataVirtues.virtues[0];
     expect(isVirtuePresent(initialState.virtues, junk.name)).toBeTruthy();
     expect(() =>
@@ -72,7 +72,7 @@ describe("Testing IVirtueState", () => {
   });
 
   it("should check canBuyVirtue", () => {
-    const state = initialStateFactory();
+    const state = testingStateFactory();
     const regularVirtue = dataVirtues.virtues[0];
 
     const junkVirtue = { name: "New Virtue", type: dataVirtues.VIRTUE_SELFISH };

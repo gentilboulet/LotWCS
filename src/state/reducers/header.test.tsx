@@ -1,5 +1,5 @@
 import { IHeaderAction } from "../actions/header";
-import { initialStateFactory } from "../initial";
+import { emptyStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
 import { globalReducer } from "./global";
@@ -7,7 +7,7 @@ import { headerReducer } from "./header";
 
 import * as actions from "../actions/header";
 
-const initialState: IStoreState = initialStateFactory();
+const initialState: IStoreState = emptyStateFactory();
 
 describe("Testing headerReducer", () => {
   it("should receive a HEADER_SET_NAME action", () => {

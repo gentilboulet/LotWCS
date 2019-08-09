@@ -1,7 +1,7 @@
-import { initialStateFactory } from './initial';
+import { testingStateFactory } from './initial';
 
-describe('Testing initialStateFactory', () => {
+describe('Testing testingStateFactory', () => {
   it('should be constant', () => {
-    expect( initialStateFactory() ).toMatchSnapshot();
+    expect( testingStateFactory() ).toMatchSnapshot();
   });
 });

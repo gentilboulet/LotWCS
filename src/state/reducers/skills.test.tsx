@@ -4,7 +4,7 @@ import { IStoreState } from "../type";
 import * as dataSkills from "../../data/skills";
 
 import { zeroCost } from "../costs";
-import { initialStateFactory } from "../initial";
+import { emptyStateFactory } from "../initial";
 import { skillsReducer } from "../reducers/skills";
 import { isSpecialityPresent } from "../skills";
 
@@ -12,7 +12,7 @@ import { setRank } from "../actions/header";
 import { globalReducer } from "../reducers/global";
 
 const initialState: IStoreState = globalReducer(
-  initialStateFactory(),
+  emptyStateFactory(),
   setRank("4th_rank")
 );
 

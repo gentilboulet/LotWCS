@@ -1,4 +1,4 @@
-import { initialStateFactory } from "../initial";
+import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
 import * as dataVirtues from "../../data/virtues";
@@ -9,7 +9,7 @@ import { isVirtuePresent } from "../virtues";
 import { globalReducer } from "./global";
 import { virtuesReducer } from "./virtues";
 
-const initialState: IStoreState = initialStateFactory();
+const initialState: IStoreState = testingStateFactory();
 
 describe("Testing virtueReducer", () => {
   it("should receive a VIRTUE_INCREASE action with an existing virtue", () => {

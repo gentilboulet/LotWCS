@@ -5,7 +5,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "kungfuType": "KUNGFU_EXTERNAL",
   "type": "KUNGFU_OPEN_STYLE",
@@ -18,7 +18,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "kungfuType": "KUNGFU_INTERNAL",
   "type": "KUNGFU_OPEN_STYLE",

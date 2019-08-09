@@ -1,10 +1,10 @@
 import { IAction } from "../actions/types";
-import { initialStateFactory } from "../initial";
+import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
 import { globalReducer } from "./global";
 
-const initialState: IStoreState = initialStateFactory();
+const initialState: IStoreState = testingStateFactory();
 
 describe("Testing globalReducer", () => {
   it("should do nothing with a junk action", () => {

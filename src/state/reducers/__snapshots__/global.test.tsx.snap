@@ -2,7 +2,7 @@
 
 exports[`Testing globalReducer should do nothing with a junk action 1`] = `
 Object {
-  "archetype": undefined,
+  "archetype": "warrior",
   "bonuses": Array [],
   "chi": Object {
     "corrupt": Object {
@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 0,
+      "value": 10,
     },
     "metal": Object {
       "cultivation": 0,
@@ -39,12 +39,63 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 0,
-  "discounts": Array [],
+  "destiny": 25,
+  "discounts": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+  ],
   "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
+    },
+    Object {
+      "rank": "4th_rank",
+      "type": "HEADER_SET_RANK",
+    },
+    Object {
+      "archetype": "warrior",
+      "type": "HEADER_SET_ARCHETYPE",
+    },
+    Object {
+      "cost": Object {
+        "canPay": true,
+        "destiny": 0,
+        "original": 0,
+      },
+      "skill": "Awareness",
+      "speciality": "Hear",
+      "type": "SKILLS_SPECIALITY_BUY",
+    },
+    Object {
+      "cost": Object {
+        "canPay": true,
+        "destiny": 0,
+        "original": 0,
+      },
+      "skill": "Awareness",
+      "speciality": "Sight",
+      "type": "SKILLS_SPECIALITY_BUY",
     },
   ],
   "kungfu": Object {
@@ -53,7 +104,10 @@ Object {
   },
   "loresheets": Object {},
   "name": undefined,
-  "rank": undefined,
+  "rank": Object {
+    "name": "4th_rank",
+    "value": 2,
+  },
   "skills": Object {},
   "virtues": Array [
     Object {

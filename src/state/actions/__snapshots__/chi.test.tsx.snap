@@ -6,7 +6,7 @@ Object {
   "cost": Object {
     "canPay": true,
     "destiny": 0,
-    "entanglement": 0,
+    "original": 0,
   },
   "type": "CHI_BUY",
   "value": 123,

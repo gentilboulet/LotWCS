@@ -11,7 +11,7 @@ import { createState as createVirtuesState } from "./virtues";
 import { createState as createBonusesState } from "./bonuses";
 import { createState as createDiscountsState } from "./discounts";
 
-function emptyInitialStateFactory(): IStoreState {
+export function emptyStateFactory(): IStoreState {
   return {
     archetype: undefined,
     concept: undefined,
@@ -40,7 +40,7 @@ import { zeroCost } from "./costs";
 import { replayHistory } from "./history";
 
 export function testingStateFactory(): IStoreState {
-  const initial = emptyInitialStateFactory();
+  const initial = emptyStateFactory();
   const actions = [
     setRank("4th_rank"),
     setArchetype("warrior"),
@@ -52,6 +52,5 @@ export function testingStateFactory(): IStoreState {
 }
 
 export function initialStateFactory(): IStoreState {
-  // return emptyInitialStateFactory();
-  return testingStateFactory();
+  return emptyStateFactory();
 }

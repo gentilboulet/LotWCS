@@ -29,8 +29,6 @@ export function buyOption(
   cost: ICost,
   payload?: string
 ): ILoresheetBuyOption {
-  /* tslint:disable:no-console */
-  console.log("buyOption, payload", payload);
   dataLoresheets.validateLoresheetOption(lsUid, uid);
   return { cost, lsUid, type: constants.LORESHEET_BUY_OPTION, uid, payload };
 }
