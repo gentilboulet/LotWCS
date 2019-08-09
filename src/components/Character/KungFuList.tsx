@@ -24,13 +24,13 @@ class KungFuList extends React.PureComponent<{}, {}> {
       disabled: false,
       id: kf.uid,
       label: kf.name,
-      meta: kf.name + "," + "external"
+      meta: kf.name + ",external"
     }));
     const internals: IOption[] = internalKungfu.map(kf => ({
       disabled: false,
       id: kf.uid,
       label: kf.name,
-      meta: kf.name + "," + "internal"
+      meta: kf.name + ",internal"
     }));
 
     const externalHeader: IOption[] = [

@@ -67,30 +67,37 @@ class SelectorList extends React.PureComponent<
   private renderList(): JSX.Element {
     return (
       <ul className="search-list">
-        {this.state.searched.map(id => {
-          const option = this.props.options.find(prop => {
-            return prop.id === id;
-          });
-          if (option === undefined) {
-            return;
-          }
-          if (!option.disabled) {
-            const toggle = () => this.itemOnSelectedToggle(option);
-            const selected = this.state.selected.indexOf(option.id) !== -1;
+        {this.state.searched
+          .filter(id => {
+            const option = this.props.options.find(prop => {
+              return prop.id === id;
+            });
+            if (option === undefined) {
+              return false;
+            }
+            return true;
+          })
+          .map(id => {
+            const option = this.props.options.find(prop => {
+              return prop.id === id;
+            }) as IOption;
+            if (!option.disabled) {
+              const toggle = () => this.itemOnSelectedToggle(option);
+              const selected = this.state.selected.indexOf(option.id) !== -1;
 
-            return (
-              <li className="item" onClick={toggle} key={option.id}>
-                {selected ? <b>{option.label}</b> : option.label}
-              </li>
-            );
-          } else {
-            return (
-              <li className="header" key={option.id}>
-                {option.label}
-              </li>
-            );
-          }
-        })}
+              return (
+                <li className="item" onClick={toggle} key={option.id}>
+                  {selected ? <b>{option.label}</b> : option.label}
+                </li>
+              );
+            } else {
+              return (
+                <li className="header" key={option.id}>
+                  {option.label}
+                </li>
+              );
+            }
+          })}
       </ul>
     );
   }

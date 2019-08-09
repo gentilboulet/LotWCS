@@ -1,3 +1,4 @@
+/* eslint-disable import/first */
 import { getDiscountIndexes, IDiscount, updateDiscounts } from "./discounts";
 import { IStoreState } from "./type";
 

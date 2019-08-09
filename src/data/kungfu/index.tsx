@@ -1,6 +1,6 @@
+/* eslint-disable import/first */
 import {
   IDataExternalKungfu,
-  IDataExternalKungfuStatistics,
   IDataExternalKungfuTechnique,
   IDataInternalKungfu,
   IDataInternalKungfuTechnique,
@@ -11,15 +11,15 @@ import {
 
 import { blossomHarvest } from "./externals/blossom-harvest";
 import { boneFedWolfFang } from "./externals/bone-fed-wolf-fang";
-export const externalKungfu: IDataExternalKungfu[] = Array(
+export const externalKungfu: IDataExternalKungfu[] = [
   blossomHarvest,
   boneFedWolfFang
-);
+];
 
 import { boundlessProsperityManual } from "./internals/boundless-prosperity-manual";
-export const internalKungfu: IDataInternalKungfu[] = Array(
+export const internalKungfu: IDataInternalKungfu[] = [
   boundlessProsperityManual
-);
+];
 
 export function validateKungFuType(type: KUNGFU_TYPE): void {
   switch (type) {

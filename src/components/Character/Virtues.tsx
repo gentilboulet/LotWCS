@@ -25,10 +25,6 @@ export interface IVirtuesProps {
 }
 
 class Virtues extends React.PureComponent<IVirtuesProps, {}> {
-  constructor(props: IVirtuesProps) {
-    super(props);
-  }
-
   public render() {
     const chivalrousVirtues = this.props.virtues.filter(
       v => v.type === VIRTUE_CHIVALROUS

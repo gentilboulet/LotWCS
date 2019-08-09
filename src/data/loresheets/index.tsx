@@ -1,21 +1,5 @@
 /* tslint:disable:import-sources-order named-imports-order ordered-imports*/
-
-// Core rulebook //
-// Rivers and Lakes
-import { jianghu } from "./core/riversandlakes/jianghu";
-import { crouchingtigersandhiddendragons } from "./core/riversandlakes/crouchingtigersandhiddendragons";
-import { wulin } from "./core/riversandlakes/wulin";
-import { wulinsage } from "./core/riversandlakes/wulinsage";
-// Wulin Factions
-// Orthodox Factions
-// Unorthodox Factions
-// The Wulin Greats
-// Forest and Mountains
-// The Philosophies of Shen Zhou
-// Relationship in Shen Zhou
-// Heretic Lores
-// Secrets Arts
-
+/* eslint-disable import/first */
 import { IBonus } from "../../state/bonuses";
 import { IDiscount } from "../../state/discounts";
 import { IEffect } from "../../state/effects";
@@ -58,12 +42,27 @@ export interface IDataLoresheet {
   options: IDataLoresheetOption[];
 }
 
-export const loresheets: IDataLoresheet[] = Array(
+// Core rulebook //
+// Rivers and Lakes
+import { jianghu } from "./core/riversandlakes/jianghu";
+import { crouchingtigersandhiddendragons } from "./core/riversandlakes/crouchingtigersandhiddendragons";
+import { wulin } from "./core/riversandlakes/wulin";
+import { wulinsage } from "./core/riversandlakes/wulinsage";
+// Wulin Factions
+// Orthodox Factions
+// Unorthodox Factions
+// The Wulin Greats
+// Forest and Mountains
+// The Philosophies of Shen Zhou
+// Relationship in Shen Zhou
+// Heretic Lores
+// Secrets Arts
+export const loresheets: IDataLoresheet[] = [
   jianghu,
   crouchingtigersandhiddendragons,
   wulin,
   wulinsage
-);
+];
 
 export const loresheetsCategories: string[] = loresheets
   .map(ls => ls.category)

@@ -1,3 +1,4 @@
+/* eslint-disable import/first */
 import { IStoreState } from "./type";
 
 import { createState as createHistoryState } from "./history";

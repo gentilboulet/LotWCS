@@ -1,3 +1,4 @@
+/* eslint-disable import/first */
 /* Redux and state management */
 import { Provider } from "react-redux";
 import { createStore } from "redux";
