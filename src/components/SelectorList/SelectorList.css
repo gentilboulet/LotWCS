@@ -1,0 +1,81 @@
+.selector-list {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  margin: auto;
+}
+
+.selector-list .left-list {
+  order: 1;
+  border: 1px solid collapse;
+  flex-direction: column;
+  margin: 0;
+  padding: 0.5%;
+  width: 20%;
+}
+
+.selector-list .right-list {
+  order: 2;
+  border: 1px solid collapse;
+  flex-direction: column;
+  margin: 0;
+  padding: 0.5%;
+  width: 80%;
+}
+
+.selector-list .searchbox {
+  border: 1px solid black;
+  height: 36px;
+  padding: 1px;
+  list-style-type: none;
+  margin: 0;
+  border-radius: 5px;
+}
+
+.selector-list .searchbox input {
+  border: none;
+  font-size: inherit;
+  height: 100%;
+  width: 100%;
+}
+
+.selector-list .search-list {
+  padding: 0px;
+  margin: 0;
+}
+
+.selector-list .search-list li {
+  border: 1px solid black;
+  padding: 8px;
+  list-style-type: none;
+  margin: 0;
+  border-radius: 5px;
+}
+
+.selector-list .search-list .item {
+}
+.selector-list .search-list .item:hover {
+  cursor: pointer;
+}
+
+.selector-list .search-list .header {
+  cursor: default;
+  text-align: center;
+  border: none;
+  background-color: lightgrey;
+}
+
+
+.selector-list .search-list .item {
+}
+
+.selector-list .search-list .header {
+}
+
+.selector-list .selected-item {
+  border: 1px solid black;
+  padding: 8px;
+  list-style-type: none;
+  margin: 0;
+  border-radius: 5px;
+}

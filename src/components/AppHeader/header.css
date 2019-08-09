@@ -1,12 +1,53 @@
-.header {
-  text-align: center;
-  background-color: #e4e4e4;
-  border: 1px solid lightgrey;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid black;
+  padding: 10px 10px 0 10px;
+  font-weight: 300;
 }
 
-.link-list {
+.navbar ul {
+  align-items: flex-end;
   display: flex;
-  margin: auto;
-  width: 50%;
-  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul.left {
+  justify-content: flex-start;
+}
+
+.navbar ul.right {
+  justify-content: flex-end;
+}
+
+.navbar h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.navbar li {
+  border: 1px solid black;
+  border-bottom: 0;
+  padding: 12px;
+  list-style-type: none;
+  margin: 0;
+  font-size: 20px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.navbar li:hover {
+  background-color: gainsboro;
+}
+
+.navbar li:active {
+  background-color: darkgrey;
+}
+
+.navbar a {
+  align-items: flex-end;
+  color: inherit;
+  text-decoration: none;
 }

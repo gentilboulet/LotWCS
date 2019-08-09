@@ -1,58 +1,86 @@
-import * as React from 'react';
-import Icon from 'react-fa';
-import { Button, Col, Container, Row } from 'reactstrap';
+import * as React from "react";
+import Icon from "react-fa";
 
-import { IDataLoresheet, loresheets } from 'data/loresheets';
-import { ICost } from 'state/costs';
+import { getLoresheetData, IDataLoresheet } from "../../data/loresheets";
+import { ICost } from "../../state/costs";
 
-import LoresheetOptions from 'components/Character/LoresheetOptions';
-import ModalCard from 'components/ModalCard';
+import LoresheetOption from "../../containers/Character/LoresheetOption";
 
 export interface ILoresheetProps {
   uid: string;
   known: boolean;
-  knownOptions: Array<{ uid: string, payload?: any }>;
   cost: ICost;
-  canBuy: boolean;
-  onBuy: (cost: ICost) => void;
+  canOpen: boolean;
+  onOpen: (cost: ICost) => void;
 }
 
-class Loresheet extends React.Component<ILoresheetProps, {}> {
+class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
   constructor(props: ILoresheetProps) {
     super(props);
 
-    this.onBuy = this.onBuy.bind(this);
-    this.renderHeader = this.renderHeader.bind(this);
+    this.renderOptions = this.renderOptions.bind(this);
+    this.renderButton = this.renderButton.bind(this);
   }
 
   public render() {
-    const found = loresheets.find((ls: IDataLoresheet) => ls.uid === this.props.uid);
-    if( found === undefined) { return; }
-    const card = {
-      header: this.renderHeader(),
-      text: found.description,
-      title: found.name,
-    };
-    return <ModalCard card={card}>
-      <LoresheetOptions
-        knownOptions={this.props.knownOptions}
-        lsUid={this.props.uid}
-      />
-    </ModalCard>;
+    const data = getLoresheetData(this.props.uid) as IDataLoresheet;
+    return (
+      <div>
+        <div className="Grid" style={{ justifyContent: "space-between" }}>
+          <h4>{data.name}</h4>
+          <span style={{ justifyContent: "flex-end" }}>
+            {this.renderButton()}
+          </span>
+        </div>
+        <div>
+          <p>{data.description}</p>
+        </div>
+        <div>{this.renderOptions(data)}</div>
+      </div>
+    );
   }
 
-  private onBuy(): void { this.props.onBuy(this.props.cost); }
-
-  private renderHeader(): JSX.Element {
-    return (<Container><Row><Col/>
-      <Col xs={1} sm={1} md={1} lg={1} xl={1} >{this.renderButton()}</Col>
-      <Col xs={1} sm={1} md={1} lg={1} xl={1} />
-    </Row></Container>);
+  private renderOptions(data: IDataLoresheet): JSX.Element {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Cost</th>
+            <th>Effect</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {data.options.map(o => (
+            <LoresheetOption key={o.uid} lsUid={data.uid} uid={o.uid} />
+          ))}
+        </tbody>
+      </table>
+    );
   }
+
   private renderButton(): JSX.Element {
-    if(this.props.known) { return <Button color="primary"><Icon name="leanpub" /></Button>; }
-    if(this.props.canBuy) { return (<Button  onClick={this.onBuy} color="success"><Icon name="unlock-alt" /></Button>); }
-    else { return (<Button color="danger"><Icon name="times" /></Button>); }
+    const onClick = () => this.props.onOpen(this.props.cost);
+    if (this.props.canOpen && this.props.cost.canPay) {
+      return (
+        <button color="success" onClick={onClick}>
+          <Icon name="graduation-cap" />
+        </button>
+      );
+    } else if (this.props.known) {
+      return (
+        <button color="primary" disabled={true}>
+          <Icon name="leanpub" />
+        </button>
+      );
+    } else {
+      return (
+        <button color="danger">
+          <Icon name="times" />
+        </button>
+      );
+    }
   }
 }
 

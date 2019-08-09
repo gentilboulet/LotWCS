@@ -1,7 +1,7 @@
-import * as constants from 'state/constants/header';
+import * as constants from "../constants/header";
 
-import * as dataArchetypes from 'data/archetypes';
-import * as dataRanks from 'data/ranks';
+import * as dataArchetypes from "../../data/archetypes";
+import * as dataRanks from "../../data/ranks";
 
 export interface IHeaderSetName {
   type: constants.HEADER_SET_NAME;
@@ -23,7 +23,11 @@ export interface IHeaderSetRank {
   rank: string;
 }
 
-export type IHeaderAction = IHeaderSetName | IHeaderSetConcept | IHeaderSetArchetype | IHeaderSetRank;
+export type IHeaderAction =
+  | IHeaderSetName
+  | IHeaderSetConcept
+  | IHeaderSetArchetype
+  | IHeaderSetRank;
 
 export function setName(name: string): IHeaderSetName {
   return { type: constants.HEADER_SET_NAME, name };

@@ -1,29 +1,52 @@
-import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import * as React from "react";
 
-import { IAction }  from 'state/actions/types';
+import { IAction } from "../../state/actions/types";
 
 export interface IHistoryProps {
   history: IAction[];
   onDelete: (id: number) => void;
 }
 
-class History extends React.Component<IHistoryProps, {}> {
+export interface IHistoryState {
+  hoverIndex: number;
+}
+
+class History extends React.PureComponent<IHistoryProps, IHistoryState> {
+  constructor(props: IHistoryProps) {
+    super(props);
+
+    this.state = {
+      hoverIndex: this.props.history.length
+    };
+
+    this.renderHistoryAction.bind(this);
+    this.rollbackHistory.bind(this);
+  }
+
   public render() {
-    let idx: number = 0;
-    return(
-      <Container className="History">
-        <Col>
-          {this.props.history.map(
-            (action: IAction) => { return (
-              <Row key={'rowHistory_' + idx++}>
-                <Col>{action.type}</Col>
-                <Col>{JSON.stringify(action)}</Col>
-              </Row> ); }
+    return (
+      <div className="History">
+        <div>
+          {this.props.history.map((action: IAction, index: number) =>
+            this.renderHistoryAction(action, index)
           )}
-        </Col>
-      </Container>
+        </div>
+      </div>
     );
+  }
+
+  private renderHistoryAction(action: IAction, index: number): JSX.Element {
+    const onClick = () => this.rollbackHistory(index);
+    return (
+      <div key={"rowHistory_" + index} onClick={onClick}>
+        <div>{index + 1 + " " + action.type}</div>
+        <div>{JSON.stringify(action)}</div>
+      </div>
+    );
+  }
+
+  private rollbackHistory(index: number): void {
+    this.props.onDelete(index);
   }
 }
 

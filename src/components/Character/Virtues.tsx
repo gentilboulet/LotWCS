@@ -1,57 +1,83 @@
-import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import * as React from "react";
 
-import { ICost } from 'state/costs';
+import { ICost } from "../../state/costs";
 
-import { IDataVirtueType, VIRTUE_CHIVALROUS, VIRTUE_SELFISH } from 'data/virtues';
+import {
+  IDataVirtueType,
+  VIRTUE_CHIVALROUS,
+  VIRTUE_SELFISH
+} from "../../data/virtues";
 
-import EditNumeric from 'components/EditNumeric';
-import FieldHeader from 'components/FieldHeader';
+import EditNumeric from "../../components/EditNumeric";
+import FieldHeader from "../../components/FieldHeader";
 
 interface IVirtueProp {
-  type: IDataVirtueType,
-  name: string,
-  value: number,
-  cost: ICost,
-  canBuy: boolean,
-  onBuy: () => void
-};
+  type: IDataVirtueType;
+  name: string;
+  value: number;
+  cost: ICost;
+  canBuy: boolean;
+  onBuy: () => void;
+}
 
 export interface IVirtuesProps {
   virtues: IVirtueProp[];
 }
 
-class Virtues extends React.Component<IVirtuesProps, {}> {
-  constructor(props: IVirtuesProps) {
-    super(props);
-  }
-
+class Virtues extends React.PureComponent<IVirtuesProps, {}> {
   public render() {
-    const chivalrousVirtues = this.props.virtues.filter(v => v.type === VIRTUE_CHIVALROUS);
-    const selfishVirtues = this.props.virtues.filter(v => v.type === VIRTUE_SELFISH);
+    const chivalrousVirtues = this.props.virtues.filter(
+      v => v.type === VIRTUE_CHIVALROUS
+    );
+    const selfishVirtues = this.props.virtues.filter(
+      v => v.type === VIRTUE_SELFISH
+    );
     const max = Math.max(chivalrousVirtues.length, selfishVirtues.length);
 
     const rows = [
-      <Row key="header"><Col><FieldHeader label="Chivalrous Virtues" /></Col><Col><FieldHeader label="Selfish Virtues" /></Col></Row>
+      <div key="header">
+        <div>
+          <FieldHeader label="Chivalrous Virtues" />
+        </div>
+        <div>
+          <FieldHeader label="Selfish Virtues" />
+        </div>
+      </div>
     ];
-    for(let i = 0; i < max; i++) {
-      const cvCol = (i < chivalrousVirtues.length) ? (<Col>{this.renderVirtue(chivalrousVirtues[i])}</Col>) : <Col />;
-      const svCol = (i < selfishVirtues.length) ? <Col>{this.renderVirtue(selfishVirtues[i])}</Col> : <Col />;
+    for (let i = 0; i < max; i++) {
+      const cvdiv =
+        i < chivalrousVirtues.length ? (
+          <div>{this.renderVirtue(chivalrousVirtues[i])}</div>
+        ) : (
+          <div />
+        );
+      const svdiv =
+        i < selfishVirtues.length ? (
+          <div>{this.renderVirtue(selfishVirtues[i])}</div>
+        ) : (
+          <div />
+        );
 
-      rows.push(<Row key={'virtues_'+i}>{cvCol}{svCol}</Row>);
+      rows.push(
+        <div key={"virtues_" + i}>
+          {cvdiv}
+          {svdiv}
+        </div>
+      );
     }
-    return <Container>{rows.map(r => r)}</Container>;
+    return <div>{rows.map(r => r)}</div>;
   }
 
   private renderVirtue(virtue: IVirtueProp): JSX.Element {
-    return <EditNumeric
-              name={virtue.name}
-              value={virtue.value}
-              canBuy={virtue.canBuy}
-              onBuy={virtue.onBuy}
-            />;
+    return (
+      <EditNumeric
+        name={virtue.name}
+        value={virtue.value}
+        canBuy={virtue.canBuy && virtue.cost.canPay}
+        onBuy={virtue.onBuy}
+      />
+    );
   }
-
 }
 
 export default Virtues;

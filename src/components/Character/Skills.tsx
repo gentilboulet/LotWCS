@@ -1,28 +1,28 @@
-import * as React from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import * as React from "react";
 
-import Skill from 'containers/Character/Skill';
-import Specialities from 'containers/Character/Specialities';
-import { skills, TSkillName } from 'data/skills';
+import Skill from "../../containers/Character/Skill";
+import Specialities from "../../containers/Character/Specialities";
+import { skills, TSkillName } from "../../data/skills";
 
-const styles = {
-  row: {
-    alignItems: 'center',
-    height: 56,
-  }
-}
+import "./Skills.css";
 
 class Skills extends React.PureComponent<{}, {}> {
   public render() {
     return (
-      <Container style={styles}>{
-        Object.keys(skills).map((name: TSkillName) => {
-          return <Row key={name} style={styles.row}>
-                  <Col><Skill name={name} /></Col>
-                  <Col><Specialities skill={name} /></Col>
-                </Row>;
-        })
-      }</Container>
+      <ul className="skills-list">
+        {Object.keys(skills).map((name: string) => {
+          return (
+            <li key={name} className="Grid">
+              <div className="Grid-cell">
+                <Skill name={name as TSkillName} />
+              </div>
+              <div className="Grid-cell">
+                <Specialities skill={name as TSkillName} />
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 }

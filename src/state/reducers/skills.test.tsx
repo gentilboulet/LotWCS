@@ -1,66 +1,75 @@
-import { ISkillAction, skillsBuy, skillSpecialityBuy } from 'state/actions/skills';
-import { IStoreState } from 'state/type';
+import { ISkillAction, skillsBuy, skillSpecialityBuy } from "../actions/skills";
+import { IStoreState } from "../type";
 
-import * as dataSkills from 'data/skills';
+import * as dataSkills from "../../data/skills";
 
-import { initialStateFactory } from 'state/initial';
-import { skillsReducer } from 'state/reducers/skills';
-import { isSpecialityPresent } from 'state/skills';
+import { zeroCost } from "../costs";
+import { emptyStateFactory } from "../initial";
+import { skillsReducer } from "../reducers/skills";
+import { isSpecialityPresent } from "../skills";
 
-import { setRank } from 'state/actions/header';
-import { globalReducer } from 'state/reducers/global';
+import { setRank } from "../actions/header";
+import { globalReducer } from "../reducers/global";
 
+const initialState: IStoreState = globalReducer(
+  emptyStateFactory(),
+  setRank("4th_rank")
+);
 
-const initialState: IStoreState  = globalReducer(initialStateFactory(), setRank('4th_rank'));
-
-describe('Testing skillsReducer', () => {
-  const noCost = {
-    destiny: 0,
-    discountIdx: -1,
-    discountNewValue: 0,
-    entanglement: 0
-  };
-
-  it('should receive a SKILLS_BUY action', () => {
-    Object.keys(dataSkills.skills).forEach( key => {
-      const skillInData = dataSkills.skills[key];
-      expect(initialState.skills[key].value).toBe(0);
-      const action = skillsBuy(skillInData.name, noCost);
+describe("Testing skillsReducer", () => {
+  it("should receive a SKILLS_BUY action", () => {
+    Object.keys(dataSkills.skills).forEach(key => {
+      const skillName = key as dataSkills.TSkillName;
+      const skillInData = dataSkills.skills[skillName];
+      expect(initialState.skills[skillName].value).toBe(0);
+      const action = skillsBuy(skillInData.name, zeroCost);
       const state = skillsReducer(initialState, action);
-      expect(state.skills[key].value).toBe(5);
-      expect( globalReducer(initialState, action) ).toMatchObject(state);
+      expect(state.skills[skillName].value).toBe(5);
+      expect(globalReducer(initialState, action)).toMatchObject(state);
     });
   });
 
-  it('should not accept an overflow on a SKILLS_BUY action', () => {
+  it("should not accept an overflow on a SKILLS_BUY action", () => {
     expect("placeholder").toBe("placeholder");
   });
 
-  it('should receive a SKILLS_SPECIALITY_BUY action', () => {
-    const specialityName = 'Hear';
-    const skillName = 'Awareness';
+  it("should receive a SKILLS_SPECIALITY_BUY action", () => {
+    const specialityName = "Hear";
+    const skillName = "Awareness";
 
-    const action = skillSpecialityBuy(skillName, specialityName, noCost);
+    const action = skillSpecialityBuy(skillName, specialityName, zeroCost);
     const state = skillsReducer(initialState, action);
-    expect( isSpecialityPresent(initialState.skills,skillName,specialityName) ).toBeFalsy();
-    expect( isSpecialityPresent(state.skills,skillName,specialityName) ).toBeTruthy();
-    expect( globalReducer(initialState, action) ).toMatchObject(state);
+    expect(
+      isSpecialityPresent(initialState.skills, skillName, specialityName)
+    ).toBeFalsy();
+    expect(
+      isSpecialityPresent(state.skills, skillName, specialityName)
+    ).toBeTruthy();
+    expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
-  it('should should not receive an already bought SKILLS_SPECIALITY_BUY action', () => {
-    const specialityName = 'Hear';
-    const skillName = 'Awareness';
+  it("should should not receive an already bought SKILLS_SPECIALITY_BUY action", () => {
+    const specialityName = "Hear";
+    const skillName = "Awareness";
 
-    const action = skillSpecialityBuy(skillName, specialityName, noCost);
+    const action = skillSpecialityBuy(skillName, specialityName, zeroCost);
     const state = skillsReducer(initialState, action);
-    expect( isSpecialityPresent(initialState.skills,skillName,specialityName) ).toBeFalsy();
-    expect( isSpecialityPresent(state.skills,skillName,specialityName) ).toBeTruthy();
+    expect(
+      isSpecialityPresent(initialState.skills, skillName, specialityName)
+    ).toBeFalsy();
+    expect(
+      isSpecialityPresent(state.skills, skillName, specialityName)
+    ).toBeTruthy();
 
-    expect( () => { skillsReducer(state, action); }).toThrowError();
+    expect(() => {
+      skillsReducer(state, action);
+    }).toThrowError();
   });
 
-  it('should do nothing with a junk action', () => {
-    const junk = { type: 'JUNK_ACTION' };
-    expect( skillsReducer(initialState, junk as ISkillAction )).toMatchObject(initialState);
+  it("should do nothing with a junk action", () => {
+    const junk = { type: "JUNK_ACTION" };
+    expect(skillsReducer(initialState, junk as ISkillAction)).toMatchObject(
+      initialState
+    );
   });
 });

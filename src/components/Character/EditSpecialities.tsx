@@ -1,25 +1,28 @@
-import * as React from 'react';
-import { Typeahead,  } from 'react-bootstrap-typeahead';
-import Icon from 'react-fa';
-import { Button, Col, Container, InputGroup, InputGroupAddon, Row } from 'reactstrap';
+import * as React from "react";
+import Icon from "react-fa";
+import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
-import { ICost } from 'state/costs';
+import TokenInput from "../../components/TokenInput";
+import { ICost } from "../../state/costs";
 
 interface IEditSpecialitiesProps {
   bought: string[];
-  available: Array<{
-    name: string,
-    canBuy: boolean
-    cost: ICost,
+  specialities: Array<{
+    name: string;
+    canBuy: boolean;
+    cost: ICost;
   }>;
-  onBuy: (speciality: string, cost: ICost) => void
+  onBuy: (speciality: string, cost: ICost) => void;
 }
 
 interface IEditSpecialitiesState {
   edit: boolean;
 }
 
-class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEditSpecialitiesState> {
+class EditSpecialities extends React.PureComponent<
+  IEditSpecialitiesProps,
+  IEditSpecialitiesState
+> {
   constructor(props: IEditSpecialitiesProps) {
     super(props);
     this.state = {
@@ -28,7 +31,6 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
 
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
-    this.selectedChange = this.selectedChange.bind(this);
     this.isValueValid = this.isValueValid.bind(this);
 
     this.buySpeciality = this.buySpeciality.bind(this);
@@ -39,99 +41,117 @@ class EditSpecialities extends React.PureComponent<IEditSpecialitiesProps, IEdit
   }
 
   public render() {
-    if (!this.state.edit) { return this.renderNoEdit(); }
-    else { return this.renderEdit(); }
+    if (!this.state.edit) {
+      return this.renderNoEdit();
+    } else {
+      return this.renderEdit();
+    }
   }
 
-  private renderButton(icon: string, f: () => void) {
-    return <Button onClick={f}><Icon name={icon}/></Button>;
+  private renderButton(icon: string, color: string, f: () => void) {
+    return (
+      <Button onClick={f} color={color}>
+        <Icon name={icon} />
+      </Button>
+    );
   }
 
   private renderBoughtSpecialities() {
-    return this.props.bought.map((speciality: string) => {
-      return <Col key={speciality}>{speciality}</Col>;
+    return this.props.bought.map((speciality: string, index: number) => {
+      return (index > 0 ? ", " : "") + speciality;
     });
   }
 
   private renderNoEdit() {
-    const canBuy = this.props.available.some(option => option.canBuy);
-    return <Container>
-             <Row>
-               {this.renderBoughtSpecialities()}
-               <Col xs={1} sm={1} md={1} lg={1} xl={1}>{canBuy ? this.renderButton('plus', this.startEdit) : ''}</Col>
-             </Row>
-           </Container>
+    const canBuy = this.props.specialities.some(
+      option => option.canBuy && option.cost.canPay
+    );
+    return (
+      <InputGroup onClick={this.startEdit} role="button">
+        <div className="form-control">{this.renderBoughtSpecialities()}</div>
+        {canBuy ? (
+          <InputGroupAddon addonType="append">
+            {this.renderButton("plus", "default", this.startEdit)}
+          </InputGroupAddon>
+        ) : (
+          ""
+        )}
+      </InputGroup>
+    );
   }
 
   private renderEdit() {
-    return <Container>
-      <Row>
-        <Col>
-          <InputGroup>
-            <Typeahead
-              allowNew={true}
-              multiple={true}
-              options={this.props.available
-              .filter(data => data.canBuy)
-              .map(data => data.name)}
-              selected={this.props.bought}
-              placeholder="Chose a speciality..."
-              onChange={this.selectedChange}
-            />
-            <InputGroupAddon addonType="append">
-              {this.renderButton('check', this.endEdit)}
-            </InputGroupAddon>
-          </InputGroup>
-        </Col>
-      </Row>
-    </Container>
+    const optionList = this.props.specialities.map(speciality => {
+      return { id: speciality.name, name: speciality.name };
+    });
+
+    return (
+      <InputGroup>
+        <TokenInput
+          allowNew={true}
+          labelKey="name"
+          onAdd={this.buySpeciality}
+          options={optionList}
+          tokens={this.props.bought}
+        />
+        <InputGroupAddon addonType="append">
+          {this.renderButton("check", "success", this.endEdit)}
+        </InputGroupAddon>
+      </InputGroup>
+    );
   }
 
   private startEdit(): void {
-    const canBuy = this.props.available.some(option => option.canBuy);
-    if(canBuy) {
-      this.setState({edit: true});
+    const canBuy = this.props.specialities.some(option => option.canBuy);
+    if (canBuy) {
+      this.setState({ edit: true });
     }
   }
 
   private endEdit(): void {
     this.setState({
-      edit: false,
+      edit: false
     });
   }
 
   private isValueValid(specialityName: string): boolean {
-    return this.props.bought.findIndex(speciality => specialityName === speciality) === -1;
-  }
-
-  private selectedChange(selected: any[]): void {
-    this.endEdit();
-    selected.forEach((value: any) => {
-      if(typeof value === "string") { this.buySpeciality(value); }
-      else if (typeof value === "object") { this.buySpeciality(value.label); }
-    });
+    return (
+      this.props.bought.findIndex(
+        speciality => specialityName === speciality
+      ) === -1
+    );
   }
 
   private buySpeciality(speciality: string) {
-    if(speciality.length === 0) { return; }
-    if(!this.isValueValid(speciality)) { return; }
+    if (speciality.length === 0) {
+      return;
+    }
+    if (!this.isValueValid(speciality)) {
+      return;
+    }
 
-    const foundIndex = this.props.available.findIndex((available) => {
+    const foundIndex = this.props.specialities.findIndex(available => {
       return available.name === speciality;
     });
-
-    if(foundIndex !== -1) {
-      if(this.props.available[foundIndex].canBuy) {
-        this.props.onBuy(this.props.available[foundIndex].name, this.props.available[foundIndex].cost);
+    if (foundIndex !== -1) {
+      if (this.props.specialities[foundIndex].canBuy) {
+        this.props.onBuy(
+          this.props.specialities[foundIndex].name,
+          this.props.specialities[foundIndex].cost
+        );
       }
-    } else
-    {
-      const indexNewSpeciality = this.props.available.findIndex(option => option.name.length === 0)
-      if(this.props.available[indexNewSpeciality].canBuy) {
-        this.props.onBuy(speciality, this.props.available[indexNewSpeciality].cost);
+    } else {
+      const indexNewSpeciality = this.props.specialities.findIndex(
+        option => option.name.length === 0
+      );
+      if (this.props.specialities[indexNewSpeciality].canBuy) {
+        this.props.onBuy(
+          speciality,
+          this.props.specialities[indexNewSpeciality].cost
+        );
       }
     }
   }
-};
+}
 
 export default EditSpecialities;
