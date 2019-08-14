@@ -31,7 +31,7 @@ export function globalReducer(
   action: IAction
 ): IStoreState {
   if (!state) {
-    return initialStateFactory();
+    return globalReducer(initialStateFactory(), action);
   }
   switch (action.type) {
     case header.HEADER_SET_ARCHETYPE:
