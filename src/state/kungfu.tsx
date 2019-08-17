@@ -16,8 +16,8 @@ import * as constants from "./constants/perks/effects";
 import { IStoreState } from "./type";
 
 export interface IKungFuState {
-  [KUNGFU_EXTERNAL]: { [uid: string]: string[] };
-  [KUNGFU_INTERNAL]: { [uid: string]: string[] };
+  KUNGFU_EXTERNAL: { [uid: string]: string[] };
+  KUNGFU_INTERNAL: { [uid: string]: string[] };
   noRestrictionInternal?: string[];
 }
 

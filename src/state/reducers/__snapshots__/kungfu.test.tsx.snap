@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing kungfuReducer should do nothing with a junk action 1`] = `
+Object {
+  "archetype": "warrior",
+  "bonuses": Array [],
+  "chi": Object {
+    "corrupt": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "earth": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "enlightened": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "fire": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "general": Object {
+      "cultivation": 0,
+      "value": 10,
+    },
+    "metal": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "water": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "wood": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+  },
+  "concept": undefined,
+  "destiny": 25,
+  "discounts": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+  ],
+  "entanglement": 0,
+  "history": Array [
+    Object {
+      "type": "INITIAL_STATE",
+    },
+    Object {
+      "rank": "4th_rank",
+      "type": "HEADER_SET_RANK",
+    },
+    Object {
+      "archetype": "warrior",
+      "type": "HEADER_SET_ARCHETYPE",
+    },
+    Object {
+      "cost": Object {
+        "canPay": true,
+        "destiny": 0,
+        "original": 0,
+      },
+      "skill": "Awareness",
+      "speciality": "Hear",
+      "type": "SKILLS_SPECIALITY_BUY",
+    },
+    Object {
+      "cost": Object {
+        "canPay": true,
+        "destiny": 0,
+        "original": 0,
+      },
+      "skill": "Awareness",
+      "speciality": "Sight",
+      "type": "SKILLS_SPECIALITY_BUY",
+    },
+  ],
+  "kungfu": Object {
+    "KUNGFU_EXTERNAL": Object {},
+    "KUNGFU_INTERNAL": Object {},
+  },
+  "loresheets": Object {},
+  "name": undefined,
+  "rank": Object {
+    "name": "4th_rank",
+    "value": 2,
+  },
+  "skills": Object {},
+  "virtues": Array [
+    Object {
+      "name": "Honor",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Benevolence",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Righteousness",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Loyalty",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Force",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Revenge",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Individualism",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Obsession",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ruthlessness",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ferocity",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+  ],
+}
+`;
