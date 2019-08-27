@@ -34,6 +34,9 @@ export function openStyle(
   styleUid: string
 ): void {
   validateKungFuStyle(type, styleUid);
+  if (isStylePresent(state, type, styleUid)) {
+    throw new Error("Internal error : style already open");
+  }
   state[type][styleUid] = [];
 }
 
@@ -46,6 +49,25 @@ export function isStylePresent(
     stateKungFuUid => stateKungFuUid === styleUid
   );
   return styleIndex !== -1;
+}
+
+export function addKungFuTechnique(
+  state: IKungFuState,
+  type: KUNGFU_TYPE,
+  styleUid: string,
+  techniqueUid: string
+): void {
+  validateKungFuStyle(type, styleUid);
+  validateKungFuTechnique(type, styleUid, techniqueUid);
+
+  if (!isStylePresent(state, type, styleUid)) {
+    throw new Error("Internal error : style not open");
+  }
+  if (isStyleTechniquePresent(state, type, styleUid, techniqueUid)) {
+    throw new Error("Internal error : technique already presents");
+  }
+
+  state[type][styleUid].push(techniqueUid);
 }
 
 export function isStyleTechniquePresent(
@@ -93,25 +115,6 @@ export function getExternalKungFuStatistics(
     }
   });
   return statistics;
-}
-
-export function addKungFuTechnique(
-  state: IKungFuState,
-  type: KUNGFU_TYPE,
-  styleUid: string,
-  techniqueUid: string
-): void {
-  validateKungFuStyle(type, styleUid);
-  validateKungFuTechnique(type, styleUid, techniqueUid);
-
-  if (!isStylePresent(state, type, styleUid)) {
-    throw new Error("Internal error : style not open");
-  }
-  if (isStyleTechniquePresent(state, type, styleUid, techniqueUid)) {
-    throw new Error("Internal error : technique already presents");
-  }
-
-  state[type][styleUid].push(techniqueUid);
 }
 
 export function canOpenKungFu(

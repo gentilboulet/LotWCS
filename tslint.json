@@ -1,5 +1,11 @@
 {
   "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "max-line-length": [
+      true,
+      { "limit": 120, "ignore-pattern": "^import |^export {(.*?)}" }
+    ]
+  },
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
