@@ -10,7 +10,7 @@ import { replayHistory } from "./history";
 const initialState: IStoreState = testingStateFactory();
 
 describe("Testing pushToHistory", () => {
-  it("should push actions to history", () => {
+  test("should push actions to history", () => {
     const action = header.setName("Dummy Name");
     expect(initialState.history[0]).toMatchObject(resetToInitialState());
 
@@ -22,7 +22,7 @@ describe("Testing pushToHistory", () => {
 });
 
 describe("Testing replayHistory", () => {
-  it("should replay an history of actions", () => {
+  test("should replay an history of actions", () => {
     const actions: IAction[] = [
       resetToInitialState(),
       header.setName("Roberts"),

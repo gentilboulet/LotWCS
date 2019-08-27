@@ -10,7 +10,7 @@ import * as actions from "../actions/header";
 const initialState: IStoreState = emptyStateFactory();
 
 describe("Testing headerReducer", () => {
-  it("should receive a HEADER_SET_NAME action", () => {
+  test("should receive a HEADER_SET_NAME action", () => {
     expect(initialState.name).toBeUndefined();
     const action = actions.setName("Robert");
     const state = headerReducer(initialState, action);
@@ -18,7 +18,7 @@ describe("Testing headerReducer", () => {
     expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
-  it("should receive a HEADER_SET_CONCEPT action", () => {
+  test("should receive a HEADER_SET_CONCEPT action", () => {
     expect(initialState.concept).toBeUndefined();
     const action = actions.setConcept("The Black Dog of Jianghu");
     const state = headerReducer(initialState, action);
@@ -26,7 +26,7 @@ describe("Testing headerReducer", () => {
     expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
-  it("should receive a HEADER_SET_ARCHETYPE action", () => {
+  test("should receive a HEADER_SET_ARCHETYPE action", () => {
     expect(initialState.archetype).toBeUndefined();
     const action = actions.setArchetype("warrior");
     const state = headerReducer(initialState, action);
@@ -34,7 +34,7 @@ describe("Testing headerReducer", () => {
     expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
-  it("should receive a HEADER_SET_RANK action", () => {
+  test("should receive a HEADER_SET_RANK action", () => {
     expect(initialState.rank).toBeUndefined();
     const action = actions.setRank("4th_rank");
     const state = headerReducer(initialState, action);
@@ -42,7 +42,7 @@ describe("Testing headerReducer", () => {
     expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
-  it("should do nothing with a junk action", () => {
+  test("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
       headerReducer(initialState, junk as IHeaderAction)

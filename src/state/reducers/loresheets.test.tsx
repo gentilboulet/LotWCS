@@ -13,7 +13,7 @@ import * as dataLoresheets from "../../data/loresheets";
 const initialState: IStoreState = testingStateFactory();
 
 describe("Testing loresheetsReducer", () => {
-  it("should receive a LORESHEET_OPEN action", () => {
+  test("should receive a LORESHEET_OPEN action", () => {
     dataLoresheets.loresheets.forEach(
       (dataLoresheet: dataLoresheets.IDataLoresheet) => {
         expect(
@@ -33,7 +33,7 @@ describe("Testing loresheetsReducer", () => {
     );
   });
 
-  it("should receive LORESHEET_BUY_OPTION action", () => {
+  test("should receive LORESHEET_BUY_OPTION action", () => {
     dataLoresheets.loresheets.forEach(
       (loresheet: dataLoresheets.IDataLoresheet) => {
         const openLoresheetAction = loresheetsActions.open(
@@ -87,7 +87,7 @@ describe("Testing loresheetsReducer", () => {
     );
   });
 
-  it("should do nothing with a junk action", () => {
+  test("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
       loresheetsReducer(

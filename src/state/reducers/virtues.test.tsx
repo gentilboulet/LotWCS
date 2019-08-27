@@ -12,7 +12,7 @@ import { virtuesReducer } from "./virtues";
 const initialState: IStoreState = testingStateFactory();
 
 describe("Testing virtueReducer", () => {
-  it("should receive a VIRTUE_INCREASE action with an existing virtue", () => {
+  test("should receive a VIRTUE_INCREASE action with an existing virtue", () => {
     dataVirtues.virtues.forEach((virtue: dataVirtues.IDataVirtue) => {
       expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeTruthy();
 
@@ -26,7 +26,7 @@ describe("Testing virtueReducer", () => {
     });
   });
 
-  it("should fail to receive a VIRTUE_INCREASE action with a new virtue", () => {
+  test("should fail to receive a VIRTUE_INCREASE action with a new virtue", () => {
     const virtue: dataVirtues.IDataVirtue = {
       name: "New Virtue",
       type: dataVirtues.VIRTUE_CHIVALROUS
@@ -37,7 +37,7 @@ describe("Testing virtueReducer", () => {
     expect(() => virtuesReducer(initialState, action)).toThrowError();
   });
 
-  it("should do nothing with a junk action", () => {
+  test("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
       virtuesReducer(initialState, junk as actions.IVirtueAction)

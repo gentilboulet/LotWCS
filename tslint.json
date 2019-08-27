@@ -4,7 +4,10 @@
     "max-line-length": [
       true,
       { "limit": 120, "ignore-pattern": "^import |^export {(.*?)}" }
-    ]
+    ],
+    "variable-name": {
+      "options": ["ban-keywords", "check-format", "allow-leading-underscore"]
+    }
   },
   "linterOptions": {
     "exclude": [

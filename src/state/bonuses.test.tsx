@@ -10,35 +10,35 @@ import * as actions from "./actions/perks/bonuses";
 const initialState: IStoreState = testingStateFactory();
 
 describe("Testing applyBonuses", () => {
-  it("should receive a BONUS_DESTINY", () => {
+  test("should receive a BONUS_DESTINY", () => {
     const bonuses = [actions.bonusDestiny(12)];
     const state = applyBonuses(initialState, bonuses);
     expect(initialState.destiny).toBe(25);
     expect(state.destiny).toBe(37);
   });
 
-  it("should receive a BONUS_ENTANGLEMENT", () => {
+  test("should receive a BONUS_ENTANGLEMENT", () => {
     const bonuses = [actions.bonusEntanglement(13)];
     const state = applyBonuses(initialState, bonuses);
     expect(initialState.entanglement).toBe(0);
     expect(state.entanglement).toBe(13);
   });
 
-  it("should receive a BONUS_CHI", () => {
+  test("should receive a BONUS_CHI", () => {
     const bonuses = [actions.bonusChi(14, "general")];
     const state = applyBonuses(initialState, bonuses);
     expect(initialState.chi.general.value).toBe(10);
     expect(state.chi.general.value).toBe(24);
   });
 
-  it("should receive a BONUS_SKILL_RANK", () => {
+  test("should receive a BONUS_SKILL_RANK", () => {
     const bonuses = [actions.bonusSkillRank("Awareness")];
     const state = applyBonuses(initialState, bonuses);
     expect(initialState.skills.Awareness.value).toBe(0);
     expect(state.skills.Awareness.value).toBe(5);
   });
 
-  it("should receive a BONUS_SPECIALITY", () => {
+  test("should receive a BONUS_SPECIALITY", () => {
     const testSkill = "Medicine";
     const testSpeciality = "Poison";
 
@@ -55,7 +55,7 @@ describe("Testing applyBonuses", () => {
     ).toBeTruthy();
   });
 
-  it("should receive a BONUS_CULTIVATION", () => {
+  test("should receive a BONUS_CULTIVATION", () => {
     const bonuses = [actions.bonusCultivation("fire", 4)];
     const state = applyBonuses(initialState, bonuses);
 
@@ -65,12 +65,12 @@ describe("Testing applyBonuses", () => {
     expect(state.chi.fire.cultivation).toBe(1);
   });
 
-  it("should handle an empty list", () => {
+  test("should handle an empty list", () => {
     const state = applyBonuses(initialState, []);
     expect(state).toMatchObject(initialState);
   });
 
-  it("should do nothing with a junk bonus", () => {
+  test("should do nothing with a junk bonus", () => {
     const junk = { type: "JUNK" };
     const bonuses = [junk as IBonus];
     const state = applyBonuses(initialState, bonuses);

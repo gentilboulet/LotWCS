@@ -17,7 +17,7 @@ const store = createStore<IStoreState, IAction, any, any>(
 );
 
 describe("Testing the Chi container", () => {
-  it("should render without crashing", () => {
+  test("should render without crashing", () => {
     const div = document.createElement("div");
     ReactDOM.render(
       <Provider store={store}>
