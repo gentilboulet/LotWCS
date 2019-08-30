@@ -35,7 +35,7 @@ interface IProps {
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
     canBuy: canBuyKungFuTechnique(
-      state,
+      state.kungfu,
       KUNGFU_EXTERNAL,
       props.styleUid,
       props.uid

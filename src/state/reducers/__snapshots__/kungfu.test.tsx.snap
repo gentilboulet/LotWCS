@@ -101,6 +101,7 @@ Object {
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
+    "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
   "name": undefined,

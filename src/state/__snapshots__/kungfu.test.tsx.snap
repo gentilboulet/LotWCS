@@ -21,6 +21,7 @@ Object {
   "KUNGFU_INTERNAL": Object {
     "Boundless Prosperity Manual": Array [],
   },
+  "noRestrictionInternal": Array [],
 }
 `;
 
@@ -28,5 +29,28 @@ exports[`Testing createState should create an empty state 1`] = `
 Object {
   "KUNGFU_EXTERNAL": Object {},
   "KUNGFU_INTERNAL": Object {},
+  "noRestrictionInternal": Array [],
+}
+`;
+
+exports[`Testing getExternalKungFuStatistics should return modified statistics for a style with techniques 1`] = `
+Object {
+  "block": 5,
+  "damage": 10,
+  "footwork": 0,
+  "speed": 5,
+  "strike": 10,
+  "toughness": 15,
+}
+`;
+
+exports[`Testing getExternalKungFuStatistics should return modified statistics for a style with techniques 2`] = `
+Object {
+  "block": 5,
+  "damage": 10,
+  "footwork": 5,
+  "speed": 5,
+  "strike": 5,
+  "toughness": 5,
 }
 `;
