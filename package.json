@@ -54,5 +54,14 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/App/**",
+      "!**/components/**",
+      "!**/containers/**",
+      "!**/routes/**"
+    ]
+  },
   "homepage": "https://gentilboulet.github.io/LotWCS"
 }

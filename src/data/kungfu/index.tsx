@@ -103,10 +103,8 @@ export function getKungFuType(styleUid: string): KUNGFU_TYPE {
     return KUNGFU_EXTERNAL;
   } else if (internalIdx !== -1) {
     return KUNGFU_INTERNAL;
-  }
-  // else { throw new Error('Unknwon kungfu ' + styleUid); }
-  else {
-    return KUNGFU_INTERNAL;
+  } else {
+    throw new Error("Unknwon kungfu " + styleUid);
   }
 }
 

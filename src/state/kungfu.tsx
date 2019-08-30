@@ -129,10 +129,6 @@ function _knownInternalKungFuLevel(
   state: IKungFuState,
   styleUid: string
 ): number[] {
-  if (!isStylePresent(state, KUNGFU_INTERNAL, styleUid)) {
-    return [];
-  }
-
   return state[KUNGFU_INTERNAL][styleUid]
     .map(techniqueUid => {
       const techData = kungfuTechniqueData(

@@ -323,6 +323,24 @@ describe("Testing canBuyKungFuTechnique", () => {
       });
     });
   });
+  test("should disallow buying already present techniques", () => {
+    const state = _createStateWithAllStyles();
+    data.externalKungfu.forEach(style => {
+      style.techniques.forEach(tech => {
+        kungfu.addKungFuTechnique(state, KUNGFU_EXTERNAL, style.uid, tech.uid);
+      });
+      style.techniques.forEach(tech => {
+        expect(
+          kungfu.canBuyKungFuTechnique(
+            state,
+            KUNGFU_EXTERNAL,
+            style.uid,
+            tech.uid
+          )
+        ).toBeFalsy();
+      });
+    });
+  });
   test("should disallow buying internal technique of an already bought level for a given style", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
