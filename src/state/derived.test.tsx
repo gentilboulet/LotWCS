@@ -5,11 +5,11 @@ import * as header from "./header";
 
 import * as dataRank from "../data/ranks";
 describe("chiAura", () => {
-  test("should return zero with an empty state", () => {
+  it("should return zero with an empty state", () => {
     const state = initialStateFactory();
     expect(derived.chiAura(state)).toBe(0);
   });
-  test("should return a value computed according to the rank", () => {
+  it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
       header.setRank(state, rank.key);
@@ -19,11 +19,11 @@ describe("chiAura", () => {
 });
 
 describe("lake", () => {
-  test("should return zero with an empty state", () => {
+  it("should return zero with an empty state", () => {
     const state = initialStateFactory();
     expect(derived.lake(state)).toBe(5);
   });
-  test("should return a value computed according to the rank", () => {
+  it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
       header.setRank(state, rank.key);
@@ -33,11 +33,11 @@ describe("lake", () => {
 });
 
 describe("river", () => {
-  test("should return 1 with an empty state", () => {
+  it("should return 1 with an empty state", () => {
     const state = initialStateFactory();
     expect(derived.river(state)).toBe(1);
   });
-  test("should return a value computed according to the rank", () => {
+  it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
       header.setRank(state, rank.key);
@@ -51,11 +51,11 @@ describe("river", () => {
 });
 
 describe("joss", () => {
-  test("should return 1 with an empty state", () => {
+  it("should return 1 with an empty state", () => {
     const state = initialStateFactory();
     expect(derived.joss(state)).toBe(1);
   });
-  test("should return a value computed according to the rank", () => {
+  it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
       header.setRank(state, rank.key);
@@ -68,11 +68,11 @@ describe("joss", () => {
   });
 
   describe("chiResplenish", () => {
-    test("should return 0 with an empty state", () => {
+    it("should return 0 with an empty state", () => {
       const state = initialStateFactory();
       expect(derived.chiResplenish(state)).toBe(0);
     });
-    test("should return a value computed according to the rank", () => {
+    it("should return a value computed according to the rank", () => {
       const state = initialStateFactory();
       dataRank.ranks.forEach(rank => {
         header.setRank(state, rank.key);
@@ -86,11 +86,11 @@ describe("joss", () => {
   });
 
   describe("maxSkillBonus", () => {
-    test("should return 5 with an empty state", () => {
+    it("should return 5 with an empty state", () => {
       const state = initialStateFactory();
       expect(derived.maxSkillBonus(state)).toBe(5);
     });
-    test("should return a value computed according to the rank", () => {
+    it("should return a value computed according to the rank", () => {
       const state = initialStateFactory();
       dataRank.ranks.forEach(rank => {
         header.setRank(state, rank.key);

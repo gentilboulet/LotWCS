@@ -12,7 +12,7 @@ import { historyReducer } from "./history";
 const initialState: IStoreState = testingStateFactory();
 
 describe("Testing historyReducer", () => {
-  test("should receive an HISTORY_DELETE action", () => {
+  it("should receive an HISTORY_DELETE action", () => {
     const actions: IAction[] = [
       resetToInitialState(),
       header.setName("Roberts"),
@@ -29,7 +29,7 @@ describe("Testing historyReducer", () => {
     expect(state.history.length === 1 + 1);
   });
 
-  test("should do nothing with a junk action", () => {
+  it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
       historyReducer(initialState, junk as IHistoryAction)

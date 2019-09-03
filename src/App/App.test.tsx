@@ -15,7 +15,7 @@ describe("Testing the App component", () => {
     testingStateFactory()
   );
 
-  test("should render without crashing", () => {
+  it("should render without crashing", () => {
     const div = document.createElement("div");
     ReactDOM.render(
       <Provider store={store}>

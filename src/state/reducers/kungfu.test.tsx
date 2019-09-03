@@ -12,7 +12,7 @@ import { kungfuReducer } from "./kungfu";
 const testingState: IStoreState = testingStateFactory();
 
 describe("Testing openStyle action", () => {
-  test("should accept a new external style", () => {
+  it("should accept a new external style", () => {
     data.externalKungfu.forEach(style => {
       const newStyle = actions.openStyle(
         style.uid,
@@ -25,7 +25,7 @@ describe("Testing openStyle action", () => {
     });
   });
 
-  test("should accept a new internal style", () => {
+  it("should accept a new internal style", () => {
     data.internalKungfu.forEach(style => {
       const newStyle = actions.openStyle(
         style.uid,
@@ -40,7 +40,7 @@ describe("Testing openStyle action", () => {
 });
 
 describe("Testing addStyleTechnique action", () => {
-  test("should add a new external style technique", () => {
+  it("should add a new external style technique", () => {
     data.externalKungfu.forEach(style => {
       const externalStyle = actions.openStyle(
         style.uid,
@@ -65,7 +65,7 @@ describe("Testing addStyleTechnique action", () => {
     });
   });
 
-  test("should add a new internal style technique", () => {
+  it("should add a new internal style technique", () => {
     data.internalKungfu.forEach(style => {
       const externalStyle = actions.openStyle(
         style.uid,
@@ -92,7 +92,7 @@ describe("Testing addStyleTechnique action", () => {
 });
 
 describe("Testing kungfuReducer", () => {
-  test("should do nothing with a junk action", () => {
+  it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
       kungfuReducer(testingState, junk as actions.IKungFuAction)

@@ -12,7 +12,7 @@ import {
 } from "./virtues";
 
 describe("Testing IVirtueState", () => {
-  test("should do increase existing virtue value", () => {
+  it("should do increase existing virtue value", () => {
     const initialState: IStoreState = Object.assign({}, testingStateFactory());
     dataVirtues.virtues.forEach((virtue: dataVirtues.IDataVirtue) => {
       expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeTruthy();
@@ -32,7 +32,7 @@ describe("Testing IVirtueState", () => {
     });
   });
 
-  test("should not increase an unknown virtue to the state", () => {
+  it("should not increase an unknown virtue to the state", () => {
     const initialState: IStoreState = Object.assign({}, testingStateFactory());
     const junk: dataVirtues.IDataVirtue = {
       name: "New Virtue",
@@ -44,7 +44,7 @@ describe("Testing IVirtueState", () => {
     expect(() => increase(state.virtues, junk.name, 25)).toThrowError();
   });
 
-  test("should add a new virtue to the state", () => {
+  it("should add a new virtue to the state", () => {
     const initialState: IStoreState = Object.assign({}, testingStateFactory());
     const virtue: dataVirtues.IDataVirtue = {
       name: "New Virtue",
@@ -62,7 +62,7 @@ describe("Testing IVirtueState", () => {
     expect(stateVirtue.value).toBe(25);
   });
 
-  test("should not add an existing virtue to the state", () => {
+  it("should not add an existing virtue to the state", () => {
     const initialState: IStoreState = Object.assign({}, testingStateFactory());
     const junk: dataVirtues.IDataVirtue = dataVirtues.virtues[0];
     expect(isVirtuePresent(initialState.virtues, junk.name)).toBeTruthy();
@@ -71,7 +71,7 @@ describe("Testing IVirtueState", () => {
     ).toThrowError();
   });
 
-  test("should check canBuyVirtue", () => {
+  it("should check canBuyVirtue", () => {
     const state = testingStateFactory();
     const regularVirtue = dataVirtues.virtues[0];
 

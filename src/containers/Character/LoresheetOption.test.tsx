@@ -17,7 +17,7 @@ const store = createStore<IStoreState, IAction, any, any>(
 );
 
 describe("Testing the LoresheetOption container", () => {
-  test("should render without crashing", () => {
+  it("should render without crashing", () => {
     const tbody = document.createElement("tbody");
     ReactDOM.render(
       <Provider store={store}>

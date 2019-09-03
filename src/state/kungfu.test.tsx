@@ -16,7 +16,7 @@ const _createStateWithAllStyles = () => {
 };
 
 describe("Testing createState", () => {
-  test("should create an empty state", () => {
+  it("should create an empty state", () => {
     const state = kungfu.createState();
     expect(state).toMatchSnapshot();
     expect(Object.keys(state.KUNGFU_EXTERNAL).length).toBe(0);
@@ -25,7 +25,7 @@ describe("Testing createState", () => {
 });
 
 describe("Testing openStyle", () => {
-  test("should open an external style", () => {
+  it("should open an external style", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       kungfu.openStyle(state, KUNGFU_EXTERNAL, style.uid);
@@ -35,7 +35,7 @@ describe("Testing openStyle", () => {
       expect(keys.find(k => k === style.uid)).toBeDefined();
     });
   });
-  test("should open an internal style", () => {
+  it("should open an internal style", () => {
     const state = kungfu.createState();
     data.internalKungfu.forEach(style => {
       kungfu.openStyle(state, KUNGFU_INTERNAL, style.uid);
@@ -45,7 +45,7 @@ describe("Testing openStyle", () => {
       expect(keys.find(k => k === style.uid)).toBeDefined();
     });
   });
-  test("should not add duplicate styles", () => {
+  it("should not add duplicate styles", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
       expect(() =>
@@ -56,7 +56,7 @@ describe("Testing openStyle", () => {
 });
 
 describe("Testing isStylePresent", () => {
-  test("should not find anything in an empty state", () => {
+  it("should not find anything in an empty state", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       expect(
@@ -70,7 +70,7 @@ describe("Testing isStylePresent", () => {
     });
   });
 
-  test("should detect an existing style", () => {
+  it("should detect an existing style", () => {
     const state = _createStateWithAllStyles();
 
     data.externalKungfu.forEach(style => {
@@ -87,7 +87,7 @@ describe("Testing isStylePresent", () => {
 });
 
 describe("Testing addKungFuTechnique", () => {
-  test("should add techniques for an already opened style", () => {
+  it("should add techniques for an already opened style", () => {
     const state = _createStateWithAllStyles();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -101,7 +101,7 @@ describe("Testing addKungFuTechnique", () => {
       });
     });
   });
-  test("should not add techniques for a not opened style", () => {
+  it("should not add techniques for a not opened style", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -111,7 +111,7 @@ describe("Testing addKungFuTechnique", () => {
       });
     });
   });
-  test("should not add duplicate techniques", () => {
+  it("should not add duplicate techniques", () => {
     const state = _createStateWithAllStyles();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -130,7 +130,7 @@ describe("Testing addKungFuTechnique", () => {
 });
 
 describe("Testing isStyleTechniquePresent", () => {
-  test("should not find anything in an empty state", () => {
+  it("should not find anything in an empty state", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -157,7 +157,7 @@ describe("Testing isStyleTechniquePresent", () => {
       });
     });
   });
-  test("should detect an existing external style technique", () => {
+  it("should detect an existing external style technique", () => {
     const state = _createStateWithAllStyles();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -175,7 +175,7 @@ describe("Testing isStyleTechniquePresent", () => {
       });
     });
   });
-  test("should detect an existing internal style technique", () => {
+  it("should detect an existing internal style technique", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -196,7 +196,7 @@ describe("Testing isStyleTechniquePresent", () => {
 });
 
 describe("Testing getExternalKungFuStatistics", () => {
-  test("should return data statistics for a non open style", () => {
+  it("should return data statistics for a non open style", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       expect(
@@ -204,7 +204,7 @@ describe("Testing getExternalKungFuStatistics", () => {
       ).toMatchObject(style.statistics);
     });
   });
-  test("should return modified statistics for a style with techniques", () => {
+  it("should return modified statistics for a style with techniques", () => {
     const state = _createStateWithAllStyles();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -218,7 +218,7 @@ describe("Testing getExternalKungFuStatistics", () => {
 });
 
 describe("Testing canOpenKungFu", () => {
-  test("should allow for opening style to an empty state", () => {
+  it("should allow for opening style to an empty state", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       expect(
@@ -231,7 +231,7 @@ describe("Testing canOpenKungFu", () => {
       ).toBeTruthy();
     });
   });
-  test("should disallow an external style already open", () => {
+  it("should disallow an external style already open", () => {
     const state = _createStateWithAllStyles();
 
     data.externalKungfu.forEach(style => {
@@ -240,7 +240,7 @@ describe("Testing canOpenKungFu", () => {
       ).toBeFalsy();
     });
   });
-  test("should disallow an internal style already open", () => {
+  it("should disallow an internal style already open", () => {
     const state = _createStateWithAllStyles();
 
     data.internalKungfu.forEach(style => {
@@ -252,7 +252,7 @@ describe("Testing canOpenKungFu", () => {
 });
 
 describe("Testing canBuyKungFuTechnique", () => {
-  test("should disallow buying any techniques for non opened style", () => {
+  it("should disallow buying any techniques for non opened style", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -279,7 +279,7 @@ describe("Testing canBuyKungFuTechnique", () => {
       });
     });
   });
-  test("should allow buying any technique for an external style", () => {
+  it("should allow buying any technique for an external style", () => {
     const state = _createStateWithAllStyles();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -294,7 +294,7 @@ describe("Testing canBuyKungFuTechnique", () => {
       });
     });
   });
-  test("should allow buying techniques in increasing order of level for internal style", () => {
+  it("should allow buying techniques in increasing order of level for internal style", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
       const techniquesByLevel: string[] = [];
@@ -323,7 +323,7 @@ describe("Testing canBuyKungFuTechnique", () => {
       });
     });
   });
-  test("should disallow buying already present techniques", () => {
+  it("should disallow buying already present techniques", () => {
     const state = _createStateWithAllStyles();
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
@@ -341,7 +341,7 @@ describe("Testing canBuyKungFuTechnique", () => {
       });
     });
   });
-  test("should disallow buying internal technique of an already bought level for a given style", () => {
+  it("should disallow buying internal technique of an already bought level for a given style", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
       let lowestTechLevel = 0;
@@ -374,7 +374,7 @@ describe("Testing canBuyKungFuTechnique", () => {
       });
     });
   });
-  test("should allow buying any techniques for an internal style whose level restrictions are lifted", () => {
+  it("should allow buying any techniques for an internal style whose level restrictions are lifted", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
       state.noRestrictionInternal.push(style.uid);

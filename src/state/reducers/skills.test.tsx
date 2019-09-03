@@ -17,7 +17,7 @@ const initialState: IStoreState = globalReducer(
 );
 
 describe("Testing skillsReducer", () => {
-  test("should receive a SKILLS_BUY action", () => {
+  it("should receive a SKILLS_BUY action", () => {
     Object.keys(dataSkills.skills).forEach(key => {
       const skillName = key as dataSkills.TSkillName;
       const skillInData = dataSkills.skills[skillName];
@@ -29,11 +29,9 @@ describe("Testing skillsReducer", () => {
     });
   });
 
-  test("should not accept an overflow on a SKILLS_BUY action", () => {
-    expect("placeholder").toBe("placeholder");
-  });
+  test.todo("should not accept an overflow on a SKILLS_BUY action");
 
-  test("should receive a SKILLS_SPECIALITY_BUY action", () => {
+  it("should receive a SKILLS_SPECIALITY_BUY action", () => {
     const specialityName = "Hear";
     const skillName = "Awareness";
 
@@ -48,7 +46,7 @@ describe("Testing skillsReducer", () => {
     expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
-  test("should should not receive an already bought SKILLS_SPECIALITY_BUY action", () => {
+  it("should should not receive an already bought SKILLS_SPECIALITY_BUY action", () => {
     const specialityName = "Hear";
     const skillName = "Awareness";
 
@@ -66,7 +64,7 @@ describe("Testing skillsReducer", () => {
     }).toThrowError();
   });
 
-  test("should do nothing with a junk action", () => {
+  it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(skillsReducer(initialState, junk as ISkillAction)).toMatchObject(
       initialState

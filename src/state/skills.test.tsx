@@ -12,7 +12,7 @@ import {
 } from "./skills";
 
 describe("Testing skills state", () => {
-  test("should do increase existing skills value", () => {
+  it("should do increase existing skills value", () => {
     (Object.keys(data) as TSkillName[]).forEach(key => {
       const state = emptyStateFactory();
       expect(state.skills[key].value).toBe(0);
@@ -21,7 +21,7 @@ describe("Testing skills state", () => {
     });
   });
 
-  test("should refuse to increase an overflowing skill value", () => {
+  it("should refuse to increase an overflowing skill value", () => {
     const initialState: IStoreState = emptyStateFactory();
     (Object.keys(data) as TSkillName[]).forEach(key => {
       expect(initialState.skills[key].value).toBe(0);
@@ -29,7 +29,7 @@ describe("Testing skills state", () => {
     });
   });
 
-  test("should add a speciality to an existing skill", () => {
+  it("should add a speciality to an existing skill", () => {
     const state = emptyStateFactory();
     expect(state.skills.Awareness.specialities).toMatchObject([]);
     addSpeciality(state.skills, "Awareness", "Speciality");
@@ -38,7 +38,7 @@ describe("Testing skills state", () => {
     ).toBeTruthy();
   });
 
-  test("should not add a speciality to an unknown skill", () => {
+  it("should not add a speciality to an unknown skill", () => {
     const state = testingStateFactory();
     expect(() =>
       addSpeciality(
@@ -49,7 +49,7 @@ describe("Testing skills state", () => {
     ).toThrowError();
   });
 
-  test("should not add a speciality twice", () => {
+  it("should not add a speciality twice", () => {
     const state = emptyStateFactory();
     expect(state.skills.Awareness.specialities).toMatchObject([]);
     addSpeciality(state.skills, "Awareness", "Speciality");
@@ -61,7 +61,7 @@ describe("Testing skills state", () => {
     ).toThrowError();
   });
 
-  test("should check canBuySkill", () => {
+  it("should check canBuySkill", () => {
     const state: IStoreState = testingStateFactory();
     const skill: TSkillName = "Awareness";
 
@@ -76,7 +76,7 @@ describe("Testing skills state", () => {
     // expect(canBuySkill(state, skill)).toBeTruthy();
   });
 
-  test("should check canBuySpeciality", () => {
+  it("should check canBuySpeciality", () => {
     const state: IStoreState = testingStateFactory();
     const skill = "Awareness";
     const speciality = "Speciality";
