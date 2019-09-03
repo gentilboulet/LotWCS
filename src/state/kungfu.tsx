@@ -12,7 +12,7 @@ import {
   KUNGFU_INTERNAL,
   KUNGFU_TYPE
 } from "../data/kungfu/types";
-import * as constants from "./constants/perks/effects";
+import * as effects from "../perks/constants/effects";
 
 export interface IKungFuState {
   KUNGFU_EXTERNAL: { [uid: string]: string[] };
@@ -107,7 +107,7 @@ export function getExternalKungFuStatistics(
       techniqueUid
     );
     switch (kfTechnique.effect.type) {
-      case constants.EFFECT_COMBAT_STATISTIC:
+      case effects.EFFECT_COMBAT_STATISTIC:
         statistics[kfTechnique.effect.statistic] += kfTechnique.effect.increase;
         break;
       default:

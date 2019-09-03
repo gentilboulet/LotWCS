@@ -2,8 +2,8 @@
 import { bonusChi, bonusDestiny } from "../state/actions/perks/bonuses";
 import { discountSkillFactory } from "../state/actions/perks/discounts";
 
-import { IBonus } from "../state/bonuses";
-import { IDiscount } from "../state/discounts";
+import { IBonus } from "../perks/bonuses";
+import { IDiscount } from "../perks/discounts";
 
 export interface IDataRank {
   name: string;

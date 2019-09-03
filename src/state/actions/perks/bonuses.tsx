@@ -7,8 +7,8 @@ import {
   IBonusOneAmongN,
   IBonusSkillRank,
   IBonusSpeciality
-} from "../../bonuses";
-import * as constants from "../../constants/perks/bonuses";
+} from "../../../perks/bonuses";
+import * as constants from "../../../perks/constants/bonuses";
 
 import * as dataChi from "../../../data/chi";
 import * as dataSkill from "../../../data/skills";

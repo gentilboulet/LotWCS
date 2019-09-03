@@ -2,8 +2,10 @@ import { getRank } from "../data/ranks";
 import { IStoreState } from "./type";
 
 // Sub Reducers
-import { applyBonuses, IBonus, isBonus } from "./bonuses";
-import { IDiscount, isDiscount, pushToDiscounts } from "./discounts";
+import { IBonus, isBonus } from "../perks/bonuses";
+import { IDiscount, isDiscount } from "../perks/discounts";
+import { applyBonuses } from "./bonuses";
+import { pushToDiscounts } from "./discounts";
 
 export function setRank(state: IStoreState, rankKey: string): void {
   const dataRank = getRank(rankKey);
