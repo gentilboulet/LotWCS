@@ -117,7 +117,7 @@ describe("Testing external kungfu action creator", () => {
   });
 
   test("should not create an BUY_TECHNIQUE action with an erroneous internal kungfu technique", () => {
-    const uid = validInternal.techniques[0].uid;
+    const uid = validInternal.uid;
     const techUid = "TOTALLY A KUNGFU TECHNIQUE UID";
     expect(() =>
       actions.buyTechnique(techUid, uid, KUNGFU_INTERNAL, zeroCost)
@@ -128,7 +128,7 @@ describe("Testing external kungfu action creator", () => {
   });
 
   test("should not create an BUY_TECHNIQUE action with an erroneous external kungfu technique", () => {
-    const uid = validExternal.techniques[0].uid;
+    const uid = validExternal.uid;
     const techUid = "TOTALLY A KUNGFU TECHNIQUE UID";
     expect(() =>
       actions.buyTechnique(techUid, uid, KUNGFU_EXTERNAL, zeroCost)
@@ -136,5 +136,65 @@ describe("Testing external kungfu action creator", () => {
     expect(() =>
       actions.buyTechnique("", uid, KUNGFU_EXTERNAL, zeroCost)
     ).toThrow();
+  });
+});
+
+describe("Testing custom naming action for kungfu style and techniques", () => {
+  const validExternal = dataKungfus.externalKungfu[0];
+
+  it("should create a KUNGFU_CUSTOM_NAME_FOR_STYLE action for a valid style", () => {
+    const uid = validExternal.uid;
+    expect(
+      actions.customStyleName(uid, KUNGFU_EXTERNAL, "new name")
+    ).toMatchSnapshot();
+  });
+
+  it("should refuse to create a KUNGFU_CUSTOM_NAME_FOR_STYLE action for an invalid style", () => {
+    const uid = "TOTALLY A KUNGFU UID";
+    expect(() => {
+      actions.customStyleName(uid, KUNGFU_EXTERNAL, "new name");
+    }).toThrowError();
+  });
+
+  it("should refuse to create a KUNGFU_CUSTOM_NAME_FOR_STYLE action with an empty new name", () => {
+    const uid = validExternal.uid;
+    expect(() => {
+      actions.customStyleName(uid, KUNGFU_EXTERNAL, "");
+    }).toThrowError();
+  });
+
+  it("should create a KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE action for a valid style", () => {
+    const uid = validExternal.uid;
+    const techUid = validExternal.techniques[0].uid;
+
+    expect(
+      actions.customTechniqueName(uid, techUid, KUNGFU_EXTERNAL, "new name")
+    ).toMatchSnapshot();
+  });
+
+  it("should refuse to create a KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE action for an invalid style", () => {
+    const uid = "TOTALLY A KUNGFU UID";
+
+    const techUid = validExternal.techniques[0].uid;
+    expect(() => {
+      actions.customTechniqueName(uid, techUid, KUNGFU_EXTERNAL, "new name");
+    }).toThrowError();
+  });
+
+  it("should refuse to create a KUNGFU_CUSTOM_NAME_FOR_STYLE action for an invalid style", () => {
+    const uid = validExternal.uid;
+    const techUid = "TOTALLY A KUNGFU TECHNIQUE UID";
+    expect(() => {
+      actions.customTechniqueName(uid, techUid, KUNGFU_EXTERNAL, "new name");
+    }).toThrowError();
+  });
+
+  it("should refuse to create a KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE action with an empty new name", () => {
+    const uid = validExternal.uid;
+    const techUid = validExternal.techniques[0].uid;
+
+    expect(() => {
+      actions.customTechniqueName(uid, techUid, KUNGFU_EXTERNAL, "");
+    }).toThrowError();
   });
 });

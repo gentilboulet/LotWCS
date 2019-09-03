@@ -60,7 +60,8 @@
       "!**/App/**",
       "!**/components/**",
       "!**/containers/**",
-      "!**/routes/**"
+      "!**/routes/**",
+      "!**/state/*.js"
     ]
   },
   "homepage": "https://gentilboulet.github.io/LotWCS"
