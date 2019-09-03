@@ -1,3 +1,3 @@
 describe('Placeholder', () => {
-  it('should hold its place', () => { return; });
+  test('should hold its place', () => { return; });
 });

@@ -101,11 +101,12 @@ Object {
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
+    "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
   "name": undefined,
   "rank": Object {
-    "name": "4th_rank",
+    "name": "4th Rank",
     "value": 2,
   },
   "skills": Object {},
@@ -253,11 +254,12 @@ Object {
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
+    "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
   "name": "Roberts",
   "rank": Object {
-    "name": "4th_rank",
+    "name": "4th Rank",
     "value": 2,
   },
   "skills": Object {},
@@ -370,6 +372,7 @@ Object {
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
+    "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
   "name": "Roberts",

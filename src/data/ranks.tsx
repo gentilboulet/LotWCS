@@ -2,8 +2,8 @@
 import { bonusChi, bonusDestiny } from "../state/actions/perks/bonuses";
 import { discountSkillFactory } from "../state/actions/perks/discounts";
 
-import { IBonus } from "../state/bonuses";
-import { IDiscount } from "../state/discounts";
+import { IBonus } from "../perks/bonuses";
+import { IDiscount } from "../perks/discounts";
 
 export interface IDataRank {
   name: string;
@@ -87,4 +87,12 @@ export function validateRank(rank: string): void {
   if (!foundRank) {
     throw new Error('Invalid rank "' + rank + '"');
   }
+}
+
+export function getRank(rank: string): IDataRank {
+  const foundRank = ranks.find((dataRank: IDataRank) => dataRank.key === rank);
+  if (!foundRank) {
+    throw new Error('Invalid rank "' + rank + '"');
+  }
+  return foundRank;
 }

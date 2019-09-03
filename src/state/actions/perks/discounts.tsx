@@ -1,5 +1,5 @@
-import * as constants from "../../constants/perks/discounts";
-import { IDiscountSkill } from "../../discounts";
+import * as constants from "../../../perks/constants/discounts";
+import { IDiscountSkill } from "../../../perks/discounts";
 
 import { skills, TSkillName } from "../../../data/skills";
 

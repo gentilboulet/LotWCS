@@ -12,19 +12,19 @@ import {
   KUNGFU_INTERNAL,
   KUNGFU_TYPE
 } from "../data/kungfu/types";
-import * as constants from "./constants/perks/effects";
-import { IStoreState } from "./type";
+import * as effects from "../perks/constants/effects";
 
 export interface IKungFuState {
-  [KUNGFU_EXTERNAL]: { [uid: string]: string[] };
-  [KUNGFU_INTERNAL]: { [uid: string]: string[] };
-  noRestrictionInternal?: string[];
+  KUNGFU_EXTERNAL: { [uid: string]: string[] };
+  KUNGFU_INTERNAL: { [uid: string]: string[] };
+  noRestrictionInternal: string[];
 }
 
 export function createState(): IKungFuState {
   return {
     KUNGFU_EXTERNAL: {},
-    KUNGFU_INTERNAL: {}
+    KUNGFU_INTERNAL: {},
+    noRestrictionInternal: []
   };
 }
 
@@ -34,6 +34,9 @@ export function openStyle(
   styleUid: string
 ): void {
   validateKungFuStyle(type, styleUid);
+  if (isStylePresent(state, type, styleUid)) {
+    throw new Error("Internal error : style already open");
+  }
   state[type][styleUid] = [];
 }
 
@@ -46,6 +49,25 @@ export function isStylePresent(
     stateKungFuUid => stateKungFuUid === styleUid
   );
   return styleIndex !== -1;
+}
+
+export function addKungFuTechnique(
+  state: IKungFuState,
+  type: KUNGFU_TYPE,
+  styleUid: string,
+  techniqueUid: string
+): void {
+  validateKungFuStyle(type, styleUid);
+  validateKungFuTechnique(type, styleUid, techniqueUid);
+
+  if (!isStylePresent(state, type, styleUid)) {
+    throw new Error("Internal error : style not open");
+  }
+  if (isStyleTechniquePresent(state, type, styleUid, techniqueUid)) {
+    throw new Error("Internal error : technique already presents");
+  }
+
+  state[type][styleUid].push(techniqueUid);
 }
 
 export function isStyleTechniquePresent(
@@ -85,7 +107,7 @@ export function getExternalKungFuStatistics(
       techniqueUid
     );
     switch (kfTechnique.effect.type) {
-      case constants.EFFECT_COMBAT_STATISTIC:
+      case effects.EFFECT_COMBAT_STATISTIC:
         statistics[kfTechnique.effect.statistic] += kfTechnique.effect.increase;
         break;
       default:
@@ -95,42 +117,19 @@ export function getExternalKungFuStatistics(
   return statistics;
 }
 
-export function addKungFuTechnique(
-  state: IKungFuState,
-  type: KUNGFU_TYPE,
-  styleUid: string,
-  techniqueUid: string
-): void {
-  validateKungFuStyle(type, styleUid);
-  validateKungFuTechnique(type, styleUid, techniqueUid);
-
-  if (!isStylePresent(state, type, styleUid)) {
-    throw new Error("Internal error : style not open");
-  }
-  if (isStyleTechniquePresent(state, type, styleUid, techniqueUid)) {
-    throw new Error("Internal error : technique already presents");
-  }
-
-  state[type][styleUid].push(techniqueUid);
-}
-
 export function canOpenKungFu(
-  state: IStoreState,
+  state: IKungFuState,
   type: KUNGFU_TYPE,
   styleUid: string
 ): boolean {
-  return !isStylePresent(state.kungfu, type, styleUid);
+  return !isStylePresent(state, type, styleUid);
 }
 
 function _knownInternalKungFuLevel(
-  state: IStoreState,
+  state: IKungFuState,
   styleUid: string
 ): number[] {
-  if (!isStylePresent(state.kungfu, KUNGFU_INTERNAL, styleUid)) {
-    return [];
-  }
-
-  return state.kungfu[KUNGFU_INTERNAL][styleUid]
+  return state[KUNGFU_INTERNAL][styleUid]
     .map(techniqueUid => {
       const techData = kungfuTechniqueData(
         KUNGFU_INTERNAL,
@@ -143,25 +142,24 @@ function _knownInternalKungFuLevel(
 }
 
 export function canBuyKungFuTechnique(
-  state: IStoreState,
+  state: IKungFuState,
   type: KUNGFU_TYPE,
   styleUid: string,
   techniqueUid: string
 ): boolean {
-  if (!isStylePresent(state.kungfu, type, styleUid)) {
+  if (!isStylePresent(state, type, styleUid)) {
     return false;
   }
-  if (isStyleTechniquePresent(state.kungfu, type, styleUid, techniqueUid)) {
+  if (isStyleTechniquePresent(state, type, styleUid, techniqueUid)) {
     return false;
   }
 
   if (type === KUNGFU_EXTERNAL) {
     return true;
   } else {
-    if (state.kungfu.noRestrictionInternal) {
+    if (state.noRestrictionInternal) {
       if (
-        -1 !==
-        state.kungfu.noRestrictionInternal.findIndex(uid => uid === styleUid)
+        -1 !== state.noRestrictionInternal.findIndex(uid => uid === styleUid)
       ) {
         return true;
       }

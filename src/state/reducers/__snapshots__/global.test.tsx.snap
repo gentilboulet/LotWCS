@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing globalReducer should do nothing with a junk action 1`] = `
+exports[`Testing globalReducer should create an initial state when used with no state 1`] = `
 Object {
-  "archetype": "warrior",
+  "archetype": undefined,
   "bonuses": Array [],
   "chi": Object {
     "corrupt": Object {
@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 10,
+      "value": 0,
     },
     "metal": Object {
       "cultivation": 0,
@@ -39,75 +39,133 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 25,
-  "discounts": Array [
-    Object {
-      "skills": Array [
-        "Awareness",
-        "Confidence",
-        "Crafting",
-        "Finesse",
-        "Hardiness",
-        "Inspire",
-        "Learning",
-        "Medicine",
-        "Might",
-        "Perform",
-        "Politics",
-        "Ride",
-        "Stealth",
-        "Survival",
-        "Tactics",
-        "Wu Wei",
-      ],
-      "type": "DISCOUNT_SKILL",
-      "value": 20,
-    },
-  ],
+  "destiny": 0,
+  "discounts": Array [],
   "entanglement": 0,
   "history": Array [
     Object {
       "type": "INITIAL_STATE",
     },
+  ],
+  "kungfu": Object {
+    "KUNGFU_EXTERNAL": Object {},
+    "KUNGFU_INTERNAL": Object {},
+    "noRestrictionInternal": Array [],
+  },
+  "loresheets": Object {},
+  "name": undefined,
+  "rank": undefined,
+  "skills": Object {},
+  "virtues": Array [
     Object {
-      "rank": "4th_rank",
-      "type": "HEADER_SET_RANK",
+      "name": "Honor",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
     },
     Object {
-      "archetype": "warrior",
-      "type": "HEADER_SET_ARCHETYPE",
+      "name": "Benevolence",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
     },
     Object {
-      "cost": Object {
-        "canPay": true,
-        "destiny": 0,
-        "original": 0,
-      },
-      "skill": "Awareness",
-      "speciality": "Hear",
-      "type": "SKILLS_SPECIALITY_BUY",
+      "name": "Righteousness",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
     },
     Object {
-      "cost": Object {
-        "canPay": true,
-        "destiny": 0,
-        "original": 0,
-      },
-      "skill": "Awareness",
-      "speciality": "Sight",
-      "type": "SKILLS_SPECIALITY_BUY",
+      "name": "Loyalty",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Force",
+      "type": "VIRTUE_CHIVALROUS",
+      "value": 0,
+    },
+    Object {
+      "name": "Revenge",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Individualism",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Obsession",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ruthlessness",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+    Object {
+      "name": "Ferocity",
+      "type": "VIRTUE_SELFISH",
+      "value": 0,
+    },
+  ],
+}
+`;
+
+exports[`Testing globalReducer should do nothing with a junk action 1`] = `
+Object {
+  "archetype": undefined,
+  "bonuses": Array [],
+  "chi": Object {
+    "corrupt": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "earth": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "enlightened": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "fire": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "general": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "metal": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "water": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+    "wood": Object {
+      "cultivation": 0,
+      "value": 0,
+    },
+  },
+  "concept": undefined,
+  "destiny": 0,
+  "discounts": Array [],
+  "entanglement": 0,
+  "history": Array [
+    Object {
+      "type": "INITIAL_STATE",
     },
   ],
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
+    "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
   "name": undefined,
-  "rank": Object {
-    "name": "4th_rank",
-    "value": 2,
-  },
+  "rank": undefined,
   "skills": Object {},
   "virtues": Array [
     Object {

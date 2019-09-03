@@ -1,8 +1,8 @@
 /* tslint:disable:import-sources-order named-imports-order ordered-imports*/
 /* eslint-disable import/first */
-import { IBonus } from "../../state/bonuses";
-import { IDiscount } from "../../state/discounts";
-import { IEffect } from "../../state/effects";
+import { IBonus } from "../../perks/bonuses";
+import { IDiscount } from "../../perks/discounts";
+import { IEffect } from "../../perks/effects";
 
 export type IPerk = IBonus | IDiscount | IEffect;
 

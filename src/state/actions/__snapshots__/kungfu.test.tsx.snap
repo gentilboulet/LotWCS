@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Testing custom naming action for kungfu style and techniques should create a KUNGFU_CUSTOM_NAME_FOR_STYLE action for a valid style 1`] = `
+Object {
+  "kungfuType": "KUNGFU_EXTERNAL",
+  "name": "new name",
+  "type": "KUNGFU_CUSTOM_NAME_FOR_STYLE",
+  "uid": "Blossom Harvest",
+}
+`;
+
+exports[`Testing custom naming action for kungfu style and techniques should create a KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE action for a valid style 1`] = `
+Object {
+  "kungfuType": "KUNGFU_EXTERNAL",
+  "name": "new name",
+  "styleUid": "Blossom Harvest",
+  "type": "KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE",
+  "uid": "Heart-Fire Temper Skill",
+}
+`;
+
 exports[`Testing external kungfu action creator should create an OPEN_STYLE action with an external kungfu 1`] = `
 Object {
   "cost": Object {

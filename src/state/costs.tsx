@@ -1,5 +1,6 @@
 /* eslint-disable import/first */
-import { getDiscountIndexes, IDiscount, updateDiscounts } from "./discounts";
+import { IDiscount } from "../perks/discounts";
+import { getDiscountIndexes, updateDiscounts } from "./discounts";
 import { IStoreState } from "./type";
 
 export interface ICost {
@@ -17,7 +18,8 @@ export const zeroCost: ICost = {
   destiny: 0,
   original: 0
 };
-export function _costFactory(
+
+function _costFactory(
   state: IStoreState,
   costValue: number,
   discountIdx?: number[]
@@ -51,19 +53,14 @@ export function applyCost(state: IStoreState, cost: ICost): void {
     throw new Error("Unpayable cost");
   }
   state.destiny -= cost.destiny;
-  // state.entanglement -= cost.entanglement;
-
   if (state.destiny < 0) {
     throw new Error("Negative destiny reached");
   }
-  // if (state.entanglement < 0) {
-  //   throw new Error("Negative entanglement reached");
-  // }
   updateDiscounts(state, cost);
 }
 
 import { TSkillName } from "../data/skills";
-import { DISCOUNT_SKILL } from "./constants/perks/discounts";
+import { DISCOUNT_SKILL } from "../perks/constants/discounts";
 export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
   const defaultCost = 2;
 
@@ -85,7 +82,7 @@ export function getCostSpeciality(state: IStoreState): ICost {
 }
 
 import { TChiName } from "../data/chi";
-import { DISCOUNT_CHI } from "./constants/perks/discounts";
+import { DISCOUNT_CHI } from "../perks/constants/discounts";
 export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
   const chiValue = state.chi[chiName].value;
   const chiMultiplicator =
@@ -114,7 +111,7 @@ export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
 }
 
 import { getLoresheetData } from "../data/loresheets";
-import { DISCOUNT_LORESHEET } from "./constants/perks/discounts";
+import { DISCOUNT_LORESHEET } from "../perks/constants/discounts";
 export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
   const lsData = getLoresheetData(uid);
   const defaultCost = lsData.cost;
@@ -132,7 +129,7 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
 }
 
 import { getLoresheetOptionData } from "../data/loresheets";
-import { DISCOUNT_LORESHEET_OPTION } from "./constants/perks/discounts";
+import { DISCOUNT_LORESHEET_OPTION } from "../perks/constants/discounts";
 
 function _getCostBuyLoresheetOptionOneCost(
   state: IStoreState,

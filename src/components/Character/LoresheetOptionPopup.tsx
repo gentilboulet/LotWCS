@@ -2,8 +2,8 @@ import * as React from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 import { getLoresheetOptionData, IPerk } from "../../data/loresheets";
-import { IBonus } from "../../state/bonuses";
-import * as bonuses from "../../state/constants/perks/bonuses";
+import { IBonus } from "../../perks/bonuses";
+import * as bonuses from "../../perks/constants/bonuses";
 import { ICost } from "../../state/costs";
 
 import EditText from "../../components/EditText";

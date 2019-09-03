@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing chiReducer should do nothing with a junk action 1`] = `
+exports[`Testing kungfuReducer should do nothing with a junk action 1`] = `
 Object {
   "archetype": "warrior",
   "bonuses": Array [],

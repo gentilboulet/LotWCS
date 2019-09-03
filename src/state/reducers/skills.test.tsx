@@ -29,9 +29,7 @@ describe("Testing skillsReducer", () => {
     });
   });
 
-  it("should not accept an overflow on a SKILLS_BUY action", () => {
-    expect("placeholder").toBe("placeholder");
-  });
+  test.todo("should not accept an overflow on a SKILLS_BUY action");
 
   it("should receive a SKILLS_SPECIALITY_BUY action", () => {
     const specialityName = "Hear";

@@ -38,7 +38,7 @@ describe("Testing headerReducer", () => {
     expect(initialState.rank).toBeUndefined();
     const action = actions.setRank("4th_rank");
     const state = headerReducer(initialState, action);
-    expect(state.rank ? state.rank.name : undefined).toBe("4th_rank");
+    expect(state.rank ? state.rank.name : undefined).toBe("4th Rank");
     expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
