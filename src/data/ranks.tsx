@@ -88,3 +88,11 @@ export function validateRank(rank: string): void {
     throw new Error('Invalid rank "' + rank + '"');
   }
 }
+
+export function getRank(rank: string): IDataRank {
+  const foundRank = ranks.find((dataRank: IDataRank) => dataRank.key === rank);
+  if (!foundRank) {
+    throw new Error('Invalid rank "' + rank + '"');
+  }
+  return foundRank;
+}
