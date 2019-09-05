@@ -39,9 +39,11 @@ export function applyBonuses(
             break;
           case constants.BONUS_SKILL_RANK:
             const max = maxSkillBonus(draftState);
+            // TODO : overflows
             skills.increase(draftState.skills, bonus.skill, max);
             break;
           case constants.BONUS_SPECIALITY:
+            // TODO : already speciality
             skills.addSpeciality(
               draftState.skills,
               bonus.skill,
