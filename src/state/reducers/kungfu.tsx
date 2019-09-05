@@ -5,8 +5,16 @@ import { IStoreState } from "../type";
 
 import { applyCost } from "../costs";
 
+import * as dataKungfu from "../../data/kungfu";
+import {
+  IDataInternalKungfu,
+  KUNGFU_EXTERNAL,
+  KUNGFU_INTERNAL
+} from "../../data/kungfu/types";
 import * as constants from "../constants/kungfu";
 import { addKungFuTechnique, openStyle } from "../kungfu";
+
+import * as chi from "../chi";
 
 export function kungfuReducer(
   baseState: IStoreState,
@@ -17,6 +25,25 @@ export function kungfuReducer(
       return produce(baseState, draftState => {
         applyCost(draftState, action.cost);
         openStyle(draftState.kungfu, action.kungfuType, action.uid);
+
+        if (action.kungfuType === KUNGFU_EXTERNAL) {
+          chi.increaseCultivation(
+            draftState.chi,
+            "general",
+            action.cost.destiny
+          );
+        } else {
+          const data = dataKungfu.kungfuData(
+            KUNGFU_INTERNAL,
+            action.uid
+          ) as IDataInternalKungfu;
+          chi.increaseCultivation(
+            draftState.chi,
+            data.element,
+            action.cost.destiny
+          );
+        }
+
         draftState.history.push(action);
       });
     case constants.KUNGFU_BUY_TECHNIQUE:
@@ -28,6 +55,25 @@ export function kungfuReducer(
           action.styleUid,
           action.uid
         );
+
+        if (action.kungfuType === KUNGFU_EXTERNAL) {
+          chi.increaseCultivation(
+            draftState.chi,
+            "general",
+            action.cost.destiny
+          );
+        } else {
+          const data = dataKungfu.kungfuData(
+            KUNGFU_INTERNAL,
+            action.uid
+          ) as IDataInternalKungfu;
+          chi.increaseCultivation(
+            draftState.chi,
+            data.element,
+            action.cost.destiny
+          );
+        }
+
         draftState.history.push(action);
       });
     case constants.KUNGFU_CUSTOM_NAME_FOR_STYLE:

@@ -110,10 +110,7 @@ export function getKungFuType(styleUid: string): KUNGFU_TYPE {
   }
 }
 
-export function kungfuData(
-  type: KUNGFU_TYPE,
-  styleUid: string
-): IDataExternalKungfu | IDataInternalKungfu {
+export function kungfuData(type: KUNGFU_TYPE, styleUid: string) {
   if (type === KUNGFU_EXTERNAL) {
     const idxKF = externalKungfu.findIndex(kf => kf.uid === styleUid);
     return externalKungfu[idxKF];

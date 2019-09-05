@@ -1,7 +1,7 @@
 import { chiNames, TChiName } from "../data/chi";
 
 export type TChiState = {
-  [chi in TChiName]: { value: number; cultivation: number }
+  [chi in TChiName]: { value: number; cultivation: number };
 };
 
 export function createState(): TChiState {
@@ -23,19 +23,25 @@ export function increase(
 export function increaseCultivation(
   state: TChiState,
   name: TChiName,
-  value: number
+  increaseValue: number
 ): void {
-  const actualCultivation = state[name].cultivation;
-  const actualChi = state[name].value;
+  let cultivation = state[name].cultivation + increaseValue;
+  let chiValue = state[name].value;
 
-  let newCultivation = actualCultivation + value;
-  let newChiValue = actualChi;
-  while (newCultivation >= newChiValue) {
-    newChiValue++;
-    newCultivation -= newChiValue;
+  const costMultiplier =
+    name === "enlightened" || name === "corrupt"
+      ? 10
+      : name !== "general"
+      ? 5
+      : 1;
+
+  while (cultivation - costMultiplier * Math.max(1, chiValue) >= 0) {
+    cultivation -= costMultiplier * Math.max(1, chiValue);
+    chiValue++;
   }
-  state[name].value = newChiValue;
-  state[name].cultivation = newCultivation;
+
+  state[name].value = chiValue;
+  state[name].cultivation = cultivation;
 }
 
 export function canBuyChi(): boolean {
