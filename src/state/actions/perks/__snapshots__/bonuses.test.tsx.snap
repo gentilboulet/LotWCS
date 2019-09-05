@@ -48,16 +48,16 @@ Object {
 
 exports[`Testing bonus creators should create an oneAmongN bonus 1`] = `
 Object {
-  "bonuses": Array [
-    Object {
-      "type": "BONUS_ENTANGLEMENT",
-      "value": 10,
-    },
-    Object {
+  "bonuses": Object {
+    "destiny": Object {
       "type": "BONUS_DESTINY",
       "value": 10,
     },
-  ],
+    "entanglement": Object {
+      "type": "BONUS_ENTANGLEMENT",
+      "value": 10,
+    },
+  },
   "type": "BONUS_ONE_AMONG_N",
 }
 `;

@@ -17,8 +17,10 @@ export const externalKungfu: IDataExternalKungfu[] = [
 ];
 
 import { boundlessProsperityManual } from "./internals/boundless-prosperity-manual";
+import { fireSutra } from "./internals/fire-sutra";
 export const internalKungfu: IDataInternalKungfu[] = [
-  boundlessProsperityManual
+  boundlessProsperityManual,
+  fireSutra
 ];
 
 export function validateKungFuType(type: KUNGFU_TYPE): void {
