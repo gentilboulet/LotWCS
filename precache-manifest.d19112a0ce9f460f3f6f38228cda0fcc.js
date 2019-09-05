@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d9e918de275c7b6142f5fbc8e0b5fa2",
+    "revision": "d431eff3fe1365f0a66d3042a048ed5c",
     "url": "/LotWCS/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/LotWCS/static/css/2.832015da.chunk.css"
   },
   {
-    "revision": "d5a12fca402ae687500a",
+    "revision": "776e441cb09d3e18d114",
     "url": "/LotWCS/static/css/main.e91e8ef8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/LotWCS/static/js/2.5070b68a.chunk.js"
   },
   {
-    "revision": "d5a12fca402ae687500a",
-    "url": "/LotWCS/static/js/main.9a5d2b66.chunk.js"
+    "revision": "776e441cb09d3e18d114",
+    "url": "/LotWCS/static/js/main.b470151e.chunk.js"
   },
   {
     "revision": "880f395af257d987fa17",
