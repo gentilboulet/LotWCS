@@ -57,11 +57,16 @@ import { wulinsage } from "./core/riversandlakes/wulinsage";
 // Relationship in Shen Zhou
 // Heretic Lores
 // Secrets Arts
+import { secretartofbattle } from "./secret-arts/thewarriorsart/thesecretartofbattle";
+import { extraordinarywarriortechniques } from "./secret-arts/thewarriorsart/extraordinarywarriortechniques";
+
 export const loresheets: IDataLoresheet[] = [
   jianghu,
   crouchingtigersandhiddendragons,
   wulin,
-  wulinsage
+  wulinsage,
+  secretartofbattle,
+  extraordinarywarriortechniques
 ];
 
 export const loresheetsCategories: string[] = loresheets

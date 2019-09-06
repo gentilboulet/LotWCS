@@ -1,14 +1,15 @@
 import produce from "immer";
+import { IStoreState } from "./type";
 
 import { IBonus, isBonus } from "../perks/bonuses";
+import * as constants from "../perks/constants/bonuses";
 
 import * as chi from "./chi";
+
 import { maxSkillBonus } from "./derived";
 import * as skills from "./skills";
 
-import { IStoreState } from "./type";
-
-import * as constants from "../perks/constants/bonuses";
+import * as loresheets from "./loresheets";
 
 export type TBonusesState = IBonus[];
 
@@ -48,6 +49,17 @@ export function applyBonuses(
               draftState.skills,
               bonus.skill,
               bonus.speciality
+            );
+            break;
+          case constants.BONUS_LORESHEET:
+            loresheets.openLoresheet(draftState.loresheets, bonus.lsUid);
+            break;
+          case constants.BONUS_LORESHEET_OPTION:
+            loresheets.buyLoresheetOption(
+              draftState.loresheets,
+              bonus.lsUid,
+              bonus.uid,
+              bonus.payload
             );
             break;
           default:

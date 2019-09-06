@@ -41,23 +41,26 @@ class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
   }
 
   private renderOptions(data: IDataLoresheet): JSX.Element {
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Cost</th>
-            <th>Effect</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {data.options.map(o => (
-            <LoresheetOption key={o.uid} lsUid={data.uid} uid={o.uid} />
-          ))}
-        </tbody>
-      </table>
-    );
+    if (data.options.length > 0) {
+      return (
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Cost</th>
+              <th>Effect</th>
+              <th />
+            </tr>
+          </thead>
+          <tbody>
+            {data.options.map(o => (
+              <LoresheetOption key={o.uid} lsUid={data.uid} uid={o.uid} />
+            ))}
+          </tbody>
+        </table>
+      );
+    }
+    else { return <div />; }
   }
 
   private renderButton(): JSX.Element {
