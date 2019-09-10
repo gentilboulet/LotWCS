@@ -1,6 +1,8 @@
 import {
   getLoresheetOptionData,
+  IDataLoresheetOption,
   IDataLoresheetOptionPrerequisite,
+  isRepeatable,
   validateLoresheet,
   validateLoresheetOption
 } from "../data/loresheets";
@@ -83,8 +85,13 @@ export function canBuyLoresheetOption(
     return false;
   } // Not opened
   const lsOptData = getLoresheetOptionData(lsUid, uid);
-  if (isLoresheetOptionPresent(state, lsUid, uid) && lsOptData.repeatable) {
-    return lsOptData.repeatable;
+  const isPresent = isLoresheetOptionPresent(state, lsUid, uid);
+  if (isPresent) {
+    if (!isRepeatable(lsUid)) {
+      return false;
+    } else {
+      return (lsOptData as IDataLoresheetOption).repeatable;
+    }
   } // Already bought
   const cb = lsOptData.prerequisites
     .map(p => _prerequisiteToBool(state, lsUid, p))

@@ -59,8 +59,9 @@ class Loresheet extends React.PureComponent<ILoresheetProps, {}> {
           </tbody>
         </table>
       );
+    } else {
+      return <div />;
     }
-    else { return <div />; }
   }
 
   private renderButton(): JSX.Element {
