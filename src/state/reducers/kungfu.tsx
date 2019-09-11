@@ -65,7 +65,7 @@ export function kungfuReducer(
         } else {
           const data = dataKungfu.kungfuData(
             KUNGFU_INTERNAL,
-            action.uid
+            action.styleUid
           ) as IDataInternalKungfu;
           chi.increaseCultivation(
             draftState.chi,

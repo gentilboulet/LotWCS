@@ -67,12 +67,12 @@ describe("Testing addStyleTechnique action", () => {
 
   it("should add a new internal style technique", () => {
     data.internalKungfu.forEach(style => {
-      const externalStyle = actions.openStyle(
+      const internalKungfu = actions.openStyle(
         style.uid,
         types.KUNGFU_INTERNAL,
         zeroCost
       );
-      const stateWithStyle = kungfuReducer(testingState, externalStyle);
+      const stateWithStyle = kungfuReducer(testingState, internalKungfu);
       style.techniques.forEach(tech => {
         const addTechnique = actions.buyTechnique(
           style.uid,
