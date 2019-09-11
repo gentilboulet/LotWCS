@@ -41,6 +41,18 @@ export interface IBonusSpeciality {
   speciality: string;
 }
 
+export interface IBonusLoresheet {
+  type: constants.BONUS_LORESHEET;
+  lsUid: string;
+}
+
+export interface IBonusLoresheetOption {
+  type: constants.BONUS_LORESHEET_OPTION;
+  lsUid: string;
+  uid: string;
+  payload?: string;
+}
+
 export type IBonus =
   | IBonusDestiny
   | IBonusEntanglement
@@ -48,7 +60,9 @@ export type IBonus =
   | IBonusCultivation
   | IBonusOneAmongN
   | IBonusSkillRank
-  | IBonusSpeciality;
+  | IBonusSpeciality
+  | IBonusLoresheet
+  | IBonusLoresheetOption;
 
 export function isBonus(bonus: any): boolean {
   switch (bonus.type) {
@@ -59,6 +73,8 @@ export function isBonus(bonus: any): boolean {
     case constants.BONUS_ONE_AMONG_N:
     case constants.BONUS_SKILL_RANK:
     case constants.BONUS_SPECIALITY:
+    case constants.BONUS_LORESHEET:
+    case constants.BONUS_LORESHEET_OPTION:
       return true;
     case constants.BONUS_DISCOUNT:
     default:

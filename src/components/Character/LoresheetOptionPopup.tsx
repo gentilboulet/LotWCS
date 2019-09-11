@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
-import { getLoresheetOptionData, IPerk } from "../../data/loresheets";
+import {
+  getLoresheetOptionData,
+  IDataLoresheetOption,
+  IPerk
+} from "../../data/loresheets";
 import { IBonus } from "../../perks/bonuses";
 import * as bonuses from "../../perks/constants/bonuses";
 import { ICost } from "../../state/costs";
@@ -68,9 +72,9 @@ class LoresheetOptionPopup extends React.PureComponent<
 
   public render() {
     const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
-    const payload: React.ReactNode = data.payload
-      ? this.renderPayload(data.payload)
-      : undefined;
+    const payload: React.ReactNode = this.renderPayload(
+      (data as IDataLoresheetOption).payload
+    );
     const choices: React.ReactNode = data.perks.map((p: IPerk, id: number) =>
       this.renderBonusChoices(p, id)
     );
@@ -114,7 +118,10 @@ class LoresheetOptionPopup extends React.PureComponent<
     );
   }
 
-  private renderPayload(payload: string): React.ReactNode {
+  private renderPayload(payload?: string): React.ReactNode {
+    if (!payload) {
+      return;
+    }
     const onChange = (p: string) => {
       this.setState({
         cost: this.state.cost,
@@ -168,8 +175,10 @@ class LoresheetOptionPopup extends React.PureComponent<
 
   private renderBuyButton(): React.ReactNode {
     const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
-
-    const requirePayload: React.ReactNode = data.payload ? true : false;
+    const requirePayload: React.ReactNode = (data as IDataLoresheetOption)
+      .payload
+      ? true
+      : false;
     const activePayload =
       !requirePayload || (this.state.payload && this.state.payload.length > 0);
     const activeCost = this.state.cost ? this.state.cost.canPay : false;

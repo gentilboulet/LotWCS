@@ -14,6 +14,7 @@ import Equipment from "../routes/Equipment";
 import Conditions from "../routes/Conditions";
 import KungFu from "../routes/KungFu";
 import Loresheets from "../routes/Loresheets";
+import SecretArts from "../routes/SecretArts";
 
 import History from "../routes/History";
 
@@ -31,6 +32,7 @@ class App extends React.PureComponent<{}, {}> {
           <Route exact={true} path="/conditions" component={Conditions} />
           <Route exact={true} path="/kungfu" component={KungFu} />
           <Route exact={true} path="/loresheets" component={Loresheets} />
+          <Route exact={true} path="/secretarts" component={SecretArts} />
           <Route exact={true} path="/history" component={History} />
         </div>
       </BrowserRouter>

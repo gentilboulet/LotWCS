@@ -4,31 +4,38 @@ import SelectorList, { IOption } from "../../components/SelectorList";
 
 import Loresheet from "../../containers/Character/Loresheet";
 import {
+  getLoresheetCategories,
+  getLoresheets,
   IDataLoresheet,
-  loresheets,
-  loresheetsCategories
+  IDataLoresheetFilter
 } from "../../data/loresheets";
 
-class LoresheetsList extends React.PureComponent<{}, {}> {
-  constructor(props: {}) {
+interface ILoresheetsListProps {
+  loresheetFilter: IDataLoresheetFilter;
+}
+
+class LoresheetsList extends React.PureComponent<ILoresheetsListProps, {}> {
+  constructor(props: ILoresheetsListProps) {
     super(props);
 
     this.renderItem = this.renderItem.bind(this);
   }
 
   public render() {
-    const nestedOptions = loresheetsCategories.map(category => {
+    const nestedOptions = getLoresheetCategories(
+      this.props.loresheetFilter
+    ).map(category => {
       const categories: IOption[] = [
         { id: category, label: category, disabled: true }
       ];
-      const lsInCategory: IOption[] = loresheets
-        .filter((ls: IDataLoresheet) => ls.category === category)
-        .map((ls: IDataLoresheet) => ({
-          disabled: false,
-          id: ls.uid,
-          label: ls.name,
-          meta: ls.name + "," + category
-        }));
+      const lsInCategory: IOption[] = getLoresheets(
+        ls => ls.category === category
+      ).map((ls: IDataLoresheet) => ({
+        disabled: false,
+        id: ls.uid,
+        label: ls.name,
+        meta: ls.name + "," + category
+      }));
       return categories.concat(lsInCategory);
     });
 
