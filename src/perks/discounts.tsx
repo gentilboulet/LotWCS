@@ -1,4 +1,5 @@
 import { TChiName } from "../data/chi";
+import { KUNGFU_TYPE } from "../data/kungfu/types";
 import { TSkillName } from "../data/skills";
 import * as constants from "./constants/discounts";
 
@@ -26,11 +27,27 @@ export interface IDiscountLoresheetOption {
   value: number;
 }
 
+export interface IDiscountKungfu {
+  type: constants.DISCOUNT_KUNGFU_STYLE;
+  uids: string[];
+  kfType: KUNGFU_TYPE[];
+  value: number;
+}
+
+export interface IDiscountKungfuTechnique {
+  type: constants.DISCOUNT_KUNGFU_TECHNIQUE;
+  uids: Array<{ styleUid: string }>;
+  kfType: KUNGFU_TYPE[];
+  value: number;
+}
+
 export type IDiscount =
   | IDiscountSkill
   | IDiscountChi
   | IDiscountLoresheet
-  | IDiscountLoresheetOption;
+  | IDiscountLoresheetOption
+  | IDiscountKungfu
+  | IDiscountKungfuTechnique;
 
 export function isDiscount(r: any): boolean {
   switch (r.type) {
@@ -38,6 +55,8 @@ export function isDiscount(r: any): boolean {
     case constants.DISCOUNT_SKILL:
     case constants.DISCOUNT_LORESHEET:
     case constants.DISCOUNT_LORESHEET_OPTION:
+    case constants.DISCOUNT_KUNGFU_STYLE:
+    case constants.DISCOUNT_KUNGFU_TECHNIQUE:
       return true;
     default:
       return false;

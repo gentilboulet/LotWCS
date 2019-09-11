@@ -3,7 +3,7 @@ import { IStoreState } from "./type";
 
 import { applyBonuses } from "./bonuses";
 
-import { IBonus } from "./bonuses";
+import { IBonus } from "../perks/bonuses";
 
 import * as actions from "./actions/perks/bonuses";
 
@@ -56,7 +56,7 @@ describe("Testing applyBonuses", () => {
   });
 
   it("should receive a BONUS_CULTIVATION", () => {
-    const bonuses = [actions.bonusCultivation("fire", 4)];
+    const bonuses = [actions.bonusCultivation("fire", 11)];
     const state = applyBonuses(initialState, bonuses);
 
     expect(initialState.chi.fire.value).toBe(0);
