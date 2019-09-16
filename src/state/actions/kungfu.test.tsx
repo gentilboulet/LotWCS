@@ -11,14 +11,6 @@ describe("Testing external kungfu action creator", () => {
   expect(dataKungfus.externalKungfu.length).toBeGreaterThan(0);
   expect(dataKungfus.internalKungfu.length).toBeGreaterThan(0);
 
-  // Typescript error checking can't be sure arrays are not empty
-  if (
-    dataKungfus.externalKungfu.length === 0 ||
-    dataKungfus.internalKungfu.length === 0
-  ) {
-    throw new Error("Impossible failure in tests");
-  }
-
   const validExternal = dataKungfus.externalKungfu[0];
   const validInternal = dataKungfus.internalKungfu[0];
 
@@ -33,8 +25,8 @@ describe("Testing external kungfu action creator", () => {
     const uid = validInternal.uid;
     const type = KUNGFU_INTERNAL;
     const a = actions.openStyle(uid, type, zeroCost);
-    expect(a.uid).toBe(uid);
-    expect(a.kungfuType).toBe(type);
+    expect(a.payload.uid).toBe(uid);
+    expect(a.payload.kungfuType).toBe(type);
     expect(a).toMatchSnapshot();
   });
 
@@ -42,8 +34,8 @@ describe("Testing external kungfu action creator", () => {
     const uid = validExternal.uid;
     const type = KUNGFU_EXTERNAL;
     const a = actions.openStyle(uid, type, zeroCost);
-    expect(a.uid).toBe(uid);
-    expect(a.kungfuType).toBe(type);
+    expect(a.payload.uid).toBe(uid);
+    expect(a.payload.kungfuType).toBe(type);
     expect(a).toMatchSnapshot();
   });
 
@@ -71,9 +63,9 @@ describe("Testing external kungfu action creator", () => {
     const uid = validInternal.uid;
     const type = KUNGFU_INTERNAL;
     const a = actions.buyTechnique(uid, techUid, type, zeroCost);
-    expect(a.uid).toBe(techUid);
-    expect(a.kungfuType).toBe(type);
-    expect(a.styleUid).toBe(uid);
+    expect(a.payload.uid).toBe(techUid);
+    expect(a.payload.kungfuType).toBe(type);
+    expect(a.payload.styleUid).toBe(uid);
   });
 
   it("should create a BUY_TECHNIQUE action with an external kungfu", () => {
@@ -81,9 +73,9 @@ describe("Testing external kungfu action creator", () => {
     const uid = validExternal.uid;
     const type = KUNGFU_EXTERNAL;
     const a = actions.buyTechnique(uid, techUid, type, zeroCost);
-    expect(a.uid).toBe(techUid);
-    expect(a.kungfuType).toBe(type);
-    expect(a.styleUid).toBe(uid);
+    expect(a.payload.uid).toBe(techUid);
+    expect(a.payload.kungfuType).toBe(type);
+    expect(a.payload.styleUid).toBe(uid);
   });
 
   it("should not create an BUY_TECHNIQUE action with an erroneous kungfu type", () => {

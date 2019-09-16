@@ -1,23 +1,21 @@
 import { produce } from "immer";
+import { ActionType, getType } from "typesafe-actions";
 
-import { IChiAction } from "../actions/chi";
+import * as actions from "../actions/chi";
 import { applyCost } from "../costs";
 import { IStoreState } from "../type";
-
-import * as constants from "../constants/chi";
 
 import { increase } from "../chi";
 
 export function chiReducer(
   baseState: IStoreState,
-  action: IChiAction
+  action: ActionType<typeof actions>
 ): IStoreState {
   switch (action.type) {
-    case constants.CHI_BUY:
+    case getType(actions.chiBuy):
       return produce(baseState, draftState => {
-        applyCost(draftState, action.cost);
-        increase(draftState.chi, action.chi, action.value);
-        draftState.history.push(action);
+        applyCost(draftState, action.payload.cost);
+        increase(draftState.chi, action.payload.chi, action.payload.value);
       });
     default:
   }

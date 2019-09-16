@@ -2,7 +2,7 @@
 
 exports[`Testing historyReducer should do nothing with a junk action 1`] = `
 Object {
-  "archetype": "warrior",
+  "archetype": undefined,
   "bonuses": Array [],
   "chi": Object {
     "corrupt": Object {
@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 10,
+      "value": 0,
     },
     "metal": Object {
       "cultivation": 0,
@@ -63,39 +63,102 @@ Object {
       "type": "DISCOUNT_SKILL",
       "value": 20,
     },
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
   ],
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
     Object {
-      "rank": "4th_rank",
-      "type": "HEADER_SET_RANK",
-    },
-    Object {
-      "archetype": "warrior",
-      "type": "HEADER_SET_ARCHETYPE",
-    },
-    Object {
-      "cost": Object {
-        "canPay": true,
-        "destiny": 0,
-        "original": 0,
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "rank": "4th_rank",
       },
-      "skill": "Awareness",
-      "speciality": "Hear",
-      "type": "SKILLS_SPECIALITY_BUY",
+      "type": "header/SET_RANK",
     },
     Object {
-      "cost": Object {
-        "canPay": true,
-        "destiny": 0,
-        "original": 0,
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "archetype": "warrior",
       },
-      "skill": "Awareness",
-      "speciality": "Sight",
-      "type": "SKILLS_SPECIALITY_BUY",
+      "type": "header/SET_ARCHETYPE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Hear",
+      },
+      "type": "skills/BUY_SPECIALITY",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Sight",
+      },
+      "type": "skills/BUY_SPECIALITY",
     },
   ],
   "kungfu": Object {
@@ -105,10 +168,7 @@ Object {
   },
   "loresheets": Object {},
   "name": undefined,
-  "rank": Object {
-    "name": "4th Rank",
-    "value": 2,
-  },
+  "rank": undefined,
   "skills": Object {},
   "virtues": Array [
     Object {
@@ -167,7 +227,7 @@ Object {
 
 exports[`Testing historyReducer should receive an HISTORY_DELETE action 1`] = `
 Object {
-  "archetype": "warrior",
+  "archetype": undefined,
   "bonuses": Array [],
   "chi": Object {
     "corrupt": Object {
@@ -188,7 +248,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 10,
+      "value": 0,
     },
     "metal": Object {
       "cultivation": 0,
@@ -203,9 +263,31 @@ Object {
       "value": 0,
     },
   },
-  "concept": "Dread pirate Roberts",
-  "destiny": 0,
+  "concept": undefined,
+  "destiny": 25,
   "discounts": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
     Object {
       "skills": Array [
         "Awareness",
@@ -232,23 +314,92 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
     Object {
-      "name": "Roberts",
-      "type": "HEADER_SET_NAME",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "rank": "4th_rank",
+      },
+      "type": "header/SET_RANK",
     },
     Object {
-      "concept": "Dread pirate Roberts",
-      "type": "HEADER_SET_CONCEPT",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "archetype": "warrior",
+      },
+      "type": "header/SET_ARCHETYPE",
     },
     Object {
-      "archetype": "warrior",
-      "type": "HEADER_SET_ARCHETYPE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Hear",
+      },
+      "type": "skills/BUY_SPECIALITY",
     },
     Object {
-      "rank": "4th_rank",
-      "type": "HEADER_SET_RANK",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Sight",
+      },
+      "type": "skills/BUY_SPECIALITY",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "name": "Roberts",
+      },
+      "type": "header/SET_NAME",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "concept": "Dread pirate Roberts",
+      },
+      "type": "header/SET_CONCEPT",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "archetype": "warrior",
+      },
+      "type": "header/SET_ARCHETYPE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "rank": "4th_rank",
+      },
+      "type": "header/SET_RANK",
     },
   ],
   "kungfu": Object {
@@ -257,11 +408,8 @@ Object {
     "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
-  "name": "Roberts",
-  "rank": Object {
-    "name": "4th Rank",
-    "value": 2,
-  },
+  "name": undefined,
+  "rank": undefined,
   "skills": Object {},
   "virtues": Array [
     Object {
@@ -357,16 +505,172 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 0,
-  "discounts": Array [],
+  "destiny": 25,
+  "discounts": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+  ],
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
     Object {
-      "name": "Roberts",
-      "type": "HEADER_SET_NAME",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "rank": "4th_rank",
+      },
+      "type": "header/SET_RANK",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "archetype": "warrior",
+      },
+      "type": "header/SET_ARCHETYPE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Hear",
+      },
+      "type": "skills/BUY_SPECIALITY",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Sight",
+      },
+      "type": "skills/BUY_SPECIALITY",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "name": "Roberts",
+      },
+      "type": "header/SET_NAME",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "concept": "Dread pirate Roberts",
+      },
+      "type": "header/SET_CONCEPT",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "archetype": "warrior",
+      },
+      "type": "header/SET_ARCHETYPE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "rank": "4th_rank",
+      },
+      "type": "header/SET_RANK",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "id": 1,
+      },
+      "type": "history/DELETE",
     },
   ],
   "kungfu": Object {
@@ -375,7 +679,7 @@ Object {
     "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
-  "name": "Roberts",
+  "name": undefined,
   "rank": undefined,
   "skills": Object {},
   "virtues": Array [

@@ -1,7 +1,9 @@
+import { ActionType } from "typesafe-actions";
+
 import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
-import * as loresheetsActions from "../actions/loresheets";
+import * as actions from "../actions/loresheets";
 import { zeroCost } from "../costs";
 import * as loresheets from "../loresheets";
 
@@ -23,7 +25,7 @@ describe("Testing loresheetsReducer", () => {
           )
         ).toBeFalsy();
 
-        const action = loresheetsActions.open(dataLoresheet.uid, zeroCost);
+        const action = actions.open(dataLoresheet.uid, zeroCost);
         const state = loresheetsReducer(initialState, action);
         expect(
           loresheets.isLoresheetPresent(state.loresheets, dataLoresheet.uid)
@@ -36,10 +38,7 @@ describe("Testing loresheetsReducer", () => {
   it("should receive LORESHEET_BUY_OPTION action", () => {
     dataLoresheets.loresheets.forEach(
       (loresheet: dataLoresheets.IDataLoresheet) => {
-        const openLoresheetAction = loresheetsActions.open(
-          loresheet.uid,
-          zeroCost
-        );
+        const openLoresheetAction = actions.open(loresheet.uid, zeroCost);
         const stateWithLoresheet = loresheetsReducer(
           initialState,
           openLoresheetAction
@@ -53,7 +52,7 @@ describe("Testing loresheetsReducer", () => {
 
         loresheet.options.forEach(
           (option: dataLoresheets.IDataLoresheetOption) => {
-            const buyOption = loresheetsActions.buyOption(
+            const buyOption = actions.buyOption(
               loresheet.uid,
               option.uid,
               zeroCost
@@ -90,10 +89,7 @@ describe("Testing loresheetsReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      loresheetsReducer(
-        initialState,
-        junk as loresheetsActions.ILoresheetAction
-      )
+      loresheetsReducer(initialState, junk as ActionType<typeof actions>)
     ).toMatchObject(initialState);
   });
 });

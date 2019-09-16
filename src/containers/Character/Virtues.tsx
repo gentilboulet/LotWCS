@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
 import * as actions from "../../state/actions/virtues";
 import { getCostVirtue, ICost } from "../../state/costs";
@@ -38,7 +39,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<actions.IVirtueAction>
+  dispatch: Dispatch<ActionType<typeof actions>>
 ): IMapDispatchToProps {
   return {
     onBuy: (name: string, cost: ICost) =>

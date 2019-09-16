@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Testing initial state action creator should create a reset to initial state action 1`] = `
-Object {
-  "type": "INITIAL_STATE",
-}
-`;

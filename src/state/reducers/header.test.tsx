@@ -1,4 +1,4 @@
-import { IHeaderAction } from "../actions/header";
+import { ActionType } from "typesafe-actions";
 import { emptyStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
@@ -45,7 +45,11 @@ describe("Testing headerReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      headerReducer(initialState, junk as IHeaderAction)
-    ).toMatchSnapshot();
+      headerReducer(initialState, junk as ActionType<typeof actions>)
+    ).toMatchObject(emptyStateFactory());
+  });
+
+  it("should not have modified initialState", () => {
+    expect(initialState).toMatchObject(emptyStateFactory());
   });
 });

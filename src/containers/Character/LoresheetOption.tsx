@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
 import { getCostBuyLoresheetOption, ICost } from "../../state/costs";
 
-import { buyOption, ILoresheetAction } from "../../state/actions/loresheets";
+import * as actions from "../../state/actions/loresheets";
 import {
   canBuyLoresheetOption,
   isLoresheetOptionPresent
@@ -50,12 +51,12 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ILoresheetAction>,
+  dispatch: Dispatch<ActionType<typeof actions>>,
   props: IProps
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost, payload?: string) =>
-      dispatch(buyOption(props.lsUid, props.uid, cost, payload))
+      dispatch(actions.buyOption(props.lsUid, props.uid, cost, payload))
   };
 }
 

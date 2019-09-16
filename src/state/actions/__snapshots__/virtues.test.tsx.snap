@@ -2,143 +2,187 @@
 
 exports[`Testing virtue action creator should create a virtue increase action with a non existing virtue 1`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "New virtue name",
+    "value": 3,
   },
-  "name": "New virtue name",
-  "type": "VIRTUE_INCREASE",
-  "value": 3,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 1`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Honor",
+    "value": 10,
   },
-  "name": "Honor",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 2`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Benevolence",
+    "value": 10,
   },
-  "name": "Benevolence",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 3`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Righteousness",
+    "value": 10,
   },
-  "name": "Righteousness",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 4`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Loyalty",
+    "value": 10,
   },
-  "name": "Loyalty",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 5`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Force",
+    "value": 10,
   },
-  "name": "Force",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 6`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Revenge",
+    "value": 10,
   },
-  "name": "Revenge",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 7`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Individualism",
+    "value": 10,
   },
-  "name": "Individualism",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 8`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Obsession",
+    "value": 10,
   },
-  "name": "Obsession",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 9`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Ruthlessness",
+    "value": 10,
   },
-  "name": "Ruthlessness",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 10`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Ferocity",
+    "value": 10,
   },
-  "name": "Ferocity",
-  "type": "VIRTUE_INCREASE",
-  "value": 10,
+  "type": "virtues/INCREASE",
 }
 `;

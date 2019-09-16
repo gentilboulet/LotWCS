@@ -2,7 +2,7 @@ import { IAction } from "./actions/types";
 import { IStoreState } from "./type";
 
 import * as header from "./actions/header";
-import { resetToInitialState } from "./actions/initial";
+import { resetToInitialState } from "./actions/history";
 import { testingStateFactory } from "./initial";
 
 import { replayHistory } from "./history";
@@ -15,9 +15,9 @@ describe("Testing pushToHistory", () => {
     expect(initialState.history[0]).toMatchObject(resetToInitialState());
 
     const state = Object.assign({}, initialState);
-    // state.history.push(action);
+    state.history.push(action);
     expect(state.history[0]).toMatchObject(initialState.history[0]);
-    // expect(state.history[1]).toMatchObject(action);
+    expect(state.history[1]).toMatchObject(action);
   });
 });
 

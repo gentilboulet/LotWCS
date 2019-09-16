@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
-import { IKungFuAction, openStyle } from "../../state/actions/kungfu";
+import * as actions from "../../state/actions/kungfu";
 import { getCostKungFuStyle, ICost } from "../../state/costs";
 import {
   canOpenKungFu,
@@ -50,12 +51,12 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<IKungFuAction>,
+  dispatch: Dispatch<ActionType<typeof actions>>,
   props: IProps
 ): IMapDispatchToProps {
   return {
     onOpen: (cost: ICost) =>
-      dispatch(openStyle(props.uid, KUNGFU_EXTERNAL, cost))
+      dispatch(actions.openStyle(props.uid, KUNGFU_EXTERNAL, cost))
   };
 }
 

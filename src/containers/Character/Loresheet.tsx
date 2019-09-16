@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
 import { getCostOpenLoresheet, ICost } from "../../state/costs";
 
-import { ILoresheetAction, open } from "../../state/actions/loresheets";
+import * as actions from "../../state/actions/loresheets";
 import { canOpenLoresheet, isLoresheetPresent } from "../../state/loresheets";
 import { IStoreState } from "../../state/type";
 
@@ -36,11 +37,11 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ILoresheetAction>,
+  dispatch: Dispatch<ActionType<typeof actions>>,
   props: IProps
 ): IMapDispatchToProps {
   return {
-    onOpen: (cost: ICost) => dispatch(open(props.uid, cost))
+    onOpen: (cost: ICost) => dispatch(actions.open(props.uid, cost))
   };
 }
 

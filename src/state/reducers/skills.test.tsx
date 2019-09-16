@@ -1,4 +1,6 @@
-import { ISkillAction, skillsBuy, skillSpecialityBuy } from "../actions/skills";
+import { ActionType } from "typesafe-actions";
+
+import * as actions from "../actions/skills";
 import { IStoreState } from "../type";
 
 import * as dataSkills from "../../data/skills";
@@ -22,7 +24,7 @@ describe("Testing skillsReducer", () => {
       const skillName = key as dataSkills.TSkillName;
       const skillInData = dataSkills.skills[skillName];
       expect(initialState.skills[skillName].value).toBe(0);
-      const action = skillsBuy(skillInData.name, zeroCost);
+      const action = actions.skillsBuy(skillInData.name, zeroCost);
       const state = skillsReducer(initialState, action);
       expect(state.skills[skillName].value).toBe(5);
       expect(globalReducer(initialState, action)).toMatchObject(state);
@@ -35,7 +37,11 @@ describe("Testing skillsReducer", () => {
     const specialityName = "Hear";
     const skillName = "Awareness";
 
-    const action = skillSpecialityBuy(skillName, specialityName, zeroCost);
+    const action = actions.skillSpecialityBuy(
+      skillName,
+      specialityName,
+      zeroCost
+    );
     const state = skillsReducer(initialState, action);
     expect(
       isSpecialityPresent(initialState.skills, skillName, specialityName)
@@ -50,7 +56,11 @@ describe("Testing skillsReducer", () => {
     const specialityName = "Hear";
     const skillName = "Awareness";
 
-    const action = skillSpecialityBuy(skillName, specialityName, zeroCost);
+    const action = actions.skillSpecialityBuy(
+      skillName,
+      specialityName,
+      zeroCost
+    );
     const state = skillsReducer(initialState, action);
     expect(
       isSpecialityPresent(initialState.skills, skillName, specialityName)
@@ -66,8 +76,8 @@ describe("Testing skillsReducer", () => {
 
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
-    expect(skillsReducer(initialState, junk as ISkillAction)).toMatchObject(
-      initialState
-    );
+    expect(
+      skillsReducer(initialState, junk as ActionType<typeof actions>)
+    ).toMatchObject(initialState);
   });
 });

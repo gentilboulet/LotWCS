@@ -1,4 +1,4 @@
-import { resetToInitialState } from "./actions/initial";
+import { resetToInitialState } from "./actions/history";
 import { IAction } from "./actions/types";
 import { globalReducer } from "./reducers/global";
 import { IStoreState } from "./type";

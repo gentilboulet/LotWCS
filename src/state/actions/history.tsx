@@ -1,12 +1,15 @@
-import * as constants from "../constants/history";
+import { createAction } from "typesafe-actions";
 
-export interface IHistoryDeleteUpTo {
-  type: constants.HISTORY_DELETE;
-  id: number;
-}
+export const historyDeleteUpTo = createAction(
+  "history/DELETE",
+  action => (id: number) => {
+    return action({ id });
+  }
+);
 
-export type IHistoryAction = IHistoryDeleteUpTo;
-
-export function historyDeleteUpTo(id: number): IHistoryDeleteUpTo {
-  return { type: constants.HISTORY_DELETE, id };
-}
+export const resetToInitialState = createAction(
+  "history/INITIAL_STATE",
+  action => () => {
+    return action();
+  }
+);

@@ -1,13 +1,18 @@
-import { IInitialStateAction } from './initial';
+import { ActionType } from "typesafe-actions";
 
-import { IChiAction } from './chi';
-import { IHeaderAction } from './header';
-import { IHistoryAction } from './history';
-import { IKungFuAction } from './kungfu';
-import { ILoresheetAction } from './loresheets';
-import { ISkillAction } from './skills';
-import { IVirtueAction } from './virtues';
+import * as chi from "../actions/chi";
+import * as header from "../actions/header";
+import * as history from "../actions/history";
+import * as kungfu from "../actions/kungfu";
+import * as loresheets from "../actions/loresheets";
+import * as skills from "../actions/skills";
+import * as virtues from "../actions/virtues";
 
 export type IAction =
-  IInitialStateAction | IHeaderAction | ISkillAction | IHistoryAction |
-  ILoresheetAction | IChiAction | IKungFuAction | IVirtueAction;
+  | ActionType<typeof chi>
+  | ActionType<typeof header>
+  | ActionType<typeof history>
+  | ActionType<typeof kungfu>
+  | ActionType<typeof loresheets>
+  | ActionType<typeof skills>
+  | ActionType<typeof virtues>;

@@ -2,26 +2,34 @@
 
 exports[`Testing loresheet action creators should create a buy option action 1`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "lsUid": "jianghu",
+    "payload": undefined,
+    "uid": "familiarity",
   },
-  "lsUid": "jianghu",
-  "payload": undefined,
-  "type": "LORESHEET_BUY_OPTION",
-  "uid": "familiarity",
+  "type": "loresheet/BUY_OPTION",
 }
 `;
 
 exports[`Testing loresheet action creators should create an open action 1`] = `
 Object {
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "uid": "jianghu",
   },
-  "type": "LORESHEET_OPEN",
-  "uid": "jianghu",
+  "type": "loresheet/OPEN",
 }
 `;

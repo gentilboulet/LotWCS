@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
 import History, { IHistoryProps } from "../../components/Character/History";
 
@@ -20,7 +21,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<actions.IHistoryAction>
+  dispatch: Dispatch<ActionType<typeof actions>>
 ): IMapDispatchToProps {
   return {
     onDelete: (id: number) => {

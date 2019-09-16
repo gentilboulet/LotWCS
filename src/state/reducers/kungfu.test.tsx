@@ -1,3 +1,5 @@
+import { ActionType } from "typesafe-actions";
+
 import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
@@ -95,7 +97,7 @@ describe("Testing kungfuReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      kungfuReducer(testingState, junk as actions.IKungFuAction)
+      kungfuReducer(testingState, junk as ActionType<typeof actions>)
     ).toMatchSnapshot();
   });
 });

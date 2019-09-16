@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 20,
+      "value": 0,
     },
     "metal": Object {
       "cultivation": 0,
@@ -44,7 +44,18 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "name": "Robert",
+      },
+      "type": "header/SET_NAME",
     },
   ],
   "kungfu": Object {

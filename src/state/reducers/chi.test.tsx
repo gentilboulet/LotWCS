@@ -1,8 +1,7 @@
-import { IChiAction } from "../actions/chi";
 import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
-import { chiReducer } from "./chi";
+import { chiReducer, IChiAction } from "./chi";
 import { globalReducer } from "./global";
 
 import * as actions from "../actions/chi";

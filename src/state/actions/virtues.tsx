@@ -1,19 +1,8 @@
-import * as constants from "../constants/virtues";
+import { createAction } from "typesafe-actions";
 import { ICost } from "../costs";
 
-export interface IVirtueIncrease {
-  type: constants.VIRTUE_INCREASE;
-  name: string;
-  value: number;
-  cost: ICost;
-}
-
-export type IVirtueAction = IVirtueIncrease;
-
-export function increase(
-  name: string,
-  value: number,
-  cost: ICost
-): IVirtueIncrease {
-  return { type: constants.VIRTUE_INCREASE, name, value, cost };
-}
+export const increase = createAction(
+  "virtues/INCREASE",
+  action => (name: string, value: number, cost: ICost) =>
+    action({ name, value, cost })
+);

@@ -6,7 +6,7 @@ describe("Testing loresheet action creators", () => {
   it("should create an open action", () => {
     const lsUid = dataLoresheets.loresheets[0].uid;
     const a = actions.open(lsUid, zeroCost);
-    expect(a.uid).toBe(lsUid);
+    expect(a.payload.uid).toBe(lsUid);
     expect(a).toMatchSnapshot();
   });
 
@@ -19,8 +19,8 @@ describe("Testing loresheet action creators", () => {
     const lsUid = dataLoresheets.loresheets[0].uid;
     const optUid = dataLoresheets.loresheets[0].options[0].uid;
     const a = actions.buyOption(lsUid, optUid, zeroCost);
-    expect(a.lsUid).toBe(lsUid);
-    expect(a.uid).toBe(optUid);
+    expect(a.payload.lsUid).toBe(lsUid);
+    expect(a.payload.uid).toBe(optUid);
     expect(a).toMatchSnapshot();
   });
 

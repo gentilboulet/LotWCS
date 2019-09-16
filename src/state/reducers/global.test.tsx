@@ -12,7 +12,7 @@ describe("Testing globalReducer", () => {
       initialState
     );
 
-    const action = { type: "HEADER_SET_NAME", name } as IAction;
+    const action = { type: "header/SET_NAME", payload: { name } } as IAction;
     const expectedState = globalReducer(initialState, action);
     expect(globalReducer(undefined, action)).toMatchObject(expectedState);
   });

@@ -1,7 +1,7 @@
 import produce from "immer";
+import { ActionType, getType } from "typesafe-actions";
 
-import { IVirtueAction } from "../actions/virtues";
-import * as constants from "../constants/virtues";
+import * as actions from "../actions/virtues";
 import { IStoreState } from "../type";
 
 import { applyCost } from "../costs";
@@ -9,13 +9,13 @@ import { increase } from "../virtues";
 
 export function virtuesReducer(
   baseState: IStoreState,
-  action: IVirtueAction
+  action: ActionType<typeof actions>
 ): IStoreState {
   switch (action.type) {
-    case constants.VIRTUE_INCREASE:
+    case getType(actions.increase):
       return produce(baseState, state => {
-        applyCost(state, action.cost);
-        increase(state.virtues, action.name, action.value);
+        applyCost(state, action.payload.cost);
+        increase(state.virtues, action.payload.name, action.payload.value);
         state.history.push(action);
       });
     default:

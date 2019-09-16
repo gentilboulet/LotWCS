@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
-import * as headerActions from "../../state/actions/header";
+import * as actions from "../../state/actions/header";
 import { IStoreState } from "../../state/type";
 
 import Rank, { IRankProps } from "../../components/Character/Rank";
@@ -23,10 +24,10 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<headerActions.IHeaderAction>
+  dispatch: Dispatch<ActionType<typeof actions>>
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(headerActions.setRank(s))
+    onChange: (s: string) => dispatch(actions.setRank(s))
   };
 }
 

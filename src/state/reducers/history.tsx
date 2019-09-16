@@ -1,18 +1,19 @@
+import { ActionType, getType } from "typesafe-actions";
+
 import { IStoreState } from "../type";
 
-import { IHistoryAction } from "../actions/history";
-import * as constants from "../constants/history";
+import * as actions from "../actions/history";
 import { replayHistory } from "../history";
 
 export function historyReducer(
   baseState: IStoreState,
-  action: IHistoryAction
+  action: ActionType<typeof actions>
 ): IStoreState {
   switch (action.type) {
-    case constants.HISTORY_DELETE:
+    case getType(actions.historyDeleteUpTo):
       return replayHistory(
         baseState,
-        baseState.history.slice(0, action.id + 1)
+        baseState.history.slice(0, action.payload.id + 1)
       ); // +1 needed to skip initialState
     default:
       return baseState;

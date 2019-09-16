@@ -1,48 +1,34 @@
-import * as constants from "../constants/header";
+import { createAction } from "typesafe-actions";
 
 import * as dataArchetypes from "../../data/archetypes";
 import * as dataRanks from "../../data/ranks";
 
-export interface IHeaderSetName {
-  type: constants.HEADER_SET_NAME;
-  name: string;
-}
+export const setName = createAction(
+  "header/SET_NAME",
+  action => (name: string) => {
+    return action({ name });
+  }
+);
 
-export interface IHeaderSetConcept {
-  type: constants.HEADER_SET_CONCEPT;
-  concept: string;
-}
+export const setConcept = createAction(
+  "header/SET_CONCEPT",
+  action => (concept: string) => {
+    return action({ concept });
+  }
+);
 
-export interface IHeaderSetArchetype {
-  type: constants.HEADER_SET_ARCHETYPE;
-  archetype: string;
-}
+export const setArchetype = createAction(
+  "header/SET_ARCHETYPE",
+  action => (archetype: string) => {
+    dataArchetypes.validateArchetype(archetype);
+    return action({ archetype });
+  }
+);
 
-export interface IHeaderSetRank {
-  type: constants.HEADER_SET_RANK;
-  rank: string;
-}
-
-export type IHeaderAction =
-  | IHeaderSetName
-  | IHeaderSetConcept
-  | IHeaderSetArchetype
-  | IHeaderSetRank;
-
-export function setName(name: string): IHeaderSetName {
-  return { type: constants.HEADER_SET_NAME, name };
-}
-
-export function setConcept(concept: string): IHeaderSetConcept {
-  return { type: constants.HEADER_SET_CONCEPT, concept };
-}
-
-export function setArchetype(archetype: string): IHeaderSetArchetype {
-  dataArchetypes.validateArchetype(archetype);
-  return { archetype, type: constants.HEADER_SET_ARCHETYPE };
-}
-
-export function setRank(rank: string): IHeaderSetRank {
-  dataRanks.validateRank(rank);
-  return { rank, type: constants.HEADER_SET_RANK };
-}
+export const setRank = createAction(
+  "header/SET_RANK",
+  action => (rank: string) => {
+    dataRanks.validateRank(rank);
+    return action({ rank });
+  }
+);
