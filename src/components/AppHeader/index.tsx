@@ -49,6 +49,9 @@ class AppHeader extends React.PureComponent<{}, { isOpen: boolean }> {
           <Link to="/loresheets">
             <li>Loresheets</li>
           </Link>
+          <Link to="/secretarts">
+            <li>Secret Arts</li>
+          </Link>
           <Link to="/history">
             <li>History</li>
           </Link>

@@ -10,9 +10,9 @@ Object {
       "destiny": 0,
       "original": 0,
     },
-    "lsUid": "jianghu",
+    "lsUid": "wulinsage",
     "payload": undefined,
-    "uid": "familiarity",
+    "uid": "fact",
   },
   "type": "loresheet/BUY_OPTION",
 }
@@ -28,7 +28,7 @@ Object {
       "destiny": 0,
       "original": 0,
     },
-    "uid": "jianghu",
+    "uid": "wulinsage",
   },
   "type": "loresheet/OPEN",
 }

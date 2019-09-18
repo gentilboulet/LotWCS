@@ -3,11 +3,13 @@ import {
   bonusSpeciality
 } from "../../../../state/actions/perks/bonuses";
 import { IDataLoresheet } from "../../../loresheets";
+import { SAGE_LORESHEET } from "../../types";
 
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */
 export const crouchingtigersandhiddendragons: IDataLoresheet = {
   uid: "tigersanddragons",
+  type: SAGE_LORESHEET,
   name: "Crouching Tigers and Hidden Dragons",
   category: "Rivers and Lakes",
   cost: 1,

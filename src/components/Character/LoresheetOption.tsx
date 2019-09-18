@@ -1,17 +1,18 @@
 import * as React from "react";
 import { Icon } from "react-fa";
 
-import { getLoresheetOptionData } from "../../data/loresheets";
+import { getLoresheetOptionData, gotName } from "../../data/loresheets";
 import { ICost } from "../../state/costs";
 import LoresheetOptionPopup from "./LoresheetOptionPopup";
 
 export interface ILoresheetOptionProps {
   lsUid: string;
   uid: string;
+  known: boolean;
   cost: ICost[];
   canBuy: boolean;
   onBuy: (cost: ICost) => void;
-  payloads: any[];
+  payloads?: any[];
 }
 
 interface ILoresheetOptionState {
@@ -40,15 +41,11 @@ class LoresheetOption extends React.PureComponent<
     if (data === undefined) {
       return;
     }
-    const known = this.props.payloads.map((payload, index) =>
-      this.renderKnown(payload, index)
-    );
-    if (known.length > 0 && data.repeatable) {
-      return known.concat(this.renderNotKnown());
-    } else if (known.length > 0) {
-      return known;
-    } else {
+
+    if (!this.props.known) {
       return this.renderNotKnown();
+    } else {
+      return this.renderKnown();
     }
   }
 
@@ -76,16 +73,43 @@ class LoresheetOption extends React.PureComponent<
     }
   }
 
-  private renderKnown(payload: any, index: number): JSX.Element {
+  private renderDescription(value: string): JSX.Element {
     const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
-    return (
-      <tr key={"known_" + data.uid + "_" + index}>
-        <td>{data.type}</td>
-        <td>{this.fromCostToString(data.cost)}</td>
-        <td>{data.description}</td>
-        <td />
-      </tr>
-    );
+    if (gotName(this.props.lsUid)) {
+      return (
+        <span>
+          <b>{data.name + "."}</b>
+          {" " + value}
+        </span>
+      );
+    } else {
+      return <span>{value}</span>;
+    }
+  }
+
+  private renderKnown(): JSX.Element | JSX.Element[] {
+    const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
+    if (this.props.payloads) {
+      return this.props.payloads.map((value, index) => {
+        return (
+          <tr key={"known_" + data.uid + "_" + index}>
+            <td>{data.type}</td>
+            <td>{this.fromCostToString(data.cost)}</td>
+            <td>{this.renderDescription(value)}</td>
+            <td />
+          </tr>
+        );
+      });
+    } else {
+      return (
+        <tr key={"known_" + data.uid}>
+          <td>{data.type}</td>
+          <td>{this.fromCostToString(data.cost)}</td>
+          <td>{this.renderDescription(data.description)}</td>
+          <td />
+        </tr>
+      );
+    }
   }
 
   private renderNotKnown(): JSX.Element {
@@ -114,7 +138,7 @@ class LoresheetOption extends React.PureComponent<
         />
         <td>{data.type}</td>
         <td>{this.fromCostToString(data.cost)}</td>
-        <td>{data.description}</td>
+        <td>{this.renderDescription(data.description)}</td>
         <td>{this.renderButton(canBuyOneOrMore)}</td>
       </tr>
     );

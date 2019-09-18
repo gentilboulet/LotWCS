@@ -4,6 +4,8 @@ import {
   IBonusCultivation,
   IBonusDestiny,
   IBonusEntanglement,
+  IBonusLoresheet,
+  IBonusLoresheetOption,
   IBonusOneAmongN,
   IBonusSkillRank,
   IBonusSpeciality
@@ -50,11 +52,18 @@ export function bonusSkillRank(skill: dataSkill.TSkillName): IBonusSkillRank {
 
 export function bonusSpeciality(
   skill: dataSkill.TSkillName,
-  specialityName: string
+  speciality: string
 ): IBonusSpeciality {
-  return {
-    skill,
-    speciality: specialityName,
-    type: constants.BONUS_SPECIALITY
-  };
+  return { skill, speciality, type: constants.BONUS_SPECIALITY };
+}
+
+export function bonusLoresheet(lsUid: string): IBonusLoresheet {
+  return { type: constants.BONUS_LORESHEET, lsUid };
+}
+
+export function bonusLoresheetOption(
+  lsUid: string,
+  uid: string
+): IBonusLoresheetOption {
+  return { type: constants.BONUS_LORESHEET_OPTION, lsUid, uid };
 }

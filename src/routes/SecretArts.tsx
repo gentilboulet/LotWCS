@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router";
 import AppIntro from "../components/AppIntro";
 import AppPage from "../components/AppPage";
 import LoresheetsList from "../components/Character/LoresheetsList";
-import { isLoresheet } from "../data/loresheets";
+import { isSecretArts } from "../data/loresheets";
 
 class RouteLoresheets extends React.PureComponent<RouteComponentProps<{}>> {
   public render() {
@@ -12,7 +12,7 @@ class RouteLoresheets extends React.PureComponent<RouteComponentProps<{}>> {
       <div>
         <AppIntro>Empty Intro</AppIntro>
         <AppPage>
-          <LoresheetsList loresheetFilter={isLoresheet} />
+          <LoresheetsList loresheetFilter={isSecretArts} />
         </AppPage>
       </div>
     );

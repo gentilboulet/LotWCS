@@ -1,9 +1,11 @@
 import { IDataLoresheet } from "../../../loresheets";
+import { SAGE_LORESHEET } from "../../types";
 
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */
 export const jianghu: IDataLoresheet = {
   uid: "jianghu",
+  type: SAGE_LORESHEET,
   name: "The Jiang Hu",
   category: "Rivers and Lakes",
   cost: 0,

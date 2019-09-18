@@ -1,9 +1,11 @@
 import { IDataLoresheet } from "../../../../data/loresheets";
+import { SAGE_LORESHEET } from "../../types";
 
 /* tslint:disable:max-line-length */
 /* tslint:disable:object-literal-sort-keys */
 export const wulin: IDataLoresheet = {
   uid: "wulin",
+  type: SAGE_LORESHEET,
   name: "The Wulin",
   category: "Rivers and Lakes",
   cost: 0,

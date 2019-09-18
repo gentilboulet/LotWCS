@@ -1,10 +1,12 @@
-import * as dataLoresheets from "../../data/loresheets";
+import * as data from "../../data/loresheets";
 import { zeroCost } from "../costs";
 import * as actions from "./loresheets";
 
+const refLoresheetUid = "wulinsage";
+
 describe("Testing loresheet action creators", () => {
   it("should create an open action", () => {
-    const lsUid = dataLoresheets.loresheets[0].uid;
+    const lsUid = data.getLoresheetData(refLoresheetUid).uid;
     const a = actions.open(lsUid, zeroCost);
     expect(a.payload.uid).toBe(lsUid);
     expect(a).toMatchSnapshot();
@@ -16,8 +18,8 @@ describe("Testing loresheet action creators", () => {
   });
 
   it("should create a buy option action", () => {
-    const lsUid = dataLoresheets.loresheets[0].uid;
-    const optUid = dataLoresheets.loresheets[0].options[0].uid;
+    const lsUid = data.getLoresheetData(refLoresheetUid).uid;
+    const optUid = data.getLoresheetData(refLoresheetUid).options[0].uid;
     const a = actions.buyOption(lsUid, optUid, zeroCost);
     expect(a.payload.lsUid).toBe(lsUid);
     expect(a.payload.uid).toBe(optUid);
@@ -31,7 +33,7 @@ describe("Testing loresheet action creators", () => {
   });
 
   it("should not create a buy invalid option action", () => {
-    const lsUid = dataLoresheets.loresheets[0].uid;
+    const lsUid = data.getLoresheetData(refLoresheetUid).uid;
     const optUid = "some uid, yeah";
     expect(() => actions.buyOption(lsUid, optUid, zeroCost)).toThrow();
   });
