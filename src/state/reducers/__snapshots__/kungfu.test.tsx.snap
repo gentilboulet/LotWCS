@@ -2,7 +2,7 @@
 
 exports[`Testing kungfuReducer should do nothing with a junk action 1`] = `
 Object {
-  "archetype": undefined,
+  "archetype": "warrior",
   "bonuses": Array [],
   "chi": Object {
     "corrupt": Object {
@@ -39,7 +39,7 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 25,
+  "destiny": 0,
   "discounts": Array [
     Object {
       "skills": Array [
@@ -124,7 +124,10 @@ Object {
   },
   "loresheets": Object {},
   "name": undefined,
-  "rank": undefined,
+  "rank": Object {
+    "name": "4th Rank",
+    "value": 2,
+  },
   "skills": Object {},
   "virtues": Array [
     Object {

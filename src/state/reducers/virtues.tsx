@@ -16,7 +16,6 @@ export function virtuesReducer(
       return produce(baseState, state => {
         applyCost(state, action.payload.cost);
         increase(state.virtues, action.payload.name, action.payload.value);
-        state.history.push(action);
       });
     default:
   }

@@ -39,105 +39,10 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 25,
-  "discounts": Array [
-    Object {
-      "skills": Array [
-        "Awareness",
-        "Confidence",
-        "Crafting",
-        "Finesse",
-        "Hardiness",
-        "Inspire",
-        "Learning",
-        "Medicine",
-        "Might",
-        "Perform",
-        "Politics",
-        "Ride",
-        "Stealth",
-        "Survival",
-        "Tactics",
-        "Wu Wei",
-      ],
-      "type": "DISCOUNT_SKILL",
-      "value": 20,
-    },
-  ],
+  "destiny": 0,
+  "discounts": Array [],
   "entanglement": 0,
   "history": Array [
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": undefined,
-      "type": "history/INITIAL_STATE",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "rank": "4th_rank",
-      },
-      "type": "header/SET_RANK",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "archetype": "warrior",
-      },
-      "type": "header/SET_ARCHETYPE",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "cost": Object {
-          "canPay": true,
-          "destiny": 0,
-          "original": 0,
-        },
-        "skill": "Awareness",
-        "speciality": "Hear",
-      },
-      "type": "skills/BUY_SPECIALITY",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "cost": Object {
-          "canPay": true,
-          "destiny": 0,
-          "original": 0,
-        },
-        "skill": "Awareness",
-        "speciality": "Sight",
-      },
-      "type": "skills/BUY_SPECIALITY",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": undefined,
-      "type": "history/INITIAL_STATE",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "name": "Roberts",
-      },
-      "type": "header/SET_NAME",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "concept": "Dread pirate Roberts",
-      },
-      "type": "header/SET_CONCEPT",
-    },
     Object {
       "error": undefined,
       "meta": undefined,
@@ -159,7 +64,7 @@ Object {
     "noRestrictionInternal": Array [],
   },
   "loresheets": Object {},
-  "name": undefined,
+  "name": "John",
   "rank": undefined,
   "skills": Object {},
   "virtues": Array [

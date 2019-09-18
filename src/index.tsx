@@ -1,7 +1,7 @@
 /* eslint-disable import/first */
 /* Redux and state management */
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import { devToolsEnhancer } from "redux-devtools-extension";
 
 /* React and DOM management */
@@ -10,13 +10,17 @@ import * as ReactDOM from "react-dom";
 
 import { IAction } from "./state/actions/types";
 import { testingStateFactory } from "./state/initial";
+import { pushToHistory } from "./state/middleware/history";
 import { globalReducer } from "./state/reducers/global";
 import { IStoreState } from "./state/type";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
   testingStateFactory(),
-  devToolsEnhancer({})
+  compose(
+    applyMiddleware(pushToHistory),
+    devToolsEnhancer({})
+  )
 );
 
 import * as serviceWorker from "./serviceWorker";
