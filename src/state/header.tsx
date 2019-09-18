@@ -10,7 +10,9 @@ import { pushToDiscounts } from "./discounts";
 export function setRank(state: IStoreState, rankKey: string): void {
   const dataRank = getRank(rankKey);
   state.rank = { name: dataRank.name, value: dataRank.value };
-  applyBonuses(state, dataRank.perks.filter(p => isBonus(p)) as IBonus[]);
+  state = applyBonuses(state, dataRank.perks.filter(p =>
+    isBonus(p)
+  ) as IBonus[]);
   pushToDiscounts(state, dataRank.perks.filter(p =>
     isDiscount(p)
   ) as IDiscount[]);

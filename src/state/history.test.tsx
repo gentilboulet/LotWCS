@@ -3,11 +3,11 @@ import { IStoreState } from "./type";
 
 import * as header from "./actions/header";
 import { resetToInitialState } from "./actions/history";
-import { testingStateFactory } from "./initial";
+import { emptyStateFactory } from "./initial";
 
 import { replayHistory } from "./history";
 
-const initialState: IStoreState = testingStateFactory();
+const initialState: IStoreState = emptyStateFactory();
 
 describe("Testing pushToHistory", () => {
   it("should push actions to history", () => {
