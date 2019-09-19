@@ -44,11 +44,18 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
     Object {
-      "name": "John",
-      "type": "HEADER_SET_NAME",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "name": "John",
+      },
+      "type": "header/SET_NAME",
     },
   ],
   "kungfu": Object {

@@ -2,13 +2,17 @@
 
 exports[`Testing chi action creator should create a chi buy action 1`] = `
 Object {
-  "chi": "fire",
-  "cost": Object {
-    "canPay": true,
-    "destiny": 0,
-    "original": 0,
+  "error": undefined,
+  "meta": undefined,
+  "payload": Object {
+    "chi": "fire",
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "value": 123,
   },
-  "type": "CHI_BUY",
-  "value": 123,
+  "type": "chi/BUY",
 }
 `;

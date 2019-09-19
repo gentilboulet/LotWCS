@@ -1,5 +1,0 @@
-export const SKILLS_BUY = 'SKILLS_BUY';
-export type SKILLS_BUY = typeof SKILLS_BUY;
-
-export const SKILLS_SPECIALITY_BUY = 'SKILLS_SPECIALITY_BUY';
-export type SKILLS_SPECIALITY_BUY = typeof SKILLS_SPECIALITY_BUY;

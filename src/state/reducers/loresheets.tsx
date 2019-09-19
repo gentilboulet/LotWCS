@@ -1,34 +1,31 @@
 import produce from "immer";
+import { ActionType, getType } from "typesafe-actions";
 
-import { ILoresheetAction } from "../actions/loresheets";
+import * as actions from "../actions/loresheets";
 import { IStoreState } from "../type";
 
 import { applyCost } from "../costs";
 import { buyLoresheetOption, openLoresheet } from "../loresheets";
 
-import * as constants from "../constants/loresheets";
-
 export function loresheetsReducer(
   baseState: IStoreState,
-  action: ILoresheetAction
+  action: ActionType<typeof actions>
 ): IStoreState {
   switch (action.type) {
-    case constants.LORESHEET_OPEN:
+    case getType(actions.open):
       return produce(baseState, draftState => {
-        applyCost(draftState, action.cost);
-        openLoresheet(draftState.loresheets, action.uid);
-        draftState.history.push(action);
+        applyCost(draftState, action.payload.cost);
+        openLoresheet(draftState.loresheets, action.payload.uid);
       });
-    case constants.LORESHEET_BUY_OPTION:
+    case getType(actions.buyOption):
       return produce(baseState, draftState => {
-        applyCost(draftState, action.cost);
+        applyCost(draftState, action.payload.cost);
         buyLoresheetOption(
           draftState.loresheets,
-          action.lsUid,
-          action.uid,
-          action.payload
+          action.payload.lsUid,
+          action.payload.uid,
+          action.payload.payload
         );
-        draftState.history.push(action);
       });
     default:
   }

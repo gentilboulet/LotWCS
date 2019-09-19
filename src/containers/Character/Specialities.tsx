@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
 import * as actions from "../../state/actions/skills";
 import { getCostSpeciality, ICost } from "../../state/costs";
@@ -58,7 +59,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<actions.ISkillAction>,
+  dispatch: Dispatch<ActionType<typeof actions>>,
   props: IProps
 ): IMapDispatchToProps {
   return {

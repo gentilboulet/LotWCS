@@ -1,7 +1,7 @@
 import produce from "immer";
+import { ActionType, getType } from "typesafe-actions";
 
-import { ISkillAction } from "../actions/skills";
-import * as constants from "../constants/skills";
+import * as actions from "../actions/skills";
 import { maxSkillBonus } from "../derived";
 
 import { applyCost } from "../costs";
@@ -10,21 +10,23 @@ import { IStoreState } from "../type";
 
 export function skillsReducer(
   baseState: IStoreState,
-  action: ISkillAction
+  action: ActionType<typeof actions>
 ): IStoreState {
   switch (action.type) {
-    case constants.SKILLS_BUY:
+    case getType(actions.skillsBuy):
       return produce(baseState, draftState => {
-        applyCost(draftState, action.cost);
+        applyCost(draftState, action.payload.cost);
         const max = maxSkillBonus(draftState);
-        increase(draftState.skills, action.name, max);
-        draftState.history.push(action);
+        increase(draftState.skills, action.payload.name, max);
       });
-    case constants.SKILLS_SPECIALITY_BUY:
+    case getType(actions.skillSpecialityBuy):
       return produce(baseState, draftState => {
-        applyCost(draftState, action.cost);
-        addSpeciality(draftState.skills, action.skill, action.speciality);
-        draftState.history.push(action);
+        applyCost(draftState, action.payload.cost);
+        addSpeciality(
+          draftState.skills,
+          action.payload.skill,
+          action.payload.speciality
+        );
       });
     default:
   }

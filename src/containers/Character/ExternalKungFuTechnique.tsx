@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
 import { getCostKungFuTechnique, ICost } from "../../state/costs";
 
-import { buyTechnique, IKungFuAction } from "../../state/actions/kungfu";
+import * as actions from "../../state/actions/kungfu";
 import {
   canBuyKungFuTechnique,
   isStyleTechniquePresent
@@ -58,12 +59,14 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<IKungFuAction>,
+  dispatch: Dispatch<ActionType<typeof actions>>,
   props: IProps
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost) =>
-      dispatch(buyTechnique(props.styleUid, props.uid, KUNGFU_EXTERNAL, cost))
+      dispatch(
+        actions.buyTechnique(props.styleUid, props.uid, KUNGFU_EXTERNAL, cost)
+      )
   };
 }
 

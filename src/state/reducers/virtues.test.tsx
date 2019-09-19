@@ -1,3 +1,5 @@
+import { ActionType } from "typesafe-actions";
+
 import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
@@ -40,7 +42,7 @@ describe("Testing virtueReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      virtuesReducer(initialState, junk as actions.IVirtueAction)
+      virtuesReducer(initialState, junk as ActionType<typeof actions>)
     ).toMatchObject(initialState);
   });
 });

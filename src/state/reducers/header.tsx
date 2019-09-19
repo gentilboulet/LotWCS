@@ -1,34 +1,30 @@
 import { produce } from "immer";
+import { ActionType, getType } from "typesafe-actions";
 
-import { IHeaderAction } from "../actions/header";
-import * as constants from "../constants/header";
+import * as actions from "../actions/header";
 import { setRank } from "../header";
 import { IStoreState } from "../type";
 
 export function headerReducer(
   baseState: IStoreState,
-  action: IHeaderAction
+  action: ActionType<typeof actions>
 ): IStoreState {
   switch (action.type) {
-    case constants.HEADER_SET_NAME:
+    case getType(actions.setName):
       return produce(baseState, draftState => {
-        draftState.name = action.name;
-        draftState.history.push(action);
+        draftState.name = action.payload.name;
       });
-    case constants.HEADER_SET_CONCEPT:
+    case getType(actions.setConcept):
       return produce(baseState, draftState => {
-        draftState.concept = action.concept;
-        draftState.history.push(action);
+        draftState.concept = action.payload.concept;
       });
-    case constants.HEADER_SET_RANK:
+    case getType(actions.setRank):
       return produce(baseState, draftState => {
-        setRank(draftState, action.rank);
-        draftState.history.push(action);
+        setRank(draftState, action.payload.rank);
       });
-    case constants.HEADER_SET_ARCHETYPE:
+    case getType(actions.setArchetype):
       return produce(baseState, draftState => {
-        draftState.archetype = action.archetype;
-        draftState.history.push(action);
+        draftState.archetype = action.payload.archetype;
       });
     default:
   }

@@ -13,8 +13,8 @@ describe("Testing applyBonuses", () => {
   it("should receive a BONUS_DESTINY", () => {
     const bonuses = [actions.bonusDestiny(12)];
     const state = applyBonuses(initialState, bonuses);
-    expect(initialState.destiny).toBe(25);
-    expect(state.destiny).toBe(37);
+    expect(initialState.destiny).toBe(0);
+    expect(state.destiny).toBe(12);
   });
 
   it("should receive a BONUS_ENTANGLEMENT", () => {
@@ -27,8 +27,8 @@ describe("Testing applyBonuses", () => {
   it("should receive a BONUS_CHI", () => {
     const bonuses = [actions.bonusChi(14, "general")];
     const state = applyBonuses(initialState, bonuses);
-    expect(initialState.chi.general.value).toBe(10);
-    expect(state.chi.general.value).toBe(24);
+    expect(initialState.chi.general.value).toBe(0);
+    expect(state.chi.general.value).toBe(14);
   });
 
   it("should receive a BONUS_SKILL_RANK", () => {

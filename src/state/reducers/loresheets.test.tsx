@@ -1,7 +1,9 @@
+import { ActionType } from "typesafe-actions";
+
 import { testingStateFactory } from "../initial";
 import { IStoreState } from "../type";
 
-import * as loresheetsActions from "../actions/loresheets";
+import * as actions from "../actions/loresheets";
 import { zeroCost } from "../costs";
 import * as loresheets from "../loresheets";
 
@@ -24,7 +26,7 @@ describe("Testing loresheetsReducer", () => {
         )
       ).toBeFalsy();
 
-      const action = loresheetsActions.open(dataLoresheet.uid, zeroCost);
+      const action = actions.open(dataLoresheet.uid, zeroCost);
       const state = loresheetsReducer(initialState, action);
       expect(
         loresheets.isLoresheetPresent(state.loresheets, dataLoresheet.uid)
@@ -34,11 +36,8 @@ describe("Testing loresheetsReducer", () => {
   });
 
   it("should receive LORESHEET_BUY_OPTION action", () => {
-    dataLoresheets.forEach(loresheet => {
-      const openLoresheetAction = loresheetsActions.open(
-        loresheet.uid,
-        zeroCost
-      );
+    dataLoresheets.forEach((loresheet: data.IDataLoresheet) => {
+      const openLoresheetAction = actions.open(loresheet.uid, zeroCost);
       const stateWithLoresheet = loresheetsReducer(
         initialState,
         openLoresheetAction
@@ -50,34 +49,30 @@ describe("Testing loresheetsReducer", () => {
         )
       ).toBeTruthy();
 
-      loresheet.options.forEach(option => {
-        const buyOption = loresheetsActions.buyOption(
+      loresheet.options.forEach((option: data.IDataLoresheetOption) => {
+        const buyOptionAction = actions.buyOption(
           loresheet.uid,
           option.uid,
           zeroCost
         );
         if (
-          !loresheets.canBuyLoresheetOption(
+          loresheets.canBuyLoresheetOption(
             stateWithLoresheet.loresheets,
             loresheet.uid,
             option.uid
-          )
+          ) // to filter out ls options with prerequisites
         ) {
-          expect(() =>
-            loresheetsReducer(stateWithLoresheet, buyOption)
-          ).toThrow();
-        } else {
-          const state = loresheetsReducer(stateWithLoresheet, buyOption);
+          const stateWithOption = loresheetsReducer(
+            stateWithLoresheet,
+            buyOptionAction
+          );
           expect(
             loresheets.isLoresheetOptionPresent(
-              state.loresheets,
+              stateWithOption.loresheets,
               loresheet.uid,
               option.uid
             )
           ).toBeTruthy();
-          expect(globalReducer(stateWithLoresheet, buyOption)).toMatchObject(
-            state
-          );
         }
       });
     });
@@ -86,10 +81,7 @@ describe("Testing loresheetsReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      loresheetsReducer(
-        initialState,
-        junk as loresheetsActions.ILoresheetAction
-      )
+      loresheetsReducer(initialState, junk as ActionType<typeof actions>)
     ).toMatchObject(initialState);
   });
 });

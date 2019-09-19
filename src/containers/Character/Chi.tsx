@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
 import * as actions from "../../state/actions/chi";
 import { canBuyChi } from "../../state/chi";
@@ -36,7 +37,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<actions.IChiAction>,
+  dispatch: Dispatch<ActionType<typeof actions>>,
   props: IProps
 ): IMapDispatchToProps {
   return {

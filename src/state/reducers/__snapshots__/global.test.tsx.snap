@@ -44,7 +44,10 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
   ],
   "kungfu": Object {
@@ -155,7 +158,10 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
   ],
   "kungfu": Object {

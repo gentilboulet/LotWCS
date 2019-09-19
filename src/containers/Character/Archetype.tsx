@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { ActionType } from "typesafe-actions";
 
-import * as headerActions from "../../state/actions/header";
+import * as actions from "../../state/actions/header";
 import { IStoreState } from "../../state/type";
 
 import Archetype, {
@@ -25,10 +26,10 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<headerActions.IHeaderAction>
+  dispatch: Dispatch<ActionType<typeof actions>>
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(headerActions.setArchetype(s))
+    onChange: (s: string) => dispatch(actions.setArchetype(s))
   };
 }
 

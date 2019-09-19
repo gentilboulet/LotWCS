@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 10,
+      "value": 0,
     },
     "metal": Object {
       "cultivation": 0,
@@ -39,7 +39,7 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 25,
+  "destiny": 0,
   "discounts": Array [
     Object {
       "skills": Array [
@@ -67,35 +67,54 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
     Object {
-      "rank": "4th_rank",
-      "type": "HEADER_SET_RANK",
-    },
-    Object {
-      "archetype": "warrior",
-      "type": "HEADER_SET_ARCHETYPE",
-    },
-    Object {
-      "cost": Object {
-        "canPay": true,
-        "destiny": 0,
-        "original": 0,
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "rank": "4th_rank",
       },
-      "skill": "Awareness",
-      "speciality": "Hear",
-      "type": "SKILLS_SPECIALITY_BUY",
+      "type": "header/SET_RANK",
     },
     Object {
-      "cost": Object {
-        "canPay": true,
-        "destiny": 0,
-        "original": 0,
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "archetype": "warrior",
       },
-      "skill": "Awareness",
-      "speciality": "Sight",
-      "type": "SKILLS_SPECIALITY_BUY",
+      "type": "header/SET_ARCHETYPE",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Hear",
+      },
+      "type": "skills/BUY_SPECIALITY",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "cost": Object {
+          "canPay": true,
+          "destiny": 0,
+          "original": 0,
+        },
+        "skill": "Awareness",
+        "speciality": "Sight",
+      },
+      "type": "skills/BUY_SPECIALITY",
     },
   ],
   "kungfu": Object {
@@ -232,23 +251,42 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
     Object {
-      "name": "Roberts",
-      "type": "HEADER_SET_NAME",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "name": "Roberts",
+      },
+      "type": "header/SET_NAME",
     },
     Object {
-      "concept": "Dread pirate Roberts",
-      "type": "HEADER_SET_CONCEPT",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "concept": "Dread pirate Roberts",
+      },
+      "type": "header/SET_CONCEPT",
     },
     Object {
-      "archetype": "warrior",
-      "type": "HEADER_SET_ARCHETYPE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "archetype": "warrior",
+      },
+      "type": "header/SET_ARCHETYPE",
     },
     Object {
-      "rank": "4th_rank",
-      "type": "HEADER_SET_RANK",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "rank": "4th_rank",
+      },
+      "type": "header/SET_RANK",
     },
   ],
   "kungfu": Object {
@@ -362,11 +400,26 @@ Object {
   "entanglement": 0,
   "history": Array [
     Object {
-      "type": "INITIAL_STATE",
+      "error": undefined,
+      "meta": undefined,
+      "payload": undefined,
+      "type": "history/INITIAL_STATE",
     },
     Object {
-      "name": "Roberts",
-      "type": "HEADER_SET_NAME",
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "name": "Roberts",
+      },
+      "type": "header/SET_NAME",
+    },
+    Object {
+      "error": undefined,
+      "meta": undefined,
+      "payload": Object {
+        "id": 1,
+      },
+      "type": "history/DELETE",
     },
   ],
   "kungfu": Object {
