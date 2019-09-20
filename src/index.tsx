@@ -9,16 +9,18 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { IAction } from "./state/actions/types";
-import { testingStateFactory } from "./state/initial";
+import { emptyStateFactory } from "./state/initial";
+import { freeStuff } from "./state/middleware/freestuff";
 import { pushToHistory } from "./state/middleware/history";
 import { globalReducer } from "./state/reducers/global";
 import { IStoreState } from "./state/type";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
-  testingStateFactory(),
+  emptyStateFactory(),
   compose(
     applyMiddleware(pushToHistory),
+    applyMiddleware(freeStuff),
     devToolsEnhancer({})
   )
 );

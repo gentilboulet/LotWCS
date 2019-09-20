@@ -1,4 +1,4 @@
-import * as effects from "../../../state/actions/perks/effects";
+import * as effects from "../../../perks/actions/effects";
 import { IDataInternalKungfu } from "../types";
 
 /* tslint:disable:max-line-length */

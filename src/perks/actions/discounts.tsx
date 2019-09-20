@@ -1,7 +1,7 @@
-import * as constants from "../../../perks/constants/discounts";
-import { IDiscountSkill } from "../../../perks/discounts";
+import * as constants from "../constants/discounts";
+import { IDiscountSkill } from "../discounts";
 
-import { skills, TSkillName } from "../../../data/skills";
+import { skills, TSkillName } from "../../data/skills";
 
 export function discountSkillFactory(
   value: number,

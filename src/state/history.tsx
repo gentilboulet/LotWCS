@@ -16,7 +16,7 @@ export function replayHistory(
     for (const action of toReplay) {
       draftState = globalReducer(draftState, action);
       if (action.type !== getType(actions.resetToInitialState)) {
-        draftState.history.push(action); // don't push this one, empty state already comes with it
+        draftState.history.push(action); // don't push this one, initial state already comes with it
       }
     }
     return draftState;

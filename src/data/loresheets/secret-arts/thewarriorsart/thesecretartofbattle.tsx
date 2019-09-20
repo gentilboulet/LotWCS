@@ -1,4 +1,6 @@
 import { IDataSecretArt } from "../../../../data/loresheets";
+import * as automatics from "../../../../perks/actions/automatics";
+import * as bonuses from "../../../../perks/actions/bonuses";
 import { SECRET_ARTS } from "../../types";
 
 /* tslint:disable:max-line-length */
@@ -12,5 +14,10 @@ export const secretartofbattle: IDataSecretArt = {
   cost: 10,
   ruleset: "secret-arts",
   description: "Discovery/Toolset/Manipulation Lore (The Warrior's Art).",
-  options: []
+  options: [],
+  perks: [
+    automatics.conditionalOnArchetype("warrior", [
+      bonuses.bonusLoresheet("secretartofbattle")
+    ])
+  ]
 };

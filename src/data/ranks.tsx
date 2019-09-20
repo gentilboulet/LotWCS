@@ -1,6 +1,6 @@
 /* tslint:disable:max-line-length */
-import { bonusChi, bonusDestiny } from "../state/actions/perks/bonuses";
-import { discountSkillFactory } from "../state/actions/perks/discounts";
+import { bonusChi, bonusDestiny } from "../perks/actions/bonuses";
+import { discountSkillFactory } from "../perks/actions/discounts";
 
 import { IBonus } from "../perks/bonuses";
 import { IDiscount } from "../perks/discounts";

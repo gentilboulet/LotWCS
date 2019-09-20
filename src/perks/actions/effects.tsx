@@ -1,10 +1,10 @@
-import * as constants from "../../../perks/constants/effects";
+import * as constants from "../constants/effects";
 import {
   IEffectChiThresholdIncreaseBaseChi,
   IEffectCombatStatistic,
   IEffectConditionalText,
   IEffectStatistic
-} from "../../../perks/effects";
+} from "../effects";
 
 export function combatStatistic(
   statistic: IEffectStatistic,

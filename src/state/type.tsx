@@ -1,13 +1,11 @@
 import { THistoryState } from "./history";
 
 import { TChiState } from "./chi";
+import { TDiscountsState } from "./discounts";
 import { IKungFuState } from "./kungfu";
 import { ILoresheetsState } from "./loresheets";
 import { TSkillsState } from "./skills";
 import { TVirtuesState } from "./virtues";
-
-import { TBonusesState } from "./bonuses";
-import { TDiscountsState } from "./discounts";
 
 export interface IStoreState {
   name: string | undefined;
@@ -26,6 +24,5 @@ export interface IStoreState {
   skills: TSkillsState;
   virtues: TVirtuesState;
 
-  bonuses: TBonusesState;
   discounts: TDiscountsState;
 }

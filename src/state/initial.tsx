@@ -4,13 +4,11 @@ import { IStoreState } from "./type";
 import { createState as createHistoryState } from "./history";
 
 import { createState as createChiState } from "./chi";
+import { createState as createDiscountsState } from "./discounts";
 import { createState as createaKungFuState } from "./kungfu";
 import { createState as createLoresheetsState } from "./loresheets";
 import { createState as createSkillsState } from "./skills";
 import { createState as createVirtuesState } from "./virtues";
-
-import { createState as createBonusesState } from "./bonuses";
-import { createState as createDiscountsState } from "./discounts";
 
 export function emptyStateFactory(): IStoreState {
   return {
@@ -30,7 +28,6 @@ export function emptyStateFactory(): IStoreState {
     skills: createSkillsState(),
     virtues: createVirtuesState(),
 
-    bonuses: createBonusesState(),
     discounts: createDiscountsState()
   };
 }
