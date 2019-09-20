@@ -38,7 +38,7 @@ Object {
   "error": undefined,
   "meta": undefined,
   "payload": Object {
-    "rank": "4th_rank",
+    "rank": 2,
   },
   "type": "header/SET_RANK",
 }

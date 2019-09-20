@@ -19,7 +19,7 @@ export const setConcept = createAction(
 
 export const setArchetype = createAction(
   "header/SET_ARCHETYPE",
-  action => (archetype: string) => {
+  action => (archetype: dataArchetypes.TArchetype) => {
     dataArchetypes.validateArchetype(archetype);
     return action({ archetype });
   }
@@ -27,7 +27,7 @@ export const setArchetype = createAction(
 
 export const setRank = createAction(
   "header/SET_RANK",
-  action => (rank: string) => {
+  action => (rank: dataRanks.TRank) => {
     dataRanks.validateRank(rank);
     return action({ rank });
   }

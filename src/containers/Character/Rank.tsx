@@ -5,15 +5,17 @@ import { ActionType } from "typesafe-actions";
 import * as actions from "../../state/actions/header";
 import { IStoreState } from "../../state/type";
 
+import { TRank } from "../../data/ranks";
+
 import Rank, { IRankProps } from "../../components/Character/Rank";
 
 interface IMapStateToProps {
-  rank: { name: string; value: number } | undefined;
+  rank: TRank | undefined;
   locked: boolean;
 }
 
 interface IMapDispatchToProps {
-  onChange: (s: string) => void;
+  onChange: (s: TRank) => void;
 }
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
@@ -27,7 +29,7 @@ function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(actions.setRank(s))
+    onChange: (v: TRank) => dispatch(actions.setRank(v))
   };
 }
 

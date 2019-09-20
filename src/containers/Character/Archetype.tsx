@@ -5,6 +5,8 @@ import { ActionType } from "typesafe-actions";
 import * as actions from "../../state/actions/header";
 import { IStoreState } from "../../state/type";
 
+import { TArchetype } from "../../data/archetypes";
+
 import Archetype, {
   IArchetypeProps
 } from "../../components/Character/Archetype";
@@ -15,7 +17,7 @@ interface IMapStateToProps {
 }
 
 interface IMapDispatchToProps {
-  onChange: (s: string) => void;
+  onChange: (s: TArchetype) => void;
 }
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
@@ -29,7 +31,7 @@ function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(actions.setArchetype(s))
+    onChange: (s: TArchetype) => dispatch(actions.setArchetype(s))
   };
 }
 

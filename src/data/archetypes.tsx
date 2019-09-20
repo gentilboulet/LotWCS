@@ -1,9 +1,16 @@
 import * as bonuses from "../perks/bonuses";
 
+export type TArchetype =
+  | "warrior"
+  | "priest"
+  | "courtier"
+  | "scholar"
+  | "doctor";
+
 export interface IDataArchetype {
   name: string;
   description: string;
-  key: string;
+  key: TArchetype;
   breath: string;
   bonuses: bonuses.IBonus[];
 }

@@ -21,9 +21,9 @@ export type IAutomaticCondition =
   | IAutomaticArchetypeCondition
   | IAutomaticSkillCondition;
 
-export function isAutomaticCondition(r: any): boolean {
-  if (r && "type" in r) {
-    switch (r.type) {
+export function isAutomaticCondition(perk: any): boolean {
+  if (perk && "type" in perk) {
+    switch (perk.type) {
       case constants.AUTO_CONDITION_SKILL:
       case constants.AUTO_CONDITION_ARCHETYPE:
         return true;

@@ -1,22 +1,26 @@
 import * as React from "react";
 
 import DDLText from "../../components/DDLText";
-import { ranks } from "../../data/ranks";
+import * as ranks from "../../data/ranks";
 
 export interface IRankProps {
-  rank: { name: string; value: number } | undefined;
-  onChange: (s: string) => void;
+  rank: ranks.TRank | undefined;
+  onChange: (s: ranks.TRank) => void;
   locked: boolean;
 }
 
 class Rank extends React.PureComponent<IRankProps, {}> {
   public render() {
+    const dataRank = ranks.getRank(this.props.rank);
     return (
       <DDLText
         header="Character Rank"
-        default={this.props.rank ? this.props.rank.name : ""}
-        values={ranks.map(({ name: n, key: k }) => ({ label: n, key: k }))}
-        onSubmit={this.props.onChange}
+        default={dataRank ? (dataRank.name as string) : ""}
+        values={ranks.ranks.map(rank => ({
+          label: rank.name,
+          key: rank.value.toString()
+        }))}
+        onSubmit={(s: string) => this.props.onChange(Number(s) as ranks.TRank)}
         locked={this.props.locked}
       />
     );

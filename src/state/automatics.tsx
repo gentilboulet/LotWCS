@@ -5,6 +5,16 @@ import * as constants from "../perks/constants/automatics";
 
 import * as dataLoresheet from "../data/loresheets";
 
+export type TAutomaticsState = IAutomaticCondition[];
+
+export function createState(): TAutomaticsState {
+  return dataLoresheet
+    .getLoresheets()
+    .map(ls => (!ls.perks ? [] : ls.perks))
+    .flat()
+    .filter(perk => isAutomaticCondition(perk)) as IAutomaticCondition[];
+}
+
 export function isAutomaticConditionChanged(
   oldState: IStoreState,
   newState: IStoreState

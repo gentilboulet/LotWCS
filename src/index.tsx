@@ -10,8 +10,8 @@ import * as ReactDOM from "react-dom";
 
 import { IAction } from "./state/actions/types";
 import { emptyStateFactory } from "./state/initial";
-import { freeStuff } from "./state/middleware/freestuff";
-import { pushToHistory } from "./state/middleware/history";
+import { middleware as checkAutomatics } from "./state/middleware/automatics";
+import { middleware as pushToHistory } from "./state/middleware/history";
 import { globalReducer } from "./state/reducers/global";
 import { IStoreState } from "./state/type";
 
@@ -20,7 +20,7 @@ const store = createStore<IStoreState, IAction, any, any>(
   emptyStateFactory(),
   compose(
     applyMiddleware(pushToHistory),
-    applyMiddleware(freeStuff),
+    applyMiddleware(checkAutomatics),
     devToolsEnhancer({})
   )
 );

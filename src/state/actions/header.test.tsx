@@ -1,3 +1,5 @@
+import { TArchetype } from "../../data/archetypes";
+import { TRank } from "../../data/ranks";
 import * as actions from "./header";
 
 describe("Testing header action creators", () => {
@@ -23,17 +25,21 @@ describe("Testing header action creators", () => {
   });
 
   test("should not create an invalid set archetype action", () => {
-    expect(() => actions.setArchetype("pro golfer")).toThrow();
+    expect(() =>
+      actions.setArchetype(("pro golfer" as unknown) as TArchetype)
+    ).toThrowError();
   });
 
   test("should create a set rank action", () => {
-    const rank = "4th_rank";
+    const rank = 2;
     const a = actions.setRank(rank);
     expect(a.payload.rank).toBe(rank);
     expect(a).toMatchSnapshot();
   });
 
   test("should not create an invalid set rank action", () => {
-    expect(() => actions.setRank("ultimate rank")).toThrow();
+    expect(() =>
+      actions.setRank(("ultimate rank" as unknown) as TRank)
+    ).toThrowError();
   });
 });
