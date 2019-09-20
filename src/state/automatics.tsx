@@ -8,11 +8,7 @@ import * as dataLoresheet from "../data/loresheets";
 export type TAutomaticsState = IAutomaticCondition[];
 
 export function createState(): TAutomaticsState {
-  return dataLoresheet
-    .getLoresheets()
-    .map(ls => (!ls.perks ? [] : ls.perks))
-    .flat()
-    .filter(perk => isAutomaticCondition(perk)) as IAutomaticCondition[];
+  return getAutomatics();
 }
 
 export function isAutomaticConditionChanged(
@@ -35,8 +31,13 @@ export function getAutomatics(): IAutomaticCondition[] {
     const data = dataLoresheet
       .getLoresheets(ls => ls.perks !== undefined)
       .map(ls => (!ls.perks ? [] : ls.perks))
-      .map(p => isAutomaticCondition(p))
-      .flat();
+      .filter(p => isAutomaticCondition(p))
+      .reduce(
+        (acc: IAutomaticCondition[], val: IAutomaticCondition[]) =>
+          acc.concat(val),
+        []
+      ) as IAutomaticCondition[];
+
     retval.push(...data);
   }
 

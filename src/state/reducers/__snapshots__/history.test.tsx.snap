@@ -3,7 +3,7 @@
 exports[`Testing historyReducer should do nothing with a junk action 1`] = `
 Object {
   "archetype": "warrior",
-  "bonuses": Array [],
+  "automatics": Array [],
   "chi": Object {
     "corrupt": Object {
       "cultivation": 0,
@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 0,
+      "value": 10,
     },
     "metal": Object {
       "cultivation": 0,
@@ -39,7 +39,7 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 0,
+  "destiny": 20,
   "discounts": Array [
     Object {
       "skills": Array [
@@ -76,7 +76,7 @@ Object {
       "error": undefined,
       "meta": undefined,
       "payload": Object {
-        "rank": "4th_rank",
+        "rank": 2,
       },
       "type": "header/SET_RANK",
     },
@@ -124,10 +124,7 @@ Object {
   },
   "loresheets": Object {},
   "name": undefined,
-  "rank": Object {
-    "name": "4th Rank",
-    "value": 2,
-  },
+  "rank": 2,
   "skills": Object {},
   "virtues": Array [
     Object {
@@ -187,7 +184,7 @@ Object {
 exports[`Testing historyReducer should receive an HISTORY_DELETE action 1`] = `
 Object {
   "archetype": "warrior",
-  "bonuses": Array [],
+  "automatics": Array [],
   "chi": Object {
     "corrupt": Object {
       "cultivation": 0,
@@ -223,7 +220,7 @@ Object {
     },
   },
   "concept": "Dread pirate Roberts",
-  "destiny": 0,
+  "destiny": 20,
   "discounts": Array [
     Object {
       "skills": Array [
@@ -284,7 +281,7 @@ Object {
       "error": undefined,
       "meta": undefined,
       "payload": Object {
-        "rank": "4th_rank",
+        "rank": 2,
       },
       "type": "header/SET_RANK",
     },
@@ -296,10 +293,7 @@ Object {
   },
   "loresheets": Object {},
   "name": "Roberts",
-  "rank": Object {
-    "name": "4th Rank",
-    "value": 2,
-  },
+  "rank": 2,
   "skills": Object {},
   "virtues": Array [
     Object {
@@ -359,7 +353,7 @@ Object {
 exports[`Testing historyReducer should receive an HISTORY_DELETE action 2`] = `
 Object {
   "archetype": undefined,
-  "bonuses": Array [],
+  "automatics": Array [],
   "chi": Object {
     "corrupt": Object {
       "cultivation": 0,

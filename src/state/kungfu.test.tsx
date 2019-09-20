@@ -178,9 +178,16 @@ describe("Testing isStyleTechniquePresent", () => {
   it("should detect an existing internal style technique", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
-      style.techniques.forEach(tech => {
-        kungfu.addKungFuTechnique(state, KUNGFU_INTERNAL, style.uid, tech.uid);
-      });
+      style.techniques
+        .filter(tech => tech.level > 1)
+        .forEach(tech => {
+          kungfu.addKungFuTechnique(
+            state,
+            KUNGFU_INTERNAL,
+            style.uid,
+            tech.uid
+          );
+        });
       style.techniques.forEach(tech => {
         expect(
           kungfu.isStyleTechniquePresent(
@@ -298,7 +305,7 @@ describe("Testing canBuyKungFuTechnique", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
       const techniquesByLevel: string[] = [];
-      let lowestTechLevel = 0;
+      let lowestTechLevel = 1;
       style.techniques
         .sort((a, b) => {
           return a.level - b.level;
@@ -380,16 +387,18 @@ describe("Testing canBuyKungFuTechnique", () => {
       state.noRestrictionInternal.push(style.uid);
     });
     data.internalKungfu.forEach(style => {
-      style.techniques.forEach(tech => {
-        expect(
-          kungfu.canBuyKungFuTechnique(
-            state,
-            KUNGFU_INTERNAL,
-            style.uid,
-            tech.uid
-          )
-        ).toBeTruthy();
-      });
+      style.techniques
+        .filter(tech => tech.level > 1)
+        .forEach(tech => {
+          expect(
+            kungfu.canBuyKungFuTechnique(
+              state,
+              KUNGFU_INTERNAL,
+              style.uid,
+              tech.uid
+            )
+          ).toBeTruthy();
+        });
     });
   });
 });

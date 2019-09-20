@@ -12,7 +12,7 @@ describe("chiAura", () => {
   it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
-      header.setRank(state, rank.key);
+      header.setRank(state, rank.value);
       expect(derived.chiAura(state)).toBe(rank.value);
     });
   });
@@ -26,7 +26,7 @@ describe("lake", () => {
   it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
-      header.setRank(state, rank.key);
+      header.setRank(state, rank.value);
       expect(derived.lake(state)).toBe(rank.value + 5);
     });
   });
@@ -40,8 +40,8 @@ describe("river", () => {
   it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
-      header.setRank(state, rank.key);
-      if (rank.key === "unranked") {
+      header.setRank(state, rank.value);
+      if (rank.value === 0) {
         expect(derived.river(state)).toBe(1);
       } else {
         expect(derived.river(state)).toBe(rank.value);
@@ -58,8 +58,8 @@ describe("joss", () => {
   it("should return a value computed according to the rank", () => {
     const state = initialStateFactory();
     dataRank.ranks.forEach(rank => {
-      header.setRank(state, rank.key);
-      if (rank.key === "unranked") {
+      header.setRank(state, rank.value);
+      if (rank.value === 0) {
         expect(derived.joss(state)).toBe(1);
       } else {
         expect(derived.joss(state)).toBe(rank.value);
@@ -75,8 +75,8 @@ describe("joss", () => {
     it("should return a value computed according to the rank", () => {
       const state = initialStateFactory();
       dataRank.ranks.forEach(rank => {
-        header.setRank(state, rank.key);
-        if (rank.key === "unranked") {
+        header.setRank(state, rank.value);
+        if (rank.value === 0) {
           expect(derived.chiResplenish(state)).toBe(0);
         } else {
           expect(derived.chiResplenish(state)).toBe(rank.value);
@@ -93,8 +93,8 @@ describe("joss", () => {
     it("should return a value computed according to the rank", () => {
       const state = initialStateFactory();
       dataRank.ranks.forEach(rank => {
-        header.setRank(state, rank.key);
-        if (rank.key === "unranked") {
+        header.setRank(state, rank.value);
+        if (rank.value === 0) {
           expect(derived.maxSkillBonus(state)).toBe(5);
         } else {
           expect(derived.maxSkillBonus(state)).toBe(5 * rank.value);

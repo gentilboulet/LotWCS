@@ -81,7 +81,6 @@ export function validateRank(rank: number): void {
   const foundRank = ranks.find(
     (dataRank: IDataRank) => (dataRank.value as number) === rank
   );
-  ranks.forEach(r => console.log(r.value, r.value === rank, rank));
   if (!foundRank) {
     throw new Error('Invalid rank "' + rank + '"');
   }

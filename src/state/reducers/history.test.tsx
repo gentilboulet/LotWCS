@@ -19,7 +19,7 @@ describe("Testing historyReducer", () => {
       header.setName("Roberts"),
       header.setConcept("Dread pirate Roberts"),
       header.setArchetype("warrior"),
-      header.setRank("4th_rank")
+      header.setRank(2)
     ];
     const stateBefore = history.replayHistory(initialState, replayActions);
     expect(stateBefore).toMatchSnapshot();

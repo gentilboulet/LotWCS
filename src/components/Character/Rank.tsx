@@ -5,7 +5,7 @@ import * as ranks from "../../data/ranks";
 
 export interface IRankProps {
   rank: ranks.TRank | undefined;
-  onChange: (s: ranks.TRank) => void;
+  onChange: (s: string) => void;
   locked: boolean;
 }
 
@@ -17,10 +17,10 @@ class Rank extends React.PureComponent<IRankProps, {}> {
         header="Character Rank"
         default={dataRank ? (dataRank.name as string) : ""}
         values={ranks.ranks.map(rank => ({
-          label: rank.name,
-          key: rank.value.toString()
+          key: rank.value.toString(),
+          label: rank.name
         }))}
-        onSubmit={(s: string) => this.props.onChange(Number(s) as ranks.TRank)}
+        onSubmit={this.props.onChange}
         locked={this.props.locked}
       />
     );

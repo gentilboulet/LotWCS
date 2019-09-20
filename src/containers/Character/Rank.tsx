@@ -15,7 +15,7 @@ interface IMapStateToProps {
 }
 
 interface IMapDispatchToProps {
-  onChange: (s: TRank) => void;
+  onChange: (s: string) => void;
 }
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
@@ -29,7 +29,7 @@ function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>
 ): IMapDispatchToProps {
   return {
-    onChange: (v: TRank) => dispatch(actions.setRank(v))
+    onChange: (s: string) => dispatch(actions.setRank(Number(s) as TRank))
   };
 }
 
