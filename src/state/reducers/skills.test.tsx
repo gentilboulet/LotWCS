@@ -15,7 +15,7 @@ import { globalReducer } from "../reducers/global";
 
 const initialState: IStoreState = globalReducer(
   emptyStateFactory(),
-  setRank("4th_rank")
+  setRank(2)
 );
 
 describe("Testing skillsReducer", () => {

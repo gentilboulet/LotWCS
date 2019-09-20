@@ -3,7 +3,7 @@
 exports[`Testing globalReducer should create an initial state when used with no state 1`] = `
 Object {
   "archetype": undefined,
-  "bonuses": Array [],
+  "automatics": Array [],
   "chi": Object {
     "corrupt": Object {
       "cultivation": 0,
@@ -117,7 +117,7 @@ Object {
 exports[`Testing globalReducer should do nothing with a junk action 1`] = `
 Object {
   "archetype": undefined,
-  "bonuses": Array [],
+  "automatics": Array [],
   "chi": Object {
     "corrupt": Object {
       "cultivation": 0,

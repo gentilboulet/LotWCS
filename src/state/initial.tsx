@@ -3,14 +3,13 @@ import { IStoreState } from "./type";
 
 import { createState as createHistoryState } from "./history";
 
+import { createState as createAutomaticsState } from "./automatics";
 import { createState as createChiState } from "./chi";
+import { createState as createDiscountsState } from "./discounts";
 import { createState as createaKungFuState } from "./kungfu";
 import { createState as createLoresheetsState } from "./loresheets";
 import { createState as createSkillsState } from "./skills";
 import { createState as createVirtuesState } from "./virtues";
-
-import { createState as createBonusesState } from "./bonuses";
-import { createState as createDiscountsState } from "./discounts";
 
 export function emptyStateFactory(): IStoreState {
   return {
@@ -30,7 +29,7 @@ export function emptyStateFactory(): IStoreState {
     skills: createSkillsState(),
     virtues: createVirtuesState(),
 
-    bonuses: createBonusesState(),
+    automatics: createAutomaticsState(),
     discounts: createDiscountsState()
   };
 }
@@ -43,7 +42,7 @@ import { replayHistory } from "./history";
 export function testingStateFactory(): IStoreState {
   const initial = emptyStateFactory();
   const actions = [
-    setRank("4th_rank"),
+    setRank(2),
     setArchetype("warrior"),
     skillSpecialityBuy("Awareness", "Hear", zeroCost),
     skillSpecialityBuy("Awareness", "Sight", zeroCost)

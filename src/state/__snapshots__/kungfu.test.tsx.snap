@@ -19,8 +19,12 @@ Object {
     ],
   },
   "KUNGFU_INTERNAL": Object {
-    "Boundless Prosperity Manual": Array [],
-    "Fire Sutra": Array [],
+    "Boundless Prosperity Manual": Array [
+      "Retain Balanced Nature",
+    ],
+    "Fire Sutra": Array [
+      "Thought of Flame",
+    ],
   },
   "noRestrictionInternal": Array [],
 }

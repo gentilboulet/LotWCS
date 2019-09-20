@@ -4,6 +4,8 @@ import { initialStateFactory } from "../initial";
 import { globalReducer } from "./global";
 import { headerReducer } from "./header";
 
+import * as dataRank from "../../data/ranks";
+
 import * as actions from "../actions/header";
 
 const initialState = () => initialStateFactory();
@@ -35,9 +37,10 @@ describe("Testing headerReducer", () => {
 
   it("should receive a HEADER_SET_RANK action", () => {
     expect(initialState().rank).toBeUndefined();
-    const action = actions.setRank("4th_rank");
+    const action = actions.setRank(2);
     const state = headerReducer(initialState(), action);
-    expect(state.rank ? state.rank.name : undefined).toBe("4th Rank");
+    const r = dataRank.getRank(state.rank) as dataRank.IDataRank;
+    expect(r.name).toBe("4th Rank");
     expect(globalReducer(initialState(), action)).toMatchObject(state);
   });
 

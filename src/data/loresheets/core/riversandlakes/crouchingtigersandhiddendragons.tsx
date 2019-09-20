@@ -1,7 +1,7 @@
 import {
   bonusOneAmongN,
   bonusSpeciality
-} from "../../../../state/actions/perks/bonuses";
+} from "../../../../perks/actions/bonuses";
 import { IDataLoresheet } from "../../../loresheets";
 import { SAGE_LORESHEET } from "../../types";
 

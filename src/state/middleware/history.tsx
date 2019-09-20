@@ -5,7 +5,7 @@ import * as actions from "../actions/history";
 import { IAction } from "../actions/types";
 import { IStoreState } from "../type";
 
-export const pushToHistory = (store: Store<IStoreState>) => (
+export const middleware = (store: Store<IStoreState>) => (
   next: Dispatch<IAction>
 ) => (action: IAction) => {
   const result = next(action);

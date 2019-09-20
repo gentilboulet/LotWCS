@@ -3,7 +3,7 @@
 exports[`Testing replayHistory should replay an history of actions 1`] = `
 Object {
   "archetype": undefined,
-  "bonuses": Array [],
+  "automatics": Array [],
   "chi": Object {
     "corrupt": Object {
       "cultivation": 0,

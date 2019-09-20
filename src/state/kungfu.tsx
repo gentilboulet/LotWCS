@@ -7,6 +7,7 @@ import {
 import {
   IDataExternalKungfu,
   IDataExternalKungfuStatistics,
+  IDataInternalKungfu,
   IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
@@ -38,6 +39,17 @@ export function openStyle(
     throw new Error("Internal error : style already open");
   }
   state[type][styleUid] = [];
+  if (type === KUNGFU_INTERNAL) {
+    const data = kungfuData(KUNGFU_INTERNAL, styleUid) as IDataInternalKungfu;
+    const lvl1s = data.techniques.filter(t => t.level === 1);
+    if (lvl1s.length !== 1) {
+      throw new Error(
+        "Internal error : internal style malformed, more than 1 lvl 1 techniques for " +
+          styleUid
+      );
+    }
+    state[type][styleUid].push(lvl1s[0].uid);
+  }
 }
 
 export function isStylePresent(

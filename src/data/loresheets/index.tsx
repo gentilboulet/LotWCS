@@ -1,13 +1,8 @@
 /* tslint:disable:import-sources-order named-imports-order ordered-imports*/
 /* eslint-disable import/first */
-import { IBonus } from "../../perks/bonuses";
-import { IDiscount } from "../../perks/discounts";
-import { IEffect } from "../../perks/effects";
+import { IPerk } from "../../perks";
 
 import { SAGE_LORESHEET, SECRET_ARTS } from "./types";
-
-// TODO perks/index.tsx
-export type IPerk = IBonus | IDiscount | IEffect;
 
 export interface IDataLoresheetOptionPrerequisiteAND {
   type: "AND";
@@ -43,6 +38,7 @@ interface IDataGenericLoresheet {
   description: string;
   ruleset: string;
   options: IDataGenericLoresheetOption[];
+  perks?: IPerk[];
 }
 
 export interface IDataSecretArtTechnique extends IDataGenericLoresheetOption {
@@ -94,8 +90,9 @@ const loresheets: IDataGenericLoresheet[] = [
 ];
 
 export function getLoresheets(
-  filter: IDataLoresheetFilter
+  filter?: IDataLoresheetFilter
 ): IDataGenericLoresheet[] {
+  if (!filter) { return loresheets; }
   return loresheets.filter(ls => filter(ls));
 }
 

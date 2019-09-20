@@ -3,9 +3,9 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 import {
   getLoresheetOptionData,
-  IDataLoresheetOption,
-  IPerk
+  IDataLoresheetOption
 } from "../../data/loresheets";
+import { IPerk } from "../../perks";
 import { IBonus } from "../../perks/bonuses";
 import * as bonuses from "../../perks/constants/bonuses";
 import { ICost } from "../../state/costs";
