@@ -4,7 +4,7 @@ import { ActionType } from "typesafe-actions";
 
 import * as actions from "../../state/actions/skills";
 import { getCostSkill, ICost } from "../../state/costs";
-import { canBuySkill } from "../../state/skills";
+import { canBuySkill, getSkill } from "../../state/skills";
 import { IStoreState } from "../../state/type";
 
 import { TSkillName } from "../../data/skills";
@@ -31,7 +31,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     canBuy: canBuySkill(state, props.name),
     cost: getCostSkill(state, props.name),
     name: props.name,
-    value: state.skills[props.name].value
+    value: getSkill(state, props.name).value
   };
 }
 

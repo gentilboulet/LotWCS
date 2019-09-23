@@ -3,26 +3,17 @@ import { maxSkillBonus } from "./derived";
 import { IStoreState } from "./type";
 
 interface ISkill {
-  name: string;
+  name: TSkillName;
   specialities: string[];
   value: number;
 }
 
-export type TSkillsState = { [skill in TSkillName]: ISkill };
+export type TSkillsState = ISkill[];
 
 export function createState(): TSkillsState {
-  const state = {};
-  Object.keys(data).forEach(skill => {
-    Object.defineProperty(state, skill, {
-      value: {
-        name: skill,
-        specialities: [],
-        value: 0
-      },
-      writable: true
-    });
+  return Object.keys(data).map((name: TSkillName) => {
+    return { name, specialities: [], value: 0 };
   });
-  return state as TSkillsState;
 }
 
 export function increase(
@@ -30,11 +21,11 @@ export function increase(
   skillName: TSkillName,
   maxSkillValue: number
 ): void {
-  const old = state[skillName].value;
+  const old = _getSkill(state, skillName).value;
   if (old + 5 > maxSkillValue) {
     throw new Error("Skill " + skillName + " overflow");
   }
-  state[skillName].value += 5;
+  _getSkill(state, skillName).value += 5;
 }
 
 export function isSpecialityPresent(
@@ -42,7 +33,9 @@ export function isSpecialityPresent(
   skillName: TSkillName,
   specialityName: string
 ): boolean {
-  const specialityIndex = state[skillName].specialities.findIndex(
+  const specialityIndex = (state.find(
+    s => s.name === skillName
+  ) as ISkill).specialities.findIndex(
     (speciality: string) => speciality === specialityName
   );
   return specialityIndex !== -1;
@@ -62,14 +55,14 @@ export function addSpeciality(
         '" already bought'
     );
   }
-  state[skillName].specialities.push(specialityName);
+  _getSkill(state, skillName).specialities.push(specialityName);
 }
 
 export function canBuySkill(
   state: IStoreState,
   skillName: TSkillName
 ): boolean {
-  const value = state.skills[skillName].value;
+  const value = getSkill(state, skillName).value;
   const max = maxSkillBonus(state);
   return !(value + 5 > max);
 }
@@ -80,4 +73,12 @@ export function canBuySpeciality(
   speciality: string
 ): boolean {
   return !isSpecialityPresent(state.skills, skillName, speciality);
+}
+
+function _getSkill(state: TSkillsState, skillName: TSkillName) {
+  return state.find(s => s.name === skillName) as ISkill;
+}
+
+export function getSkill(state: IStoreState, skillName: TSkillName) {
+  return _getSkill(state.skills, skillName);
 }

@@ -15,8 +15,8 @@ export function skillsReducer(
   switch (action.type) {
     case getType(actions.skillsBuy):
       return produce(baseState, draftState => {
+        const max = maxSkillBonus(baseState);
         applyCost(draftState, action.payload.cost);
-        const max = maxSkillBonus(draftState);
         increase(draftState.skills, action.payload.name, max);
       });
     case getType(actions.skillSpecialityBuy):

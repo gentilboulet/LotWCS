@@ -4,7 +4,7 @@ import { ActionType } from "typesafe-actions";
 
 import * as actions from "../../state/actions/skills";
 import { getCostSpeciality, ICost } from "../../state/costs";
-import { canBuySpeciality } from "../../state/skills";
+import { canBuySpeciality, getSkill } from "../../state/skills";
 import { IStoreState } from "../../state/type";
 
 import { skills as data, TSkillName } from "../../data/skills";
@@ -37,15 +37,15 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     name: ""
   };
 
-  const concat = data[props.skill].specialities.concat(
-    state.skills[props.skill].specialities
+  const concat = data[props.skill].concat(
+    getSkill(state, props.skill).specialities
   );
   const merge = concat
     .filter((item, pos) => concat.indexOf(item) === pos)
     .sort();
 
   const retVal = {
-    bought: state.skills[props.skill].specialities,
+    bought: getSkill(state, props.skill).specialities,
     specialities: merge.map((speciality: string) => {
       return {
         canBuy: canBuySpeciality(state, props.skill, speciality),
