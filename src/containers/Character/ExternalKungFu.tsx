@@ -42,7 +42,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 
   return {
     canOpen: canOpenKungFu(state.kungfu, KUNGFU_EXTERNAL, props.uid),
-    cost: getCostKungFuStyle(state /*, KUNGFU_EXTERNAL, props.uid*/),
+    cost: getCostKungFuStyle(state, KUNGFU_EXTERNAL, props.uid),
     isOpen,
     knownTechniques: isOpen ? state.kungfu[KUNGFU_EXTERNAL][props.uid] : [],
     statistics: getExternalKungFuStatistics(state.kungfu, props.uid),

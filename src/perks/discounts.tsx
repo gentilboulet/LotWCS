@@ -29,8 +29,8 @@ export interface IDiscountLoresheetOption {
 
 export interface IDiscountKungfu {
   type: constants.DISCOUNT_KUNGFU_STYLE;
+  kfType: KUNGFU_TYPE;
   uids: string[];
-  kfType: KUNGFU_TYPE[];
   value: number;
 }
 

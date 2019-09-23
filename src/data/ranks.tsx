@@ -1,6 +1,11 @@
 /* tslint:disable:max-line-length */
+import { KUNGFU_EXTERNAL, KUNGFU_INTERNAL } from "../data/kungfu/types";
+
 import { bonusChi, bonusDestiny } from "../perks/actions/bonuses";
-import { discountSkillFactory } from "../perks/actions/discounts";
+import {
+  discountKungfuFactory,
+  discountSkillFactory
+} from "../perks/actions/discounts";
 
 import { IBonus } from "../perks/bonuses";
 import { IDiscount } from "../perks/discounts";
@@ -38,7 +43,9 @@ export const ranks: IDataRanks = [
     perks: [
       bonusDestiny(20),
       discountSkillFactory(20),
-      bonusChi(10, "general")
+      bonusChi(10, "general"),
+      discountKungfuFactory(10, KUNGFU_EXTERNAL),
+      discountKungfuFactory(10, KUNGFU_INTERNAL)
     ],
     value: 2
   },
@@ -49,7 +56,9 @@ export const ranks: IDataRanks = [
     perks: [
       bonusDestiny(50),
       discountSkillFactory(20),
-      bonusChi(10, "general")
+      bonusChi(10, "general"),
+      discountKungfuFactory(10, KUNGFU_EXTERNAL),
+      discountKungfuFactory(10, KUNGFU_INTERNAL)
     ],
     value: 3
   },
@@ -60,7 +69,9 @@ export const ranks: IDataRanks = [
     perks: [
       bonusDestiny(100),
       discountSkillFactory(20),
-      bonusChi(10, "general")
+      bonusChi(10, "general"),
+      discountKungfuFactory(10, KUNGFU_EXTERNAL),
+      discountKungfuFactory(10, KUNGFU_INTERNAL)
     ],
     value: 4
   },

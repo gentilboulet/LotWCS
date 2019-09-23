@@ -1,6 +1,7 @@
 import * as constants from "../constants/discounts";
-import { IDiscountSkill } from "../discounts";
+import { IDiscountKungfu, IDiscountSkill } from "../discounts";
 
+import { KUNGFU_TYPE } from "../../data/kungfu/types";
 import { skills, TSkillName } from "../../data/skills";
 
 export function discountSkillFactory(
@@ -15,5 +16,17 @@ export function discountSkillFactory(
       type: constants.DISCOUNT_SKILL,
       value
     };
+  }
+}
+
+export function discountKungfuFactory(
+  value: number,
+  kfType: KUNGFU_TYPE,
+  uids?: string[]
+): IDiscountKungfu {
+  if (uids && uids.length > 0) {
+    return { type: constants.DISCOUNT_KUNGFU_STYLE, kfType, uids, value };
+  } else {
+    return { type: constants.DISCOUNT_KUNGFU_STYLE, kfType, uids: [], value };
   }
 }

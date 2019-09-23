@@ -178,8 +178,24 @@ export function getCostVirtue(state: IStoreState): ICost {
   return _costFactory(state, 5);
 }
 
-export function getCostKungFuStyle(state: IStoreState): ICost {
-  return _costFactory(state, 10);
+import { DISCOUNT_KUNGFU_STYLE } from "../perks/constants/discounts";
+export function getCostKungFuStyle(
+  state: IStoreState,
+  type: KUNGFU_TYPE,
+  uid: string
+): ICost {
+  const defaultCost = 10;
+  const kungfuDiscountIdx = getDiscountIndexes(state, (d: IDiscount) => {
+    if (d.type !== DISCOUNT_KUNGFU_STYLE) {
+      return false;
+    }
+    if (d.kfType !== type) { return false; }
+    if (d.uids.length === 0) {
+      return true;
+    }
+    return -1 !== d.uids.findIndex((s: TSkillName) => s === uid);
+  });
+  return _costFactory(state, defaultCost, kungfuDiscountIdx);
 }
 
 import { kungfuTechniqueData } from "../data/kungfu";
