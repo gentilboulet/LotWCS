@@ -10,7 +10,7 @@ import Homepage from "../routes/Homepage";
 import Skills from "../routes/Skills";
 import Virtues from "../routes/Virtues";
 import Chi from "../routes/Chi";
-import Equipment from "../routes/Equipment";
+import Gear from "../routes/Gear";
 import Conditions from "../routes/Conditions";
 import KungFu from "../routes/KungFu";
 import Loresheets from "../routes/Loresheets";
@@ -28,7 +28,7 @@ class App extends React.PureComponent<{}, {}> {
           <Route exact={true} path="/skills" component={Skills} />
           <Route exact={true} path="/chi" component={Chi} />
           <Route exact={true} path="/virtues" component={Virtues} />
-          <Route exact={true} path="/equipment" component={Equipment} />
+          <Route exact={true} path="/gear" component={Gear} />
           <Route exact={true} path="/conditions" component={Conditions} />
           <Route exact={true} path="/kungfu" component={KungFu} />
           <Route exact={true} path="/loresheets" component={Loresheets} />

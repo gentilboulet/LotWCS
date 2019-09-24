@@ -37,8 +37,8 @@ class AppHeader extends React.PureComponent<{}, { isOpen: boolean }> {
           <Link to="/virtues">
             <li>Virtues</li>
           </Link>
-          <Link to="/equipment">
-            <li>Equipment</li>
+          <Link to="/gear">
+            <li>Gear</li>
           </Link>
           <Link to="/conditions">
             <li>Conditions</li>

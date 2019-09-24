@@ -3,8 +3,11 @@ import {
   IEffectChiThresholdIncreaseBaseChi,
   IEffectCombatStatistic,
   IEffectConditionalText,
+  IEffectSkillModifier,
   IEffectStatistic,
 } from "../effects";
+
+import { TSkillName } from "../../data/skills";
 
 export function combatStatistic(
   statistic: IEffectStatistic,
@@ -32,4 +35,8 @@ export function increaseBaseChiForThreshold(
     chiIncrease,
     type: constants.EFFECT_CHI_THRESHOLD_INCREASE_BASE_CHI,
   };
+}
+
+export function skill(skill: TSkillName, value: number): IEffectSkillModifier {
+  return { type: constants.EFFECT_SKILL, skill, value };
 }
