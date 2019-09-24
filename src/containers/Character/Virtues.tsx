@@ -29,7 +29,7 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
     virtues: state.virtues.map(v => {
       return {
         canBuy: canBuyVirtue(state, v.name),
-        cost: getCostVirtue(state),
+        cost: getCostVirtue(state, v.name, v.type),
         name: v.name,
         type: v.type,
         value: v.value

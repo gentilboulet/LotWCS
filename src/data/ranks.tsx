@@ -1,10 +1,12 @@
 /* tslint:disable:max-line-length */
 import { KUNGFU_EXTERNAL, KUNGFU_INTERNAL } from "../data/kungfu/types";
+import { VIRTUE_CHIVALROUS, VIRTUE_SELFISH } from "../data/virtues";
 
 import { bonusChi, bonusDestiny } from "../perks/actions/bonuses";
 import {
   discountKungfuFactory,
-  discountSkillFactory
+  discountSkillFactory,
+  discountVirtueFactory
 } from "../perks/actions/discounts";
 
 import { IBonus } from "../perks/bonuses";
@@ -21,19 +23,49 @@ export interface IDataRank {
 
 export interface IDataRanks extends Array<IDataRank> {}
 
+function _defaultVirtues() {
+  const virtues: Array<{
+    name: string;
+    type: VIRTUE_SELFISH | VIRTUE_CHIVALROUS;
+  }> = [
+    // TODO : handle virtues more clearly
+    { name: "Honor", type: VIRTUE_CHIVALROUS },
+    { name: "Benevolence", type: VIRTUE_CHIVALROUS },
+    { name: "Righteousness", type: VIRTUE_CHIVALROUS },
+    { name: "Loyalty", type: VIRTUE_CHIVALROUS },
+    { name: "Force", type: VIRTUE_CHIVALROUS },
+    { name: "Revenge", type: VIRTUE_SELFISH },
+    { name: "Individualism", type: VIRTUE_SELFISH },
+    { name: "Obsession", type: VIRTUE_SELFISH },
+    { name: "Ruthlessness", type: VIRTUE_SELFISH },
+    { name: "Ferocity", type: VIRTUE_SELFISH }
+  ];
+  return discountVirtueFactory(15 * 5, virtues); // 15 free points
+}
+
 export const ranks: IDataRanks = [
   {
     description:
       "River size and Joss limit are 1, no Aura or Chi replenishment, Lake is 5, maximum skill bonus is +5.",
     name: "Unranked",
-    perks: [bonusDestiny(10), discountSkillFactory(10), bonusChi(8, "general")],
+    perks: [
+      bonusDestiny(10),
+      discountSkillFactory(10),
+      bonusChi(8, "general"),
+      _defaultVirtues()
+    ],
     value: 0
   },
   {
     description:
       "River size, Joss, Chi replenishment and Chi Aura limit are 1. Lake size is 6. Maximum skill bonus is +5.",
     name: "5th Rank",
-    perks: [bonusDestiny(15), discountSkillFactory(10), bonusChi(8, "general")],
+    perks: [
+      bonusDestiny(15),
+      discountSkillFactory(10),
+      bonusChi(8, "general"),
+      _defaultVirtues()
+    ],
     value: 1
   },
   {
@@ -45,7 +77,8 @@ export const ranks: IDataRanks = [
       discountSkillFactory(20),
       bonusChi(10, "general"),
       discountKungfuFactory(10, KUNGFU_EXTERNAL),
-      discountKungfuFactory(10, KUNGFU_INTERNAL)
+      discountKungfuFactory(10, KUNGFU_INTERNAL),
+      _defaultVirtues()
     ],
     value: 2
   },
@@ -58,7 +91,8 @@ export const ranks: IDataRanks = [
       discountSkillFactory(20),
       bonusChi(10, "general"),
       discountKungfuFactory(10, KUNGFU_EXTERNAL),
-      discountKungfuFactory(10, KUNGFU_INTERNAL)
+      discountKungfuFactory(10, KUNGFU_INTERNAL),
+      _defaultVirtues()
     ],
     value: 3
   },
@@ -71,7 +105,8 @@ export const ranks: IDataRanks = [
       discountSkillFactory(20),
       bonusChi(10, "general"),
       discountKungfuFactory(10, KUNGFU_EXTERNAL),
-      discountKungfuFactory(10, KUNGFU_INTERNAL)
+      discountKungfuFactory(10, KUNGFU_INTERNAL),
+      _defaultVirtues()
     ],
     value: 4
   },
@@ -82,7 +117,8 @@ export const ranks: IDataRanks = [
     perks: [
       bonusDestiny(150),
       discountSkillFactory(20),
-      bonusChi(10, "general")
+      bonusChi(10, "general"),
+      _defaultVirtues()
     ],
     value: 5
   }

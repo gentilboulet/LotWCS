@@ -174,8 +174,24 @@ export function getCostBuyLoresheetOption(
   }
 }
 
-export function getCostVirtue(state: IStoreState): ICost {
-  return _costFactory(state, 5);
+import { IDataVirtueType } from "../data/virtues";
+import { DISCOUNT_VIRTUE } from "../perks/constants/discounts";
+export function getCostVirtue(
+  state: IStoreState,
+  name: string,
+  type: IDataVirtueType
+): ICost {
+  const defaultCost = 5;
+  const virtueDiscountIdx = getDiscountIndexes(state, (d: IDiscount) => {
+    if (d.type !== DISCOUNT_VIRTUE) {
+      return false;
+    }
+    if (d.virtues.length === 0) {
+      return true;
+    }
+    return -1 !== d.virtues.findIndex(v => v.name === name && v.type === type);
+  });
+  return _costFactory(state, defaultCost, virtueDiscountIdx);
 }
 
 import { DISCOUNT_KUNGFU_STYLE } from "../perks/constants/discounts";
@@ -189,7 +205,9 @@ export function getCostKungFuStyle(
     if (d.type !== DISCOUNT_KUNGFU_STYLE) {
       return false;
     }
-    if (d.kfType !== type) { return false; }
+    if (d.kfType !== type) {
+      return false;
+    }
     if (d.uids.length === 0) {
       return true;
     }
