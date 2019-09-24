@@ -5,6 +5,8 @@ import * as constants from "../perks/constants/automatics";
 
 import * as dataLoresheet from "../data/loresheets";
 
+import { getSkill } from "../state/skills";
+
 export type TAutomaticsState = IAutomaticCondition[];
 
 export function createState(): TAutomaticsState {
@@ -52,7 +54,7 @@ export function isApplicable(
     case constants.AUTO_CONDITION_ARCHETYPE:
       return auto.archetype === state.archetype;
     case constants.AUTO_CONDITION_SKILL:
-      return auto.value >= state.skills[auto.skill].value;
+      return auto.value >= getSkill(state, auto.skill).value;
   }
   return false;
 }

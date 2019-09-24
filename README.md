@@ -1,4 +1,5 @@
 # LotWCS
+
 Legends of the Wulin Character Sheet
 
 <p align="center">
@@ -7,7 +8,7 @@ Legends of the Wulin Character Sheet
              alt="Build Status">
     </a>
     <a href='https://coveralls.io/github/gentilboulet/LotWCS'>
-        <img src='https://coveralls.io/repos/github/gentilboulet/LotWCS/badge.svg' 
+        <img src='https://coveralls.io/repos/github/gentilboulet/LotWCS/badge.svg'
              alt='Coverage Status' />
     </a>
 </p>
@@ -18,73 +19,565 @@ Currently, there are no plans to provide a character database to users.
 Instead, LotWCS will provide an import/export feature for you to store your characters.
 
 # Technical stuff
+
 Here we will bore you with technical considerations, for developers of LotWCS mainly.
 
 ## App Model
+
 This application uses the standard React-Redux pattern.
 The whole application relies on a Redux Store to store the character information.
 The character evolves from an initial state to the current state through user actions.
 
 The Redux architecture handle state evolutions by applying a list of actions to the current state, returning a new updated state.
-The Redux Store handle the dispatching for actions (from user inputs mainly) to the reducers.
+Those actions are shown in the history. To provide undo functionality, as state only evolve forward, an history replay feature is available.
 
 The state is used to feed React Components to display the character.
 React Components are subdivided by responsibility: container Components are there to link the store to render Components.
 
-## File hierarchy
-The src directory is divided by responsibility:
+## App specifics lingo
 
-### actions
-Here are the action creators, a lot of helper functions present to generate an input to a specific action understandable by the reducers.
+### Loresheets
 
-### components
-__This directory regroups "renderer" components, handling only rendering and catching user inputs.__
+Distinction is made to differentiate secret arts loresheets from standard loresheet.
+Standard loresheets can provide sub options.
+Secret arts can provides techniques.
 
-Theirs props must provide everything they need to know to do their job.
+### Perks
 
-### constants
-Constants definitions, mainly used to specify available action.type value, on which the reducers rely to identify actions.
+Loresheets and kungfu can provide perks to the character. Four types of perks are supported currently.
 
-### containers
-__This directory regroups "containers" components and other functions for reading elements from the state.__
+- Bonuses : direct bonuses provided to the character instantaneously on buy of an option
+- Discounts : offering targeted discount for certain future purchases
+- Effects : "displayed" effect when the provider is selected (for example, benefits from a certain kungfu style)
+- AutomaticCondition : trigger to provide automatically some bonuses (for example, secrets arts are provided for free for certain archetypes or for character with a certain skill value)
 
-Those are obtained by connecting the store and the state to a "renderer" component, following [the canonical method from Redux](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options):
-* mapStateToProps: maps the state to the props, by transforming it, by adding information from static data ;
-* mapDispatchToProps: maps dispach actions to the props, passing through the props the dispatch+action creator, allowing subsequent "renderer" components to trigger actions.
-* mergeProps: merges both previous "sub props" to the one sent to the "renderer component".
-Each container component is connected to a renderer component of the same name.
+# State example
 
-### data
-Static data and some data extraction functions.
+## Character state object
 
-### reducers
-__This directory regroups reducers, performing modifying actions to the state.__
+### "header"
 
-Here are the global reducer, the one plugged to the Redux Store and a lot of sub reducers, handling a specific subset of actions.
-One important rule to note is that no action is applied to the state by different reducers.
+The "header" part of the character correspond to the following entries :
 
-### types
-Typescript types definitions.
-
-## Data flow
-The data trickle down from the state to feed the props of the components.
-
-### Game specifics - handling cost discounts
-
-Some options that you can buy for a character can give a discount on the cost (in destiny/entanglement) of next buys.
-An extra step must be taken to check if the character dispose of enough of destiny/entanglement to buy stuff taking into account discounts.
-
-### Implementation
-
-When a container maps the state to the props of a component, it must check which actions are available (which things can be bought) and it prepares an object representing the cost of the action (representing the cost and the applicable discounts).
-In the static data, costs are plain numbers.
-It is handled by helper functions in the containers/costs.tsx file to prepare this cost object.
-Functions are also provided to check if something is affordable for the character, and checking how eventual cost discounts will be used for the current cost.
-
-To update the store, the dispatch of an action is encapsulated as an anonymous function to be passed to the renderer component through its props.
-This function transforms the input into the action with a creator, and dispatch the action directly.
-The renderer component will execute this function when the user does something.
-For example, to set the character name, this is the function sent to the renderer (to be triggered when the user click to submit a new name) :
+```typescript
+  archetype: 'warrior',
+  concept: 'Example',
+  name: 'Bob Lee',
+  rank: 2,
+  destiny: 20,
+  entanglement: 0,
 ```
-props = { onSetName: (s: string) => dispatch(headerSetName(s)); }
+
+Rank and Archetype is required to match [data/rank.tsx](https://github.com/gentilboulet/LotWCS/blob/master/src/data/ranks.tsx "data/rank.tsx") and [data/archetypes.tsx](https://github.com/gentilboulet/LotWCS/blob/master/src/data/archetypes.tsx "data/archetypes.tsx")
+
+### history
+
+history is the list of all user actions, starting with an `history/INITIAL_STATE` action to generate a blank state.
+Updating the history is the responsibility of a dedicated middleware for the store.
+
+```typescript
+  history: [
+    {
+      type: 'history/INITIAL_STATE'
+    },
+    {
+      type: 'header/SET_RANK',
+      payload: {
+        rank: 2
+      }
+    },
+    {
+      type: 'header/SET_ARCHETYPE',
+      payload: {
+        archetype: 'warrior'
+      }
+    },
+    {
+      type: 'kungfu/OPEN_STYLE',
+      payload: {
+        uid: 'Blossom Harvest',
+        kungfuType: 'KUNGFU_EXTERNAL',
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 1,
+              newValue: 0
+            }
+          ],
+          original: 10
+        }
+      }
+    },
+    {
+      type: 'kungfu/BUY_TECHNIQUE',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 4,
+          original: 4
+        },
+        kungfuType: 'KUNGFU_EXTERNAL',
+        styleUid: 'Blossom Harvest',
+        uid: 'Heart-Fire Temper Skill'
+      }
+    },
+    {
+      type: 'kungfu/OPEN_STYLE',
+      payload: {
+        uid: 'Boundless Prosperity Manual',
+        kungfuType: 'KUNGFU_INTERNAL',
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 1,
+              newValue: 0
+            }
+          ],
+          original: 10
+        }
+      }
+    },
+    {
+      type: 'loresheet/OPEN',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 1,
+          discounts: [],
+          original: 1
+        },
+        uid: 'tigersanddragons'
+      }
+    },
+    {
+      type: 'loresheet/BUY_OPTION',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 3,
+          discounts: [],
+          original: 3
+        },
+        lsUid: 'tigersanddragons',
+        uid: 'sensechi'
+      }
+    },
+    {
+      type: 'skills/BUY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 0,
+              newValue: 18
+            }
+          ],
+          original: 2
+        },
+        name: 'Wu Wei'
+      }
+    },
+    {
+      type: 'skills/BUY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 0,
+              newValue: 16
+            }
+          ],
+          original: 2
+        },
+        name: 'Survival'
+      }
+    },
+    {
+      type: 'skills/BUY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 0,
+              newValue: 14
+            }
+          ],
+          original: 2
+        },
+        name: 'Survival'
+      }
+    },
+    {
+      type: 'skills/BUY_SPECIALITY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 2,
+          discounts: [],
+          original: 2
+        },
+        skill: 'Survival',
+        speciality: 'At Sea'
+      }
+    },
+    {
+      type: 'skills/BUY_SPECIALITY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 2,
+          discounts: [],
+          original: 2
+        },
+        skill: 'Survival',
+        speciality: 'Deserts'
+      }
+    },
+    {
+      type: 'skills/BUY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 0,
+              newValue: 12
+            }
+          ],
+          original: 2
+        },
+        name: 'Medicine'
+      }
+    },
+    {
+      type: 'skills/BUY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 0,
+              newValue: 10
+            }
+          ],
+          original: 2
+        },
+        name: 'Hardiness'
+      }
+    },
+    {
+      type: 'skills/BUY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 0,
+          discounts: [
+            {
+              idx: 0,
+              newValue: 8
+            }
+          ],
+          original: 2
+        },
+        name: 'Hardiness'
+      }
+    },
+    {
+      type: 'skills/BUY_SPECIALITY',
+      payload: {
+        cost: {
+          canPay: true,
+          destiny: 2,
+          discounts: [],
+          original: 2
+        },
+        skill: 'Hardiness',
+        speciality: 'Focusing on Breath (for Warriors)'
+      }
+    }
+  ],
+```
+
+### chi
+
+Chi is an object where key are associated to an object handling the a chi value and its cultivation value. Chis are generated from [data/chi.tsx](https://github.com/gentilboulet/LotWCS/blob/master/src/data/chi.tsx "data/chi.tsx").
+
+```typescript
+  chi: {
+    general: {
+      value: 11,
+      cultivation: 4
+    },
+    wood: {
+      value: 2,
+      cultivation: 2
+    },
+    fire: {
+      value: 0,
+      cultivation: 0
+    },
+    earth: {
+      value: 0,
+      cultivation: 0
+    },
+    water: {
+      value: 0,
+      cultivation: 0
+    },
+    metal: {
+      value: 0,
+      cultivation: 0
+    },
+    enlightened: {
+      value: 0,
+      cultivation: 0
+    },
+    corrupt: {
+      value: 0,
+      cultivation: 0
+    }
+  },
+```
+
+### kungfu
+
+kungfu provide three kinds of information : a list of opened external kungfu, a list of opened internal kungfu and a list of unrestricted internal kungfus (meaning a character can buy more than one technique of each level).
+KUNGFU_EXTERNAL and KUNGFU_INTERNAL are object where key is the uid of a kungfu style, and the associated value is the list of techniques of the style bought.
+noRestrictionInternal is just a list of uids.
+
+```typescript
+  kungfu: {
+    KUNGFU_EXTERNAL: {
+      'Blossom Harvest': [
+        'Heart-Fire Temper Skill'
+      ]
+    },
+    KUNGFU_INTERNAL: {
+      'Boundless Prosperity Manual': [
+        'Retain Balanced Nature',
+        'Act Without Resistance'
+      ]
+    },
+    noRestrictionInternal: []
+  },
+```
+
+### loresheets
+
+loresheets store bought loresheets and their options/techniques.
+Same as kungfu, the object key are loresheets uids and contain a list of bought options/techniques. Bought options consists of object `{uid: string, payload?: any}`.
+
+```typescript
+  loresheets: {
+    tigersanddragons: [
+      {
+        uid: 'sensechi'
+      }
+    ]
+  },
+```
+
+### skills
+
+Value and bought specialities for each skill. Initialised to zero / no speciality with the initial state.
+
+```typescript
+  skills: [
+    {
+      name: 'Awareness',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Confidence',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Crafting',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Finesse',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Hardiness',
+      specialities: [
+        'Focusing on Breath (for Warriors)'
+      ],
+      value: 10
+    },
+    {
+      name: 'Inspire',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Learning',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Medicine',
+      specialities: [],
+      value: 5
+    },
+    {
+      name: 'Might',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Perform',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Politics',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Ride',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Stealth',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Survival',
+      specialities: [
+        'At Sea',
+        'Deserts'
+      ],
+      value: 10
+    },
+    {
+      name: 'Tactics',
+      specialities: [],
+      value: 0
+    },
+    {
+      name: 'Wu Wei',
+      specialities: [],
+      value: 5
+    }
+  ],
+```
+
+### virtues
+
+Describe all bought virtues for a character.
+Initialized at zero by default for the ten common virtues, some loresheet can add other virtues.
+
+```typescript
+  virtues: [
+    {
+      name: 'Honor',
+      value: 0,
+      type: 'VIRTUE_CHIVALROUS'
+    },
+    {
+      name: 'Benevolence',
+      value: 0,
+      type: 'VIRTUE_CHIVALROUS'
+    },
+    {
+      name: 'Righteousness',
+      value: 0,
+      type: 'VIRTUE_CHIVALROUS'
+    },
+    {
+      name: 'Loyalty',
+      value: 0,
+      type: 'VIRTUE_CHIVALROUS'
+    },
+    {
+      name: 'Force',
+      value: 0,
+      type: 'VIRTUE_CHIVALROUS'
+    },
+    {
+      name: 'Revenge',
+      value: 0,
+      type: 'VIRTUE_SELFISH'
+    },
+    {
+      name: 'Individualism',
+      value: 0,
+      type: 'VIRTUE_SELFISH'
+    },
+    {
+      name: 'Obsession',
+      value: 0,
+      type: 'VIRTUE_SELFISH'
+    },
+    {
+      name: 'Ruthlessness',
+      value: 0,
+      type: 'VIRTUE_SELFISH'
+    },
+    {
+      name: 'Ferocity',
+      value: 0,
+      type: 'VIRTUE_SELFISH'
+    }
+  ],
+```
+
+### automatics
+
+List of available automatics to be checked by the automatic middleware.
+Initialized from loresheet data on character creation.
+
+```typescript
+  automatics: [],
+```
+
+List of available discounts and their specific configuration.
+The same discount may be reused for multiple actions if its value is sufficient.
+
+```typescript
+discounts: [
+  {
+    skills: [
+      "Awareness",
+      "Confidence",
+      "Crafting",
+      "Finesse",
+      "Hardiness",
+      "Inspire",
+      "Learning",
+      "Medicine",
+      "Might",
+      "Perform",
+      "Politics",
+      "Ride",
+      "Stealth",
+      "Survival",
+      "Tactics",
+      "Wu Wei"
+    ],
+    type: "DISCOUNT_SKILL",
+    value: 8
+  }
+];
 ```

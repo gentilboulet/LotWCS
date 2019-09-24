@@ -31,7 +31,7 @@ export function kungfuReducer(
             action.payload.kungfuType,
             action.payload.uid
           ),
-          action.payload.cost.destiny
+          action.payload.cost.original
         );
       });
     case getType(actions.buyTechnique):
@@ -51,7 +51,7 @@ export function kungfuReducer(
             action.payload.styleUid
           ),
 
-          action.payload.cost.destiny
+          action.payload.cost.original
         );
       });
     case getType(actions.customStyleName):

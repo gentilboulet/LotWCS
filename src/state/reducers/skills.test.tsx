@@ -8,7 +8,7 @@ import * as dataSkills from "../../data/skills";
 import { zeroCost } from "../costs";
 import { emptyStateFactory } from "../initial";
 import { skillsReducer } from "../reducers/skills";
-import { isSpecialityPresent } from "../skills";
+import { getSkill, isSpecialityPresent } from "../skills";
 
 import { setRank } from "../actions/header";
 import { globalReducer } from "../reducers/global";
@@ -22,11 +22,10 @@ describe("Testing skillsReducer", () => {
   it("should receive a SKILLS_BUY action", () => {
     Object.keys(dataSkills.skills).forEach(key => {
       const skillName = key as dataSkills.TSkillName;
-      const skillInData = dataSkills.skills[skillName];
-      expect(initialState.skills[skillName].value).toBe(0);
-      const action = actions.skillsBuy(skillInData.name, zeroCost);
+      expect(getSkill(initialState, skillName).value).toBe(0);
+      const action = actions.skillsBuy(skillName, zeroCost);
       const state = skillsReducer(initialState, action);
-      expect(state.skills[skillName].value).toBe(5);
+      expect(getSkill(state, skillName).value).toBe(5);
       expect(globalReducer(initialState, action)).toMatchObject(state);
     });
   });
