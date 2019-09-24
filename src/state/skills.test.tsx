@@ -7,6 +7,7 @@ import {
   addSpeciality,
   canBuySkill,
   canBuySpeciality,
+  getSkill,
   increase,
   isSpecialityPresent
 } from "./skills";
@@ -15,23 +16,23 @@ describe("Testing skills state", () => {
   it("should do increase existing skills value", () => {
     (Object.keys(data) as TSkillName[]).forEach(key => {
       const state = emptyStateFactory();
-      expect(state.skills[key].value).toBe(0);
+      expect(getSkill(state, key).value).toBe(0);
       increase(state.skills, key, 5);
-      expect(state.skills[key].value).toBe(5);
+      expect(getSkill(state, key).value).toBe(5);
     });
   });
 
   it("should refuse to increase an overflowing skill value", () => {
     const initialState: IStoreState = emptyStateFactory();
     (Object.keys(data) as TSkillName[]).forEach(key => {
-      expect(initialState.skills[key].value).toBe(0);
+      expect(getSkill(initialState, key).value).toBe(0);
       expect(() => increase(initialState.skills, key, 4)).toThrowError();
     });
   });
 
   it("should add a speciality to an existing skill", () => {
     const state = emptyStateFactory();
-    expect(state.skills.Awareness.specialities).toMatchObject([]);
+    expect(getSkill(state, "Awareness").specialities).toMatchObject([]);
     addSpeciality(state.skills, "Awareness", "Speciality");
     expect(
       isSpecialityPresent(state.skills, "Awareness", "Speciality")
@@ -51,7 +52,7 @@ describe("Testing skills state", () => {
 
   it("should not add a speciality twice", () => {
     const state = emptyStateFactory();
-    expect(state.skills.Awareness.specialities).toMatchObject([]);
+    expect(getSkill(state, "Awareness").specialities).toMatchObject([]);
     addSpeciality(state.skills, "Awareness", "Speciality");
     expect(
       isSpecialityPresent(state.skills, "Awareness", "Speciality")
@@ -65,15 +66,23 @@ describe("Testing skills state", () => {
     const state: IStoreState = testingStateFactory();
     const skill: TSkillName = "Awareness";
 
-    expect(state.skills[skill].value).toBe(0);
+    expect(state.rank).toBe(2);
+    expect(getSkill(state, skill).value).toBe(0);
     expect(canBuySkill(state, skill)).toBeTruthy();
-    // increase(state.skills, skill, 100000);
-    // expect(state.rank).toMatchObject({ name: "4th_rank", value: 2 });
-    // expect(canBuySkill(state, skill)).toBeFalsy();
-    // (state.rank as { name: string; value: number }).value = 1;
-    // expect(canBuySkill(state, skill)).toBeFalsy();
-    // (state.rank as { name: string; value: number }).value = 2;
-    // expect(canBuySkill(state, skill)).toBeTruthy();
+
+    increase(state.skills, skill, 100000);
+    expect(getSkill(state, skill).value).toBe(5);
+    expect(canBuySkill(state, skill)).toBeTruthy();
+
+    increase(state.skills, skill, 100000);
+    expect(getSkill(state, skill).value).toBe(10);
+    expect(canBuySkill(state, skill)).toBeFalsy();
+
+    state.rank = 2;
+    expect(canBuySkill(state, skill)).toBeFalsy();
+
+    state.rank = 3;
+    expect(canBuySkill(state, skill)).toBeTruthy();
   });
 
   it("should check canBuySpeciality", () => {
@@ -82,7 +91,7 @@ describe("Testing skills state", () => {
     const speciality = "Speciality";
 
     expect(canBuySpeciality(state, skill, speciality)).toBeTruthy();
-    // addSpeciality(state.skills, skill, speciality);
-    // expect(canBuySpeciality(state, skill, speciality)).toBeFalsy(); // Not twice
+    addSpeciality(state.skills, skill, speciality);
+    expect(canBuySpeciality(state, skill, speciality)).toBeFalsy(); // Not twice
   });
 });
