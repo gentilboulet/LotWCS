@@ -1,44 +1,49 @@
 import { TChiName } from "../data/chi";
 import { KUNGFU_TYPE } from "../data/kungfu/types";
 import { TSkillName } from "../data/skills";
+import { IDataVirtueType } from "../data/virtues";
 import * as constants from "./constants/discounts";
 
-export interface IDiscountSkill {
+interface IGenericDiscount {
+  type: string;
+  value: number;
+}
+
+export interface IDiscountSkill extends IGenericDiscount {
   type: constants.DISCOUNT_SKILL;
   skills: TSkillName[];
-  value: number;
 }
 
-export interface IDiscountChi {
+export interface IDiscountChi extends IGenericDiscount {
   type: constants.DISCOUNT_CHI;
   chis: TChiName[];
-  value: number;
 }
 
-export interface IDiscountLoresheet {
+export interface IDiscountLoresheet extends IGenericDiscount {
   type: constants.DISCOUNT_LORESHEET;
   uids: string[];
-  value: number;
 }
 
-export interface IDiscountLoresheetOption {
+export interface IDiscountLoresheetOption extends IGenericDiscount {
   type: constants.DISCOUNT_LORESHEET_OPTION;
   uids: Array<{ lsUid: string; optUid: string[] }>;
-  value: number;
 }
 
-export interface IDiscountKungfu {
+export interface IDiscountKungfu extends IGenericDiscount {
   type: constants.DISCOUNT_KUNGFU_STYLE;
   kfType: KUNGFU_TYPE;
   uids: string[];
-  value: number;
 }
 
-export interface IDiscountKungfuTechnique {
+export interface IDiscountKungfuTechnique extends IGenericDiscount {
   type: constants.DISCOUNT_KUNGFU_TECHNIQUE;
   uids: Array<{ styleUid: string }>;
   kfType: KUNGFU_TYPE[];
-  value: number;
+}
+
+export interface IDiscountVirtue extends IGenericDiscount {
+  type: constants.DISCOUNT_VIRTUE;
+  virtues: Array<{ name: string; type: IDataVirtueType }>;
 }
 
 export type IDiscount =
@@ -47,7 +52,8 @@ export type IDiscount =
   | IDiscountLoresheet
   | IDiscountLoresheetOption
   | IDiscountKungfu
-  | IDiscountKungfuTechnique;
+  | IDiscountKungfuTechnique
+  | IDiscountVirtue;
 
 export function isDiscount(r: any): boolean {
   switch (r.type) {
@@ -57,6 +63,7 @@ export function isDiscount(r: any): boolean {
     case constants.DISCOUNT_LORESHEET_OPTION:
     case constants.DISCOUNT_KUNGFU_STYLE:
     case constants.DISCOUNT_KUNGFU_TECHNIQUE:
+    case constants.DISCOUNT_VIRTUE:
       return true;
     default:
       return false;

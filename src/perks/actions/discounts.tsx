@@ -1,8 +1,9 @@
 import * as constants from "../constants/discounts";
-import { IDiscountKungfu, IDiscountSkill } from "../discounts";
+import { IDiscountKungfu, IDiscountSkill, IDiscountVirtue } from "../discounts";
 
 import { KUNGFU_TYPE } from "../../data/kungfu/types";
 import { skills, TSkillName } from "../../data/skills";
+import { IDataVirtueType } from "../../data/virtues";
 
 export function discountSkillFactory(
   value: number,
@@ -29,4 +30,11 @@ export function discountKungfuFactory(
   } else {
     return { type: constants.DISCOUNT_KUNGFU_STYLE, kfType, uids: [], value };
   }
+}
+
+export function discountVirtueFactory(
+  value: number,
+  virtues: Array<{ name: string; type: IDataVirtueType }>
+): IDiscountVirtue {
+  return { type: constants.DISCOUNT_VIRTUE, virtues, value };
 }
