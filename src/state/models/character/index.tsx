@@ -1,6 +1,7 @@
 /* eslint-disable import/first */
 import { TArchetype } from "../../../data/archetypes";
 import { TRank } from "../../../data/ranks";
+import { TGearState } from "../../gear";
 import { TAutomaticsState } from "./automatics";
 import { TChiState } from "./chi";
 import { TDiscountsState } from "./discounts";
@@ -23,11 +24,13 @@ export interface ICharacterState {
   loresheets: ILoresheetsState;
   skills: TSkillsState;
   virtues: TVirtuesState;
+  gear: TGearState;
 
   automatics: TAutomaticsState;
   discounts: TDiscountsState;
 }
 
+import { createState as createGearState } from "./../../gear";
 import { createState as createAutomaticsState } from "./automatics";
 import { createState as createChiState } from "./chi";
 import { createState as createDiscountsState } from "./discounts";
@@ -48,6 +51,7 @@ export function initialStateFactory(): ICharacterState {
     loresheets: createLoresheetsState(),
     skills: createSkillsState(),
     virtues: createVirtuesState(),
+    gear: createGearState(),
 
     automatics: createAutomaticsState(),
 
