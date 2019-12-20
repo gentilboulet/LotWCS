@@ -6,34 +6,32 @@ import { headerReducer } from "./header";
 import * as dataRank from "../../../data/ranks";
 import * as actions from "../../actions/character/header";
 
-const initialState = () => initialStateFactory();
-
 describe("Testing headerReducer", () => {
   it("should receive a HEADER_SET_NAME action", () => {
-    expect(initialState().name).toBeUndefined();
+    expect(initialStateFactory().name).toBeUndefined();
     const action = actions.setName("Robert");
-    const state = headerReducer(initialState(), action);
+    const state = headerReducer(initialStateFactory(), action);
     expect(state.name).toBe("Robert");
   });
 
   it("should receive a HEADER_SET_CONCEPT action", () => {
-    expect(initialState().concept).toBeUndefined();
+    expect(initialStateFactory().concept).toBeUndefined();
     const action = actions.setConcept("The Black Dog of Jianghu");
-    const state = headerReducer(initialState(), action);
+    const state = headerReducer(initialStateFactory(), action);
     expect(state.concept).toBe("The Black Dog of Jianghu");
   });
 
   it("should receive a HEADER_SET_ARCHETYPE action", () => {
-    expect(initialState().archetype).toBeUndefined();
+    expect(initialStateFactory().archetype).toBeUndefined();
     const action = actions.setArchetype("warrior");
-    const state = headerReducer(initialState(), action);
+    const state = headerReducer(initialStateFactory(), action);
     expect(state.archetype).toBe("warrior");
   });
 
   it("should receive a HEADER_SET_RANK action", () => {
-    expect(initialState().rank).toBeUndefined();
+    expect(initialStateFactory().rank).toBeUndefined();
     const action = actions.setRank(2);
-    const state = headerReducer(initialState(), action);
+    const state = headerReducer(initialStateFactory(), action);
     const r = dataRank.getRank(state.rank) as dataRank.IDataRank;
     expect(r.name).toBe("4th Rank");
   });
@@ -42,9 +40,9 @@ describe("Testing headerReducer", () => {
     const junk = { type: "JUNK_ACTION" };
 
     const state = headerReducer(
-      initialState(),
+      initialStateFactory(),
       junk as ActionType<typeof actions>,
     );
-    expect(state).toMatchObject(initialState());
+    expect(state).toMatchObject(initialStateFactory());
   });
 });

@@ -42,6 +42,37 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
+  "gear": Object {
+    "armors": Array [
+      Object {
+        "description": "shiny medium armor",
+        "name": "medium armor name",
+        "type": "Medium Armor",
+      },
+      Object {
+        "description": "Heavy armor worn by soldiers of the Forbidden City",
+        "name": "heavy han armor",
+        "type": "Heavy Armor",
+      },
+    ],
+    "weapons": Array [
+      Object {
+        "description": "Flexible snake sword",
+        "name": "Flexible simple weapon",
+        "type": Array [
+          "Massive",
+        ],
+      },
+      Object {
+        "description": "A sword so big it could chop horses in one cleave",
+        "name": "Horse splitter",
+        "type": Array [
+          "Massive",
+          "Sword",
+        ],
+      },
+    ],
+  },
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
