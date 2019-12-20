@@ -42,6 +42,10 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
+  "gear": Object {
+    "armors": Array [],
+    "weapons": Array [],
+  },
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
@@ -229,6 +233,10 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
+  "gear": Object {
+    "armors": Array [],
+    "weapons": Array [],
+  },
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
