@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router";
 
 import AppIntro from "../components/AppIntro";
 import AppPage from "../components/AppPage";
-import PlaceHodler from "../components/PlaceHolder";
+import { Gear } from "../components/Character/Gear";
 
 class RouteGear extends React.PureComponent<RouteComponentProps<{}>> {
   public render() {
@@ -11,7 +11,7 @@ class RouteGear extends React.PureComponent<RouteComponentProps<{}>> {
       <div>
         <AppIntro>Empty Intro</AppIntro>
         <AppPage>
-          <PlaceHodler>Soon to be Gear</PlaceHodler>
+          <Gear />
         </AppPage>
       </div>
     );

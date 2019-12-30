@@ -7,8 +7,7 @@ export interface IArmor {
   description: string;
 }
 export interface IWeapon {
-  type: WEAPON_TYPE;
-  special?: WEAPON_TYPE;
+  type: [WEAPON_TYPE] | [WEAPON_TYPE, WEAPON_TYPE];
   name: string;
   description: string;
 }

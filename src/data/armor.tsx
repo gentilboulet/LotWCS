@@ -1,5 +1,3 @@
-export type ARMOR_TYPE = "Light Armor" | "Medium Armor" | "Heavy Armor";
-
 import {
   combatStatistic,
   increaseBaseChiForThreshold,
@@ -7,13 +5,14 @@ import {
 } from "../perks/actions/effects";
 import { IEffect } from "../perks/effects";
 
+export type ARMOR_TYPE = "Light Armor" | "Medium Armor" | "Heavy Armor";
 export interface IDataArmorType {
   type: ARMOR_TYPE;
   effects: IEffect[];
   cost: number;
 }
 
-export const armor: IDataArmorType[] = [
+export const armors: IDataArmorType[] = [
   {
     type: "Light Armor",
     effects: [increaseBaseChiForThreshold(5)],
@@ -42,3 +41,8 @@ export const armor: IDataArmorType[] = [
     cost: 2
   }
 ];
+
+export function getEffects(armor: ARMOR_TYPE): IEffect[] {
+  const data = armors.find(a => a.type === armor) as IDataArmorType;
+  return data.effects;
+}
