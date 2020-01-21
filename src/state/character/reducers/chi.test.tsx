@@ -1,13 +1,13 @@
-import { testingStateFactory } from "../initial";
-import { IStoreState } from "../type";
+import { testingStateFactory } from "../models/initial";
+import { ICharacterState } from "../models/type";
 
 import { chiReducer, IChiAction } from "./chi";
 import { globalReducer } from "./global";
 
 import * as actions from "../actions/chi";
-import { zeroCost } from "../costs";
+import { zeroCost } from "../models/costs";
 
-const initialState: IStoreState = testingStateFactory();
+const initialState: ICharacterState = testingStateFactory();
 
 describe("Testing chiReducer", () => {
   it("should receive a CHI_BUY action", () => {

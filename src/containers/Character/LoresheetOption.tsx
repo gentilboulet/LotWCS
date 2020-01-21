@@ -9,7 +9,7 @@ import {
   canBuyLoresheetOption,
   isLoresheetOptionPresent
 } from "../../state/loresheets";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import LoresheetOption, {
   ILoresheetOptionProps
@@ -33,7 +33,7 @@ interface IProps {
   uid: string;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   const lsState = state.loresheets[props.lsUid];
   let payloads;
   if (lsState) {

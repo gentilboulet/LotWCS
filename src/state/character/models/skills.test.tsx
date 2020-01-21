@@ -1,6 +1,6 @@
-import { IStoreState } from "./type";
+import { ICharacterState } from "./type";
 
-import { skills as data, TSkillName } from "../data/skills";
+import { skills as data, TSkillName } from "../../../data/skills";
 
 import { emptyStateFactory, testingStateFactory } from "./initial";
 import {
@@ -23,7 +23,7 @@ describe("Testing skills state", () => {
   });
 
   it("should refuse to increase an overflowing skill value", () => {
-    const initialState: IStoreState = emptyStateFactory();
+    const initialState: ICharacterState = emptyStateFactory();
     (Object.keys(data) as TSkillName[]).forEach(key => {
       expect(getSkill(initialState, key).value).toBe(0);
       expect(() => increase(initialState.skills, key, 4)).toThrowError();
@@ -63,7 +63,7 @@ describe("Testing skills state", () => {
   });
 
   it("should check canBuySkill", () => {
-    const state: IStoreState = testingStateFactory();
+    const state: ICharacterState = testingStateFactory();
     const skill: TSkillName = "Awareness";
 
     expect(state.rank).toBe(2);
@@ -86,7 +86,7 @@ describe("Testing skills state", () => {
   });
 
   it("should check canBuySpeciality", () => {
-    const state: IStoreState = testingStateFactory();
+    const state: ICharacterState = testingStateFactory();
     const skill = "Awareness";
     const speciality = "Speciality";
 

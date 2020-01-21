@@ -1,13 +1,13 @@
-import * as data from "../data/ranks";
-import { IStoreState } from "./type";
+import * as data from "../../../data/ranks";
+import { ICharacterState } from "./type";
 
 // Sub Reducers
-import { IBonus, isBonus } from "../perks/bonuses";
-import { IDiscount, isDiscount } from "../perks/discounts";
+import { IBonus, isBonus } from "../../../perks/bonuses";
+import { IDiscount, isDiscount } from "../../../perks/discounts";
 import { applyBonuses } from "./bonuses";
 import { pushToDiscounts } from "./discounts";
 
-export function setRank(state: IStoreState, rank: data.TRank): void {
+export function setRank(state: ICharacterState, rank: data.TRank): void {
   const dataRank = data.getRank(rank) as data.IDataRank;
   state.rank = dataRank.value;
   applyBonuses(state, dataRank.perks.filter(p => isBonus(p)) as IBonus[]);

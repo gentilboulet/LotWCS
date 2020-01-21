@@ -3,9 +3,9 @@ import { emptyStateFactory } from "./initial";
 import { applyBonuses } from "./bonuses";
 import { getSkill } from "./skills";
 
-import { IBonus } from "../perks/bonuses";
+import { IBonus } from "../../../perks/bonuses";
 
-import * as actions from "../perks/actions/bonuses";
+import * as actions from "../../../perks/actions/bonuses";
 
 const createState = emptyStateFactory;
 

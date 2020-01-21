@@ -1,8 +1,8 @@
 import { createAction } from "typesafe-actions";
 
-import * as dataKungFu from "../../data/kungfu";
-import { KUNGFU_TYPE } from "../../data/kungfu/types";
-import { ICost } from "../costs";
+import * as dataKungFu from "../../../data/kungfu";
+import { KUNGFU_TYPE } from "../../../data/kungfu/types";
+import { ICost } from "../models/costs";
 
 export const openStyle = createAction(
   "kungfu/OPEN_STYLE",

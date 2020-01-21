@@ -1,11 +1,14 @@
-import { IStoreState } from "./type";
+import { ICharacterState } from "./type";
 
-import { IAutomaticCondition, isAutomaticCondition } from "../perks/automatics";
-import * as constants from "../perks/constants/automatics";
+import {
+  IAutomaticCondition,
+  isAutomaticCondition
+} from "../../../perks/automatics";
+import * as constants from "../../../perks/constants/automatics";
 
-import * as dataLoresheet from "../data/loresheets";
+import * as dataLoresheet from "../../../data/loresheets";
 
-import { getSkill } from "../state/skills";
+import { getSkill } from "./skills";
 
 export type TAutomaticsState = IAutomaticCondition[];
 
@@ -14,8 +17,8 @@ export function createState(): TAutomaticsState {
 }
 
 export function isAutomaticConditionChanged(
-  oldState: IStoreState,
-  newState: IStoreState
+  oldState: ICharacterState,
+  newState: ICharacterState
 ) {
   if (oldState.archetype !== newState.archetype) {
     return true;
@@ -47,7 +50,7 @@ export function getAutomatics(): IAutomaticCondition[] {
 }
 
 export function isApplicable(
-  state: IStoreState,
+  state: ICharacterState,
   auto: IAutomaticCondition
 ): boolean {
   switch (auto.type) {
@@ -56,5 +59,5 @@ export function isApplicable(
     case constants.AUTO_CONDITION_SKILL:
       return auto.value >= getSkill(state, auto.skill).value;
   }
-  return false;
+  // return false;
 }

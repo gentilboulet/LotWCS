@@ -1,7 +1,7 @@
 import { createAction } from "typesafe-actions";
 
-import * as dataArchetypes from "../../data/archetypes";
-import * as dataRanks from "../../data/ranks";
+import * as dataArchetypes from "../../../data/archetypes";
+import * as dataRanks from "../../../data/ranks";
 
 export const setName = createAction(
   "header/SET_NAME",

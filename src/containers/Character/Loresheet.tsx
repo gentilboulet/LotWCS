@@ -6,7 +6,7 @@ import { getCostOpenLoresheet, ICost } from "../../state/costs";
 
 import * as actions from "../../state/actions/loresheets";
 import { canOpenLoresheet, isLoresheetPresent } from "../../state/loresheets";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import Loresheet, {
   ILoresheetProps
@@ -27,7 +27,7 @@ interface IProps {
   uid: string;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   return {
     canOpen: canOpenLoresheet(state, props.uid),
     cost: getCostOpenLoresheet(state, props.uid),

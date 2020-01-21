@@ -9,7 +9,7 @@ import {
   canBuyKungFuTechnique,
   isStyleTechniquePresent
 } from "../../state/kungfu";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import ExternalKungFuTechnique, {
   IExternalKungFuTechniqueProps
@@ -33,7 +33,7 @@ interface IProps {
   uid: string;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   return {
     canBuy: canBuyKungFuTechnique(
       state.kungfu,

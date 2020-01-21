@@ -1,19 +1,19 @@
 import { ActionType } from "typesafe-actions";
 
 import * as actions from "../actions/skills";
-import { IStoreState } from "../type";
+import { ICharacterState } from "../models/type";
 
-import * as dataSkills from "../../data/skills";
+import * as dataSkills from "../../../data/skills";
 
-import { zeroCost } from "../costs";
-import { emptyStateFactory } from "../initial";
+import { zeroCost } from "../models/costs";
+import { emptyStateFactory } from "../models/initial";
+import { getSkill, isSpecialityPresent } from "../models/skills";
 import { skillsReducer } from "../reducers/skills";
-import { getSkill, isSpecialityPresent } from "../skills";
 
 import { setRank } from "../actions/header";
 import { globalReducer } from "../reducers/global";
 
-const initialState: IStoreState = globalReducer(
+const initialState: ICharacterState = globalReducer(
   emptyStateFactory(),
   setRank(2)
 );

@@ -1,5 +1,5 @@
-import * as data from "../../data/loresheets";
-import { zeroCost } from "../costs";
+import * as data from "../../../data/loresheets";
+import { zeroCost } from "../models/costs";
 import * as actions from "./loresheets";
 
 const refLoresheetUid = "wulinsage";

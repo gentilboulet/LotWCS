@@ -2,15 +2,15 @@ import produce from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions/loresheets";
-import { IStoreState } from "../type";
+import { ICharacterState } from "../models/type";
 
-import { applyCost } from "../costs";
-import { buyLoresheetOption, openLoresheet } from "../loresheets";
+import { buyLoresheetOption, openLoresheet } from "../models//loresheets";
+import { applyCost } from "../models/costs";
 
 export function loresheetsReducer(
-  baseState: IStoreState,
+  baseState: ICharacterState,
   action: ActionType<typeof actions>
-): IStoreState {
+): ICharacterState {
   switch (action.type) {
     case getType(actions.open):
       return produce(baseState, draftState => {

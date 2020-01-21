@@ -1,5 +1,5 @@
 import { IAction } from "./actions/types";
-import { IStoreState } from "./type";
+import { ICharacterState } from "./type";
 
 import * as header from "./actions/header";
 import { resetToInitialState } from "./actions/history";
@@ -7,7 +7,7 @@ import { emptyStateFactory } from "./initial";
 
 import { replayHistory } from "./history";
 
-const initialState: IStoreState = emptyStateFactory();
+const initialState: ICharacterState = emptyStateFactory();
 
 describe("Testing pushToHistory", () => {
   it("should push actions to history", () => {

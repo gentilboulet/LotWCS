@@ -1,7 +1,7 @@
 import { ICost } from "./costs";
-import { IStoreState } from "./type";
+import { ICharacterState } from "./type";
 
-import { IDiscount, isDiscount } from "../perks/discounts";
+import { IDiscount, isDiscount } from "../../../perks/discounts";
 
 export type TDiscountsState = IDiscount[];
 
@@ -10,7 +10,7 @@ export function createState(): TDiscountsState {
 }
 
 export function pushToDiscounts(
-  state: IStoreState,
+  state: ICharacterState,
   discounts: IDiscount[]
 ): void {
   discounts
@@ -21,7 +21,7 @@ export function pushToDiscounts(
 }
 
 export function getDiscountIndexes(
-  state: IStoreState,
+  state: ICharacterState,
   predicate: (d: IDiscount) => boolean
 ) {
   const discountIdx = state.discounts
@@ -39,7 +39,7 @@ export function getDiscountIndexes(
   }
 }
 
-export function updateDiscounts(state: IStoreState, cost: ICost): void {
+export function updateDiscounts(state: ICharacterState, cost: ICost): void {
   // Update the discount
   if (!cost.discounts) {
     return;

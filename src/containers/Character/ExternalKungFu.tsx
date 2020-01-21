@@ -9,7 +9,7 @@ import {
   getExternalKungFuStatistics,
   isStylePresent
 } from "../../state/kungfu";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import ExternalKungFu, {
   IExternalKungFuProps
@@ -37,7 +37,7 @@ interface IMapDispatchToProps {
   onOpen: (cost: ICost) => void;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   const isOpen = isStylePresent(state.kungfu, KUNGFU_EXTERNAL, props.uid);
 
   return {

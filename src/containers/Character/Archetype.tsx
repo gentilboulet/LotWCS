@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import * as actions from "../../state/actions/header";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import { TArchetype } from "../../data/archetypes";
 
@@ -20,7 +20,7 @@ interface IMapDispatchToProps {
   onChange: (s: TArchetype) => void;
 }
 
-function mapStateToProps(state: IStoreState): IMapStateToProps {
+function mapStateToProps(state: ICharacterState): IMapStateToProps {
   return {
     locked: state.archetype !== undefined,
     value: state.archetype !== undefined ? state.archetype : ""

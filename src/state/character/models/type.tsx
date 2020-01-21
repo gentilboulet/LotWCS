@@ -1,7 +1,5 @@
-import { THistoryState } from "./history";
-
-import { TArchetype } from "../data/archetypes";
-import { TRank } from "../data/ranks";
+import { TArchetype } from "../../../data/archetypes";
+import { TRank } from "../../../data/ranks";
 import { TAutomaticsState } from "./automatics";
 import { TChiState } from "./chi";
 import { TDiscountsState } from "./discounts";
@@ -10,7 +8,7 @@ import { ILoresheetsState } from "./loresheets";
 import { TSkillsState } from "./skills";
 import { TVirtuesState } from "./virtues";
 
-export interface IStoreState {
+export interface ICharacterState {
   name: string | undefined;
   concept: string | undefined;
   archetype: TArchetype | undefined;
@@ -18,8 +16,6 @@ export interface IStoreState {
 
   entanglement: number;
   destiny: number;
-
-  history: THistoryState;
 
   chi: TChiState;
   kungfu: IKungFuState;

@@ -1,17 +1,17 @@
 import { ActionType } from "typesafe-actions";
 
-import { testingStateFactory } from "../initial";
-import { IStoreState } from "../type";
+import { testingStateFactory } from "../models/initial";
+import { ICharacterState } from "../models/type";
 
-import * as data from "../../data/kungfu";
-import * as types from "../../data/kungfu/types";
-import { zeroCost } from "../costs";
+import * as data from "../../../data/kungfu";
+import * as types from "../../../data/kungfu/types";
+import { zeroCost } from "../models/costs";
 
 import * as actions from "../actions/kungfu";
 
 import { kungfuReducer } from "./kungfu";
 
-const testingState: IStoreState = testingStateFactory();
+const testingState: ICharacterState = testingStateFactory();
 
 describe("Testing openStyle action", () => {
   it("should accept a new external style", () => {

@@ -1,17 +1,17 @@
 import { ActionType } from "typesafe-actions";
 
-import { testingStateFactory } from "../initial";
-import { IStoreState } from "../type";
+import { testingStateFactory } from "../models/initial";
+import { ICharacterState } from "../models/type";
 
-import * as dataVirtues from "../../data/virtues";
+import * as dataVirtues from "../../../data/virtues";
 import * as actions from "../actions/virtues";
-import { zeroCost } from "../costs";
-import { isVirtuePresent } from "../virtues";
+import { zeroCost } from "../models/costs";
+import { isVirtuePresent } from "../models/virtues";
 
 import { globalReducer } from "./global";
 import { virtuesReducer } from "./virtues";
 
-const initialState: IStoreState = testingStateFactory();
+const initialState: ICharacterState = testingStateFactory();
 
 describe("Testing virtueReducer", () => {
   it("should receive a VIRTUE_INCREASE action with an existing virtue", () => {

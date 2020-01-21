@@ -5,7 +5,7 @@ import { ActionType } from "typesafe-actions";
 import * as actions from "../../state/actions/chi";
 import { canBuyChi } from "../../state/chi";
 import { getCostChi, ICost } from "../../state/costs";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import Chi, { IChiProps } from "../../components/Character/Chi";
 import { TChiName } from "../../data/chi";
@@ -26,7 +26,7 @@ interface IProps {
   name: TChiName;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   return {
     canBuy: canBuyChi(/*state, props.name*/),
     cost: getCostChi(state, props.name),

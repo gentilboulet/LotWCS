@@ -2,16 +2,16 @@ import produce from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions/skills";
-import { maxSkillBonus } from "../derived";
+import { maxSkillBonus } from "../models/derived";
 
-import { applyCost } from "../costs";
-import { addSpeciality, increase } from "../skills";
-import { IStoreState } from "../type";
+import { applyCost } from "../models/costs";
+import { addSpeciality, increase } from "../models/skills";
+import { ICharacterState } from "../models/type";
 
 export function skillsReducer(
-  baseState: IStoreState,
+  baseState: ICharacterState,
   action: ActionType<typeof actions>
-): IStoreState {
+): ICharacterState {
   switch (action.type) {
     case getType(actions.skillsBuy):
       return produce(baseState, draftState => {

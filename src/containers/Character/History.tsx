@@ -6,7 +6,7 @@ import History, { IHistoryProps } from "../../components/Character/History";
 
 import * as actions from "../../state/actions/history";
 import { IAction } from "../../state/actions/types";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 interface IMapStateToProps {
   history: IAction[];
@@ -16,7 +16,7 @@ interface IMapDispatchToProps {
   onDelete: (id: number) => void;
 }
 
-function mapStateToProps(state: IStoreState): IMapStateToProps {
+function mapStateToProps(state: ICharacterState): IMapStateToProps {
   return { history: state.history };
 }
 

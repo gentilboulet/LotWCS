@@ -3,7 +3,7 @@ import { initialStateFactory } from "./initial";
 import * as derived from "./derived";
 import * as header from "./header";
 
-import * as dataRank from "../data/ranks";
+import * as dataRank from "../../../data/ranks";
 describe("chiAura", () => {
   it("should return zero with an empty state", () => {
     const state = initialStateFactory();

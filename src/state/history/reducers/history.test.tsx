@@ -2,7 +2,7 @@ import { ActionType } from "typesafe-actions";
 
 import { IAction } from "../actions/types";
 import { testingStateFactory } from "../initial";
-import { IStoreState } from "../type";
+import { ICharacterState } from "../type";
 
 import * as header from "../actions/header";
 import * as actions from "../actions/history";
@@ -10,7 +10,7 @@ import * as history from "../history";
 
 import { historyReducer } from "./history";
 
-const initialState: IStoreState = testingStateFactory();
+const initialState: ICharacterState = testingStateFactory();
 
 describe("Testing historyReducer", () => {
   it("should receive an HISTORY_DELETE action", () => {

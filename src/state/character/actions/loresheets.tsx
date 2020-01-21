@@ -1,7 +1,7 @@
 import { createAction } from "typesafe-actions";
 
-import * as dataLoresheets from "../../data/loresheets";
-import { ICost } from "../costs";
+import * as dataLoresheets from "../../../data/loresheets";
+import { ICost } from "../models/costs";
 
 export const open = createAction(
   "loresheet/OPEN",

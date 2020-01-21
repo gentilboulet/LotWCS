@@ -1,10 +1,10 @@
-import * as dataKungfus from "../../data/kungfu";
+import * as dataKungfus from "../../../data/kungfu";
 import {
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
   KUNGFU_TYPE
-} from "../../data/kungfu/types";
-import { zeroCost } from "../costs";
+} from "../../../data/kungfu/types";
+import { zeroCost } from "../models/costs";
 import * as actions from "./kungfu";
 
 describe("Testing external kungfu action creator", () => {

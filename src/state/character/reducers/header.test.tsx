@@ -1,10 +1,10 @@
 import { ActionType } from "typesafe-actions";
-import { initialStateFactory } from "../initial";
+import { initialStateFactory } from "../models/initial";
 
 import { globalReducer } from "./global";
 import { headerReducer } from "./header";
 
-import * as dataRank from "../../data/ranks";
+import * as dataRank from "../../../data/ranks";
 
 import * as actions from "../actions/header";
 

@@ -1,5 +1,5 @@
-import * as data from "../data/kungfu";
-import { KUNGFU_EXTERNAL, KUNGFU_INTERNAL } from "../data/kungfu/types";
+import * as data from "../../../data/kungfu";
+import { KUNGFU_EXTERNAL, KUNGFU_INTERNAL } from "../../../data/kungfu/types";
 import * as kungfu from "./kungfu";
 
 const _createStateWithAllStyles = () => {

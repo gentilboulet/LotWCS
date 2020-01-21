@@ -1,5 +1,5 @@
-import { IDataVirtue, IDataVirtueType, virtues } from "../data/virtues";
-import { IStoreState } from "./type";
+import { IDataVirtue, IDataVirtueType, virtues } from "../../../data/virtues";
+import { ICharacterState } from "./type";
 
 export interface IVirtueState {
   name: string;
@@ -46,7 +46,7 @@ export function isVirtuePresent(state: TVirtuesState, name: string): boolean {
   return state.findIndex(virtue => name === virtue.name) !== -1;
 }
 
-export function canBuyVirtue(state: IStoreState, name: string): boolean {
+export function canBuyVirtue(state: ICharacterState, name: string): boolean {
   const findIndex = state.virtues.findIndex(v => name === v.name);
   if (findIndex === -1) {
     return false;

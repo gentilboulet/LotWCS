@@ -2,15 +2,17 @@ import { produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions/chi";
-import { applyCost } from "../costs";
-import { IStoreState } from "../type";
+import { applyCost } from "../models/costs";
+import { ICharacterState } from "../models/type";
 
-import { increase } from "../chi";
+import { increase } from "../models/chi";
+
+export type IChiAction = ActionType<typeof actions>;
 
 export function chiReducer(
-  baseState: IStoreState,
-  action: ActionType<typeof actions>
-): IStoreState {
+  baseState: ICharacterState,
+  action: IChiAction
+): ICharacterState {
   switch (action.type) {
     case getType(actions.chiBuy):
       return produce(baseState, draftState => {

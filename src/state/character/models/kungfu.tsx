@@ -3,7 +3,7 @@ import {
   kungfuTechniqueData,
   validateKungFuStyle,
   validateKungFuTechnique
-} from "../data/kungfu";
+} from "../../../data/kungfu";
 import {
   IDataExternalKungfu,
   IDataExternalKungfuStatistics,
@@ -12,8 +12,8 @@ import {
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
   KUNGFU_TYPE
-} from "../data/kungfu/types";
-import * as effects from "../perks/constants/effects";
+} from "../../../data/kungfu/types";
+import * as effects from "../../../perks/constants/effects";
 
 export interface IKungFuState {
   KUNGFU_EXTERNAL: { [uid: string]: string[] };

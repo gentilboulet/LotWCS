@@ -1,18 +1,18 @@
 import { ActionType } from "typesafe-actions";
 
-import { testingStateFactory } from "../initial";
-import { IStoreState } from "../type";
+import { testingStateFactory } from "../models/initial";
+import { ICharacterState } from "../models/type";
 
 import * as actions from "../actions/loresheets";
-import { zeroCost } from "../costs";
-import * as loresheets from "../loresheets";
+import { zeroCost } from "../models/costs";
+import * as loresheets from "../models/loresheets";
 
 import { globalReducer } from "../reducers/global";
 import { loresheetsReducer } from "../reducers/loresheets";
 
-import * as data from "../../data/loresheets";
+import * as data from "../../../data/loresheets";
 
-const initialState: IStoreState = testingStateFactory();
+const initialState: ICharacterState = testingStateFactory();
 
 const dataLoresheets = data.getLoresheets(data.isLoresheet);
 

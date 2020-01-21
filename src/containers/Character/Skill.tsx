@@ -5,7 +5,7 @@ import { ActionType } from "typesafe-actions";
 import * as actions from "../../state/actions/skills";
 import { getCostSkill, ICost } from "../../state/costs";
 import { canBuySkill, getSkill } from "../../state/skills";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import { TSkillName } from "../../data/skills";
 
@@ -26,7 +26,7 @@ interface IMapDispatchToProps {
   onBuy: (cost: ICost) => void;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   return {
     canBuy: canBuySkill(state, props.name),
     cost: getCostSkill(state, props.name),

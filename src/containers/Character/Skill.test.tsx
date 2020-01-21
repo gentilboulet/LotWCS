@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 import Skill from "./Skill";
 
 import { IAction } from "../../state/actions/types";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import { createStore } from "redux";
 import { testingStateFactory } from "../../state/initial";
@@ -12,7 +12,7 @@ import { globalReducer } from "../../state/reducers/global";
 
 import { Provider } from "react-redux";
 
-const store = createStore<IStoreState, IAction, any, any>(
+const store = createStore<ICharacterState, IAction, any, any>(
   globalReducer,
   testingStateFactory()
 );

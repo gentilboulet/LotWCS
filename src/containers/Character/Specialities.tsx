@@ -5,7 +5,7 @@ import { ActionType } from "typesafe-actions";
 import * as actions from "../../state/actions/skills";
 import { getCostSpeciality, ICost } from "../../state/costs";
 import { canBuySpeciality, getSkill } from "../../state/skills";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import { skills as data, TSkillName } from "../../data/skills";
 
@@ -30,7 +30,7 @@ interface IMapDispatchToProps {
   onBuy: (speciality: string, cost: ICost) => void;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   const newSpecialityAvailability = {
     canBuy: canBuySpeciality(state, props.skill, ""),
     cost: getCostSpeciality(state),

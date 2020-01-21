@@ -1,6 +1,6 @@
-import { skills as data, TSkillName } from "../data/skills";
+import { skills as data, TSkillName } from "../../../data/skills";
 import { maxSkillBonus } from "./derived";
-import { IStoreState } from "./type";
+import { ICharacterState } from "./type";
 
 interface ISkill {
   name: TSkillName;
@@ -59,7 +59,7 @@ export function addSpeciality(
 }
 
 export function canBuySkill(
-  state: IStoreState,
+  state: ICharacterState,
   skillName: TSkillName
 ): boolean {
   const value = getSkill(state, skillName).value;
@@ -68,7 +68,7 @@ export function canBuySkill(
 }
 
 export function canBuySpeciality(
-  state: IStoreState,
+  state: ICharacterState,
   skillName: TSkillName,
   speciality: string
 ): boolean {
@@ -79,6 +79,6 @@ function _getSkill(state: TSkillsState, skillName: TSkillName) {
   return state.find(s => s.name === skillName) as ISkill;
 }
 
-export function getSkill(state: IStoreState, skillName: TSkillName) {
+export function getSkill(state: ICharacterState, skillName: TSkillName) {
   return _getSkill(state.skills, skillName);
 }

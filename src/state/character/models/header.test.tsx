@@ -2,7 +2,7 @@ import { initialStateFactory } from "./initial";
 
 import * as header from "./header";
 
-import * as dataRank from "../data/ranks";
+import * as dataRank from "../../../data/ranks";
 describe("setRank", () => {
   it("should add an existing rank to the state", () => {
     dataRank.ranks.forEach(rank => {

@@ -2,19 +2,18 @@ import { produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions/kungfu";
-import { IStoreState } from "../type";
+import { ICharacterState } from "../models/type";
 
-import { applyCost } from "../costs";
+import { applyCost } from "../models/costs";
 
-import * as dataKungfu from "../../data/kungfu";
-import { addKungFuTechnique, openStyle } from "../kungfu";
-
-import * as chi from "../chi";
+import * as dataKungfu from "../../../data/kungfu";
+import * as chi from "../models/chi";
+import { addKungFuTechnique, openStyle } from "../models/kungfu";
 
 export function kungfuReducer(
-  baseState: IStoreState,
+  baseState: ICharacterState,
   action: ActionType<typeof actions>
-): IStoreState {
+): ICharacterState {
   switch (action.type) {
     case getType(actions.openStyle):
       return produce(baseState, draftState => {

@@ -1,7 +1,7 @@
-import { IStoreState } from "./type";
+import { ICharacterState } from "./type";
 
-import { IBonus, isBonus } from "../perks/bonuses";
-import * as constants from "../perks/constants/bonuses";
+import { IBonus, isBonus } from "../../../perks/bonuses";
+import * as constants from "../../../perks/constants/bonuses";
 
 import * as chi from "./chi";
 
@@ -16,7 +16,10 @@ export function createState(): TBonusesState {
   return [];
 }
 
-export function applyBonuses(draftState: IStoreState, bonuses: IBonus[]): void {
+export function applyBonuses(
+  draftState: ICharacterState,
+  bonuses: IBonus[]
+): void {
   bonuses
     .filter((bonus: IBonus) => isBonus(bonus))
     .forEach((bonus: IBonus) => {

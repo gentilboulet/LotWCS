@@ -1,24 +1,25 @@
 import { Dispatch, Store } from "redux";
 
-import { IAction } from "../actions/types";
-import { IStoreState } from "../type";
+import { IAction, IStoreState } from "../index";
 
 import { IBonus, isBonus } from "../../perks/bonuses";
 import { IDiscount, isDiscount } from "../../perks/discounts";
 
-import { isApplicable } from "../automatics";
-import { applyBonuses } from "../bonuses";
+import { isApplicable } from "../character/models/automatics";
+import { applyBonuses } from "../character/models/bonuses";
 
 export const middleware = (store: Store<IStoreState>) => (
   next: Dispatch<IAction>
 ) => (action: IAction) => {
   const result = next(action);
   const newState = store.getState();
-  const applied = newState.automatics
+  const applied = newState.character.automatics
     .map((auto, index) => {
-      if (isApplicable(newState, auto)) {
-        applyBonuses(newState, auto.perks.filter(isBonus) as IBonus[]);
-        newState.discounts.push(
+      if (isApplicable(newState.character, auto)) {
+        applyBonuses(newState.character, auto.perks.filter(
+          isBonus
+        ) as IBonus[]);
+        newState.character.discounts.push(
           ...(auto.perks.filter(isDiscount) as IDiscount[])
         );
         return index;
@@ -28,7 +29,7 @@ export const middleware = (store: Store<IStoreState>) => (
     .filter(idx => idx >= 0);
   applied.sort((a, b) => (a < b ? a : b)); // reverse order !
   applied.forEach(idx => {
-    newState.automatics.splice(idx, 1);
+    newState.character.automatics.splice(idx, 1);
   });
 
   return result;

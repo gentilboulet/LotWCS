@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import Entanglement, {
   IEntanglementProps
 } from "../../components/Character/Entanglement";
 
-function mapStateToProps(state: IStoreState): IEntanglementProps {
+function mapStateToProps(state: ICharacterState): IEntanglementProps {
   return {
     value: state.entanglement
   };

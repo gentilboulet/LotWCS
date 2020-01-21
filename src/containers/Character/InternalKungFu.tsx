@@ -5,7 +5,7 @@ import { ActionType } from "typesafe-actions";
 import * as actions from "../../state/actions/kungfu";
 import { getCostKungFuStyle, ICost } from "../../state/costs";
 import { canOpenKungFu, isStylePresent } from "../../state/kungfu";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 
 import InternalKungFu, {
   IInternalKungFuProps
@@ -29,7 +29,7 @@ interface IMapDispatchToProps {
   onOpen: (cost: ICost) => void;
 }
 
-function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
   const isOpen = isStylePresent(state.kungfu, KUNGFU_INTERNAL, props.uid);
 
   return {

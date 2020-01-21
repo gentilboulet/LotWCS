@@ -1,7 +1,7 @@
 import { createAction } from "typesafe-actions";
 
-import { TSkillName } from "../../data/skills";
-import { ICost } from "../costs";
+import { TSkillName } from "../../../data/skills";
+import { ICost } from "../models/costs";
 
 export const skillsBuy = createAction(
   "skills/BUY",

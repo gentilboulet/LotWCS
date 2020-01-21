@@ -5,8 +5,8 @@ import {
   isRepeatable,
   validateLoresheet,
   validateLoresheetOption
-} from "../data/loresheets";
-import { IStoreState } from "./type";
+} from "../../../data/loresheets";
+import { ICharacterState } from "./type";
 
 export interface ILoresheetOptionState {
   uid: string;
@@ -45,7 +45,7 @@ export function isLoresheetOptionPresent(
   return optionIndex !== -1;
 }
 
-export function canOpenLoresheet(state: IStoreState, uid: string): boolean {
+export function canOpenLoresheet(state: ICharacterState, uid: string): boolean {
   return !isLoresheetPresent(state.loresheets, uid);
 }
 

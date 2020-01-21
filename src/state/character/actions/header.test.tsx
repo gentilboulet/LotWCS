@@ -1,5 +1,5 @@
-import { TArchetype } from "../../data/archetypes";
-import { TRank } from "../../data/ranks";
+import { TArchetype } from "../../../data/archetypes";
+import { TRank } from "../../../data/ranks";
 import * as actions from "./header";
 
 describe("Testing header action creators", () => {

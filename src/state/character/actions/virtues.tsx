@@ -1,5 +1,5 @@
 import { createAction } from "typesafe-actions";
-import { ICost } from "../costs";
+import { ICost } from "../models/costs";
 
 export const increase = createAction(
   "virtues/INCREASE",

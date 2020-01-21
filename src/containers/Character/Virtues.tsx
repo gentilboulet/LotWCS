@@ -4,7 +4,7 @@ import { ActionType } from "typesafe-actions";
 
 import * as actions from "../../state/actions/virtues";
 import { getCostVirtue, ICost } from "../../state/costs";
-import { IStoreState } from "../../state/type";
+import { ICharacterState } from "../../state/type";
 import { canBuyVirtue } from "../../state/virtues";
 
 import Virtues, { IVirtuesProps } from "../../components/Character/Virtues";
@@ -24,7 +24,7 @@ interface IMapDispatchToProps {
   onBuy: (name: string, cost: ICost) => void;
 }
 
-function mapStateToProps(state: IStoreState): IMapStateToProps {
+function mapStateToProps(state: ICharacterState): IMapStateToProps {
   return {
     virtues: state.virtues.map(v => {
       return {

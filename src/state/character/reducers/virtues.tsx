@@ -2,15 +2,15 @@ import produce from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions/virtues";
-import { IStoreState } from "../type";
+import { ICharacterState } from "../models/type";
 
-import { applyCost } from "../costs";
-import { increase } from "../virtues";
+import { applyCost } from "../models/costs";
+import { increase } from "../models/virtues";
 
 export function virtuesReducer(
-  baseState: IStoreState,
+  baseState: ICharacterState,
   action: ActionType<typeof actions>
-): IStoreState {
+): ICharacterState {
   switch (action.type) {
     case getType(actions.increase):
       return produce(baseState, state => {

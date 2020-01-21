@@ -1,32 +1,52 @@
 import { produce } from "immer";
 import { isActionOf } from "typesafe-actions";
 
-import { IAction } from "../../state/actions/types";
-import { IStoreState } from "../../state/type";
+import { ICharacterAction } from "../actions/types";
+import { ICharacterState } from "../models/type";
 
-import { initialStateFactory } from "../../state/initial";
+import { initialStateFactory } from "../models/initial";
 
 // Sub Reducers
-import { chiReducer } from "../../state/reducers/chi";
-import { headerReducer } from "../../state/reducers/header";
-import { historyReducer } from "../../state/reducers/history";
-import { kungfuReducer } from "../../state/reducers/kungfu";
-import { loresheetsReducer } from "../../state/reducers/loresheets";
-import { skillsReducer } from "../../state/reducers/skills";
-import { virtuesReducer } from "../../state/reducers/virtues";
+import { chiReducer } from "./chi";
+import { headerReducer } from "./header";
+import { kungfuReducer } from "./kungfu";
+import { loresheetsReducer } from "./loresheets";
+import { skillsReducer } from "./skills";
+import { virtuesReducer } from "./virtues";
 
 import * as chi from "../actions/chi";
 import * as header from "../actions/header";
-import * as history from "../actions/history";
 import * as kungfu from "../actions/kungfu";
 import * as loresheets from "../actions/loresheets";
 import * as skills from "../actions/skills";
 import * as virtues from "../actions/virtues";
 
+export function isCharacterAction(action: any): boolean {
+  if (isActionOf(Object.values(chi), action)) {
+    return true;
+  }
+  if (isActionOf(Object.values(header), action)) {
+    return true;
+  }
+  if (isActionOf(Object.values(kungfu), action)) {
+    return true;
+  }
+  if (isActionOf(Object.values(loresheets), action)) {
+    return true;
+  }
+  if (isActionOf(Object.values(skills), action)) {
+    return true;
+  }
+  if (isActionOf(Object.values(virtues), action)) {
+    return true;
+  }
+  return false;
+}
+
 export function globalReducer(
-  state: IStoreState | undefined,
-  action: IAction
-): IStoreState {
+  state: ICharacterState | undefined,
+  action: ICharacterAction
+): ICharacterState {
   if (!state) {
     return globalReducer(initialStateFactory(), action);
   }
@@ -37,9 +57,6 @@ export function globalReducer(
     }
     if (isActionOf(Object.values(header), action)) {
       draftState = headerReducer(state, action);
-    }
-    if (isActionOf(Object.values(history), action)) {
-      draftState = historyReducer(state, action);
     }
     if (isActionOf(Object.values(kungfu), action)) {
       draftState = kungfuReducer(state, action);

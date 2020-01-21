@@ -1,7 +1,7 @@
 /* eslint-disable import/first */
-import { IDiscount } from "../perks/discounts";
+import { IDiscount } from "../../../perks/discounts";
 import { getDiscountIndexes, updateDiscounts } from "./discounts";
-import { IStoreState } from "./type";
+import { ICharacterState } from "./type";
 
 export interface ICost {
   canPay: boolean;
@@ -20,7 +20,7 @@ export const zeroCost: ICost = {
 };
 
 function _costFactory(
-  state: IStoreState,
+  state: ICharacterState,
   costValue: number,
   discountIdx?: number[]
 ): ICost {
@@ -48,7 +48,7 @@ function _costFactory(
   }
 }
 
-export function applyCost(state: IStoreState, cost: ICost): void {
+export function applyCost(state: ICharacterState, cost: ICost): void {
   if (!cost.canPay) {
     throw new Error("Unpayable cost");
   }
@@ -59,9 +59,12 @@ export function applyCost(state: IStoreState, cost: ICost): void {
   updateDiscounts(state, cost);
 }
 
-import { TSkillName } from "../data/skills";
-import { DISCOUNT_SKILL } from "../perks/constants/discounts";
-export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
+import { TSkillName } from "../../../data/skills";
+import { DISCOUNT_SKILL } from "../../../perks/constants/discounts";
+export function getCostSkill(
+  state: ICharacterState,
+  skillName: TSkillName
+): ICost {
   const defaultCost = 2;
 
   const skillDiscountIdx = getDiscountIndexes(state, (d: IDiscount) => {
@@ -76,14 +79,14 @@ export function getCostSkill(state: IStoreState, skillName: TSkillName): ICost {
   return _costFactory(state, defaultCost, skillDiscountIdx);
 }
 
-export function getCostSpeciality(state: IStoreState): ICost {
+export function getCostSpeciality(state: ICharacterState): ICost {
   const defaultCost = 2;
   return _costFactory(state, defaultCost, []);
 }
 
-import { TChiName } from "../data/chi";
-import { DISCOUNT_CHI } from "../perks/constants/discounts";
-export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
+import { TChiName } from "../../../data/chi";
+import { DISCOUNT_CHI } from "../../../perks/constants/discounts";
+export function getCostChi(state: ICharacterState, chiName: TChiName): ICost {
   const chiValue = state.chi[chiName].value;
   const chiMultiplicator =
     chiName === "general"
@@ -110,9 +113,12 @@ export function getCostChi(state: IStoreState, chiName: TChiName): ICost {
   return _costFactory(state, defaultCost, chiDiscountIdx);
 }
 
-import { getLoresheetData } from "../data/loresheets";
-import { DISCOUNT_LORESHEET } from "../perks/constants/discounts";
-export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
+import { getLoresheetData } from "../../../data/loresheets";
+import { DISCOUNT_LORESHEET } from "../../../perks/constants/discounts";
+export function getCostOpenLoresheet(
+  state: ICharacterState,
+  uid: string
+): ICost {
   const lsData = getLoresheetData(uid);
   const defaultCost = lsData.cost;
 
@@ -128,11 +134,11 @@ export function getCostOpenLoresheet(state: IStoreState, uid: string): ICost {
   return _costFactory(state, defaultCost, lsDiscountIdx);
 }
 
-import { getLoresheetOptionData } from "../data/loresheets";
-import { DISCOUNT_LORESHEET_OPTION } from "../perks/constants/discounts";
+import { getLoresheetOptionData } from "../../../data/loresheets";
+import { DISCOUNT_LORESHEET_OPTION } from "../../../perks/constants/discounts";
 
 function _getCostBuyLoresheetOptionOneCost(
-  state: IStoreState,
+  state: ICharacterState,
   lsUid: string,
   uid: string,
   cost: number
@@ -158,7 +164,7 @@ function _getCostBuyLoresheetOptionOneCost(
 }
 
 export function getCostBuyLoresheetOption(
-  state: IStoreState,
+  state: ICharacterState,
   lsUid: string,
   uid: string
 ): ICost[] {
@@ -174,10 +180,10 @@ export function getCostBuyLoresheetOption(
   }
 }
 
-import { IDataVirtueType } from "../data/virtues";
-import { DISCOUNT_VIRTUE } from "../perks/constants/discounts";
+import { IDataVirtueType } from "../../../data/virtues";
+import { DISCOUNT_VIRTUE } from "../../../perks/constants/discounts";
 export function getCostVirtue(
-  state: IStoreState,
+  state: ICharacterState,
   name: string,
   type: IDataVirtueType
 ): ICost {
@@ -194,9 +200,9 @@ export function getCostVirtue(
   return _costFactory(state, defaultCost, virtueDiscountIdx);
 }
 
-import { DISCOUNT_KUNGFU_STYLE } from "../perks/constants/discounts";
+import { DISCOUNT_KUNGFU_STYLE } from "../../../perks/constants/discounts";
 export function getCostKungFuStyle(
-  state: IStoreState,
+  state: ICharacterState,
   type: KUNGFU_TYPE,
   uid: string
 ): ICost {
@@ -216,15 +222,15 @@ export function getCostKungFuStyle(
   return _costFactory(state, defaultCost, kungfuDiscountIdx);
 }
 
-import { kungfuTechniqueData } from "../data/kungfu";
+import { kungfuTechniqueData } from "../../../data/kungfu";
 import {
   IDataExternalKungfuTechnique,
   IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
   KUNGFU_TYPE
-} from "../data/kungfu/types";
+} from "../../../data/kungfu/types";
 export function getCostKungFuTechnique(
-  state: IStoreState,
+  state: ICharacterState,
   type: KUNGFU_TYPE,
   styleUid: string,
   uid: string
