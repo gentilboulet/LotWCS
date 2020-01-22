@@ -123,58 +123,6 @@ Object {
     },
   ],
   "entanglement": 0,
-  "history": Array [
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": undefined,
-      "type": "history/INITIAL_STATE",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "rank": 2,
-      },
-      "type": "header/SET_RANK",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "archetype": "warrior",
-      },
-      "type": "header/SET_ARCHETYPE",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "cost": Object {
-          "canPay": true,
-          "destiny": 0,
-          "original": 0,
-        },
-        "skill": "Awareness",
-        "speciality": "Hear",
-      },
-      "type": "skills/BUY_SPECIALITY",
-    },
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": Object {
-        "cost": Object {
-          "canPay": true,
-          "destiny": 0,
-          "original": 0,
-        },
-        "skill": "Awareness",
-        "speciality": "Sight",
-      },
-      "type": "skills/BUY_SPECIALITY",
-    },
-  ],
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},

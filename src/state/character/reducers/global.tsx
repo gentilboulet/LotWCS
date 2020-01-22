@@ -73,3 +73,16 @@ export function globalReducer(
     return draftState;
   });
 }
+
+export function playActions(
+  state: ICharacterState,
+  toPlay: ICharacterAction[]
+): ICharacterState {
+  return produce(state, draft => {
+    let newState = draft;
+    toPlay.forEach(action => {
+      newState = globalReducer(newState, action);
+    });
+    return newState;
+  });
+}

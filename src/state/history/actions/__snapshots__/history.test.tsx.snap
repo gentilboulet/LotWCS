@@ -16,6 +16,6 @@ Object {
   "payload": Object {
     "id": 12,
   },
-  "type": "history/DELETE",
+  "type": "history/DELETE_UP_TO",
 }
 `;

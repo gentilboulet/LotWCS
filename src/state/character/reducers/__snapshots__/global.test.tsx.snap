@@ -42,14 +42,6 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
-  "history": Array [
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": undefined,
-      "type": "history/INITIAL_STATE",
-    },
-  ],
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},
@@ -237,14 +229,6 @@ Object {
   "destiny": 0,
   "discounts": Array [],
   "entanglement": 0,
-  "history": Array [
-    Object {
-      "error": undefined,
-      "meta": undefined,
-      "payload": undefined,
-      "type": "history/INITIAL_STATE",
-    },
-  ],
   "kungfu": Object {
     "KUNGFU_EXTERNAL": Object {},
     "KUNGFU_INTERNAL": Object {},

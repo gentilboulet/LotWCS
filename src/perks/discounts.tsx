@@ -69,9 +69,3 @@ export function isDiscount(r: any): boolean {
       return false;
   }
 }
-
-export type TDiscountsState = IDiscount[];
-
-export function createState(): TDiscountsState {
-  return [];
-}

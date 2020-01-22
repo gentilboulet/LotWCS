@@ -17,7 +17,10 @@ export function initialStateFactory(): IStoreState {
 }
 
 export function testingStateFactory(): IStoreState {
-  return initialStateFactory();
+  return {
+    character: character.testingStateFactory(),
+    history: history.initialStateFactory()
+  };
 }
 
 export function globalReducer(
