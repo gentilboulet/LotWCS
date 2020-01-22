@@ -22,7 +22,7 @@ class TokenInput extends React.PureComponent<
 > {
   public static defaultProps = {
     idKey: "id",
-    labelKey: "name"
+    labelKey: "name",
   };
 
   private idKey: string;
@@ -41,7 +41,7 @@ class TokenInput extends React.PureComponent<
 
     this.state = {
       focused: false,
-      input: ""
+      input: "",
     };
 
     this.inputChange = this.inputChange.bind(this);
@@ -130,7 +130,7 @@ class TokenInput extends React.PureComponent<
 
   private onFocus(): void {
     this.setState({
-      focused: true
+      focused: true,
     });
   }
 
@@ -142,13 +142,13 @@ class TokenInput extends React.PureComponent<
 
   private inputChange(event: React.ChangeEvent<HTMLInputElement>): void {
     this.setState({
-      input: event.target.value.trim()
+      input: event.target.value.trim(),
     });
   }
 
   private resetState(): void {
     this.setState({
-      input: ""
+      input: "",
     });
   }
 

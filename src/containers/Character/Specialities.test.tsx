@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
-  testingStateFactory()
+  testingStateFactory(),
 );
 
 describe("Testing the Specialitiess container", () => {
@@ -21,7 +21,7 @@ describe("Testing the Specialitiess container", () => {
       <Provider store={store}>
         <Specialities skill={"Awareness"} />
       </Provider>,
-      div
+      div,
     );
   });
 });

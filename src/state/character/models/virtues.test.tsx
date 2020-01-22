@@ -8,19 +8,19 @@ import {
   canBuyVirtue,
   increase,
   isVirtuePresent,
-  IVirtueState
+  IVirtueState,
 } from "./virtues";
 
 describe("Testing IVirtueState", () => {
   it("should do increase existing virtue value", () => {
     const initialState: ICharacterState = Object.assign(
       {},
-      testingStateFactory()
+      testingStateFactory(),
     );
     dataVirtues.virtues.forEach((virtue: dataVirtues.IDataVirtue) => {
       expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeTruthy();
       const initialVirtue = initialState.virtues.find(
-        v => virtue.name === v.name
+        v => virtue.name === v.name,
       ) as IVirtueState;
       expect(initialVirtue).toBeDefined();
       expect(initialVirtue.value).toBe(0);
@@ -28,7 +28,7 @@ describe("Testing IVirtueState", () => {
       const state = Object.assign({}, initialState);
       increase(state.virtues, virtue.name, 13);
       const stateVirtue = state.virtues.find(
-        v => virtue.name === v.name
+        v => virtue.name === v.name,
       ) as IVirtueState;
       expect(stateVirtue).toBeDefined();
       expect(stateVirtue.value).toBe(13);
@@ -38,11 +38,11 @@ describe("Testing IVirtueState", () => {
   it("should not increase an unknown virtue to the state", () => {
     const initialState: ICharacterState = Object.assign(
       {},
-      testingStateFactory()
+      testingStateFactory(),
     );
     const junk: dataVirtues.IDataVirtue = {
       name: "New Virtue",
-      type: dataVirtues.VIRTUE_CHIVALROUS
+      type: dataVirtues.VIRTUE_CHIVALROUS,
     };
     expect(isVirtuePresent(initialState.virtues, junk.name)).toBeFalsy();
 
@@ -53,11 +53,11 @@ describe("Testing IVirtueState", () => {
   it("should add a new virtue to the state", () => {
     const initialState: ICharacterState = Object.assign(
       {},
-      testingStateFactory()
+      testingStateFactory(),
     );
     const virtue: dataVirtues.IDataVirtue = {
       name: "New Virtue",
-      type: dataVirtues.VIRTUE_CHIVALROUS
+      type: dataVirtues.VIRTUE_CHIVALROUS,
     };
     expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeFalsy();
 
@@ -65,7 +65,7 @@ describe("Testing IVirtueState", () => {
     add(state.virtues, virtue.name, virtue.type, 25);
 
     const stateVirtue = state.virtues.find(
-      v => virtue.name === v.name
+      v => virtue.name === v.name,
     ) as IVirtueState;
     expect(stateVirtue).toBeDefined();
     expect(stateVirtue.value).toBe(25);
@@ -74,12 +74,12 @@ describe("Testing IVirtueState", () => {
   it("should not add an existing virtue to the state", () => {
     const initialState: ICharacterState = Object.assign(
       {},
-      testingStateFactory()
+      testingStateFactory(),
     );
     const junk: dataVirtues.IDataVirtue = dataVirtues.virtues[0];
     expect(isVirtuePresent(initialState.virtues, junk.name)).toBeTruthy();
     expect(() =>
-      add(initialState.virtues, junk.name, junk.type, 25)
+      add(initialState.virtues, junk.name, junk.type, 25),
     ).toThrowError();
   });
 

@@ -11,7 +11,8 @@ export function setRank(state: ICharacterState, rank: data.TRank): void {
   const dataRank = data.getRank(rank) as data.IDataRank;
   state.rank = dataRank.value;
   applyBonuses(state, dataRank.perks.filter(p => isBonus(p)) as IBonus[]);
-  pushToDiscounts(state, dataRank.perks.filter(p =>
-    isDiscount(p)
-  ) as IDiscount[]);
+  pushToDiscounts(
+    state,
+    dataRank.perks.filter(p => isDiscount(p)) as IDiscount[],
+  );
 }

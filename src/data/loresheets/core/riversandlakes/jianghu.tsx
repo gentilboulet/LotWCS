@@ -22,7 +22,7 @@ export const jianghu: IDataLoresheet = {
       repeatable: true,
       prerequisites: [],
       perks: [],
-      payload: "an organization"
+      payload: "an organization",
     },
     {
       uid: "knunderground",
@@ -32,7 +32,7 @@ export const jianghu: IDataLoresheet = {
         "Once per session, upon arriving in a new location, you may declare to have basic knowledge of the local Jiang Hu underground, including important organizations and who’s in charge. This includes Wulin factions.",
       repeatable: true,
       prerequisites: [],
-      perks: []
+      perks: [],
     },
     {
       uid: "statusunderground",
@@ -42,10 +42,10 @@ export const jianghu: IDataLoresheet = {
       type: "Status",
       repeatable: true,
       prerequisites: [
-        { type: "OR", prerequisites: ["familiarity", "knunderground"] }
+        { type: "OR", prerequisites: ["familiarity", "knunderground"] },
       ],
       perks: [],
-      payload: "an organization"
-    }
-  ]
+      payload: "an organization",
+    },
+  ],
 };

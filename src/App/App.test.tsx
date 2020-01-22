@@ -12,7 +12,7 @@ import { IStoreState } from "../state/type";
 describe("Testing the App component", () => {
   const store = createStore<IStoreState, any, any, any>(
     (state: any) => state,
-    initialStateFactory()
+    initialStateFactory(),
   );
 
   it("should render without crashing", () => {
@@ -21,7 +21,7 @@ describe("Testing the App component", () => {
       <Provider store={store}>
         <App />
       </Provider>,
-      div
+      div,
     );
   });
 });

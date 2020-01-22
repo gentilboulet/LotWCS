@@ -120,7 +120,7 @@ class LoresheetOption extends React.PureComponent<
         .map(cost => cost.canPay)
         .reduce(
           (previousValue, currentValue) => previousValue || currentValue,
-          false
+          false,
         );
     return (
       <tr
@@ -151,7 +151,7 @@ class LoresheetOption extends React.PureComponent<
         .map(cost => cost.canPay)
         .reduce(
           (previousValue, currentValue) => previousValue || currentValue,
-          false
+          false,
         );
     if (canBuyOneOrMore && !this.state.isModalOpen) {
       this.toggleModal();

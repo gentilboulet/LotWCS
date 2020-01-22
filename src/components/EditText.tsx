@@ -25,7 +25,7 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
 
     this.state = {
       edit: false,
-      value: this.props.default ? this.props.default : ""
+      value: this.props.default ? this.props.default : "",
     };
 
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
@@ -42,7 +42,7 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
 
   public componentWillReceiveProps(nextProps: IEditTextProps) {
     this.setState({
-      value: nextProps.default ? nextProps.default : ""
+      value: nextProps.default ? nextProps.default : "",
     });
   }
 
@@ -55,7 +55,7 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
   private endEdit() {
     this.setState({
       edit: false,
-      value: this.state.value.trim()
+      value: this.state.value.trim(),
     });
     if (this.props.validate(this.state.value)) {
       if (this.state.value !== this.props.default) {

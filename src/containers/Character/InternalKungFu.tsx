@@ -7,11 +7,11 @@ import * as actions from "../../state/character/actions/kungfu";
 import { getCostKungFuStyle, ICost } from "../../state/character/models/costs";
 import {
   canOpenKungFu,
-  isStylePresent
+  isStylePresent,
 } from "../../state/character/models/kungfu";
 
 import InternalKungFu, {
-  IInternalKungFuProps
+  IInternalKungFuProps,
 } from "../../components/Character/InternalKungFu";
 
 import { KUNGFU_INTERNAL } from "../../data/kungfu/types";
@@ -36,7 +36,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   const isOpen = isStylePresent(
     state.character.kungfu,
     KUNGFU_INTERNAL,
-    props.uid
+    props.uid,
   );
 
   return {
@@ -46,23 +46,23 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     knownTechniques: isOpen
       ? state.character.kungfu[KUNGFU_INTERNAL][props.uid]
       : [],
-    uid: props.uid
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onOpen: (cost: ICost) =>
-      dispatch(actions.openStyle(props.uid, KUNGFU_INTERNAL, cost))
+      dispatch(actions.openStyle(props.uid, KUNGFU_INTERNAL, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IInternalKungFuProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -70,5 +70,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(InternalKungFu);

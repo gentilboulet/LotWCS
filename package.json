@@ -28,7 +28,12 @@
     "eject": "react-scripts eject",
     "coverage-test-ci": "react-scripts test --coverage --runInBand --watchAll=false",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test-ci": "react-scripts test --runInBand --reporters=jest-junit"
+    "test-ci": "react-scripts test --runInBand --reporters=jest-junit",
+    "lint": "tslint --project tsconfig.json -c tslint.json --fix",
+    "prettify": "prettier --write src/**/*.{ts,tsx}"
+  },
+  "prettier": {
+    "trailingComma": "all"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,10 +57,12 @@
     "coveralls": "^3.0.6",
     "jest": "^24.9.0",
     "jest-junit": "^6.4.0",
+    "prettier": "^1.19.1",
     "react-test-renderer": "^16.9.0",
     "ts-jest": "^24.1.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
+    "tslint-etc": "^1.10.0",
     "tslint-react": "^3.6.0"
   },
   "jest": {

@@ -10,12 +10,12 @@ class AppHeader extends React.PureComponent<{}, { isOpen: boolean }> {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
   public toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 

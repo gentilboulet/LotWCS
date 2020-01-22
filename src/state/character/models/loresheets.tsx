@@ -4,7 +4,7 @@ import {
   IDataLoresheetOptionPrerequisite,
   isRepeatable,
   validateLoresheet,
-  validateLoresheetOption
+  validateLoresheetOption,
 } from "../../../data/loresheets";
 import { ICharacterState } from "./type";
 
@@ -23,10 +23,10 @@ export function createState(): ILoresheetsState {
 
 export function isLoresheetPresent(
   state: ILoresheetsState,
-  loresheetUid: string
+  loresheetUid: string,
 ): boolean {
   const loresheetIndex = Object.keys(state).findIndex(
-    stateLoresheetUid => stateLoresheetUid === loresheetUid
+    stateLoresheetUid => stateLoresheetUid === loresheetUid,
   );
   return loresheetIndex !== -1;
 }
@@ -34,13 +34,13 @@ export function isLoresheetPresent(
 export function isLoresheetOptionPresent(
   state: ILoresheetsState,
   loresheetUid: string,
-  optionUid: string
+  optionUid: string,
 ): boolean {
   if (state[loresheetUid] === undefined) {
     return false;
   }
   const optionIndex = state[loresheetUid].findIndex(
-    option => option.uid === optionUid
+    option => option.uid === optionUid,
   );
   return optionIndex !== -1;
 }
@@ -59,7 +59,7 @@ function _and(a: boolean, b: boolean) {
 function _prerequisiteToBool(
   state: ILoresheetsState,
   lsUid: string,
-  prerequisite: IDataLoresheetOptionPrerequisite
+  prerequisite: IDataLoresheetOptionPrerequisite,
 ): boolean {
   if (typeof prerequisite === "string") {
     return isLoresheetOptionPresent(state, lsUid, prerequisite);
@@ -71,7 +71,7 @@ function _prerequisiteToBool(
       })
       .reduce(
         prerequisite.type === "OR" ? _or : _and,
-        prerequisite.type === "OR" ? false : true
+        prerequisite.type === "OR" ? false : true,
       );
   }
 }
@@ -79,7 +79,7 @@ function _prerequisiteToBool(
 export function canBuyLoresheetOption(
   state: ILoresheetsState,
   lsUid: string,
-  uid: string
+  uid: string,
 ): boolean {
   if (!isLoresheetPresent(state, lsUid)) {
     return false;
@@ -103,7 +103,7 @@ export function buyLoresheetOption(
   state: ILoresheetsState,
   loresheetUid: string,
   optionUid: string,
-  payload?: string
+  payload?: string,
 ): void {
   validateLoresheet(loresheetUid);
   validateLoresheetOption(loresheetUid, optionUid);
@@ -113,7 +113,7 @@ export function buyLoresheetOption(
       "Internal error : impossible to buy loresheet option " +
         loresheetUid +
         "," +
-        optionUid
+        optionUid,
     );
   }
   state[loresheetUid].push({ uid: optionUid, payload });
@@ -121,7 +121,7 @@ export function buyLoresheetOption(
 
 export function openLoresheet(
   state: ILoresheetsState,
-  loresheetUid: string
+  loresheetUid: string,
 ): void {
   validateLoresheet(loresheetUid);
   state[loresheetUid] = [];

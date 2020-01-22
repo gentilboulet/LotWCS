@@ -49,7 +49,7 @@ describe("Testing openStyle", () => {
     const state = _createStateWithAllStyles();
     data.internalKungfu.forEach(style => {
       expect(() =>
-        kungfu.openStyle(state, KUNGFU_INTERNAL, style.uid)
+        kungfu.openStyle(state, KUNGFU_INTERNAL, style.uid),
       ).toThrowError();
     });
   });
@@ -60,12 +60,12 @@ describe("Testing isStylePresent", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       expect(
-        kungfu.isStylePresent(state, KUNGFU_EXTERNAL, style.uid)
+        kungfu.isStylePresent(state, KUNGFU_EXTERNAL, style.uid),
       ).toBeFalsy();
     });
     data.internalKungfu.forEach(style => {
       expect(
-        kungfu.isStylePresent(state, KUNGFU_INTERNAL, style.uid)
+        kungfu.isStylePresent(state, KUNGFU_INTERNAL, style.uid),
       ).toBeFalsy();
     });
   });
@@ -75,12 +75,12 @@ describe("Testing isStylePresent", () => {
 
     data.externalKungfu.forEach(style => {
       expect(
-        kungfu.isStylePresent(state, KUNGFU_EXTERNAL, style.uid)
+        kungfu.isStylePresent(state, KUNGFU_EXTERNAL, style.uid),
       ).toBeTruthy();
     });
     data.internalKungfu.forEach(style => {
       expect(
-        kungfu.isStylePresent(state, KUNGFU_INTERNAL, style.uid)
+        kungfu.isStylePresent(state, KUNGFU_INTERNAL, style.uid),
       ).toBeTruthy();
     });
   });
@@ -95,7 +95,7 @@ describe("Testing addKungFuTechnique", () => {
         const index = state.KUNGFU_EXTERNAL[style.uid].findIndex(
           stateTechUid => {
             return stateTechUid === tech.uid;
-          }
+          },
         );
         expect(index).toBeGreaterThanOrEqual(0);
       });
@@ -106,7 +106,12 @@ describe("Testing addKungFuTechnique", () => {
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
         expect(() =>
-          kungfu.addKungFuTechnique(state, KUNGFU_EXTERNAL, style.uid, tech.uid)
+          kungfu.addKungFuTechnique(
+            state,
+            KUNGFU_EXTERNAL,
+            style.uid,
+            tech.uid,
+          ),
         ).toThrowError();
       });
     });
@@ -122,7 +127,12 @@ describe("Testing addKungFuTechnique", () => {
     data.externalKungfu.forEach(style => {
       style.techniques.forEach(tech => {
         expect(() =>
-          kungfu.addKungFuTechnique(state, KUNGFU_EXTERNAL, style.uid, tech.uid)
+          kungfu.addKungFuTechnique(
+            state,
+            KUNGFU_EXTERNAL,
+            style.uid,
+            tech.uid,
+          ),
         ).toThrowError();
       });
     });
@@ -139,8 +149,8 @@ describe("Testing isStyleTechniquePresent", () => {
             state,
             KUNGFU_EXTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeFalsy();
       });
     });
@@ -151,8 +161,8 @@ describe("Testing isStyleTechniquePresent", () => {
             state,
             KUNGFU_INTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeFalsy();
       });
     });
@@ -169,8 +179,8 @@ describe("Testing isStyleTechniquePresent", () => {
             state,
             KUNGFU_EXTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeTruthy();
       });
     });
@@ -185,7 +195,7 @@ describe("Testing isStyleTechniquePresent", () => {
             state,
             KUNGFU_INTERNAL,
             style.uid,
-            tech.uid
+            tech.uid,
           );
         });
       style.techniques.forEach(tech => {
@@ -194,8 +204,8 @@ describe("Testing isStyleTechniquePresent", () => {
             state,
             KUNGFU_INTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeTruthy();
       });
     });
@@ -207,7 +217,7 @@ describe("Testing getExternalKungFuStatistics", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       expect(
-        kungfu.getExternalKungFuStatistics(state, style.uid)
+        kungfu.getExternalKungFuStatistics(state, style.uid),
       ).toMatchObject(style.statistics);
     });
   });
@@ -218,7 +228,7 @@ describe("Testing getExternalKungFuStatistics", () => {
         kungfu.addKungFuTechnique(state, KUNGFU_EXTERNAL, style.uid, tech.uid);
       });
       expect(
-        kungfu.getExternalKungFuStatistics(state, style.uid)
+        kungfu.getExternalKungFuStatistics(state, style.uid),
       ).toMatchSnapshot();
     });
   });
@@ -229,12 +239,12 @@ describe("Testing canOpenKungFu", () => {
     const state = kungfu.createState();
     data.externalKungfu.forEach(style => {
       expect(
-        kungfu.canOpenKungFu(state, KUNGFU_EXTERNAL, style.uid)
+        kungfu.canOpenKungFu(state, KUNGFU_EXTERNAL, style.uid),
       ).toBeTruthy();
     });
     data.internalKungfu.forEach(style => {
       expect(
-        kungfu.canOpenKungFu(state, KUNGFU_INTERNAL, style.uid)
+        kungfu.canOpenKungFu(state, KUNGFU_INTERNAL, style.uid),
       ).toBeTruthy();
     });
   });
@@ -243,7 +253,7 @@ describe("Testing canOpenKungFu", () => {
 
     data.externalKungfu.forEach(style => {
       expect(
-        kungfu.canOpenKungFu(state, KUNGFU_EXTERNAL, style.uid)
+        kungfu.canOpenKungFu(state, KUNGFU_EXTERNAL, style.uid),
       ).toBeFalsy();
     });
   });
@@ -252,7 +262,7 @@ describe("Testing canOpenKungFu", () => {
 
     data.internalKungfu.forEach(style => {
       expect(
-        kungfu.canOpenKungFu(state, KUNGFU_INTERNAL, style.uid)
+        kungfu.canOpenKungFu(state, KUNGFU_INTERNAL, style.uid),
       ).toBeFalsy();
     });
   });
@@ -268,8 +278,8 @@ describe("Testing canBuyKungFuTechnique", () => {
             state,
             KUNGFU_EXTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeFalsy();
       });
     });
@@ -280,8 +290,8 @@ describe("Testing canBuyKungFuTechnique", () => {
             state,
             KUNGFU_INTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeFalsy();
       });
     });
@@ -295,8 +305,8 @@ describe("Testing canBuyKungFuTechnique", () => {
             state,
             KUNGFU_EXTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeTruthy();
       });
     });
@@ -323,8 +333,8 @@ describe("Testing canBuyKungFuTechnique", () => {
             state,
             KUNGFU_INTERNAL,
             style.uid,
-            techUid
-          )
+            techUid,
+          ),
         ).toBeTruthy();
         kungfu.addKungFuTechnique(state, KUNGFU_INTERNAL, style.uid, techUid);
       });
@@ -342,8 +352,8 @@ describe("Testing canBuyKungFuTechnique", () => {
             state,
             KUNGFU_EXTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeFalsy();
       });
     });
@@ -365,7 +375,7 @@ describe("Testing canBuyKungFuTechnique", () => {
             state,
             KUNGFU_INTERNAL,
             style.uid,
-            tech.uid
+            tech.uid,
           )
         ) {
           return;
@@ -375,8 +385,8 @@ describe("Testing canBuyKungFuTechnique", () => {
             state,
             KUNGFU_INTERNAL,
             style.uid,
-            tech.uid
-          )
+            tech.uid,
+          ),
         ).toBeFalsy();
       });
     });
@@ -395,8 +405,8 @@ describe("Testing canBuyKungFuTechnique", () => {
               state,
               KUNGFU_INTERNAL,
               style.uid,
-              tech.uid
-            )
+              tech.uid,
+            ),
           ).toBeTruthy();
         });
     });

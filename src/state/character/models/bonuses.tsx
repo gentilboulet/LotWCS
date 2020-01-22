@@ -18,7 +18,7 @@ export function createState(): TBonusesState {
 
 export function applyBonuses(
   draftState: ICharacterState,
-  bonuses: IBonus[]
+  bonuses: IBonus[],
 ): void {
   bonuses
     .filter((bonus: IBonus) => isBonus(bonus))
@@ -46,7 +46,7 @@ export function applyBonuses(
           skills.addSpeciality(
             draftState.skills,
             bonus.skill,
-            bonus.speciality
+            bonus.speciality,
           );
           break;
         case constants.BONUS_LORESHEET:
@@ -57,7 +57,7 @@ export function applyBonuses(
             draftState.loresheets,
             bonus.lsUid,
             bonus.uid,
-            bonus.payload
+            bonus.payload,
           );
           break;
         default:

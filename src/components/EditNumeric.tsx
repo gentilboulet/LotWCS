@@ -23,7 +23,7 @@ class EditNumeric extends React.PureComponent<
     super(props);
 
     this.state = {
-      edit: false
+      edit: false,
     };
 
     this.startEdit = this.startEdit.bind(this);
@@ -73,7 +73,7 @@ class EditNumeric extends React.PureComponent<
 
   private endEdit() {
     this.setState({
-      edit: false
+      edit: false,
     });
   }
 

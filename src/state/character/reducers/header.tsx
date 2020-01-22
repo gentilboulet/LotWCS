@@ -7,7 +7,7 @@ import { ICharacterState } from "../models/type";
 
 export function headerReducer(
   baseState: ICharacterState,
-  action: ActionType<typeof actions>
+  action: ActionType<typeof actions>,
 ): ICharacterState {
   switch (action.type) {
     case getType(actions.setName):

@@ -9,12 +9,12 @@ describe("Testing globalReducer", () => {
     expect(initialState).toMatchSnapshot();
     const junk = { type: "JUNK_ACTION" };
     expect(globalReducer(undefined, junk as ICharacterAction)).toMatchObject(
-      initialState
+      initialState,
     );
 
     const action = {
+      payload: { name },
       type: "header/SET_NAME",
-      payload: { name }
     } as ICharacterAction;
     const expectedState = globalReducer(initialState, action);
     expect(globalReducer(undefined, action)).toMatchObject(expectedState);
@@ -24,7 +24,7 @@ describe("Testing globalReducer", () => {
     expect(initialState).toMatchSnapshot();
     const junk = { type: "JUNK_ACTION" };
     expect(globalReducer(initialState, junk as ICharacterAction)).toMatchObject(
-      initialState
+      initialState,
     );
   });
 });

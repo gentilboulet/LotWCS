@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export interface ICollapsibleProps {
   title: string;
@@ -10,7 +10,10 @@ export interface ICollapsibleState {
   collapse: boolean;
 }
 
-class Collapsible extends React.PureComponent<ICollapsibleProps, ICollapsibleState> {
+class Collapsible extends React.PureComponent<
+  ICollapsibleProps,
+  ICollapsibleState
+> {
   constructor(props: ICollapsibleProps) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -24,9 +27,7 @@ class Collapsible extends React.PureComponent<ICollapsibleProps, ICollapsibleSta
     return (
       <div>
         {this.state.collapse ? this.renderTitleOpen() : this.renderTitle()}
-        <div>
-          {this.props.children}
-        </div>
+        <div>{this.props.children}</div>
       </div>
     );
   }
@@ -37,23 +38,39 @@ class Collapsible extends React.PureComponent<ICollapsibleProps, ICollapsibleSta
 
   private renderTitle(): JSX.Element {
     return (
-    <div
-      className="justify-content-between"
-      color={(!this.props.color ? '' : this.props.color)}
-    >
-    {this.props.title} <button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</button>
-    </div>);
+      <div
+        className="justify-content-between"
+        color={!this.props.color ? "" : this.props.color}
+      >
+        {this.props.title}{" "}
+        <button
+          color="primary"
+          onClick={this.toggle}
+          style={{ marginBottom: "1rem" }}
+        >
+          Toggle
+        </button>
+      </div>
+    );
   }
 
   private renderTitleOpen(): JSX.Element {
     return (
-    <div
-      className="justify-content-between"
-      color={(!this.props.color ? '' : this.props.color)}
-    >
-    {this.props.title} : {(!this.props.description ? '' : this.props.description)}
-    <button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Toggle</button>
-    </div>);
+      <div
+        className="justify-content-between"
+        color={!this.props.color ? "" : this.props.color}
+      >
+        {this.props.title} :{" "}
+        {!this.props.description ? "" : this.props.description}
+        <button
+          color="primary"
+          onClick={this.toggle}
+          style={{ marginBottom: "1rem" }}
+        >
+          Toggle
+        </button>
+      </div>
+    );
   }
 }
 

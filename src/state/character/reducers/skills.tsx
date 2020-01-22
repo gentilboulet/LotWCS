@@ -10,7 +10,7 @@ import { ICharacterState } from "../models/type";
 
 export function skillsReducer(
   baseState: ICharacterState,
-  action: ActionType<typeof actions>
+  action: ActionType<typeof actions>,
 ): ICharacterState {
   switch (action.type) {
     case getType(actions.skillsBuy):
@@ -25,7 +25,7 @@ export function skillsReducer(
         addSpeciality(
           draftState.skills,
           action.payload.skill,
-          action.payload.speciality
+          action.payload.speciality,
         );
       });
     default:

@@ -13,7 +13,7 @@ import { Provider } from "react-redux";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
-  testingStateFactory()
+  testingStateFactory(),
 );
 
 describe("Testing the History container", () => {
@@ -23,7 +23,7 @@ describe("Testing the History container", () => {
       <Provider store={store}>
         <History />
       </Provider>,
-      div
+      div,
     );
   });
 });

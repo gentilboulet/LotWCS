@@ -19,7 +19,7 @@ export function add(
   state: TVirtuesState,
   name: string,
   type: IDataVirtueType,
-  value: number
+  value: number,
 ): void {
   if (isVirtuePresent(state, name)) {
     throw new Error("Internal Error : virtue already present " + name);
@@ -30,7 +30,7 @@ export function add(
 export function increase(
   state: TVirtuesState,
   name: string,
-  value: number
+  value: number,
 ): void {
   if (!isVirtuePresent(state, name)) {
     throw new Error("Internal Error : unknwon new virtue " + name);

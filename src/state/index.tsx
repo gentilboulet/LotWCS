@@ -12,20 +12,20 @@ export type IAction = character.ICharacterAction | history.IHistoryAction;
 export function initialStateFactory(): IStoreState {
   return {
     character: character.initialStateFactory(),
-    history: history.initialStateFactory()
+    history: history.initialStateFactory(),
   };
 }
 
 export function testingStateFactory(): IStoreState {
   return {
     character: character.testingStateFactory(),
-    history: history.initialStateFactory()
+    history: history.initialStateFactory(),
   };
 }
 
 export function globalReducer(
   state: IStoreState | undefined,
-  action: IAction
+  action: IAction,
 ): IStoreState {
   if (!state) {
     return globalReducer(initialStateFactory(), action);
@@ -34,13 +34,13 @@ export function globalReducer(
     if (character.isCharacterAction(action)) {
       draft.character = character.globalReducer(
         draft.character,
-        action as character.ICharacterAction
+        action as character.ICharacterAction,
       );
     }
     if (history.isHistoryAction(action)) {
       draft.history = history.globalReducer(
         draft.history,
-        action as history.IHistoryAction
+        action as history.IHistoryAction,
       );
     }
   });

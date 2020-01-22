@@ -47,9 +47,10 @@ describe("Testing headerReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
 
-    const state = headerReducer(initialState(), junk as ActionType<
-      typeof actions
-    >);
+    const state = headerReducer(
+      initialState(),
+      junk as ActionType<typeof actions>,
+    );
     expect(state).toMatchObject(initialState());
   });
 });

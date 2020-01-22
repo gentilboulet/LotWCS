@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
-  testingStateFactory()
+  testingStateFactory(),
 );
 
 describe("Testing the LoresheetOption container", () => {
@@ -20,7 +20,7 @@ describe("Testing the LoresheetOption container", () => {
       <Provider store={store}>
         <LoresheetOption lsUid="wulin" uid="tieswithanother" />
       </Provider>,
-      tbody
+      tbody,
     );
   });
 });

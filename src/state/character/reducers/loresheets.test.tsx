@@ -22,14 +22,14 @@ describe("Testing loresheetsReducer", () => {
       expect(
         loresheets.isLoresheetPresent(
           initialState.loresheets,
-          dataLoresheet.uid
-        )
+          dataLoresheet.uid,
+        ),
       ).toBeFalsy();
 
       const action = actions.open(dataLoresheet.uid, zeroCost);
       const state = loresheetsReducer(initialState, action);
       expect(
-        loresheets.isLoresheetPresent(state.loresheets, dataLoresheet.uid)
+        loresheets.isLoresheetPresent(state.loresheets, dataLoresheet.uid),
       ).toBeTruthy();
       expect(globalReducer(initialState, action)).toMatchObject(state);
     });
@@ -40,38 +40,38 @@ describe("Testing loresheetsReducer", () => {
       const openLoresheetAction = actions.open(loresheet.uid, zeroCost);
       const stateWithLoresheet = loresheetsReducer(
         initialState,
-        openLoresheetAction
+        openLoresheetAction,
       );
       expect(
         loresheets.isLoresheetPresent(
           stateWithLoresheet.loresheets,
-          loresheet.uid
-        )
+          loresheet.uid,
+        ),
       ).toBeTruthy();
 
       loresheet.options.forEach((option: data.IDataLoresheetOption) => {
         const buyOptionAction = actions.buyOption(
           loresheet.uid,
           option.uid,
-          zeroCost
+          zeroCost,
         );
         if (
           loresheets.canBuyLoresheetOption(
             stateWithLoresheet.loresheets,
             loresheet.uid,
-            option.uid
+            option.uid,
           ) // to filter out ls options with prerequisites
         ) {
           const stateWithOption = loresheetsReducer(
             stateWithLoresheet,
-            buyOptionAction
+            buyOptionAction,
           );
           expect(
             loresheets.isLoresheetOptionPresent(
               stateWithOption.loresheets,
               loresheet.uid,
-              option.uid
-            )
+              option.uid,
+            ),
           ).toBeTruthy();
         }
       });
@@ -81,7 +81,7 @@ describe("Testing loresheetsReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      loresheetsReducer(initialState, junk as ActionType<typeof actions>)
+      loresheetsReducer(initialState, junk as ActionType<typeof actions>),
     ).toMatchObject(initialState);
   });
 });

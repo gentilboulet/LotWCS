@@ -29,7 +29,7 @@ export interface IDDLTextEvent {
 class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
   protected static getDerivedStateFromProps(
     props: IDDLTextProps,
-    state: IDDLTextState
+    state: IDDLTextState,
   ): IDDLTextState {
     if (!state.edit) {
       state.value = props.default ? props.default : "";
@@ -43,7 +43,7 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
     this.state = {
       dropdownOpen: false,
       edit: false,
-      value: this.props.default ? this.props.default : ""
+      value: this.props.default ? this.props.default : "",
     };
 
     this.startEdit = this.startEdit.bind(this);
@@ -88,8 +88,8 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
 
   private getLabelForSelectedKey(): string {
     return this.props.values
-      .map(
-        ({ key, label }: IDDLItem) => (key === this.state.value ? label : "")
+      .map(({ key, label }: IDDLItem) =>
+        key === this.state.value ? label : "",
       )
       .filter((e: string) => e !== "")
       .join(", ");

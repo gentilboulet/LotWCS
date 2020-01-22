@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
-  testingStateFactory()
+  testingStateFactory(),
 );
 
 describe("Testing the Virtuess container", () => {
@@ -21,7 +21,7 @@ describe("Testing the Virtuess container", () => {
       <Provider store={store}>
         <Virtues />
       </Provider>,
-      div
+      div,
     );
   });
 });

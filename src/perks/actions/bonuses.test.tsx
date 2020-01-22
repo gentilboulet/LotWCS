@@ -32,7 +32,7 @@ describe("Testing bonus creators", () => {
   test("should create an oneAmongN bonus", () => {
     const bonusesList = {
       destiny: bonuses.bonusDestiny(10),
-      entanglement: bonuses.bonusEntanglement(10)
+      entanglement: bonuses.bonusEntanglement(10),
     };
 
     const b = bonuses.bonusOneAmongN(bonusesList);
@@ -41,7 +41,7 @@ describe("Testing bonus creators", () => {
 
   test("should not create an oneAmongN bonus with only one bonus but give the bonus back", () => {
     const bonusesList = {
-      destiny: bonuses.bonusDestiny(10)
+      destiny: bonuses.bonusDestiny(10),
     };
 
     const b = bonuses.bonusOneAmongN(bonusesList);

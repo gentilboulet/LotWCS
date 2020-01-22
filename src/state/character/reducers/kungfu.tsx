@@ -12,7 +12,7 @@ import { addKungFuTechnique, openStyle } from "../models/kungfu";
 
 export function kungfuReducer(
   baseState: ICharacterState,
-  action: ActionType<typeof actions>
+  action: ActionType<typeof actions>,
 ): ICharacterState {
   switch (action.type) {
     case getType(actions.openStyle):
@@ -21,16 +21,16 @@ export function kungfuReducer(
         openStyle(
           draftState.kungfu,
           action.payload.kungfuType,
-          action.payload.uid
+          action.payload.uid,
         );
 
         chi.increaseCultivation(
           draftState.chi,
           dataKungfu.getKungfuChi(
             action.payload.kungfuType,
-            action.payload.uid
+            action.payload.uid,
           ),
-          action.payload.cost.original
+          action.payload.cost.original,
         );
       });
     case getType(actions.buyTechnique):
@@ -40,17 +40,17 @@ export function kungfuReducer(
           draftState.kungfu,
           action.payload.kungfuType,
           action.payload.styleUid,
-          action.payload.uid
+          action.payload.uid,
         );
 
         chi.increaseCultivation(
           draftState.chi,
           dataKungfu.getKungfuChi(
             action.payload.kungfuType,
-            action.payload.styleUid
+            action.payload.styleUid,
           ),
 
-          action.payload.cost.original
+          action.payload.cost.original,
         );
       });
     case getType(actions.customStyleName):

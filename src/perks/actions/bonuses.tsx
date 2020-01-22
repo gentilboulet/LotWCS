@@ -8,7 +8,7 @@ import {
   IBonusLoresheetOption,
   IBonusOneAmongN,
   IBonusSkillRank,
-  IBonusSpeciality
+  IBonusSpeciality,
 } from "../bonuses";
 import * as constants from "../constants/bonuses";
 
@@ -29,13 +29,13 @@ export function bonusChi(value: number, chiName: dataChi.TChiName): IBonusChi {
 
 export function bonusCultivation(
   chiName: dataChi.TChiName,
-  value: number
+  value: number,
 ): IBonusCultivation {
   return { type: constants.BONUS_CULTIVATION, value, chi: chiName };
 }
 
 export function bonusOneAmongN(
-  bonuses: { [key in string]: IBonus }
+  bonuses: { [key in string]: IBonus },
 ): IBonusOneAmongN | IBonus {
   if (Object.keys(bonuses).length === 0) {
     throw new Error("Can not create one out of zero");
@@ -52,7 +52,7 @@ export function bonusSkillRank(skill: dataSkill.TSkillName): IBonusSkillRank {
 
 export function bonusSpeciality(
   skill: dataSkill.TSkillName,
-  speciality: string
+  speciality: string,
 ): IBonusSpeciality {
   return { skill, speciality, type: constants.BONUS_SPECIALITY };
 }
@@ -63,7 +63,7 @@ export function bonusLoresheet(lsUid: string): IBonusLoresheet {
 
 export function bonusLoresheetOption(
   lsUid: string,
-  uid: string
+  uid: string,
 ): IBonusLoresheetOption {
   return { type: constants.BONUS_LORESHEET_OPTION, lsUid, uid };
 }

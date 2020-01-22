@@ -20,7 +20,7 @@ describe("Testing for skill action creators", () => {
     const skill = "Awareness";
     const speciality = "";
     expect(() =>
-      actions.skillSpecialityBuy(skill, speciality, zeroCost)
+      actions.skillSpecialityBuy(skill, speciality, zeroCost),
     ).toThrow();
   });
 });

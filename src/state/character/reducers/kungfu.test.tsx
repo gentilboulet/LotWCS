@@ -19,7 +19,7 @@ describe("Testing openStyle action", () => {
       const newStyle = actions.openStyle(
         style.uid,
         types.KUNGFU_EXTERNAL,
-        zeroCost
+        zeroCost,
       );
       expect(Object.keys(testingState.kungfu.KUNGFU_EXTERNAL).length).toBe(0);
       const result = kungfuReducer(testingState, newStyle);
@@ -32,7 +32,7 @@ describe("Testing openStyle action", () => {
       const newStyle = actions.openStyle(
         style.uid,
         types.KUNGFU_INTERNAL,
-        zeroCost
+        zeroCost,
       );
       expect(Object.keys(testingState.kungfu.KUNGFU_INTERNAL).length).toBe(0);
       const result = kungfuReducer(testingState, newStyle);
@@ -47,7 +47,7 @@ describe("Testing addStyleTechnique action", () => {
       const externalStyle = actions.openStyle(
         style.uid,
         types.KUNGFU_EXTERNAL,
-        zeroCost
+        zeroCost,
       );
       const stateWithStyle = kungfuReducer(testingState, externalStyle);
       style.techniques.forEach(tech => {
@@ -55,13 +55,13 @@ describe("Testing addStyleTechnique action", () => {
           style.uid,
           tech.uid,
           types.KUNGFU_EXTERNAL,
-          zeroCost
+          zeroCost,
         );
 
         expect(stateWithStyle.kungfu.KUNGFU_EXTERNAL[style.uid].length).toBe(0);
         const stateWithTechnique = kungfuReducer(stateWithStyle, addTechnique);
         expect(
-          stateWithTechnique.kungfu.KUNGFU_EXTERNAL[style.uid].length
+          stateWithTechnique.kungfu.KUNGFU_EXTERNAL[style.uid].length,
         ).toBe(1);
       });
     });
@@ -72,7 +72,7 @@ describe("Testing addStyleTechnique action", () => {
       const internalKungfu = actions.openStyle(
         style.uid,
         types.KUNGFU_INTERNAL,
-        zeroCost
+        zeroCost,
       );
       const stateWithStyle = kungfuReducer(testingState, internalKungfu);
       style.techniques
@@ -82,18 +82,18 @@ describe("Testing addStyleTechnique action", () => {
             style.uid,
             tech.uid,
             types.KUNGFU_INTERNAL,
-            zeroCost
+            zeroCost,
           );
 
           expect(stateWithStyle.kungfu.KUNGFU_INTERNAL[style.uid].length).toBe(
-            1
+            1,
           );
           const stateWithTechnique = kungfuReducer(
             stateWithStyle,
-            addTechnique
+            addTechnique,
           );
           expect(
-            stateWithTechnique.kungfu.KUNGFU_INTERNAL[style.uid].length
+            stateWithTechnique.kungfu.KUNGFU_INTERNAL[style.uid].length,
           ).toBe(2);
         });
     });
@@ -104,7 +104,7 @@ describe("Testing kungfuReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      kungfuReducer(testingState, junk as ActionType<typeof actions>)
+      kungfuReducer(testingState, junk as ActionType<typeof actions>),
     ).toMatchSnapshot();
   });
 });

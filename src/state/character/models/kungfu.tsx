@@ -2,7 +2,7 @@ import {
   kungfuData,
   kungfuTechniqueData,
   validateKungFuStyle,
-  validateKungFuTechnique
+  validateKungFuTechnique,
 } from "../../../data/kungfu";
 import {
   IDataExternalKungfu,
@@ -11,7 +11,7 @@ import {
   IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
-  KUNGFU_TYPE
+  KUNGFU_TYPE,
 } from "../../../data/kungfu/types";
 import * as effects from "../../../perks/constants/effects";
 
@@ -25,14 +25,14 @@ export function createState(): IKungFuState {
   return {
     KUNGFU_EXTERNAL: {},
     KUNGFU_INTERNAL: {},
-    noRestrictionInternal: []
+    noRestrictionInternal: [],
   };
 }
 
 export function openStyle(
   state: IKungFuState,
   type: KUNGFU_TYPE,
-  styleUid: string
+  styleUid: string,
 ): void {
   validateKungFuStyle(type, styleUid);
   if (isStylePresent(state, type, styleUid)) {
@@ -45,7 +45,7 @@ export function openStyle(
     if (lvl1s.length !== 1) {
       throw new Error(
         "Internal error : internal style malformed, more than 1 lvl 1 techniques for " +
-          styleUid
+          styleUid,
       );
     }
     state[type][styleUid].push(lvl1s[0].uid);
@@ -55,10 +55,10 @@ export function openStyle(
 export function isStylePresent(
   state: IKungFuState,
   type: KUNGFU_TYPE,
-  styleUid: string
+  styleUid: string,
 ): boolean {
   const styleIndex = Object.keys(state[type]).findIndex(
-    stateKungFuUid => stateKungFuUid === styleUid
+    stateKungFuUid => stateKungFuUid === styleUid,
   );
   return styleIndex !== -1;
 }
@@ -67,7 +67,7 @@ export function addKungFuTechnique(
   state: IKungFuState,
   type: KUNGFU_TYPE,
   styleUid: string,
-  techniqueUid: string
+  techniqueUid: string,
 ): void {
   validateKungFuStyle(type, styleUid);
   validateKungFuTechnique(type, styleUid, techniqueUid);
@@ -86,24 +86,24 @@ export function isStyleTechniquePresent(
   state: IKungFuState,
   type: KUNGFU_TYPE,
   styleUid: string,
-  techniqueUid: string
+  techniqueUid: string,
 ): boolean {
   if (!isStylePresent(state, type, styleUid)) {
     return false;
   }
   const optionIndex = state[type][styleUid].findIndex(
-    stateTechniqueUid => stateTechniqueUid === techniqueUid
+    stateTechniqueUid => stateTechniqueUid === techniqueUid,
   );
   return optionIndex !== -1;
 }
 
 export function getExternalKungFuStatistics(
   state: IKungFuState,
-  styleUid: string
+  styleUid: string,
 ): IDataExternalKungfuStatistics {
   const dataStatistics = (kungfuData(
     KUNGFU_EXTERNAL,
-    styleUid
+    styleUid,
   ) as IDataExternalKungfu).statistics;
 
   if (!isStylePresent(state, KUNGFU_EXTERNAL, styleUid)) {
@@ -116,7 +116,7 @@ export function getExternalKungFuStatistics(
     const kfTechnique = kungfuTechniqueData(
       KUNGFU_EXTERNAL,
       styleUid,
-      techniqueUid
+      techniqueUid,
     );
     switch (kfTechnique.effect.type) {
       case effects.EFFECT_COMBAT_STATISTIC:
@@ -132,21 +132,21 @@ export function getExternalKungFuStatistics(
 export function canOpenKungFu(
   state: IKungFuState,
   type: KUNGFU_TYPE,
-  styleUid: string
+  styleUid: string,
 ): boolean {
   return !isStylePresent(state, type, styleUid);
 }
 
 function _knownInternalKungFuLevel(
   state: IKungFuState,
-  styleUid: string
+  styleUid: string,
 ): number[] {
   return state[KUNGFU_INTERNAL][styleUid]
     .map(techniqueUid => {
       const techData = kungfuTechniqueData(
         KUNGFU_INTERNAL,
         styleUid,
-        techniqueUid
+        techniqueUid,
       ) as IDataInternalKungfuTechnique;
       return techData.level;
     })
@@ -157,7 +157,7 @@ export function canBuyKungFuTechnique(
   state: IKungFuState,
   type: KUNGFU_TYPE,
   styleUid: string,
-  techniqueUid: string
+  techniqueUid: string,
 ): boolean {
   if (!isStylePresent(state, type, styleUid)) {
     return false;
@@ -180,7 +180,7 @@ export function canBuyKungFuTechnique(
     const kfTechnique = kungfuTechniqueData(
       KUNGFU_INTERNAL,
       styleUid,
-      techniqueUid
+      techniqueUid,
     ) as IDataInternalKungfuTechnique;
 
     if (levels.length === 0 && kfTechnique.level === 1) {

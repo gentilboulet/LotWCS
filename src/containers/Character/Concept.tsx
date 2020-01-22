@@ -17,21 +17,21 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    value: state.character.concept !== undefined ? state.character.concept : ""
+    value: state.character.concept !== undefined ? state.character.concept : "",
   };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(actions.setConcept(s))
+    onChange: (s: string) => dispatch(actions.setConcept(s)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IConceptProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -39,5 +39,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Concept);

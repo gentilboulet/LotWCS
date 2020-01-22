@@ -20,18 +20,18 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
     onDelete: (id: number) => {
       dispatch(actions.historyDeleteUpTo(id));
-    }
+    },
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IHistoryProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -39,5 +39,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(History);

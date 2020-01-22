@@ -4,7 +4,7 @@ import { Icon } from "react-fa";
 import { kungfuTechniqueData } from "../../data/kungfu";
 import {
   IDataInternalKungfuTechnique,
-  KUNGFU_INTERNAL
+  KUNGFU_INTERNAL,
 } from "../../data/kungfu/types";
 import { effectToString } from "../../perks/effects";
 import { ICost } from "../../state/character/models/costs";
@@ -32,7 +32,7 @@ class InternalKungFuTechnique extends React.PureComponent<
     const technique = kungfuTechniqueData(
       KUNGFU_INTERNAL,
       this.props.styleUid,
-      this.props.uid
+      this.props.uid,
     ) as IDataInternalKungfuTechnique;
     if (technique === undefined) {
       return;

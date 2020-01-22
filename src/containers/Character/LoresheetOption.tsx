@@ -4,18 +4,18 @@ import { ActionType } from "typesafe-actions";
 
 import {
   getCostBuyLoresheetOption,
-  ICost
+  ICost,
 } from "../../state/character/models/costs";
 
 import { IStoreState } from "../../state";
 import * as actions from "../../state/character/actions/loresheets";
 import {
   canBuyLoresheetOption,
-  isLoresheetOptionPresent
+  isLoresheetOptionPresent,
 } from "../../state/character/models/loresheets";
 
 import LoresheetOption, {
-  ILoresheetOptionProps
+  ILoresheetOptionProps,
 } from "../../components/Character/LoresheetOption";
 
 interface IMapStateToProps {
@@ -55,33 +55,33 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     canBuy: canBuyLoresheetOption(
       state.character.loresheets,
       props.lsUid,
-      props.uid
+      props.uid,
     ),
     cost: getCostBuyLoresheetOption(state.character, props.lsUid, props.uid),
     known: isLoresheetOptionPresent(
       state.character.loresheets,
       props.lsUid,
-      props.uid
+      props.uid,
     ),
     lsUid: props.lsUid,
     payloads,
-    uid: props.uid
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost, payload?: string) =>
-      dispatch(actions.buyOption(props.lsUid, props.uid, cost, payload))
+      dispatch(actions.buyOption(props.lsUid, props.uid, cost, payload)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): ILoresheetOptionProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -89,5 +89,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(LoresheetOption);

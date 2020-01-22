@@ -4,18 +4,18 @@ import { ActionType } from "typesafe-actions";
 
 import {
   getCostKungFuTechnique,
-  ICost
+  ICost,
 } from "../../state/character/models/costs";
 
 import { IStoreState } from "../../state";
 import * as actions from "../../state/character/actions/kungfu";
 import {
   canBuyKungFuTechnique,
-  isStyleTechniquePresent
+  isStyleTechniquePresent,
 } from "../../state/character/models/kungfu";
 
 import ExternalKungFuTechnique, {
-  IExternalKungFuTechniqueProps
+  IExternalKungFuTechniqueProps,
 } from "../../components/Character/ExternalKungFuTechnique";
 import { KUNGFU_EXTERNAL } from "../../data/kungfu/types";
 
@@ -42,40 +42,40 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
       state.character.kungfu,
       KUNGFU_EXTERNAL,
       props.styleUid,
-      props.uid
+      props.uid,
     ),
     cost: getCostKungFuTechnique(
       state.character,
       KUNGFU_EXTERNAL,
       props.styleUid,
-      props.uid
+      props.uid,
     ),
     known: isStyleTechniquePresent(
       state.character.kungfu,
       KUNGFU_EXTERNAL,
       props.styleUid,
-      props.uid
+      props.uid,
     ),
     styleUid: props.styleUid,
-    uid: props.uid
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost) =>
       dispatch(
-        actions.buyTechnique(props.styleUid, props.uid, KUNGFU_EXTERNAL, cost)
-      )
+        actions.buyTechnique(props.styleUid, props.uid, KUNGFU_EXTERNAL, cost),
+      ),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IExternalKungFuTechniqueProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -83,5 +83,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(ExternalKungFuTechnique);

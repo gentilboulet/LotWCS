@@ -9,7 +9,7 @@ import {
   canBuySpeciality,
   getSkill,
   increase,
-  isSpecialityPresent
+  isSpecialityPresent,
 } from "./skills";
 
 describe("Testing skills state", () => {
@@ -35,7 +35,7 @@ describe("Testing skills state", () => {
     expect(getSkill(state, "Awareness").specialities).toMatchObject([]);
     addSpeciality(state.skills, "Awareness", "Speciality");
     expect(
-      isSpecialityPresent(state.skills, "Awareness", "Speciality")
+      isSpecialityPresent(state.skills, "Awareness", "Speciality"),
     ).toBeTruthy();
   });
 
@@ -45,8 +45,8 @@ describe("Testing skills state", () => {
       addSpeciality(
         state.skills,
         "Totally not a skill" as TSkillName,
-        "Speciality"
-      )
+        "Speciality",
+      ),
     ).toThrowError();
   });
 
@@ -55,10 +55,10 @@ describe("Testing skills state", () => {
     expect(getSkill(state, "Awareness").specialities).toMatchObject([]);
     addSpeciality(state.skills, "Awareness", "Speciality");
     expect(
-      isSpecialityPresent(state.skills, "Awareness", "Speciality")
+      isSpecialityPresent(state.skills, "Awareness", "Speciality"),
     ).toBeTruthy();
     expect(() =>
-      addSpeciality(state.skills, "Awareness", "Speciality")
+      addSpeciality(state.skills, "Awareness", "Speciality"),
     ).toThrowError();
   });
 

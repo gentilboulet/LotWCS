@@ -6,7 +6,7 @@ import Destiny, { IDestinyProps } from "../../components/Character/Destiny";
 
 function mapStateToProps(state: IStoreState): IDestinyProps {
   return {
-    value: state.character.destiny
+    value: state.character.destiny,
   };
 }
 

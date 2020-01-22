@@ -9,7 +9,7 @@ import { applyCost } from "../models/costs";
 
 export function loresheetsReducer(
   baseState: ICharacterState,
-  action: ActionType<typeof actions>
+  action: ActionType<typeof actions>,
 ): ICharacterState {
   switch (action.type) {
     case getType(actions.open):
@@ -24,7 +24,7 @@ export function loresheetsReducer(
           draftState.loresheets,
           action.payload.lsUid,
           action.payload.uid,
-          action.payload.payload
+          action.payload.payload,
         );
       });
     default:

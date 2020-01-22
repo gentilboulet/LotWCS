@@ -15,7 +15,7 @@ import { globalReducer } from "../reducers/global";
 
 const initialState: ICharacterState = globalReducer(
   emptyStateFactory(),
-  setRank(2)
+  setRank(2),
 );
 
 describe("Testing skillsReducer", () => {
@@ -39,14 +39,14 @@ describe("Testing skillsReducer", () => {
     const action = actions.skillSpecialityBuy(
       skillName,
       specialityName,
-      zeroCost
+      zeroCost,
     );
     const state = skillsReducer(initialState, action);
     expect(
-      isSpecialityPresent(initialState.skills, skillName, specialityName)
+      isSpecialityPresent(initialState.skills, skillName, specialityName),
     ).toBeFalsy();
     expect(
-      isSpecialityPresent(state.skills, skillName, specialityName)
+      isSpecialityPresent(state.skills, skillName, specialityName),
     ).toBeTruthy();
     expect(globalReducer(initialState, action)).toMatchObject(state);
   });
@@ -58,14 +58,14 @@ describe("Testing skillsReducer", () => {
     const action = actions.skillSpecialityBuy(
       skillName,
       specialityName,
-      zeroCost
+      zeroCost,
     );
     const state = skillsReducer(initialState, action);
     expect(
-      isSpecialityPresent(initialState.skills, skillName, specialityName)
+      isSpecialityPresent(initialState.skills, skillName, specialityName),
     ).toBeFalsy();
     expect(
-      isSpecialityPresent(state.skills, skillName, specialityName)
+      isSpecialityPresent(state.skills, skillName, specialityName),
     ).toBeTruthy();
 
     expect(() => {
@@ -76,7 +76,7 @@ describe("Testing skillsReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      skillsReducer(initialState, junk as ActionType<typeof actions>)
+      skillsReducer(initialState, junk as ActionType<typeof actions>),
     ).toMatchObject(initialState);
   });
 });

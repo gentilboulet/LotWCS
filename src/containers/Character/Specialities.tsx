@@ -7,13 +7,13 @@ import * as actions from "../../state/character/actions/skills";
 import { getCostSpeciality, ICost } from "../../state/character/models/costs";
 import {
   canBuySpeciality,
-  getSkill
+  getSkill,
 } from "../../state/character/models/skills";
 
 import { skills as data, TSkillName } from "../../data/skills";
 
 import Specialities, {
-  ISpecialitiesProps
+  ISpecialitiesProps,
 } from "../../components/Character/Specialities";
 
 interface IMapStateToProps {
@@ -37,11 +37,11 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   const newSpecialityAvailability = {
     canBuy: canBuySpeciality(state.character, props.skill, ""),
     cost: getCostSpeciality(state.character),
-    name: ""
+    name: "",
   };
 
   const concat = data[props.skill].concat(
-    getSkill(state.character, props.skill).specialities
+    getSkill(state.character, props.skill).specialities,
   );
   const merge = concat
     .filter((item, pos) => concat.indexOf(item) === pos)
@@ -53,9 +53,9 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
       return {
         canBuy: canBuySpeciality(state.character, props.skill, speciality),
         cost: getCostSpeciality(state.character),
-        name: speciality
+        name: speciality,
       };
-    })
+    }),
   };
   retVal.specialities.push(newSpecialityAvailability);
   return retVal;
@@ -63,18 +63,18 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onBuy: (speciality: string, cost: ICost) => {
       dispatch(actions.skillSpecialityBuy(props.skill, speciality, cost));
-    }
+    },
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): ISpecialitiesProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -82,5 +82,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Specialities);

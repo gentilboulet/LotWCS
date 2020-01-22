@@ -24,7 +24,7 @@ export const skills: TDataSkills = {
     "Appear steadfast",
     "Focus on Breath (for Courtiers)",
     "Recover from the Disorient Marvel",
-    "Resist Courtier’s Arts"
+    "Resist Courtier’s Arts",
   ],
   Crafting: [
     "Armor",
@@ -34,14 +34,14 @@ export const skills: TDataSkills = {
     "Gardening",
     "Painting",
     "Tools",
-    "Weapons"
+    "Weapons",
   ],
   Finesse: [
     "Acrobatics",
     "Cheating",
     "Escaping Bonds",
     "Picking Pockets",
-    "Sleight of Hand"
+    "Sleight of Hand",
   ],
   Hardiness: [
     "Disease",
@@ -49,7 +49,7 @@ export const skills: TDataSkills = {
     "Poison",
     "Recovering From Injuries",
     "Staying Awake",
-    "Enduring Torture"
+    "Enduring Torture",
   ],
   Inspire: [
     "Debating",
@@ -57,7 +57,7 @@ export const skills: TDataSkills = {
     "Outright Lies",
     "Public Speeches",
     "Specific Courtier’s Arts techniques",
-    "Spinning the Facts"
+    "Spinning the Facts",
   ],
   Learning: [
     "Calligraphy",
@@ -66,7 +66,7 @@ export const skills: TDataSkills = {
     "Math",
     "Other Cultures",
     "Philosophy",
-    "Specific Scholar’s Arts Techniques"
+    "Specific Scholar’s Arts Techniques",
   ],
   Medicine: [
     "Disease",
@@ -74,7 +74,7 @@ export const skills: TDataSkills = {
     "Injuries",
     "Poison",
     "Pressure Points",
-    "Specific Doctor’s Arts Techniques"
+    "Specific Doctor’s Arts Techniques",
   ],
   Might: ["Breaking", "Lifting", "Pushing", "Throwing"],
   Perform: [
@@ -83,13 +83,13 @@ export const skills: TDataSkills = {
     "Dancing",
     "Poetry",
     "Singing",
-    "Music"
+    "Music",
   ],
   Politics: ["Specific region or faction"],
   Ride: [
     "Caring for Your Horse",
     "Coaxing Your Horse into Dangerous Terrain",
-    "Racing"
+    "Racing",
   ],
   Stealth: [
     "Camouflage",
@@ -97,7 +97,7 @@ export const skills: TDataSkills = {
     "Eavesdropping",
     "In Shadows",
     "Silence",
-    "Smuggling"
+    "Smuggling",
   ],
   Survival: ["At Sea", "Cities", "Deserts", "Forests", "Mountains", "Prisons"],
   Tactics: [
@@ -105,13 +105,13 @@ export const skills: TDataSkills = {
     "Disruption",
     "Escorting Caravans",
     "Sieging Fortresses",
-    "Specific Warrior’s Arts Techniques"
+    "Specific Warrior’s Arts Techniques",
   ],
   "Wu Wei": [
     "Focusing on Breath (for Priests)",
     "Resisting Curses",
     "Sensing Chi",
     "Social Perception",
-    "Specific Priest’s Arts Techniques"
-  ]
+    "Specific Priest’s Arts Techniques",
+  ],
 };

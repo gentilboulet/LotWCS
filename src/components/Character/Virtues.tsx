@@ -5,7 +5,7 @@ import { ICost } from "../../state/character/models/costs";
 import {
   IDataVirtueType,
   VIRTUE_CHIVALROUS,
-  VIRTUE_SELFISH
+  VIRTUE_SELFISH,
 } from "../../data/virtues";
 
 import EditNumeric from "../../components/EditNumeric";
@@ -27,10 +27,10 @@ export interface IVirtuesProps {
 class Virtues extends React.PureComponent<IVirtuesProps, {}> {
   public render() {
     const chivalrousVirtues = this.props.virtues.filter(
-      v => v.type === VIRTUE_CHIVALROUS
+      v => v.type === VIRTUE_CHIVALROUS,
     );
     const selfishVirtues = this.props.virtues.filter(
-      v => v.type === VIRTUE_SELFISH
+      v => v.type === VIRTUE_SELFISH,
     );
     const max = Math.max(chivalrousVirtues.length, selfishVirtues.length);
 
@@ -42,7 +42,7 @@ class Virtues extends React.PureComponent<IVirtuesProps, {}> {
         <div>
           <FieldHeader label="Selfish Virtues" />
         </div>
-      </div>
+      </div>,
     ];
     for (let i = 0; i < max; i++) {
       const cvdiv =
@@ -62,7 +62,7 @@ class Virtues extends React.PureComponent<IVirtuesProps, {}> {
         <div key={"virtues_" + i}>
           {cvdiv}
           {svdiv}
-        </div>
+        </div>,
       );
     }
     return <div>{rows.map(r => r)}</div>;

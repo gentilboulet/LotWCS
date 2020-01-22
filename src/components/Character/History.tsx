@@ -16,7 +16,7 @@ class History extends React.PureComponent<IHistoryProps, IHistoryState> {
     super(props);
 
     this.state = {
-      hoverIndex: this.props.history.length
+      hoverIndex: this.props.history.length,
     };
 
     this.renderHistoryAction.bind(this);
@@ -28,7 +28,7 @@ class History extends React.PureComponent<IHistoryProps, IHistoryState> {
       <div className="History">
         <div>
           {this.props.history.map((action: IAction, index: number) =>
-            this.renderHistoryAction(action, index)
+            this.renderHistoryAction(action, index),
           )}
         </div>
       </div>

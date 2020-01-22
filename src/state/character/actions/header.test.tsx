@@ -26,7 +26,7 @@ describe("Testing header action creators", () => {
 
   test("should not create an invalid set archetype action", () => {
     expect(() =>
-      actions.setArchetype(("pro golfer" as unknown) as TArchetype)
+      actions.setArchetype(("pro golfer" as unknown) as TArchetype),
     ).toThrowError();
   });
 
@@ -39,7 +39,7 @@ describe("Testing header action creators", () => {
 
   test("should not create an invalid set rank action", () => {
     expect(() =>
-      actions.setRank(("ultimate rank" as unknown) as TRank)
+      actions.setRank(("ultimate rank" as unknown) as TRank),
     ).toThrowError();
   });
 });

@@ -16,13 +16,13 @@ export interface ICost {
 export const zeroCost: ICost = {
   canPay: true,
   destiny: 0,
-  original: 0
+  original: 0,
 };
 
 function _costFactory(
   state: ICharacterState,
   costValue: number,
-  discountIdx?: number[]
+  discountIdx?: number[],
 ): ICost {
   if (discountIdx) {
     let remainingCost = costValue;
@@ -37,13 +37,13 @@ function _costFactory(
       canPay: state.destiny >= remainingCost,
       destiny: remainingCost,
       discounts,
-      original: costValue
+      original: costValue,
     };
   } else {
     return {
       canPay: state.destiny >= costValue,
       destiny: costValue,
-      original: costValue
+      original: costValue,
     };
   }
 }
@@ -63,7 +63,7 @@ import { TSkillName } from "../../../data/skills";
 import { DISCOUNT_SKILL } from "../../../perks/constants/discounts";
 export function getCostSkill(
   state: ICharacterState,
-  skillName: TSkillName
+  skillName: TSkillName,
 ): ICost {
   const defaultCost = 2;
 
@@ -98,7 +98,7 @@ export function getCostChi(state: ICharacterState, chiName: TChiName): ICost {
     chiValue < 1 ? chiMultiplicator : chiMultiplicator * chiValue;
   const defaultCost = Math.max(
     0,
-    expectedCost - state.chi[chiName].cultivation
+    expectedCost - state.chi[chiName].cultivation,
   );
 
   const chiDiscountIdx = getDiscountIndexes(state, (d: IDiscount) => {
@@ -117,7 +117,7 @@ import { getLoresheetData } from "../../../data/loresheets";
 import { DISCOUNT_LORESHEET } from "../../../perks/constants/discounts";
 export function getCostOpenLoresheet(
   state: ICharacterState,
-  uid: string
+  uid: string,
 ): ICost {
   const lsData = getLoresheetData(uid);
   const defaultCost = lsData.cost;
@@ -141,7 +141,7 @@ function _getCostBuyLoresheetOptionOneCost(
   state: ICharacterState,
   lsUid: string,
   uid: string,
-  cost: number
+  cost: number,
 ): ICost {
   const lsDiscountIdx = getDiscountIndexes(state, (d: IDiscount) => {
     if (d.type !== DISCOUNT_LORESHEET_OPTION) {
@@ -156,7 +156,7 @@ function _getCostBuyLoresheetOptionOneCost(
       d.uids.findIndex(
         opt =>
           opt.lsUid === lsUid &&
-          -1 !== opt.optUid.findIndex(discountOptUid => uid === discountOptUid)
+          -1 !== opt.optUid.findIndex(discountOptUid => uid === discountOptUid),
       )
     );
   });
@@ -166,7 +166,7 @@ function _getCostBuyLoresheetOptionOneCost(
 export function getCostBuyLoresheetOption(
   state: ICharacterState,
   lsUid: string,
-  uid: string
+  uid: string,
 ): ICost[] {
   const lsData = getLoresheetOptionData(lsUid, uid);
   const defaultCost = lsData.cost;
@@ -185,7 +185,7 @@ import { DISCOUNT_VIRTUE } from "../../../perks/constants/discounts";
 export function getCostVirtue(
   state: ICharacterState,
   name: string,
-  type: IDataVirtueType
+  type: IDataVirtueType,
 ): ICost {
   const defaultCost = 5;
   const virtueDiscountIdx = getDiscountIndexes(state, (d: IDiscount) => {
@@ -204,7 +204,7 @@ import { DISCOUNT_KUNGFU_STYLE } from "../../../perks/constants/discounts";
 export function getCostKungFuStyle(
   state: ICharacterState,
   type: KUNGFU_TYPE,
-  uid: string
+  uid: string,
 ): ICost {
   const defaultCost = 10;
   const kungfuDiscountIdx = getDiscountIndexes(state, (d: IDiscount) => {
@@ -227,13 +227,13 @@ import {
   IDataExternalKungfuTechnique,
   IDataInternalKungfuTechnique,
   KUNGFU_EXTERNAL,
-  KUNGFU_TYPE
+  KUNGFU_TYPE,
 } from "../../../data/kungfu/types";
 export function getCostKungFuTechnique(
   state: ICharacterState,
   type: KUNGFU_TYPE,
   styleUid: string,
-  uid: string
+  uid: string,
 ): ICost {
   /*
    DISCOUNT !

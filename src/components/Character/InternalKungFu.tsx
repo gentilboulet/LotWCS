@@ -27,7 +27,7 @@ class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
   public render() {
     const data = kungfuData(
       KUNGFU_INTERNAL,
-      this.props.uid
+      this.props.uid,
     ) as IDataInternalKungfu;
     return (
       <div>

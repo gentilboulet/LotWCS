@@ -8,7 +8,7 @@ import * as actions from "../../state/character/actions/header";
 import { TArchetype } from "../../data/archetypes";
 
 import Archetype, {
-  IArchetypeProps
+  IArchetypeProps,
 } from "../../components/Character/Archetype";
 
 interface IMapStateToProps {
@@ -24,21 +24,21 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     locked: state.character.archetype !== undefined,
     value:
-      state.character.archetype !== undefined ? state.character.archetype : ""
+      state.character.archetype !== undefined ? state.character.archetype : "",
   };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
-    onChange: (s: TArchetype) => dispatch(actions.setArchetype(s))
+    onChange: (s: TArchetype) => dispatch(actions.setArchetype(s)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IArchetypeProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -46,5 +46,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Archetype);

@@ -11,7 +11,7 @@ export function createState(): TDiscountsState {
 
 export function pushToDiscounts(
   state: ICharacterState,
-  discounts: IDiscount[]
+  discounts: IDiscount[],
 ): void {
   discounts
     .filter((r: IDiscount) => isDiscount(r))
@@ -22,7 +22,7 @@ export function pushToDiscounts(
 
 export function getDiscountIndexes(
   state: ICharacterState,
-  predicate: (d: IDiscount) => boolean
+  predicate: (d: IDiscount) => boolean,
 ) {
   const discountIdx = state.discounts
     .map((discount: IDiscount, idx: number) => {

@@ -4,18 +4,18 @@ import { ActionType } from "typesafe-actions";
 
 import {
   getCostOpenLoresheet,
-  ICost
+  ICost,
 } from "../../state/character/models/costs";
 
 import { IStoreState } from "../../state";
 import * as actions from "../../state/character/actions/loresheets";
 import {
   canOpenLoresheet,
-  isLoresheetPresent
+  isLoresheetPresent,
 } from "../../state/character/models/loresheets";
 
 import Loresheet, {
-  ILoresheetProps
+  ILoresheetProps,
 } from "../../components/Character/Loresheet";
 
 interface IMapStateToProps {
@@ -38,22 +38,22 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     canOpen: canOpenLoresheet(state.character, props.uid),
     cost: getCostOpenLoresheet(state.character, props.uid),
     known: isLoresheetPresent(state.character.loresheets, props.uid),
-    uid: props.uid
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
-    onOpen: (cost: ICost) => dispatch(actions.open(props.uid, cost))
+    onOpen: (cost: ICost) => dispatch(actions.open(props.uid, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): ILoresheetProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -61,5 +61,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Loresheet);

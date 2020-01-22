@@ -31,7 +31,7 @@ describe("Testing virtueReducer", () => {
   it("should fail to receive a VIRTUE_INCREASE action with a new virtue", () => {
     const virtue: dataVirtues.IDataVirtue = {
       name: "New Virtue",
-      type: dataVirtues.VIRTUE_CHIVALROUS
+      type: dataVirtues.VIRTUE_CHIVALROUS,
     };
     expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeFalsy();
 
@@ -42,7 +42,7 @@ describe("Testing virtueReducer", () => {
   it("should do nothing with a junk action", () => {
     const junk = { type: "JUNK_ACTION" };
     expect(
-      virtuesReducer(initialState, junk as ActionType<typeof actions>)
+      virtuesReducer(initialState, junk as ActionType<typeof actions>),
     ).toMatchObject(initialState);
   });
 });

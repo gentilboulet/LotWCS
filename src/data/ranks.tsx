@@ -6,7 +6,7 @@ import { bonusChi, bonusDestiny } from "../perks/actions/bonuses";
 import {
   discountKungfuFactory,
   discountSkillFactory,
-  discountVirtueFactory
+  discountVirtueFactory,
 } from "../perks/actions/discounts";
 
 import { IBonus } from "../perks/bonuses";
@@ -38,7 +38,7 @@ function _defaultVirtues() {
     { name: "Individualism", type: VIRTUE_SELFISH },
     { name: "Obsession", type: VIRTUE_SELFISH },
     { name: "Ruthlessness", type: VIRTUE_SELFISH },
-    { name: "Ferocity", type: VIRTUE_SELFISH }
+    { name: "Ferocity", type: VIRTUE_SELFISH },
   ];
   return discountVirtueFactory(15 * 5, virtues); // 15 free points
 }
@@ -52,9 +52,9 @@ export const ranks: IDataRanks = [
       bonusDestiny(10),
       discountSkillFactory(10),
       bonusChi(8, "general"),
-      _defaultVirtues()
+      _defaultVirtues(),
     ],
-    value: 0
+    value: 0,
   },
   {
     description:
@@ -64,9 +64,9 @@ export const ranks: IDataRanks = [
       bonusDestiny(15),
       discountSkillFactory(10),
       bonusChi(8, "general"),
-      _defaultVirtues()
+      _defaultVirtues(),
     ],
-    value: 1
+    value: 1,
   },
   {
     description:
@@ -78,9 +78,9 @@ export const ranks: IDataRanks = [
       bonusChi(10, "general"),
       discountKungfuFactory(10, KUNGFU_EXTERNAL),
       discountKungfuFactory(10, KUNGFU_INTERNAL),
-      _defaultVirtues()
+      _defaultVirtues(),
     ],
-    value: 2
+    value: 2,
   },
   {
     description:
@@ -92,9 +92,9 @@ export const ranks: IDataRanks = [
       bonusChi(10, "general"),
       discountKungfuFactory(10, KUNGFU_EXTERNAL),
       discountKungfuFactory(10, KUNGFU_INTERNAL),
-      _defaultVirtues()
+      _defaultVirtues(),
     ],
-    value: 3
+    value: 3,
   },
   {
     description:
@@ -106,9 +106,9 @@ export const ranks: IDataRanks = [
       bonusChi(10, "general"),
       discountKungfuFactory(10, KUNGFU_EXTERNAL),
       discountKungfuFactory(10, KUNGFU_INTERNAL),
-      _defaultVirtues()
+      _defaultVirtues(),
     ],
-    value: 4
+    value: 4,
   },
   {
     description:
@@ -118,15 +118,15 @@ export const ranks: IDataRanks = [
       bonusDestiny(150),
       discountSkillFactory(20),
       bonusChi(10, "general"),
-      _defaultVirtues()
+      _defaultVirtues(),
     ],
-    value: 5
-  }
+    value: 5,
+  },
 ];
 
 export function validateRank(rank: number): void {
   const foundRank = ranks.find(
-    (dataRank: IDataRank) => (dataRank.value as number) === rank
+    (dataRank: IDataRank) => (dataRank.value as number) === rank,
   );
   if (!foundRank) {
     throw new Error('Invalid rank "' + rank + '"');

@@ -17,8 +17,8 @@ const store = createStore<IStoreState, IAction, any, any>(
   compose(
     applyMiddleware(checkAutomatics),
     applyMiddleware(pushToHistory),
-    devToolsEnhancer({})
-  )
+    devToolsEnhancer({}),
+  ),
 );
 
 import * as serviceWorker from "./serviceWorker";
@@ -35,7 +35,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </div>,
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 
 serviceWorker.register();

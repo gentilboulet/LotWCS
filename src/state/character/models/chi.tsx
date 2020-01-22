@@ -15,7 +15,7 @@ export function createState(): TChiState {
 export function increase(
   state: TChiState,
   name: TChiName,
-  value: number
+  value: number,
 ): void {
   state[name].value += value;
 }
@@ -23,7 +23,7 @@ export function increase(
 export function increaseCultivation(
   state: TChiState,
   name: TChiName,
-  increaseValue: number
+  increaseValue: number,
 ): void {
   let cultivation = state[name].cultivation + increaseValue;
   let chiValue = state[name].value;

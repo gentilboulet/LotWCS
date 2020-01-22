@@ -11,7 +11,7 @@ export type IChiAction = ActionType<typeof actions>;
 
 export function chiReducer(
   baseState: ICharacterState,
-  action: IChiAction
+  action: IChiAction,
 ): ICharacterState {
   switch (action.type) {
     case getType(actions.chiBuy):

@@ -10,7 +10,7 @@ export const openStyle = createAction(
     dataKungFu.validateKungFuType(kungfuType);
     dataKungFu.validateKungFuStyle(kungfuType, uid);
     return action({ uid, kungfuType, cost });
-  }
+  },
 );
 
 export const buyTechnique = createAction(
@@ -19,7 +19,7 @@ export const buyTechnique = createAction(
     styleUid: string,
     uid: string,
     kungfuType: KUNGFU_TYPE,
-    cost: ICost
+    cost: ICost,
   ) => {
     dataKungFu.validateKungFuType(kungfuType);
     dataKungFu.validateKungFuStyle(kungfuType, styleUid);
@@ -28,9 +28,9 @@ export const buyTechnique = createAction(
       cost,
       kungfuType,
       styleUid,
-      uid
+      uid,
     });
-  }
+  },
 );
 
 export const customStyleName = createAction(
@@ -44,9 +44,9 @@ export const customStyleName = createAction(
     return action({
       kungfuType,
       name,
-      uid
+      uid,
     });
-  }
+  },
 );
 
 export const customTechniqueName = createAction(
@@ -55,7 +55,7 @@ export const customTechniqueName = createAction(
     styleUid: string,
     uid: string,
     kungfuType: KUNGFU_TYPE,
-    name: string
+    name: string,
   ) => {
     dataKungFu.validateKungFuType(kungfuType);
     dataKungFu.validateKungFuStyle(kungfuType, styleUid);
@@ -67,7 +67,7 @@ export const customTechniqueName = createAction(
       kungfuType,
       name,
       styleUid,
-      uid
+      uid,
     });
-  }
+  },
 );

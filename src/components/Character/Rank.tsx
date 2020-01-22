@@ -18,7 +18,7 @@ class Rank extends React.PureComponent<IRankProps, {}> {
         default={dataRank ? (dataRank.name as string) : ""}
         values={ranks.ranks.map(rank => ({
           key: rank.value.toString(),
-          label: rank.name
+          label: rank.name,
         }))}
         onSubmit={this.props.onChange}
         locked={this.props.locked}

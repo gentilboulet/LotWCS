@@ -21,27 +21,23 @@ interface IMapDispatchToProps {
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
     locked: state.character.archetype !== undefined,
-    rank: state.character.rank
+    rank: state.character.rank,
   };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(actions.setRank(Number(s) as TRank))
+    onChange: (s: string) => dispatch(actions.setRank(Number(s) as TRank)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IRankProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(Rank);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Rank);

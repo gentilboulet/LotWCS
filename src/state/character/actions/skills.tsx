@@ -5,7 +5,7 @@ import { ICost } from "../models/costs";
 
 export const skillsBuy = createAction(
   "skills/BUY",
-  action => (name: TSkillName, cost: ICost) => action({ cost, name })
+  action => (name: TSkillName, cost: ICost) => action({ cost, name }),
 );
 
 export const skillSpecialityBuy = createAction(
@@ -15,5 +15,5 @@ export const skillSpecialityBuy = createAction(
       throw new Error("Empty speciality");
     }
     return action({ cost, skill, speciality });
-  }
+  },
 );

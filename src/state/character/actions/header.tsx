@@ -7,14 +7,14 @@ export const setName = createAction(
   "header/SET_NAME",
   action => (name: string) => {
     return action({ name });
-  }
+  },
 );
 
 export const setConcept = createAction(
   "header/SET_CONCEPT",
   action => (concept: string) => {
     return action({ concept });
-  }
+  },
 );
 
 export const setArchetype = createAction(
@@ -22,7 +22,7 @@ export const setArchetype = createAction(
   action => (archetype: dataArchetypes.TArchetype) => {
     dataArchetypes.validateArchetype(archetype);
     return action({ archetype });
-  }
+  },
 );
 
 export const setRank = createAction(
@@ -30,5 +30,5 @@ export const setRank = createAction(
   action => (rank: dataRanks.TRank) => {
     dataRanks.validateRank(rank);
     return action({ rank });
-  }
+  },
 );

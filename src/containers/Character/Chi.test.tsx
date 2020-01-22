@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
-  testingStateFactory()
+  testingStateFactory(),
 );
 
 describe("Testing the Chi container", () => {
@@ -20,7 +20,7 @@ describe("Testing the Chi container", () => {
       <Provider store={store}>
         <Chi name="wood" />
       </Provider>,
-      div
+      div,
     );
   });
 });

@@ -19,7 +19,7 @@ export function createState(): TSkillsState {
 export function increase(
   state: TSkillsState,
   skillName: TSkillName,
-  maxSkillValue: number
+  maxSkillValue: number,
 ): void {
   const old = _getSkill(state, skillName).value;
   if (old + 5 > maxSkillValue) {
@@ -31,12 +31,12 @@ export function increase(
 export function isSpecialityPresent(
   state: TSkillsState,
   skillName: TSkillName,
-  specialityName: string
+  specialityName: string,
 ): boolean {
   const specialityIndex = (state.find(
-    s => s.name === skillName
+    s => s.name === skillName,
   ) as ISkill).specialities.findIndex(
-    (speciality: string) => speciality === specialityName
+    (speciality: string) => speciality === specialityName,
   );
   return specialityIndex !== -1;
 }
@@ -44,7 +44,7 @@ export function isSpecialityPresent(
 export function addSpeciality(
   state: TSkillsState,
   skillName: TSkillName,
-  specialityName: string
+  specialityName: string,
 ): void {
   if (isSpecialityPresent(state, skillName, specialityName)) {
     throw new Error(
@@ -52,7 +52,7 @@ export function addSpeciality(
         specialityName +
         '" for skill "' +
         skillName +
-        '" already bought'
+        '" already bought',
     );
   }
   _getSkill(state, skillName).specialities.push(specialityName);
@@ -60,7 +60,7 @@ export function addSpeciality(
 
 export function canBuySkill(
   state: ICharacterState,
-  skillName: TSkillName
+  skillName: TSkillName,
 ): boolean {
   const value = getSkill(state, skillName).value;
   const max = maxSkillBonus(state);
@@ -70,7 +70,7 @@ export function canBuySkill(
 export function canBuySpeciality(
   state: ICharacterState,
   skillName: TSkillName,
-  speciality: string
+  speciality: string,
 ): boolean {
   return !isSpecialityPresent(state.skills, skillName, speciality);
 }

@@ -8,7 +8,7 @@ export const open = createAction(
   action => (uid: string, cost: ICost) => {
     dataLoresheets.validateLoresheet(uid);
     return action({ cost, uid });
-  }
+  },
 );
 
 export const buyOption = createAction(
@@ -16,5 +16,5 @@ export const buyOption = createAction(
   action => (lsUid: string, uid: string, cost: ICost, payload?: string) => {
     dataLoresheets.validateLoresheetOption(lsUid, uid);
     return action({ cost, lsUid, uid, payload });
-  }
+  },
 );

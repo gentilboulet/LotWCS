@@ -31,30 +31,26 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     canBuy: canBuySkill(state.character, props.name),
     cost: getCostSkill(state.character, props.name),
     name: props.name,
-    value: getSkill(state.character, props.name).value
+    value: getSkill(state.character, props.name).value,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost) => {
       dispatch(actions.skillsBuy(props.name, cost));
-    }
+    },
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): ISkillProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(Skill);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Skill);

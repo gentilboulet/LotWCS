@@ -32,28 +32,24 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     cost: getCostChi(state.character, props.name),
     cultivation: state.character.chi[props.name].cultivation,
     name: props.name,
-    value: state.character.chi[props.name].value
+    value: state.character.chi[props.name].value,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
-    onBuy: (cost: ICost) => dispatch(actions.chiBuy(props.name, 1, cost))
+    onBuy: (cost: ICost) => dispatch(actions.chiBuy(props.name, 1, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IChiProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(Chi);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Chi);

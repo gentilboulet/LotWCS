@@ -18,7 +18,7 @@ export function isHistoryAction(action: any): boolean {
 
 export function globalReducer(
   state: IHistoryState,
-  action: IHistoryAction
+  action: IHistoryAction,
 ): IHistoryState {
   return historyReducer(state, action);
 }

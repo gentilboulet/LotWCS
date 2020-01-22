@@ -45,7 +45,7 @@ export function isCharacterAction(action: any): boolean {
 
 export function globalReducer(
   state: ICharacterState | undefined,
-  action: ICharacterAction
+  action: ICharacterAction,
 ): ICharacterState {
   if (!state) {
     return globalReducer(initialStateFactory(), action);
@@ -76,7 +76,7 @@ export function globalReducer(
 
 export function playActions(
   state: ICharacterState,
-  toPlay: ICharacterAction[]
+  toPlay: ICharacterAction[],
 ): ICharacterState {
   return produce(state, draft => {
     let newState = draft;

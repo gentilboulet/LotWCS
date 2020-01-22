@@ -9,18 +9,19 @@ import { isApplicable } from "../character/models/automatics";
 import { applyBonuses } from "../character/models/bonuses";
 
 export const middleware = (store: Store<IStoreState>) => (
-  next: Dispatch<IAction>
+  next: Dispatch<IAction>,
 ) => (action: IAction) => {
   const result = next(action);
   const newState = store.getState();
   const applied = newState.character.automatics
     .map((auto, index) => {
       if (isApplicable(newState.character, auto)) {
-        applyBonuses(newState.character, auto.perks.filter(
-          isBonus
-        ) as IBonus[]);
+        applyBonuses(
+          newState.character,
+          auto.perks.filter(isBonus) as IBonus[],
+        );
         newState.character.discounts.push(
-          ...(auto.perks.filter(isDiscount) as IDiscount[])
+          ...(auto.perks.filter(isDiscount) as IDiscount[]),
         );
         return index;
       }

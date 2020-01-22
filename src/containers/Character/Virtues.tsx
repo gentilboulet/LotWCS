@@ -32,30 +32,30 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
         cost: getCostVirtue(state.character, v.name, v.type),
         name: v.name,
         type: v.type,
-        value: v.value
+        value: v.value,
       };
-    })
+    }),
   };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
     onBuy: (name: string, cost: ICost) =>
-      dispatch(actions.increase(name, 1, cost))
+      dispatch(actions.increase(name, 1, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IVirtuesProps {
   const props: IVirtuesProps = { virtues: [] };
 
   propsFromState.virtues.forEach(variable => {
     const val = Object.assign({}, variable, {
-      onBuy: () => propsForDispatch.onBuy(variable.name, variable.cost)
+      onBuy: () => propsForDispatch.onBuy(variable.name, variable.cost),
     });
     props.virtues.push(val);
   });
@@ -65,5 +65,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Virtues);

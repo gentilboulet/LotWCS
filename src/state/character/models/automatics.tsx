@@ -2,7 +2,7 @@ import { ICharacterState } from "./type";
 
 import {
   IAutomaticCondition,
-  isAutomaticCondition
+  isAutomaticCondition,
 } from "../../../perks/automatics";
 import * as constants from "../../../perks/constants/automatics";
 
@@ -18,7 +18,7 @@ export function createState(): TAutomaticsState {
 
 export function isAutomaticConditionChanged(
   oldState: ICharacterState,
-  newState: ICharacterState
+  newState: ICharacterState,
 ) {
   if (oldState.archetype !== newState.archetype) {
     return true;
@@ -40,7 +40,7 @@ export function getAutomatics(): IAutomaticCondition[] {
       .reduce(
         (acc: IAutomaticCondition[], val: IAutomaticCondition[]) =>
           acc.concat(val),
-        []
+        [],
       ) as IAutomaticCondition[];
 
     retval.push(...data);
@@ -51,7 +51,7 @@ export function getAutomatics(): IAutomaticCondition[] {
 
 export function isApplicable(
   state: ICharacterState,
-  auto: IAutomaticCondition
+  auto: IAutomaticCondition,
 ): boolean {
   switch (auto.type) {
     case constants.AUTO_CONDITION_ARCHETYPE:

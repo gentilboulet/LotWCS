@@ -9,7 +9,7 @@ import { increase } from "../models/virtues";
 
 export function virtuesReducer(
   baseState: ICharacterState,
-  action: ActionType<typeof actions>
+  action: ActionType<typeof actions>,
 ): ICharacterState {
   switch (action.type) {
     case getType(actions.increase):

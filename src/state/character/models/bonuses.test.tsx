@@ -50,11 +50,11 @@ describe("Testing applyBonuses", () => {
     const state = createState();
 
     expect(
-      getSkill(state, testSkill).specialities.find(s => s === testSpeciality)
+      getSkill(state, testSkill).specialities.find(s => s === testSpeciality),
     ).toBeFalsy();
     applyBonuses(state, bonuses);
     expect(
-      getSkill(state, testSkill).specialities.find(s => s === testSpeciality)
+      getSkill(state, testSkill).specialities.find(s => s === testSpeciality),
     ).toBeTruthy();
   });
 

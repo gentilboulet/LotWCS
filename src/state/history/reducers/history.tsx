@@ -8,7 +8,7 @@ import { emptyStateFactory } from "../models/history";
 
 export function historyReducer(
   state: IHistoryState,
-  action: ActionType<typeof actions>
+  action: ActionType<typeof actions>,
 ): IHistoryState {
   return produce(state, draft => {
     switch (action.type) {

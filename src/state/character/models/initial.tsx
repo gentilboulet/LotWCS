@@ -25,7 +25,7 @@ export function emptyStateFactory(): ICharacterState {
     virtues: createVirtuesState(),
 
     automatics: createAutomaticsState(),
-    discounts: createDiscountsState()
+    discounts: createDiscountsState(),
   };
 }
 
@@ -40,7 +40,7 @@ export function testingStateFactory(): ICharacterState {
     setRank(2),
     setArchetype("warrior"),
     skillSpecialityBuy("Awareness", "Hear", zeroCost),
-    skillSpecialityBuy("Awareness", "Sight", zeroCost)
+    skillSpecialityBuy("Awareness", "Sight", zeroCost),
   ];
   return playActions(initial, actions);
 }

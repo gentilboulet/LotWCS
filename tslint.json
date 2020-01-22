@@ -1,6 +1,12 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier",
+    "tslint-etc"
+  ],
   "rules": {
+    "ordered-imports": true,
     "max-line-length": [
       true,
       { "limit": 120, "ignore-pattern": "^import |^export {(.*?)}" }

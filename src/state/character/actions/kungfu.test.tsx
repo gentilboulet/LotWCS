@@ -2,7 +2,7 @@ import * as dataKungfus from "../../../data/kungfu";
 import {
   KUNGFU_EXTERNAL,
   KUNGFU_INTERNAL,
-  KUNGFU_TYPE
+  KUNGFU_TYPE,
 } from "../../../data/kungfu/types";
 import { zeroCost } from "../models/costs";
 import * as actions from "./kungfu";
@@ -42,7 +42,7 @@ describe("Testing external kungfu action creator", () => {
   it("should not create an OPEN_STYLE action with an erroneous kungfu type", () => {
     const type = "TOTALLY A KUNGFU TYPE" as KUNGFU_TYPE;
     expect(() =>
-      actions.openStyle(validExternal.uid, type, zeroCost)
+      actions.openStyle(validExternal.uid, type, zeroCost),
     ).toThrow();
   });
 
@@ -82,7 +82,7 @@ describe("Testing external kungfu action creator", () => {
     const type = "TOTALLY A KUNGFU TYPE" as KUNGFU_TYPE;
     const techUid = validExternal.techniques[0].uid;
     expect(() =>
-      actions.buyTechnique(techUid, validExternal.uid, type, zeroCost)
+      actions.buyTechnique(techUid, validExternal.uid, type, zeroCost),
     ).toThrow();
   });
 
@@ -90,10 +90,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = "TOTALLY A KUNGFU UID";
     const techUid = validInternal.techniques[0].uid;
     expect(() =>
-      actions.buyTechnique(techUid, uid, KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_INTERNAL, zeroCost),
     ).toThrow();
     expect(() =>
-      actions.buyTechnique(techUid, "", KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique(techUid, "", KUNGFU_INTERNAL, zeroCost),
     ).toThrow();
   });
 
@@ -101,10 +101,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = "TOTALLY A KUNGFU UID";
     const techUid = validExternal.techniques[0].uid;
     expect(() =>
-      actions.buyTechnique(techUid, uid, KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_EXTERNAL, zeroCost),
     ).toThrow();
     expect(() =>
-      actions.buyTechnique(techUid, "", KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique(techUid, "", KUNGFU_EXTERNAL, zeroCost),
     ).toThrow();
   });
 
@@ -112,10 +112,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = validInternal.uid;
     const techUid = "TOTALLY A KUNGFU TECHNIQUE UID";
     expect(() =>
-      actions.buyTechnique(techUid, uid, KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_INTERNAL, zeroCost),
     ).toThrow();
     expect(() =>
-      actions.buyTechnique("", uid, KUNGFU_INTERNAL, zeroCost)
+      actions.buyTechnique("", uid, KUNGFU_INTERNAL, zeroCost),
     ).toThrow();
   });
 
@@ -123,10 +123,10 @@ describe("Testing external kungfu action creator", () => {
     const uid = validExternal.uid;
     const techUid = "TOTALLY A KUNGFU TECHNIQUE UID";
     expect(() =>
-      actions.buyTechnique(techUid, uid, KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique(techUid, uid, KUNGFU_EXTERNAL, zeroCost),
     ).toThrow();
     expect(() =>
-      actions.buyTechnique("", uid, KUNGFU_EXTERNAL, zeroCost)
+      actions.buyTechnique("", uid, KUNGFU_EXTERNAL, zeroCost),
     ).toThrow();
   });
 });
@@ -137,7 +137,7 @@ describe("Testing custom naming action for kungfu style and techniques", () => {
   it("should create a KUNGFU_CUSTOM_NAME_FOR_STYLE action for a valid style", () => {
     const uid = validExternal.uid;
     expect(
-      actions.customStyleName(uid, KUNGFU_EXTERNAL, "new name")
+      actions.customStyleName(uid, KUNGFU_EXTERNAL, "new name"),
     ).toMatchSnapshot();
   });
 
@@ -160,7 +160,7 @@ describe("Testing custom naming action for kungfu style and techniques", () => {
     const techUid = validExternal.techniques[0].uid;
 
     expect(
-      actions.customTechniqueName(uid, techUid, KUNGFU_EXTERNAL, "new name")
+      actions.customTechniqueName(uid, techUid, KUNGFU_EXTERNAL, "new name"),
     ).toMatchSnapshot();
   });
 
