@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/character/models/costs";
 
 import { TSkillName } from "../../data/skills";
 

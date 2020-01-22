@@ -2,10 +2,13 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/skills";
-import { getCostSpeciality, ICost } from "../../state/costs";
-import { canBuySpeciality, getSkill } from "../../state/skills";
-import { ICharacterState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/skills";
+import { getCostSpeciality, ICost } from "../../state/character/models/costs";
+import {
+  canBuySpeciality,
+  getSkill
+} from "../../state/character/models/skills";
 
 import { skills as data, TSkillName } from "../../data/skills";
 
@@ -30,26 +33,26 @@ interface IMapDispatchToProps {
   onBuy: (speciality: string, cost: ICost) => void;
 }
 
-function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   const newSpecialityAvailability = {
-    canBuy: canBuySpeciality(state, props.skill, ""),
-    cost: getCostSpeciality(state),
+    canBuy: canBuySpeciality(state.character, props.skill, ""),
+    cost: getCostSpeciality(state.character),
     name: ""
   };
 
   const concat = data[props.skill].concat(
-    getSkill(state, props.skill).specialities
+    getSkill(state.character, props.skill).specialities
   );
   const merge = concat
     .filter((item, pos) => concat.indexOf(item) === pos)
     .sort();
 
   const retVal = {
-    bought: getSkill(state, props.skill).specialities,
+    bought: getSkill(state.character, props.skill).specialities,
     specialities: merge.map((speciality: string) => {
       return {
-        canBuy: canBuySpeciality(state, props.skill, speciality),
-        cost: getCostSpeciality(state),
+        canBuy: canBuySpeciality(state.character, props.skill, speciality),
+        cost: getCostSpeciality(state.character),
         name: speciality
       };
     })

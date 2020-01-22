@@ -2,14 +2,17 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { getCostKungFuTechnique, ICost } from "../../state/costs";
+import {
+  getCostKungFuTechnique,
+  ICost
+} from "../../state/character/models/costs";
 
-import * as actions from "../../state/actions/kungfu";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/kungfu";
 import {
   canBuyKungFuTechnique,
   isStyleTechniquePresent
-} from "../../state/kungfu";
-import { ICharacterState } from "../../state/type";
+} from "../../state/character/models/kungfu";
 
 import InternalKungFuTechnique, {
   IInternalKungFuTechniqueProps
@@ -33,22 +36,22 @@ interface IProps {
   uid: string;
 }
 
-function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
     canBuy: canBuyKungFuTechnique(
-      state.kungfu,
+      state.character.kungfu,
       KUNGFU_INTERNAL,
       props.styleUid,
       props.uid
     ),
     cost: getCostKungFuTechnique(
-      state,
+      state.character,
       KUNGFU_INTERNAL,
       props.styleUid,
       props.uid
     ),
     known: isStyleTechniquePresent(
-      state.kungfu,
+      state.character.kungfu,
       KUNGFU_INTERNAL,
       props.styleUid,
       props.uid

@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/skills";
-import { getCostSkill, ICost } from "../../state/costs";
-import { canBuySkill, getSkill } from "../../state/skills";
-import { ICharacterState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/skills";
+import { getCostSkill, ICost } from "../../state/character/models/costs";
+import { canBuySkill, getSkill } from "../../state/character/models/skills";
 
 import { TSkillName } from "../../data/skills";
 
@@ -26,12 +26,12 @@ interface IMapDispatchToProps {
   onBuy: (cost: ICost) => void;
 }
 
-function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
-    canBuy: canBuySkill(state, props.name),
-    cost: getCostSkill(state, props.name),
+    canBuy: canBuySkill(state.character, props.name),
+    cost: getCostSkill(state.character, props.name),
     name: props.name,
-    value: getSkill(state, props.name).value
+    value: getSkill(state.character, props.name).value
   };
 }
 

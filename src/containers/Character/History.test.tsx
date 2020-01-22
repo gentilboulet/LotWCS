@@ -3,16 +3,15 @@ import * as ReactDOM from "react-dom";
 // import * as renderer from 'react-test-renderer';
 import History from "./History";
 
-import { IAction } from "../../state/actions/types";
-import { ICharacterState } from "../../state/type";
+import { IAction, IStoreState } from "../../state/type";
 
 import { createStore } from "redux";
-import { testingStateFactory } from "../../state/initial";
-import { globalReducer } from "../../state/reducers/global";
+import { testingStateFactory } from "../../state";
+import { globalReducer } from "../../state";
 
 import { Provider } from "react-redux";
 
-const store = createStore<ICharacterState, IAction, any, any>(
+const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
   testingStateFactory()
 );

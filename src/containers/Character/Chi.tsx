@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/chi";
-import { canBuyChi } from "../../state/chi";
-import { getCostChi, ICost } from "../../state/costs";
-import { ICharacterState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/chi";
+import { canBuyChi } from "../../state/character/models/chi";
+import { getCostChi, ICost } from "../../state/character/models/costs";
 
 import Chi, { IChiProps } from "../../components/Character/Chi";
 import { TChiName } from "../../data/chi";
@@ -26,13 +26,13 @@ interface IProps {
   name: TChiName;
 }
 
-function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
     canBuy: canBuyChi(/*state, props.name*/),
-    cost: getCostChi(state, props.name),
-    cultivation: state.chi[props.name].cultivation,
+    cost: getCostChi(state.character, props.name),
+    cultivation: state.character.chi[props.name].cultivation,
     name: props.name,
-    value: state.chi[props.name].value
+    value: state.character.chi[props.name].value
   };
 }
 

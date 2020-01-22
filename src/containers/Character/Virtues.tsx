@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/virtues";
-import { getCostVirtue, ICost } from "../../state/costs";
-import { ICharacterState } from "../../state/type";
-import { canBuyVirtue } from "../../state/virtues";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/virtues";
+import { getCostVirtue, ICost } from "../../state/character/models/costs";
+import { canBuyVirtue } from "../../state/character/models/virtues";
 
 import Virtues, { IVirtuesProps } from "../../components/Character/Virtues";
 import { IDataVirtueType } from "../../data/virtues";
@@ -24,12 +24,12 @@ interface IMapDispatchToProps {
   onBuy: (name: string, cost: ICost) => void;
 }
 
-function mapStateToProps(state: ICharacterState): IMapStateToProps {
+function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    virtues: state.virtues.map(v => {
+    virtues: state.character.virtues.map(v => {
       return {
-        canBuy: canBuyVirtue(state, v.name),
-        cost: getCostVirtue(state, v.name, v.type),
+        canBuy: canBuyVirtue(state.character, v.name),
+        cost: getCostVirtue(state.character, v.name, v.type),
         name: v.name,
         type: v.type,
         value: v.value

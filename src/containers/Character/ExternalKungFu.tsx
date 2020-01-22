@@ -2,14 +2,14 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/kungfu";
-import { getCostKungFuStyle, ICost } from "../../state/costs";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/kungfu";
+import { getCostKungFuStyle, ICost } from "../../state/character/models/costs";
 import {
   canOpenKungFu,
   getExternalKungFuStatistics,
   isStylePresent
-} from "../../state/kungfu";
-import { ICharacterState } from "../../state/type";
+} from "../../state/character/models/kungfu";
 
 import ExternalKungFu, {
   IExternalKungFuProps
@@ -37,15 +37,21 @@ interface IMapDispatchToProps {
   onOpen: (cost: ICost) => void;
 }
 
-function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
-  const isOpen = isStylePresent(state.kungfu, KUNGFU_EXTERNAL, props.uid);
+function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+  const isOpen = isStylePresent(
+    state.character.kungfu,
+    KUNGFU_EXTERNAL,
+    props.uid
+  );
 
   return {
-    canOpen: canOpenKungFu(state.kungfu, KUNGFU_EXTERNAL, props.uid),
-    cost: getCostKungFuStyle(state, KUNGFU_EXTERNAL, props.uid),
+    canOpen: canOpenKungFu(state.character.kungfu, KUNGFU_EXTERNAL, props.uid),
+    cost: getCostKungFuStyle(state.character, KUNGFU_EXTERNAL, props.uid),
     isOpen,
-    knownTechniques: isOpen ? state.kungfu[KUNGFU_EXTERNAL][props.uid] : [],
-    statistics: getExternalKungFuStatistics(state.kungfu, props.uid),
+    knownTechniques: isOpen
+      ? state.character.kungfu[KUNGFU_EXTERNAL][props.uid]
+      : [],
+    statistics: getExternalKungFuStatistics(state.character.kungfu, props.uid),
     uid: props.uid
   };
 }

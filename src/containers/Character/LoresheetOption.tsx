@@ -2,14 +2,17 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { getCostBuyLoresheetOption, ICost } from "../../state/costs";
+import {
+  getCostBuyLoresheetOption,
+  ICost
+} from "../../state/character/models/costs";
 
-import * as actions from "../../state/actions/loresheets";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/loresheets";
 import {
   canBuyLoresheetOption,
   isLoresheetOptionPresent
-} from "../../state/loresheets";
-import { ICharacterState } from "../../state/type";
+} from "../../state/character/models/loresheets";
 
 import LoresheetOption, {
   ILoresheetOptionProps
@@ -33,8 +36,8 @@ interface IProps {
   uid: string;
 }
 
-function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
-  const lsState = state.loresheets[props.lsUid];
+function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
+  const lsState = state.character.loresheets[props.lsUid];
   let payloads;
   if (lsState) {
     const optState = lsState.filter(o => o.uid === props.uid);
@@ -49,9 +52,17 @@ function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProp
     }
   }
   return {
-    canBuy: canBuyLoresheetOption(state.loresheets, props.lsUid, props.uid),
-    cost: getCostBuyLoresheetOption(state, props.lsUid, props.uid),
-    known: isLoresheetOptionPresent(state.loresheets, props.lsUid, props.uid),
+    canBuy: canBuyLoresheetOption(
+      state.character.loresheets,
+      props.lsUid,
+      props.uid
+    ),
+    cost: getCostBuyLoresheetOption(state.character, props.lsUid, props.uid),
+    known: isLoresheetOptionPresent(
+      state.character.loresheets,
+      props.lsUid,
+      props.uid
+    ),
     lsUid: props.lsUid,
     payloads,
     uid: props.uid

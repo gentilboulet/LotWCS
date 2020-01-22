@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/header";
-import { ICharacterState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/header";
 
 import Concept, { IConceptProps } from "../../components/Character/Concept";
 
@@ -15,9 +15,9 @@ interface IMapDispatchToProps {
   onChange: (s: string) => void;
 }
 
-function mapStateToProps(state: ICharacterState): IMapStateToProps {
+function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    value: state.concept !== undefined ? state.concept : ""
+    value: state.character.concept !== undefined ? state.character.concept : ""
   };
 }
 

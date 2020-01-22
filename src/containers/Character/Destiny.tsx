@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 
-import { ICharacterState } from "../../state/type";
+import { IStoreState } from "../../state";
 
 import Destiny, { IDestinyProps } from "../../components/Character/Destiny";
 
-function mapStateToProps(state: ICharacterState): IDestinyProps {
+function mapStateToProps(state: IStoreState): IDestinyProps {
   return {
-    value: state.destiny
+    value: state.character.destiny
   };
 }
 

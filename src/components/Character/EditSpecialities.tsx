@@ -3,7 +3,7 @@ import Icon from "react-fa";
 import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
 import TokenInput from "../../components/TokenInput";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/character/models/costs";
 
 interface IEditSpecialitiesProps {
   bought: string[];

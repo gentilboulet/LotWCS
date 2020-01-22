@@ -8,7 +8,7 @@ import {
 import { IPerk } from "../../perks";
 import { IBonus } from "../../perks/bonuses";
 import * as bonuses from "../../perks/constants/bonuses";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/character/models/costs";
 
 import EditText from "../../components/EditText";
 

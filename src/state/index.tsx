@@ -16,6 +16,10 @@ export function initialStateFactory(): IStoreState {
   };
 }
 
+export function testingStateFactory(): IStoreState {
+  return initialStateFactory();
+}
+
 export function globalReducer(
   state: IStoreState | undefined,
   action: IAction

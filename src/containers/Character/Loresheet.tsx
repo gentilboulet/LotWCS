@@ -2,11 +2,17 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { getCostOpenLoresheet, ICost } from "../../state/costs";
+import {
+  getCostOpenLoresheet,
+  ICost
+} from "../../state/character/models/costs";
 
-import * as actions from "../../state/actions/loresheets";
-import { canOpenLoresheet, isLoresheetPresent } from "../../state/loresheets";
-import { ICharacterState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/character/actions/loresheets";
+import {
+  canOpenLoresheet,
+  isLoresheetPresent
+} from "../../state/character/models/loresheets";
 
 import Loresheet, {
   ILoresheetProps
@@ -27,11 +33,11 @@ interface IProps {
   uid: string;
 }
 
-function mapStateToProps(state: ICharacterState, props: IProps): IMapStateToProps {
+function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
-    canOpen: canOpenLoresheet(state, props.uid),
-    cost: getCostOpenLoresheet(state, props.uid),
-    known: isLoresheetPresent(state.loresheets, props.uid),
+    canOpen: canOpenLoresheet(state.character, props.uid),
+    cost: getCostOpenLoresheet(state.character, props.uid),
+    known: isLoresheetPresent(state.character.loresheets, props.uid),
     uid: props.uid
   };
 }

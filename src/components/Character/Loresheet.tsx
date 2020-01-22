@@ -2,7 +2,7 @@ import * as React from "react";
 import Icon from "react-fa";
 
 import { getLoresheetData, IDataLoresheet } from "../../data/loresheets";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/character/models/costs";
 
 import LoresheetOption from "../../containers/Character/LoresheetOption";
 

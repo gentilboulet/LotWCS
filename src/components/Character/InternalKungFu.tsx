@@ -3,7 +3,7 @@ import { Icon } from "react-fa";
 
 import { kungfuData } from "../../data/kungfu";
 import { IDataInternalKungfu, KUNGFU_INTERNAL } from "../../data/kungfu/types";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/character/models/costs";
 
 import InternalKungFuTechnique from "../../containers/Character/InternalKungFuTechnique";
 
