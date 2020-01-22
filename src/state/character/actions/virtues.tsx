@@ -3,6 +3,5 @@ import { ICost } from "../models/costs";
 
 export const increase = createAction(
   "virtues/INCREASE",
-  action => (name: string, value: number, cost: ICost) =>
-    action({ name, value, cost }),
-);
+  (name: string, value: number, cost: ICost) => ({ name, value, cost }),
+)();

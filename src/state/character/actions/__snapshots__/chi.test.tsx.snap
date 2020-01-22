@@ -2,8 +2,6 @@
 
 exports[`Testing chi action creator should create a chi buy action 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "chi": "fire",
     "cost": Object {

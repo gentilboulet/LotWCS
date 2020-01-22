@@ -4,7 +4,7 @@ import { ICost } from "../models/costs";
 
 export const chiBuy = createAction(
   "chi/BUY",
-  action => (chi: TChiName, value: number, cost: ICost) => {
-    return action({ chi, value, cost });
+  (chi: TChiName, value: number, cost: ICost) => {
+    return { chi, value, cost };
   },
-);
+)();

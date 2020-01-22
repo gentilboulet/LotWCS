@@ -2,17 +2,12 @@
 
 exports[`Testing history action creators Testing initial state action creator should create a reset to initial state action 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
-  "payload": undefined,
   "type": "history/INITIAL_STATE",
 }
 `;
 
 exports[`Testing history action creators should create an history delete action 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "id": 12,
   },

@@ -2,8 +2,6 @@
 
 exports[`Testing loresheet action creators should create a buy option action 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -20,8 +18,6 @@ Object {
 
 exports[`Testing loresheet action creators should create an open action 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,

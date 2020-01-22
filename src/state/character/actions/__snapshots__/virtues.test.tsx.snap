@@ -2,8 +2,6 @@
 
 exports[`Testing virtue action creator should create a virtue increase action with a non existing virtue 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -19,8 +17,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -36,8 +32,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 2`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -53,8 +47,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 3`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -70,8 +62,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 4`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -87,8 +77,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 5`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -104,8 +92,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 6`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -121,8 +107,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 7`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -138,8 +122,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 8`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -155,8 +137,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 9`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -172,8 +152,6 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 10`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,

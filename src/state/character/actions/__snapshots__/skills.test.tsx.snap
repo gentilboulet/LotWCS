@@ -2,8 +2,6 @@
 
 exports[`Testing for skill action creators should create a buy speciality action 1`] = `
 Object {
-  "error": undefined,
-  "meta": undefined,
   "payload": Object {
     "cost": Object {
       "canPay": true,

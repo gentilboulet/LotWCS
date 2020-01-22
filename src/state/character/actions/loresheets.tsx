@@ -5,16 +5,16 @@ import { ICost } from "../models/costs";
 
 export const open = createAction(
   "loresheet/OPEN",
-  action => (uid: string, cost: ICost) => {
+  (uid: string, cost: ICost) => {
     dataLoresheets.validateLoresheet(uid);
-    return action({ cost, uid });
+    return { cost, uid };
   },
-);
+)();
 
 export const buyOption = createAction(
   "loresheet/BUY_OPTION",
-  action => (lsUid: string, uid: string, cost: ICost, payload?: string) => {
+  (lsUid: string, uid: string, cost: ICost, payload?: string) => {
     dataLoresheets.validateLoresheetOption(lsUid, uid);
-    return action({ cost, lsUid, uid, payload });
+    return { cost, lsUid, uid, payload };
   },
-);
+)();
