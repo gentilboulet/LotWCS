@@ -10,7 +10,7 @@ import * as ReactDOM from "react-dom";
 
 import { globalReducer, IAction, IStoreState } from "./state";
 import { middleware as checkAutomatics } from "./state/middleware/automatics";
-import { middleware as pushToHistory } from "./state/middleware/history";
+import { middleware as pushToHistory } from "./state/middleware/pushToHistory";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,

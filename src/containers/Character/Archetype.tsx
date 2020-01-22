@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { IAction, IStoreState } from "../../state";
+import { IStoreState } from "../../state";
 import * as actions from "../../state/character/actions/header";
 
 import { TArchetype } from "../../data/archetypes";

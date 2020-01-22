@@ -13,6 +13,11 @@ export interface IHistoryState {
 export function initialStateFactory(): IHistoryState {
   return { actions: [] };
 }
+
+export function emptyStateFactory(): IHistoryState {
+  return { actions: [] };
+}
+
 // export function replayHistory(
 //   state: ICharacterState,
 //   toReplay: IAction[]

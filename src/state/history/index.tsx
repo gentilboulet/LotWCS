@@ -3,6 +3,7 @@ import { isActionOf } from "typesafe-actions";
 import * as actions from "./actions/history";
 import { IHistoryAction as a } from "./actions/types";
 import { IHistoryState as s } from "./models/history";
+import { historyReducer } from "./reducers/history";
 export { initialStateFactory } from "./models/history";
 
 export type IHistoryState = s;
@@ -19,5 +20,5 @@ export function globalReducer(
   state: IHistoryState,
   action: IHistoryAction
 ): IHistoryState {
-  return state;
+  return historyReducer(state, action);
 }
