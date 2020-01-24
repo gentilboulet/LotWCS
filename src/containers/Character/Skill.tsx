@@ -31,7 +31,7 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     canBuy: canBuySkill(state.character, props.name),
     cost: getCostSkill(state.character, props.name),
     name: props.name,
-    value: getSkill(state.character, props.name).value,
+    value: getSkill(state.character.skills, props.name).value,
   };
 }
 

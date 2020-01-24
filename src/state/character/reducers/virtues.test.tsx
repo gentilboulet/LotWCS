@@ -1,30 +1,24 @@
 import { ActionType } from "typesafe-actions";
 
-import { testingStateFactory } from "../models/initial";
-import { ICharacterState } from "../models/type";
-
 import * as dataVirtues from "../../../data/virtues";
 import * as actions from "../actions/virtues";
 import { zeroCost } from "../models/costs";
-import { isVirtuePresent } from "../models/virtues";
-
-import { globalReducer } from "./global";
+import { createState, isVirtuePresent } from "../models/virtues";
 import { virtuesReducer } from "./virtues";
 
-const initialState: ICharacterState = testingStateFactory();
+const initialState = createState();
 
 describe("Testing virtueReducer", () => {
   it("should receive a VIRTUE_INCREASE action with an existing virtue", () => {
     dataVirtues.virtues.forEach((virtue: dataVirtues.IDataVirtue) => {
-      expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeTruthy();
+      expect(isVirtuePresent(initialState, virtue.name)).toBeTruthy();
 
       const action = actions.increase(virtue.name, 3, zeroCost);
       const state = virtuesReducer(initialState, action);
-      const newVirtue = state.virtues.find(v => v.name === virtue.name);
+      const newVirtue = state.find(v => v.name === virtue.name);
       expect(newVirtue).toBeDefined();
       expect(newVirtue ? newVirtue.value : undefined).toBe(3);
       expect(newVirtue ? newVirtue.type : undefined).toBe(virtue.type);
-      expect(globalReducer(initialState, action)).toMatchObject(state);
     });
   });
 
@@ -33,7 +27,7 @@ describe("Testing virtueReducer", () => {
       name: "New Virtue",
       type: dataVirtues.VIRTUE_CHIVALROUS,
     };
-    expect(isVirtuePresent(initialState.virtues, virtue.name)).toBeFalsy();
+    expect(isVirtuePresent(initialState, virtue.name)).toBeFalsy();
 
     const action = actions.increase(virtue.name, 3, zeroCost);
     expect(() => virtuesReducer(initialState, action)).toThrowError();

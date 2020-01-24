@@ -37,9 +37,9 @@ describe("Testing applyBonuses", () => {
   it("should receive a BONUS_SKILL_RANK", () => {
     const bonuses = [actions.bonusSkillRank("Awareness")];
     const state = createState();
-    expect(getSkill(state, "Awareness").value).toBe(0);
+    expect(getSkill(state.skills, "Awareness").value).toBe(0);
     applyBonuses(state, bonuses);
-    expect(getSkill(state, "Awareness").value).toBe(5);
+    expect(getSkill(state.skills, "Awareness").value).toBe(5);
   });
 
   it("should receive a BONUS_SPECIALITY", () => {
@@ -50,11 +50,15 @@ describe("Testing applyBonuses", () => {
     const state = createState();
 
     expect(
-      getSkill(state, testSkill).specialities.find(s => s === testSpeciality),
+      getSkill(state.skills, testSkill).specialities.find(
+        s => s === testSpeciality,
+      ),
     ).toBeFalsy();
     applyBonuses(state, bonuses);
     expect(
-      getSkill(state, testSkill).specialities.find(s => s === testSpeciality),
+      getSkill(state.skills, testSkill).specialities.find(
+        s => s === testSpeciality,
+      ),
     ).toBeTruthy();
   });
 

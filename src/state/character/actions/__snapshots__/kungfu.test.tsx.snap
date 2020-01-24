@@ -32,6 +32,13 @@ Object {
       "original": 0,
     },
     "kungfuType": "KUNGFU_EXTERNAL",
+    "perks": Array [
+      Object {
+        "chi": "general",
+        "type": "BONUS_CULTIVATION",
+        "value": 0,
+      },
+    ],
     "uid": "Blossom Harvest",
   },
   "type": "kungfu/OPEN_STYLE",
@@ -47,6 +54,13 @@ Object {
       "original": 0,
     },
     "kungfuType": "KUNGFU_INTERNAL",
+    "perks": Array [
+      Object {
+        "chi": "wood",
+        "type": "BONUS_CULTIVATION",
+        "value": 0,
+      },
+    ],
     "uid": "Boundless Prosperity Manual",
   },
   "type": "kungfu/OPEN_STYLE",

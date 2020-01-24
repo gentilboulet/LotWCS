@@ -46,6 +46,7 @@ export function updateDiscounts(state: ICharacterState, cost: ICost): void {
   }
 
   cost.discounts.forEach(costDiscount => {
+    console.log(costDiscount);
     state.discounts[costDiscount.idx].value = costDiscount.newValue;
 
     if (costDiscount.newValue === 0) {

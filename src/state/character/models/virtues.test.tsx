@@ -90,7 +90,7 @@ describe("Testing IVirtueState", () => {
     const junkVirtue = { name: "New Virtue", type: dataVirtues.VIRTUE_SELFISH };
     expect(canBuyVirtue(state, junkVirtue.name)).toBeFalsy();
     expect(canBuyVirtue(state, regularVirtue.name)).toBeTruthy();
-    state.virtues[0].value = 5;
+    state.virtues[0].value += 5;
     expect(canBuyVirtue(state, regularVirtue.name)).toBeFalsy();
   });
 });

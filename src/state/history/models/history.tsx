@@ -1,17 +1,11 @@
-import { ActionType } from "typesafe-actions";
 import { ICharacterAction } from "../../character";
-import * as actions from "../actions/history";
-
-export type TInHistoryActions =
-  | ICharacterAction
-  | ActionType<typeof actions.resetToInitialState>;
 
 export interface IHistoryState {
-  actions: TInHistoryActions[];
+  actions: ICharacterAction[];
 }
 
 export function initialStateFactory(): IHistoryState {
-  return { actions: [actions.resetToInitialState()] };
+  return { actions: [] };
 }
 
 export function emptyStateFactory(): IHistoryState {

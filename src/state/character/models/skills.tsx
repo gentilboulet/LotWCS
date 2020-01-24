@@ -16,16 +16,8 @@ export function createState(): TSkillsState {
   });
 }
 
-export function increase(
-  state: TSkillsState,
-  skillName: TSkillName,
-  maxSkillValue: number,
-): void {
-  const old = _getSkill(state, skillName).value;
-  if (old + 5 > maxSkillValue) {
-    throw new Error("Skill " + skillName + " overflow");
-  }
-  _getSkill(state, skillName).value += 5;
+export function increase(state: TSkillsState, skillName: TSkillName): void {
+  getSkill(state, skillName).value += 5;
 }
 
 export function isSpecialityPresent(
@@ -55,14 +47,18 @@ export function addSpeciality(
         '" already bought',
     );
   }
-  _getSkill(state, skillName).specialities.push(specialityName);
+  // getSkill(state, skillName).specialities.push(specialityName);
+  const spe = getSkill(state, skillName);
+  spe.specialities.push(specialityName);
+  if (typeof specialityName != "string")
+    throw new Error("Only stringm not" + specialityName);
 }
 
 export function canBuySkill(
   state: ICharacterState,
   skillName: TSkillName,
 ): boolean {
-  const value = getSkill(state, skillName).value;
+  const value = getSkill(state.skills, skillName).value;
   const max = maxSkillBonus(state);
   return !(value + 5 > max);
 }
@@ -75,10 +71,6 @@ export function canBuySpeciality(
   return !isSpecialityPresent(state.skills, skillName, speciality);
 }
 
-function _getSkill(state: TSkillsState, skillName: TSkillName) {
+export function getSkill(state: TSkillsState, skillName: TSkillName) {
   return state.find(s => s.name === skillName) as ISkill;
-}
-
-export function getSkill(state: ICharacterState, skillName: TSkillName) {
-  return _getSkill(state.skills, skillName);
 }

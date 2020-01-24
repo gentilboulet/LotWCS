@@ -1,18 +1,13 @@
 import { ActionType } from "typesafe-actions";
 
-import { testingStateFactory } from "../models/initial";
-import { ICharacterState } from "../models/type";
-
 import * as actions from "../actions/loresheets";
 import { zeroCost } from "../models/costs";
 import * as loresheets from "../models/loresheets";
-
-import { globalReducer } from "../reducers/global";
 import { loresheetsReducer } from "../reducers/loresheets";
 
 import * as data from "../../../data/loresheets";
 
-const initialState: ICharacterState = testingStateFactory();
+const initialState = loresheets.createState();
 
 const dataLoresheets = data.getLoresheets(data.isLoresheet);
 
@@ -20,18 +15,14 @@ describe("Testing loresheetsReducer", () => {
   it("should receive a LORESHEET_OPEN action", () => {
     dataLoresheets.forEach(dataLoresheet => {
       expect(
-        loresheets.isLoresheetPresent(
-          initialState.loresheets,
-          dataLoresheet.uid,
-        ),
+        loresheets.isLoresheetPresent(initialState, dataLoresheet.uid),
       ).toBeFalsy();
 
       const action = actions.open(dataLoresheet.uid, zeroCost);
       const state = loresheetsReducer(initialState, action);
       expect(
-        loresheets.isLoresheetPresent(state.loresheets, dataLoresheet.uid),
+        loresheets.isLoresheetPresent(state, dataLoresheet.uid),
       ).toBeTruthy();
-      expect(globalReducer(initialState, action)).toMatchObject(state);
     });
   });
 
@@ -43,10 +34,7 @@ describe("Testing loresheetsReducer", () => {
         openLoresheetAction,
       );
       expect(
-        loresheets.isLoresheetPresent(
-          stateWithLoresheet.loresheets,
-          loresheet.uid,
-        ),
+        loresheets.isLoresheetPresent(stateWithLoresheet, loresheet.uid),
       ).toBeTruthy();
 
       loresheet.options.forEach((option: data.IDataLoresheetOption) => {
@@ -57,7 +45,7 @@ describe("Testing loresheetsReducer", () => {
         );
         if (
           loresheets.canBuyLoresheetOption(
-            stateWithLoresheet.loresheets,
+            stateWithLoresheet,
             loresheet.uid,
             option.uid,
           ) // to filter out ls options with prerequisites
@@ -68,7 +56,7 @@ describe("Testing loresheetsReducer", () => {
           );
           expect(
             loresheets.isLoresheetOptionPresent(
-              stateWithOption.loresheets,
+              stateWithOption,
               loresheet.uid,
               option.uid,
             ),

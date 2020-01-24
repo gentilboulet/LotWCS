@@ -8,15 +8,25 @@ import { devToolsEnhancer } from "redux-devtools-extension";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { globalReducer, IAction, IStoreState } from "./state";
+import {
+  globalReducer,
+  IAction,
+  IStoreState,
+  initialStateFactory,
+} from "./state";
 import { middleware as checkAutomatics } from "./state/middleware/automatics";
 import { middleware as pushToHistory } from "./state/middleware/pushToHistory";
+import { middleware as applyPerks } from "./state/character/middleware/applyPerks";
+import { middleware as payCosts } from "./state/character/middleware/payCosts";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
+  initialStateFactory(),
   compose(
+    applyMiddleware(payCosts),
     applyMiddleware(checkAutomatics),
     applyMiddleware(pushToHistory),
+    applyMiddleware(applyPerks),
     devToolsEnhancer({}),
   ),
 );

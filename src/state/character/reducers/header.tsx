@@ -6,27 +6,24 @@ import { setRank } from "../models/header";
 import { ICharacterState } from "../models/type";
 
 export function headerReducer(
-  baseState: ICharacterState,
+  state: ICharacterState,
   action: ActionType<typeof actions>,
 ): ICharacterState {
-  switch (action.type) {
-    case getType(actions.setName):
-      return produce(baseState, draftState => {
-        draftState.name = action.payload.name;
-      });
-    case getType(actions.setConcept):
-      return produce(baseState, draftState => {
-        draftState.concept = action.payload.concept;
-      });
-    case getType(actions.setRank):
-      return produce(baseState, draftState => {
-        setRank(draftState, action.payload.rank);
-      });
-    case getType(actions.setArchetype):
-      return produce(baseState, draftState => {
-        draftState.archetype = action.payload.archetype;
-      });
-    default:
-  }
-  return baseState;
+  return produce(state, draft => {
+    switch (action.type) {
+      case getType(actions.setName):
+        draft.name = action.payload.name;
+        break;
+      case getType(actions.setConcept):
+        draft.concept = action.payload.concept;
+        break;
+      case getType(actions.setRank):
+        setRank(draft, action.payload.rank);
+        break;
+      case getType(actions.setArchetype):
+        draft.archetype = action.payload.archetype;
+        break;
+      default:
+    }
+  });
 }

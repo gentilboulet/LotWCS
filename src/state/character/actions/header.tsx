@@ -2,6 +2,7 @@ import { createAction } from "typesafe-actions";
 
 import * as dataArchetypes from "../../../data/archetypes";
 import * as dataRanks from "../../../data/ranks";
+import { IPerk } from "../../../perks";
 
 export const setName = createAction("header/SET_NAME", (name: string) => {
   return { name };
@@ -26,6 +27,7 @@ export const setRank = createAction(
   "header/SET_RANK",
   (rank: dataRanks.TRank) => {
     dataRanks.validateRank(rank);
-    return { rank };
+    const dr = dataRanks.getRank(rank) as dataRanks.IDataRank;
+    return { rank, perks: dr.perks as IPerk[] };
   },
 )();

@@ -5,7 +5,7 @@ import * as constants from "../../../perks/constants/bonuses";
 
 import * as chi from "./chi";
 
-import { maxSkillBonus } from "./derived";
+// import { maxSkillBonus } from "./derived";
 import * as skills from "./skills";
 
 import * as loresheets from "./loresheets";
@@ -37,9 +37,9 @@ export function applyBonuses(
           chi.increaseCultivation(draftState.chi, bonus.chi, bonus.value);
           break;
         case constants.BONUS_SKILL_RANK:
-          const max = maxSkillBonus(draftState);
+          // const max = maxSkillBonus(draftState);
           // TODO : overflows
-          skills.increase(draftState.skills, bonus.skill, max);
+          skills.increase(draftState.skills, bonus.skill);
           break;
         case constants.BONUS_SPECIALITY:
           // TODO : already speciality

@@ -1,3 +1,5 @@
+import { produce } from "immer";
+
 /* eslint-disable import/first */
 import { createState as createAutomaticsState } from "./automatics";
 import { createState as createChiState } from "./chi";
@@ -8,15 +10,14 @@ import { createState as createSkillsState } from "./skills";
 import { ICharacterState } from "./type";
 import { createState as createVirtuesState } from "./virtues";
 
+import { globalReducer } from "../reducers/global";
+
 export function emptyStateFactory(): ICharacterState {
   return {
     archetype: undefined,
     concept: undefined,
     name: undefined,
     rank: undefined,
-
-    destiny: 0,
-    entanglement: 0,
 
     chi: createChiState(),
     kungfu: createaKungFuState(),
@@ -25,13 +26,16 @@ export function emptyStateFactory(): ICharacterState {
     virtues: createVirtuesState(),
 
     automatics: createAutomaticsState(),
+
+    destiny: 0,
+    entanglement: 0,
     discounts: createDiscountsState(),
   };
 }
 
+import _ from "lodash";
 import { setArchetype, setRank } from "../actions/header";
 import { skillSpecialityBuy } from "../actions/skills";
-import { playActions } from "../reducers/global";
 import { zeroCost } from "./costs";
 
 export function testingStateFactory(): ICharacterState {
@@ -42,7 +46,13 @@ export function testingStateFactory(): ICharacterState {
     skillSpecialityBuy("Awareness", "Hear", zeroCost),
     skillSpecialityBuy("Awareness", "Sight", zeroCost),
   ];
-  return playActions(initial, actions);
+  const produced = produce(initial, draft => {
+    actions.forEach(action => {
+      draft = globalReducer(draft, action);
+    });
+    return draft;
+  });
+  return _.cloneDeep(produced); // required for unfreezing the result of produce
 }
 
 export function initialStateFactory(): ICharacterState {

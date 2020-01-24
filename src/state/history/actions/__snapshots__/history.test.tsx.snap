@@ -1,16 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing history action creators Testing initial state action creator should create a reset to initial state action 1`] = `
-Object {
-  "type": "history/INITIAL_STATE",
-}
-`;
-
-exports[`Testing history action creators should create an history delete action 1`] = `
+exports[`Testing history action creators should create an history push 1`] = `
 Object {
   "payload": Object {
-    "id": 12,
+    "action": Object {
+      "payload": Object {
+        "name": "bob",
+      },
+      "type": "header/SET_NAME",
+    },
   },
-  "type": "history/DELETE_UP_TO",
+  "type": "history/PUSH_TO_HISTORY",
 }
 `;

@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { IAction } from "../../state";
+import { ICharacterAction } from "../../state/character";
 
 export interface IHistoryProps {
-  history: IAction[];
-  onDelete: (id: number) => void;
+  history: ICharacterAction[];
+  onReplay: (action: ICharacterAction[]) => void;
 }
 
 export interface IHistoryState {
@@ -27,7 +27,7 @@ class History extends React.PureComponent<IHistoryProps, IHistoryState> {
     return (
       <div className="History">
         <div>
-          {this.props.history.map((action: IAction, index: number) =>
+          {this.props.history.map((action: ICharacterAction, index: number) =>
             this.renderHistoryAction(action, index),
           )}
         </div>
@@ -35,7 +35,10 @@ class History extends React.PureComponent<IHistoryProps, IHistoryState> {
     );
   }
 
-  private renderHistoryAction(action: IAction, index: number): JSX.Element {
+  private renderHistoryAction(
+    action: ICharacterAction,
+    index: number,
+  ): JSX.Element {
     const onClick = () => this.rollbackHistory(index);
     return (
       <div key={"rowHistory_" + index} onClick={onClick}>
@@ -46,7 +49,7 @@ class History extends React.PureComponent<IHistoryProps, IHistoryState> {
   }
 
   private rollbackHistory(index: number): void {
-    this.props.onDelete(index);
+    this.props.onReplay(this.props.history.slice(0, index));
   }
 }
 

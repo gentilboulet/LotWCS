@@ -2,14 +2,18 @@ import { produce } from "immer";
 import { getType } from "typesafe-actions";
 import * as character from "./character";
 import * as history from "./history";
-import * as historyActions from "./history/actions/history";
+import * as meta from "./actions/meta";
+import { IGlobalAction } from "./actions/types";
 
 export interface IStoreState {
   character: character.ICharacterState;
   history: history.IHistoryState;
 }
 
-export type IAction = character.ICharacterAction | history.IHistoryAction;
+export type IAction =
+  | character.ICharacterAction
+  | history.IHistoryAction
+  | IGlobalAction;
 
 export function initialStateFactory(): IStoreState {
   return {
@@ -26,30 +30,34 @@ export function testingStateFactory(): IStoreState {
 }
 
 export function globalReducer(
-  state: IStoreState | undefined,
+  state: IStoreState,
   action: IAction,
 ): IStoreState {
-  if (!state) {
-    return globalReducer(initialStateFactory(), action);
+  // Meta actions handling first
+  switch (action.type) {
+    case getType(meta.characterHistoryReplay):
+      return produce(initialStateFactory(), draft => {
+        action.payload.actions.forEach(
+          (charAction: character.ICharacterAction) => {
+            draft.character = character.globalReducer(
+              draft.character,
+              charAction,
+            );
+          },
+        );
+        draft.history.actions = action.payload.actions;
+      });
+    case getType(meta.initialStateAction):
+      return initialStateFactory();
   }
-  return produce(state, draft => {
-    if (action.type === getType(historyActions.historyDeleteUpTo)) {
-      if (state.history.actions.length === action.payload.id + 1) {
-        return state;
-      }
-      return playActions(
-        initialStateFactory(),
-        state.history.actions.slice(0, action.payload.id + 1),
-      );
-    }
 
+  // Substate reducers
+  return produce(state, draft => {
     if (character.isCharacterAction(action)) {
       draft.character = character.globalReducer(
         draft.character,
         action as character.ICharacterAction,
       );
-    } else if (history.isResetToInitialStateAction(action)) {
-      draft.character = character.initialStateFactory();
     }
 
     if (history.isHistoryAction(action)) {
@@ -58,24 +66,5 @@ export function globalReducer(
         action as history.IHistoryAction,
       );
     }
-  });
-}
-
-export function playActions(
-  state: IStoreState | undefined,
-  actions: IAction[],
-): IStoreState {
-  if (!state) {
-    return playActions(initialStateFactory(), actions);
-  }
-  return produce(state, draft => {
-    draft.character = character.playActions(
-      draft.character,
-      actions.filter(a =>
-        character.isCharacterAction(a),
-      ) as character.ICharacterAction[],
-    );
-
-    draft.history.actions = actions as history.TInHistoryActions[]; // hacky
   });
 }

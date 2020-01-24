@@ -41,14 +41,14 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   };
 
   const concat = data[props.skill].concat(
-    getSkill(state.character, props.skill).specialities,
+    getSkill(state.character.skills, props.skill).specialities,
   );
   const merge = concat
     .filter((item, pos) => concat.indexOf(item) === pos)
     .sort();
 
   const retVal = {
-    bought: getSkill(state.character, props.skill).specialities,
+    bought: getSkill(state.character.skills, props.skill).specialities,
     specialities: merge.map((speciality: string) => {
       return {
         canBuy: canBuySpeciality(state.character, props.skill, speciality),

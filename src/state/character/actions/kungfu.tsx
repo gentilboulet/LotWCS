@@ -3,13 +3,25 @@ import { createAction } from "typesafe-actions";
 import * as dataKungFu from "../../../data/kungfu";
 import { KUNGFU_TYPE } from "../../../data/kungfu/types";
 import { ICost } from "../models/costs";
+import { bonusCultivation } from "../../../perks/actions/bonuses";
 
 export const openStyle = createAction(
   "kungfu/OPEN_STYLE",
   (uid: string, kungfuType: KUNGFU_TYPE, cost: ICost) => {
     dataKungFu.validateKungFuType(kungfuType);
     dataKungFu.validateKungFuStyle(kungfuType, uid);
-    return { uid, kungfuType, cost };
+
+    return {
+      uid,
+      kungfuType,
+      cost,
+      perks: [
+        bonusCultivation(
+          dataKungFu.getKungfuChi(kungfuType, uid),
+          cost.original,
+        ),
+      ],
+    };
   },
 )();
 
@@ -24,6 +36,12 @@ export const buyTechnique = createAction(
       kungfuType,
       styleUid,
       uid,
+      perks: [
+        bonusCultivation(
+          dataKungFu.getKungfuChi(kungfuType, styleUid),
+          cost.original,
+        ),
+      ],
     };
   },
 )();

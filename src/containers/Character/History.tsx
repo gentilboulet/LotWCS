@@ -4,15 +4,16 @@ import { ActionType } from "typesafe-actions";
 
 import History, { IHistoryProps } from "../../components/Character/History";
 
-import { IAction, IStoreState } from "../../state";
-import * as actions from "../../state/history/actions/history";
+import { IStoreState } from "../../state";
+import { ICharacterAction } from "../../state/character";
+import * as meta from "../../state/actions/meta";
 
 interface IMapStateToProps {
-  history: IAction[];
+  history: ICharacterAction[];
 }
 
 interface IMapDispatchToProps {
-  onDelete: (id: number) => void;
+  onReplay: (actions: ICharacterAction[]) => void;
 }
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
@@ -20,11 +21,11 @@ function mapStateToProps(state: IStoreState): IMapStateToProps {
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>,
+  dispatch: Dispatch<ActionType<typeof meta>>,
 ): IMapDispatchToProps {
   return {
-    onDelete: (id: number) => {
-      dispatch(actions.historyDeleteUpTo(id));
+    onReplay: (actions: ICharacterAction[]) => {
+      dispatch(meta.characterHistoryReplay(actions));
     },
   };
 }

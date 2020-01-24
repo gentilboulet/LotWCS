@@ -57,7 +57,7 @@ export function isApplicable(
     case constants.AUTO_CONDITION_ARCHETYPE:
       return auto.archetype === state.archetype;
     case constants.AUTO_CONDITION_SKILL:
-      return auto.value >= getSkill(state, auto.skill).value;
+      return auto.value >= getSkill(state.skills, auto.skill).value;
   }
   // return false;
 }

@@ -25,7 +25,7 @@ describe("Testing historyReducer", () => {
   //     const stateBefore = history.replayHistory(initialState, replayActions);
   //     expect(stateBefore).toMatchSnapshot();
   //     const state = history.replayHistory(stateBefore, [
-  //       actions.historyDeleteUpTo(1)
+  //       actions.characterHistoryReplay(1)
   //     ]);
   //     expect(state).toMatchSnapshot();
   //     expect(state.name).toBe("Roberts");

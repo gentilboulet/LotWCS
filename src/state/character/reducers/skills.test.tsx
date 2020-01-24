@@ -1,22 +1,12 @@
 import { ActionType } from "typesafe-actions";
 
 import * as actions from "../actions/skills";
-import { ICharacterState } from "../models/type";
-
 import * as dataSkills from "../../../data/skills";
-
-import { zeroCost } from "../models/costs";
-import { emptyStateFactory } from "../models/initial";
-import { getSkill, isSpecialityPresent } from "../models/skills";
+import { getSkill, isSpecialityPresent, createState } from "../models/skills";
 import { skillsReducer } from "../reducers/skills";
+import { zeroCost } from "../models/costs";
 
-import { setRank } from "../actions/header";
-import { globalReducer } from "../reducers/global";
-
-const initialState: ICharacterState = globalReducer(
-  emptyStateFactory(),
-  setRank(2),
-);
+const initialState = createState();
 
 describe("Testing skillsReducer", () => {
   it("should receive a SKILLS_BUY action", () => {
@@ -24,9 +14,8 @@ describe("Testing skillsReducer", () => {
       const skillName = key as dataSkills.TSkillName;
       expect(getSkill(initialState, skillName).value).toBe(0);
       const action = actions.skillsBuy(skillName, zeroCost);
-      const state = skillsReducer(initialState, action);
-      expect(getSkill(state, skillName).value).toBe(5);
-      expect(globalReducer(initialState, action)).toMatchObject(state);
+      const skillState = skillsReducer(initialState, action);
+      expect(getSkill(skillState, skillName).value).toBe(5);
     });
   });
 
@@ -41,14 +30,13 @@ describe("Testing skillsReducer", () => {
       specialityName,
       zeroCost,
     );
-    const state = skillsReducer(initialState, action);
+    const skillState = skillsReducer(initialState, action);
     expect(
-      isSpecialityPresent(initialState.skills, skillName, specialityName),
+      isSpecialityPresent(initialState, skillName, specialityName),
     ).toBeFalsy();
     expect(
-      isSpecialityPresent(state.skills, skillName, specialityName),
+      isSpecialityPresent(skillState, skillName, specialityName),
     ).toBeTruthy();
-    expect(globalReducer(initialState, action)).toMatchObject(state);
   });
 
   it("should should not receive an already bought SKILLS_SPECIALITY_BUY action", () => {
@@ -60,16 +48,16 @@ describe("Testing skillsReducer", () => {
       specialityName,
       zeroCost,
     );
-    const state = skillsReducer(initialState, action);
+    const skillState = skillsReducer(initialState, action);
     expect(
-      isSpecialityPresent(initialState.skills, skillName, specialityName),
+      isSpecialityPresent(initialState, skillName, specialityName),
     ).toBeFalsy();
     expect(
-      isSpecialityPresent(state.skills, skillName, specialityName),
+      isSpecialityPresent(skillState, skillName, specialityName),
     ).toBeTruthy();
 
     expect(() => {
-      skillsReducer(state, action);
+      skillsReducer(skillState, action);
     }).toThrowError();
   });
 

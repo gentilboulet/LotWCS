@@ -1,11 +1,7 @@
 import { ICharacterAction as c } from "./actions/types";
 import { ICharacterState as s } from "./models/type";
 
-export {
-  isCharacterAction,
-  globalReducer,
-  playActions,
-} from "./reducers/global";
+export { isCharacterAction, globalReducer } from "./reducers/global";
 export { initialStateFactory, testingStateFactory } from "./models/initial";
 
 export type ICharacterAction = c;
