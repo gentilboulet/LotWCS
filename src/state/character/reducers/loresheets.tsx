@@ -1,4 +1,4 @@
-import produce from "immer";
+import { produce, Draft } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions/loresheets";
@@ -6,11 +6,8 @@ import { ILoresheetsState } from "../models/loresheets";
 
 import { buyLoresheetOption, openLoresheet } from "../models//loresheets";
 
-export function loresheetsReducer(
-  state: ILoresheetsState,
-  action: ActionType<typeof actions>,
-): ILoresheetsState {
-  return produce(state, draft => {
+export const loresheetsReducer = produce(
+  (draft: Draft<ILoresheetsState>, action: ActionType<typeof actions>) => {
     switch (action.type) {
       case getType(actions.open):
         openLoresheet(draft, action.payload.uid);
@@ -25,5 +22,5 @@ export function loresheetsReducer(
         break;
       default:
     }
-  });
-}
+  },
+);

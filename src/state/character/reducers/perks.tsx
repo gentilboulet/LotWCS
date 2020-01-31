@@ -1,15 +1,12 @@
-import produce from "immer";
+import { produce, Draft } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 import { ICharacterState } from "../models/type";
 import * as actions from "../actions/perks";
 import { applyBonuses } from "../models/bonuses";
 import { pushToDiscounts } from "../models/discounts";
 
-export function perksReducer(
-  state: ICharacterState,
-  action: ActionType<typeof actions>,
-): ICharacterState {
-  return produce(state, draft => {
+export const perksReducer = produce(
+  (draft: Draft<ICharacterState>, action: ActionType<typeof actions>) => {
     switch (action.type) {
       case getType(actions.applyBonus):
         applyBonuses(draft, action.payload.bonuses);
@@ -19,5 +16,5 @@ export function perksReducer(
         break;
       default:
     }
-  });
-}
+  },
+);

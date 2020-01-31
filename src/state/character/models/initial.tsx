@@ -33,28 +33,30 @@ export function emptyStateFactory(): ICharacterState {
   };
 }
 
-import _ from "lodash";
-import { setArchetype, setRank } from "../actions/header";
-import { skillSpecialityBuy } from "../actions/skills";
-import { zeroCost } from "./costs";
-
-export function testingStateFactory(): ICharacterState {
-  const initial = emptyStateFactory();
-  const actions = [
-    setRank(2),
-    setArchetype("warrior"),
-    skillSpecialityBuy("Awareness", "Hear", zeroCost),
-    skillSpecialityBuy("Awareness", "Sight", zeroCost),
-  ];
-  const produced = produce(initial, draft => {
-    actions.forEach(action => {
-      draft = globalReducer(draft, action);
-    });
-    return draft;
-  });
-  return _.cloneDeep(produced); // required for unfreezing the result of produce
-}
+// import _ from "lodash";
+// import { setArchetype, setRank } from "../actions/header";
+// import { skillSpecialityBuy } from "../actions/skills";
+// import { zeroCost } from "./costs";
+//
+// export function testingStateFactory(): ICharacterState {
+//   const initial = emptyStateFactory();
+//   const actions = [
+//     setRank(2),
+//     setArchetype("warrior"),
+//     skillSpecialityBuy("Awareness", "Hear", zeroCost),
+//     skillSpecialityBuy("Awareness", "Sight", zeroCost),
+//   ];
+//   const produced = produce(initial, draft => {
+//     actions.forEach(action => {
+//       draft = globalReducer(draft, action);
+//     });
+//     return draft;
+//   });
+//   return _.cloneDeep(produced); // required for unfreezing the result of produce
+// }
 
 export function initialStateFactory(): ICharacterState {
-  return emptyStateFactory();
+  const initial = emptyStateFactory();
+  console.log(initial.skills);
+  return initial;
 }

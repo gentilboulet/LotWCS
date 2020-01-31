@@ -1,15 +1,12 @@
-import { produce } from "immer";
+import { produce, Draft } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../actions/header";
 import { setRank } from "../models/header";
 import { ICharacterState } from "../models/type";
 
-export function headerReducer(
-  state: ICharacterState,
-  action: ActionType<typeof actions>,
-): ICharacterState {
-  return produce(state, draft => {
+export const headerReducer = produce(
+  (draft: Draft<ICharacterState>, action: ActionType<typeof actions>) => {
     switch (action.type) {
       case getType(actions.setName):
         draft.name = action.payload.name;
@@ -25,5 +22,5 @@ export function headerReducer(
         break;
       default:
     }
-  });
-}
+  },
+);

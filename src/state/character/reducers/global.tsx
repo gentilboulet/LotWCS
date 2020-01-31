@@ -1,10 +1,8 @@
-import { produce } from "immer";
+import { produce, Draft } from "immer";
 import { isActionOf } from "typesafe-actions";
 
 import { ICharacterAction } from "../actions/types";
 import { ICharacterState } from "../models/type";
-
-import { initialStateFactory } from "../models/initial";
 
 // Sub Reducers
 import { chiReducer } from "./chi";
@@ -25,50 +23,16 @@ import * as perks from "../actions/perks";
 import * as skills from "../actions/skills";
 import * as virtues from "../actions/virtues";
 
-export function isCharacterAction(action: any): ICharacterAction | undefined {
-  if (isActionOf(Object.values(chi), action)) {
-    return action;
-  }
-  if (isActionOf(Object.values(costs), action)) {
-    return action;
-  }
-  if (isActionOf(Object.values(header), action)) {
-    return action;
-  }
-  if (isActionOf(Object.values(kungfu), action)) {
-    return action;
-  }
-  if (isActionOf(Object.values(loresheets), action)) {
-    return action;
-  }
-  if (isActionOf(Object.values(perks), action)) {
-    return action;
-  }
-  if (isActionOf(Object.values(skills), action)) {
-    return action;
-  }
-  if (isActionOf(Object.values(virtues), action)) {
-    return action;
-  }
-  return undefined;
-}
-
-export function globalReducer(
-  state: ICharacterState | undefined,
-  action: ICharacterAction,
-): ICharacterState {
-  if (state === undefined) {
-    return globalReducer(initialStateFactory(), action);
-  }
-  return produce(state, draft => {
+export const globalReducer = produce(
+  (draft: Draft<ICharacterState>, action: ICharacterAction) => {
     if (isActionOf(Object.values(chi), action)) {
       draft.chi = chiReducer(draft.chi, action);
     }
     if (isActionOf(Object.values(costs), action)) {
-      return costReducer(draft, action);
+      costReducer(draft, action);
     }
     if (isActionOf(Object.values(header), action)) {
-      return headerReducer(draft, action);
+      headerReducer(draft, action);
     }
     if (isActionOf(Object.values(kungfu), action)) {
       draft.kungfu = kungfuReducer(draft.kungfu, action);
@@ -77,7 +41,7 @@ export function globalReducer(
       draft.loresheets = loresheetsReducer(draft.loresheets, action);
     }
     if (isActionOf(Object.values(perks), action)) {
-      return perksReducer(draft, action);
+      perksReducer(draft, action);
     }
     if (isActionOf(Object.values(skills), action)) {
       draft.skills = skillsReducer(draft.skills, action);
@@ -85,5 +49,5 @@ export function globalReducer(
     if (isActionOf(Object.values(virtues), action)) {
       draft.virtues = virtuesReducer(draft.virtues, action);
     }
-  });
-}
+  },
+);

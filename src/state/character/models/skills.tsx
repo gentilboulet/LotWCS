@@ -72,5 +72,6 @@ export function canBuySpeciality(
 }
 
 export function getSkill(state: TSkillsState, skillName: TSkillName) {
+  console.log("searching for", skillName);
   return state.find(s => s.name === skillName) as ISkill;
 }

@@ -1,4 +1,5 @@
 import { Dispatch, Store } from "redux";
+import { getType } from "typesafe-actions";
 
 import { isCharacterAction } from "../index";
 import { payCost } from "../actions/costs";
@@ -8,12 +9,12 @@ export const middleware = (store: Store<IStoreState>) => (
   next: Dispatch<IAction>,
 ) => (action: IAction) => {
   const result = next(action);
+
   const charAction = isCharacterAction(action);
-  if (charAction) {
-    if ("payload" in charAction)
-      if ("cost" in charAction.payload) {
-        store.dispatch(payCost(charAction.payload.cost));
-      }
+  if (charAction && charAction.type !== getType(payCost)) {
+    if ("payload" in charAction && "cost" in charAction.payload) {
+      store.dispatch(payCost(charAction.payload.cost));
+    }
   }
   return result;
 };
