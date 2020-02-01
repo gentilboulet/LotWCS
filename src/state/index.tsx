@@ -1,70 +1,57 @@
-import { produce } from "immer";
-import { getType } from "typesafe-actions";
-import * as character from "./character";
-import * as history from "./history";
-import * as meta from "./actions/meta";
-import { IGlobalAction } from "./actions/types";
+import { produce, Draft } from "immer";
+import { isActionOf, getType } from "typesafe-actions";
+import {
+  ICharacterAction,
+  actions as characterActions,
+} from "./actions/character";
+import { IHistoryAction, actions as historyActions } from "./actions/history";
+import { IMetaAction, actions as metaActions } from "./actions/meta";
+
+import {
+  ICharacterState,
+  initialStateFactory as characterStateFactory,
+} from "./models/character";
+import {
+  IHistoryState,
+  initialStateFactory as historyStateFactory,
+} from "./models/history";
+
+import { globalReducer as characterReducer } from "./reducers/character";
+import { historyReducer } from "./reducers/history";
 
 export interface IStoreState {
-  character: character.ICharacterState;
-  history: history.IHistoryState;
+  character: ICharacterState;
+  history: IHistoryState;
 }
 
-export type IAction =
-  | character.ICharacterAction
-  | history.IHistoryAction
-  | IGlobalAction;
+export type IAction = ICharacterAction | IHistoryAction | IMetaAction;
 
 export function initialStateFactory(): IStoreState {
   return {
-    character: character.initialStateFactory(),
-    history: history.initialStateFactory(),
+    character: characterStateFactory(),
+    history: historyStateFactory(),
   };
 }
 
-export function testingStateFactory(): IStoreState {
-  return {
-    character: character.testingStateFactory(),
-    history: history.initialStateFactory(),
-  };
-}
-
-export function globalReducer(
-  state: IStoreState,
-  action: IAction,
-): IStoreState {
-  // Meta actions handling first
-  switch (action.type) {
-    case getType(meta.characterHistoryReplay):
-      return produce(initialStateFactory(), draft => {
-        action.payload.actions.forEach(
-          (charAction: character.ICharacterAction) => {
-            draft.character = character.globalReducer(
-              draft.character,
-              charAction,
-            );
-          },
-        );
+export const globalReducer = produce(
+  (draft: Draft<IStoreState>, action: IAction) => {
+    switch (action.type) {
+      case getType(metaActions.characterHistoryReplay):
+        action.payload.actions.forEach((a: ICharacterAction) => {
+          draft.character = characterReducer(draft.character, a);
+        });
         draft.history.actions = action.payload.actions;
-      });
-    case getType(meta.initialStateAction):
-      return initialStateFactory();
-  }
-
-  // Substate reducers
-  return produce(state, draft => {
-    if (character.isCharacterAction(action)) {
-      draft.character = character.globalReducer(
-        draft.character,
-        action as character.ICharacterAction,
-      );
+        return;
+      case getType(metaActions.initialStateAction):
+        return initialStateFactory();
     }
 
-    if (history.isHistoryAction(action)) {
-      draft.history = history.globalReducer(
-        draft.history,
-        action as history.IHistoryAction,
-      );
+    if (isActionOf(Object.values(characterActions), action)) {
+      draft.character = characterReducer(draft.character, action);
     }
-  });
-}
+    if (isActionOf(Object.values(historyActions), action)) {
+      draft.history = historyReducer(draft.history, action);
+    }
+  },
+  initialStateFactory(),
+);

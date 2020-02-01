@@ -1,5 +1,5 @@
-import { createAction, creator } from "typesafe-actions";
-import { ICharacterAction } from "../character";
+import { createAction, ActionType } from "typesafe-actions";
+import { ICharacterAction } from "./character";
 
 export const characterHistoryReplay = createAction(
   "meta/REPLAY_CHARACTER_HISTORY",
@@ -8,9 +8,14 @@ export const characterHistoryReplay = createAction(
   },
 )();
 
-export const createHistoryAction = (type: string, payloadCreator) =>
-  createAction(type, payloadCreator, () => {
-    inHistory: true;
-  });
-
 export const initialStateAction = createAction("meta/INITIAL_STATE")();
+
+export const historyMetaCreator = () => {
+  return {
+    inHistory: true,
+  };
+};
+
+export const actions = { characterHistoryReplay, initialStateAction };
+
+export type IMetaAction = ActionType<typeof actions>;

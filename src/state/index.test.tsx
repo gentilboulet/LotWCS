@@ -8,10 +8,10 @@ import {
   IStoreState,
   initialStateFactory,
 } from "./index";
-import { middleware as checkAutomatics } from "./middleware/automatics";
 import { middleware as pushToHistory } from "./middleware/pushToHistory";
-import { middleware as applyPerks } from "./character/middleware/applyPerks";
-import { middleware as payCosts } from "./character/middleware/payCosts";
+import { middleware as checkAutomatics } from "./middleware/character/automatics";
+import { middleware as applyPerks } from "./middleware/character/applyPerks";
+import { middleware as payCosts } from "./middleware/character/payCosts";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
@@ -23,9 +23,9 @@ const store = createStore<IStoreState, IAction, any, any>(
   // applyMiddleware(applyPerks),
 );
 
-import { setName, setArchetype, setRank } from "./character/actions/header";
-import { skillsBuy, skillSpecialityBuy } from "./character/actions/skills";
-import { zeroCost } from "./character/models/costs";
+import { setName } from "./actions/character/header";
+import { skillsBuy } from "./actions/character/skills";
+import { zeroCost } from "./models/character/costs";
 
 describe("Placeholder", () => {
   it("should play actions", () => {
