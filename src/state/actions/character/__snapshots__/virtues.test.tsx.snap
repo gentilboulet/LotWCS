@@ -2,6 +2,9 @@
 
 exports[`Testing virtue action creator should create a virtue increase action with a non existing virtue 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -17,6 +20,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -32,6 +38,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 2`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -47,6 +56,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 3`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -62,6 +74,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 4`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -77,6 +92,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 5`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -92,6 +110,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 6`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -107,6 +128,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 7`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -122,6 +146,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 8`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -137,6 +164,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 9`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -152,6 +182,9 @@ Object {
 
 exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 10`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,

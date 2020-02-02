@@ -2,10 +2,12 @@ import { createAction } from "typesafe-actions";
 
 import { TSkillName } from "../../../data/skills";
 import { ICost } from "../../models/character/costs";
+import { historyMetaCreator } from "../meta";
 
 export const skillsBuy = createAction(
   "skills/BUY",
   (name: TSkillName, cost: ICost) => ({ cost, name }),
+  historyMetaCreator,
 )();
 
 export const skillSpecialityBuy = createAction(
@@ -16,4 +18,5 @@ export const skillSpecialityBuy = createAction(
     }
     return { cost, skill, speciality };
   },
+  historyMetaCreator,
 )();

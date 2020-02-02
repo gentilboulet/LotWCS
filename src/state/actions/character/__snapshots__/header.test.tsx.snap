@@ -2,6 +2,9 @@
 
 exports[`Testing header action creators should create a set archetype action 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "archetype": "doctor",
   },
@@ -11,6 +14,9 @@ Object {
 
 exports[`Testing header action creators should create a set concept action 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "concept": "New Concept",
   },
@@ -20,6 +26,9 @@ Object {
 
 exports[`Testing header action creators should create a set name action 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "name": "New Name",
   },
@@ -29,6 +38,9 @@ Object {
 
 exports[`Testing header action creators should create a set rank action 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "perks": Array [
       Object {

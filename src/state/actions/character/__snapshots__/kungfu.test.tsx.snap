@@ -2,6 +2,9 @@
 
 exports[`Testing custom naming action for kungfu style and techniques should create a KUNGFU_CUSTOM_NAME_FOR_STYLE action for a valid style 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "kungfuType": "KUNGFU_EXTERNAL",
     "name": "new name",
@@ -13,6 +16,9 @@ Object {
 
 exports[`Testing custom naming action for kungfu style and techniques should create a KUNGFU_CUSTOM_NAME_FOR_TECHNIQUE action for a valid style 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "kungfuType": "KUNGFU_EXTERNAL",
     "name": "new name",
@@ -25,6 +31,9 @@ Object {
 
 exports[`Testing external kungfu action creator should create an OPEN_STYLE action with an external kungfu 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,
@@ -47,6 +56,9 @@ Object {
 
 exports[`Testing external kungfu action creator should create an OPEN_STYLE action with an internal kungfu 1`] = `
 Object {
+  "meta": Object {
+    "inHistory": true,
+  },
   "payload": Object {
     "cost": Object {
       "canPay": true,

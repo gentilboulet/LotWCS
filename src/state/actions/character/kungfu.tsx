@@ -4,6 +4,7 @@ import * as dataKungFu from "../../../data/kungfu";
 import { KUNGFU_TYPE } from "../../../data/kungfu/types";
 import { ICost } from "../../models/character/costs";
 import { bonusCultivation } from "../../../perks/actions/bonuses";
+import { historyMetaCreator } from "../meta";
 
 export const openStyle = createAction(
   "kungfu/OPEN_STYLE",
@@ -12,9 +13,9 @@ export const openStyle = createAction(
     dataKungFu.validateKungFuStyle(kungfuType, uid);
 
     return {
+      cost,
       uid,
       kungfuType,
-      cost,
       perks: [
         bonusCultivation(
           dataKungFu.getKungfuChi(kungfuType, uid),
@@ -23,6 +24,7 @@ export const openStyle = createAction(
       ],
     };
   },
+  historyMetaCreator,
 )();
 
 export const buyTechnique = createAction(
@@ -44,6 +46,7 @@ export const buyTechnique = createAction(
       ],
     };
   },
+  historyMetaCreator,
 )();
 
 export const customStyleName = createAction(
@@ -60,6 +63,7 @@ export const customStyleName = createAction(
       uid,
     };
   },
+  historyMetaCreator,
 )();
 
 export const customTechniqueName = createAction(
@@ -78,4 +82,5 @@ export const customTechniqueName = createAction(
       uid,
     };
   },
+  historyMetaCreator,
 )();

@@ -2,6 +2,7 @@ import { createAction } from "typesafe-actions";
 
 import * as dataLoresheets from "../../../data/loresheets";
 import { ICost } from "../../models/character/costs";
+import { historyMetaCreator } from "../meta";
 
 export const open = createAction(
   "loresheet/OPEN",
@@ -9,6 +10,7 @@ export const open = createAction(
     dataLoresheets.validateLoresheet(uid);
     return { cost, uid };
   },
+  historyMetaCreator,
 )();
 
 export const buyOption = createAction(
@@ -17,4 +19,5 @@ export const buyOption = createAction(
     dataLoresheets.validateLoresheetOption(lsUid, uid);
     return { cost, lsUid, uid, payload };
   },
+  historyMetaCreator,
 )();

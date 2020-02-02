@@ -4,6 +4,9 @@ exports[`Testing history action creators should create an history push 1`] = `
 Object {
   "payload": Object {
     "action": Object {
+      "meta": Object {
+        "inHistory": true,
+      },
       "payload": Object {
         "name": "bob",
       },
