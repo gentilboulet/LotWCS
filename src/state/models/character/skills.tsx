@@ -49,7 +49,7 @@ export function addSpeciality(
   }
   const spe = getSkill(state, skillName);
   spe.specialities.push(specialityName);
-  if (typeof specialityName != "string")
+  if (typeof specialityName !== "string")
     throw new Error("Only stringm not" + specialityName);
 }
 

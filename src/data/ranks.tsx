@@ -18,16 +18,16 @@ export interface IDataRank {
   name: string;
   description: string;
   value: TRank;
-  perks: Array<IBonus | IDiscount>;
+  perks: (IBonus | IDiscount)[];
 }
 
 export interface IDataRanks extends Array<IDataRank> {}
 
 function _defaultVirtues() {
-  const virtues: Array<{
+  const virtues: {
     name: string;
     type: VIRTUE_SELFISH | VIRTUE_CHIVALROUS;
-  }> = [
+  }[] = [
     // TODO : handle virtues more clearly
     { name: "Honor", type: VIRTUE_CHIVALROUS },
     { name: "Benevolence", type: VIRTUE_CHIVALROUS },

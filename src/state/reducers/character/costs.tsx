@@ -1,9 +1,9 @@
-import { produce, Draft } from "immer";
+import { Draft, produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../../actions/character/costs";
-import { applyCost } from "../../models/character/costs";
 import { ICharacterState } from "../../models/character";
+import { applyCost } from "../../models/character/costs";
 
 export type ICostAction = ActionType<typeof actions>;
 

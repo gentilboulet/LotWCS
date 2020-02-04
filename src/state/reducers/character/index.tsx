@@ -1,4 +1,4 @@
-import { produce, Draft } from "immer";
+import { Draft, produce } from "immer";
 import { isActionOf } from "typesafe-actions";
 
 import { ICharacterAction } from "../../actions/character";

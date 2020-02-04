@@ -2,8 +2,8 @@ import { createAction } from "typesafe-actions";
 
 import * as dataKungFu from "../../../data/kungfu";
 import { KUNGFU_TYPE } from "../../../data/kungfu/types";
-import { ICost } from "../../models/character/costs";
 import { bonusCultivation } from "../../../perks/actions/bonuses";
+import { ICost } from "../../models/character/costs";
 import { historyMetaCreator } from "../meta";
 
 export const openStyle = createAction(

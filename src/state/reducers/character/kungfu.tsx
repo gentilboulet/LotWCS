@@ -1,11 +1,11 @@
-import { produce, Draft } from "immer";
+import { Draft, produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../../actions/character/kungfu";
 import {
   addKungFuTechnique,
-  openStyle,
   IKungFuState,
+  openStyle,
 } from "../../models/character/kungfu";
 
 export const kungfuReducer = produce(

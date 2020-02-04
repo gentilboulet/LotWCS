@@ -1,8 +1,8 @@
 import { Dispatch, Store } from "redux";
 
-import { IAction, IStoreState } from "../../index";
 import { IBonus, isBonus } from "../../../perks/bonuses";
 import { IDiscount, isDiscount } from "../../../perks/discounts";
+import { IAction, IStoreState } from "../../index";
 import { isApplicable } from "../../models/character/automatics";
 import { applyBonuses } from "../../models/character/bonuses";
 

@@ -1,9 +1,9 @@
 import { Dispatch, Store } from "redux";
 
-import { isCharacterAction } from "../../actions/character";
-import * as actions from "../../actions/character/perks";
 import { IBonus, isBonus } from "../../../perks/bonuses";
 import { IDiscount, isDiscount } from "../../../perks/discounts";
+import { isCharacterAction } from "../../actions/character";
+import * as actions from "../../actions/character/perks";
 import { IAction, IStoreState } from "../../index";
 
 export const middleware = (store: Store<IStoreState>) => (

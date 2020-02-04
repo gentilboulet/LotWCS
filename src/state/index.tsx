@@ -1,11 +1,11 @@
-import { produce, Draft } from "immer";
-import { isActionOf, getType } from "typesafe-actions";
+import { Draft, produce } from "immer";
+import { getType, isActionOf } from "typesafe-actions";
 import {
-  ICharacterAction,
   actions as characterActions,
+  ICharacterAction,
 } from "./actions/character";
-import { IHistoryAction, actions as historyActions } from "./actions/history";
-import { IMetaAction, actions as metaActions } from "./actions/meta";
+import { actions as historyActions, IHistoryAction } from "./actions/history";
+import { actions as metaActions, IMetaAction } from "./actions/meta";
 
 import {
   ICharacterState,

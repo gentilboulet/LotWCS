@@ -1,7 +1,7 @@
 import { actions as characterActions } from "../../actions/character";
-import { initialStateFactory } from "./index";
-import { zeroCost } from "./costs";
 import { globalReducer } from "../../reducers/character";
+import { zeroCost } from "./costs";
+import { initialStateFactory } from "./index";
 
 export const testingStateFactory = () => {
   const actions = [

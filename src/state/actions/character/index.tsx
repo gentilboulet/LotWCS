@@ -1,4 +1,4 @@
-import { isActionOf, ActionType } from "typesafe-actions";
+import { ActionType, isActionOf } from "typesafe-actions";
 
 import * as chi from "./chi";
 import * as cost from "./costs";

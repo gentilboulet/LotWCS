@@ -5,11 +5,11 @@ import { ICost } from "../../state/models/character/costs";
 import EditSpecialities from "./EditSpecialities";
 
 export interface ISpecialitiesProps {
-  specialities: Array<{
+  specialities: {
     name: string;
     canBuy: boolean;
     cost: ICost;
-  }>;
+  }[];
   bought: string[];
 
   onBuy: (speciality: string, cost: ICost) => void;

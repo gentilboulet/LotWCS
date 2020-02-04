@@ -18,11 +18,11 @@ import Specialities, {
 
 interface IMapStateToProps {
   bought: string[];
-  specialities: Array<{
+  specialities: {
     name: string;
     canBuy: boolean;
     cost: ICost;
-  }>;
+  }[];
 }
 
 interface IProps {

@@ -1,6 +1,6 @@
 import { createAction } from "typesafe-actions";
-import { ICost } from "../../models/character/costs";
 import { TChiName } from "../../../data/chi";
+import { ICost } from "../../models/character/costs";
 import { historyMetaCreator } from "../meta";
 
 export const chiBuy = createAction(

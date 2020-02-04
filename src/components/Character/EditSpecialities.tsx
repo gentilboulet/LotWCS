@@ -7,11 +7,11 @@ import { ICost } from "../../state/models/character/costs";
 
 interface IEditSpecialitiesProps {
   bought: string[];
-  specialities: Array<{
+  specialities: {
     name: string;
     canBuy: boolean;
     cost: ICost;
-  }>;
+  }[];
   onBuy: (speciality: string, cost: ICost) => void;
 }
 

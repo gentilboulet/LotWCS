@@ -1,9 +1,9 @@
-import { produce, Draft } from "immer";
+import { Draft, produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../../actions/character/header";
-import { setRank } from "../../models/character/header";
 import { ICharacterState } from "../../models/character";
+import { setRank } from "../../models/character/header";
 
 export const headerReducer = produce(
   (draft: Draft<ICharacterState>, action: ActionType<typeof actions>) => {

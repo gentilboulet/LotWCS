@@ -1,10 +1,10 @@
-import { produce, Draft } from "immer";
+import { Draft, produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
 import * as actions from "../../actions/character/loresheets";
 import {
-  ILoresheetsState,
   buyLoresheetOption,
+  ILoresheetsState,
   openLoresheet,
 } from "../../models/character/loresheets";
 

@@ -11,13 +11,13 @@ import Virtues, { IVirtuesProps } from "../../components/Character/Virtues";
 import { IDataVirtueType } from "../../data/virtues";
 
 interface IMapStateToProps {
-  virtues: Array<{
+  virtues: {
     canBuy: boolean;
     cost: ICost;
     name: string;
     type: IDataVirtueType;
     value: number;
-  }>;
+  }[];
 }
 
 interface IMapDispatchToProps {

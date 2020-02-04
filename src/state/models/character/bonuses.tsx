@@ -4,8 +4,8 @@ import { IBonus, isBonus } from "../../../perks/bonuses";
 import * as constants from "../../../perks/constants/bonuses";
 
 import * as chi from "./chi";
-import * as skills from "./skills";
 import * as loresheets from "./loresheets";
+import * as skills from "./skills";
 
 export type TBonusesState = IBonus[];
 

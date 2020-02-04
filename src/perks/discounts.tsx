@@ -26,7 +26,7 @@ export interface IDiscountLoresheet extends IGenericDiscount {
 
 export interface IDiscountLoresheetOption extends IGenericDiscount {
   type: constants.DISCOUNT_LORESHEET_OPTION;
-  uids: Array<{ lsUid: string; optUid: string[] }>;
+  uids: { lsUid: string; optUid: string[] }[];
 }
 
 export interface IDiscountKungfu extends IGenericDiscount {
@@ -37,13 +37,13 @@ export interface IDiscountKungfu extends IGenericDiscount {
 
 export interface IDiscountKungfuTechnique extends IGenericDiscount {
   type: constants.DISCOUNT_KUNGFU_TECHNIQUE;
-  uids: Array<{ styleUid: string }>;
+  uids: { styleUid: string }[];
   kfType: KUNGFU_TYPE[];
 }
 
 export interface IDiscountVirtue extends IGenericDiscount {
   type: constants.DISCOUNT_VIRTUE;
-  virtues: Array<{ name: string; type: IDataVirtueType }>;
+  virtues: { name: string; type: IDataVirtueType }[];
 }
 
 export type IDiscount =

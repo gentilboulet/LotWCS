@@ -3,7 +3,6 @@ import { ICharacterState } from "./index";
 import { skills as data, TSkillName } from "../../../data/skills";
 
 import { initialStateFactory } from "./index";
-import { testingStateFactory } from "./testing";
 import {
   addSpeciality,
   canBuySkill,
@@ -12,6 +11,7 @@ import {
   increase,
   isSpecialityPresent,
 } from "./skills";
+import { testingStateFactory } from "./testing";
 
 describe("Testing skills state", () => {
   it("should do increase existing skills value", () => {

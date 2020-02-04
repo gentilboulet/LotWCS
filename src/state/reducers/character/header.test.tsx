@@ -1,7 +1,7 @@
 import { ActionType } from "typesafe-actions";
 
-import { headerReducer } from "./header";
 import { initialStateFactory } from "../../models/character";
+import { headerReducer } from "./header";
 
 import * as dataRank from "../../../data/ranks";
 import * as actions from "../../actions/character/header";

@@ -1,11 +1,11 @@
 import { ICharacterState } from "./index";
 
+import * as dataLoresheet from "../../../data/loresheets";
 import {
   IAutomaticCondition,
   isAutomaticCondition,
 } from "../../../perks/automatics";
 import * as constants from "../../../perks/constants/automatics";
-import * as dataLoresheet from "../../../data/loresheets";
 
 import { getSkill } from "./skills";
 

@@ -34,7 +34,7 @@ export function discountKungfuFactory(
 
 export function discountVirtueFactory(
   value: number,
-  virtues: Array<{ name: string; type: IDataVirtueType }>,
+  virtues: { name: string; type: IDataVirtueType }[],
 ): IDiscountVirtue {
   return { type: constants.DISCOUNT_VIRTUE, virtues, value };
 }

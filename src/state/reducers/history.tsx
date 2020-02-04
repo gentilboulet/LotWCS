@@ -1,8 +1,8 @@
-import { produce, Draft } from "immer";
+import { Draft, produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
-import { IHistoryState } from "../models/history";
 import * as actions from "../actions/history";
+import { IHistoryState } from "../models/history";
 
 export const historyReducer = produce(
   (draft: Draft<IHistoryState>, action: ActionType<typeof actions>) => {

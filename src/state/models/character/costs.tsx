@@ -6,10 +6,10 @@ import { ICharacterState } from "./index";
 export interface ICost {
   canPay: boolean;
   destiny: number;
-  discounts?: Array<{
+  discounts?: {
     idx: number;
     newValue: number;
-  }>;
+  }[];
   original: number;
 }
 
