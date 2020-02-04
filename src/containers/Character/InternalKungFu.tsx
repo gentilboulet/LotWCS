@@ -2,13 +2,16 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/kungfu";
-import { getCostKungFuStyle, ICost } from "../../state/costs";
-import { canOpenKungFu, isStylePresent } from "../../state/kungfu";
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/kungfu";
+import { getCostKungFuStyle, ICost } from "../../state/models/character/costs";
+import {
+  canOpenKungFu,
+  isStylePresent,
+} from "../../state/models/character/kungfu";
 
 import InternalKungFu, {
-  IInternalKungFuProps
+  IInternalKungFuProps,
 } from "../../components/Character/InternalKungFu";
 
 import { KUNGFU_INTERNAL } from "../../data/kungfu/types";
@@ -30,30 +33,36 @@ interface IMapDispatchToProps {
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
-  const isOpen = isStylePresent(state.kungfu, KUNGFU_INTERNAL, props.uid);
+  const isOpen = isStylePresent(
+    state.character.kungfu,
+    KUNGFU_INTERNAL,
+    props.uid,
+  );
 
   return {
-    canOpen: canOpenKungFu(state.kungfu, KUNGFU_INTERNAL, props.uid),
-    cost: getCostKungFuStyle(state, KUNGFU_INTERNAL, props.uid),
+    canOpen: canOpenKungFu(state.character.kungfu, KUNGFU_INTERNAL, props.uid),
+    cost: getCostKungFuStyle(state.character, KUNGFU_INTERNAL, props.uid),
     isOpen,
-    knownTechniques: isOpen ? state.kungfu[KUNGFU_INTERNAL][props.uid] : [],
-    uid: props.uid
+    knownTechniques: isOpen
+      ? state.character.kungfu[KUNGFU_INTERNAL][props.uid]
+      : [],
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onOpen: (cost: ICost) =>
-      dispatch(actions.openStyle(props.uid, KUNGFU_INTERNAL, cost))
+      dispatch(actions.openStyle(props.uid, KUNGFU_INTERNAL, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IInternalKungFuProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -61,5 +70,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(InternalKungFu);

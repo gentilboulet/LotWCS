@@ -86,13 +86,15 @@ const loresheets: IDataGenericLoresheet[] = [
   wulin,
   wulinsage,
   secretartofbattle,
-  extraordinarywarriortechniques
+  extraordinarywarriortechniques,
 ];
 
 export function getLoresheets(
-  filter?: IDataLoresheetFilter
+  filter?: IDataLoresheetFilter,
 ): IDataGenericLoresheet[] {
-  if (!filter) { return loresheets; }
+  if (!filter) {
+    return loresheets;
+  }
   return loresheets.filter(ls => filter(ls));
 }
 
@@ -102,7 +104,7 @@ export function getLoresheetCategories(filter: IDataLoresheetFilter): string[] {
     .map(ls => ls.category)
     .filter(
       (value: string, index: number, self: string[]) =>
-        self.indexOf(value) === index
+        self.indexOf(value) === index,
     );
 }
 
@@ -117,7 +119,7 @@ export function validateLoresheetOption(lsUid: string, uid: string): void {
   const idxLS = loresheets.findIndex(ls => ls.uid === lsUid);
   if (
     !loresheets[idxLS].options.find(
-      (option: IDataLoresheetOption) => option.uid === uid
+      (option: IDataLoresheetOption) => option.uid === uid,
     )
   ) {
     throw new Error('Invalid loresheet option " + uid + "');
@@ -157,7 +159,7 @@ export function isRepeatable(lsUid: string): boolean {
 
 export function getLoresheetOptionData(
   lsUid: string,
-  optUid: string
+  optUid: string,
 ): IDataGenericLoresheetOption {
   const data = getLoresheetData(lsUid);
   const idxOpt = data.options.findIndex(o => o.uid === optUid);

@@ -3,19 +3,13 @@ import * as ReactDOM from "react-dom";
 // import * as renderer from 'react-test-renderer';
 import Skill from "./Skill";
 
-import { IAction } from "../../state/actions/types";
-import { IStoreState } from "../../state/type";
-
 import { createStore } from "redux";
-import { testingStateFactory } from "../../state/initial";
-import { globalReducer } from "../../state/reducers/global";
+import { IAction, IStoreState } from "../../state";
+import { globalReducer } from "../../state/";
 
 import { Provider } from "react-redux";
 
-const store = createStore<IStoreState, IAction, any, any>(
-  globalReducer,
-  testingStateFactory()
-);
+const store = createStore<IStoreState, IAction, any, any>(globalReducer);
 
 describe("Testing the Skills container", () => {
   it("should render without crashing", () => {
@@ -24,7 +18,7 @@ describe("Testing the Skills container", () => {
       <Provider store={store}>
         <Skill name={"Awareness"} />
       </Provider>,
-      div
+      div,
     );
   });
 });

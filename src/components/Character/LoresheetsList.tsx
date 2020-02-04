@@ -7,7 +7,7 @@ import {
   getLoresheetCategories,
   getLoresheets,
   IDataLoresheet,
-  IDataLoresheetFilter
+  IDataLoresheetFilter,
 } from "../../data/loresheets";
 
 interface ILoresheetsListProps {
@@ -23,18 +23,18 @@ class LoresheetsList extends React.PureComponent<ILoresheetsListProps, {}> {
 
   public render() {
     const nestedOptions = getLoresheetCategories(
-      this.props.loresheetFilter
+      this.props.loresheetFilter,
     ).map(category => {
       const categories: IOption[] = [
-        { id: category, label: category, disabled: true }
+        { id: category, label: category, disabled: true },
       ];
       const lsInCategory: IOption[] = getLoresheets(
-        ls => ls.category === category
+        ls => ls.category === category,
       ).map((ls: IDataLoresheet) => ({
         disabled: false,
         id: ls.uid,
         label: ls.name,
-        meta: ls.name + "," + category
+        meta: ls.name + "," + category,
       }));
       return categories.concat(lsInCategory);
     });

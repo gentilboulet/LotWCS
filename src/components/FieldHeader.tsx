@@ -6,7 +6,7 @@ export interface IFieldHeader {
 
 const style: React.CSSProperties = {
   display: "block",
-  textAlign: "center"
+  textAlign: "center",
 };
 
 class FieldHeader extends React.PureComponent<IFieldHeader, {}> {

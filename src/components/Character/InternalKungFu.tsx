@@ -3,7 +3,7 @@ import { Icon } from "react-fa";
 
 import { kungfuData } from "../../data/kungfu";
 import { IDataInternalKungfu, KUNGFU_INTERNAL } from "../../data/kungfu/types";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/models/character/costs";
 
 import InternalKungFuTechnique from "../../containers/Character/InternalKungFuTechnique";
 
@@ -27,7 +27,7 @@ class InternalKungFu extends React.PureComponent<IInternalKungFuProps, {}> {
   public render() {
     const data = kungfuData(
       KUNGFU_INTERNAL,
-      this.props.uid
+      this.props.uid,
     ) as IDataInternalKungfu;
     return (
       <div>

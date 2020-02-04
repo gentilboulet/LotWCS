@@ -1,4 +1,4 @@
-import { IEffect } from "../../state/effects";
+import { IEffect } from "../../perks/effects";
 import { TChiName } from "../chi";
 import { WEAPON_TYPE } from "../weapons";
 

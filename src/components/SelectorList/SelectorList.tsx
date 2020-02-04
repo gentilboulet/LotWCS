@@ -30,7 +30,7 @@ class SelectorList extends React.PureComponent<
           return option.label;
         }
       }),
-      selected: this.props.preSelected ? this.props.preSelected : []
+      selected: this.props.preSelected ? this.props.preSelected : [],
     };
 
     this.renderList = this.renderList.bind(this);
@@ -132,7 +132,7 @@ class SelectorList extends React.PureComponent<
       });
 
       return {
-        selected: newList
+        selected: newList,
       };
     });
   }
@@ -151,7 +151,7 @@ class SelectorList extends React.PureComponent<
             return option.label.toLowerCase().search(input) !== -1;
           }
         })
-        .map(option => option.id)
+        .map(option => option.id),
     });
   }
 }

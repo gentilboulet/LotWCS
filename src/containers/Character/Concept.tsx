@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/header";
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/header";
 
 import Concept, { IConceptProps } from "../../components/Character/Concept";
 
@@ -17,21 +17,21 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    value: state.concept !== undefined ? state.concept : ""
+    value: state.character.concept !== undefined ? state.character.concept : "",
   };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(actions.setConcept(s))
+    onChange: (s: string) => dispatch(actions.setConcept(s)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IConceptProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -39,5 +39,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Concept);

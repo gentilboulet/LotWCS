@@ -2,17 +2,20 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { getCostBuyLoresheetOption, ICost } from "../../state/costs";
+import {
+  getCostBuyLoresheetOption,
+  ICost,
+} from "../../state/models/character/costs";
 
-import * as actions from "../../state/actions/loresheets";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/loresheets";
 import {
   canBuyLoresheetOption,
-  isLoresheetOptionPresent
-} from "../../state/loresheets";
-import { IStoreState } from "../../state/type";
+  isLoresheetOptionPresent,
+} from "../../state/models/character/loresheets";
 
 import LoresheetOption, {
-  ILoresheetOptionProps
+  ILoresheetOptionProps,
 } from "../../components/Character/LoresheetOption";
 
 interface IMapStateToProps {
@@ -34,7 +37,7 @@ interface IProps {
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
-  const lsState = state.loresheets[props.lsUid];
+  const lsState = state.character.loresheets[props.lsUid];
   let payloads;
   if (lsState) {
     const optState = lsState.filter(o => o.uid === props.uid);
@@ -49,28 +52,36 @@ function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
     }
   }
   return {
-    canBuy: canBuyLoresheetOption(state.loresheets, props.lsUid, props.uid),
-    cost: getCostBuyLoresheetOption(state, props.lsUid, props.uid),
-    known: isLoresheetOptionPresent(state.loresheets, props.lsUid, props.uid),
+    canBuy: canBuyLoresheetOption(
+      state.character.loresheets,
+      props.lsUid,
+      props.uid,
+    ),
+    cost: getCostBuyLoresheetOption(state.character, props.lsUid, props.uid),
+    known: isLoresheetOptionPresent(
+      state.character.loresheets,
+      props.lsUid,
+      props.uid,
+    ),
     lsUid: props.lsUid,
     payloads,
-    uid: props.uid
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost, payload?: string) =>
-      dispatch(actions.buyOption(props.lsUid, props.uid, cost, payload))
+      dispatch(actions.buyOption(props.lsUid, props.uid, cost, payload)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): ILoresheetOptionProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -78,5 +89,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(LoresheetOption);

@@ -1,27 +1,16 @@
+import { Draft, produce } from "immer";
 import { ActionType, getType } from "typesafe-actions";
 
-import { IStoreState } from "../type";
-
 import * as actions from "../actions/history";
-import { replayHistory } from "../history";
-import { emptyStateFactory } from "../initial";
+import { IHistoryState } from "../models/history";
 
-export function historyReducer(
-  state: IStoreState,
-  action: ActionType<typeof actions>
-): IStoreState {
-  switch (action.type) {
-    case getType(actions.resetToInitialState):
-      return emptyStateFactory();
-    case getType(actions.historyDeleteUpTo):
-      if (state.history.length === action.payload.id + 1) {
-        return state;
-      }
-      return replayHistory(
-        emptyStateFactory(),
-        state.history.slice(0, action.payload.id + 1)
-      );
-    default:
-      return state;
-  }
-}
+export const historyReducer = produce(
+  (draft: Draft<IHistoryState>, action: ActionType<typeof actions>) => {
+    switch (action.type) {
+      case getType(actions.historyPush):
+        draft.actions.push(action.payload.action);
+        break;
+      default:
+    }
+  },
+);

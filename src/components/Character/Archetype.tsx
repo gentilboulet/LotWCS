@@ -27,7 +27,7 @@ class Archetype extends React.PureComponent<IArchetypeProps, {}> {
           })
           .map((a: IDataArchetype) => ({
             key: a.key,
-            label: a.name
+            label: a.name,
           }))}
         onSubmit={this.props.onChange}
         locked={this.props.locked}

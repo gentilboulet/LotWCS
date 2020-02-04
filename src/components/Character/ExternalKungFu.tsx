@@ -5,9 +5,9 @@ import { kungfuData } from "../../data/kungfu";
 import {
   IDataExternalKungfu,
   IDataExternalKungfuStatistics,
-  KUNGFU_EXTERNAL
+  KUNGFU_EXTERNAL,
 } from "../../data/kungfu/types";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/models/character/costs";
 
 import ExternalKungFuTechnique from "../../containers/Character/ExternalKungFuTechnique";
 
@@ -34,7 +34,7 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
   public render() {
     const data = kungfuData(
       KUNGFU_EXTERNAL,
-      this.props.uid
+      this.props.uid,
     ) as IDataExternalKungfu;
     return (
       <div>
@@ -105,7 +105,7 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
                   <td>{this.props.statistics[s]}</td>
                 </tr>
               );
-            }
+            },
           )}
         </tbody>
       </table>

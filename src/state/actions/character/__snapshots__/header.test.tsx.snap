@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing header action creators should create a set archetype action 1`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "archetype": "doctor",
+  },
+  "type": "header/SET_ARCHETYPE",
+}
+`;
+
+exports[`Testing header action creators should create a set concept action 1`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "concept": "New Concept",
+  },
+  "type": "header/SET_CONCEPT",
+}
+`;
+
+exports[`Testing header action creators should create a set name action 1`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "name": "New Name",
+  },
+  "type": "header/SET_NAME",
+}
+`;
+
+exports[`Testing header action creators should create a set rank action 1`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "perks": Array [
+      Object {
+        "type": "BONUS_DESTINY",
+        "value": 20,
+      },
+      Object {
+        "skills": Array [
+          "Awareness",
+          "Confidence",
+          "Crafting",
+          "Finesse",
+          "Hardiness",
+          "Inspire",
+          "Learning",
+          "Medicine",
+          "Might",
+          "Perform",
+          "Politics",
+          "Ride",
+          "Stealth",
+          "Survival",
+          "Tactics",
+          "Wu Wei",
+        ],
+        "type": "DISCOUNT_SKILL",
+        "value": 20,
+      },
+      Object {
+        "chi": "general",
+        "type": "BONUS_CHI",
+        "value": 10,
+      },
+      Object {
+        "kfType": "KUNGFU_EXTERNAL",
+        "type": "DISCOUNT_KUNGFU_STYLE",
+        "uids": Array [],
+        "value": 10,
+      },
+      Object {
+        "kfType": "KUNGFU_INTERNAL",
+        "type": "DISCOUNT_KUNGFU_STYLE",
+        "uids": Array [],
+        "value": 10,
+      },
+      Object {
+        "type": "DISCOUNT_VIRTUE",
+        "value": 75,
+        "virtues": Array [
+          Object {
+            "name": "Honor",
+            "type": "VIRTUE_CHIVALROUS",
+          },
+          Object {
+            "name": "Benevolence",
+            "type": "VIRTUE_CHIVALROUS",
+          },
+          Object {
+            "name": "Righteousness",
+            "type": "VIRTUE_CHIVALROUS",
+          },
+          Object {
+            "name": "Loyalty",
+            "type": "VIRTUE_CHIVALROUS",
+          },
+          Object {
+            "name": "Force",
+            "type": "VIRTUE_CHIVALROUS",
+          },
+          Object {
+            "name": "Revenge",
+            "type": "VIRTUE_SELFISH",
+          },
+          Object {
+            "name": "Individualism",
+            "type": "VIRTUE_SELFISH",
+          },
+          Object {
+            "name": "Obsession",
+            "type": "VIRTUE_SELFISH",
+          },
+          Object {
+            "name": "Ruthlessness",
+            "type": "VIRTUE_SELFISH",
+          },
+          Object {
+            "name": "Ferocity",
+            "type": "VIRTUE_SELFISH",
+          },
+        ],
+      },
+    ],
+    "rank": 2,
+  },
+  "type": "header/SET_RANK",
+}
+`;

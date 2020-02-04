@@ -3,12 +3,12 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 import {
   getLoresheetOptionData,
-  IDataLoresheetOption
+  IDataLoresheetOption,
 } from "../../data/loresheets";
 import { IPerk } from "../../perks";
 import { IBonus } from "../../perks/bonuses";
 import * as bonuses from "../../perks/constants/bonuses";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/models/character/costs";
 
 import EditText from "../../components/EditText";
 
@@ -41,7 +41,7 @@ function fromBonusToString(bonus: IBonus): string {
       return bonus.chi + " chi cultivation +" + bonus.value;
     case bonuses.BONUS_ONE_AMONG_N:
       throw new Error(
-        "bonus too complicated to render : " + JSON.stringify(bonus)
+        "bonus too complicated to render : " + JSON.stringify(bonus),
       );
     case bonuses.BONUS_SKILL_RANK:
       return "skill " + bonus.skill + " +5";
@@ -73,10 +73,10 @@ class LoresheetOptionPopup extends React.PureComponent<
   public render() {
     const data = getLoresheetOptionData(this.props.lsUid, this.props.uid);
     const payload: React.ReactNode = this.renderPayload(
-      (data as IDataLoresheetOption).payload
+      (data as IDataLoresheetOption).payload,
     );
     const choices: React.ReactNode = data.perks.map((p: IPerk, id: number) =>
-      this.renderBonusChoices(p, id)
+      this.renderBonusChoices(p, id),
     );
     const complexCost: React.ReactNode =
       typeof data.cost === "number" ? undefined : this.renderComplexCost();
@@ -125,7 +125,7 @@ class LoresheetOptionPopup extends React.PureComponent<
     const onChange = (p: string) => {
       this.setState({
         cost: this.state.cost,
-        payload: p
+        payload: p,
       });
     };
     const notNull = (s: string) => s.length > 0;
@@ -144,7 +144,7 @@ class LoresheetOptionPopup extends React.PureComponent<
     const onChange = (idx: number) => {
       this.setState({
         cost: this.props.cost[idx],
-        payload: this.state.payload
+        payload: this.state.payload,
       });
     };
 
@@ -153,8 +153,8 @@ class LoresheetOptionPopup extends React.PureComponent<
       const newMarks = {
         [idx]: {
           label: cost.original.toString(),
-          style: { color: cost.canPay ? "black" : "light-grey" }
-        }
+          style: { color: cost.canPay ? "black" : "light-grey" },
+        },
       };
       marks = { ...marks, ...newMarks };
     });

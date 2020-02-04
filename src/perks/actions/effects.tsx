@@ -3,12 +3,12 @@ import {
   IEffectChiThresholdIncreaseBaseChi,
   IEffectCombatStatistic,
   IEffectConditionalText,
-  IEffectStatistic
+  IEffectStatistic,
 } from "../effects";
 
 export function combatStatistic(
   statistic: IEffectStatistic,
-  increase: number
+  increase: number,
 ): IEffectCombatStatistic {
   return { increase, statistic, type: constants.EFFECT_COMBAT_STATISTIC };
 }
@@ -26,10 +26,10 @@ export function conditionalOnelineText(text: string): IEffectConditionalText {
 }
 
 export function increaseBaseChiForThreshold(
-  chiIncrease: number
+  chiIncrease: number,
 ): IEffectChiThresholdIncreaseBaseChi {
   return {
     chiIncrease,
-    type: constants.EFFECT_CHI_THRESHOLD_INCREASE_BASE_CHI
+    type: constants.EFFECT_CHI_THRESHOLD_INCREASE_BASE_CHI,
   };
 }

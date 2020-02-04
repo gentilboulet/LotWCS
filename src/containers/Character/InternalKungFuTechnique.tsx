@@ -2,17 +2,20 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { getCostKungFuTechnique, ICost } from "../../state/costs";
+import {
+  getCostKungFuTechnique,
+  ICost,
+} from "../../state/models/character/costs";
 
-import * as actions from "../../state/actions/kungfu";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/kungfu";
 import {
   canBuyKungFuTechnique,
-  isStyleTechniquePresent
-} from "../../state/kungfu";
-import { IStoreState } from "../../state/type";
+  isStyleTechniquePresent,
+} from "../../state/models/character/kungfu";
 
 import InternalKungFuTechnique, {
-  IInternalKungFuTechniqueProps
+  IInternalKungFuTechniqueProps,
 } from "../../components/Character/InternalKungFuTechnique";
 import { KUNGFU_INTERNAL } from "../../data/kungfu/types";
 
@@ -36,43 +39,43 @@ interface IProps {
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
     canBuy: canBuyKungFuTechnique(
-      state.kungfu,
+      state.character.kungfu,
       KUNGFU_INTERNAL,
       props.styleUid,
-      props.uid
+      props.uid,
     ),
     cost: getCostKungFuTechnique(
-      state,
+      state.character,
       KUNGFU_INTERNAL,
       props.styleUid,
-      props.uid
+      props.uid,
     ),
     known: isStyleTechniquePresent(
-      state.kungfu,
+      state.character.kungfu,
       KUNGFU_INTERNAL,
       props.styleUid,
-      props.uid
+      props.uid,
     ),
     styleUid: props.styleUid,
-    uid: props.uid
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost) =>
       dispatch(
-        actions.buyTechnique(props.styleUid, props.uid, KUNGFU_INTERNAL, cost)
-      )
+        actions.buyTechnique(props.styleUid, props.uid, KUNGFU_INTERNAL, cost),
+      ),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IInternalKungFuTechniqueProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -80,5 +83,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(InternalKungFuTechnique);

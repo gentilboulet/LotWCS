@@ -2,22 +2,22 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/kungfu";
-import { getCostKungFuStyle, ICost } from "../../state/costs";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/kungfu";
+import { getCostKungFuStyle, ICost } from "../../state/models/character/costs";
 import {
   canOpenKungFu,
   getExternalKungFuStatistics,
-  isStylePresent
-} from "../../state/kungfu";
-import { IStoreState } from "../../state/type";
+  isStylePresent,
+} from "../../state/models/character/kungfu";
 
 import ExternalKungFu, {
-  IExternalKungFuProps
+  IExternalKungFuProps,
 } from "../../components/Character/ExternalKungFu";
 
 import {
   IDataExternalKungfuStatistics,
-  KUNGFU_EXTERNAL
+  KUNGFU_EXTERNAL,
 } from "../../data/kungfu/types";
 
 interface IProps {
@@ -38,31 +38,37 @@ interface IMapDispatchToProps {
 }
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
-  const isOpen = isStylePresent(state.kungfu, KUNGFU_EXTERNAL, props.uid);
+  const isOpen = isStylePresent(
+    state.character.kungfu,
+    KUNGFU_EXTERNAL,
+    props.uid,
+  );
 
   return {
-    canOpen: canOpenKungFu(state.kungfu, KUNGFU_EXTERNAL, props.uid),
-    cost: getCostKungFuStyle(state, KUNGFU_EXTERNAL, props.uid),
+    canOpen: canOpenKungFu(state.character.kungfu, KUNGFU_EXTERNAL, props.uid),
+    cost: getCostKungFuStyle(state.character, KUNGFU_EXTERNAL, props.uid),
     isOpen,
-    knownTechniques: isOpen ? state.kungfu[KUNGFU_EXTERNAL][props.uid] : [],
-    statistics: getExternalKungFuStatistics(state.kungfu, props.uid),
-    uid: props.uid
+    knownTechniques: isOpen
+      ? state.character.kungfu[KUNGFU_EXTERNAL][props.uid]
+      : [],
+    statistics: getExternalKungFuStatistics(state.character.kungfu, props.uid),
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onOpen: (cost: ICost) =>
-      dispatch(actions.openStyle(props.uid, KUNGFU_EXTERNAL, cost))
+      dispatch(actions.openStyle(props.uid, KUNGFU_EXTERNAL, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IExternalKungFuProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -70,5 +76,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(ExternalKungFu);

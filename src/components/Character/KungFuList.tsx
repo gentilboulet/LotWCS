@@ -8,7 +8,7 @@ import InternalKungFu from "../../containers/Character/InternalKungFu";
 import {
   externalKungfu,
   getKungFuType,
-  internalKungfu
+  internalKungfu,
 } from "../../data/kungfu";
 import { KUNGFU_EXTERNAL } from "../../data/kungfu/types";
 
@@ -24,13 +24,13 @@ class KungFuList extends React.PureComponent<{}, {}> {
       disabled: false,
       id: kf.uid,
       label: kf.name,
-      meta: kf.name + ",external"
+      meta: kf.name + ",external",
     }));
     const internals: IOption[] = internalKungfu.map(kf => ({
       disabled: false,
       id: kf.uid,
       label: kf.name,
-      meta: kf.name + ",internal"
+      meta: kf.name + ",internal",
     }));
 
     const externalHeader: IOption[] = [
@@ -38,16 +38,16 @@ class KungFuList extends React.PureComponent<{}, {}> {
         disabled: true,
         id: "External Styles",
         label: "External Styles",
-        meta: "external"
-      }
+        meta: "external",
+      },
     ];
     const internalHeader: IOption[] = [
       {
         disabled: true,
         id: "Internal Styles",
         label: "Internal Styles",
-        meta: "internal"
-      }
+        meta: "internal",
+      },
     ];
 
     return (

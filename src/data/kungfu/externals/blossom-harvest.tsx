@@ -9,7 +9,7 @@ export const blossomHarvest: IDataExternalKungfu = {
   uid: "Blossom Harvest",
   qualities: [
     "This is one of the most honest and straightforward fighting styles there is. It dispenses with trickery or fancy moves, and compensates with sweat and resilience. Its training methods use everyday items and situations, such as running upstream through a river to build stamina, and using farming tools to practice weapon forms. Most of its techniques and theories also incorporate metaphors that are easy for common people to understand.",
-    "Because it is so approachable, it has achieved a folk hero status; peasant rebellions often start training with this fighting style, calling those who stand against injustice “Blossoming Heroes”."
+    "Because it is so approachable, it has achieved a folk hero status; peasant rebellions often start training with this fighting style, calling those who stand against injustice “Blossoming Heroes”.",
   ],
   weapons: ["Massive", "Staff", "Unarmed"],
   laugths:
@@ -22,7 +22,7 @@ export const blossomHarvest: IDataExternalKungfu = {
     strike: 5,
     damage: 10,
     block: 5,
-    toughness: 10
+    toughness: 10,
   },
   techniques: [
     {
@@ -31,9 +31,9 @@ export const blossomHarvest: IDataExternalKungfu = {
       description:
         "Pain and fear blunt edges worse than rust, but your training has seen every bone broken and regrown stronger. To you, pain is but a reminder of your lessons and your teacher’s wisdom.",
       effect: effects.conditionalOnelineText(
-        "When you have a physical wound condition, this style’s Damage bonus increases to +15."
+        "When you have a physical wound condition, this style’s Damage bonus increases to +15.",
       ),
-      uid: "Heart-Fire Temper Skill"
+      uid: "Heart-Fire Temper Skill",
     },
     {
       name: "Iron Skin",
@@ -41,7 +41,7 @@ export const blossomHarvest: IDataExternalKungfu = {
       description:
         "Hardened muscles and willpower have given you great resistance to physical punishment. Spears bend and sticks break upon striking you!",
       effect: effects.combatStatistic("toughness", 5),
-      uid: "Iron Skin"
+      uid: "Iron Skin",
     },
     {
       name: "Iron Skin",
@@ -50,7 +50,7 @@ export const blossomHarvest: IDataExternalKungfu = {
       description:
         "Hardened muscles and willpower have given you great resistance to physical punishment. Spears bend and sticks break upon striking you!",
       effect: effects.increaseBaseChiForThreshold(2),
-      prerequisites: [{ uid: "iron_skin_1" }]
+      prerequisites: [{ uid: "iron_skin_1" }],
     },
     {
       name: "Nine Mountains Great Strength",
@@ -58,7 +58,7 @@ export const blossomHarvest: IDataExternalKungfu = {
       cost: 5,
       description:
         "Your attacks are like mountains: grand and overwhelming, undeniable and unmovable.",
-      effect: effects.combatStatistic("strike", 5)
+      effect: effects.combatStatistic("strike", 5),
     },
     {
       name: "No Vermin in the World",
@@ -67,8 +67,8 @@ export const blossomHarvest: IDataExternalKungfu = {
       description:
         "The corrupt are numerous and the virtuous seem but few these days. Villages are razed to the ground and orphans cry in the streets. The great men of this age therefore have no choice but to be Blossoming Heroes, fighting off entire gangs all by themselves!",
       effect: effects.conditionalOnelineText(
-        "All your attacks count as Area attacks for the purpose of damaging groups of Minions."
-      )
-    }
-  ]
+        "All your attacks count as Area attacks for the purpose of damaging groups of Minions.",
+      ),
+    },
+  ],
 };

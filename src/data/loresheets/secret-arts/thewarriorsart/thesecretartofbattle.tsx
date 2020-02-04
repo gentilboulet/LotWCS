@@ -17,7 +17,7 @@ export const secretartofbattle: IDataSecretArt = {
   options: [],
   perks: [
     automatics.conditionalOnArchetype("warrior", [
-      bonuses.bonusLoresheet("secretartofbattle")
-    ])
-  ]
+      bonuses.bonusLoresheet("secretartofbattle"),
+    ]),
+  ],
 };

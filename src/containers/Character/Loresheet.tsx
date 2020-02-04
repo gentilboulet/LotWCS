@@ -2,14 +2,20 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import { getCostOpenLoresheet, ICost } from "../../state/costs";
+import {
+  getCostOpenLoresheet,
+  ICost,
+} from "../../state/models/character/costs";
 
-import * as actions from "../../state/actions/loresheets";
-import { canOpenLoresheet, isLoresheetPresent } from "../../state/loresheets";
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/loresheets";
+import {
+  canOpenLoresheet,
+  isLoresheetPresent,
+} from "../../state/models/character/loresheets";
 
 import Loresheet, {
-  ILoresheetProps
+  ILoresheetProps,
 } from "../../components/Character/Loresheet";
 
 interface IMapStateToProps {
@@ -29,25 +35,25 @@ interface IProps {
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
-    canOpen: canOpenLoresheet(state, props.uid),
-    cost: getCostOpenLoresheet(state, props.uid),
-    known: isLoresheetPresent(state.loresheets, props.uid),
-    uid: props.uid
+    canOpen: canOpenLoresheet(state.character, props.uid),
+    cost: getCostOpenLoresheet(state.character, props.uid),
+    known: isLoresheetPresent(state.character.loresheets, props.uid),
+    uid: props.uid,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
-    onOpen: (cost: ICost) => dispatch(actions.open(props.uid, cost))
+    onOpen: (cost: ICost) => dispatch(actions.open(props.uid, cost)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): ILoresheetProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -55,5 +61,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Loresheet);

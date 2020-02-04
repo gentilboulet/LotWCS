@@ -7,7 +7,7 @@ import { IDataVirtueType } from "../../data/virtues";
 
 export function discountSkillFactory(
   value: number,
-  subset?: TSkillName[]
+  subset?: TSkillName[],
 ): IDiscountSkill {
   if (subset && subset.length > 0) {
     return { skills: subset, type: constants.DISCOUNT_SKILL, value };
@@ -15,7 +15,7 @@ export function discountSkillFactory(
     return {
       skills: Object.keys(skills) as TSkillName[],
       type: constants.DISCOUNT_SKILL,
-      value
+      value,
     };
   }
 }
@@ -23,7 +23,7 @@ export function discountSkillFactory(
 export function discountKungfuFactory(
   value: number,
   kfType: KUNGFU_TYPE,
-  uids?: string[]
+  uids?: string[],
 ): IDiscountKungfu {
   if (uids && uids.length > 0) {
     return { type: constants.DISCOUNT_KUNGFU_STYLE, kfType, uids, value };
@@ -34,7 +34,7 @@ export function discountKungfuFactory(
 
 export function discountVirtueFactory(
   value: number,
-  virtues: Array<{ name: string; type: IDataVirtueType }>
+  virtues: { name: string; type: IDataVirtueType }[],
 ): IDiscountVirtue {
   return { type: constants.DISCOUNT_VIRTUE, virtues, value };
 }

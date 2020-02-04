@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing virtue action creator should create a virtue increase action with a non existing virtue 1`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "New virtue name",
+    "value": 3,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 1`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Honor",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 2`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Benevolence",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 3`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Righteousness",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 4`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Loyalty",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 5`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Force",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 6`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Revenge",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 7`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Individualism",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 8`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Obsession",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 9`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Ruthlessness",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;
+
+exports[`Testing virtue action creator should create a virtue increase action with an existing virtue 10`] = `
+Object {
+  "meta": Object {
+    "inHistory": true,
+  },
+  "payload": Object {
+    "cost": Object {
+      "canPay": true,
+      "destiny": 0,
+      "original": 0,
+    },
+    "name": "Ferocity",
+    "value": 10,
+  },
+  "type": "virtues/INCREASE",
+}
+`;

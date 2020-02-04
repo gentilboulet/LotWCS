@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/header";
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/header";
 
 import Name, { INameProps } from "../../components/Character/Name";
 
@@ -17,27 +17,23 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    value: state.name !== undefined ? state.name : ""
+    value: state.character.name !== undefined ? state.character.name : "",
   };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
-    onChange: (s: string) => dispatch(actions.setName(s))
+    onChange: (s: string) => dispatch(actions.setName(s)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): INameProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(Name);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Name);

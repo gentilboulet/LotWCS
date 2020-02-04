@@ -1,15 +1,13 @@
-import { createAction } from "typesafe-actions";
+import { ActionType, createAction } from "typesafe-actions";
+import { ICharacterAction } from "./character";
 
-export const historyDeleteUpTo = createAction(
-  "history/DELETE",
-  action => (id: number) => {
-    return action({ id });
-  }
-);
+export const historyPush = createAction(
+  "history/PUSH_TO_HISTORY",
+  (action: ICharacterAction) => {
+    return { action };
+  },
+)();
 
-export const resetToInitialState = createAction(
-  "history/INITIAL_STATE",
-  action => () => {
-    return action();
-  }
-);
+export type IHistoryAction = ActionType<typeof historyPush>;
+
+export const actions = { historyPush };

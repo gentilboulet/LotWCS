@@ -4,35 +4,35 @@ import { ActionType } from "typesafe-actions";
 
 import History, { IHistoryProps } from "../../components/Character/History";
 
-import * as actions from "../../state/actions/history";
-import { IAction } from "../../state/actions/types";
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
+import { ICharacterAction } from "../../state/actions/character";
+import { actions as meta } from "../../state/actions/meta";
 
 interface IMapStateToProps {
-  history: IAction[];
+  history: ICharacterAction[];
 }
 
 interface IMapDispatchToProps {
-  onDelete: (id: number) => void;
+  onReplay: (actions: ICharacterAction[]) => void;
 }
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
-  return { history: state.history };
+  return { history: state.history.actions };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof meta>>,
 ): IMapDispatchToProps {
   return {
-    onDelete: (id: number) => {
-      dispatch(actions.historyDeleteUpTo(id));
-    }
+    onReplay: (actions: ICharacterAction[]) => {
+      dispatch(meta.characterHistoryReplay(actions));
+    },
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IHistoryProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -40,5 +40,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(History);

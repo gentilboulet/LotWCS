@@ -2,7 +2,7 @@ import * as React from "react";
 import { Icon } from "react-fa";
 
 import { getLoresheetOptionData, gotName } from "../../data/loresheets";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/models/character/costs";
 import LoresheetOptionPopup from "./LoresheetOptionPopup";
 
 export interface ILoresheetOptionProps {
@@ -120,7 +120,7 @@ class LoresheetOption extends React.PureComponent<
         .map(cost => cost.canPay)
         .reduce(
           (previousValue, currentValue) => previousValue || currentValue,
-          false
+          false,
         );
     return (
       <tr
@@ -151,7 +151,7 @@ class LoresheetOption extends React.PureComponent<
         .map(cost => cost.canPay)
         .reduce(
           (previousValue, currentValue) => previousValue || currentValue,
-          false
+          false,
         );
     if (canBuyOneOrMore && !this.state.isModalOpen) {
       this.toggleModal();

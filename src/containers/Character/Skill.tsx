@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/skills";
-import { getCostSkill, ICost } from "../../state/costs";
-import { canBuySkill, getSkill } from "../../state/skills";
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/skills";
+import { getCostSkill, ICost } from "../../state/models/character/costs";
+import { canBuySkill, getSkill } from "../../state/models/character/skills";
 
 import { TSkillName } from "../../data/skills";
 
@@ -28,33 +28,29 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState, props: IProps): IMapStateToProps {
   return {
-    canBuy: canBuySkill(state, props.name),
-    cost: getCostSkill(state, props.name),
+    canBuy: canBuySkill(state.character, props.name),
+    cost: getCostSkill(state.character, props.name),
     name: props.name,
-    value: getSkill(state, props.name).value
+    value: getSkill(state.character.skills, props.name).value,
   };
 }
 
 function mapDispatchToProps(
   dispatch: Dispatch<ActionType<typeof actions>>,
-  props: IProps
+  props: IProps,
 ): IMapDispatchToProps {
   return {
     onBuy: (cost: ICost) => {
       dispatch(actions.skillsBuy(props.name, cost));
-    }
+    },
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): ISkillProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
-)(Skill);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Skill);

@@ -22,7 +22,7 @@ export const wulinsage: IDataLoresheet = {
       repeatable: true,
       prerequisites: [],
       perks: [],
-      payload: "a fact"
+      payload: "a fact",
     },
     {
       uid: "tieswithsage",
@@ -31,7 +31,7 @@ export const wulinsage: IDataLoresheet = {
       description: "Your destiny will be tied to the figure of the Wulin Sage.",
       repeatable: false,
       prerequisites: [],
-      perks: []
+      perks: [],
     },
     {
       uid: "tiensnpcwithsage",
@@ -42,7 +42,7 @@ export const wulinsage: IDataLoresheet = {
       repeatable: true,
       prerequisites: [],
       perks: [],
-      payload: "a NPC"
-    }
-  ]
+      payload: "a NPC",
+    },
+  ],
 };

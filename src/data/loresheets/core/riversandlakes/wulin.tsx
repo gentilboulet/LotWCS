@@ -22,7 +22,7 @@ export const wulin: IDataLoresheet = {
       repeatable: true,
       prerequisites: [],
       perks: [],
-      payload: "a hero"
+      payload: "a hero",
     },
     {
       uid: "historicalfact",
@@ -33,7 +33,7 @@ export const wulin: IDataLoresheet = {
       repeatable: true,
       prerequisites: [],
       perks: [],
-      payload: "an historical fact"
-    }
-  ]
+      payload: "an historical fact",
+    },
+  ],
 };

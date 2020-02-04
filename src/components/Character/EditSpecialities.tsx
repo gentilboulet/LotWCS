@@ -3,15 +3,15 @@ import Icon from "react-fa";
 import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
 import TokenInput from "../../components/TokenInput";
-import { ICost } from "../../state/costs";
+import { ICost } from "../../state/models/character/costs";
 
 interface IEditSpecialitiesProps {
   bought: string[];
-  specialities: Array<{
+  specialities: {
     name: string;
     canBuy: boolean;
     cost: ICost;
-  }>;
+  }[];
   onBuy: (speciality: string, cost: ICost) => void;
 }
 
@@ -26,7 +26,7 @@ class EditSpecialities extends React.PureComponent<
   constructor(props: IEditSpecialitiesProps) {
     super(props);
     this.state = {
-      edit: false
+      edit: false,
     };
 
     this.startEdit = this.startEdit.bind(this);
@@ -64,7 +64,7 @@ class EditSpecialities extends React.PureComponent<
 
   private renderNoEdit() {
     const canBuy = this.props.specialities.some(
-      option => option.canBuy && option.cost.canPay
+      option => option.canBuy && option.cost.canPay,
     );
     return (
       <InputGroup onClick={this.startEdit} role="button">
@@ -110,14 +110,14 @@ class EditSpecialities extends React.PureComponent<
 
   private endEdit(): void {
     this.setState({
-      edit: false
+      edit: false,
     });
   }
 
   private isValueValid(specialityName: string): boolean {
     return (
       this.props.bought.findIndex(
-        speciality => specialityName === speciality
+        speciality => specialityName === speciality,
       ) === -1
     );
   }
@@ -137,17 +137,17 @@ class EditSpecialities extends React.PureComponent<
       if (this.props.specialities[foundIndex].canBuy) {
         this.props.onBuy(
           this.props.specialities[foundIndex].name,
-          this.props.specialities[foundIndex].cost
+          this.props.specialities[foundIndex].cost,
         );
       }
     } else {
       const indexNewSpeciality = this.props.specialities.findIndex(
-        option => option.name.length === 0
+        option => option.name.length === 0,
       );
       if (this.props.specialities[indexNewSpeciality].canBuy) {
         this.props.onBuy(
           speciality,
-          this.props.specialities[indexNewSpeciality].cost
+          this.props.specialities[indexNewSpeciality].cost,
         );
       }
     }

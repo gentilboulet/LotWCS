@@ -8,21 +8,27 @@ import { devToolsEnhancer } from "redux-devtools-extension";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { IAction } from "./state/actions/types";
-import { initialStateFactory } from "./state/initial";
-import { middleware as checkAutomatics } from "./state/middleware/automatics";
-import { middleware as pushToHistory } from "./state/middleware/history";
-import { globalReducer } from "./state/reducers/global";
-import { IStoreState } from "./state/type";
+import {
+  globalReducer,
+  IAction,
+  initialStateFactory,
+  IStoreState,
+} from "./state";
+import { middleware as applyPerks } from "./state/middleware/character/applyPerks";
+import { middleware as checkAutomatics } from "./state/middleware/character/automatics";
+import { middleware as payCosts } from "./state/middleware/character/payCosts";
+import { middleware as pushToHistory } from "./state/middleware/pushToHistory";
 
 const store = createStore<IStoreState, IAction, any, any>(
   globalReducer,
   initialStateFactory(),
   compose(
+    applyMiddleware(payCosts),
     applyMiddleware(checkAutomatics),
     applyMiddleware(pushToHistory),
-    devToolsEnhancer({})
-  )
+    applyMiddleware(applyPerks),
+    devToolsEnhancer({}),
+  ),
 );
 
 import * as serviceWorker from "./serviceWorker";
@@ -39,7 +45,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </div>,
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 
 serviceWorker.register();

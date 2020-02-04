@@ -1,6 +1,6 @@
 import {
   bonusOneAmongN,
-  bonusSpeciality
+  bonusSpeciality,
 } from "../../../../perks/actions/bonuses";
 import { IDataLoresheet } from "../../../loresheets";
 import { SAGE_LORESHEET } from "../../types";
@@ -26,7 +26,7 @@ export const crouchingtigersandhiddendragons: IDataLoresheet = {
       repeatable: false,
       prerequisites: [],
       perks: [],
-      payload: "an hidden identity"
+      payload: "an hidden identity",
     },
     {
       uid: "stabbingguesttechnique",
@@ -36,7 +36,7 @@ export const crouchingtigersandhiddendragons: IDataLoresheet = {
       type: "Secret",
       repeatable: false,
       prerequisites: [],
-      perks: []
+      perks: [],
     },
     {
       uid: "sensechi",
@@ -49,9 +49,9 @@ export const crouchingtigersandhiddendragons: IDataLoresheet = {
       perks: [
         bonusOneAmongN({
           sensechi: bonusSpeciality("Wu Wei", "Sense Chi"),
-          hidekillerintent: bonusSpeciality("Wu Wei", "Hide Killer Intent")
-        })
-      ]
-    }
-  ]
+          hidekillerintent: bonusSpeciality("Wu Wei", "Hide Killer Intent"),
+        }),
+      ],
+    },
+  ],
 };

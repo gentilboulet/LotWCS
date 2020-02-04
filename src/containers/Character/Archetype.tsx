@@ -2,13 +2,13 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../../state/actions/header";
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
+import * as actions from "../../state/actions/character/header";
 
 import { TArchetype } from "../../data/archetypes";
 
 import Archetype, {
-  IArchetypeProps
+  IArchetypeProps,
 } from "../../components/Character/Archetype";
 
 interface IMapStateToProps {
@@ -22,22 +22,23 @@ interface IMapDispatchToProps {
 
 function mapStateToProps(state: IStoreState): IMapStateToProps {
   return {
-    locked: state.archetype !== undefined,
-    value: state.archetype !== undefined ? state.archetype : ""
+    locked: state.character.archetype !== undefined,
+    value:
+      state.character.archetype !== undefined ? state.character.archetype : "",
   };
 }
 
 function mapDispatchToProps(
-  dispatch: Dispatch<ActionType<typeof actions>>
+  dispatch: Dispatch<ActionType<typeof actions>>,
 ): IMapDispatchToProps {
   return {
-    onChange: (s: TArchetype) => dispatch(actions.setArchetype(s))
+    onChange: (s: TArchetype) => dispatch(actions.setArchetype(s)),
   };
 }
 
 function mergeProps(
   propsFromState: IMapStateToProps,
-  propsForDispatch: IMapDispatchToProps
+  propsForDispatch: IMapDispatchToProps,
 ): IArchetypeProps {
   return Object.assign({}, propsFromState, propsForDispatch);
 }
@@ -45,5 +46,5 @@ function mergeProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  mergeProps
+  mergeProps,
 )(Archetype);
