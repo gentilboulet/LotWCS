@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 // import * as renderer from 'react-test-renderer';
 import History from "./History";
 
-import { IAction, IStoreState } from "../../state/type";
+import { IAction, IStoreState } from "../../state";
 
 import { createStore } from "redux";
 import { globalReducer } from "../../state";

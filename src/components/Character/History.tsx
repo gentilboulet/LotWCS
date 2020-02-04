@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { ICharacterAction } from "../../state/character";
+import { ICharacterAction } from "../../state/actions/character";
 
 export interface IHistoryProps {
   history: ICharacterAction[];

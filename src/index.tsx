@@ -14,9 +14,9 @@ import {
   initialStateFactory,
   IStoreState,
 } from "./state";
-import { middleware as applyPerks } from "./state/character/middleware/applyPerks";
-import { middleware as payCosts } from "./state/character/middleware/payCosts";
-import { middleware as checkAutomatics } from "./state/middleware/automatics";
+import { middleware as applyPerks } from "./state/middleware/character/applyPerks";
+import { middleware as checkAutomatics } from "./state/middleware/character/automatics";
+import { middleware as payCosts } from "./state/middleware/character/payCosts";
 import { middleware as pushToHistory } from "./state/middleware/pushToHistory";
 
 const store = createStore<IStoreState, IAction, any, any>(

@@ -5,8 +5,8 @@ import { ActionType } from "typesafe-actions";
 import History, { IHistoryProps } from "../../components/Character/History";
 
 import { IStoreState } from "../../state";
-import * as meta from "../../state/actions/meta";
-import { ICharacterAction } from "../../state/character";
+import { ICharacterAction } from "../../state/actions/character";
+import { actions as meta } from "../../state/actions/meta";
 
 interface IMapStateToProps {
   history: ICharacterAction[];
