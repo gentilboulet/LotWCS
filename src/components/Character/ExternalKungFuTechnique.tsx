@@ -7,7 +7,7 @@ import {
   KUNGFU_EXTERNAL,
 } from "../../data/kungfu/types";
 import { effectToString } from "../../perks/effects";
-import { ICost } from "../../state/character/models/costs";
+import { ICost } from "../../state/models/character/costs";
 
 export interface IExternalKungFuTechniqueProps {
   styleUid: string;

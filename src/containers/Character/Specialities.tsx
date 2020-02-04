@@ -3,12 +3,12 @@ import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/skills";
-import { getCostSpeciality, ICost } from "../../state/character/models/costs";
+import * as actions from "../../state/actions/character/skills";
+import { getCostSpeciality, ICost } from "../../state/models/character/costs";
 import {
   canBuySpeciality,
   getSkill,
-} from "../../state/character/models/skills";
+} from "../../state/models/character/skills";
 
 import { skills as data, TSkillName } from "../../data/skills";
 

@@ -1,9 +1,9 @@
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../actions/loresheets";
+import * as actions from "../../actions/character/loresheets";
 import { zeroCost } from "../../models/character/costs";
-import * as loresheets from "../models/loresheets";
-import { loresheetsReducer } from "../reducers/loresheets";
+import * as loresheets from "../../models/character/loresheets";
+import { loresheetsReducer } from "../../reducers/character/loresheets";
 
 import * as data from "../../../data/loresheets";
 

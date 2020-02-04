@@ -1,12 +1,10 @@
 import { ActionType } from "typesafe-actions";
-import { initialStateFactory } from "../models/initial";
 
-import { globalReducer } from "./global";
 import { headerReducer } from "./header";
+import { initialStateFactory } from "../../models/character";
 
 import * as dataRank from "../../../data/ranks";
-
-import * as actions from "../actions/header";
+import * as actions from "../../actions/character/header";
 
 const initialState = () => initialStateFactory();
 
@@ -16,7 +14,6 @@ describe("Testing headerReducer", () => {
     const action = actions.setName("Robert");
     const state = headerReducer(initialState(), action);
     expect(state.name).toBe("Robert");
-    expect(globalReducer(initialState(), action)).toMatchObject(state);
   });
 
   it("should receive a HEADER_SET_CONCEPT action", () => {
@@ -24,7 +21,6 @@ describe("Testing headerReducer", () => {
     const action = actions.setConcept("The Black Dog of Jianghu");
     const state = headerReducer(initialState(), action);
     expect(state.concept).toBe("The Black Dog of Jianghu");
-    expect(globalReducer(initialState(), action)).toMatchObject(state);
   });
 
   it("should receive a HEADER_SET_ARCHETYPE action", () => {
@@ -32,7 +28,6 @@ describe("Testing headerReducer", () => {
     const action = actions.setArchetype("warrior");
     const state = headerReducer(initialState(), action);
     expect(state.archetype).toBe("warrior");
-    expect(globalReducer(initialState(), action)).toMatchObject(state);
   });
 
   it("should receive a HEADER_SET_RANK action", () => {
@@ -41,7 +36,6 @@ describe("Testing headerReducer", () => {
     const state = headerReducer(initialState(), action);
     const r = dataRank.getRank(state.rank) as dataRank.IDataRank;
     expect(r.name).toBe("4th Rank");
-    expect(globalReducer(initialState(), action)).toMatchObject(state);
   });
 
   it("should do nothing with a junk action", () => {

@@ -7,7 +7,7 @@ import {
   IDataExternalKungfuStatistics,
   KUNGFU_EXTERNAL,
 } from "../../data/kungfu/types";
-import { ICost } from "../../state/character/models/costs";
+import { ICost } from "../../state/models/character/costs";
 
 import ExternalKungFuTechnique from "../../containers/Character/ExternalKungFuTechnique";
 

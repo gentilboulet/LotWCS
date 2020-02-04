@@ -3,9 +3,9 @@ import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/chi";
-import { canBuyChi } from "../../state/character/models/chi";
-import { getCostChi, ICost } from "../../state/character/models/costs";
+import * as actions from "../../state/actions/character/chi";
+import { canBuyChi } from "../../state/models/character/chi";
+import { getCostChi, ICost } from "../../state/models/character/costs";
 
 import Chi, { IChiProps } from "../../components/Character/Chi";
 import { TChiName } from "../../data/chi";

@@ -29,10 +29,10 @@ export const globalReducer = produce(
       draft.chi = chiReducer(draft.chi, action);
     }
     if (isActionOf(Object.values(costs), action)) {
-      costReducer(draft, action);
+      return costReducer(draft, action);
     }
     if (isActionOf(Object.values(header), action)) {
-      headerReducer(draft, action);
+      return headerReducer(draft, action);
     }
     if (isActionOf(Object.values(kungfu), action)) {
       draft.kungfu = kungfuReducer(draft.kungfu, action);
@@ -41,7 +41,7 @@ export const globalReducer = produce(
       draft.loresheets = loresheetsReducer(draft.loresheets, action);
     }
     if (isActionOf(Object.values(perks), action)) {
-      perksReducer(draft, action);
+      return perksReducer(draft, action);
     }
     if (isActionOf(Object.values(skills), action)) {
       draft.skills = skillsReducer(draft.skills, action);

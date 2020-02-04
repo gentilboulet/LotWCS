@@ -3,12 +3,12 @@ import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/kungfu";
-import { getCostKungFuStyle, ICost } from "../../state/character/models/costs";
+import * as actions from "../../state/actions/character/kungfu";
+import { getCostKungFuStyle, ICost } from "../../state/models/character/costs";
 import {
   canOpenKungFu,
   isStylePresent,
-} from "../../state/character/models/kungfu";
+} from "../../state/models/character/kungfu";
 
 import InternalKungFu, {
   IInternalKungFuProps,

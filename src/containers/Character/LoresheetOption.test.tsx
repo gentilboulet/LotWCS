@@ -4,14 +4,11 @@ import LoresheetOption from "./LoresheetOption";
 
 import { createStore } from "redux";
 import { IAction, IStoreState } from "../../state";
-import { globalReducer, testingStateFactory } from "../../state/";
+import { globalReducer } from "../../state/";
 
 import { Provider } from "react-redux";
 
-const store = createStore<IStoreState, IAction, any, any>(
-  globalReducer,
-  testingStateFactory(),
-);
+const store = createStore<IStoreState, IAction, any, any>(globalReducer);
 
 describe("Testing the LoresheetOption container", () => {
   it("should render without crashing", () => {

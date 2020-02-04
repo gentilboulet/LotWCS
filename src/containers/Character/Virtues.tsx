@@ -3,9 +3,9 @@ import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/virtues";
-import { getCostVirtue, ICost } from "../../state/character/models/costs";
-import { canBuyVirtue } from "../../state/character/models/virtues";
+import * as actions from "../../state/actions/character/virtues";
+import { getCostVirtue, ICost } from "../../state/models/character/costs";
+import { canBuyVirtue } from "../../state/models/character/virtues";
 
 import Virtues, { IVirtuesProps } from "../../components/Character/Virtues";
 import { IDataVirtueType } from "../../data/virtues";

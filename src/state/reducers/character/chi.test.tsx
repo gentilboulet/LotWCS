@@ -1,7 +1,7 @@
 import { chiReducer, IChiAction } from "./chi";
-import * as actions from "../actions/chi";
+import * as actions from "../../actions/character/chi";
 import { zeroCost } from "../../models/character/costs";
-import { createState } from "../models/chi";
+import { createState } from "../../models/character/chi";
 
 const initialState = createState();
 

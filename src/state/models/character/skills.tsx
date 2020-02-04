@@ -47,7 +47,6 @@ export function addSpeciality(
         '" already bought',
     );
   }
-  // getSkill(state, skillName).specialities.push(specialityName);
   const spe = getSkill(state, skillName);
   spe.specialities.push(specialityName);
   if (typeof specialityName != "string")
@@ -72,6 +71,5 @@ export function canBuySpeciality(
 }
 
 export function getSkill(state: TSkillsState, skillName: TSkillName) {
-  console.log("searching for", skillName);
   return state.find(s => s.name === skillName) as ISkill;
 }

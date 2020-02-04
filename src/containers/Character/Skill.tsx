@@ -3,9 +3,9 @@ import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/skills";
-import { getCostSkill, ICost } from "../../state/character/models/costs";
-import { canBuySkill, getSkill } from "../../state/character/models/skills";
+import * as actions from "../../state/actions/character/skills";
+import { getCostSkill, ICost } from "../../state/models/character/costs";
+import { canBuySkill, getSkill } from "../../state/models/character/skills";
 
 import { TSkillName } from "../../data/skills";
 

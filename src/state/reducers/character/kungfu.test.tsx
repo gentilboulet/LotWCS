@@ -1,15 +1,14 @@
 import { ActionType } from "typesafe-actions";
 
-import { testingStateFactory } from "../models/initial";
-import { ICharacterState } from "../models/type";
-
 import * as data from "../../../data/kungfu";
 import * as types from "../../../data/kungfu/types";
 import { zeroCost } from "../../models/character/costs";
 
-import * as actions from "../actions/kungfu";
-
+import * as actions from "../../actions/character/kungfu";
 import { kungfuReducer } from "./kungfu";
+
+import { ICharacterState } from "../../models/character";
+import { testingStateFactory } from "../../models/character/testing";
 
 const testingState: ICharacterState = testingStateFactory();
 

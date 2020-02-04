@@ -1,9 +1,13 @@
 import { ActionType } from "typesafe-actions";
 
-import * as actions from "../actions/skills";
+import * as actions from "../../actions/character/skills";
 import * as dataSkills from "../../../data/skills";
-import { getSkill, isSpecialityPresent, createState } from "../models/skills";
-import { skillsReducer } from "../reducers/skills";
+import {
+  getSkill,
+  isSpecialityPresent,
+  createState,
+} from "../../models/character/skills";
+import { skillsReducer } from "../../reducers/character/skills";
 import { zeroCost } from "../../models/character/costs";
 
 const initialState = createState();

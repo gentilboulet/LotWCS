@@ -1,9 +1,9 @@
 import { ActionType } from "typesafe-actions";
 
 import * as dataVirtues from "../../../data/virtues";
-import * as actions from "../actions/virtues";
+import * as actions from "../../actions/character/virtues";
 import { zeroCost } from "../../models/character/costs";
-import { createState, isVirtuePresent } from "../models/virtues";
+import { createState, isVirtuePresent } from "../../models/character/virtues";
 import { virtuesReducer } from "./virtues";
 
 const initialState = createState();

@@ -5,14 +5,14 @@ import { ActionType } from "typesafe-actions";
 import {
   getCostOpenLoresheet,
   ICost,
-} from "../../state/character/models/costs";
+} from "../../state/models/character/costs";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/loresheets";
+import * as actions from "../../state/actions/character/loresheets";
 import {
   canOpenLoresheet,
   isLoresheetPresent,
-} from "../../state/character/models/loresheets";
+} from "../../state/models/character/loresheets";
 
 import Loresheet, {
   ILoresheetProps,

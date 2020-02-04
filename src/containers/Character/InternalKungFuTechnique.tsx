@@ -5,14 +5,14 @@ import { ActionType } from "typesafe-actions";
 import {
   getCostKungFuTechnique,
   ICost,
-} from "../../state/character/models/costs";
+} from "../../state/models/character/costs";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/kungfu";
+import * as actions from "../../state/actions/character/kungfu";
 import {
   canBuyKungFuTechnique,
   isStyleTechniquePresent,
-} from "../../state/character/models/kungfu";
+} from "../../state/models/character/kungfu";
 
 import InternalKungFuTechnique, {
   IInternalKungFuTechniqueProps,

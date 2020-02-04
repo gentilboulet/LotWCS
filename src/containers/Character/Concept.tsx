@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { ActionType } from "typesafe-actions";
 
 import { IStoreState } from "../../state";
-import * as actions from "../../state/character/actions/header";
+import * as actions from "../../state/actions/character/header";
 
 import Concept, { IConceptProps } from "../../components/Character/Concept";
 
