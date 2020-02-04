@@ -1,27 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2dc4f784bc989ce4104db9144cfa1d71",
+    "revision": "e1f440e8bd8be60fc87cc7c7e0ef3af2",
     "url": "/LotWCS/index.html"
   },
   {
-    "revision": "09c0a30ff0d3e0f38280",
-    "url": "/LotWCS/static/css/2.103f4bb8.chunk.css"
+    "revision": "ff1f5c72d57a7e1ae434",
+    "url": "/LotWCS/static/css/2.88fb13cc.chunk.css"
   },
   {
-    "revision": "468a1dde5aa9fc4dfdbf",
+    "revision": "b2e9c5f683fa14645ca5",
     "url": "/LotWCS/static/css/main.e91e8ef8.chunk.css"
   },
   {
-    "revision": "09c0a30ff0d3e0f38280",
-    "url": "/LotWCS/static/js/2.5fa058fa.chunk.js"
+    "revision": "ff1f5c72d57a7e1ae434",
+    "url": "/LotWCS/static/js/2.bb3d02b9.chunk.js"
   },
   {
-    "revision": "468a1dde5aa9fc4dfdbf",
-    "url": "/LotWCS/static/js/main.dda32a35.chunk.js"
+    "revision": "413434914cd9492a5be5e4ccc2066611",
+    "url": "/LotWCS/static/js/2.bb3d02b9.chunk.js.LICENSE"
   },
   {
-    "revision": "2aed97ccb2be38ba4fbc",
-    "url": "/LotWCS/static/js/runtime-main.d27b1ff2.js"
+    "revision": "b2e9c5f683fa14645ca5",
+    "url": "/LotWCS/static/js/main.19969570.chunk.js"
+  },
+  {
+    "revision": "c670c8ad941029214e9e",
+    "url": "/LotWCS/static/js/runtime-main.8850057a.js"
   },
   {
     "revision": "674f50d287a8c48dc19ba404d20fe713",
