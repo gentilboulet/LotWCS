@@ -11,11 +11,12 @@ import {
   CardTitle
 } from "reactstrap";
 
-import { IStoreState } from "../../state/type";
+import { IStoreState } from "../../state";
 
+/* tslint:disable-next-line:variable-name */
 export const Gear = () => {
-  const armors = useSelector((state: IStoreState) => state.gear.armors);
-  const weapons = useSelector((state: IStoreState) => state.gear.weapons);
+  const armors = useSelector((state: IStoreState) => state.character.gear.armors);
+  const weapons = useSelector((state: IStoreState) => state.character.gear.weapons);
 
   const render = (name: string, description: string, types: string[]) => (
     <Card>
@@ -28,8 +29,8 @@ export const Gear = () => {
         </CardTitle>
         <CardText>{description}</CardText>
         <CardText>
-          {types.map(type => (
-            <Badge color="info" pill={true}>
+          {types.map((type,i) => (
+            <Badge color="info" pill={true} key={'t_'+i}>
               {type}
             </Badge>
           ))}

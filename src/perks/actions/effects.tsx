@@ -37,6 +37,6 @@ export function increaseBaseChiForThreshold(
   };
 }
 
-export function skill(skill: TSkillName, value: number): IEffectSkillModifier {
-  return { type: constants.EFFECT_SKILL, skill, value };
+export function skill(name: TSkillName, value: number): IEffectSkillModifier {
+  return { type: constants.EFFECT_SKILL, skill:name, value };
 }

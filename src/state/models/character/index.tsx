@@ -1,10 +1,10 @@
 /* eslint-disable import/first */
 import { TArchetype } from "../../../data/archetypes";
 import { TRank } from "../../../data/ranks";
-import { TGearState } from "../../gear";
 import { TAutomaticsState } from "./automatics";
 import { TChiState } from "./chi";
 import { TDiscountsState } from "./discounts";
+import { TGearState } from "./gear";
 import { IKungFuState } from "./kungfu";
 import { ILoresheetsState } from "./loresheets";
 import { TSkillsState } from "./skills";
@@ -30,10 +30,10 @@ export interface ICharacterState {
   discounts: TDiscountsState;
 }
 
-import { createState as createGearState } from "./../../gear";
 import { createState as createAutomaticsState } from "./automatics";
 import { createState as createChiState } from "./chi";
 import { createState as createDiscountsState } from "./discounts";
+import { createState as createGearState } from "./gear";
 import { createState as createaKungFuState } from "./kungfu";
 import { createState as createLoresheetsState } from "./loresheets";
 import { createState as createSkillsState } from "./skills";

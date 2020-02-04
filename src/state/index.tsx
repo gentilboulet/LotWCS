@@ -12,6 +12,9 @@ import {
   initialStateFactory as characterStateFactory,
 } from "./models/character";
 import {
+  testingStateFactory as characterTestingStateFactory,
+} from "./models/character/testing";
+import {
   IHistoryState,
   initialStateFactory as historyStateFactory,
 } from "./models/history";
@@ -55,3 +58,10 @@ export const globalReducer = produce(
   },
   initialStateFactory(),
 );
+
+export function testingStateFactory(): IStoreState {
+  return {
+    character: characterTestingStateFactory(),
+    history: historyStateFactory(),
+  };
+}

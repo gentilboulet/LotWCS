@@ -10,6 +10,7 @@ interface IArmorProps {
   type: ARMOR_TYPE;
 }
 
+/* tslint:disable-next-line:variable-name */
 export const Armor = (props: IArmorProps) => {
   const effects = getEffects(props.type);
   return (
@@ -20,8 +21,8 @@ export const Armor = (props: IArmorProps) => {
         <CardText>{props.description}</CardText>
       </CardBody>
       <CardBody>
-        {effects.map(e => (
-          <CardText>{effectToString(e)}</CardText>
+        {effects.map((e,i) => (
+          <CardText key={'e_'+i}>{effectToString(e)}</CardText>
         ))}
       </CardBody>
     </Card>

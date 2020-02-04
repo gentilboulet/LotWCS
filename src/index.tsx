@@ -11,9 +11,10 @@ import * as ReactDOM from "react-dom";
 import {
   globalReducer,
   IAction,
-  initialStateFactory,
   IStoreState,
+  testingStateFactory as initialStateFactory,
 } from "./state";
+
 import { middleware as applyPerks } from "./state/middleware/character/applyPerks";
 import { middleware as checkAutomatics } from "./state/middleware/character/automatics";
 import { middleware as payCosts } from "./state/middleware/character/payCosts";

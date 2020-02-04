@@ -10,6 +10,7 @@ interface IWeaponProps {
   type: WEAPON_TYPE;
 }
 
+/* tslint:disable-next-line:variable-name */
 export const Weapon = (props: IWeaponProps) => {
   const effects = getEffects(props.type);
   return (
@@ -20,8 +21,8 @@ export const Weapon = (props: IWeaponProps) => {
         <CardText>{props.description}</CardText>
       </CardBody>
       <CardBody>
-        {effects.map(e => (
-          <CardText>{effectToString(e)}</CardText>
+        {effects.map((e,i) => (
+          <CardText key={'e_'+i}>{effectToString(e)}</CardText>
         ))}
       </CardBody>
     </Card>

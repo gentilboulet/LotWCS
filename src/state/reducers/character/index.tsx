@@ -7,6 +7,7 @@ import { ICharacterState } from "../../models/character";
 // Sub Reducers
 import { chiReducer } from "./chi";
 import { costReducer } from "./costs";
+import { gearReducer } from "./gear";
 import { headerReducer } from "./header";
 import { kungfuReducer } from "./kungfu";
 import { loresheetsReducer } from "./loresheets";
@@ -16,6 +17,7 @@ import { virtuesReducer } from "./virtues";
 
 import * as chi from "../../actions/character/chi";
 import * as costs from "../../actions/character/costs";
+import * as gear from "../../actions/character/gear";
 import * as header from "../../actions/character/header";
 import * as kungfu from "../../actions/character/kungfu";
 import * as loresheets from "../../actions/character/loresheets";
@@ -33,6 +35,9 @@ export const globalReducer = produce(
     }
     if (isActionOf(Object.values(header), action)) {
       return headerReducer(draft, action);
+    }
+    if (isActionOf(Object.values(gear), action)) {
+      draft.gear = gearReducer(draft.gear, action);
     }
     if (isActionOf(Object.values(kungfu), action)) {
       draft.kungfu = kungfuReducer(draft.kungfu, action);

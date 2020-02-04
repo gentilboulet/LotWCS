@@ -1,5 +1,5 @@
-import { ARMOR_TYPE } from "../data/armor";
-import { WEAPON_TYPE } from "../data/weapons";
+import { ARMOR_TYPE } from "../../../data/armor";
+import { WEAPON_TYPE } from "../../../data/weapons";
 
 export interface IArmor {
   type: ARMOR_TYPE;
@@ -20,6 +20,14 @@ export interface TGearState {
 export function createState(): TGearState {
   return {
     armors: [],
-    weapons: []
+    weapons: [],
   };
+}
+
+export function getArmorByName(state: TGearState, name: string) {
+  return state.armors.find(a => a.name === name);
+}
+
+export function getWeaponByName(state: TGearState, name: string) {
+  return state.weapons.find(a => a.name === name);
 }
