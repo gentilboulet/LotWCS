@@ -21,8 +21,8 @@ export const Weapon = (props: IWeaponProps) => {
         <CardText>{props.description}</CardText>
       </CardBody>
       <CardBody>
-        {effects.map((e,i) => (
-          <CardText key={'e_'+i}>{effectToString(e)}</CardText>
+        {effects.map((e, i) => (
+          <CardText key={"e_" + i}>{effectToString(e)}</CardText>
         ))}
       </CardBody>
     </Card>

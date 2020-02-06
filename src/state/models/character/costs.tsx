@@ -246,3 +246,18 @@ export function getCostKungFuTechnique(
 
   return _costFactory(state, defaultCost);
 }
+
+import { ARMOR_TYPE } from "../../../data/armor";
+export function getCostArmor(state: ICharacterState, type: ARMOR_TYPE): ICost {
+  const getDestiny = (t: ARMOR_TYPE) => {
+    switch (t) {
+      case "Light Armor":
+        return 0;
+      case "Medium Armor":
+        return 1;
+      case "Heavy Armor":
+        return 2;
+    }
+  };
+  return _costFactory(state, getDestiny(type));
+}

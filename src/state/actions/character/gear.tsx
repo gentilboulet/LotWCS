@@ -15,8 +15,8 @@ export const armorBuy = createAction(
 
 export const armorCustomize = createAction(
   "gear/ARMOR_CUSTOM",
-  (name: string, description: string) => {
-    return { description, name };
+  (armorIdx: number, description: string) => {
+    return { description, armorIdx };
   },
   historyMetaCreator,
 )();
@@ -36,8 +36,8 @@ export const weaponBuy = createAction(
 
 export const weaponCustomize = createAction(
   "gear/WEAPON_CUSTOM",
-  (name: string, description: string) => {
-    return { description, name };
+  (weaponIdx: number, description: string) => {
+    return { description, weaponIdx };
   },
   historyMetaCreator,
 )();

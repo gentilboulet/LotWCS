@@ -26,17 +26,16 @@ export const testingStateFactory = () => {
     ),
     characterActions.weaponBuy(
       "Flexible simple weapon",
-       "Flexible snake sword",
-       ["Massive"],
-       zeroCost
+      "Flexible snake sword",
+      ["Massive"],
+      zeroCost,
     ),
     characterActions.weaponBuy(
-       "Horse splitter",
-       "A sword so big it could chop horses in one cleave",
+      "Horse splitter",
+      "A sword so big it could chop horses in one cleave",
       ["Massive", "Sword"],
-      zeroCost
-    )
-
+      zeroCost,
+    ),
   ];
   let state = initialStateFactory();
   actions.forEach(a => (state = globalReducer(state, a)));

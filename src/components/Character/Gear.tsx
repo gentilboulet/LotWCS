@@ -8,18 +8,23 @@ import {
   CardBody,
   CardDeck,
   CardText,
-  CardTitle
+  CardTitle,
 } from "reactstrap";
 
 import { IStoreState } from "../../state";
+import ArmorEdit from "./ArmorEdit";
 
 /* tslint:disable-next-line:variable-name */
 export const Gear = () => {
-  const armors = useSelector((state: IStoreState) => state.character.gear.armors);
-  const weapons = useSelector((state: IStoreState) => state.character.gear.weapons);
+  const armors = useSelector(
+    (state: IStoreState) => state.character.gear.armors,
+  );
+  const weapons = useSelector(
+    (state: IStoreState) => state.character.gear.weapons,
+  );
 
   const render = (name: string, description: string, types: string[]) => (
-    <Card>
+    <Card key={name}>
       <CardBody>
         <CardTitle>
           <h4>{name}</h4>
@@ -29,8 +34,8 @@ export const Gear = () => {
         </CardTitle>
         <CardText>{description}</CardText>
         <CardText>
-          {types.map((type,i) => (
-            <Badge color="info" pill={true} key={'t_'+i}>
+          {types.map((type, i) => (
+            <Badge color="info" pill={true} key={"t_" + i}>
               {type}
             </Badge>
           ))}
@@ -46,32 +51,23 @@ export const Gear = () => {
           <div className="Grid-cell">
             <h3>Armors :</h3>
           </div>
-          <div className="Grid-cell">
-            <Button color="success">
-              <Icon name="plus" />
-            </Button>
-          </div>
         </div>
         <CardDeck>
           {armors.map(armor =>
-            render(armor.name, armor.description, [armor.type])
+            render(armor.name, armor.description, [armor.type]),
           )}
+          <ArmorEdit />
         </CardDeck>
       </div>
       <div>
         <div className="Grid">
           <div className="Grid-cell">
-            <h3>Weapon :</h3>
-          </div>
-          <div className="Grid-cell">
-            <Button color="success">
-              <Icon name="plus" />
-            </Button>
+            <h3>Weapons :</h3>
           </div>
         </div>
         <CardDeck>
           {weapons.map(weapon =>
-            render(weapon.name, weapon.description, weapon.type)
+            render(weapon.name, weapon.description, weapon.type),
           )}
         </CardDeck>
       </div>

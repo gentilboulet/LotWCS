@@ -11,9 +11,7 @@ import {
   ICharacterState,
   initialStateFactory as characterStateFactory,
 } from "./models/character";
-import {
-  testingStateFactory as characterTestingStateFactory,
-} from "./models/character/testing";
+import { testingStateFactory as characterTestingStateFactory } from "./models/character/testing";
 import {
   IHistoryState,
   initialStateFactory as historyStateFactory,
