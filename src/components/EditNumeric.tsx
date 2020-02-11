@@ -1,5 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import Icon from "react-fa";
 import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
 import FieldHeader from "./FieldHeader";
@@ -85,10 +86,10 @@ class EditNumeric extends React.PureComponent<
     return <FieldHeader label={this.props.name} />;
   }
 
-  private renderButton(icon: string, f: () => void) {
+  private renderButton(icon: IconProp, f: () => void) {
     return (
       <Button onClick={f}>
-        <Icon name={icon} />
+        <FontAwesomeIcon icon={icon} />
       </Button>
     );
   }

@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import Icon from "react-fa";
 
 import FieldHeader from "./FieldHeader";
 
@@ -102,12 +102,12 @@ class DDLText extends React.PureComponent<IDDLTextProps, IDDLTextState> {
   private renderButton(labelForSelectedKey: string): JSX.Element {
     const btnOk = (
       <button onClick={this.endEdit} color="success">
-        <Icon name="check" />
+        <FontAwesomeIcon icon="check" />
       </button>
     );
     const btnKo = (
       <button onClick={this.endEdit} color="danger">
-        <Icon name="times" />
+        <FontAwesomeIcon icon="times" />
       </button>
     );
     return labelForSelectedKey.length > 0 ? btnOk : btnKo;

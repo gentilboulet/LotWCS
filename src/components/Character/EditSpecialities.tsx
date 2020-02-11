@@ -1,5 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import Icon from "react-fa";
 import { Button, InputGroup, InputGroupAddon } from "reactstrap";
 
 import TokenInput from "../../components/TokenInput";
@@ -48,10 +49,10 @@ class EditSpecialities extends React.PureComponent<
     }
   }
 
-  private renderButton(icon: string, color: string, f: () => void) {
+  private renderButton(icon: IconProp, color: string, f: () => void) {
     return (
       <Button onClick={f} color={color}>
-        <Icon name={icon} />
+        <FontAwesomeIcon icon={icon} />
       </Button>
     );
   }

@@ -261,3 +261,21 @@ export function getCostArmor(state: ICharacterState, type: ARMOR_TYPE): ICost {
   };
   return _costFactory(state, getDestiny(type));
 }
+
+import { WEAPON_TYPE } from "../../../data/weapons";
+export function getCostWeapon(
+  state: ICharacterState,
+  types: WEAPON_TYPE[],
+): ICost {
+  const getDestiny = (ts: WEAPON_TYPE[]) => {
+    switch (ts.length) {
+      case 2:
+        return 3;
+      case 1:
+        return 0;
+      default:
+        throw new Error("getCostWeapon incompatible weapon type !");
+    }
+  };
+  return _costFactory(state, getDestiny(types));
+}

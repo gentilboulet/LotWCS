@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { Icon } from "react-fa";
 
 import { kungfuTechniqueData } from "../../data/kungfu";
 import {
@@ -57,13 +57,13 @@ class ExternalKungFuTechnique extends React.PureComponent<
     if (this.props.canBuy && this.props.cost.canPay) {
       return (
         <button color="success">
-          <Icon name="graduation-cap" />
+          <FontAwesomeIcon icon="graduation-cap" />
         </button>
       );
     } else {
       return (
         <button color="danger">
-          <Icon name="times" />
+          <FontAwesomeIcon icon="times" />
         </button>
       );
     }

@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import Icon from "react-fa";
 import { Button, Input, InputGroup, InputGroupAddon } from "reactstrap";
 
 export interface IEditTextProps {
@@ -53,6 +53,7 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
   }
 
   private endEdit() {
+    // TODO : reset to prop/invalid state after dispatch/donothing
     this.setState({
       edit: false,
       value: this.state.value.trim(),
@@ -71,12 +72,12 @@ class EditText extends React.PureComponent<IEditTextProps, IEditTextState> {
   private renderButton(isValueValid: boolean): JSX.Element {
     const btnOk = (
       <Button onClick={this.endEdit} color="success">
-        <Icon name="check" />
+        <FontAwesomeIcon icon="check" />
       </Button>
     );
     const btnKo = (
       <Button onClick={this.endEdit} color="danger">
-        <Icon name="times" />
+        <FontAwesomeIcon icon="times" />
       </Button>
     );
     return isValueValid ? btnOk : btnKo;

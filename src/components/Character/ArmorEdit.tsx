@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Icon } from "react-fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Card, CardBody, CardFooter, CardTitle } from "reactstrap";
 
@@ -10,7 +10,7 @@ import { IStoreState } from "../../state";
 import { armorBuy } from "../../state/actions/character/gear";
 import { getCostArmor, ICost } from "../../state/models/character/costs";
 
-const armorTypes: ARMOR_TYPE[] = ["Light Armor", "Medium Armor", "Heavy Armor"];
+const allTypes: ARMOR_TYPE[] = ["Light Armor", "Medium Armor", "Heavy Armor"];
 interface ICostListItem {
   type: ARMOR_TYPE;
   cost: ICost;
@@ -24,7 +24,7 @@ export default function ArmorEdit() {
   );
 
   const armorsCosts: ICostListItem[] = useSelector((state: IStoreState) =>
-    armorTypes.map((type: ARMOR_TYPE) => {
+    allTypes.map((type: ARMOR_TYPE) => {
       return { type, cost: getCostArmor(state.character, type) };
     }),
   );
@@ -46,11 +46,11 @@ export default function ArmorEdit() {
 
   const buyButton: JSX.Element = canBuy() ? (
     <Button color="success" onClick={onClickAction}>
-      <Icon name="plus" />
+      <FontAwesomeIcon icon="plus" />
     </Button>
   ) : (
     <Button color="error">
-      <Icon name="plus" />
+      <FontAwesomeIcon icon="plus" />
     </Button>
   );
 

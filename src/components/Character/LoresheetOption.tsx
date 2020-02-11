@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { Icon } from "react-fa";
 
 import { getLoresheetOptionData, gotName } from "../../data/loresheets";
 import { ICost } from "../../state/models/character/costs";
@@ -53,13 +53,13 @@ class LoresheetOption extends React.PureComponent<
     if (canBuy) {
       return (
         <button color="success">
-          <Icon name="graduation-cap" />
+          <FontAwesomeIcon icon="graduation-cap" />
         </button>
       );
     } else {
       return (
         <button color="danger">
-          <Icon name="times" />
+          <FontAwesomeIcon icon="times" />
         </button>
       );
     }

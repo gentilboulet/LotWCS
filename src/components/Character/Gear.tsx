@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Icon } from "react-fa";
 import { useSelector } from "react-redux";
 import { Button } from "reactstrap";
 import {
@@ -13,6 +13,7 @@ import {
 
 import { IStoreState } from "../../state";
 import ArmorEdit from "./ArmorEdit";
+import WeaponEdit from "./WeaponEdit";
 
 /* tslint:disable-next-line:variable-name */
 export const Gear = () => {
@@ -29,7 +30,7 @@ export const Gear = () => {
         <CardTitle>
           <h4>{name}</h4>
           <Button>
-            <Icon name="times" />
+            <FontAwesomeIcon icon="pen" />
           </Button>
         </CardTitle>
         <CardText>{description}</CardText>
@@ -69,6 +70,7 @@ export const Gear = () => {
           {weapons.map(weapon =>
             render(weapon.name, weapon.description, weapon.type),
           )}
+          <WeaponEdit />
         </CardDeck>
       </div>
     </div>

@@ -8,6 +8,19 @@ import { devToolsEnhancer } from "redux-devtools-extension";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+/* FontAwesome icons */
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCheck,
+  faCog,
+  faGraduationCap,
+  faPen,
+  faPlus,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+
+library.add(faTimes, faCog, faCheck, faPen, faPlus, faGraduationCap);
+
 import {
   globalReducer,
   IAction,

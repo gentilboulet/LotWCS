@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { Icon } from "react-fa";
 
 import { kungfuData } from "../../data/kungfu";
 import {
@@ -141,19 +141,19 @@ class ExternalKungFu extends React.PureComponent<IExternalKungFuProps, {}> {
     if (this.props.canOpen && this.props.cost.canPay) {
       return (
         <button color="success" onClick={onClick}>
-          <Icon name="graduation-cap" />
+          <FontAwesomeIcon icon="graduation-cap" />
         </button>
       );
     } else if (this.props.isOpen) {
       return (
         <button color="primary" disabled={true}>
-          <Icon name="leanpub" />
+          <FontAwesomeIcon icon="leanpub" />
         </button>
       );
     } else {
       return (
         <button color="danger">
-          <Icon name="times" />
+          <FontAwesomeIcon icon="times" />
         </button>
       );
     }

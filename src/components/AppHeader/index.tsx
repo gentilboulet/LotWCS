@@ -1,5 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import Icon from "react-fa";
 import { Link } from "react-router-dom";
 
 import "./header.css";
@@ -62,7 +62,7 @@ class AppHeader extends React.PureComponent<{}, { isOpen: boolean }> {
           </Link>
           <Link to="/config">
             <li>
-              <Icon name="cog" />
+              <FontAwesomeIcon icon="cog" />
             </li>
           </Link>
         </ul>
