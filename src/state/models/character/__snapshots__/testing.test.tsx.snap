@@ -23,7 +23,7 @@ Object {
     },
     "general": Object {
       "cultivation": 0,
-      "value": 0,
+      "value": 10,
     },
     "metal": Object {
       "cultivation": 0,
@@ -39,8 +39,89 @@ Object {
     },
   },
   "concept": undefined,
-  "destiny": 0,
-  "discounts": Array [],
+  "destiny": 20,
+  "discounts": Array [
+    Object {
+      "skills": Array [
+        "Awareness",
+        "Confidence",
+        "Crafting",
+        "Finesse",
+        "Hardiness",
+        "Inspire",
+        "Learning",
+        "Medicine",
+        "Might",
+        "Perform",
+        "Politics",
+        "Ride",
+        "Stealth",
+        "Survival",
+        "Tactics",
+        "Wu Wei",
+      ],
+      "type": "DISCOUNT_SKILL",
+      "value": 20,
+    },
+    Object {
+      "kfType": "KUNGFU_EXTERNAL",
+      "type": "DISCOUNT_KUNGFU_STYLE",
+      "uids": Array [],
+      "value": 10,
+    },
+    Object {
+      "kfType": "KUNGFU_INTERNAL",
+      "type": "DISCOUNT_KUNGFU_STYLE",
+      "uids": Array [],
+      "value": 10,
+    },
+    Object {
+      "type": "DISCOUNT_VIRTUE",
+      "value": 75,
+      "virtues": Array [
+        Object {
+          "name": "Honor",
+          "type": "VIRTUE_CHIVALROUS",
+        },
+        Object {
+          "name": "Benevolence",
+          "type": "VIRTUE_CHIVALROUS",
+        },
+        Object {
+          "name": "Righteousness",
+          "type": "VIRTUE_CHIVALROUS",
+        },
+        Object {
+          "name": "Loyalty",
+          "type": "VIRTUE_CHIVALROUS",
+        },
+        Object {
+          "name": "Force",
+          "type": "VIRTUE_CHIVALROUS",
+        },
+        Object {
+          "name": "Revenge",
+          "type": "VIRTUE_SELFISH",
+        },
+        Object {
+          "name": "Individualism",
+          "type": "VIRTUE_SELFISH",
+        },
+        Object {
+          "name": "Obsession",
+          "type": "VIRTUE_SELFISH",
+        },
+        Object {
+          "name": "Ruthlessness",
+          "type": "VIRTUE_SELFISH",
+        },
+        Object {
+          "name": "Ferocity",
+          "type": "VIRTUE_SELFISH",
+        },
+      ],
+    },
+  ],
   "entanglement": 0,
   "gear": Object {
     "armors": Array [

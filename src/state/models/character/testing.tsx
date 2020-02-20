@@ -1,7 +1,19 @@
+import { applyMiddleware, compose, createStore } from "redux";
 import { actions as characterActions } from "../../actions/character";
-import { globalReducer } from "../../reducers/character";
+
+import {
+  globalReducer,
+  IAction,
+  initialStateFactory,
+  IStoreState,
+} from "../../../state";
+
+import { middleware as applyPerks } from "../../../state/middleware/character/applyPerks";
+import { middleware as checkAutomatics } from "../../../state/middleware/character/automatics";
+import { middleware as payCosts } from "../../../state/middleware/character/payCosts";
+import { middleware as pushToHistory } from "../../../state/middleware/pushToHistory";
+
 import { zeroCost } from "./costs";
-import { initialStateFactory } from "./index";
 
 export const testingStateFactory = () => {
   const actions = [
@@ -37,8 +49,21 @@ export const testingStateFactory = () => {
       zeroCost,
     ),
   ];
-  let state = initialStateFactory();
-  actions.forEach(a => (state = globalReducer(state, a)));
 
-  return state;
+  const store = createStore<IStoreState, IAction, any, any>(
+    globalReducer,
+    initialStateFactory(),
+    compose(
+      applyMiddleware(payCosts),
+      applyMiddleware(checkAutomatics),
+      applyMiddleware(pushToHistory),
+      applyMiddleware(applyPerks),
+    ),
+  );
+
+  actions.forEach(a => {
+    store.dispatch(a);
+  });
+
+  return store.getState().character;
 };
